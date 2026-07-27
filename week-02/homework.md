@@ -5,7 +5,7 @@
 
 ## Part 1 — Finish the lab checklist
 
-Complete every unchecked item in `lab/README.md` on all three pages: navbar, hero, feature row, card grid with badges, contact form with alert, footer. Rules still apply — no custom CSS except the font override.
+Complete every unchecked item in `lab/README.md` on all three pages: navbar, hero, feature row, card grid with badges, contact form with alert, footer, and Bootstrap Icons on every page. Rules still apply — no custom CSS except the font override.
 
 ## Part 2 — Make it genuinely yours (graded)
 

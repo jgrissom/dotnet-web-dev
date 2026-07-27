@@ -25,6 +25,7 @@ Work top to bottom. Each item names the docs page you need.
 ### All three pages
 - [ ] **Navbar** ([docs: Components → Navbar](https://getbootstrap.com/docs/5.3/components/navbar/)) — brand + links to all three pages, collapses to a hamburger on small screens. Mark the current page's link `active`. Same navbar on every page.
 - [ ] **Footer** — a `<footer>` with muted, centered text and comfortable vertical padding (utilities only: `text-center`, `text-muted`, `py-4`).
+- [ ] **Icons** ([icons.getbootstrap.com](https://icons.getbootstrap.com)) — add the Bootstrap Icons `<link>` to every page and use at least one icon per page (the footer is a natural spot; a button or navbar brand also works).
 
 ### index.html
 - [ ] **Hero** — big heading, lead paragraph (`display-4`, `lead`), and a button linking to the projects page. Center it and give it generous vertical space (`text-center`, `py-5`).

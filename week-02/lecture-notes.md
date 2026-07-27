@@ -131,6 +131,22 @@ Walk these, in this order, into the coffee-shop page:
 > [!IMPORTANT]
 > **House rule: if you're writing custom CSS for spacing, alignment, or color, stop and check for a utility first.** Custom CSS is for identity (rare); utilities are for layout (constant).
 
+### Bootstrap Icons (fold into the last 5 minutes of this segment)
+
+Bootstrap's sibling icon library — one more CDN link, ~2,000 icons delivered as a font:
+
+```html
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+```
+
+```html
+<i class="bi bi-github"></i>   <i class="bi bi-cup-hot"></i>   <i class="bi bi-envelope"></i>
+```
+
+- Because they're **font glyphs**, the text utilities you just taught style them for free: `fs-3` sizes, `text-danger` colors, no image files anywhere.
+- Live-code two on the coffee page: a `bi-cup-hot` inside the hero button, a `bi-github` in the footer.
+- [icons.getbootstrap.com](https://icons.getbootstrap.com) is searchable — same find → copy → adapt workflow, third time tonight.
+
 ---
 
 ## Part 4: Bootswatch (15 min)

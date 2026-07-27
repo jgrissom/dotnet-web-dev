@@ -20,6 +20,8 @@
     req("navbar toggler + collapse (hamburger works)", $(".navbar-toggler") && $(".navbar-collapse"));
     req("nav links to all 3 pages", $$("a.nav-link").length >= 3);
     req("current page marked .active in nav", $("a.nav-link.active"));
+    req("Bootstrap Icons stylesheet linked", $('link[href*="bootstrap-icons"]'));
+    req("at least one icon used (bi-*)", $('[class*="bi-"]'));
     req("footer: centered, muted, padded", $("footer.text-center") && $("footer .mb-0, footer p") && /text-muted/.test($("footer")?.className + " " + ($("footer p")?.className || "")));
 
     // ── per page ──

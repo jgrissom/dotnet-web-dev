@@ -165,6 +165,25 @@ If you're writing custom CSS for spacing or alignment, there's probably a utilit
 
 ---
 
+## Icons: Bootstrap Icons
+
+One more `<link>` — 2,000+ icons, no image files:
+
+```html
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+      rel="stylesheet">
+```
+
+```html
+<a href="#"><i class="bi bi-github"></i> GitHub</a>
+<button class="btn btn-primary"><i class="bi bi-cup-hot"></i> Order</button>
+```
+
+- Icons are a **font** — style them with text utilities: `fs-3`, `text-danger`
+- Names live at [icons.getbootstrap.com](https://icons.getbootstrap.com) — find → copy → adapt
+
+---
+
 ## Bootswatch: stop looking like every Bootstrap site
 
 Swap **one line** — the CSS link:
