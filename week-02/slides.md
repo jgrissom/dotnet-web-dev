@@ -112,8 +112,6 @@ Bootstrap solves all four for the price of two `<link>`/`<script>` tags.
 <!-- full width on phones, half on tablets, third on laptops -->
 ```
 
-Resize the window. Always be resizing.
-
 ---
 
 ## Components: assembled from the docs
