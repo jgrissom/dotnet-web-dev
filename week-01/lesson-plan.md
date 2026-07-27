@@ -32,7 +32,7 @@ By the end of this session, students can:
 | 2:00 | 30 min | **Refresher: arrays & objects (the LINQ-shaped part).** `map`/`filter`/`find` as `Select`/`Where`/`FirstOrDefault`, destructuring, spread, arrays-of-objects as the shape of all future data. |
 | 2:30 | 10 min | **☕ Break** |
 | 2:40 | 25 min | **DOM & fetch highlights.** `querySelector`, `textContent`, `addEventListener`, then one complete `fetch` + `async`/`await` example against a public JSON API. Sets up week 15; keep it a tour, not a deep dive. |
-| 3:05 | 30 min | **Lab: JS Refresher Gauntlet.** Students clone starter code and work exercises 1–8 (`lab/README.md`). Work in pairs encouraged. Review 2–3 trickiest exercises on screen in the last 10 minutes. |
+| 3:05 | 30 min | **Lab: JS Refresher Gauntlet.** Launch with ~90 seconds of *what done looks like*: your finished copy in the browser, console showing **8 / 8 passing** — a target, not a walkthrough. Then students clone the course repo and work exercises 1–8 (`lab/README.md`). Work in pairs encouraged. Review 2–3 trickiest exercises on screen in the last 10 minutes. |
 | 3:35 | 10 min | **Wrap-up.** Assign homework (`homework.md`) — emphasize Part 4: their code goes **live on GitHub Pages** tonight, and from week 3 every .NET assignment deploys to Azure. Preview week 2: **Bootstrap** — they'll build and deploy a styled, personalized site. Remind students setup must be working before next class. |
 
 ## Instructor notes

@@ -33,7 +33,7 @@ By the end of this session, students can:
 | 2:15 | 10 min | **☕ Break** |
 | 2:25 | 15 min | **Bootswatch.** Swap the CDN link to Flatly → Darkly → Sketchy live; the whole site re-skins with zero markup changes. Key points: class names stay standard Bootstrap (skills transfer, docs still apply), and **pin the Bootswatch version to the Bootstrap version** (both 5.3.x). |
 | 2:40 | 15 min | **Google Fonts.** Pick a pairing on fonts.google.com, add the `<link>`, override `--bs-body-font-family` (and heading font). Rules: two families max, only the weights you use. One-sentence pro aside: Google-hosted fonts are a third-party request, so privacy-conscious companies often self-host. |
-| 2:55 | 40 min | **Lab: Bootstrap the site.** Students take the unstyled 3-page starter and work the checklist in `lab/README.md`: navbar, hero, card grid, contact form, footer, then theme + fonts. Pairs fine; docs open is the whole point. |
+| 2:55 | 40 min | **Lab: Bootstrap the site.** Launch with ~90 seconds of *what done looks like*: the finished 3-page site on screen, resized once to show the navbar collapse — a target, not a walkthrough (don't show markup). Then students take the unstyled starter and work the checklist in `lab/README.md`: navbar, hero, card grid, contact form, footer, then theme + fonts. Pairs fine; docs open is the whole point. |
 | 3:35 | 10 min | **Wrap-up.** Homework: personalize + deploy to Pages. Preview week 3: HTTP, and their first ASP.NET Core MVC app — plus first Azure deploy, so **activate Azure for Students before next class** (link in homework). |
 
 ## Instructor notes
