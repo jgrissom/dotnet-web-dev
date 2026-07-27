@@ -338,6 +338,9 @@ loadUsers();
 **macOS / Linux students**
 - No differences this semester — VS Code, the C# extension, and the mssql extension are identical on every platform, and the database lives on the school server.
 
+**Student's VS Code looks different from the projector (Solution Explorer panel, sign-in prompt)**
+- They installed **C# Dev Kit** — the marketplace promotes it over the plain C# extension. Extensions panel → C# Dev Kit → **Disable**, reload the window. Everything course-related works identically without it.
+
 **C# extension installed but no IntelliSense**
 - Make sure a folder (not a single `.cs` file) is open: File → Open Folder on the project directory.
 - Give the language server a moment after opening — watch the flame icon / status bar until the project finishes loading.

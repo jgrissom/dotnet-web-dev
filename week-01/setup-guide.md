@@ -24,7 +24,10 @@ You should see a version starting with `10.`
 ## 2. VS Code + the C# extension
 
 1. Install **VS Code**: https://code.visualstudio.com
-2. Open it → Extensions panel (`Ctrl+Shift+X` / `Cmd+Shift+X`) → search **C#** → install the one published by Microsoft.
+2. Open it → Extensions panel (`Ctrl+Shift+X` / `Cmd+Shift+X`) → search **C#** → install the one named exactly **"C#"** by Microsoft.
+
+> [!IMPORTANT]
+> **Not "C# Dev Kit."** The marketplace will push it at you — it's the top search result, and VS Code will pop up "install C# Dev Kit?" suggestions later. We use the plain **C#** extension in this course so everyone's editor behaves identically (and there's no sign-in). If Dev Kit is already installed or sneaks in: Extensions panel → C# Dev Kit → **Disable** (no need to uninstall). Dismiss any install prompts with "Don't ask again."
 
 **✓ Verify** — prove the whole chain works, including the debugger:
 
