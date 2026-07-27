@@ -82,6 +82,7 @@ maxScore = 200;  // TypeError!
 
 > [!IMPORTANT]
 > **Course rule: `const` by default, `let` when you need to reassign, `var` never.** `var` is legacy (function-scoped, hoisting weirdness) — you'll see it in old tutorials; don't copy it.
+
 - **C# bridge:** `let` ≈ a normal local variable; `const` ≈ `readonly` — the *binding* is fixed, not the contents. `const arr = [1,2]; arr.push(3);` is legal.
 
 ### Types and `typeof`
@@ -160,9 +161,10 @@ greet("Ada");   // "Hello, Ada!"
 ```
 
 - **C# bridge:** arrow functions ARE lambdas — `(a, b) => a + b` is valid in both languages.
+- We'll use both forms; arrow functions dominate modern code and become essential with `fetch` in week 2.
+
 > [!WARNING]
 > Call a JS function with too few arguments and the missing ones are silently `undefined` — no compiler error. This is where dynamic typing bites; default parameters are the guard rail.
-- We'll use both forms; arrow functions dominate modern code and become essential with `fetch` in week 2.
 
 ---
 
