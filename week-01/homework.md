@@ -21,7 +21,7 @@ If you didn't finish exercises 1–8 in class, finish them. The console must sho
 
 Set up a homework folder the same way the lab worked — a page that loads your script, so the browser console is your test loop from the first line you write:
 
-1. Create a folder with two files: `index.html` and `homework.js`.
+1. Create a folder with three files: `index.html`, an empty `homework.js`, and a copy of [`homework-checks.js`](homework-checks.js) from the course repo.
 2. `index.html`:
    ```html
    <!DOCTYPE html>
@@ -31,10 +31,11 @@ Set up a homework folder the same way the lab worked — a page that loads your 
      <h1>Week 1 Homework — YOUR NAME</h1>
      <p>Open the console (F12) to see the output.</p>
      <script src="homework.js"></script>
+     <script src="homework-checks.js"></script>
    </body>
    </html>
    ```
-3. Open `index.html` in the browser, console on (**F12**) — refresh after every save, just like the lab.
+3. Open `index.html` in the browser, console on (**F12**). It says **0 / 8 functions passing** — the assignment is turning those green, one at a time, refreshing after every save. Same rhythm as the lab.
 
 Now, in `homework.js`, copy this data to the top:
 
@@ -69,19 +70,12 @@ console.log(openCourseLines(courses));    // ["WEB210: Intro to Web (3 credits)"
 console.log(totalCredits(courses));       // 14
 ```
 
-### Check yourself before you submit
+### When are you done?
 
-Same deal as the lab: copy [`homework-checks.js`](homework-checks.js) from the course repo into your homework folder, and load it in your `index.html` **after** your own script:
-
-```html
-<script src="homework.js"></script>
-<script src="homework-checks.js"></script>
-```
-
-Refresh → the console grades all 8 functions ✅/❌ and warns about any `var`/`==` deductions.
+When the console says **8 / 8 functions passing** and the deduction scan below it is clean (it warns about any `var`/`==` it finds, with line numbers).
 
 > [!TIP]
-> **This is the exact same check I grade with.** If your console says 8 / 8 and no deduction warnings, the function points are yours. Work it one ❌ at a time, just like the lab — and leave the checker in your repo when you submit; it doesn't affect anything.
+> **The checker is the exact same check I grade with.** 8 / 8 and no warnings means the function points are yours. Leave `homework-checks.js` in your repo when you submit — it doesn't affect anything.
 
 ## Part 4 — Ship it to GitHub Pages (graded)
 
