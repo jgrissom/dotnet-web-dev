@@ -120,6 +120,9 @@ Walk these, in this order, into the coffee-shop page:
 
 3. **Buttons** — `btn btn-primary/secondary/outline-*`; sizes `btn-sm`/`btn-lg`. Semantic names (`danger`, not "red") — themes redefine the colors later tonight.
 4. **Forms** — `form-label` + `form-control` per field, `form-select`, `form-check`. Just appearance tonight; these same classes wire into MVC model binding and validation styling in week 6 — this markup is a direct investment.
+
+> [!NOTE]
+> **Seen in the wild:** older tutorials wrap each field in `class="form-group"` — that's Bootstrap 4, removed in 5. The modern equivalent is exactly what we're typing: a plain `<div class="mb-3">` spacing wrapper. Same intent, utility class instead of special-purpose class.
 5. **Alerts & badges** — `alert alert-warning`, `badge bg-success`. Ten seconds each.
 
 ### Utilities — the classes that replace custom CSS
