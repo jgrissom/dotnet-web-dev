@@ -86,7 +86,7 @@ In this course, nothing stays on your laptop. Your JavaScript work goes live on 
 > [!IMPORTANT]
 > **Test your URL in a private/incognito window before submitting** — if it 404s for you, it 404s for me, and a dead link grades as not submitted.
 
-## Grading (24 pts)
+## 📊 Grading (24 pts)
 
 | Item | Points |
 |------|--------|
@@ -96,7 +96,7 @@ In this course, nothing stays on your laptop. Your JavaScript work goes live on 
 | Part 4: Pages URL live, console output visible | 4 |
 | **Deductions:** any use of `var` or `==`, or mutating `courses` | −1 each |
 
-## Reading for next week (~20 min)
+## 📖 Reading for next week (~20 min)
 
 Next week is **Bootstrap** — you'll build and deploy a styled multi-page site.
 

@@ -7,24 +7,24 @@ Full-stack web development with **ASP.NET Core MVC on .NET 10**, **Entity Framew
 
 ## Course Map
 
-| Week | Topic | Folder |
-|------|-------|--------|
-| 1 | Course intro, environment setup, rapid JavaScript refresher (fundamentals, arrays/objects, DOM & fetch highlights) | `week-01/` |
-| 2 | Bootstrap 5: grid, components, utilities; Bootswatch themes; Google Fonts; build & deploy a static site to GitHub Pages | `week-02/` |
-| 3 | How the web works (HTTP, client/server); ASP.NET Core MVC fundamentals: project anatomy, MVC pattern, first controller & view; first deploy to Azure App Service | `week-03/` |
-| 4 | Routing, controllers, passing data to views; Razor syntax deep dive | `week-04/` |
-| 5 | Razor layouts & partials: the site shell — applying the Bootstrap you already know; Bootswatch swap in `_Layout.cshtml` | `week-05/` |
-| 6 | Models, forms, model binding, validation (data annotations) | `week-06/` |
-| 7 | EF Core + SQL Server: DbContext, migrations, seeding; pointing deployed apps at the school SQL Server | `week-07/` |
-| 8 | EF Core CRUD: scaffolding, full create/read/update/delete flows | `week-08/` |
-| 9 | EF Core relationships (1-many, many-many), LINQ queries, ViewModels | `week-09/` |
-| 10 | Midterm project: guided build tying weeks 3–9 together | `week-10/` |
-| 11 | ASP.NET Core Identity: registration, login, customizing IdentityUser | `week-11/` |
-| 12 | Identity pt. 2: roles, claims, `[Authorize]`, securing the app | `week-12/` |
-| 13 | Polish topics: dependency injection & services, TempData, paging/filtering/search | `week-13/` |
-| 14 | Intro to Web API: controllers vs. minimal APIs, JSON, testing endpoints | `week-14/` |
-| 15 | Consuming your API with JavaScript fetch; production concerns (config, secrets, CI/CD with GitHub Actions) | `week-15/` |
-| 16 | Final project work & presentations | `week-16/` |
+| Week | Topic | Folder | Status |
+|------|-------|--------|--------|
+| 1 | Course intro, environment setup, rapid JavaScript refresher (fundamentals, arrays/objects, DOM & fetch highlights) | `week-01/` | ✅ Ready |
+| 2 | Bootstrap 5: grid, components, utilities; Bootswatch themes; Google Fonts; build & deploy a static site to GitHub Pages | `week-02/` | ✅ Ready |
+| 3 | How the web works (HTTP, client/server); ASP.NET Core MVC fundamentals: project anatomy, MVC pattern, first controller & view; first deploy to Azure App Service | `week-03/` | 🚧 Planned |
+| 4 | Routing, controllers, passing data to views; Razor syntax deep dive | `week-04/` | 🚧 Planned |
+| 5 | Razor layouts & partials: the site shell — applying the Bootstrap you already know; Bootswatch swap in `_Layout.cshtml` | `week-05/` | 🚧 Planned |
+| 6 | Models, forms, model binding, validation (data annotations) | `week-06/` | 🚧 Planned |
+| 7 | EF Core + SQL Server: DbContext, migrations, seeding; pointing deployed apps at the school SQL Server | `week-07/` | 🚧 Planned |
+| 8 | EF Core CRUD: scaffolding, full create/read/update/delete flows | `week-08/` | 🚧 Planned |
+| 9 | EF Core relationships (1-many, many-many), LINQ queries, ViewModels | `week-09/` | 🚧 Planned |
+| 10 | Midterm project: guided build tying weeks 3–9 together | `week-10/` | 🚧 Planned |
+| 11 | ASP.NET Core Identity: registration, login, customizing IdentityUser | `week-11/` | 🚧 Planned |
+| 12 | Identity pt. 2: roles, claims, `[Authorize]`, securing the app | `week-12/` | 🚧 Planned |
+| 13 | Polish topics: dependency injection & services, TempData, paging/filtering/search | `week-13/` | 🚧 Planned |
+| 14 | Intro to Web API: controllers vs. minimal APIs, JSON, testing endpoints | `week-14/` | 🚧 Planned |
+| 15 | Consuming your API with JavaScript fetch; production concerns (config, secrets, CI/CD with GitHub Actions) | `week-15/` | 🚧 Planned |
+| 16 | Final project work & presentations | `week-16/` | 🚧 Planned |
 
 ## How to use this repo
 

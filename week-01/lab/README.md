@@ -34,7 +34,7 @@ All in `starter/exercises.js`:
 7. **`formatStudent`** — destructuring + template literal
 8. **`addStudent`** — spread (no mutation!)
 
-## Stuck?
+## 🆘 Stuck?
 
 Open this week's [lecture-notes.md](../lecture-notes.md) — every pattern these exercises need is in there, explained with examples. Find the pattern, understand it, then adapt it to the exercise (don't hunt for something to copy — the notes use different data on purpose). [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript) is your second stop.
 
@@ -47,7 +47,7 @@ Open this week's [lecture-notes.md](../lecture-notes.md) — every pattern these
 >
 > These same rules carry deductions on the homework — build the habit here where it's free.
 
-## Done early?
+## 🚀 Done early?
 
 - Rewrite exercises 3–6 as classic `function` declarations, then back to arrows. Which reads better?
 - Bonus: add a `classAverage(students)` function that returns the mean GPA using [`reduce`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce) — we didn't cover it; the docs are the exercise.

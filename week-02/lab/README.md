@@ -39,7 +39,7 @@ Work top to bottom. Each item names the docs page you need.
 - [ ] **Bootswatch** ([bootswatch.com](https://bootswatch.com)) — swap the Bootstrap CSS link for a theme you like, on all three pages. Keep the version at 5.3.x.
 - [ ] **Google Fonts** ([fonts.google.com](https://fonts.google.com)) — one heading font, one body font. Override `--bs-body-font-family` as shown in the lecture notes.
 
-## Stuck?
+## 🆘 Stuck?
 
 The Bootstrap docs are stop one — find → copy → adapt is the exercise. Stop two is this week's [lecture-notes.md](../lecture-notes.md): the same patterns with fuller explanations, plus a **common snags appendix** at the bottom (navbar toggler dead? columns stacking? it's probably in there).
 
@@ -49,7 +49,7 @@ The Bootstrap docs are stop one — find → copy → adapt is the exercise. Sto
 > - **No custom CSS** except the font override block — everything else is Bootstrap classes. If you're fighting it, you've missed a utility; search the docs.
 > - Don't remove the viewport meta or the JS bundle script — if your navbar hamburger does nothing, a missing JS bundle tag is why.
 
-## Done early?
+## 🚀 Done early?
 
 - Add a Bootstrap **modal** to a project card ("More details") — docs: *Components → Modal*. It needs the JS bundle; now you know why it's there.
 - Try `navbar-expand-sm` vs `navbar-expand-lg` — when does the hamburger appear? Why would you choose each?

@@ -6,13 +6,13 @@ Students turn an unstyled 3-page site into a personalized, responsive portfolio 
 
 | When | Document | What it is |
 |------|----------|------------|
-| Prep | [lesson-plan.md](lesson-plan.md) | Timed 3h45 agenda + instructor notes |
-| Prep / in-class script | [lecture-notes.md](lecture-notes.md) | Full lecture content + **common snags appendix** |
-| Projected in class | [slides.md](slides.md) | The deck (GFM, one slide per `##`) |
-| In class, last 40 min | [lab/](lab/) | "Bootstrap the Site" — checklist over a 3-page starter (answer key in the private answer-keys repo) |
-| Assigned at wrap-up | [homework.md](homework.md) | Personalize + deploy to Pages; **activate Azure for Students** before week 3 |
+| Prep | 🗓️ [lesson-plan.md](lesson-plan.md) | Timed 3h45 agenda + instructor notes |
+| Prep / in-class script | 📖 [lecture-notes.md](lecture-notes.md) | Full lecture content + **common snags appendix** |
+| Projected in class | 🎞️ [slides.md](slides.md) | The deck (GFM, one slide per `##`) |
+| In class, last 40 min | 🧪 [lab/](lab/) | "Bootstrap the Site" — checklist over a 3-page starter (answer key in the private answer-keys repo) |
+| Assigned at wrap-up | 📤 [homework.md](homework.md) | Personalize + deploy to Pages; **activate Azure for Students** before week 3 |
 
-## Before class, don't forget
+## 📋 Before class, don't forget
 
 - Queue 3–4 student Pages URLs from week 1 for the gallery walk
 - Remind students to `git pull` this repo for the week-02 starter

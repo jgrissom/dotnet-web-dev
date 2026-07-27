@@ -28,7 +28,7 @@ This site becomes your portfolio — by finals it will link to deployed .NET app
 > [!IMPORTANT]
 > **Week 3 does not work without an active Azure account** — your first .NET app deploys to Azure that night. If activation fails (usually a school-email verification issue), email me *before* class, not during it.
 
-## Grading (20 pts)
+## 📊 Grading (20 pts)
 
 | Item | Points |
 |------|--------|
@@ -40,7 +40,7 @@ This site becomes your portfolio — by finals it will link to deployed .NET app
 | Azure Portal screenshot | 2 |
 | **Deductions:** custom CSS beyond the font override, or broken navbar toggler | −1 each |
 
-## Reading for next week (~25 min)
+## 📖 Reading for next week (~25 min)
 
 Week 3 is the big pivot: how the web actually works, then your first ASP.NET Core MVC app — deployed to Azure the same night.
 

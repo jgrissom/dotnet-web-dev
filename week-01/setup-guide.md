@@ -90,7 +90,7 @@ Version prints, and your name comes back.
 > [!NOTE]
 > Tonight's homework pushes code to GitHub and puts it **live on the internet** via GitHub Pages. The account isn't optional.
 
-## Final checklist
+## 🏁 Final checklist
 
 | # | Check | Proof |
 |---|-------|-------|
@@ -100,7 +100,7 @@ Version prints, and your name comes back.
 | 4 | `git --version` + `git config user.name` | both answer |
 | 5 | Logged in to GitHub | avatar top-right |
 
-All five green? You're done for the whole semester — this is the only install night. Help a neighbor or start the lab early.
+All five green? 🎉 You're done for the whole semester — this is the only install night. Help a neighbor or start the lab early.
 
 > [!IMPORTANT]
 > Couldn't finish in class? This **must** be working before week 2 — it's Part 1 of tonight's homework. Use the [troubleshooting appendix](lecture-notes.md#appendix-setup-troubleshooting), then email me.
