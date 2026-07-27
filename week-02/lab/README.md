@@ -70,3 +70,4 @@ The Bootstrap docs are stop one — find → copy → adapt is the exercise. Sto
     });
   </script>
   ```
+  If any section glows wrong in dark mode, you've found a *literal* color utility (`bg-light`, `bg-white`) — swap it for a theme-aware one like `bg-body-tertiary`.

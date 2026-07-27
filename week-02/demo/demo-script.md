@@ -167,6 +167,8 @@ Edit-by-edit cue sheet for transforming `index.html` (your **scratch copy**) int
 - [ ] Land on `lux` (the finished page's theme)
 - [ ] **✓ say it:** nothing else changed — same classes, same docs
 - [ ] Dark-mode flip: DevTools → `<html>` → add `data-bs-theme="dark"`. One attribute; the toggle button is a lab stretch goal
+- [ ] **✓ let them spot it:** the hero is still a glowing light band. Why? `bg-light` means *literally light, in every theme* — it said so all along
+- [ ] Fix live: hero `bg-light` → `bg-body-tertiary` ("slightly offset from the page background" — theme-aware). Flip dark/light again: now the whole page adapts. **Semantic names > literal names, part two**
 
 ## 4 · Google Fonts *(slide 12)*
 
