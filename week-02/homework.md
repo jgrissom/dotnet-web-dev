@@ -30,7 +30,7 @@ This site becomes your portfolio — by finals it will link to deployed .NET app
 
 ### When are you done?
 
-Open the console on **each of the three pages** — every ❌ green across Required *and* Make-it-yours, no custom-CSS warnings. Then the two things the checker can't judge: resize to phone width and make sure it looks *sensible*, and confirm your extra docs component actually works when clicked.
+Open the console on **each of the three pages** — every ❌ green across Required *and* Make-it-yours, no custom-CSS warnings. Then the two things the checker can't see: resize to phone width and verify the **responsive mechanics** — no horizontal scrollbar, navbar collapses to the hamburger, columns stack — and confirm your extra docs component actually works when clicked.
 
 > [!TIP]
 > **The checker is the same one I grade with.** Green on all three pages locks in the checklist and theme/fonts points; the responsive look, your extra component, and the Azure screenshot are the human-graded remainder.
@@ -40,7 +40,7 @@ Open the console on **each of the three pages** — every ❌ green across Requi
 | Item | Points |
 |------|--------|
 | Lab checklist complete on all 3 pages (navbar/hero/row/cards/form/footer) | 8 |
-| Responsive: sensible at phone width and desktop width (I will resize) | 3 |
+| Responsive mechanics at phone width: no horizontal scroll, navbar collapses, columns stack (I will resize) | 3 |
 | Bootswatch theme + Google Fonts pairing applied on all pages | 3 |
 | The extra docs component, working | 2 |
 | Pages URL live, all pages reachable | 2 |
@@ -48,6 +48,9 @@ Open the console on **each of the three pages** — every ❌ green across Requi
 | **Deductions:** custom CSS beyond the font override, broken navbar toggler, or fewer than 3 meaningful commits | −1 each |
 
 *Reminder: the explain-it standard applies — be ready to walk me through any class or component you used.*
+
+> [!NOTE]
+> Everything in the table above is a checkable fact — design taste is not graded in this course.
 
 ## 📖 Reading for next week (~25 min)
 
