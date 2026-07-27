@@ -1,0 +1,184 @@
+# Week 2 — Lecture Notes
+
+## Part 1: Gallery walk & why frameworks (35 min)
+
+### Gallery walk (15 min)
+
+Open 3–4 student Pages URLs from week 1 on the projector. Points to land:
+
+- Everyone shipped something public in week 1 — that's already unusual for a course.
+- All the pages are unstyled browser-default — *that's tonight's before picture.*
+
+### Why CSS frameworks (20 min)
+
+Building a decent UI from scratch means hand-solving: consistent spacing/color/type, responsive layout, accessible components, and browser quirks. A CSS framework is a pre-made design system: battle-tested answers to all four, delivered as CSS classes.
+
+Why Bootstrap specifically (vs Tailwind, Bulma, etc.): it's the one you'll meet in .NET shops — the MVC project template ships with it (week 5), and most internal line-of-business apps you'll maintain use it. Learn one framework well and the concepts transfer.
+
+**The trade-off to name out loud:** default Bootstrap is recognizable at fifty paces. Tonight ends with Bootswatch + fonts precisely so nobody ships the default look.
+
+### Setup — two tags
+
+```html
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <!-- content -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+```
+
+- The **CSS** is the look. The **JS bundle** is behavior — navbar toggler, dropdowns, modals, tooltips. Forget the JS tag and the navbar toggler silently does nothing (the #1 lab bug tonight — say it now).
+- The `viewport` meta is what makes mobile rendering honest; without it, phones pretend to be 980px wide and nothing responsive works.
+- We're using the **CDN** on purpose: zero install, great for static sites and Pages. In week 5 you'll meet the second delivery style — the MVC template ships Bootstrap *bundled locally* in `wwwroot/lib/`. Both are idiomatic; you'll have seen each where it belongs.
+
+---
+
+## Part 2: The grid (45 min live-code)
+
+**Live-code the lab site's homepage skeleton while teaching.** Keep the browser at half-width and resize constantly.
+
+### The three-layer cake
+
+```html
+<div class="container">      <!-- centers content, sets max-width per breakpoint -->
+  <div class="row">          <!-- a horizontal band of columns; handles gutters -->
+    <div class="col-md-8">Main</div>
+    <div class="col-md-4">Sidebar</div>
+  </div>
+</div>
+```
+
+Rules that prevent 90% of grid confusion:
+
+- Columns live **directly inside rows**, rows live inside containers. A `col` outside a `row` misbehaves quietly.
+- Each row is 12 units wide. `col-md-8` + `col-md-4` = 12. Overflow wraps to the next line (sometimes what you want, often a bug).
+- Plain `col` = "share the space equally" — great for unknown counts.
+
+### Mobile-first breakpoints
+
+`col-md-6` reads as: *from the `md` breakpoint (≥768px) up, take 6 columns; below that, default to full width.*
+
+```html
+<div class="col-12 col-md-6 col-lg-4">…</div>
+```
+
+Phones: full width → tablets: half → laptops: a third. This one line is the responsive design lecture. Resize the window slowly and watch it happen.
+
+Breakpoints: `sm` 576, `md` 768, `lg` 992, `xl` 1200, `xxl` 1400. You'll use `md` and `lg` for nearly everything.
+
+### Gutters and flex utilities
+
+- `g-4` on the row controls gutter size (`gx-`/`gy-` for one axis). Card grids almost always want `g-4`.
+- For one-off alignment jobs, skip the grid and use flex utilities: `d-flex justify-content-between align-items-center` — a navbar-ish bar in three classes. `gap-3` spaces flex children without margins.
+
+**C# bridge for the room:** the grid is declarative layout — you describe *what* (8 columns at md+), never *how* (no pixel math). Same philosophy as Razor/LINQ: intent over mechanics.
+
+---
+
+## Part 3: Components & utilities (45 min live-code)
+
+### The real skill: find → copy → adapt
+
+Nobody memorizes navbar markup. Open getbootstrap.com/docs, search the component, copy the example, adapt content and classes. Model this workflow *explicitly* for every component tonight — the students who internalize docs-reading will cruise through the whole semester.
+
+Walk these, in this order, into the live-coded page:
+
+1. **Navbar** — copy the docs example with a toggler; shrink the window until it collapses into the hamburger. If clicking does nothing → JS bundle missing (told you).
+2. **Cards in a grid** — the pattern of their lives:
+
+```html
+<div class="row g-4">
+  <div class="col-md-4">
+    <div class="card h-100">
+      <div class="card-body">
+        <h5 class="card-title">Project One</h5>
+        <p class="card-text">Short description of the thing.</p>
+        <a href="#" class="btn btn-primary">View</a>
+      </div>
+    </div>
+  </div>
+  <!-- more col-md-4 cards -->
+</div>
+```
+
+   `h-100` makes ragged-height cards equal. **Week 8 preview, say it out loud:** each card will be one row from their SQL Server database, stamped out by a Razor `foreach`.
+
+3. **Buttons** — `btn btn-primary/secondary/outline-*`; sizes `btn-sm`/`btn-lg`. Semantic names (`danger`, not "red") — themes redefine the colors later tonight.
+4. **Forms** — `form-label` + `form-control` per field, `form-select`, `form-check`. Just appearance tonight; these same classes wire into MVC model binding and validation styling in week 6 — this markup is a direct investment.
+5. **Alerts & badges** — `alert alert-warning`, `badge bg-success`. Ten seconds each.
+
+### Utilities — the classes that replace custom CSS
+
+- **Spacing:** `{m|p}{t|b|s|e|x|y}-{0..5}` → `mt-4`, `px-2`, `py-5`. The scale is rem-based and consistent — this is why Bootstrap sites feel tidy.
+- **Text:** `text-center`, `fw-bold`, `text-muted`, `fs-4`.
+- **Color:** `bg-primary`, `text-danger`, `bg-light` — semantic, theme-aware.
+
+House rule for the course: **if you're writing custom CSS for spacing, alignment, or color, stop and check for a utility first.** Custom CSS is for identity (rare), utilities are for layout (constant).
+
+---
+
+## Part 4: Bootswatch (15 min)
+
+Live demo with maximum theater: the site so far, in default Bootstrap. Swap one line —
+
+```html
+<link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/flatly/bootstrap.min.css" rel="stylesheet">
+```
+
+— refresh. Entire site re-skinned. Swap `flatly` → `darkly` → `sketchy` (always gets a laugh) → let the room call one out.
+
+Three facts to land:
+
+1. **Nothing else changed.** Same markup, same classes, same docs. Bootswatch is a *compiled* Bootstrap with different variables — your skills are 100% portable.
+2. **Pin versions.** Bootswatch 5.3.x with Bootstrap 5.3.x markup. Mixing majors is how you lose an evening.
+3. **This is why we used semantic names.** `btn-primary` was blue in default, it's flat green in Flatly, it's crayon in Sketchy. Never name colors, name roles.
+
+Week 5 callback (preview it now): swapping this same link inside `_Layout.cshtml` will re-theme an entire MVC app — one file, whole site. That's the payoff of layouts.
+
+---
+
+## Part 5: Google Fonts (15 min)
+
+Many Bootswatch themes already pull a Google Font (Flatly ships Lato) — so you've been using this all evening. Now do it deliberately:
+
+1. Browse fonts.google.com; pick a pairing (heading + body). Demo picking one live.
+2. Copy the `<link>` tag it generates (choose only the weights you need — usually 400 + 700).
+3. Point Bootstrap at it:
+
+```css
+:root {
+  --bs-body-font-family: "Inter", system-ui, sans-serif;
+}
+h1, h2, h3, h4, h5, h6 { font-family: "Fraunces", Georgia, serif; }
+```
+
+Bootstrap reads its body font from the `--bs-body-font-family` CSS variable — override the variable, don't fight the framework. (First sighting of CSS custom properties; they'll reappear.)
+
+**Rules of taste (course-enforced):** two families max. Only the weights you use. Always keep the fallback stack after your font.
+
+**Pro aside, one sentence:** fonts served from Google's CDN are a third-party request — there have been European privacy rulings about it — so many companies self-host font files instead; same fonts, different delivery.
+
+---
+
+## Wrap-up (10 min)
+
+- **Tonight:** grid, components-from-docs, utilities, and a site that looks like *yours* — theme + fonts.
+- **Homework:** personalize the lab site (your content, your theme, your fonts) and deploy to GitHub Pages. Plus: **activate Azure for Students** — takes 5 minutes, needs your school email, and week 3 doesn't work without it.
+- **Next week:** how HTTP actually works (requests, responses, verbs, status codes), then `dotnet new mvc` — your first ASP.NET Core app, deployed to Azure the same night. C# land until finals.
+
+---
+
+## Appendix: common snags
+
+**Navbar toggler does nothing** — the JS bundle `<script>` is missing or misspelled. It goes at the end of `<body>`.
+
+**Columns don't sit side by side** — a `col-*` that isn't a direct child of a `row`, or widths summing past 12.
+
+**Site isn't responsive on a real phone** — missing `<meta name="viewport" content="width=device-width, initial-scale=1">`.
+
+**Bootswatch link works but looks broken** — version mismatch with the markup (check both are 5.3.x), or the link is placed *after* a plain Bootstrap link (last stylesheet wins).
+
+**Google Font doesn't apply** — the `family=` name in the URL must match the `font-family` name exactly (spaces included); check DevTools → Network to confirm the font actually loaded.

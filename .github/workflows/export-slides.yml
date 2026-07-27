@@ -1,0 +1,66 @@
+name: Export and publish slide decks
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "week-*/slides.md"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Export every deck to HTML
+        run: |
+          for f in week-*/slides.md; do
+            npx -y @marp-team/marp-cli "$f" -o "${f%.md}.html"
+          done
+
+      - name: Commit regenerated decks
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add week-*/slides.html
+          git diff --cached --quiet || git commit -m "Regenerate slide decks [skip ci]"
+          git push
+
+      # Pages site contains ONLY the decks + an index — never labs, solutions, or notes.
+      - name: Assemble Pages site (slides only)
+        run: |
+          mkdir -p _site
+          {
+            echo '<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">'
+            echo '<meta name="viewport" content="width=device-width, initial-scale=1">'
+            echo '<title>.NET Web Dev — Slide Decks</title>'
+            echo '<style>body{font-family:system-ui,sans-serif;max-width:40rem;margin:3rem auto;padding:0 1rem;background:#1c2733;color:#e6edf3}a{color:#79c0ff;text-decoration:none;font-size:1.2rem}li{margin:.6rem 0}h1{font-size:1.5rem}</style>'
+            echo '</head><body><h1>.NET Web Development — Slide Decks</h1><ul>'
+            for f in week-*/slides.md; do
+              wk="${f%/slides.md}"
+              mkdir -p "_site/$wk"
+              cp "${f%.md}.html" "_site/$wk/index.html"
+              echo "<li><a href=\"$wk/\">${wk/week-0/Week }</a></li>"
+            done
+            echo '</ul><p>Navigate decks with arrow keys · F for fullscreen</p></body></html>'
+          } > _site/index.html
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - uses: actions/deploy-pages@v4

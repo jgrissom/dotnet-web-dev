@@ -1,0 +1,215 @@
+---
+marp: true
+theme: gaia
+class: invert
+paginate: true
+style: |
+  section pre {
+    background: #151b23;
+    border-radius: 8px;
+  }
+  section pre code {
+    background: transparent;
+    color: #e6edf3;
+  }
+  section pre .hljs-keyword { color: #ff7b72; }
+  section pre .hljs-string { color: #a5d6ff; }
+  section pre .hljs-title, section pre .hljs-title.function_ { color: #d2a8ff; }
+  section pre .hljs-comment { color: #9198a1; font-style: italic; }
+  section pre .hljs-attr, section pre .hljs-attribute { color: #79c0ff; }
+  section pre .hljs-number, section pre .hljs-literal { color: #79c0ff; }
+  section pre .hljs-built_in { color: #ffa657; }
+  section pre .hljs-name { color: #7ee787; }
+  section pre .hljs-selector-class, section pre .hljs-selector-pseudo { color: #7ee787; }
+---
+
+<!-- _paginate: false -->
+
+# Week 2 — Bootstrap: Build Something That Looks Good
+
+.NET Web Development · Week 2 of 16
+
+---
+
+## Tonight
+
+1. Why CSS frameworks exist
+2. **The grid** — responsive layout without writing CSS
+3. **Components** — navbar, cards, forms, from the docs
+4. **Utilities** — spacing, color, text helpers
+5. **Make it yours** — Bootswatch themes + Google Fonts
+6. Ship it to GitHub Pages
+
+---
+
+## Why a CSS framework?
+
+Writing a design system from scratch means solving:
+
+- Consistent spacing, colors, and type across every page
+- Responsive behavior on every screen size
+- Accessible components (keyboard nav, contrast, ARIA)
+- Browser quirks
+
+Bootstrap solves all four for the price of two `<link>`/`<script>` tags.
+**Trade-off:** every default Bootstrap site looks the same — we fix that tonight too.
+
+---
+
+## Setup: two tags via CDN
+
+```html
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+</head>
+<body>
+  <!-- your page -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+```
+
+- CSS = the look · JS bundle = behavior (navbar toggler, dropdowns, modals)
+- The viewport `<meta>` is required for responsive behavior
+- Week 5: you'll meet the *locally bundled* copy inside the MVC template
+
+---
+
+## The grid: 12 columns, 6 breakpoints
+
+```html
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">Main content</div>
+    <div class="col-md-4">Sidebar</div>
+  </div>
+</div>
+```
+
+- `container` centers with margins; `row` starts a grid line; columns add to 12
+- `col-md-8` = "8 of 12 columns *at medium screens and up*" — below that, full width
+
+---
+
+## Breakpoints
+
+**Mobile-first:** unprefixed = all sizes; prefixes add behavior at wider screens.
+
+| Prefix | Min width | Think |
+|--------|-----------|-------|
+| *(none)* | 0 | phones |
+| `sm` | 576px | big phones |
+| `md` | 768px | tablets |
+| `lg` | 992px | laptops |
+| `xl` / `xxl` | 1200 / 1400px | desktops |
+
+```html
+<div class="col-12 col-md-6 col-lg-4">…</div>
+<!-- full width on phones, half on tablets, third on laptops -->
+```
+
+Resize the window. Always be resizing.
+
+---
+
+## Components: assembled from the docs
+
+The workflow — the *actual skill* of tonight:
+
+1. **Find** it in the docs (getbootstrap.com → search "card")
+2. **Copy** the example markup
+3. **Adapt** the content and classes
+
+Navbar · Cards · Buttons · Forms · Alerts · Badges — all tonight, all copy-adapt.
+
+**No memorizing markup.** Professionals read docs.
+
+---
+
+## Cards in a grid
+
+```html
+<div class="row g-4">
+  <div class="col-md-4">
+    <div class="card h-100">
+      <div class="card-body">
+        <h5 class="card-title">Project One</h5>
+        <p class="card-text">Short description.</p>
+        <a href="#" class="btn btn-primary">View</a>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+The pattern you'll use forever — week 8: each card = a **database row**.
+
+---
+
+## Utilities: the classes that replace custom CSS
+
+```html
+<h1 class="text-center mt-5">Centered, spaced</h1>
+<div class="d-flex justify-content-between align-items-center p-3">
+  <span class="fw-bold">Left</span>
+  <span class="badge bg-success">Right</span>
+</div>
+```
+
+- Spacing: `m`/`p` + side + size → `mt-4`, `px-2`, `gap-3` (scale 0–5)
+- Text: `text-center`, `fw-bold`, `text-muted`
+- Color: `bg-primary`, `text-danger`, …
+
+If you're writing custom CSS for spacing or alignment, there's probably a utility.
+
+---
+
+## Bootswatch: stop looking like every Bootstrap site
+
+Swap **one line** — the CSS link:
+
+```html
+<link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/flatly/bootstrap.min.css"
+      rel="stylesheet">
+```
+
+- 25+ free themes: bootswatch.com — Flatly, Darkly, Lux, Sketchy…
+- All class names stay **standard Bootstrap** — your skills and the docs still apply
+- **Pin the version** to your Bootstrap version (5.3.x ↔ 5.3.x)
+
+---
+
+## Google Fonts: the finishing move
+
+```html
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
+      rel="stylesheet">
+```
+
+```css
+:root {
+  --bs-body-font-family: "Inter", system-ui, sans-serif;
+}
+```
+
+- Bootstrap reads its fonts from CSS variables — override, don't fight
+- **Rules:** two families max (heading + body), only the weights you use
+- Pro aside: Google-hosted fonts = a third-party request; privacy-minded companies self-host
+
+---
+
+## Lab: Bootstrap the site
+
+- Starter: an unstyled 3-page site (`lab/README.md` has the checklist)
+- Navbar → hero → card grid → contact form → footer
+- Then: pick your Bootswatch theme + font pairing
+- **Docs open the whole time — that's the exercise**
+
+---
+
+## Before next week
+
+- ✅ Homework: personalize the site and **deploy it to GitHub Pages**
+- ✅ **Activate your Azure for Students account** (link in homework) — week 3 is your first Azure deploy
+- **Next week:** how HTTP actually works, then `dotnet new mvc` — C# land until finals
