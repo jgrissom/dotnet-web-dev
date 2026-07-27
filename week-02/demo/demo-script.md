@@ -158,6 +158,7 @@ Edit-by-edit cue sheet for transforming `index.html` (your **scratch copy**) int
 
 ## 3 · Bootswatch *(slide 11)*
 
+- [ ] Show the gallery at [bootswatch.com](https://bootswatch.com) — this is where "take requests" shops
 - [ ] Swap the Bootstrap `<link>` through themes, refreshing between each: `flatly` → `darkly` → `sketchy` (laugh) → take requests
 - [ ] Land on `lux` (the finished page's theme)
 - [ ] **✓ say it:** nothing else changed — same classes, same docs
