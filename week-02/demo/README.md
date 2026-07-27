@@ -3,6 +3,7 @@
 The instructor's live-coding page for the lecture segments. **Deliberately different content from the lab** — you assemble a coffee shop on the projector; students assemble their portfolio in the lab. Same patterns, fresh retrieval.
 
 - `index.html` — the unstyled starting point (hosted as the [**before** page](https://jgrissom.github.io/dotnet-web-dev/week-02/demo/before.html)). `SEGMENT:` comments mark which lecture beat uses each block (grid → hero + blurbs, components → navbar/cards/form, then Bootswatch swap and the fonts override).
+- `demo-script.md` — the **edit-by-edit cue sheet**, in lecture order and keyed to the slide numbers: what to type at each beat, what to paste, and the ✓-checkpoints. Keep it on your second screen next to the lecture notes.
 - `finished.html` — where the session ends up (Lux theme + Nunito, hosted as the [**after** page](https://jgrissom.github.io/dotnet-web-dev/week-02/demo/)), for rehearsal and as your own "what done looks like." Opening before and after in two tabs is the fastest "why Bootstrap" pitch there is — same HTML, two links of CSS apart.
 
 > [!IMPORTANT]
