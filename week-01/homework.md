@@ -57,7 +57,7 @@ Write the following functions.
 2. `isFull(course)` — returns `true` if `enrolled` equals `cap` (remember [`===`](lecture-notes.md#equality--always)).
 3. `openCourses(courses)` — returns a new array of the course **objects** that are not full.
 4. `courseTitles(courses)` — returns an array of just the titles.
-5. `openCourseLines(courses)` — returns an array of `courseLine`-formatted strings for open courses only. Chain [`filter` + `map`](lecture-notes.md#the-big-three-map-filter-find), reusing functions you already wrote.
+5. `openCourseLines(courses)` — returns an array of `courseLine`-formatted strings for open courses only. Don't start from scratch: `openCourses` and `courseLine` already do the heavy lifting — chain them together with [`map`](lecture-notes.md#the-big-three-map-filter-find). This one can be a single short line.
 6. `findCourse(courses, code)` — returns the course object with the given code, or `undefined`.
 7. `addCourse(courses, newCourse)` — returns a **new** array with the course appended. No `.push()` — this is [spread](lecture-notes.md#destructuring-and-spread). A course to test with:
    ```js
