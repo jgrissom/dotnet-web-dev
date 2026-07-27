@@ -42,7 +42,7 @@ Edit-by-edit cue sheet for transforming `index.html` (your **scratch copy**) int
   2. the article itself → `class="card h-100"`
   3. wrap its contents in `<div class="card-body">`
   4. `h3` → `class="card-title fs-5"` · `p` → `class="card-text"`
-  5. move the `<span>` up **inside the `h3`** → `class="badge bg-danger"`
+  5. the `<span>` already inside the `h3` → `class="badge bg-danger"` — one class, label becomes badge
 
   Destination:
   ```html
