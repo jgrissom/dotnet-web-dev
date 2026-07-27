@@ -111,7 +111,7 @@ Edit-by-edit cue sheet for transforming `index.html` (your **scratch copy**) int
 - [ ] `<h2 id="contact">` → `class="mt-5 mb-4"`
 - [ ] Wrap the form in `<div class="row"><div class="col-md-8">…</div></div>`
 - [ ] Add above the form: `<div class="alert alert-info">Ordering online comes in week 14 — for now this form is just for looks.</div>`
-- [ ] First field, typing: wrap in `<div class="mb-3">` · label → `form-label` (+ `for`/`id`) · input → `form-control`
+- [ ] First field, typing: wrap in `<div class="mb-3">` · label → `form-label` · input → `form-control` (the `for`/`id` wiring is already there — plain-HTML accessibility, not Bootstrap)
 - [ ] Paste the remaining fields — copy from here (`select` → `form-select`, button → `btn btn-primary`):
 
   <details><summary>📋 Email, dropdown, message, button</summary>
