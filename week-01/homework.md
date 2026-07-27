@@ -48,7 +48,7 @@ const courses = [
 ];
 ```
 
-Write the following functions.
+Write the following functions. Some come with a hint; some deliberately don't — for those, *choosing* the right tool from [the big three](lecture-notes.md#the-big-three-map-filter-find) is part of the exercise.
 
 > [!WARNING]
 > **Rules, enforced in grading:** `const`/`let` only, `===` only, arrow functions, and no mutation of `courses`. Each `var`, `==`, or mutation costs a point — see the deductions row below.
