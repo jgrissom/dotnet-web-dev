@@ -172,11 +172,13 @@ Edit-by-edit cue sheet for transforming `index.html` (your **scratch copy**) int
 
 ## 4 · Google Fonts *(slide 12)*
 
-- [ ] On [fonts.google.com](https://fonts.google.com): pick **Nunito** (400 + 700), copy the `<link>`, add to `<head>`
+- [ ] On [fonts.google.com](https://fonts.google.com): pick **Lora** (400 + 700), copy the `<link>`, add to `<head>`
+  — *(deliberately a serif: Lux's built-in font is Nunito Sans, so a sans swap would be invisible — pick something the room can SEE)*
 - [ ] Then:
   ```html
   <style>
-    :root { --bs-body-font-family: "Nunito", system-ui, sans-serif; }
+    :root { --bs-body-font-family: "Lora", Georgia, serif; }
   </style>
   ```
+- [ ] **✓ prove it applied:** DevTools → select a paragraph → **Computed** panel → *Rendered Fonts* at the bottom says `Lora`. (Also show the Network tab's `fonts.gstatic.com` request — that's the font arriving.) This is how you check ANY font question forever
 - [ ] **✓ FINAL CHECKPOINT** — your page matches the hosted [after](https://jgrissom.github.io/dotnet-web-dev/week-02/demo/). Leave both on screen going into the lab launch
