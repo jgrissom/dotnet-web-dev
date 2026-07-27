@@ -84,15 +84,24 @@ In this course, nothing stays on your laptop. Your JavaScript work goes live on 
    </body>
    </html>
    ```
-4. Push both files:
+4. Push your work — and **commit as you go**, not once at the end:
    ```bash
    git init
-   git add index.html homework.js
-   git commit -m "Week 1 homework"
+   git add .
+   git commit -m "Page skeleton and data"
+   # ...write some functions, get them passing...
+   git add .
+   git commit -m "Functions 1-4 passing"
+   # ...finish up...
+   git add .
+   git commit -m "All checks green"
    git branch -M main
    git remote add origin https://github.com/YOUR-USERNAME/web-dev-week01.git
    git push -u origin main
    ```
+
+> [!NOTE]
+> **At least 3 meaningful commits.** Your commit history is the story of your work — a single giant "done" commit at 11:58pm tells a different story, and costs a point. A natural rhythm: commit every time the checker turns something green.
 5. Enable Pages: repo → **Settings → Pages** → Source: *Deploy from a branch* → Branch: `main`, folder `/ (root)` → Save.
 6. Wait ~1 minute, then visit `https://YOUR-USERNAME.github.io/web-dev-week01/` — open the console (F12) and confirm your output appears.
 7. Submit that URL.
@@ -108,7 +117,9 @@ In this course, nothing stays on your laptop. Your JavaScript work goes live on 
 | Functions 1–7 correct (2 pts each) | 14 |
 | Function 8 (`reduce`) | 2 |
 | Part 4: Pages URL live, console output visible | 4 |
-| **Deductions:** any use of `var` or `==`, or mutating `courses` | −1 each |
+| **Deductions:** any use of `var` or `==`, or mutating `courses`; fewer than 3 meaningful commits | −1 each |
+
+*Reminder: the explain-it standard applies — be ready to walk me through any line you submitted.*
 
 ## 📖 Reading for next week (~20 min)
 

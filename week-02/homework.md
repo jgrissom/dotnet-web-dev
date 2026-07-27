@@ -18,7 +18,7 @@ This site becomes your portfolio — by finals it will link to deployed .NET app
 
 ## Part 3 — Deploy + get ready for Azure
 
-1. Push the site to a **public** repo named `portfolio` and enable GitHub Pages (same flow as week 1).
+1. Push the site to a **public** repo named `portfolio` and enable GitHub Pages (same flow as week 1). **Commit as you go — at least 3 meaningful commits** (e.g., after the lab checklist, after your theme + fonts, after your extra component).
 2. Test the URL in a private/incognito window — check **all three pages** and the navbar links between them.
 
 > [!TIP]
@@ -38,7 +38,9 @@ This site becomes your portfolio — by finals it will link to deployed .NET app
 | The extra docs component, working | 2 |
 | Pages URL live, all pages reachable | 2 |
 | Azure Portal screenshot | 2 |
-| **Deductions:** custom CSS beyond the font override, or broken navbar toggler | −1 each |
+| **Deductions:** custom CSS beyond the font override, broken navbar toggler, or fewer than 3 meaningful commits | −1 each |
+
+*Reminder: the explain-it standard applies — be ready to walk me through any class or component you used.*
 
 ## 📖 Reading for next week (~25 min)
 

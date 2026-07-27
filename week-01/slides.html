@@ -86,7 +86,7 @@ section pre .hljs-number, section pre .hljs-literal { color: #79c0ff; }
 section pre .hljs-built_in { color: #ffa657; }
 section pre .hljs-name { color: #7ee787; }
 section pre .hljs-selector-class, section pre .hljs-selector-pseudo { color: #7ee787; }
-;" data-marpit-pagination-total="23">
+;" data-marpit-pagination-total="24">
 <h2 id="what-youll-build-in-this-course">What you'll build in this course</h2>
 <ul>
 <li><strong>Week 1</strong> — rapid JavaScript refresher <em>(the client)</em></li>
@@ -131,7 +131,7 @@ section pre .hljs-number, section pre .hljs-literal { color: #79c0ff; }
 section pre .hljs-built_in { color: #ffa657; }
 section pre .hljs-name { color: #7ee787; }
 section pre .hljs-selector-class, section pre .hljs-selector-pseudo { color: #7ee787; }
-;" data-marpit-pagination-total="23">
+;" data-marpit-pagination-total="24">
 <h2 id="where-you-end-up">Where you end up</h2>
 <p>By week 16: a database-backed, secured web app <strong>and</strong> an API your own JavaScript calls.</p>
 <p><strong>Nothing stays on localhost:</strong><br />
@@ -172,15 +172,17 @@ section pre .hljs-number, section pre .hljs-literal { color: #79c0ff; }
 section pre .hljs-built_in { color: #ffa657; }
 section pre .hljs-name { color: #7ee787; }
 section pre .hljs-selector-class, section pre .hljs-selector-pseudo { color: #7ee787; }
-;" data-marpit-pagination-total="23">
-<h2 id="the-one-mental-model">The one mental model</h2>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code>Browser (client)  ── HTTP request ──►  Server (ASP.NET app)
-                  ◄── HTTP response ──         │
-   runs JavaScript                    runs C#, talks to SQL Server
-</code></pre>
+;" data-marpit-pagination-total="24">
+<h2 id="the-rules-of-the-road">The rules of the road</h2>
 <ul>
-<li>Today and next week: the <strong>left</strong> side</li>
-<li>Week 3 onward: the <strong>right</strong> side</li>
+<li><strong>AI (Copilot, ChatGPT, Claude):</strong> using it to <em>explain</em> or <em>debug</em> — fine.<br />
+Submitting code you can't explain — <strong>not fine</strong>.</li>
+<li><strong>The explain-it standard:</strong> any week, I can ask you to walk me through<br />
+any line you submitted. Can't explain it → it wasn't your work.</li>
+<li><strong>Commit as you go:</strong> graded homework needs <strong>3+ meaningful commits</strong> —<br />
+your history tells your story.</li>
+<li>Everything you ship is public with your name on it.<br />
+Build a portfolio you can <strong>defend in an interview</strong> — that's the game.</li>
 </ul>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="5" data-class="invert" data-paginate="true" data-theme="gaia" data-style="section pre {
@@ -217,38 +219,16 @@ section pre .hljs-number, section pre .hljs-literal { color: #79c0ff; }
 section pre .hljs-built_in { color: #ffa657; }
 section pre .hljs-name { color: #7ee787; }
 section pre .hljs-selector-class, section pre .hljs-selector-pseudo { color: #7ee787; }
-;" data-marpit-pagination-total="23">
-<h2 id="toolchain--install-and-verify">Toolchain — install AND verify</h2>
-<table>
-<thead>
-<tr>
-<th>Tool</th>
-<th>Verify with</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>.NET 10 SDK</td>
-<td><code>dotnet --version</code> → <code>10.x</code></td>
-</tr>
-<tr>
-<td>VS Code + <em>C#</em> extension</td>
-<td>IntelliSense + F5 breakpoint in a <code>dotnet new</code> project</td>
-</tr>
-<tr>
-<td><em>SQL Server (mssql)</em> extension</td>
-<td>Connected to the <strong>school SQL Server</strong> — your account, SQL Server Authentication</td>
-</tr>
-<tr>
-<td>Git</td>
-<td><code>git --version</code></td>
-</tr>
-<tr>
-<td>GitHub account</td>
-<td>Logged in (school email)</td>
-</tr>
-</tbody>
-</table>
+;" data-marpit-pagination-total="24">
+<h2 id="the-one-mental-model">The one mental model</h2>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code>Browser (client)  ── HTTP request ──►  Server (ASP.NET app)
+                  ◄── HTTP response ──         │
+   runs JavaScript                    runs C#, talks to SQL Server
+</code></pre>
+<ul>
+<li>Today and next week: the <strong>left</strong> side</li>
+<li>Week 3 onward: the <strong>right</strong> side</li>
+</ul>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="6" data-class="invert" data-paginate="true" data-theme="gaia" data-style="section pre {
   background: #151b23;
@@ -284,15 +264,38 @@ section pre .hljs-number, section pre .hljs-literal { color: #79c0ff; }
 section pre .hljs-built_in { color: #ffa657; }
 section pre .hljs-name { color: #7ee787; }
 section pre .hljs-selector-class, section pre .hljs-selector-pseudo { color: #7ee787; }
-;" data-marpit-pagination-total="23">
-<h2 id="about-that-database">About that database…</h2>
-<ul>
-<li><strong>&quot;It installed&quot; ≠ &quot;it works.&quot;</strong> Green checks on all five before week 2</li>
-<li><strong>No local SQL Server install</strong> — ever</li>
-<li>You each have your own account on the <strong>school SQL Server</strong></li>
-<li>It's reachable from home, too — same connection everywhere, all semester</li>
-<li><em>(Azure for Students account: free, but we activate it together in week 3)</em></li>
-</ul>
+;" data-marpit-pagination-total="24">
+<h2 id="toolchain--install-and-verify">Toolchain — install AND verify</h2>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Verify with</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.NET 10 SDK</td>
+<td><code>dotnet --version</code> → <code>10.x</code></td>
+</tr>
+<tr>
+<td>VS Code + <em>C#</em> extension</td>
+<td>IntelliSense + F5 breakpoint in a <code>dotnet new</code> project</td>
+</tr>
+<tr>
+<td><em>SQL Server (mssql)</em> extension</td>
+<td>Connected to the <strong>school SQL Server</strong> — your account, SQL Server Authentication</td>
+</tr>
+<tr>
+<td>Git</td>
+<td><code>git --version</code></td>
+</tr>
+<tr>
+<td>GitHub account</td>
+<td>Logged in (school email)</td>
+</tr>
+</tbody>
+</table>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="7" data-class="invert" data-paginate="true" data-theme="gaia" data-style="section pre {
   background: #151b23;
@@ -328,18 +331,14 @@ section pre .hljs-number, section pre .hljs-literal { color: #79c0ff; }
 section pre .hljs-built_in { color: #ffa657; }
 section pre .hljs-name { color: #7ee787; }
 section pre .hljs-selector-class, section pre .hljs-selector-pseudo { color: #7ee787; }
-;" data-marpit-pagination-total="23">
-<h2 id="why-javascript-in-a-net-course">Why JavaScript in a .NET course?</h2>
+;" data-marpit-pagination-total="24">
+<h2 id="about-that-database">About that database…</h2>
 <ul>
-<li>The browser runs exactly one language — and it isn't C#</li>
-<li>JS appears three times in this course:
-<ol>
-<li>Validation feedback &amp; UI sprinkles</li>
-<li>Working alongside Bootstrap</li>
-<li><strong>Week 15: your JS calls your own Web API</strong></li>
-</ol>
-</li>
-<li>You already know JS — tonight is a <strong>refresher</strong>: calibrating to the modern idioms this course speaks, and un-learning old-tutorial habits.</li>
+<li><strong>&quot;It installed&quot; ≠ &quot;it works.&quot;</strong> Green checks on all five before week 2</li>
+<li><strong>No local SQL Server install</strong> — ever</li>
+<li>You each have your own account on the <strong>school SQL Server</strong></li>
+<li>It's reachable from home, too — same connection everywhere, all semester</li>
+<li><em>(Azure for Students account: free, but we activate it together in week 3)</em></li>
 </ul>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="8" data-class="invert" data-paginate="true" data-theme="gaia" data-style="section pre {
@@ -376,17 +375,18 @@ section pre .hljs-number, section pre .hljs-literal { color: #79c0ff; }
 section pre .hljs-built_in { color: #ffa657; }
 section pre .hljs-name { color: #7ee787; }
 section pre .hljs-selector-class, section pre .hljs-selector-pseudo { color: #7ee787; }
-;" data-marpit-pagination-total="23">
-<h2 id="variables-let-and-const">Variables: <code>let</code> and <code>const</code></h2>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-js"><span class="hljs-keyword">let</span> score = <span class="hljs-number">0</span>;        <span class="hljs-comment">// reassignable</span>
-<span class="hljs-keyword">const</span> maxScore = <span class="hljs-number">100</span>; <span class="hljs-comment">// not reassignable</span>
-
-score = <span class="hljs-number">10</span>;      <span class="hljs-comment">// <img class="emoji" draggable="false" alt="✅" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/2705.svg" data-marp-twemoji=""/></span>
-maxScore = <span class="hljs-number">200</span>;  <span class="hljs-comment">// <img class="emoji" draggable="false" alt="❌" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/274c.svg" data-marp-twemoji=""/> TypeError</span>
-</code></pre>
+;" data-marpit-pagination-total="24">
+<h2 id="why-javascript-in-a-net-course">Why JavaScript in a .NET course?</h2>
 <ul>
-<li><strong>Course rule:</strong> <code>const</code> by default, <code>let</code> if reassigning, <code>var</code> never</li>
-<li>C# bridge: <code>const</code> ≈ <code>readonly</code> — binding is fixed, contents aren't</li>
+<li>The browser runs exactly one language — and it isn't C#</li>
+<li>JS appears three times in this course:
+<ol>
+<li>Validation feedback &amp; UI sprinkles</li>
+<li>Working alongside Bootstrap</li>
+<li><strong>Week 15: your JS calls your own Web API</strong></li>
+</ol>
+</li>
+<li>You already know JS — tonight is a <strong>refresher</strong>: calibrating to the modern idioms this course speaks, and un-learning old-tutorial habits.</li>
 </ul>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="9" data-class="invert" data-paginate="true" data-theme="gaia" data-style="section pre {
@@ -423,16 +423,17 @@ section pre .hljs-number, section pre .hljs-literal { color: #79c0ff; }
 section pre .hljs-built_in { color: #ffa657; }
 section pre .hljs-name { color: #7ee787; }
 section pre .hljs-selector-class, section pre .hljs-selector-pseudo { color: #7ee787; }
-;" data-marpit-pagination-total="23">
-<h2 id="types-live-in-values-not-variables">Types live in values, not variables</h2>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-js"><span class="hljs-keyword">typeof</span> <span class="hljs-number">42</span>;        <span class="hljs-comment">// &quot;number&quot; — one number type, no int/double</span>
-<span class="hljs-keyword">typeof</span> <span class="hljs-string">&quot;hello&quot;</span>;   <span class="hljs-comment">// &quot;string&quot;</span>
-<span class="hljs-keyword">typeof</span> <span class="hljs-literal">undefined</span>; <span class="hljs-comment">// &quot;undefined&quot; — never assigned</span>
-<span class="hljs-keyword">typeof</span> <span class="hljs-literal">null</span>;      <span class="hljs-comment">// &quot;object&quot;   — famous historical bug</span>
-<span class="hljs-keyword">typeof</span> [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>];    <span class="hljs-comment">// &quot;object&quot;   — arrays are objects</span>
+;" data-marpit-pagination-total="24">
+<h2 id="variables-let-and-const">Variables: <code>let</code> and <code>const</code></h2>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-js"><span class="hljs-keyword">let</span> score = <span class="hljs-number">0</span>;        <span class="hljs-comment">// reassignable</span>
+<span class="hljs-keyword">const</span> maxScore = <span class="hljs-number">100</span>; <span class="hljs-comment">// not reassignable</span>
+
+score = <span class="hljs-number">10</span>;      <span class="hljs-comment">// <img class="emoji" draggable="false" alt="✅" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/2705.svg" data-marp-twemoji=""/></span>
+maxScore = <span class="hljs-number">200</span>;  <span class="hljs-comment">// <img class="emoji" draggable="false" alt="❌" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/274c.svg" data-marp-twemoji=""/> TypeError</span>
 </code></pre>
 <ul>
-<li><code>undefined</code> = never set · <code>null</code> = deliberately empty</li>
+<li><strong>Course rule:</strong> <code>const</code> by default, <code>let</code> if reassigning, <code>var</code> never</li>
+<li>C# bridge: <code>const</code> ≈ <code>readonly</code> — binding is fixed, contents aren't</li>
 </ul>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="10" data-class="invert" data-paginate="true" data-theme="gaia" data-style="section pre {
@@ -469,14 +470,16 @@ section pre .hljs-number, section pre .hljs-literal { color: #79c0ff; }
 section pre .hljs-built_in { color: #ffa657; }
 section pre .hljs-name { color: #7ee787; }
 section pre .hljs-selector-class, section pre .hljs-selector-pseudo { color: #7ee787; }
-;" data-marpit-pagination-total="23">
-<h2 id="template-literals">Template literals</h2>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-js"><span class="hljs-keyword">const</span> name = <span class="hljs-string">&quot;Ada&quot;</span>;
-<span class="hljs-string">`Hello, <span class="hljs-subst">${name}</span>! You have <span class="hljs-subst">${<span class="hljs-number">3</span> + <span class="hljs-number">4</span>}</span> messages.`</span>
+;" data-marpit-pagination-total="24">
+<h2 id="types-live-in-values-not-variables">Types live in values, not variables</h2>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-js"><span class="hljs-keyword">typeof</span> <span class="hljs-number">42</span>;        <span class="hljs-comment">// &quot;number&quot; — one number type, no int/double</span>
+<span class="hljs-keyword">typeof</span> <span class="hljs-string">&quot;hello&quot;</span>;   <span class="hljs-comment">// &quot;string&quot;</span>
+<span class="hljs-keyword">typeof</span> <span class="hljs-literal">undefined</span>; <span class="hljs-comment">// &quot;undefined&quot; — never assigned</span>
+<span class="hljs-keyword">typeof</span> <span class="hljs-literal">null</span>;      <span class="hljs-comment">// &quot;object&quot;   — famous historical bug</span>
+<span class="hljs-keyword">typeof</span> [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>];    <span class="hljs-comment">// &quot;object&quot;   — arrays are objects</span>
 </code></pre>
 <ul>
-<li>Backticks, <code>${}</code> interpolation, multiline allowed</li>
-<li>C# bridge: it's <code>$&quot;Hello, {name}&quot;</code> — the <code>$</code> moved inside</li>
+<li><code>undefined</code> = never set · <code>null</code> = deliberately empty</li>
 </ul>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="11" data-class="invert" data-paginate="true" data-theme="gaia" data-style="section pre {
@@ -513,12 +516,15 @@ section pre .hljs-number, section pre .hljs-literal { color: #79c0ff; }
 section pre .hljs-built_in { color: #ffa657; }
 section pre .hljs-name { color: #7ee787; }
 section pre .hljs-selector-class, section pre .hljs-selector-pseudo { color: #7ee787; }
-;" data-marpit-pagination-total="23">
-<h2 id="equality-always">Equality: always <code>===</code></h2>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-js"><span class="hljs-number">1</span> == <span class="hljs-string">&quot;1&quot;</span>;    <span class="hljs-comment">// true  — coerces types first <img class="emoji" draggable="false" alt="😬" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f62c.svg" data-marp-twemoji=""/></span>
-<span class="hljs-number">1</span> === <span class="hljs-string">&quot;1&quot;</span>;   <span class="hljs-comment">// false — type AND value</span>
+;" data-marpit-pagination-total="24">
+<h2 id="template-literals">Template literals</h2>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-js"><span class="hljs-keyword">const</span> name = <span class="hljs-string">&quot;Ada&quot;</span>;
+<span class="hljs-string">`Hello, <span class="hljs-subst">${name}</span>! You have <span class="hljs-subst">${<span class="hljs-number">3</span> + <span class="hljs-number">4</span>}</span> messages.`</span>
 </code></pre>
-<p><strong>Course rule:</strong> <code>===</code> / <code>!==</code> only.</p>
+<ul>
+<li>Backticks, <code>${}</code> interpolation, multiline allowed</li>
+<li>C# bridge: it's <code>$&quot;Hello, {name}&quot;</code> — the <code>$</code> moved inside</li>
+</ul>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="12" data-class="invert" data-paginate="true" data-theme="gaia" data-style="section pre {
   background: #151b23;
@@ -554,14 +560,12 @@ section pre .hljs-number, section pre .hljs-literal { color: #79c0ff; }
 section pre .hljs-built_in { color: #ffa657; }
 section pre .hljs-name { color: #7ee787; }
 section pre .hljs-selector-class, section pre .hljs-selector-pseudo { color: #7ee787; }
-;" data-marpit-pagination-total="23">
-<h2 id="truthiness">Truthiness</h2>
-<p>Falsy: <code>false</code> · <code>0</code> · <code>&quot;&quot;</code> · <code>null</code> · <code>undefined</code> · <code>NaN</code><br />
-Everything else is truthy — even <code>[]</code>.</p>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-js"><span class="hljs-keyword">if</span> (username) {
-  <span class="hljs-comment">// one check for &quot;not null, not undefined, not empty&quot;</span>
-}
+;" data-marpit-pagination-total="24">
+<h2 id="equality-always">Equality: always <code>===</code></h2>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-js"><span class="hljs-number">1</span> == <span class="hljs-string">&quot;1&quot;</span>;    <span class="hljs-comment">// true  — coerces types first <img class="emoji" draggable="false" alt="😬" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f62c.svg" data-marp-twemoji=""/></span>
+<span class="hljs-number">1</span> === <span class="hljs-string">&quot;1&quot;</span>;   <span class="hljs-comment">// false — type AND value</span>
 </code></pre>
+<p><strong>Course rule:</strong> <code>===</code> / <code>!==</code> only.</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="13" data-class="invert" data-paginate="true" data-theme="gaia" data-style="section pre {
   background: #151b23;
@@ -597,18 +601,14 @@ section pre .hljs-number, section pre .hljs-literal { color: #79c0ff; }
 section pre .hljs-built_in { color: #ffa657; }
 section pre .hljs-name { color: #7ee787; }
 section pre .hljs-selector-class, section pre .hljs-selector-pseudo { color: #7ee787; }
-;" data-marpit-pagination-total="23">
-<h2 id="arrow-functions--lambdas">Arrow functions = lambdas</h2>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">add</span>(<span class="hljs-params">a, b</span>) { <span class="hljs-keyword">return</span> a + b; }   <span class="hljs-comment">// classic</span>
-
-<span class="hljs-keyword">const</span> <span class="hljs-title function_">add</span> = (<span class="hljs-params">a, b</span>) =&gt; a + b;           <span class="hljs-comment">// modern default</span>
-
-<span class="hljs-keyword">const</span> <span class="hljs-title function_">greet</span> = (<span class="hljs-params">name = <span class="hljs-string">&quot;friend&quot;</span></span>) =&gt; <span class="hljs-string">`Hello, <span class="hljs-subst">${name}</span>!`</span>;
+;" data-marpit-pagination-total="24">
+<h2 id="truthiness">Truthiness</h2>
+<p>Falsy: <code>false</code> · <code>0</code> · <code>&quot;&quot;</code> · <code>null</code> · <code>undefined</code> · <code>NaN</code><br />
+Everything else is truthy — even <code>[]</code>.</p>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-js"><span class="hljs-keyword">if</span> (username) {
+  <span class="hljs-comment">// one check for &quot;not null, not undefined, not empty&quot;</span>
+}
 </code></pre>
-<ul>
-<li>Valid C# too: <code>(a, b) =&gt; a + b</code> — you already know this</li>
-<li>No overloads, no type checks: missing args become <code>undefined</code></li>
-</ul>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="14" data-class="invert" data-paginate="true" data-theme="gaia" data-style="section pre {
   background: #151b23;
@@ -644,19 +644,18 @@ section pre .hljs-number, section pre .hljs-literal { color: #79c0ff; }
 section pre .hljs-built_in { color: #ffa657; }
 section pre .hljs-name { color: #7ee787; }
 section pre .hljs-selector-class, section pre .hljs-selector-pseudo { color: #7ee787; }
-;" data-marpit-pagination-total="23">
-<h2 id="arrays">Arrays</h2>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-js"><span class="hljs-keyword">const</span> scores = [<span class="hljs-number">90</span>, <span class="hljs-number">85</span>, <span class="hljs-number">72</span>, <span class="hljs-number">100</span>];
+;" data-marpit-pagination-total="24">
+<h2 id="arrow-functions--lambdas">Arrow functions = lambdas</h2>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">add</span>(<span class="hljs-params">a, b</span>) { <span class="hljs-keyword">return</span> a + b; }   <span class="hljs-comment">// classic</span>
 
-scores[<span class="hljs-number">0</span>]        <span class="hljs-comment">// predict, then type it</span>
-scores.<span class="hljs-title function_">push</span>(<span class="hljs-number">65</span>)
-scores           <span class="hljs-comment">// did it change?</span>
+<span class="hljs-keyword">const</span> <span class="hljs-title function_">add</span> = (<span class="hljs-params">a, b</span>) =&gt; a + b;           <span class="hljs-comment">// modern default</span>
 
-<span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> s <span class="hljs-keyword">of</span> scores) {
-  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(s);
-}
+<span class="hljs-keyword">const</span> <span class="hljs-title function_">greet</span> = (<span class="hljs-params">name = <span class="hljs-string">&quot;friend&quot;</span></span>) =&gt; <span class="hljs-string">`Hello, <span class="hljs-subst">${name}</span>!`</span>;
 </code></pre>
-<p>C# bridge: closer to <code>List&lt;T&gt;</code> than an array — resizable.</p>
+<ul>
+<li>Valid C# too: <code>(a, b) =&gt; a + b</code> — you already know this</li>
+<li>No overloads, no type checks: missing args become <code>undefined</code></li>
+</ul>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="15" data-class="invert" data-paginate="true" data-theme="gaia" data-style="section pre {
   background: #151b23;
@@ -692,19 +691,19 @@ section pre .hljs-number, section pre .hljs-literal { color: #79c0ff; }
 section pre .hljs-built_in { color: #ffa657; }
 section pre .hljs-name { color: #7ee787; }
 section pre .hljs-selector-class, section pre .hljs-selector-pseudo { color: #7ee787; }
-;" data-marpit-pagination-total="23">
-<h2 id="the-big-three-this-is-linq">The big three (this is LINQ!)</h2>
+;" data-marpit-pagination-total="24">
+<h2 id="arrays">Arrays</h2>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-js"><span class="hljs-keyword">const</span> scores = [<span class="hljs-number">90</span>, <span class="hljs-number">85</span>, <span class="hljs-number">72</span>, <span class="hljs-number">100</span>];
 
-scores.<span class="hljs-title function_">map</span>(<span class="hljs-function"><span class="hljs-params">s</span> =&gt;</span> s + <span class="hljs-number">5</span>)       <span class="hljs-comment">// ← Select</span>
-scores.<span class="hljs-title function_">filter</span>(<span class="hljs-function"><span class="hljs-params">s</span> =&gt;</span> s &gt;= <span class="hljs-number">80</span>)  <span class="hljs-comment">// ← Where</span>
-scores.<span class="hljs-title function_">find</span>(<span class="hljs-function"><span class="hljs-params">s</span> =&gt;</span> s === <span class="hljs-number">100</span>)  <span class="hljs-comment">// ← FirstOrDefault</span>
+scores[<span class="hljs-number">0</span>]        <span class="hljs-comment">// predict, then type it</span>
+scores.<span class="hljs-title function_">push</span>(<span class="hljs-number">65</span>)
+scores           <span class="hljs-comment">// did it change?</span>
 
-scores                       <span class="hljs-comment">// after all that — changed or not?</span>
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> s <span class="hljs-keyword">of</span> scores) {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(s);
+}
 </code></pre>
-<ul>
-<li>The console echoes each result — <strong>predict before you press Enter</strong></li>
-</ul>
+<p>C# bridge: closer to <code>List&lt;T&gt;</code> than an array — resizable.</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="16" data-class="invert" data-paginate="true" data-theme="gaia" data-style="section pre {
   background: #151b23;
@@ -740,15 +739,19 @@ section pre .hljs-number, section pre .hljs-literal { color: #79c0ff; }
 section pre .hljs-built_in { color: #ffa657; }
 section pre .hljs-name { color: #7ee787; }
 section pre .hljs-selector-class, section pre .hljs-selector-pseudo { color: #7ee787; }
-;" data-marpit-pagination-total="23">
-<h2 id="objects">Objects</h2>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-js"><span class="hljs-keyword">const</span> student = { <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Ada&quot;</span>, <span class="hljs-attr">gpa</span>: <span class="hljs-number">3.9</span> };
+;" data-marpit-pagination-total="24">
+<h2 id="the-big-three-this-is-linq">The big three (this is LINQ!)</h2>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-js"><span class="hljs-keyword">const</span> scores = [<span class="hljs-number">90</span>, <span class="hljs-number">85</span>, <span class="hljs-number">72</span>, <span class="hljs-number">100</span>];
 
-student.<span class="hljs-property">name</span>;       <span class="hljs-comment">// dot access</span>
-student[<span class="hljs-string">&quot;name&quot;</span>];    <span class="hljs-comment">// bracket access</span>
-student.<span class="hljs-property">year</span> = <span class="hljs-number">2</span>;   <span class="hljs-comment">// add property on the fly — no class!</span>
+scores.<span class="hljs-title function_">map</span>(<span class="hljs-function"><span class="hljs-params">s</span> =&gt;</span> s + <span class="hljs-number">5</span>)       <span class="hljs-comment">// ← Select</span>
+scores.<span class="hljs-title function_">filter</span>(<span class="hljs-function"><span class="hljs-params">s</span> =&gt;</span> s &gt;= <span class="hljs-number">80</span>)  <span class="hljs-comment">// ← Where</span>
+scores.<span class="hljs-title function_">find</span>(<span class="hljs-function"><span class="hljs-params">s</span> =&gt;</span> s === <span class="hljs-number">100</span>)  <span class="hljs-comment">// ← FirstOrDefault</span>
+
+scores                       <span class="hljs-comment">// after all that — changed or not?</span>
 </code></pre>
-<p>C# bridge: no class behind it — a bag of key/values, like <code>Dictionary&lt;string, object&gt;</code>. <strong>This is the shape of JSON.</strong></p>
+<ul>
+<li>The console echoes each result — <strong>predict before you press Enter</strong></li>
+</ul>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="17" data-class="invert" data-paginate="true" data-theme="gaia" data-style="section pre {
   background: #151b23;
@@ -784,18 +787,15 @@ section pre .hljs-number, section pre .hljs-literal { color: #79c0ff; }
 section pre .hljs-built_in { color: #ffa657; }
 section pre .hljs-name { color: #7ee787; }
 section pre .hljs-selector-class, section pre .hljs-selector-pseudo { color: #7ee787; }
-;" data-marpit-pagination-total="23">
-<h2 id="destructuring-pulling-values-out">Destructuring: pulling values <em>out</em></h2>
+;" data-marpit-pagination-total="24">
+<h2 id="objects">Objects</h2>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-js"><span class="hljs-keyword">const</span> student = { <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Ada&quot;</span>, <span class="hljs-attr">gpa</span>: <span class="hljs-number">3.9</span> };
-<span class="hljs-keyword">const</span> scores = [<span class="hljs-number">90</span>, <span class="hljs-number">85</span>];
 
-<span class="hljs-keyword">const</span> { name, gpa } = student;
-<span class="hljs-keyword">const</span> [first, second] = scores;
-
-name      <span class="hljs-comment">// what prints?</span>
-second
+student.<span class="hljs-property">name</span>;       <span class="hljs-comment">// dot access</span>
+student[<span class="hljs-string">&quot;name&quot;</span>];    <span class="hljs-comment">// bracket access</span>
+student.<span class="hljs-property">year</span> = <span class="hljs-number">2</span>;   <span class="hljs-comment">// add property on the fly — no class!</span>
 </code></pre>
-<p>Instead of <code>student.name</code>, <code>student.gpa</code> one at a time — unpack in one line.</p>
+<p>C# bridge: no class behind it — a bag of key/values, like <code>Dictionary&lt;string, object&gt;</code>. <strong>This is the shape of JSON.</strong></p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="18" data-class="invert" data-paginate="true" data-theme="gaia" data-style="section pre {
   background: #151b23;
@@ -831,19 +831,18 @@ section pre .hljs-number, section pre .hljs-literal { color: #79c0ff; }
 section pre .hljs-built_in { color: #ffa657; }
 section pre .hljs-name { color: #7ee787; }
 section pre .hljs-selector-class, section pre .hljs-selector-pseudo { color: #7ee787; }
-;" data-marpit-pagination-total="23">
-<h2 id="spread-copying-everything-in">Spread: copying everything <em>in</em></h2>
+;" data-marpit-pagination-total="24">
+<h2 id="destructuring-pulling-values-out">Destructuring: pulling values <em>out</em></h2>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-js"><span class="hljs-keyword">const</span> student = { <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Ada&quot;</span>, <span class="hljs-attr">gpa</span>: <span class="hljs-number">3.9</span> };
 <span class="hljs-keyword">const</span> scores = [<span class="hljs-number">90</span>, <span class="hljs-number">85</span>];
 
-<span class="hljs-keyword">const</span> updated  = { ...student, <span class="hljs-attr">gpa</span>: <span class="hljs-number">4.0</span> };
-<span class="hljs-keyword">const</span> combined = [...scores, <span class="hljs-number">95</span>];
+<span class="hljs-keyword">const</span> { name, gpa } = student;
+<span class="hljs-keyword">const</span> [first, second] = scores;
 
-updated    <span class="hljs-comment">// which gpa won?</span>
-student    <span class="hljs-comment">// did the original change?</span>
-combined
+name      <span class="hljs-comment">// what prints?</span>
+second
 </code></pre>
-<p><code>...</code> = &quot;everything from the original&quot; — and on a conflict, <strong>rightmost wins</strong>.</p>
+<p>Instead of <code>student.name</code>, <code>student.gpa</code> one at a time — unpack in one line.</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="19" data-class="invert" data-paginate="true" data-theme="gaia" data-style="section pre {
   background: #151b23;
@@ -879,18 +878,19 @@ section pre .hljs-number, section pre .hljs-literal { color: #79c0ff; }
 section pre .hljs-built_in { color: #ffa657; }
 section pre .hljs-name { color: #7ee787; }
 section pre .hljs-selector-class, section pre .hljs-selector-pseudo { color: #7ee787; }
-;" data-marpit-pagination-total="23">
-<h2 id="real-data--arrays-of-objects">Real data = arrays of objects</h2>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-js"><span class="hljs-keyword">const</span> students = [
-  { <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Ada&quot;</span>,   <span class="hljs-attr">gpa</span>: <span class="hljs-number">3.9</span> },
-  { <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Linus&quot;</span>, <span class="hljs-attr">gpa</span>: <span class="hljs-number">3.4</span> },
-  { <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Grace&quot;</span>, <span class="hljs-attr">gpa</span>: <span class="hljs-number">4.0</span> },
-];
+;" data-marpit-pagination-total="24">
+<h2 id="spread-copying-everything-in">Spread: copying everything <em>in</em></h2>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-js"><span class="hljs-keyword">const</span> student = { <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Ada&quot;</span>, <span class="hljs-attr">gpa</span>: <span class="hljs-number">3.9</span> };
+<span class="hljs-keyword">const</span> scores = [<span class="hljs-number">90</span>, <span class="hljs-number">85</span>];
 
-students.<span class="hljs-title function_">filter</span>(<span class="hljs-function"><span class="hljs-params">s</span> =&gt;</span> s.<span class="hljs-property">gpa</span> &gt;= <span class="hljs-number">3.5</span>)
-        .<span class="hljs-title function_">map</span>(<span class="hljs-function"><span class="hljs-params">s</span> =&gt;</span> s.<span class="hljs-property">name</span>)       <span class="hljs-comment">// who made the honor roll?</span>
+<span class="hljs-keyword">const</span> updated  = { ...student, <span class="hljs-attr">gpa</span>: <span class="hljs-number">4.0</span> };
+<span class="hljs-keyword">const</span> combined = [...scores, <span class="hljs-number">95</span>];
+
+updated    <span class="hljs-comment">// which gpa won?</span>
+student    <span class="hljs-comment">// did the original change?</span>
+combined
 </code></pre>
-<p>Every DB query result and API response in this course is this shape.</p>
+<p><code>...</code> = &quot;everything from the original&quot; — and on a conflict, <strong>rightmost wins</strong>.</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="20" data-class="invert" data-paginate="true" data-theme="gaia" data-style="section pre {
   background: #151b23;
@@ -926,20 +926,18 @@ section pre .hljs-number, section pre .hljs-literal { color: #79c0ff; }
 section pre .hljs-built_in { color: #ffa657; }
 section pre .hljs-name { color: #7ee787; }
 section pre .hljs-selector-class, section pre .hljs-selector-pseudo { color: #7ee787; }
-;" data-marpit-pagination-total="23">
-<h2 id="the-dom-in-three-apis">The DOM in three APIs</h2>
-<p>Runs <em>against a page</em> — the lab starter's <code>index.html</code>, console on:</p>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;status&quot;</span>&gt;</span>Loading…<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;go&quot;</span>&gt;</span>Go<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+;" data-marpit-pagination-total="24">
+<h2 id="real-data--arrays-of-objects">Real data = arrays of objects</h2>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-js"><span class="hljs-keyword">const</span> students = [
+  { <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Ada&quot;</span>,   <span class="hljs-attr">gpa</span>: <span class="hljs-number">3.9</span> },
+  { <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Linus&quot;</span>, <span class="hljs-attr">gpa</span>: <span class="hljs-number">3.4</span> },
+  { <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Grace&quot;</span>, <span class="hljs-attr">gpa</span>: <span class="hljs-number">4.0</span> },
+];
+
+students.<span class="hljs-title function_">filter</span>(<span class="hljs-function"><span class="hljs-params">s</span> =&gt;</span> s.<span class="hljs-property">gpa</span> &gt;= <span class="hljs-number">3.5</span>)
+        .<span class="hljs-title function_">map</span>(<span class="hljs-function"><span class="hljs-params">s</span> =&gt;</span> s.<span class="hljs-property">name</span>)       <span class="hljs-comment">// who made the honor roll?</span>
 </code></pre>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-js"><span class="hljs-keyword">const</span> status = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&quot;#status&quot;</span>); <span class="hljs-comment">// 1. select (CSS selectors!)</span>
-status.<span class="hljs-property">textContent</span> = <span class="hljs-string">&quot;Ready.&quot;</span>;                    <span class="hljs-comment">// 2. write — watch the page</span>
-<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&quot;#go&quot;</span>)                     <span class="hljs-comment">// 3. listen</span>
-  .<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&quot;click&quot;</span>, <span class="hljs-function">() =&gt;</span> {
-    status.<span class="hljs-property">textContent</span> = <span class="hljs-string">&quot;Clicked!&quot;</span>;
-  });                                             <span class="hljs-comment">// …now click the button</span>
-</code></pre>
-<p>C# bridge: an event + a lambda for the handler.</p>
+<p>Every DB query result and API response in this course is this shape.</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="21" data-class="invert" data-paginate="true" data-theme="gaia" data-style="section pre {
   background: #151b23;
@@ -975,20 +973,20 @@ section pre .hljs-number, section pre .hljs-literal { color: #79c0ff; }
 section pre .hljs-built_in { color: #ffa657; }
 section pre .hljs-name { color: #7ee787; }
 section pre .hljs-selector-class, section pre .hljs-selector-pseudo { color: #7ee787; }
-;" data-marpit-pagination-total="23">
-<h2 id="fetch--asyncawait--a-preview-of-week-15">fetch + async/await — a preview of week 15</h2>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-js"><span class="hljs-keyword">const</span> <span class="hljs-title function_">loadUsers</span> = <span class="hljs-keyword">async</span> (<span class="hljs-params"></span>) =&gt; {
-  <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> <span class="hljs-title function_">fetch</span>(<span class="hljs-string">&quot;https://jsonplaceholder.typicode.com/users&quot;</span>);
-  <span class="hljs-keyword">const</span> users = <span class="hljs-keyword">await</span> response.<span class="hljs-title function_">json</span>();  <span class="hljs-comment">// JSON → array of objects</span>
-  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(users.<span class="hljs-title function_">map</span>(<span class="hljs-function"><span class="hljs-params">u</span> =&gt;</span> u.<span class="hljs-property">name</span>));
-};
-
-<span class="hljs-title function_">loadUsers</span>()   <span class="hljs-comment">// ← type this to run it, then watch the console</span>
+;" data-marpit-pagination-total="24">
+<h2 id="the-dom-in-three-apis">The DOM in three APIs</h2>
+<p>Runs <em>against a page</em> — the lab starter's <code>index.html</code>, console on:</p>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;status&quot;</span>&gt;</span>Loading…<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;go&quot;</span>&gt;</span>Go<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
 </code></pre>
-<ul>
-<li><code>await</code> = &quot;wait here until the answer comes back&quot; — the network isn't instant</li>
-<li>In week 15 the URL is <strong>your own API</strong></li>
-</ul>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-js"><span class="hljs-keyword">const</span> status = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&quot;#status&quot;</span>); <span class="hljs-comment">// 1. select (CSS selectors!)</span>
+status.<span class="hljs-property">textContent</span> = <span class="hljs-string">&quot;Ready.&quot;</span>;                    <span class="hljs-comment">// 2. write — watch the page</span>
+<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&quot;#go&quot;</span>)                     <span class="hljs-comment">// 3. listen</span>
+  .<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&quot;click&quot;</span>, <span class="hljs-function">() =&gt;</span> {
+    status.<span class="hljs-property">textContent</span> = <span class="hljs-string">&quot;Clicked!&quot;</span>;
+  });                                             <span class="hljs-comment">// …now click the button</span>
+</code></pre>
+<p>C# bridge: an event + a lambda for the handler.</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="22" data-class="invert" data-paginate="true" data-theme="gaia" data-style="section pre {
   background: #151b23;
@@ -1024,12 +1022,19 @@ section pre .hljs-number, section pre .hljs-literal { color: #79c0ff; }
 section pre .hljs-built_in { color: #ffa657; }
 section pre .hljs-name { color: #7ee787; }
 section pre .hljs-selector-class, section pre .hljs-selector-pseudo { color: #7ee787; }
-;" data-marpit-pagination-total="23">
-<h2 id="lab-js-refresher-gauntlet">Lab: JS Refresher Gauntlet</h2>
+;" data-marpit-pagination-total="24">
+<h2 id="fetch--asyncawait--a-preview-of-week-15">fetch + async/await — a preview of week 15</h2>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-js"><span class="hljs-keyword">const</span> <span class="hljs-title function_">loadUsers</span> = <span class="hljs-keyword">async</span> (<span class="hljs-params"></span>) =&gt; {
+  <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> <span class="hljs-title function_">fetch</span>(<span class="hljs-string">&quot;https://jsonplaceholder.typicode.com/users&quot;</span>);
+  <span class="hljs-keyword">const</span> users = <span class="hljs-keyword">await</span> response.<span class="hljs-title function_">json</span>();  <span class="hljs-comment">// JSON → array of objects</span>
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(users.<span class="hljs-title function_">map</span>(<span class="hljs-function"><span class="hljs-params">u</span> =&gt;</span> u.<span class="hljs-property">name</span>));
+};
+
+<span class="hljs-title function_">loadUsers</span>()   <span class="hljs-comment">// ← type this to run it, then watch the console</span>
+</code></pre>
 <ul>
-<li>Clone the week-01 starter from the course repo</li>
-<li>Exercises 1–8 in <code>lab/README.md</code></li>
-<li>Pairs encouraged · answers live in the browser console</li>
+<li><code>await</code> = &quot;wait here until the answer comes back&quot; — the network isn't instant</li>
+<li>In week 15 the URL is <strong>your own API</strong></li>
 </ul>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="23" data-class="invert" data-paginate="true" data-theme="gaia" data-style="section pre {
@@ -1066,7 +1071,49 @@ section pre .hljs-number, section pre .hljs-literal { color: #79c0ff; }
 section pre .hljs-built_in { color: #ffa657; }
 section pre .hljs-name { color: #7ee787; }
 section pre .hljs-selector-class, section pre .hljs-selector-pseudo { color: #7ee787; }
-;" data-marpit-pagination-total="23">
+;" data-marpit-pagination-total="24">
+<h2 id="lab-js-refresher-gauntlet">Lab: JS Refresher Gauntlet</h2>
+<ul>
+<li>Clone the week-01 starter from the course repo</li>
+<li>Exercises 1–8 in <code>lab/README.md</code></li>
+<li>Pairs encouraged · answers live in the browser console</li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="24" data-class="invert" data-paginate="true" data-theme="gaia" data-style="section pre {
+  background: #151b23;
+  border-radius: 8px;
+}
+section pre code {
+  background: transparent;
+  color: #e6edf3;
+}
+section pre .hljs-keyword { color: #ff7b72; }
+section pre .hljs-string { color: #a5d6ff; }
+section pre .hljs-title, section pre .hljs-title.function_ { color: #d2a8ff; }
+section pre .hljs-comment { color: #9198a1; font-style: italic; }
+section pre .hljs-attr, section pre .hljs-attribute { color: #79c0ff; }
+section pre .hljs-number, section pre .hljs-literal { color: #79c0ff; }
+section pre .hljs-built_in { color: #ffa657; }
+section pre .hljs-name { color: #7ee787; }
+section pre .hljs-selector-class, section pre .hljs-selector-pseudo { color: #7ee787; }
+" lang="C" class="invert" data-marpit-pagination="24" style="--class:invert;--paginate:true;--theme:gaia;--style:section pre {
+  background: #151b23;
+  border-radius: 8px;
+}
+section pre code {
+  background: transparent;
+  color: #e6edf3;
+}
+section pre .hljs-keyword { color: #ff7b72; }
+section pre .hljs-string { color: #a5d6ff; }
+section pre .hljs-title, section pre .hljs-title.function_ { color: #d2a8ff; }
+section pre .hljs-comment { color: #9198a1; font-style: italic; }
+section pre .hljs-attr, section pre .hljs-attribute { color: #79c0ff; }
+section pre .hljs-number, section pre .hljs-literal { color: #79c0ff; }
+section pre .hljs-built_in { color: #ffa657; }
+section pre .hljs-name { color: #7ee787; }
+section pre .hljs-selector-class, section pre .hljs-selector-pseudo { color: #7ee787; }
+;" data-marpit-pagination-total="24">
 <h2 id="before-next-week">Before next week</h2>
 <ul>
 <li><img class="emoji" draggable="false" alt="✅" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/2705.svg" data-marp-twemoji=""/> Homework: JS exercises (<code>homework.md</code>) — <strong>shipped live to GitHub Pages</strong></li>
