@@ -19,6 +19,7 @@ Edit-by-edit cue sheet for transforming `index.html` (your **scratch copy**) int
 - [ ] **✓ it suddenly looks like a website** — pause and enjoy the reaction
 - [ ] Feature row: wrap the three `<section>`s in `<div class="row g-4 text-center">`
 - [ ] Each `<section>` → `class="col-md-4"` · each `h2` → `fs-4` · each `p` → `text-muted`
+  — *multi-cursor trick:* select `<section>` and press **Ctrl+Shift+L** (**Cmd+Shift+L** on Mac) — a cursor lands on every match, so you edit all three at once. Same trick for the `h2`s and `p`s (and the six `<article>`s later). Narrate it; students love this one
 - [ ] **✓ CHECKPOINT: resize slowly** — stacked on phone → thirds on desktop. This *is* the responsive lecture
 
 ## 2 · Components *(slides 7–10)*
