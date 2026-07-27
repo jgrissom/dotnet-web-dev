@@ -20,7 +20,7 @@ By the end of this session, students can:
 - `lecture-notes.md` open on your second screen — the script, with expected outputs
 - `setup-guide.md` URL ready to put on screen; **server address + credentials handout** printed
 - Lab starter ships in this repo (`lab/starter/`) — nothing to post
-- Install links posted to LMS ahead of time (ask students to pre-install if possible)
+- Install links posted to Canvas ahead of time (ask students to pre-install if possible)
 
 ## Timed agenda
 

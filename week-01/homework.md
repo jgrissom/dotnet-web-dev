@@ -1,7 +1,7 @@
 # Week 1 Homework
 
 **Due:** before the start of Week 2's class.
-**Submit via LMS:** the two screenshots from Part 1 + your **GitHub Pages URL** from Part 4 (your code is graded from your repo — no file uploads).
+**Submit via Canvas:** the two screenshots from Part 1 + your **GitHub Pages URL** from Part 4 (your code is graded from your repo — no file uploads).
 
 ## Part 1 — Environment proof (required, not graded on style)
 

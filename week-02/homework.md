@@ -1,7 +1,7 @@
 # Week 2 Homework
 
 **Due:** before the start of Week 3's class.
-**Submit via LMS:** your GitHub Pages URL + the Azure screenshot from Part 3.
+**Submit via Canvas:** your GitHub Pages URL + the Azure screenshot from Part 3.
 
 ## Part 1 — Finish the lab checklist
 
