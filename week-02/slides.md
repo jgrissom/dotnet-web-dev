@@ -134,9 +134,9 @@ Navbar · Cards · Buttons · Forms · Alerts · Badges — all tonight, all cop
   <div class="col-md-4">
     <div class="card h-100">
       <div class="card-body">
-        <h5 class="card-title">Project One</h5>
-        <p class="card-text">Short description.</p>
-        <a href="#" class="btn btn-primary">View</a>
+        <h5 class="card-title">Espresso</h5>
+        <p class="card-text">Double shot, house blend.</p>
+        <a href="#" class="btn btn-primary">Order</a>
       </div>
     </div>
   </div>
