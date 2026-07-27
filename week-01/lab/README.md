@@ -33,6 +33,10 @@ All in `starter/exercises.js`:
 7. **`formatStudent`** — destructuring + template literal
 8. **`addStudent`** — spread (no mutation!)
 
+## Stuck?
+
+Open this week's [lecture-notes.md](../lecture-notes.md) — every pattern these exercises need is in there, explained with examples. Find the pattern, understand it, then adapt it to the exercise (don't hunt for something to copy — the notes use different data on purpose). [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript) is your second stop.
+
 ## Rules
 
 - `const`/`let` only — no `var`

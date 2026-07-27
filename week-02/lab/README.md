@@ -39,6 +39,10 @@ Work top to bottom. Each item names the docs page you need.
 - [ ] **Bootswatch** ([bootswatch.com](https://bootswatch.com)) — swap the Bootstrap CSS link for a theme you like, on all three pages. Keep the version at 5.3.x.
 - [ ] **Google Fonts** ([fonts.google.com](https://fonts.google.com)) — one heading font, one body font. Override `--bs-body-font-family` as shown in the lecture notes.
 
+## Stuck?
+
+The Bootstrap docs are stop one — find → copy → adapt is the exercise. Stop two is this week's [lecture-notes.md](../lecture-notes.md): the same patterns with fuller explanations, plus a **common snags appendix** at the bottom (navbar toggler dead? columns stacking? it's probably in there).
+
 ## Rules
 
 - **No custom CSS** except the font override block — everything else is Bootstrap classes. If you're fighting it, you've missed a utility; search the docs.
