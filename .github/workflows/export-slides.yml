@@ -42,10 +42,21 @@ jobs:
           git diff --cached --quiet || git commit -m "Regenerate slide decks [skip ci]"
           git push
 
-      # Pages site contains ONLY decks + finished demo pages + an index — never labs, solutions, or notes.
-      - name: Assemble Pages site (slides + demos)
+      # Pages site hosts decks, demo pages, and clickable checklists (demo scripts + lab
+      # checklists) — all public-repo material. NEVER answer-key content (solutions, graders).
+      - name: Assemble Pages site
         run: |
           mkdir -p _site
+          STYLE='body{font-family:system-ui,sans-serif;max-width:46rem;margin:2rem auto;padding:0 1rem;background:#1c2733;color:#e6edf3;line-height:1.6}a{color:#79c0ff}code{background:#151b23;padding:.1rem .35rem;border-radius:4px}pre{background:#151b23;padding:.8rem;border-radius:8px;overflow-x:auto}pre code{background:none;padding:0}li{margin:.35rem 0}input[type=checkbox]{transform:scale(1.3);margin-right:.5rem}li:has(input:checked){opacity:.45;text-decoration:line-through}li>p{display:inline;margin:0}button{padding:.3rem .9rem}blockquote{border-left:3px solid #79c0ff;margin-left:0;padding-left:1rem;color:#a5b4c4}details{margin:.5rem 0}'
+          checklist () { # $1 md  $2 out  $3 storage-prefix  $4 title
+            {
+              echo '<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">'
+              echo "<title>$4</title><style>$STYLE</style>"
+              echo "</head><body><button onclick=\"Object.keys(localStorage).filter(k=>k.startsWith('$3')).forEach(k=>localStorage.removeItem(k));location.reload()\">Reset checkboxes</button>"
+              sed "s|](\.\./|](https://github.com/jgrissom/dotnet-web-dev/blob/main/$wk/|g" "$1" | npx -y marked --gfm
+              echo "<script>document.querySelectorAll('input[type=checkbox]').forEach((cb,i)=>{cb.disabled=false;const k='$3-'+i;cb.checked=localStorage.getItem(k)==='1';cb.addEventListener('change',()=>localStorage.setItem(k,cb.checked?'1':'0'));});</script></body></html>"
+            } > "$2"
+          }
           {
             echo '<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">'
             echo '<meta name="viewport" content="width=device-width, initial-scale=1">'
@@ -66,16 +77,13 @@ jobs:
                   extra="$extra · <a href=\"$wk/demo/before.html\">before</a>"
                 fi
                 if [ -f "$wk/demo/demo-script.md" ]; then
-                  {
-                    echo '<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">'
-                    echo "<title>$wk demo script</title>"
-                    echo '<style>body{font-family:system-ui,sans-serif;max-width:46rem;margin:2rem auto;padding:0 1rem;background:#1c2733;color:#e6edf3;line-height:1.6}a{color:#79c0ff}code{background:#151b23;padding:.1rem .35rem;border-radius:4px}pre{background:#151b23;padding:.8rem;border-radius:8px;overflow-x:auto}pre code{background:none;padding:0}li{margin:.35rem 0}input[type=checkbox]{transform:scale(1.3);margin-right:.5rem}li:has(input:checked){opacity:.45;text-decoration:line-through}li>p{display:inline;margin:0}button{padding:.3rem .9rem}blockquote{border-left:3px solid #79c0ff;margin-left:0;padding-left:1rem;color:#a5b4c4}</style>'
-                    echo '</head><body><button onclick="localStorage.clear();location.reload()">Reset checkboxes</button>'
-                    npx -y marked --gfm "$wk/demo/demo-script.md"
-                    echo "<script>document.querySelectorAll('input[type=checkbox]').forEach((cb,i)=>{cb.disabled=false;const k='$wk-step-'+i;cb.checked=localStorage.getItem(k)==='1';cb.addEventListener('change',()=>localStorage.setItem(k,cb.checked?'1':'0'));});</script></body></html>"
-                  } > "_site/$wk/demo/script.html"
+                  checklist "$wk/demo/demo-script.md" "_site/$wk/demo/script.html" "$wk-step" "$wk demo script"
                   extra="$extra · <a href=\"$wk/demo/script.html\">script</a>"
                 fi
+              fi
+              if [ -f "$wk/lab/README.md" ] && grep -q -- '- \[ \]' "$wk/lab/README.md"; then
+                checklist "$wk/lab/README.md" "_site/$wk/lab.html" "$wk-lab" "$wk lab checklist"
+                extra="$extra · <a href=\"$wk/lab.html\">lab checklist</a>"
               fi
               echo "<li><a href=\"$wk/\">${wk/week-0/Week }</a>$extra</li>"
             done

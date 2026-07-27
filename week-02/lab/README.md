@@ -22,6 +22,9 @@ The `starter/` folder is a working but completely unstyled 3-page portfolio site
 
 Work top to bottom. Each item names the docs page you need.
 
+> [!TIP]
+> **Clickable version:** [the hosted checklist](https://jgrissom.github.io/dotnet-web-dev/week-02/lab.html) has working checkboxes that survive refreshes — tick items off as your console checks go green.
+
 ### All three pages
 - [ ] **Navbar** ([docs: Components → Navbar](https://getbootstrap.com/docs/5.3/components/navbar/)) — brand + links to all three pages, collapses to a hamburger on small screens. Mark the current page's link `active`. Same navbar on every page.
 - [ ] **Footer** — a `<footer>` with muted, centered text and comfortable vertical padding (utilities only: `text-center`, `text-muted`, `py-4`).

@@ -21,6 +21,7 @@ style: |
   section pre .hljs-built_in { color: #ffa657; }
   section pre .hljs-name { color: #7ee787; }
   section pre .hljs-selector-class, section pre .hljs-selector-pseudo { color: #7ee787; }
+  section footer { color: #9fb2c1; font-size: 0.6em; opacity: 0.85; }
 ---
 
 <!-- _paginate: false -->
@@ -91,6 +92,8 @@ Bootstrap solves all four for the price of two `<link>`/`<script>` tags.
 - `col-md-8` = "8 of 12 columns *at medium screens and up*" — below that, full width
 
 ---
+
+<!-- _footer: '🎨 demo time — script §1: the grid' -->
 
 ## Breakpoints
 
@@ -165,6 +168,8 @@ If you're writing custom CSS for spacing or alignment, there's probably a utilit
 
 ---
 
+<!-- _footer: '🎨 demo time — script §2: navbar, cards, form, icons' -->
+
 ## Icons: Bootstrap Icons
 
 One more `<link>` — 2,000+ icons, no image files:
@@ -184,6 +189,8 @@ One more `<link>` — 2,000+ icons, no image files:
 
 ---
 
+<!-- _footer: '🎨 demo time — script §3: theme swap + dark mode' -->
+
 ## Bootswatch: stop looking like every Bootstrap site
 
 Swap **one line** — the CSS link:
@@ -198,6 +205,8 @@ Swap **one line** — the CSS link:
 - **Pin the version** to your Bootstrap version (5.3.x ↔ 5.3.x)
 
 ---
+
+<!-- _footer: '🎨 demo time — script §4: Lora + the override' -->
 
 ## Google Fonts: the finishing move
 
