@@ -56,7 +56,54 @@ Edit-by-edit cue sheet for transforming `index.html` (your **scratch copy**) int
   </div>
   ```
 - [ ] Badge colors as you go: `bg-danger` hot · `bg-info text-dark` cold · `bg-success` food
-- [ ] Paste the other five cards from `finished.html`
+- [ ] Paste the other five cards — copy straight from here:
+
+  <details><summary>📋 Cards 2–6 (Cappuccino, Cold brew, Chai, Muffin, Bagel)</summary>
+
+  ```html
+  <div class="col-md-6 col-lg-4">
+    <article class="card h-100">
+      <div class="card-body">
+        <h3 class="card-title fs-5">Cappuccino <span class="badge bg-danger">hot</span></h3>
+        <p class="card-text">Equal parts espresso, steamed milk, and foam art we're proud of.</p>
+      </div>
+    </article>
+  </div>
+  <div class="col-md-6 col-lg-4">
+    <article class="card h-100">
+      <div class="card-body">
+        <h3 class="card-title fs-5">Cold brew <span class="badge bg-info text-dark">cold</span></h3>
+        <p class="card-text">Steeped 18 hours. Stronger than your deadline.</p>
+      </div>
+    </article>
+  </div>
+  <div class="col-md-6 col-lg-4">
+    <article class="card h-100">
+      <div class="card-body">
+        <h3 class="card-title fs-5">Chai latte <span class="badge bg-danger">hot</span></h3>
+        <p class="card-text">House spice mix, oat milk by default.</p>
+      </div>
+    </article>
+  </div>
+  <div class="col-md-6 col-lg-4">
+    <article class="card h-100">
+      <div class="card-body">
+        <h3 class="card-title fs-5">Blueberry muffin <span class="badge bg-success">food</span></h3>
+        <p class="card-text">Baked mornings; gone by noon.</p>
+      </div>
+    </article>
+  </div>
+  <div class="col-md-6 col-lg-4">
+    <article class="card h-100">
+      <div class="card-body">
+        <h3 class="card-title fs-5">Bagel &amp; schmear <span class="badge bg-success">food</span></h3>
+        <p class="card-text">Toasted, with plain or scallion cream cheese.</p>
+      </div>
+    </article>
+  </div>
+  ```
+
+  </details>
 - [ ] **✓ resize:** 1 → 2 → 3 columns; `h-100` keeps heights even
 
 ### Form
@@ -65,7 +112,32 @@ Edit-by-edit cue sheet for transforming `index.html` (your **scratch copy**) int
 - [ ] Wrap the form in `<div class="row"><div class="col-md-8">…</div></div>`
 - [ ] Add above the form: `<div class="alert alert-info">Ordering online comes in week 14 — for now this form is just for looks.</div>`
 - [ ] First field, typing: wrap in `<div class="mb-3">` · label → `form-label` (+ `for`/`id`) · input → `form-control`
-- [ ] Paste the remaining fields · `select` → `form-select` · button → `btn btn-primary`
+- [ ] Paste the remaining fields — copy from here (`select` → `form-select`, button → `btn btn-primary`):
+
+  <details><summary>📋 Email, dropdown, message, button</summary>
+
+  ```html
+  <div class="mb-3">
+    <label for="email" class="form-label">Email</label>
+    <input type="email" class="form-control" id="email">
+  </div>
+  <div class="mb-3">
+    <label for="topic" class="form-label">What's this about?</label>
+    <select class="form-select" id="topic">
+      <option selected>Choose…</option>
+      <option>Catering an event</option>
+      <option>Study group reservation</option>
+      <option>Feedback</option>
+    </select>
+  </div>
+  <div class="mb-3">
+    <label for="message" class="form-label">Message</label>
+    <textarea class="form-control" id="message" rows="3"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Send</button>
+  ```
+
+  </details>
 
 ### Footer & polish
 
