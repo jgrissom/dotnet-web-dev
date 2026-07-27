@@ -63,7 +63,6 @@ Write the following functions.
    ```js
    addCourse(courses, { code: "WEB300", title: "Advanced Web Topics", credits: 4, enrolled: 0, cap: 30 });
    ```
-   Afterward, check `courses` in the console — still 4 courses? It'd better be.
 8. `totalCredits(courses)` — returns the sum of all credits. Use the [`reduce`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce) docs — reading documentation for a method we didn't cover is part of the assignment.
 
 At the bottom of the file, call each function once and `console.log` the result, e.g.:
