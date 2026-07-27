@@ -9,7 +9,7 @@ Students turn an unstyled 3-page site into a personalized, responsive portfolio 
 | Prep | 🗓️ [lesson-plan.md](lesson-plan.md) | Timed 3h45 agenda + instructor notes |
 | Prep / in-class script | 📖 [lecture-notes.md](lecture-notes.md) | Full lecture content + **common snags appendix** |
 | Projected in class | 🎞️ [slides.md](slides.md) | The deck (GFM, one slide per `##`) — [**present it live**](https://jgrissom.github.io/dotnet-web-dev/week-02/) (arrow keys, `F` for fullscreen) |
-| In class, live-coding | 🎨 [demo/](demo/) | "Common Grounds Coffee" — your canvas (different content than the lab); [see it finished live](https://jgrissom.github.io/dotnet-web-dev/week-02/demo/) |
+| In class, live-coding | 🎨 [demo/](demo/) | "Common Grounds Coffee" — your canvas (different content than the lab); hosted [before](https://jgrissom.github.io/dotnet-web-dev/week-02/demo/before.html) · [after](https://jgrissom.github.io/dotnet-web-dev/week-02/demo/) |
 | In class, last 40 min | 🧪 [lab/](lab/) | "Bootstrap the Site" — checklist over a 3-page starter (answer key in the private answer-keys repo) |
 | Assigned at wrap-up | 📤 [homework.md](homework.md) | Personalize + deploy to Pages; **activate Azure for Students** before week 3 |
 
