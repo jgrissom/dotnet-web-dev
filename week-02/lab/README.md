@@ -40,7 +40,7 @@ Work top to bottom. Each item names the docs page you need.
 
 ### Make it yours (if time — otherwise it's homework)
 - [ ] **Bootswatch** ([bootswatch.com](https://bootswatch.com)) — swap the Bootstrap CSS link for a theme you like, on all three pages. Keep the version at 5.3.x.
-- [ ] **Google Fonts** ([fonts.google.com](https://fonts.google.com)) — one heading font, one body font. Override `--bs-body-font-family` as shown in the lecture notes.
+- [ ] **Google Fonts** ([fonts.google.com](https://fonts.google.com)) — one heading font, one body font. Override `--bs-body-font-family` as shown in [the lecture notes](../lecture-notes.md#part-5-google-fonts-15-min).
 
 ## 🆘 Stuck?
 
