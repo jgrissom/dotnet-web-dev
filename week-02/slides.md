@@ -93,8 +93,6 @@ Bootstrap solves all four for the price of two `<link>`/`<script>` tags.
 
 ---
 
-<!-- _footer: '🎨 demo time — script §1: the grid' -->
-
 ## Breakpoints
 
 **Mobile-first:** unprefixed = all sizes; prefixes add behavior at wider screens.
@@ -107,10 +105,19 @@ Bootstrap solves all four for the price of two `<link>`/`<script>` tags.
 | `lg` | 992px | laptops |
 | `xl` / `xxl` | 1200 / 1400px | desktops |
 
+---
+
+<!-- _footer: '🎨 demo time — script §1: the grid' -->
+
+## Reading a column recipe
+
 ```html
 <div class="col-12 col-md-6 col-lg-4">…</div>
 <!-- full width on phones, half on tablets, third on laptops -->
 ```
+
+- Read it left to right: phones → tablets → laptops
+- One line of classes = the whole responsive plan
 
 ---
 

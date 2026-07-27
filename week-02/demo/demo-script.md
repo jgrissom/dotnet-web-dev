@@ -10,7 +10,7 @@ Edit-by-edit cue sheet for transforming `index.html` (your **scratch copy**) int
 - [ ] Scratch copy of `demo/index.html` open in VS Code (Teaching profile) + browser at half-width
 - [ ] Hosted [before](https://jgrissom.github.io/dotnet-web-dev/week-02/demo/before.html) / [after](https://jgrissom.github.io/dotnet-web-dev/week-02/demo/) open in two tabs for the opening pitch
 
-## 1 · The grid *(slides 5–6)*
+## 1 · The grid *(slides 5–7)*
 
 - [ ] `<main>` → `<main class="container py-5">` — margins appear, content stops hugging the edges
 - [ ] Hero: `<header id="home">` → add `class="text-center py-5 bg-light"`
@@ -22,7 +22,7 @@ Edit-by-edit cue sheet for transforming `index.html` (your **scratch copy**) int
   — *multi-cursor trick:* select `<section>`, then **Ctrl+Shift+L** (**Cmd+Shift+L** on Mac) puts a cursor on *every* match — or **Ctrl+D** (**Cmd+D**) grabs them *one at a time* (safer when there might be matches off-screen; **Ctrl+K Ctrl+D** skips one, Esc collapses). Same trick for the `h2`s and `p`s (and the six `<article>`s later). Narrate it; students love this one
 - [ ] **✓ CHECKPOINT: resize slowly** — stacked on phone → thirds on desktop. This *is* the responsive lecture
 
-## 2 · Components *(slides 7–10)*
+## 2 · Components *(slides 8–11)*
 
 ### Navbar — from the docs, live
 
@@ -144,7 +144,7 @@ Edit-by-edit cue sheet for transforming `index.html` (your **scratch copy**) int
 - [ ] `<footer>` → `class="text-center text-muted py-4 border-top"` · its `p` → `mb-0`
 - [ ] Back-to-top `<p>`s → `class="text-end mt-3"` · links → `text-muted text-decoration-none`
 
-### Icons *(slide 10)*
+### Icons *(slide 11)*
 
 - [ ] Add to `<head>`: `<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">`
 - [ ] `<i class="bi bi-cup-hot"></i>` inside the hero button and the footer text
@@ -156,7 +156,7 @@ Edit-by-edit cue sheet for transforming `index.html` (your **scratch copy**) int
   ```
 - [ ] **✓ say it:** "two utility classes turn a character into artwork"
 
-## 3 · Bootswatch *(slide 11)*
+## 3 · Bootswatch *(slide 12)*
 
 - [ ] Show the gallery at [bootswatch.com](https://bootswatch.com) — this is where "take requests" shops
 - [ ] Replace the Bootstrap `<link>` with the Bootswatch CDN version (the site itself only offers downloads — the CDN pattern is ours to teach):
@@ -170,7 +170,7 @@ Edit-by-edit cue sheet for transforming `index.html` (your **scratch copy**) int
 - [ ] **✓ let them spot it:** the hero is still a glowing light band. Why? `bg-light` means *literally light, in every theme* — it said so all along
 - [ ] Fix live: hero `bg-light` → `bg-body-tertiary` ("slightly offset from the page background" — theme-aware). Flip dark/light again: now the whole page adapts. **Semantic names > literal names, part two**
 
-## 4 · Google Fonts *(slide 12)*
+## 4 · Google Fonts *(slide 13)*
 
 - [ ] On [fonts.google.com](https://fonts.google.com): pick **Lora** (400 + 700), copy the `<link>`, add to `<head>`
   — *(deliberately a serif: Lux's built-in font is Nunito Sans, so a sans swap would be invisible — pick something the room can SEE)*
