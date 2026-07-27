@@ -159,7 +159,11 @@ Edit-by-edit cue sheet for transforming `index.html` (your **scratch copy**) int
 ## 3 · Bootswatch *(slide 11)*
 
 - [ ] Show the gallery at [bootswatch.com](https://bootswatch.com) — this is where "take requests" shops
-- [ ] Swap the Bootstrap `<link>` through themes, refreshing between each: `flatly` → `darkly` → `sketchy` (laugh) → take requests
+- [ ] Replace the Bootstrap `<link>` with the Bootswatch CDN version (the site itself only offers downloads — the CDN pattern is ours to teach):
+  ```html
+  <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/flatly/bootstrap.min.css" rel="stylesheet">
+  ```
+- [ ] Swap themes by changing **just the theme name in the path** (`flatly` → `darkly` → `sketchy`…), refreshing between each: `flatly` → `darkly` → `sketchy` (laugh) → take requests
 - [ ] Land on `lux` (the finished page's theme)
 - [ ] **✓ say it:** nothing else changed — same classes, same docs
 - [ ] Dark-mode flip: DevTools → `<html>` → add `data-bs-theme="dark"`. One attribute; the toggle button is a lab stretch goal
