@@ -18,6 +18,8 @@ Work through the 8 exercises in `starter/exercises.js`. Each one is a small func
 
 The page runs a check for every exercise. The console shows ✅ or ❌ per exercise — refresh the browser after each save to re-run.
 
+**The goal — and the workflow:** take it one check at a time. Pick the first ❌, modify just that function, save, refresh, and watch it flip to ✅. Then move to the next one. Repeat until the console says **8 / 8 passing**. Don't try to write all eight and debug at the end — one red-to-green at a time is how real developers work too.
+
 ## The exercises
 
 All in `starter/exercises.js`:
