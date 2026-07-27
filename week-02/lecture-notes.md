@@ -167,6 +167,8 @@ Three facts to land:
 
 Week 5 callback (preview it now): swapping this same link inside `_Layout.cshtml` will re-theme an entire MVC app — one file, whole site. That's the payoff of layouts.
 
+**One more flip while the room is warm:** open DevTools, add `data-bs-theme="dark"` to the `<html>` element — the whole site goes dark, live. That's Bootstrap 5.3 **color modes**, one attribute. A real toggle button is three lines of week-1 JS (it's a lab stretch goal), and it works with Bootswatch themes too.
+
 ---
 
 ## Part 5: Google Fonts (15 min)

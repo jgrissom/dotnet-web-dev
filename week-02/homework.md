@@ -14,7 +14,7 @@ This site becomes your portfolio — by finals it will link to deployed .NET app
 1. **Real content.** Your name, a real sentence or two about you, honest descriptions of the week 1 project and this site. The placeholder cards for future projects can stay (they're a roadmap).
 2. **Your theme.** Pick a [Bootswatch](https://bootswatch.com) theme — any except Flatly (that's the solution's, and I'll know). Keep the version at 5.3.x.
 3. **Your fonts.** A [Google Fonts](https://fonts.google.com) pairing: one heading font, one body font, only the weights you use, fallback stacks kept. Override `--bs-body-font-family` as shown in [the lecture notes](lecture-notes.md#part-5-google-fonts-15-min).
-4. **One component we didn't cover in class**, found and adapted from the [Bootstrap docs](https://getbootstrap.com/docs/5.3/) — accordion, carousel, list group, tooltip, modal, your call. This is a docs-reading exercise; expect it on future assignments too.
+4. **One component we didn't cover in class**, found and adapted from the [Bootstrap docs](https://getbootstrap.com/docs/5.3/) — accordion, carousel, list group, tooltip, modal — or the dark-mode toggle from the lab's stretch goals — your call. This is a docs-reading exercise; expect it on future assignments too.
 
 ## Part 3 — Deploy + get ready for Azure
 

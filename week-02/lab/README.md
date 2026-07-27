@@ -57,3 +57,13 @@ The Bootstrap docs are stop one — find → copy → adapt is the exercise. Sto
 
 - Add a Bootstrap **modal** to a project card ("More details") — [docs: Components → Modal](https://getbootstrap.com/docs/5.3/components/modal/). It needs the JS bundle; now you know why it's there.
 - Try `navbar-expand-sm` vs `navbar-expand-lg` — when does the hamburger appear? Why would you choose each?
+- **Dark mode toggle** — Bootstrap 5.3 [color modes](https://getbootstrap.com/docs/5.3/customize/color-modes/): a button plus three lines of week-1 JS:
+  ```html
+  <button class="btn btn-outline-secondary" id="themeToggle">🌓</button>
+  <script>
+    document.querySelector("#themeToggle").addEventListener("click", () => {
+      const html = document.documentElement;
+      html.setAttribute("data-bs-theme", html.getAttribute("data-bs-theme") === "dark" ? "light" : "dark");
+    });
+  </script>
+  ```
