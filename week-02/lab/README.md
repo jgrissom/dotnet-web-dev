@@ -45,8 +45,9 @@ The Bootstrap docs are stop one — find → copy → adapt is the exercise. Sto
 
 ## Rules
 
-- **No custom CSS** except the font override block — everything else is Bootstrap classes. If you're fighting it, you've missed a utility; search the docs.
-- Don't remove the viewport meta or the JS bundle script (the navbar needs it).
+> [!IMPORTANT]
+> - **No custom CSS** except the font override block — everything else is Bootstrap classes. If you're fighting it, you've missed a utility; search the docs.
+> - Don't remove the viewport meta or the JS bundle script — if your navbar hamburger does nothing, a missing JS bundle tag is why.
 
 ## Done early?
 

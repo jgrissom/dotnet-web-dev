@@ -41,8 +41,10 @@ Students install and **verify** each item. Verification commands matter more tha
 | Git | git-scm.com | `git --version` |
 | GitHub account | github.com — sign up with school email ([Student Developer Pack](https://education.github.com/pack)) | Logged in; needed for tonight's homework |
 
+> [!NOTE]
 > **Azure:** students get a free **Azure for Students** account, but don't activate it tonight — we do that together in week 3 when the first .NET deploy happens.
 
+> [!TIP]
 > **Instructor:** see the [troubleshooting appendix](#appendix-setup-troubleshooting) at the bottom for the common failures.
 
 ---

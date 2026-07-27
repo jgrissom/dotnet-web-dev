@@ -20,8 +20,13 @@ This site becomes your portfolio — by finals it will link to deployed .NET app
 
 1. Push the site to a **public** repo named `portfolio` and enable GitHub Pages (same flow as week 1).
 2. Test the URL in a private/incognito window — check **all three pages** and the navbar links between them.
+
+> [!TIP]
+> **Do this on your phone too.** Your site is public now — pull it up on your own phone and hand it to someone. If the navbar hamburger doesn't work there, the JS bundle tag is missing on that page.
 3. **Activate your Azure for Students account** at [azure.microsoft.com/free/students](https://azure.microsoft.com/free/students) using your school email — no credit card required. Screenshot the Azure Portal home page once you're in.
-   **Week 3 does not work without this.** If activation fails (usually a school-email verification issue), email me *before* class, not during it.
+
+> [!IMPORTANT]
+> **Week 3 does not work without an active Azure account** — your first .NET app deploys to Azure that night. If activation fails (usually a school-email verification issue), email me *before* class, not during it.
 
 ## Grading (20 pts)
 

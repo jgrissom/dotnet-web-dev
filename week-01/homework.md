@@ -10,7 +10,8 @@ Your toolchain **must** be working before week 2. Submit two screenshots:
 1. A terminal showing the output of `dotnet --version` (must start with `10.`) **and** `git --version`.
 2. VS Code with the **SQL Server (mssql)** extension connected to the school SQL Server using your own account — the connection tree with databases visible.
 
-Stuck? Check the troubleshooting appendix at the bottom of `lecture-notes.md`, then email me — don't show up to week 2 broken.
+> [!IMPORTANT]
+> Stuck? Check the troubleshooting appendix at the bottom of `lecture-notes.md`, then **email me before class** — don't show up to week 2 broken. Every week from here builds on a working toolchain.
 
 ## Part 2 — Finish the lab
 
@@ -29,7 +30,10 @@ const courses = [
 ];
 ```
 
-Write the following functions. **Rules:** `const`/`let` only, `===` only, arrow functions, and no mutation of `courses`.
+Write the following functions.
+
+> [!WARNING]
+> **Rules, enforced in grading:** `const`/`let` only, `===` only, arrow functions, and no mutation of `courses`. Each `var`, `==`, or mutation costs a point — see the deductions row below.
 
 1. `courseLine(course)` — returns `"WEB250: .NET Web Dev (4 credits)"` for the given course. Use destructuring + a template literal.
 2. `isFull(course)` — returns `true` if `enrolled` equals `cap`.
@@ -77,7 +81,10 @@ In this course, nothing stays on your laptop. Your JavaScript work goes live on 
    ```
 5. Enable Pages: repo → **Settings → Pages** → Source: *Deploy from a branch* → Branch: `main`, folder `/ (root)` → Save.
 6. Wait ~1 minute, then visit `https://YOUR-USERNAME.github.io/web-dev-week01/` — open the console (F12) and confirm your output appears.
-7. Submit that URL. **Test it in a private/incognito window first** — if it 404s for you, it 404s for me.
+7. Submit that URL.
+
+> [!IMPORTANT]
+> **Test your URL in a private/incognito window before submitting** — if it 404s for you, it 404s for me, and a dead link grades as not submitted.
 
 ## Grading (24 pts)
 
