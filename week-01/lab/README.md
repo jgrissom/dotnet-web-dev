@@ -25,14 +25,14 @@ The page runs a check for every exercise. The console shows ✅ or ❌ per exerc
 
 All in `starter/exercises.js`:
 
-1. **`describeScore`** — template literal practice
-2. **`isPassing`** — comparison + strict equality
-3. **`curve`** — `map`
-4. **`passingScores`** — `filter`
-5. **`findStudent`** — `find` on an array of objects
-6. **`honorRollNames`** — chain `filter` + `map`
-7. **`formatStudent`** — destructuring + template literal
-8. **`addStudent`** — spread (no mutation!)
+1. **`describeScore`** — [template literal](../lecture-notes.md#template-literals) practice
+2. **`isPassing`** — comparison + [strict equality](../lecture-notes.md#equality--always)
+3. **`curve`** — [`map`](../lecture-notes.md#the-big-three-map-filter-find)
+4. **`passingScores`** — [`filter`](../lecture-notes.md#the-big-three-map-filter-find)
+5. **`findStudent`** — [`find`](../lecture-notes.md#the-big-three-map-filter-find) on an [array of objects](../lecture-notes.md#arrays-of-objects--the-shape-of-real-data)
+6. **`honorRollNames`** — chain [`filter` + `map`](../lecture-notes.md#the-big-three-map-filter-find)
+7. **`formatStudent`** — [destructuring](../lecture-notes.md#destructuring-and-spread) + [template literal](../lecture-notes.md#template-literals)
+8. **`addStudent`** — [spread](../lecture-notes.md#destructuring-and-spread) (no mutation!)
 
 ## 🆘 Stuck?
 

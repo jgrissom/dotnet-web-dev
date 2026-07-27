@@ -23,7 +23,7 @@ The `starter/` folder is a working but completely unstyled 3-page portfolio site
 Work top to bottom. Each item names the docs page you need.
 
 ### All three pages
-- [ ] **Navbar** (docs: *Components → Navbar*) — brand + links to all three pages, collapses to a hamburger on small screens. Mark the current page's link `active`. Same navbar on every page.
+- [ ] **Navbar** ([docs: Components → Navbar](https://getbootstrap.com/docs/5.3/components/navbar/)) — brand + links to all three pages, collapses to a hamburger on small screens. Mark the current page's link `active`. Same navbar on every page.
 - [ ] **Footer** — a `<footer>` with muted, centered text and comfortable vertical padding (utilities only: `text-center`, `text-muted`, `py-4`).
 
 ### index.html
@@ -31,11 +31,11 @@ Work top to bottom. Each item names the docs page you need.
 - [ ] **Feature row** — the three `<section>` blurbs become a responsive row: full width on phones, thirds on `md` and up.
 
 ### projects.html
-- [ ] **Card grid** (docs: *Components → Card*) — the six project blurbs become cards in a responsive grid (`row g-4`, `col-md-6 col-lg-4`), each with a title, text, and a button. Use `h-100` so the cards line up.
+- [ ] **Card grid** ([docs: Components → Card](https://getbootstrap.com/docs/5.3/components/card/)) — the six project blurbs become cards in a responsive grid (`row g-4`, `col-md-6 col-lg-4`), each with a title, text, and a button. Use `h-100` so the cards line up.
 - [ ] **Badges** — give each card a topic badge (`badge` + a `bg-*` you choose).
 
 ### contact.html
-- [ ] **Form** (docs: *Forms → Overview*) — name, email, message fields with `form-label` + `form-control`, a `form-select` for "how did you hear about us", and a submit button. Keep the form ≤ 8 columns wide on `md`+ (grid inside the page!).
+- [ ] **Form** ([docs: Forms → Overview](https://getbootstrap.com/docs/5.3/forms/overview/)) — name, email, message fields with `form-label` + `form-control`, a `form-select` for "how did you hear about us", and a submit button. Keep the form ≤ 8 columns wide on `md`+ (grid inside the page!).
 - [ ] **Alert** — an `alert alert-info` above the form saying it isn't wired up yet (that's week 6's problem).
 
 ### Make it yours (if time — otherwise it's homework)
@@ -54,5 +54,5 @@ The Bootstrap docs are stop one — find → copy → adapt is the exercise. Sto
 
 ## 🚀 Done early?
 
-- Add a Bootstrap **modal** to a project card ("More details") — docs: *Components → Modal*. It needs the JS bundle; now you know why it's there.
+- Add a Bootstrap **modal** to a project card ("More details") — [docs: Components → Modal](https://getbootstrap.com/docs/5.3/components/modal/). It needs the JS bundle; now you know why it's there.
 - Try `navbar-expand-sm` vs `navbar-expand-lg` — when does the hamburger appear? Why would you choose each?
