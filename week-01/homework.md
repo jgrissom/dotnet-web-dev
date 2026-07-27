@@ -59,7 +59,11 @@ Write the following functions.
 4. `courseTitles(courses)` — returns an array of just the titles.
 5. `openCourseLines(courses)` — returns an array of `courseLine`-formatted strings for open courses only. Chain [`filter` + `map`](lecture-notes.md#the-big-three-map-filter-find), reusing functions you already wrote.
 6. `findCourse(courses, code)` — returns the course object with the given code, or `undefined`.
-7. `addCourse(courses, newCourse)` — returns a **new** array with the course appended. No `.push()` — this is [spread](lecture-notes.md#destructuring-and-spread).
+7. `addCourse(courses, newCourse)` — returns a **new** array with the course appended. No `.push()` — this is [spread](lecture-notes.md#destructuring-and-spread). Try it with:
+   ```js
+   addCourse(courses, { code: "WEB300", title: "Advanced Web Topics", credits: 4, enrolled: 0, cap: 30 });
+   ```
+   Afterward, check `courses` in the console — still 4 courses? It'd better be.
 8. `totalCredits(courses)` — returns the sum of all credits. Use the [`reduce`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce) docs — reading documentation for a method we didn't cover is part of the assignment.
 
 At the bottom of the file, call each function once and `console.log` the result, e.g.:
