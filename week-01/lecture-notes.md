@@ -80,8 +80,8 @@ score = 10;      // fine
 maxScore = 200;  // TypeError!
 ```
 
-- **Rule for this course: `const` by default, `let` when you need to reassign, `var` never.**
-- `var` is legacy (function-scoped, hoisting weirdness). You'll see it in old tutorials — don't copy it.
+> [!IMPORTANT]
+> **Course rule: `const` by default, `let` when you need to reassign, `var` never.** `var` is legacy (function-scoped, hoisting weirdness) — you'll see it in old tutorials; don't copy it.
 - **C# bridge:** `let` ≈ a normal local variable; `const` ≈ `readonly` — the *binding* is fixed, not the contents. `const arr = [1,2]; arr.push(3);` is legal.
 
 ### Types and `typeof`
@@ -117,7 +117,8 @@ const greeting = `Hello, ${name}! You have ${3 + 4} messages.`;
 1 === "1";   // false — === compares type AND value
 ```
 
-- **Rule for this course: always `===` and `!==`.** `==` has a coercion table nobody memorizes.
+> [!IMPORTANT]
+> **Course rule: always `===` and `!==`.** `==` has a coercion table nobody memorizes.
 
 ### Truthiness
 
@@ -131,7 +132,10 @@ if ([]) { }        // truthy — even an empty array!
 ```
 
 - Falsy values: `false`, `0`, `""`, `null`, `undefined`, `NaN`. Everything else is truthy.
-- **C# bridge:** C# demands a real `bool` in an `if`; JS will take anything and coerce. Handy: `if (username) {...}` checks "not null/undefined/empty" in one shot.
+- **C# bridge:** C# demands a real `bool` in an `if`; JS will take anything and coerce.
+
+> [!TIP]
+> `if (username) { ... }` checks "not null, not undefined, not empty" in one shot — you'll use this idiom constantly.
 
 ### Functions → arrow functions
 
@@ -156,7 +160,8 @@ greet("Ada");   // "Hello, Ada!"
 ```
 
 - **C# bridge:** arrow functions ARE lambdas — `(a, b) => a + b` is valid in both languages.
-- No type annotations, no overloads. Call a JS function with too few args and the missing ones are `undefined` — no compiler error. This is where dynamic typing bites; default parameters are the guard rail.
+> [!WARNING]
+> Call a JS function with too few arguments and the missing ones are silently `undefined` — no compiler error. This is where dynamic typing bites; default parameters are the guard rail.
 - We'll use both forms; arrow functions dominate modern code and become essential with `fetch` in week 2.
 
 ---
@@ -194,7 +199,8 @@ const passing = scores.filter(s => s >= 80); // [90, 85, 100]    — keep matche
 const perfect = scores.find(s => s === 100); // 100              — first match (or undefined)
 ```
 
-- **C# bridge (this is LINQ!):** `map` = `Select`, `filter` = `Where`, `find` = `FirstOrDefault`. You already think this way.
+> [!NOTE]
+> **This is LINQ!** `map` = `Select`, `filter` = `Where`, `find` = `FirstOrDefault` — you already think this way.
 - None of these mutate the original array — they return new ones.
 
 ### Objects
@@ -255,7 +261,8 @@ const honorRoll = students
   .map(s => s.name);        // ["Ada", "Grace"]
 ```
 
-- **Land this hard:** every database query result, every API response for the rest of this course is an array of objects. `filter`/`map` chains are how you'll process all of it.
+> [!IMPORTANT]
+> Every database query result and every API response for the rest of this course is an **array of objects** — `filter`/`map` chains are how you'll process all of it.
 
 ---
 
@@ -288,7 +295,8 @@ button.addEventListener("click", () => {
 ```
 
 - `querySelector` takes any CSS selector: `"#id"`, `".class"`, `"nav a"`. There's also `querySelectorAll` (returns all matches).
-- **Aside to say out loud:** older tutorials and Stack Overflow answers use `document.getElementById("status")` — same result for ids, still perfectly valid, not deprecated. We standardize on `querySelector` because one API covers every selector you'll ever need; just don't be confused when you see the other one in the wild.
+> [!NOTE]
+> Older tutorials and Stack Overflow answers use `document.getElementById("status")` — same result for ids, still perfectly valid, not deprecated. We standardize on `querySelector` because one API covers every selector you'll ever need; just don't be confused when you see the other one in the wild.
 - **C# bridge:** `addEventListener` is wiring up an event handler — same idea as C# events, and the arrow function is the handler delegate.
 
 ### fetch + async/await — the shape of week 15
@@ -306,7 +314,8 @@ loadUsers();
 ```
 
 - `fetch` makes an HTTP request from JS. Teach `await` from scratch — "pause right here until the answer comes back" — and **don't lean on C# for this one**: a beginner C# course rarely reaches `async`/`await`, so assume this is their first encounter with the keyword. (If someone has seen C#'s version, confirm it's the same idea.) Keep it at the intuition level tonight; the mechanics come in week 15.
-- **Delivery tip:** the console supports top-level `await`, so demo it line-by-line instead of pasting the whole function — `const response = await fetch(...)` ⏎, inspect `response`, `const users = await response.json()` ⏎, expand `users` in the console (triangle = "JSON is arrays of objects" made visible), then `users.map(u => u.name)`. Each Enter is a prediction moment. The slide's `async () =>` wrapper is the *file* form they'll write in week 15; mention that, don't retype it.
+> [!TIP]
+> **Delivery tip:** the console supports top-level `await`, so demo it line-by-line instead of pasting the whole function — `const response = await fetch(...)` ⏎, inspect `response`, `const users = await response.json()` ⏎, expand `users` in the console (triangle = "JSON is arrays of objects" made visible), then `users.map(u => u.name)`. Each Enter is a prediction moment. The slide's `async () =>` wrapper is the *file* form they'll write in week 15; mention that, don't retype it.
 - Land this: the API returns **an array of objects** — everything from Part 5 applies. In week 15, the URL will be *your* API instead of a placeholder.
 - Don't go deeper tonight (no error handling, no POST) — that arrives when they build against real endpoints.
 - **"The action has been blocked" / CSP error:** someone ran the demo in the console of a Chrome-internal page (new tab, `chrome://settings`…). The console runs code *as the current page*, and Chrome's own pages block outside network requests. Fix: open the lab's `index.html` (or any normal website) first, then F12. Expect ~3 students to hit this.

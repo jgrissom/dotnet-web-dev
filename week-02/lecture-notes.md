@@ -30,7 +30,10 @@ Why Bootstrap specifically (vs Tailwind, Bulma, etc.): it's the one you'll meet 
 </body>
 ```
 
-- The **CSS** is the look. The **JS bundle** is behavior — navbar toggler, dropdowns, modals, tooltips. Forget the JS tag and the navbar toggler silently does nothing (the #1 lab bug tonight — say it now).
+- The **CSS** is the look. The **JS bundle** is behavior — navbar toggler, dropdowns, modals, tooltips.
+
+> [!IMPORTANT]
+> **The #1 lab bug tonight:** a missing JS-bundle tag — the navbar toggler just silently does nothing. Say it now; say it again at the lab launch.
 - The `viewport` meta is what makes mobile rendering honest; without it, phones pretend to be 980px wide and nothing responsive works.
 - We're using the **CDN** on purpose: zero install, great for static sites and Pages. In week 5 you'll meet the second delivery style — the MVC template ships Bootstrap *bundled locally* in `wwwroot/lib/`. Both are idiomatic; you'll have seen each where it belongs.
 
@@ -51,11 +54,11 @@ Why Bootstrap specifically (vs Tailwind, Bulma, etc.): it's the one you'll meet 
 </div>
 ```
 
-Rules that prevent 90% of grid confusion:
-
-- Columns live **directly inside rows**, rows live inside containers. A `col` outside a `row` misbehaves quietly.
-- Each row is 12 units wide. `col-md-8` + `col-md-4` = 12. Overflow wraps to the next line (sometimes what you want, often a bug).
-- Plain `col` = "share the space equally" — great for unknown counts.
+> [!IMPORTANT]
+> **Rules that prevent 90% of grid confusion:**
+> - Columns live **directly inside rows**, rows live inside containers. A `col` outside a `row` misbehaves quietly.
+> - Each row is 12 units wide. `col-md-8` + `col-md-4` = 12. Overflow wraps to the next line (sometimes what you want, often a bug).
+> - Plain `col` = "share the space equally" — great for unknown counts.
 
 ### Mobile-first breakpoints
 
@@ -65,7 +68,10 @@ Rules that prevent 90% of grid confusion:
 <div class="col-12 col-md-6 col-lg-4">…</div>
 ```
 
-Phones: full width → tablets: half → laptops: a third. This one line is the responsive design lecture. Resize the window slowly and watch it happen.
+Phones: full width → tablets: half → laptops: a third.
+
+> [!TIP]
+> **Do this:** resize the window slowly and watch the columns reflow — that one line of classes *is* the responsive design lecture.
 
 Breakpoints: `sm` 576, `md` 768, `lg` 992, `xl` 1200, `xxl` 1400. You'll use `md` and `lg` for nearly everything.
 
@@ -82,7 +88,10 @@ Breakpoints: `sm` 576, `md` 768, `lg` 992, `xl` 1200, `xxl` 1400. You'll use `md
 
 ### The real skill: find → copy → adapt
 
-Nobody memorizes navbar markup. Open getbootstrap.com/docs, search the component, copy the example, adapt content and classes. Model this workflow *explicitly* for every component tonight — the students who internalize docs-reading will cruise through the whole semester.
+Nobody memorizes navbar markup. Open getbootstrap.com/docs, search the component, copy the example, adapt content and classes.
+
+> [!TIP]
+> Model the find → copy → adapt workflow *explicitly* for every component tonight — the students who internalize docs-reading will cruise through the whole semester.
 
 Walk these, in this order, into the live-coded page:
 
@@ -104,7 +113,10 @@ Walk these, in this order, into the live-coded page:
 </div>
 ```
 
-   `h-100` makes ragged-height cards equal. **Week 8 preview, say it out loud:** each card will be one row from their SQL Server database, stamped out by a Razor `foreach`.
+   `h-100` makes ragged-height cards equal.
+
+> [!NOTE]
+> **Week 8 preview — say it out loud:** each of these cards will be one row from their SQL Server database, stamped out by a Razor `foreach`.
 
 3. **Buttons** — `btn btn-primary/secondary/outline-*`; sizes `btn-sm`/`btn-lg`. Semantic names (`danger`, not "red") — themes redefine the colors later tonight.
 4. **Forms** — `form-label` + `form-control` per field, `form-select`, `form-check`. Just appearance tonight; these same classes wire into MVC model binding and validation styling in week 6 — this markup is a direct investment.
@@ -116,7 +128,8 @@ Walk these, in this order, into the live-coded page:
 - **Text:** `text-center`, `fw-bold`, `text-muted`, `fs-4`.
 - **Color:** `bg-primary`, `text-danger`, `bg-light` — semantic, theme-aware.
 
-House rule for the course: **if you're writing custom CSS for spacing, alignment, or color, stop and check for a utility first.** Custom CSS is for identity (rare), utilities are for layout (constant).
+> [!IMPORTANT]
+> **House rule: if you're writing custom CSS for spacing, alignment, or color, stop and check for a utility first.** Custom CSS is for identity (rare); utilities are for layout (constant).
 
 ---
 
@@ -133,7 +146,7 @@ Live demo with maximum theater: the site so far, in default Bootstrap. Swap one 
 Three facts to land:
 
 1. **Nothing else changed.** Same markup, same classes, same docs. Bootswatch is a *compiled* Bootstrap with different variables — your skills are 100% portable.
-2. **Pin versions.** Bootswatch 5.3.x with Bootstrap 5.3.x markup. Mixing majors is how you lose an evening.
+2. **Pin versions.** ⚠️ Bootswatch 5.3.x with Bootstrap 5.3.x markup — mixing majors is how you lose an evening.
 3. **This is why we used semantic names.** `btn-primary` was blue in default, it's flat green in Flatly, it's crayon in Sketchy. Never name colors, name roles.
 
 Week 5 callback (preview it now): swapping this same link inside `_Layout.cshtml` will re-theme an entire MVC app — one file, whole site. That's the payoff of layouts.
@@ -157,9 +170,11 @@ h1, h2, h3, h4, h5, h6 { font-family: "Fraunces", Georgia, serif; }
 
 Bootstrap reads its body font from the `--bs-body-font-family` CSS variable — override the variable, don't fight the framework. (First sighting of CSS custom properties; they'll reappear.)
 
-**Rules of taste (course-enforced):** two families max. Only the weights you use. Always keep the fallback stack after your font.
+> [!IMPORTANT]
+> **Rules of taste (course-enforced):** two families max. Only the weights you use. Always keep the fallback stack after your font.
 
-**Pro aside, one sentence:** fonts served from Google's CDN are a third-party request — there have been European privacy rulings about it — so many companies self-host font files instead; same fonts, different delivery.
+> [!NOTE]
+> **Pro aside, one sentence:** fonts served from Google's CDN are a third-party request — there have been European privacy rulings about it — so many companies self-host font files instead; same fonts, different delivery.
 
 ---
 
