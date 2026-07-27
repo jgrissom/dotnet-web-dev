@@ -144,7 +144,7 @@ Bootstrap's sibling icon library — one more CDN link, ~2,000 icons delivered a
 ```
 
 - Because they're **font glyphs**, the text utilities you just taught style them for free: `fs-3` sizes, `text-danger` colors, no image files anywhere.
-- Live-code two on the coffee page: a `bi-cup-hot` inside the hero button, a `bi-github` in the footer.
+- Live-code on the coffee page: a `bi-cup-hot` inside the hero button, a `bi-github` in the footer — then the showpiece: an icon above each feature blurb (`bi-fire` / `bi-wifi` / `bi-moon-stars`) at `fs-1` with a `text-*` color. That's the proof they're font glyphs: two utility classes turn a character into artwork.
 - [icons.getbootstrap.com](https://icons.getbootstrap.com) is searchable — same find → copy → adapt workflow, third time tonight.
 
 ---
