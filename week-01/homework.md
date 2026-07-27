@@ -11,7 +11,7 @@ Your toolchain **must** be working before week 2. Submit two screenshots:
 2. VS Code with the **SQL Server (mssql)** extension connected to the school SQL Server using your own account — the connection tree with databases visible.
 
 > [!IMPORTANT]
-> Stuck? Check the troubleshooting appendix at the bottom of `lecture-notes.md`, then **email me before class** — don't show up to week 2 broken. Every week from here builds on a working toolchain.
+> Stuck? Rework the step in [setup-guide.md](setup-guide.md), check the troubleshooting appendix at the bottom of `lecture-notes.md`, then **email me before class** — don't show up to week 2 broken. Every week from here builds on a working toolchain.
 
 ## Part 2 — Finish the lab
 

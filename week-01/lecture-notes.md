@@ -31,7 +31,7 @@ Weeks 1–2 live on the left side. Week 3 onward, we build the right side.
 
 ## Part 2: Environment setup (45 min)
 
-Students install and **verify** each item. Verification commands matter more than installs — "it installed" ≠ "it works."
+Students work through **[setup-guide.md](setup-guide.md)** at their own pace — it's the walkthrough, with a ✓-verify checkpoint per step. Your job is unblocking, not narrating. The table below is your at-a-glance version of the same five checks; verification matters more than installation — "it installed" ≠ "it works."
 
 | Tool | Install | Verify |
 |------|---------|--------|
