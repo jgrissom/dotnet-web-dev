@@ -20,7 +20,7 @@ By the end of this session, students can:
 - `slides.md` / `slides.html` — the deck (also hosted at jgrissom.github.io/dotnet-web-dev)
 - `lecture-notes.md` open on your second screen — the script, with the common-snags appendix
 - Lab starter ships in this repo (`lab/starter/`, self-checking) — nothing to post
-- **Demo canvas:** a fresh copy of [`demo/index.html`](demo/index.html) (the coffee-shop page — deliberately *not* the lab site); `demo/finished.html` is the rehearsal reference
+- **Demo canvas:** a fresh copy of [`demo/index.html`](demo/index.html) (the coffee-shop page — deliberately *not* the lab site); `demo/finished.html` is the rehearsal reference ([hosted live](https://jgrissom.github.io/dotnet-web-dev/week-02/demo/))
 - A few student Pages URLs from week 1 homework queued up for the gallery walk
 
 ## Timed agenda
