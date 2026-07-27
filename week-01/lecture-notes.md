@@ -274,7 +274,7 @@ A fast tour, not a deep dive — you'll use these for real in week 2 (Bootstrap 
 
 ### The DOM in three APIs
 
-**Demo against a real page** — the lab starter's `index.html` has these two elements baked in for exactly this demo. Open it in the browser, console on, page visible so the class sees it change:
+**Demo against a real page** — open the hosted playground ([https://jgrissom.github.io/dotnet-web-dev/week-01/demo/](https://jgrissom.github.io/dotnet-web-dev/week-01/demo/)) with the console on and the page visible, so the class sees it change. Students can replay the whole demo from that same URL at home. The page has exactly these elements:
 
 ```html
 <p id="status">Loading…</p>

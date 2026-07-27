@@ -20,6 +20,7 @@ By the end of this session, students can:
 - `lecture-notes.md` open on your second screen — the script, with expected outputs
 - `setup-guide.md` URL ready to put on screen; **server address + credentials handout** printed
 - Lab starter ships in this repo (`lab/starter/`) — nothing to post
+- **Demo canvas:** the console + the hosted DOM/fetch playground ([demo/](demo/) → [https://jgrissom.github.io/dotnet-web-dev/week-01/demo/](https://jgrissom.github.io/dotnet-web-dev/week-01/demo/)); `demo/demo-script.js` has every console example in slide order for pasting when typing runs slow
 - Install links posted to Canvas ahead of time (ask students to pre-install if possible)
 
 ## Timed agenda
@@ -33,7 +34,7 @@ By the end of this session, students can:
 | 1:25 | 35 min | **Refresher: modern JS idioms** *(slides 9–14)*. Rapid-fire — `const`/`let` (`var` is retired), `===` only, template literals, truthiness, arrow functions, default parameters. Frame as "the dialect this course speaks," not new material. Live-code in browser console. |
 | 2:00 | 30 min | **Refresher: arrays & objects** *(slides 15–20)*. `map`/`filter`/`find` as `Select`/`Where`/`FirstOrDefault`, destructuring, spread, arrays-of-objects as the shape of all future data. |
 | 2:30 | 10 min | **☕ Break** |
-| 2:40 | 25 min | **DOM & fetch highlights** *(slides 21–22)*. `querySelector`, `textContent`, `addEventListener`, then one complete `fetch` + `async`/`await` example against a public JSON API. Sets up week 15; keep it a tour, not a deep dive. |
+| 2:40 | 25 min | **DOM & fetch highlights** *(slides 21–22)*. `querySelector`, `textContent`, `addEventListener`, then one complete `fetch` + `async`/`await` example against a public JSON API — all demoed on the hosted playground page (see Materials). Sets up week 15; keep it a tour, not a deep dive. |
 | 3:05 | 30 min | **Lab: JS Refresher Gauntlet** *(slide 23)*. Launch with ~90 seconds of *what done looks like*: your finished copy in the browser, console showing **8 / 8 passing** — a target, not a walkthrough. Then students clone the course repo and work exercises 1–8 (`lab/README.md`). Work in pairs encouraged. Review 2–3 trickiest exercises on screen in the last 10 minutes. |
 | 3:35 | 10 min | **Wrap-up** *(slide 24)*. Assign homework (`homework.md`) — emphasize Part 4: their code goes **live on GitHub Pages** tonight, and from week 3 every .NET assignment deploys to Azure. Preview week 2: **Bootstrap** — they'll build and deploy a styled, personalized site. Remind students setup must be working before next class. |
 

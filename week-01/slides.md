@@ -292,7 +292,7 @@ Every DB query result and API response in this course is this shape.
 
 ## The DOM in three APIs
 
-Runs *against a page* — the lab starter's `index.html`, console on:
+Runs *against a page* — tonight's demo playground, console on:
 
 ```html
 <p id="status">Loading…</p>
