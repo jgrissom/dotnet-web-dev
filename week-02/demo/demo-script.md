@@ -37,7 +37,14 @@ Edit-by-edit cue sheet for transforming `index.html` (your **scratch copy**) int
 
 - [ ] `<h2 id="menu">` → `class="mt-5 mb-4"`
 - [ ] Wrap the six `<article>`s in `<div class="row g-4">`
-- [ ] Transform **Espresso only, typing**:
+- [ ] Transform the **Espresso `<article>` in place** — evolve what's there, don't retype the content:
+  1. wrap the whole article in `<div class="col-md-6 col-lg-4">`
+  2. the article itself → `class="card h-100"`
+  3. wrap its contents in `<div class="card-body">`
+  4. `h3` → `class="card-title fs-5"` · `p` → `class="card-text"`
+  5. move the `<span>` up **inside the `h3`** → `class="badge bg-danger"`
+
+  Destination:
   ```html
   <div class="col-md-6 col-lg-4">
     <article class="card h-100">
