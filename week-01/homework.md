@@ -19,7 +19,24 @@ If you didn't finish exercises 1–8 in class, finish them. The console must sho
 
 ## Part 3 — Roster functions (graded)
 
-Create a file `homework.js`. Copy this data to the top:
+Set up a homework folder the same way the lab worked — a page that loads your script, so the browser console is your test loop from the first line you write:
+
+1. Create a folder with two files: `index.html` and `homework.js`.
+2. `index.html`:
+   ```html
+   <!DOCTYPE html>
+   <html lang="en">
+   <head><meta charset="UTF-8"><title>Week 1 Homework</title></head>
+   <body>
+     <h1>Week 1 Homework — YOUR NAME</h1>
+     <p>Open the console (F12) to see the output.</p>
+     <script src="homework.js"></script>
+   </body>
+   </html>
+   ```
+3. Open `index.html` in the browser, console on (**F12**) — refresh after every save, just like the lab.
+
+Now, in `homework.js`, copy this data to the top:
 
 ```js
 const courses = [
@@ -72,19 +89,7 @@ In this course, nothing stays on your laptop. Your JavaScript work goes live on 
 
 1. Create a GitHub account if you don't have one (use your school email — it also qualifies you for the [GitHub Student Developer Pack](https://education.github.com/pack)).
 2. Create a **public** repo named `web-dev-week01`.
-3. In your homework folder, create an `index.html` that loads your script:
-   ```html
-   <!DOCTYPE html>
-   <html lang="en">
-   <head><meta charset="UTF-8"><title>Week 1 Homework</title></head>
-   <body>
-     <h1>Week 1 Homework — YOUR NAME</h1>
-     <p>Open the console (F12) to see the output.</p>
-     <script src="homework.js"></script>
-   </body>
-   </html>
-   ```
-4. Push your work — and **commit as you go**, not once at the end:
+3. Push your homework folder — and **commit as you go**, not once at the end:
    ```bash
    git init
    git add .
@@ -102,9 +107,9 @@ In this course, nothing stays on your laptop. Your JavaScript work goes live on 
 
 > [!NOTE]
 > **At least 3 meaningful commits.** Your commit history is the story of your work — a single giant "done" commit at 11:58pm tells a different story, and costs a point. A natural rhythm: commit every time the checker turns something green.
-5. Enable Pages: repo → **Settings → Pages** → Source: *Deploy from a branch* → Branch: `main`, folder `/ (root)` → Save.
-6. Wait ~1 minute, then visit `https://YOUR-USERNAME.github.io/web-dev-week01/` — open the console (F12) and confirm your output appears.
-7. Submit that URL.
+4. Enable Pages: repo → **Settings → Pages** → Source: *Deploy from a branch* → Branch: `main`, folder `/ (root)` → Save.
+5. Wait ~1 minute, then visit `https://YOUR-USERNAME.github.io/web-dev-week01/` — open the console (F12) and confirm your output appears.
+6. Submit that URL.
 
 > [!IMPORTANT]
 > **Test your URL in a private/incognito window before submitting** — if it 404s for you, it 404s for me, and a dead link grades as not submitted.
