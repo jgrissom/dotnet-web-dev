@@ -15,6 +15,9 @@ The `starter/` folder is a working but completely unstyled 3-page portfolio site
 3. The Bootstrap CSS + JS CDN tags are already in each page (and the viewport meta — don't delete it).
 4. Open `index.html` in the browser; keep the window at half width and resize as you go.
 
+> [!TIP]
+> **Each page grades itself.** A checker (`portfolio-checks.js`) is already wired into all three pages — open the console (F12) and it scores *that page's* checklist ✅/❌, plus the "make it yours" items and warnings about custom-CSS deductions. Same rhythm as week 1: work one ❌ at a time, and check **all three pages** — each has its own list.
+
 ## The checklist
 
 Work top to bottom. Each item names the docs page you need.

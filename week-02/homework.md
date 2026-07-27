@@ -28,6 +28,13 @@ This site becomes your portfolio — by finals it will link to deployed .NET app
 > [!IMPORTANT]
 > **Week 3 does not work without an active Azure account** — your first .NET app deploys to Azure that night. If activation fails (usually a school-email verification issue), email me *before* class, not during it.
 
+### When are you done?
+
+Open the console on **each of the three pages** — every ❌ green across Required *and* Make-it-yours, no custom-CSS warnings. Then the two things the checker can't judge: resize to phone width and make sure it looks *sensible*, and confirm your extra docs component actually works when clicked.
+
+> [!TIP]
+> **The checker is the same one I grade with.** Green on all three pages locks in the checklist and theme/fonts points; the responsive look, your extra component, and the Azure screenshot are the human-graded remainder.
+
 ## 📊 Grading (20 pts)
 
 | Item | Points |
