@@ -20,6 +20,7 @@ By the end of this session, students can:
 - `slides.md` / `slides.html` — the deck (also hosted at jgrissom.github.io/dotnet-web-dev)
 - `lecture-notes.md` open on your second screen — the script, with the common-snags appendix
 - Lab starter ships in this repo (`lab/starter/`, self-checking) — nothing to post
+- **Demo canvas:** a fresh copy of [`demo/index.html`](demo/index.html) (the coffee-shop page — deliberately *not* the lab site); `demo/finished.html` is the rehearsal reference
 - A few student Pages URLs from week 1 homework queued up for the gallery walk
 
 ## Timed agenda
@@ -28,7 +29,7 @@ By the end of this session, students can:
 |------|----------|---------|
 | 0:00 | 15 min | **Week 1 homework gallery walk** *(deck on title slide)*. Open 3–4 student Pages URLs on the projector (volunteers first). Triage any setup stragglers — pair them with a neighbor whose environment is green. |
 | 0:15 | 20 min | **Why CSS frameworks; Bootstrap anatomy** *(slides 2–4)*. The problem Bootstrap solves (consistent, responsive, accessible-by-default UI without writing a design system). The two CDN tags: CSS bundle + JS bundle, and what needs which. Mobile-first mindset. |
-| 0:35 | 45 min | **Live-code: the grid** *(slides 5–6)*. `container` vs `container-fluid`, `row`/`col`, auto vs numbered columns, breakpoints (`col-md-6` — resize the window constantly!), gutters, and the flex utilities (`d-flex`, `justify-content-*`, `align-items-*`). Build the lab site's homepage skeleton live. |
+| 0:35 | 45 min | **Live-code: the grid** *(slides 5–6)*. `container` vs `container-fluid`, `row`/`col`, auto vs numbered columns, breakpoints (`col-md-6` — resize the window constantly!), gutters, and the flex utilities (`d-flex`, `justify-content-*`, `align-items-*`). Build the demo coffee-shop page (`demo/index.html`) live — different content from the lab on purpose, so the lab stays a fresh build. |
 | 1:20 | 10 min | **☕ Break** |
 | 1:30 | 45 min | **Live-code: components & utilities** *(slides 7–9)*. Navbar (with toggler — resize to show it collapse), cards in a grid, buttons and button variants, a form with `form-control`/`form-label`, alerts, badges. Then the utility classes that replace 90% of custom CSS: spacing (`mt-4`, `p-3`, `gap-3`), text (`text-center`, `fw-bold`), color (`bg-*`, `text-*`). Teach *reading the docs* as the core skill: find → copy → adapt. |
 | 2:15 | 10 min | **☕ Break** |

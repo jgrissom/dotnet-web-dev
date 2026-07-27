@@ -41,7 +41,7 @@ Why Bootstrap specifically (vs Tailwind, Bulma, etc.): it's the one you'll meet 
 
 ## Part 2: The grid (45 min live-code)
 
-**Live-code the lab site's homepage skeleton while teaching.** Keep the browser at half-width and resize constantly.
+**Live-code the demo coffee-shop page (`demo/index.html` — work on a copy) while teaching.** It's deliberately different content from the lab, so students assemble their portfolio fresh instead of replaying your keystrokes. Keep the browser at half-width and resize constantly.
 
 ### The three-layer cake
 
@@ -93,7 +93,7 @@ Nobody memorizes navbar markup. Open getbootstrap.com/docs, search the component
 > [!TIP]
 > Model the find → copy → adapt workflow *explicitly* for every component tonight — the students who internalize docs-reading will cruise through the whole semester.
 
-Walk these, in this order, into the live-coded page:
+Walk these, in this order, into the coffee-shop page:
 
 1. **Navbar** — copy the docs example with a toggler; shrink the window until it collapses into the hamburger. If clicking does nothing → JS bundle missing (told you).
 2. **Cards in a grid** — the pattern of their lives:

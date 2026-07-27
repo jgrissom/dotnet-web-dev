@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Common Grounds Coffee</title>
+  <!-- Bootswatch (Lux) — swapped live during the theme segment -->
+  <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/lux/bootstrap.min.css" rel="stylesheet">
+  <!-- Google Fonts — added live during the fonts segment -->
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --bs-body-font-family: "Nunito", system-ui, sans-serif; }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-md bg-dark" data-bs-theme="dark">
+    <div class="container">
+      <a class="navbar-brand" href="#home">Common Grounds</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+              aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#menu">Menu</a></li>
+          <li class="nav-item"><a class="nav-link" href="#visit">Visit</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header id="home" class="text-center py-5 bg-light">
+    <div class="container py-4">
+      <h1 class="display-4">Common Grounds Coffee</h1>
+      <p class="lead text-muted">Campus coffee, roasted around the corner, open until midnight during finals.</p>
+      <a href="#menu" class="btn btn-primary btn-lg mt-2">See the menu</a>
+    </div>
+  </header>
+
+  <main class="container py-5">
+    <div class="row g-4 text-center">
+      <section class="col-md-4">
+        <h2 class="fs-4">Locally roasted</h2>
+        <p class="text-muted">Beans from the roastery two blocks over, delivered every Tuesday.</p>
+      </section>
+      <section class="col-md-4">
+        <h2 class="fs-4">Study friendly</h2>
+        <p class="text-muted">Outlets at every table, Wi-Fi that actually works, refills half price.</p>
+      </section>
+      <section class="col-md-4">
+        <h2 class="fs-4">Open late</h2>
+        <p class="text-muted">Until 10pm most nights — midnight during finals week.</p>
+      </section>
+    </div>
+
+    <h2 id="menu" class="mt-5 mb-4">Menu</h2>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4">
+        <article class="card h-100">
+          <div class="card-body">
+            <h3 class="card-title fs-5">Espresso <span class="badge bg-danger">hot</span></h3>
+            <p class="card-text">Double shot, house blend. The reason this place exists.</p>
+          </div>
+        </article>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <article class="card h-100">
+          <div class="card-body">
+            <h3 class="card-title fs-5">Cappuccino <span class="badge bg-danger">hot</span></h3>
+            <p class="card-text">Equal parts espresso, steamed milk, and foam art we're proud of.</p>
+          </div>
+        </article>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <article class="card h-100">
+          <div class="card-body">
+            <h3 class="card-title fs-5">Cold brew <span class="badge bg-info text-dark">cold</span></h3>
+            <p class="card-text">Steeped 18 hours. Stronger than your deadline.</p>
+          </div>
+        </article>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <article class="card h-100">
+          <div class="card-body">
+            <h3 class="card-title fs-5">Chai latte <span class="badge bg-danger">hot</span></h3>
+            <p class="card-text">House spice mix, oat milk by default.</p>
+          </div>
+        </article>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <article class="card h-100">
+          <div class="card-body">
+            <h3 class="card-title fs-5">Blueberry muffin <span class="badge bg-success">food</span></h3>
+            <p class="card-text">Baked mornings; gone by noon.</p>
+          </div>
+        </article>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <article class="card h-100">
+          <div class="card-body">
+            <h3 class="card-title fs-5">Bagel &amp; schmear <span class="badge bg-success">food</span></h3>
+            <p class="card-text">Toasted, with plain or scallion cream cheese.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <h2 id="visit" class="mt-5 mb-4">Get in touch</h2>
+    <div class="row">
+      <div class="col-md-8">
+        <div class="alert alert-info">Ordering online comes in week 14 — for now this form is just for looks.</div>
+        <form>
+          <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name">
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email">
+          </div>
+          <div class="mb-3">
+            <label for="topic" class="form-label">What's this about?</label>
+            <select class="form-select" id="topic">
+              <option selected>Choose…</option>
+              <option>Catering an event</option>
+              <option>Study group reservation</option>
+              <option>Feedback</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="message" class="form-label">Message</label>
+            <textarea class="form-control" id="message" rows="3"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Send</button>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer class="text-center text-muted py-4 border-top">
+    <p class="mb-0">© 2026 Common Grounds Coffee · campus &amp; main</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

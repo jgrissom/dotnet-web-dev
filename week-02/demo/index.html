@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Common Grounds Coffee</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- SEGMENT: components — navbar (copy from docs, adapt) -->
+  <nav>
+    <a href="#home">Common Grounds</a>
+    <a href="#menu">Menu</a>
+    <a href="#visit">Visit</a>
+  </nav>
+
+  <!-- SEGMENT: grid — hero first (display-*, lead, text-center, py-5) -->
+  <header id="home">
+    <h1>Common Grounds Coffee</h1>
+    <p>Campus coffee, roasted around the corner, open until midnight during finals.</p>
+    <a href="#menu">See the menu</a>
+  </header>
+
+  <main>
+    <!-- SEGMENT: grid — three blurbs become a responsive row (col-12 → col-md-4) -->
+    <section>
+      <h2>Locally roasted</h2>
+      <p>Beans from the roastery two blocks over, delivered every Tuesday.</p>
+    </section>
+    <section>
+      <h2>Study friendly</h2>
+      <p>Outlets at every table, Wi-Fi that actually works, refills half price.</p>
+    </section>
+    <section>
+      <h2>Open late</h2>
+      <p>Until 10pm most nights — midnight during finals week.</p>
+    </section>
+
+    <!-- SEGMENT: components — menu items become a card grid (row g-4, col-md-6 col-lg-4, h-100, badges) -->
+    <h2 id="menu">Menu</h2>
+
+    <article>
+      <h3>Espresso</h3>
+      <p>Double shot, house blend. The reason this place exists.</p>
+      <span>hot</span>
+    </article>
+    <article>
+      <h3>Cappuccino</h3>
+      <p>Equal parts espresso, steamed milk, and foam art we're proud of.</p>
+      <span>hot</span>
+    </article>
+    <article>
+      <h3>Cold brew</h3>
+      <p>Steeped 18 hours. Stronger than your deadline.</p>
+      <span>cold</span>
+    </article>
+    <article>
+      <h3>Chai latte</h3>
+      <p>House spice mix, oat milk by default.</p>
+      <span>hot</span>
+    </article>
+    <article>
+      <h3>Blueberry muffin</h3>
+      <p>Baked mornings; gone by noon.</p>
+      <span>food</span>
+    </article>
+    <article>
+      <h3>Bagel & schmear</h3>
+      <p>Toasted, with plain or scallion cream cheese.</p>
+      <span>food</span>
+    </article>
+
+    <!-- SEGMENT: components — form (form-label, form-control, form-select, alert; constrain with col-md-8) -->
+    <h2 id="visit">Get in touch</h2>
+    <form>
+      <label>Name</label>
+      <input type="text">
+
+      <label>Email</label>
+      <input type="email">
+
+      <label>What's this about?</label>
+      <select>
+        <option>Choose…</option>
+        <option>Catering an event</option>
+        <option>Study group reservation</option>
+        <option>Feedback</option>
+      </select>
+
+      <label>Message</label>
+      <textarea rows="3"></textarea>
+
+      <button type="submit">Send</button>
+    </form>
+  </main>
+
+  <!-- SEGMENT: utilities — footer (text-center, text-muted, py-4) -->
+  <footer>
+    <p>© 2026 Common Grounds Coffee · campus & main</p>
+  </footer>
+
+  <!-- SEGMENT: bootswatch — swap the CSS link above · SEGMENT: fonts — add link + --bs-body-font-family -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
