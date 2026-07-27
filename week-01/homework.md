@@ -52,6 +52,20 @@ console.log(openCourseLines(courses));    // ["WEB210: Intro to Web (3 credits)"
 console.log(totalCredits(courses));       // 14
 ```
 
+### Check yourself before you submit
+
+Same deal as the lab: copy [`homework-checks.js`](homework-checks.js) from the course repo into your homework folder, and load it in your `index.html` **after** your own script:
+
+```html
+<script src="homework.js"></script>
+<script src="homework-checks.js"></script>
+```
+
+Refresh → the console grades all 8 functions ✅/❌ and warns about any `var`/`==` deductions.
+
+> [!TIP]
+> **This is the exact same check I grade with.** If your console says 8 / 8 and no deduction warnings, the function points are yours. Work it one ❌ at a time, just like the lab — and leave the checker in your repo when you submit; it doesn't affect anything.
+
 ## Part 4 — Ship it to GitHub Pages (graded)
 
 In this course, nothing stays on your laptop. Your JavaScript work goes live on GitHub Pages; starting week 3, your .NET apps deploy to Azure.
