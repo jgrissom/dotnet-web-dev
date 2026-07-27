@@ -28,7 +28,7 @@ Edit-by-edit cue sheet for transforming `index.html` (your **scratch copy**) int
 
 - [ ] Open [docs → Navbar](https://getbootstrap.com/docs/5.3/components/navbar/), copy the example **with a toggler**, replace the plain `<nav>`
 - [ ] Adapt: brand → `Common Grounds` (`href="#home"`); links → Home `#home` (`.active`), Menu `#menu`, Visit `#visit`
-- [ ] Keep `data-bs-target="#mainNav"` ↔ `id="mainNav"` matched
+- [ ] Point out the matched pair the docs example came with: the toggler's `data-bs-target="#navbarSupportedContent"` ↔ the collapse div's `id="navbarSupportedContent"` (name varies by example). Keep the docs' name or rename it — but **always change both halves together**; mismatch = silently dead hamburger
 - [ ] On the `<nav>`: `navbar-expand-md bg-dark` + `data-bs-theme="dark"`
 - [ ] **✓ shrink the window** — hamburger appears and *works*; point at the JS bundle `<script>` that makes it work
 - [ ] *(optional theater)* comment the bundle out → dead hamburger → uncomment. The #1 lab bug, pre-lived
