@@ -172,7 +172,7 @@ Week 5 callback (preview it now): swapping this same link inside `_Layout.cshtml
 
 **One more flip while the room is warm:** open DevTools, add `data-bs-theme="dark"` to the `<html>` element — the whole site goes dark, live. That's Bootstrap 5.3 **color modes**, one attribute. A real toggle button is three lines of week-1 JS (it's a lab stretch goal), and it works with Bootswatch themes too.
 
-**And the flip plants a deliberate bug:** the hero stays glowing light, because `bg-light` is *literal* — light in every theme. Let the room spot it, then fix it live: `bg-body-tertiary` ("slightly offset from the page background") is the theme-aware replacement, and the Bootstrap docs themselves migrated to it for this exact reason. It's the `btn-primary`-not-`btn-blue` argument, round two — name the role, not the appearance.
+**And the flip plants a deliberate bug:** the hero stays glowing light, because `bg-light` is *literal* — light in every theme. Let the room spot it, then fix it live: `bg-body-tertiary` ("slightly offset from the page background") is the theme-aware replacement, and the Bootstrap docs themselves migrated to it for this exact reason. It's the `btn-primary`-not-`btn-blue` argument, round two — name the role, not the appearance. (Related trap: under Lux, `text-primary` is near-black — a primary-colored icon vanishes in dark mode. The theme owns the semantic colors; pick roles whose theme values suit your surface.)
 
 ---
 

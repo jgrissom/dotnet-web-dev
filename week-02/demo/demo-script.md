@@ -151,7 +151,7 @@ Edit-by-edit cue sheet for transforming `index.html` (your **scratch copy**) int
 - [ ] The showpiece — one icon `<div>` above each feature heading:
   ```html
   <div class="fs-1 text-danger"><i class="bi bi-fire"></i></div>    <!-- roasted -->
-  <div class="fs-1 text-primary"><i class="bi bi-wifi"></i></div>   <!-- study -->
+  <div class="fs-1 text-success"><i class="bi bi-wifi"></i></div>   <!-- study -->
   <div class="fs-1 text-info"><i class="bi bi-moon-stars"></i></div><!-- late -->
   ```
 - [ ] **✓ say it:** "two utility classes turn a character into artwork"
@@ -169,6 +169,7 @@ Edit-by-edit cue sheet for transforming `index.html` (your **scratch copy**) int
 - [ ] Dark-mode flip: DevTools → `<html>` → add `data-bs-theme="dark"`. One attribute; the toggle button is a lab stretch goal
 - [ ] **✓ let them spot it:** the hero is still a glowing light band. Why? `bg-light` means *literally light, in every theme* — it said so all along
 - [ ] Fix live: hero `bg-light` → `bg-body-tertiary` ("slightly offset from the page background" — theme-aware). Flip dark/light again: now the whole page adapts. **Semantic names > literal names, part two**
+- [ ] Bonus observation if anyone asks about icon colors: `text-primary` under Lux is **near-black** (Lux's whole look) — a `text-primary` icon would vanish in dark mode. Semantic colors belong to the *theme*; that's the feature working as designed
 
 ## 4 · Google Fonts *(slide 13)*
 
