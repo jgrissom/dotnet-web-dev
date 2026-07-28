@@ -10,16 +10,16 @@ Your first ASP.NET Core MVC app, graded the same way you'll work: run the checks
    ```bash
    cd dotnet-web-dev && git pull
    ```
-2. Copy the whole `week-03/lab/starter` folder into your own projects folder — it's a **solution**: your app (`FirstFlight.Web`) plus the read-only checks (`FirstFlight.Checks`).
-3. From your copy (the folder containing `FirstFlight.sln`):
+2. Copy the whole `week-03/lab/starter` folder into your own projects folder — it's just two project folders side by side: your app (`FirstFlight.Web`) and the read-only checks (`FirstFlight.Checks`).
+3. Open the copied parent folder in VS Code. From its terminal:
    ```bash
-   dotnet test
+   dotnet test FirstFlight.Checks
    ```
 
 **1 / 6 passing.** Check 1 is free — it proves the harness works. The other five are the lab.
 
 > [!TIP]
-> Two terminals: `dotnet watch` running the app in one (see your changes in the browser), `dotnet test` in the other after each task. Browser for feel, checks for truth.
+> Two terminals: in one, `cd FirstFlight.Web` then `dotnet watch` (see your changes live); in the other, stay at the parent folder and re-run `dotnet test FirstFlight.Checks` after each task. Browser for feel, checks for truth.
 
 ## The tasks
 

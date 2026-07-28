@@ -52,7 +52,7 @@ From the rows containing **US**, write down your top three in this preference or
 
 ## 4. Deploy
 
-From **inside your web project folder** — the one with the `.csproj`, not the solution folder:
+From **inside `FirstFlight.Web`** — the folder with the `.csproj`, not the parent folder:
 
 ```bash
 cd FirstFlight.Web
@@ -67,7 +67,7 @@ az webapp up --name ff-web-XX1234 --sku F1 --os-type Linux \
 - First run takes a few minutes (it's creating the server). It prints progress; let it finish.
 
 > [!IMPORTANT]
-> **Wrong-folder deploys are the #1 failure.** `az webapp up` ships the folder you're standing in. If you deploy from the solution folder, Azure gets confused and serves an error page. `cd FirstFlight.Web` first, every time.
+> **Wrong-folder deploys are the #1 failure.** `az webapp up` ships the folder you're standing in. If you deploy from the parent folder, Azure gets confused and serves an error page. `cd FirstFlight.Web` first, every time.
 
 **✓ Verify** — the command's output ends with a JSON blob including your URL:
 

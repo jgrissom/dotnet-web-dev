@@ -248,7 +248,7 @@ az webapp up --name ff-web-XX1234 --sku F1 --os-type Linux \
 ## Lab: First Flight
 
 - Copy `week-03/lab/starter/` out of the repo clone
-- `dotnet test` → **1 / 6 passing** — turn the other five green
+- `dotnet test FirstFlight.Checks` → **1 / 6 passing** — turn the other five green
 - Brand it · add an About page · put it in the nav · greet by name
 - Same rhythm as always: one ❌ at a time
 
@@ -256,7 +256,7 @@ az webapp up --name ff-web-XX1234 --sku F1 --os-type Linux \
 
 ## Before next week
 
-- ✅ Lab to **6 / 6** (`dotnet test`)
+- ✅ Lab to **6 / 6** (`dotnet test FirstFlight.Checks`)
 - ✅ **Deploy it** — `deploy-guide.md` walks every step; submit your Azure URL
 - ✅ 3+ meaningful commits, pushed
 - **Next week:** Razor for real — loops, conditionals, and pages built from data

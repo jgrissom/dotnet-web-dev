@@ -43,5 +43,5 @@ By the end of this session, students can:
 - Demo from your **Teaching profile**; terminal font up for the projector. The demo app (`CommonGrounds.Web`) is created live in a scratch folder — different content from the lab on purpose.
 - **The Azure segment is the riskiest 35 minutes** (network, logins, name collisions). Your deploy happens first so the room sees success before attempting theirs; students only *install + login* in class — their own deploy is homework via the guide. If the classroom network fights `az login`, fall back to hotspot for the demo and move on.
 - Free-tier cold starts: the deployed app's first load can take ~30s. Deploy early in the segment, keep talking, refresh when it's warm.
-- The lab starter is a full solution (`FirstFlight.sln`) — students run `dotnet test` from the folder that contains it, not from inside the Web project.
+- The lab starter is two project folders side by side (no solution file — folders all the way down, like everything else). Students open the parent folder and run `dotnet test FirstFlight.Checks` from there; `dotnet watch` runs from inside `FirstFlight.Web`.
 - If time runs short: the summit slide (18) survives anything; the lab can start at check 1 with as little as 25 minutes and still land the red-to-green habit.

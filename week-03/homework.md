@@ -8,7 +8,7 @@
 All six checks green:
 
 ```bash
-dotnet test
+dotnet test FirstFlight.Checks
 # Passed! - Failed: 0, Passed: 6 ...
 ```
 
