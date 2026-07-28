@@ -235,7 +235,7 @@ laptop ── az webapp up ──► App Service ──► https://you.azurewebs
 
 ```bash
 cd FirstFlight.Web        # ← INSIDE the web project folder
-az webapp up --name ff-web-XX1234 --sku F1 \
+az webapp up --name ff-web-XX1234 --sku F1 --os-type Linux \
   --runtime DOTNETCORE:10.0 --location "<YOUR-US-REGION>"
 ```
 

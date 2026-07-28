@@ -24,7 +24,7 @@ If class ended at check 4, that means finishing `Hello` (checks 5–6) — the [
 Follow **[deploy-guide.md](deploy-guide.md)** — install `az`, log in, and pick your US region (guide steps 1–3, done in class), then deploy from inside `FirstFlight.Web`:
 
 ```bash
-az webapp up --name ff-web-XX1234 --sku F1 \
+az webapp up --name ff-web-XX1234 --sku F1 --os-type Linux \
   --runtime DOTNETCORE:10.0 --location "<YOUR-US-REGION>"
 ```
 

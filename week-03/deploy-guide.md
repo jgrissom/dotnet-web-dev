@@ -56,12 +56,13 @@ From **inside your web project folder** — the one with the `.csproj`, not the 
 
 ```bash
 cd FirstFlight.Web
-az webapp up --name ff-web-XX1234 --sku F1 \
+az webapp up --name ff-web-XX1234 --sku F1 --os-type Linux \
   --runtime DOTNETCORE:10.0 --location "<YOUR-US-REGION>"
 ```
 
 - Replace `XX1234` with your initials + any 4 digits — the name becomes your URL and must be **globally unique**. Taken? Change the digits.
 - `--sku F1` is the **free tier**. It sleeps when idle; the first request after a nap takes ~30 seconds. Normal.
+- `--os-type Linux` is required: without it Azure defaults to a **Windows** host and rejects the runtime name with *"Windows runtime 'DOTNETCORE|10.0' is not supported"* — that exact error means this flag is missing.
 - `--location` gets the US region you picked in step 3, in quotes (e.g. `"Central US"`). Same region every time you deploy anything this semester.
 - First run takes a few minutes (it's creating the server). It prints progress; let it finish.
 
@@ -81,7 +82,7 @@ Open it. Your app. On the internet. **Test it in a private/incognito window and 
 Changed your code? Same command, same folder:
 
 ```bash
-az webapp up --name ff-web-XX1234 --sku F1 \
+az webapp up --name ff-web-XX1234 --sku F1 --os-type Linux \
   --runtime DOTNETCORE:10.0 --location "<YOUR-US-REGION>"
 ```
 
@@ -95,7 +96,7 @@ It remembers the app and just ships the new build. That's the whole update story
 - **Name taken:** pick new digits. Names are global across all of Azure.
 - **Create fails with a quota / "not available in this region" error:** normal — the offer list doesn't guarantee today's capacity. Retry with the **next US region on your list and fresh digits in the app name** (a clean slate avoids half-created leftovers):
   ```bash
-  az webapp up --name ff-web-XX5678 --sku F1 \
+  az webapp up --name ff-web-XX5678 --sku F1 --os-type Linux \
     --runtime DOTNETCORE:10.0 --location "Central US"
   ```
   Keep walking the list until one sticks — last semester some students needed two or three tries, and **every single one found a region that worked.** It converges; it's just annoying. Never a Canada region: apps hosted there have never been able to reach the school SQL Server.
