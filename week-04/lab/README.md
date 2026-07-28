@@ -35,7 +35,9 @@ Six legendary creatures, one archive. A list page, a details page, and a 404 tha
 | 6 | `IndexLinksToDetails` | Each row links to its own details page — `href="/Cryptids/Details/@cryptid.Id"` inside the loop. |
 
 > [!TIP]
-> **`CryptidData` will go red the first time you use it in the controller.** That's expected — the controller can't see the Models namespace yet. Put your cursor on the squiggle and press **Ctrl/Cmd + .**; VS Code offers to add `using Cryptids.Web.Models;` for you. Take the fix and move on.
+> **Your controller needs `using Cryptids.Web.Models;` at the top** before it can see `CryptidData`. Being in the same project isn't enough — a namespace has to be imported.
+>
+> If `CryptidData` goes **red**, put your cursor on it and press **Ctrl/Cmd + .** — VS Code offers to add the line for you. If it *doesn't* go red, you probably picked `CryptidData` from the IntelliSense list, and VS Code already added the `using` when you accepted it. Scroll up and look: it's there.
 
 > [!TIP]
 > Check 4 also asserts the details page does **not** show the whole archive — if you pass `CryptidData.All` to `Details.cshtml`, it'll fail. One creature in, one creature out.

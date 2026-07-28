@@ -198,11 +198,21 @@ Everything here happens in `Views/Trucks/Index.cshtml`.
       return View(TruckData.All);
   }
   ```
-- [ ] 🔴 **`TruckData` goes red** — the controller can't see the Models namespace yet. Don't just fix it silently; make it a beat: put the cursor on the squiggle, **`Ctrl/Cmd + .`**, and take the offered fix. It adds this line at the top:
-  ```csharp
-  using Curbside.Models;
-  ```
-  "The compiler told us exactly what was missing and offered to fix it — that lightbulb is your friend all semester." *(Students hit this same red squiggle in the lab.)*
+- [ ] 🔎 **The controller needs `using Curbside.Models;` at the top** — without it this does not compile (`CS0103: The name 'TruckData' does not exist`). **Which of these you see depends on how you typed it:**
+
+  <details><summary>🔴 <b>It went red</b> — you typed <code>TruckData</code> straight through</summary>
+
+  Make it a beat rather than a silent fix: put the cursor on the squiggle, press **`Ctrl/Cmd + .`**, take the offered fix. *"The compiler told us exactly what was missing and offered to fix it — that lightbulb is your friend all semester."*
+
+  </details>
+
+  <details><summary>🟢 <b>Nothing went red</b> — you picked <code>TruckData</code> from the IntelliSense list</summary>
+
+  Then VS Code **already added the using for you** when you accepted the completion. Don't skip past it — scroll to the top of `TrucksController.cs`, point at the new line, and say *"notice it wrote that for us the moment we accepted the suggestion. It had to: `Curbside.Controllers` can't see `Curbside.Models` on its own."*
+
+  </details>
+
+  Either way, land the point: **a namespace isn't visible just because it's in the same project.** *(Students hit this in the lab — the lab README warns them.)*
 - [ ] Replace the whole of `Views/Trucks/Index.cshtml` — **paste**:
 
   <details><summary>📋 paste: the typed Index view</summary>
