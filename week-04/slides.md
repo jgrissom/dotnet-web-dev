@@ -61,6 +61,8 @@ The `=` parts are **defaults** — they're why `/` works.
 
 ---
 
+<!-- _footer: '🎨 live — script §1: Curbside is running; type each URL, predict first' -->
+
 ## Predict before you press Enter
 
 | URL | Controller? | Action? |
