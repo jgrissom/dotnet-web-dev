@@ -51,7 +51,7 @@ dotnet test Cryptids.Checks
 
 | # | Check | What to do |
 |---|-------|------------|
-| 2 | `CryptidsPageExists` | Add a `CryptidsController` with an `Index` action, and the matching view `Views/Cryptids/Index.cshtml`. [Three names must agree](../lecture-notes.md#conventions-three-names-that-must-agree) — get `/Cryptids` returning *anything* first. |
+| 2 | `CryptidsPageExists` | Add a `CryptidsController` with an `Index` action, and the matching view `Views/Cryptids/Index.cshtml`. **What's in the view doesn't matter yet** — `<h1>Cryptid Registry 👻</h1>` is plenty (an empty file would pass too). This check only proves the wiring: [three names must agree](../lecture-notes.md#conventions-three-names-that-must-agree). |
 | 3 | `IndexListsEveryCryptid` | Pass the archive to the view (`return View(CryptidData.All);`), declare it with [`@model List<Cryptid>`](../lecture-notes.md#strongly-typed-views-with-model), and [loop it out](../lecture-notes.md#loops-in-a-view) with `@foreach`. Every creature on the page. |
 | 4 | `DetailsShowsOneCryptid` | Add a `Details(int id)` action + `Details.cshtml` so `/Cryptids/Details/2` shows **that one creature** — its name *and* its region. [The Index → Details pair](../lecture-notes.md#index-and-details-the-classic-pair). |
 | 5 | `BadIdIsNotFound` | `/Cryptids/Details/999` must return a **404**, not a crash and not a blank page. [`FirstOrDefault` + `NotFound()`](../lecture-notes.md#details-and-the-notfound-guard). |
