@@ -209,6 +209,25 @@ After every Razor beat above, **View Source** — not DevTools' Elements panel, 
 
 The honest summary for students: `ViewData` is a shoebox you toss things into; `@model` is a labeled, typed slot the compiler checks. Use `ViewData` for the page title (the template already does) and `@model` for everything that *is* the page.
 
+### Namespaces, and the `using` they require
+
+The moment the controller says `TruckData.All`, something has to connect two files. That something is a **namespace**.
+
+```csharp
+namespace Curbside.Models;      // Models/Truck.cs, Models/TruckData.cs
+namespace Curbside.Controllers; // Controllers/TrucksController.cs
+```
+
+- A namespace is a **surname for your types**. `Curbside.Models.Truck` is the type's full name; `Truck` is just what you call it among family.
+- **Being in the same project does not make a type visible.** `Curbside.Controllers` can't see `Curbside.Models` any more than it can see a random NuGet package — you have to import it: `using Curbside.Models;`
+- Views get theirs for free: `Views/_ViewImports.cshtml` already has `@using Curbside.Models`, which is why `@model List<Truck>` just works without you adding anything.
+- **Why anyone bothers:** two classes named `Truck` can coexist if they live in different namespaces, and every scaffolded file you meet from week 7 on — EF Core, Identity — will have one. This is universal .NET furniture, not a Curbside quirk.
+
+> [!NOTE]
+> **Honest footnote, and it explains something you may see live:** C# does *not* force this. Type a class with no `namespace` line at all and it lands in the global namespace, visible everywhere, needing no `using` — the app builds and runs exactly the same. That's why a student who skips the namespace never hits the red squiggle, and why VS Code adding the `using` for you (when you accept `TruckData` from IntelliSense) can make the whole issue invisible.
+>
+> We use namespaces because every professional .NET codebase does, and because the template already put your files in them. **It isn't graded** — but tell them to match the starter's shape, or half the room will be reading different code from the other half by week 7.
+
 ### Strongly typed views with @model
 
 Two halves that must agree. Controller side:

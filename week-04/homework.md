@@ -32,7 +32,7 @@ Build a **new** MVC app on a topic you pick — *anything except food trucks or 
 
 It needs:
 
-1. **A model class** with at least **4 properties**, including an `int Id` and at least one non-string property (a number, a `bool`, a `DateTime`).
+1. **A model class** with at least **4 properties**, including an `int Id` and at least one non-string property (a number, a `bool`, a `DateTime`). Put it in a `namespace`, the way the starter's `Cryptid` is — not graded, but it's what every .NET codebase does, and it's why your controller needs a `using`.
 2. **A seeded list of at least 5 items** — a `static List<T>` like the starter's `CryptidData`.
 3. **An Index page** listing all of them, built with `@model` and `@foreach`.
 4. **A Details page** — `/Things/Details/3` shows that one item.
