@@ -41,7 +41,8 @@ public class FlightChecks : IClassFixture<WebApplicationFactory<Program>>
     public async Task Check4_AboutIsInTheNav()
     {
         var html = await _client.GetStringAsync("/");
-        Assert.Contains("/Home/About", html);
+        // URLs are case-insensitive, so /home/about is just as correct
+        Assert.Contains("/Home/About", html, StringComparison.OrdinalIgnoreCase);
     }
 
     [Fact] // Task 5: a Hello action that reads a query parameter

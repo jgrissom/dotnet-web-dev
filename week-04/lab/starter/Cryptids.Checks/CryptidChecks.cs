@@ -68,6 +68,7 @@ public class CryptidChecks : IClassFixture<WebApplicationFactory<Program>>
     public async Task Check6_IndexLinksToDetails()
     {
         var html = await _client.GetStringAsync("/Cryptids");
-        Assert.Contains("/Cryptids/Details/1", html);
+        // URLs are case-insensitive, so /cryptids/details/1 is just as correct
+        Assert.Contains("/Cryptids/Details/1", html, StringComparison.OrdinalIgnoreCase);
     }
 }
