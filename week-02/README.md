@@ -19,4 +19,4 @@ Students turn an unstyled 3-page site into a personalized, responsive portfolio 
 - Remind students to `git pull` this repo for the week-02 starter
 - Have bootswatch.com and fonts.google.com open in tabs for the live demos
 
-**Prev:** [← Week 1 — Setup & JS Refresher](../week-01/README.md) · **Next:** Week 3 — HTTP & first MVC app *(coming)*
+**Prev:** [← Week 1 — Setup & JS Refresher](../week-01/README.md) · **Next:** [Week 3 — Hello, Server →](../week-03/README.md)
