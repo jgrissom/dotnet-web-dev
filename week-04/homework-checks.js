@@ -1,14 +1,17 @@
 // ═══════════════════════════════════════════════════════════════════════════
 //  Week 4 homework self-check — the SAME checks I grade with.
 //
-//  EASIEST WAY (no installs — just like weeks 1 and 2):
-//    1. Open YOUR site in the browser (localhost while you build, or your
-//       deployed Azure URL before you submit)
-//    2. F12 → Console
-//    3. Paste this whole file, press Enter
+//  EASIEST WAY — include it like a CDN, exactly like Bootstrap in week 2.
+//  Add this at the bottom of YOUR index view (e.g. Views/Trails/Index.cshtml):
 //
-//  It checks whatever site the console is open on. Run it on your DEPLOYED
-//  site before submitting — that's the one I grade.
+//    <script src="https://jgrissom.github.io/dotnet-web-dev/week-04/homework-checks.js"></script>
+//
+//  Then load that page and open the console (F12). It runs automatically.
+//  Type  recheck()  to run it again without refreshing.
+//
+//  It checks whatever site it's loaded on. Run it on your DEPLOYED site
+//  before submitting — that's the one I grade. Take the tag out when you're
+//  done, or leave it: it only writes to the console.
 //
 //  (Have Node installed? `node homework-checks.js <url>` works too.)
 //
@@ -162,12 +165,11 @@
     })();
   }
 
-  // ── Browser: paste into the console on your own site ─────────────────────────
+  // ── Browser: <script src> on your own site, or pasted into the console ───────
   if (typeof window !== "undefined" && typeof document !== "undefined") {
     const bold = "font-weight: bold";
-    console.log(`%c🔎 Week 4 self-check — ${window.location.origin}`, "font-weight: bold; font-size: 1.1em");
-    console.log("Heads up: a red 404 line will appear partway through. That's expected — one of the checks asks for a bad id on purpose.");
-    runChecks(window.location.origin).then(({ checks, earned, possible, route }) => {
+
+    const report = ({ checks, earned, possible, route }) => {
       for (const c of checks) {
         console.log(`%c${c.pass ? "✅" : "❌"} ${c.pts} pts  ${c.label}`, c.pass ? "color: green" : "color: crimson");
         if (c.hint) console.log(`      ↳ ${c.hint}`);
@@ -179,6 +181,16 @@
         : "Fix the ❌ above and run it again. Also check by hand:"}`, bold);
       BY_HAND.forEach(l => console.log("   • " + l.trim()));
       console.log("%cRun this on your DEPLOYED site before you submit.", bold);
-    });
+      console.log("%cType  recheck()  to run these again without refreshing.", "color: #79c0ff");
+    };
+
+    const run = () => {
+      console.log(`%c🔎 Week 4 self-check — ${window.location.origin}`, `${bold}; font-size: 1.1em`);
+      console.log("Heads up: a red 404 line will appear partway through. That's expected — one of the checks asks for a bad id on purpose.");
+      return runChecks(window.location.origin).then(report);
+    };
+
+    window.recheck = run;   // re-run from the console without reloading
+    run();
   }
 })();

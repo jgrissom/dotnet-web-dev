@@ -44,23 +44,33 @@ It needs:
 
 **[`homework-checks.js`](homework-checks.js) runs the same checks I grade with.** Nothing in it is specific to my topic or yours — it finds your controller by following the link you put in the navbar, exactly like a visitor would.
 
-**Nothing to install, one line to copy.** Same routine as weeks 1 and 2:
+**Nothing to install — you include it exactly like the Bootstrap CDN from week 2.**
 
-1. Open **your own site** in the browser — `localhost` while you're building, your Azure URL before you submit
-2. **F12 → Console**
-3. Paste this one line and press **Enter**:
+Add this one line at the bottom of **your index view** (`Views/Trails/Index.cshtml`, or whatever yours is called):
 
-```js
-fetch('https://jgrissom.github.io/dotnet-web-dev/week-04/homework-checks.js').then(r=>r.text()).then(eval)
+```html
+<script src="https://jgrissom.github.io/dotnet-web-dev/week-04/homework-checks.js"></script>
 ```
 
-> [!IMPORTANT]
-> **The first time you paste into a console, Chrome and Edge will refuse.** You'll see *"Warning: Don't paste code you don't understand"* and it'll ask you to type **`allow pasting`** and press Enter. Do that once, then paste again — the browser remembers.
+Then load that page and open the console — **F12 → Console**. It runs automatically, the same way week 1's checker did.
+
+```
+🔎 Week 4 self-check — https://trail-guide-ab1234.azurewebsites.net
+✅ 2 pts  nav link to your index page — found /Trails
+✅ 4 pts  index lists all your items — 6 detail links found
+✅ 4 pts  details page shows one item — /Trails/Details/1
+✅ 2 pts  a bad id returns 404 — got 404
+
+🎉 12 / 12 automated points
+```
+
+> [!NOTE]
+> It checks whatever site it's loaded on, so it works on `localhost` while you build **and** on your deployed app. Type `recheck()` in the console to run it again without refreshing. A red `404` line partway through is expected — one check asks for a bad id on purpose.
 >
-> That warning is *correct*, by the way, and worth taking seriously everywhere else: pasting code you can't read into a console is how people get their accounts stolen. Here you can read it — [`homework-checks.js`](homework-checks.js) is in this folder, and it only does GETs against your own site.
+> Leave the `<script>` tag in or take it out, whichever you prefer. It only writes to the console and doesn't affect grading.
 
 > [!TIP]
-> **No internet, or the fetch is blocked?** Open [`homework-checks.js`](homework-checks.js), copy the whole file, and paste that into the console instead. Identical result — the one-liner is just a shortcut for fetching it.
+> **Working offline?** Save [`homework-checks.js`](homework-checks.js) into your `wwwroot` folder and point the tag at it locally instead: `<script src="/homework-checks.js"></script>`. That's the CDN-versus-local-copy trade-off from week 2, showing up in real life.
 
 ```
 🔎 Week 4 self-check — https://trail-guide-ab1234.azurewebsites.net

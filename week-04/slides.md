@@ -290,7 +290,7 @@ Tonight's target: **checks 1–4**. The rest is homework.
 
 - ✅ Lab to **6 / 6** — not collected, do it anyway
 - ✅ **Start your semester project** — your topic, ≥5 items
-- ✅ Self-check: paste `homework-checks.js` in your console
+- ✅ Self-check: one `<script>` tag, then read the console
 - ✅ Deployed to Azure, URL + repo via Canvas · 3+ commits
 
 You'll extend that app every week from here. **Pick a topic you can live with.**
