@@ -28,8 +28,34 @@ az webapp up --name ff-web-XX1234 --sku F1 --os-type Linux \
   --runtime DOTNETCORE:10.0 --location "<YOUR-US-REGION>"
 ```
 
+Leave the app up until grades post.
+
+## Part 4 — Check your deployed site before you submit ✅
+
+`dotnet test` proves your **code** works. It says nothing about whether your **deployed site** works — and that's worth **6 of the 20 points**. [`homework-checks.js`](homework-checks.js) checks exactly what I check.
+
+**Nothing to install** — include it like the Bootstrap CDN from week 2. Add this at the bottom of `Views/Home/Index.cshtml`:
+
+```html
+<script src="https://jgrissom.github.io/dotnet-web-dev/week-03/homework-checks.js"></script>
+```
+
+Then open your **Azure URL**, press **F12 → Console**, and read the results:
+
+```
+🔎 Week 3 deployed check — https://ff-web-ab1234.azurewebsites.net
+✅ 2 pts  home page is branded First Flight
+✅ 2 pts  /Home/About loads
+✅ 1 pts  /Home/Hello?name=Ada greets by name
+✅ 1 pts  /Home/Hello defaults to stranger
+
+📋 4 of 4 checks green · 6 of 6 deployed points
+```
+
+Every ❌ tells you the next thing to fix. It works on `localhost` too, but **run it on your Azure URL before submitting** — it'll remind you if you don't. Leave the `<script>` tag in or take it out; it only writes to the console.
+
 > [!IMPORTANT]
-> Before submitting, test your live URL **in a private/incognito window**: the home page (branded), `/Home/About`, and `/Home/Hello?name=anything`. If it 404s or 500s for you, it does for me — and the deploy-guide's 🆘 section is where to look. Leave the app up until grades post.
+> If a check fails on your deployed site but passes locally, you almost certainly deployed the wrong folder — `az webapp up` ships the folder you're standing in, so run it from **inside `FirstFlight.Web`**. The deploy-guide's 🆘 section covers the rest.
 
 ## 📊 Grading (20 pts)
 

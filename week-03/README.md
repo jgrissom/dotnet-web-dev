@@ -12,6 +12,7 @@ The pivot night: HTTP demystified in DevTools, `dotnet new mvc` to a working ser
 | In&nbsp;class,&nbsp;live-⁠coding | 🎨&nbsp;[demo/⁠](demo/) | *CommonGrounds.Web* built + deployed live (different content than the lab); [clickable cue sheet](https://jgrissom.github.io/dotnet-web-dev/week-03/demo/script.html) |
 | Azure&nbsp;segment&nbsp;+&nbsp;homework | 🧭&nbsp;[deploy-⁠guide.md](deploy-guide.md) | Student walkthrough: install `az` → login → `az webapp up`, with ✓-checkpoints |
 | In&nbsp;class,&nbsp;last&nbsp;35&nbsp;min | 🧪&nbsp;[lab/⁠](lab/) | *First Flight* — a solution with 6 `dotnet test` checks; 1/6 green out of the box (answer key in the private answer-keys repo) |
+| With&nbsp;the&nbsp;homework | ✅&nbsp;[homework-⁠checks.js](homework-checks.js) | Student self-check for the **deployed** site — included via `<script>` tag; the same 6 points the grader awards |
 | Assigned&nbsp;at&nbsp;wrap-⁠up | 📤&nbsp;[homework.md](homework.md) | 6/6 checks + GitHub repo + **deploy to Azure**, URL via Canvas |
 
 ## 📋 Before class, don't forget
