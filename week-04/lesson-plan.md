@@ -22,14 +22,13 @@ By the end of this session, students can:
 - `lecture-notes.md` on your second screen — the script, with all predict-then-run answers and the troubleshooting appendix
 - **Demo cue sheet:** [`demo/demo-script.md`](demo/demo-script.md) — keyed to slides ([clickable version](https://jgrissom.github.io/dotnet-web-dev/week-04/demo/script.html))
 - A scratch folder for **Curbside**; terminal font sized for the projector
-- One student Azure URL you can put on screen for the 5-minute status check (ask a volunteer, don't cold-call)
-- The class **working regions** list from week 3, to update
+- The class **working regions** list from week 3, to update *(no student apps on the projector this week — that starts in week 5)*
 
 ## Timed agenda
 
 | Time | Duration | Segment |
 |------|----------|---------|
-| 0:00 | 5 min | **Deploy status check** *(deck on title slide)*. **Not a gallery** — everyone built the same First Flight, so there's nothing to compare. Hands up if your Azure URL works; note who's stuck and catch them during the lab. Put **one** volunteer's URL on screen and have the room load it on their phones — that's the "it's really on the internet" moment, and once is enough. Update the working-regions list. Save the real gallery for **week 5**, when they arrive with 25 different topics. |
+| 0:00 | 5 min | **Deploy status check** *(deck on title slide)*. **No student apps on screen tonight** — everyone built the same First Flight, so there's nothing to compare and nothing to admire. Just take the temperature: hands up if your Azure URL works, note who's stuck and catch them during the lab, and update the class working-regions list with any new wins or failures. Showing student work starts in **week 5**, when they arrive with 25 different topics and it's actually worth looking at. |
 | 0:05 | 40 min | **Routing deep dive** *(slides 3–5, demo §1)*. **Open with ~60 seconds of `dotnet new mvc` live** (demo §0b) — tonight's homework asks them to build a new app from an empty folder, so this is rehearsal, not repetition. Say so while you type. Slide 3 is the pattern slot by slot; **slide 4 is live** — you type each URL in the browser and the room predicts before you press Enter (protect the `/Privacy` beat, it's the one that lands). Slide 5 is where you edit the pattern: move the default action, delete `{id?}`, watch both break, **restore**. Close on 404-vs-500 as a diagnosis habit. |
 | 0:45 | 30 min | **A second controller** *(slides 6–7, demo §2)*. Three names that must agree. Build it in two steps — `Content()` to prove routing, *then* the view. Misname the view folder on purpose and read the error page out loud. |
 | 1:15 | 10 min | **☕ Break** |
