@@ -17,6 +17,13 @@
 
 **And nothing stays on localhost.** Tonight your homework goes live on GitHub Pages. From week 3, every .NET assignment deploys to Azure (you get a free Azure for Students account). By finals, you'll have a portfolio of URLs, not a folder of zip files.
 
+> [!IMPORTANT]
+> **Say the "your work gets shown" rule tonight, and mean it** (slide 4, last bullet). From week 5 onward, class opens by putting a few students' deployed apps on the projector, and **everyone's turn comes at least once before the end of term** — it's a rotation, not volunteers.
+>
+> Announce it in week 1 for two reasons. First, fairness: nobody should discover in week 7 that their work is going on a screen. Second, it changes behaviour *before* the first submission — people finish things they know will be seen. Frame it the way the industry does: demos, code review, and standups are all just showing your work to colleagues, and this is the low-stakes version.
+>
+> Two things to promise and keep: you show **working** software, not a debugging session on someone's broken app; and when you want to demonstrate a failure mode, you use **your own** broken example. Week 4 is deliberately exempt — everyone builds the same First Flight, so there's nothing worth looking at.
+
 ### One mental model to start
 
 Everything in this course is a conversation between two programs:

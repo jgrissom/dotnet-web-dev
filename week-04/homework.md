@@ -24,6 +24,9 @@ Build a **new** MVC app on a topic you pick — *anything except food trucks or 
 > [!NOTE]
 > **This one isn't a throwaway.** You'll be extending this same app for the rest of the course: week 5 gives it a real layout and theme, week 6 adds a form with validation, **week 7 moves your hard-coded list into SQL Server**, weeks 8–9 make it full CRUD with a second related table, and the midterm builds on whatever you've got by then. Pick something you can stand to look at for ten weeks.
 
+> [!IMPORTANT]
+> **This one gets shown.** From next week, class opens with a few deployed apps on the projector, and everyone's turn comes at least once before the end of term. Pick a topic you'd be happy to have on a screen in front of the room — and finish the deploy, because a dead URL is a lot more obvious up there than in a gradebook.
+
 > [!TIP]
 > **Choosing well matters more than usual now.** Pick a topic that could plausibly grow a *second, related list* later — trails and their **reviews**, games and their **publisher**, players and their **team**, parks and their **campgrounds**. If you can't imagine a second table hanging off yours, pick something else. Week 9 will ask for exactly that, and switching topics then means rebuilding.
 
