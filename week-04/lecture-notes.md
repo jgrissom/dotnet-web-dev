@@ -27,10 +27,10 @@ Read the pattern as **three slots separated by slashes**:
 | `{id?}` | an optional extra value | leave it empty — the `?` says "optional" |
 
 - The `=Home` and `=Index` parts are **defaults**. They are the entire reason `/` shows a page: the URL supplies *no* slots, so both defaults fire and you land on `HomeController.Index()`.
-- The `Controller` suffix is added by convention. `/Courses` → `CoursesController`. You never type the word "Controller" in a URL.
+- The `Controller` suffix is added by convention. `/Trucks` → `TrucksController`. You never type the word "Controller" in a URL.
 
 > [!IMPORTANT]
-> Say this out loud and let it land: **the URL is not a file path.** There is no folder named `Courses` being served. The URL is an *instruction* — "run this method" — and the route pattern is the translation table.
+> Say this out loud and let it land: **the URL is not a file path.** There is no folder named `Trucks` being served. The URL is an *instruction* — "run this method" — and the route pattern is the translation table.
 
 ### Predict-then-run: the URL table
 
@@ -43,7 +43,7 @@ Put these on screen one at a time. Ask the room to predict **class + method** be
 | `/Home/Privacy` | `HomeController` | `Privacy()` | — |
 | `/Privacy` | ❌ **404** — looks for `PrivacyController` | — | — |
 | `/Home/Privacy/7` | `HomeController` | `Privacy()` | `7` (ignored — no parameter to catch it) |
-| `/Courses` | ❌ **404** tonight — `CoursesController` doesn't exist *yet* | — | — |
+| `/Trucks` | ❌ **404** tonight — `TrucksController` doesn't exist *yet* | — | — |
 
 The `/Privacy` one is the money question. Most rooms guess it works. It doesn't — the first slot is always the *controller*, so `/Privacy` means "the Privacy controller," which nobody wrote.
 
@@ -204,7 +204,7 @@ After every Razor beat above, **View Source** (not DevTools' Elements panel — 
 | Way | Looks like | Good for | Trouble |
 |-----|-----------|----------|---------|
 | **Action parameter** | `Details(int id)` | values that come *from the URL* | it's input, not page data |
-| **`ViewData` / `ViewBag`** | `ViewData["Title"] = "Courses";` | one-off scraps — a title, a flash message | no type safety, no IntelliSense, typos fail silently |
+| **`ViewData` / `ViewBag`** | `ViewData["Title"] = "Trucks";` | one-off scraps — a title, a flash message | no type safety, no IntelliSense, typos fail silently |
 | **`@model`** ⭐ | `return View(courses);` | **the actual subject of the page** | none — this is the one you want |
 
 The honest summary for students: `ViewData` is a shoebox you toss things into; `@model` is a labeled, typed slot the compiler checks. Use `ViewData` for the page title (the template already does) and `@model` for everything that *is* the page.
@@ -216,16 +216,16 @@ Two halves that must agree. Controller side:
 ```csharp
 public IActionResult Index()
 {
-    return View(CourseData.All);      // hand the list to the view
+    return View(TruckData.All);       // hand the list to the view
 }
 ```
 
 View side, **first line of the file**:
 
 ```html
-@model List<Course>
+@model List<Truck>
 
-<p>@Model.Count courses this semester.</p>
+<p>@Model.Count trucks on the street.</p>
 ```
 
 - Lowercase **`@model`** (the declaration, once, at the top) vs. capital **`@Model`** (the value, used everywhere below). This trips everyone; call it out before it bites.
@@ -237,8 +237,8 @@ View side, **first line of the file**:
 Every data-driven site you have ever used is this pair:
 
 ```
-/Courses            → Index   → the whole list
-/Courses/Details/2  → Details → one item, chosen by the id in the URL
+/Trucks            → Index   → the whole list
+/Trucks/Details/2  → Details → one item, chosen by the id in the URL
 ```
 
 And here's where `{id?}` pays off. `Details(int id)` gets its `id` from the **third route slot** — not a query string:
@@ -247,34 +247,34 @@ And here's where `{id?}` pays off. `Details(int id)` gets its `id` from the **th
 public IActionResult Details(int id)
 ```
 
-`/Courses/Details/2` → `id` is `2`. Same binding idea as week 3's `?name=Ada`, different source. Model binding looks in the route values *and* the query string, and it matches **by name**.
+`/Trucks/Details/2` → `id` is `2`. Same binding idea as week 3's `?name=Ada`, different source. Model binding looks in the route values *and* the query string, and it matches **by name**.
 
 ### Details and the NotFound guard
 
 ```csharp
 public IActionResult Details(int id)
 {
-    var course = CourseData.All.FirstOrDefault(c => c.Id == id);
+    var truck = TruckData.All.FirstOrDefault(t => t.Id == id);
 
-    if (course == null)
+    if (truck == null)
     {
         return NotFound();       // honest 404
     }
 
-    return View(course);
+    return View(truck);
 }
 ```
 
 - **`FirstOrDefault` vs `First`:** `First` *throws* when nothing matches — the user gets a 500 and a stack trace for what is really a perfectly ordinary situation ("that course doesn't exist"). `FirstOrDefault` returns `null` instead, handing *you* the decision. Choosing the API that lets you handle the case is the lesson.
 - **`NotFound()` returns a 404** — the same status the browser gets for any missing page. It's another `IActionResult`, exactly like `View()` and `Content()`.
-- **Visit `/Courses/Details/999` on purpose.** Without the guard: a 500, or a page rendering nothing. With it: a clean 404. The difference between "the site is broken" and "that thing doesn't exist" is this `if`.
+- **Visit `/Trucks/Details/999` on purpose.** Without the guard: a 500, or a page rendering nothing. With it: a clean 404. The difference between "the site is broken" and "that thing doesn't exist" is this `if`.
 
 > [!WARNING]
 > Skip the null check and the view blows up on `@Model.Title` with a `NullReferenceException` — a **500**. Students will hit this. The fix is always the guard, and 500-means-your-code (Part 1) is how they'll find it.
 
 ### One last note on the navbar
 
-The navbar's links use `asp-controller` / `asp-action` — **tag helpers**, which generate the same `href` you'd type by hand. Tonight we write plain `href="/Courses/Details/@course.Id"` in our own views because it's honest about what the URL is. Tag helpers get their proper introduction in week 6, where forms make them genuinely worth it. If a student asks why the nav looks different from their table links: that's the answer, and it's a good question.
+The navbar's links use `asp-controller` / `asp-action` — **tag helpers**, which generate the same `href` you'd type by hand. Tonight we write plain `href="/Trucks/Details/@truck.Id"` in our own views because it's honest about what the URL is. Tag helpers get their proper introduction in week 6, where forms make them genuinely worth it. If a student asks why the nav looks different from their table links: that's the answer, and it's a good question.
 
 ## Wrap-up (10 min)
 
@@ -285,7 +285,7 @@ URL → route pattern → controller action → data → Razor view → HTML →
 ```
 
 - **Tonight:** routing you can read *and edit*, a second controller built from conventions, Razor with loops and conditionals, and typed data flowing from C# into a page.
-- **The setup for week 7:** every course in tonight's lab came from a hard-coded `List<Course>`. Point at it and say — *when this becomes a database table, the controller barely changes.* The `@model` line doesn't change at all.
+- **The setup for week 7:** every creature in tonight's lab came from a hard-coded `List<Cryptid>`. Point at it and say — *when this becomes a database table, the controller barely changes.* The `@model` line doesn't change at all.
 - **Homework:** the same Index → Details pair, on a topic they pick, deployed to Azure.
 - **Next week:** the site *shell* — layouts and partials, and the Bootstrap from week 2 applied across every page at once.
 
@@ -299,7 +299,7 @@ URL → route pattern → controller action → data → Razor view → HTML →
 - Read the error — it lists every path it searched. Nine times out of ten the view folder name doesn't match the controller name (`Views/Truck/` vs `Views/Trucks/`), or the file is `index.cshtml` on a case-sensitive deployment. Match the case exactly.
 
 **The model item passed into the ViewDataDictionary is of type X, but requires Y**
-- The controller passed one thing, the view's `@model` line declares another. Common pair: `return View(course)` (a single item) with `@model List<Course>` at the top. Make the two agree.
+- The controller passed one thing, the view's `@model` line declares another. Common pair: `return View(truck)` (a single item) with `@model List<Truck>` at the top. Make the two agree.
 
 **`NullReferenceException` / 500 on a Details page**
 - Missing null guard, or an id that doesn't exist. Add the `FirstOrDefault` + `NotFound()` pattern.

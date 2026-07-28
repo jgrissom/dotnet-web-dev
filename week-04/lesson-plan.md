@@ -36,7 +36,7 @@ By the end of this session, students can:
 | 1:35 | 45 min | **Razor for real** *(slides 8–12, demo §3)*. Expressions → code blocks → `@if` → `@foreach` → comments, with **View Source after every beat**. Load-bearing segment #1: the "one `<li>` in, six out" moment is the thesis of the entire week. Don't rush to the model. |
 | 2:20 | 10 min | **☕ Break** |
 | 2:30 | 35 min | **Passing data and `@model`** *(slides 13–16, demo §4–5)*. Three ways in; the typed handoff; the IntelliSense proof; then Index → Details, `FirstOrDefault`, and `/Details/999` on purpose. Load-bearing segment #2. |
-| 3:05 | 30 min | **Lab: Roster** *(slide 17)*. Launch with ~90 seconds of *what done looks like*: your finished copy running + `dotnet test` printing **6 / 6** — a target, not a walkthrough. **In-class target: checks 1–4 green.** Checks 5–6 and the deploy roll into homework by design — say so. |
+| 3:05 | 30 min | **Lab: Cryptid Registry** *(slide 17)*. Launch with ~90 seconds of *what done looks like*: your finished copy running + `dotnet test` printing **6 / 6** — a target, not a walkthrough. **In-class target: checks 1–4 green.** Checks 5–6 and the deploy roll into homework by design — say so. |
 | 3:35 | 10 min | **Wrap-up** *(slides 18–19)*. Homework: own topic, Index + Details, deployed, URL + repo via Canvas. The chain slide, then the week-7 promise: this list becomes a table and the `@model` line doesn't change. |
 
 ## Instructor notes
@@ -45,6 +45,7 @@ By the end of this session, students can:
 - **Protect the `@foreach` beat.** If the routing segment runs long, cut the second pattern edit (`{id?}` deletion) rather than shortening Razor. Routing can be re-taught from the notes; the loop moment can't be recovered by reading.
 - **Say the week-7 line while the seeded list is on screen** (demo §4): *this becomes a database table and the controller barely changes.* Students who hear it now find EF Core unsurprising instead of alarming.
 - `@model` vs `@Model` (lowercase declares, capital uses) will bite several students during the lab. Call it out during the demo, then again at lab launch — it's cheaper than debugging it six times.
-- The starter's `CourseData.cs` is **provided** — the lab is controllers, views, and routing, not typing seed data. Point at it during the launch so nobody rewrites it.
+- The starter's `CryptidData.cs` is **provided** — the lab is controllers, views, and routing, not typing seed data. Point at it during the launch so nobody rewrites it. The unused `IsDebunked` flag is deliberate: it's the "done early" badge exercise.
+- **Show the homework self-checker at the wrap-up**, not just in the handout: `node homework-checks.js <url>` runs the same checks that earn 12 of the homework's 20 points. Students who run it have no excuse for a broken deploy.
 - Tag helpers (`asp-controller`) appear in the navbar but we write plain `href`s in our own views tonight. If asked: same output, and forms make tag helpers genuinely worth it in week 6. The lecture notes have the one-paragraph answer.
 - **If time runs short:** the lab can start at check 1 with 20 minutes and still bank the red-to-green habit. Slide 19 (the chain + week 7) survives anything — it's the one that makes tonight feel like a foundation instead of a detour.

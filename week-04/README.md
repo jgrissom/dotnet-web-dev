@@ -1,6 +1,6 @@
 # Week 4 — Routing & Razor: Pages Built From Data
 
-The night the app stops being a page and becomes a system. Routing gets read *and edited*, a second controller appears out of pure convention, and Razor grows from `@DateTime.Now` into a full data-driven table. Lab is *Roster* — a course catalog with an Index, a Details, and an honest 404.
+The night the app stops being a page and becomes a system. Routing gets read *and edited*, a second controller appears out of pure convention, and Razor grows from `@DateTime.Now` into a full data-driven table. Lab is the *Cryptid Registry* — six legendary creatures with an Index, a Details, and an honest 404.
 
 ## Use in this order
 
@@ -10,7 +10,8 @@ The night the app stops being a page and becomes a system. Routing gets read *an
 | Prep / in-class script | 📖 [lecture-notes.md](lecture-notes.md) | Full lecture content, predict-then-run answers, **troubleshooting appendix** |
 | Projected in class | 🎞️ [slides.md](slides.md) | The deck (GFM, one slide per `##`) — [**present it live**](https://jgrissom.github.io/dotnet-web-dev/week-04/) (arrow keys, `F` for fullscreen) |
 | In class, live-coding | 🎨 [demo/](demo/) | *Curbside* — a food-truck directory built live (different content than the lab); [clickable cue sheet](https://jgrissom.github.io/dotnet-web-dev/week-04/demo/script.html) |
-| In class, last 30 min | 🧪 [lab/](lab/) | *Roster* — 6 `dotnet test` checks; 1/6 green out of the box (answer key in the private answer-keys repo) |
+| In class, last 30 min | 🧪 [lab/](lab/) | *Cryptid Registry* — 6 `dotnet test` checks; 1/6 green out of the box (answer key in the private answer-keys repo) |
+| With the homework | ✅ [homework-checks.js](homework-checks.js) | Student self-check — the same checks the grader runs (12 of the 20 pts) |
 | Assigned at wrap-up | 📤 [homework.md](homework.md) | Your own list-and-details site, deployed to Azure; URL + repo via Canvas |
 
 ## What students walk out with

@@ -1,4 +1,4 @@
-namespace Roster.Web.Models;
+namespace Cryptids.Web.Models;
 
 public class ErrorViewModel
 {

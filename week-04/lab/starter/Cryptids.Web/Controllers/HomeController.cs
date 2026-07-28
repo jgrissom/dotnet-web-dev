@@ -1,8 +1,8 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using Roster.Web.Models;
+using Cryptids.Web.Models;
 
-namespace Roster.Web.Controllers;
+namespace Cryptids.Web.Controllers;
 
 public class HomeController : Controller
 {

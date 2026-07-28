@@ -69,7 +69,7 @@ The `=` parts are **defaults** — they're why `/` works.
 | `/Home/Privacy` | ? | ? |
 | `/Privacy` | ? | ? |
 | `/Home/Privacy/7` | ? | ? |
-| `/Courses` | ? | ? |
+| `/Trucks` | ? | ? |
 
 Two of these do something you won't expect.
 
@@ -79,7 +79,7 @@ Two of these do something you won't expect.
 
 ## The URL is not a file path
 
-There is no folder named `Courses`.
+There is no folder named `Trucks`.
 
 - The URL is an **instruction**: *run this method*
 - The pattern is the **translation table**
@@ -224,15 +224,15 @@ Notes-to-self go in `@* *@`.
 Controller hands it over:
 
 ```csharp
-return View(CourseData.All);
+return View(TruckData.All);
 ```
 
 View declares what it's getting — **first line of the file**:
 
 ```html
-@model List<Course>
+@model List<Truck>
 
-<p>@Model.Count courses this semester.</p>
+<p>@Model.Count trucks on the street.</p>
 ```
 
 lowercase `@model` declares · capital `@Model` uses
@@ -242,8 +242,8 @@ lowercase `@model` declares · capital `@Model` uses
 ## The pair behind every site
 
 ```
-/Courses            →  Index    →  the whole list
-/Courses/Details/2  →  Details  →  one item
+/Trucks            →  Index    →  the whole list
+/Trucks/Details/2  →  Details  →  one item
 ```
 
 ```csharp
@@ -259,27 +259,27 @@ The `2` lands in `id` — from the route's **third slot**, not a query string.
 ## Guard the door
 
 ```csharp
-var course = CourseData.All
-    .FirstOrDefault(c => c.Id == id);
+var truck = TruckData.All
+    .FirstOrDefault(t => t.Id == id);
 
-if (course == null)
+if (truck == null)
 {
     return NotFound();
 }
-return View(course);
+return View(truck);
 ```
 
 `First` **throws** → a 500. `FirstOrDefault` hands *you* the decision.
 
-Then visit `/Courses/Details/999` on purpose.
+Then visit `/Trucks/Details/999` on purpose.
 
 ---
 
-## Lab: Roster 🧑‍🎓
+## Lab: Cryptid Registry 👻
 
 - Copy `week-04/lab/starter/` out of the repo clone
-- `dotnet test Roster.Checks` → **1 / 6 passing**
-- A courses list · a details page · a 404 that's honest
+- `dotnet test Cryptids.Checks` → **1 / 6 passing**
+- Six creatures · a details page · a 404 that's honest
 - Same rhythm: one ❌ at a time
 
 Tonight's target: **checks 1–4**. The rest is homework.
@@ -288,12 +288,12 @@ Tonight's target: **checks 1–4**. The rest is homework.
 
 ## Before next week
 
-- ✅ Lab to **6 / 6**
+- ✅ Lab to **6 / 6** (`dotnet test Cryptids.Checks`)
 - ✅ Your **own** list-and-details site — your topic, ≥5 items
-- ✅ Deployed to Azure, URL + repo via Canvas
-- ✅ 3+ meaningful commits
+- ✅ Check it yourself: `node homework-checks.js <your-url>`
+- ✅ Deployed to Azure, URL + repo via Canvas · 3+ commits
 
-**Next week:** the site *shell* — layouts, partials, and week 2's Bootstrap everywhere at once.
+That checker is **the same one I grade with.** Green it before you submit.
 
 ---
 
@@ -303,8 +303,8 @@ Tonight's target: **checks 1–4**. The rest is homework.
 URL → route → action → data → Razor → HTML → browser
 ```
 
-Tonight's data was a hard-coded `List<Course>`.
+Tonight's data was a hard-coded `List<Truck>`.
 
-In **week 7** it becomes a database table — and the controller barely changes.
+In **week 7** it becomes a database table — and the controller barely changes. The `@model` line doesn't change at all.
 
-The `@model` line doesn't change at all.
+**Next week:** the site *shell* — layouts, partials, and week 2's Bootstrap everywhere at once.

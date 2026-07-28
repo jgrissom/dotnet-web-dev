@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Roster.Web\Roster.Web.csproj" />
+    <ProjectReference Include="..\Cryptids.Web\Cryptids.Web.csproj" />
   </ItemGroup>
 
 </Project>
