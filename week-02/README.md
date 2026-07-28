@@ -15,7 +15,7 @@ Students turn an unstyled 3-page site into a personalized, responsive portfolio 
 
 ## 📋 Before class, don't forget
 
-- Queue 3–4 student Pages URLs from week 1 for the gallery walk
+- Know who's still fighting their setup from week 1 — the 5-minute opener is triage, not a gallery *(showing student work starts in week 5)*
 - Remind students to `git pull` this repo for the week-02 starter
 - Have bootswatch.com and fonts.google.com open in tabs for the live demos
 

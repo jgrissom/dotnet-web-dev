@@ -1,13 +1,14 @@
 # Week 2 — Lecture Notes
 
-## Part 1: Gallery walk & why frameworks (35 min)
+## Part 1: Status check & why frameworks (25 min)
 
-### Gallery walk (15 min)
+### Status check (5 min)
 
-Open 3–4 student Pages URLs from week 1 on the projector. Points to land:
+**No student work on the projector.** Showing each other's apps starts in week 5, once everyone has their own project to show. Tonight the five minutes go to triage:
 
-- Everyone shipped something public in week 1 — that's already unusual for a course.
-- All the pages are unstyled browser-default — *that's tonight's before picture.*
+- **Who's still fighting their environment?** Setup night was last week; anyone whose install is broken needs pairing with a neighbor *before* the live-coding starts, not during it.
+- Say the point rather than projecting it: **everyone shipped something public last week**, which is already unusual for a course.
+- For the "before picture," use **your own** [hosted unstyled coffee page](https://jgrissom.github.io/dotnet-web-dev/week-02/demo/before.html) — it makes the same point as a wall of unstyled student pages, and it doesn't depend on anyone's deploy having worked.
 
 ### Why CSS frameworks (20 min)
 
