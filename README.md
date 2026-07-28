@@ -23,11 +23,13 @@ Full-stack web development with **ASP.NET Core MVC on .NET 10**, **Entity Framew
 | 12 | Identity pt. 2: roles, claims, `[Authorize]`, securing the app | `week-⁠12/` | 🚧&nbsp;Planned |
 | 13 | ⚡ **Flex week** — polish topics: dependency injection & services, TempData, paging/filtering/search. *In a 15-week semester, skip this week*: nothing later depends on it, and its topics live on as stretch goals | `week-⁠13/` | 🚧&nbsp;Planned |
 | 14 | Intro to Web API: controllers vs. minimal APIs, JSON, testing endpoints | `week-⁠14/` | 🚧&nbsp;Planned |
-| 15 | Consuming your API with JavaScript fetch; production concerns (config, secrets, CI/CD with GitHub Actions) | `week-⁠15/` | 🚧&nbsp;Planned |
-| 16 | Final project work & presentations | `week-⁠16/` | 🚧&nbsp;Planned |
+| 15 | Consuming your API with JavaScript fetch; production concerns (config, secrets, CI/CD with GitHub Actions); 🤝 in-class pair lab: fork → pull request → review → merge conflict | `week-⁠15/` | 🚧&nbsp;Planned |
+| 16 | Final project work & presentations *(individual)* | `week-⁠16/` | 🚧&nbsp;Planned |
 
 > [!IMPORTANT]
 > **The semester project starts in week 4.** Week 4's homework has each student build a list-and-details site on a topic they choose, and every week after that extends *that same app*: a real layout and theme (5), forms and validation (6), the hard-coded list moves into SQL Server (7), full CRUD (8), a second related table (9), and the midterm builds on whatever they've got. Choose the topic with week 9 in mind — it needs to support a second, related list.
+>
+> **Every graded artifact in this course is individual** — including the final project. Team git (branching, pull requests, code review, resolving a merge conflict) is taught in week 15's **in-class lab**, on a throwaway repo, where it costs nobody points and nobody's own project gets touched.
 
 ## How to use this repo
 
