@@ -39,6 +39,9 @@ dotnet test Cryptids.Checks
 > Seeing `error MSB1009: Project file does not exist`? You're one folder too deep — probably inside `Cryptids.Web`. Run `cd ..` and try again; the command goes in the folder that holds *both* projects.
 
 > [!TIP]
+> **Git fighting you at the worst moment?** Don't lose lab time to it. On the [repo page](https://github.com/jgrissom/dotnet-web-dev), click **Code → Download ZIP**, unzip it, and copy `week-04/lab/starter` out of that instead. Same files. Sort the clone out afterwards — cloning is still how you'll get every other week.
+
+> [!TIP]
 > Two terminals: in one, `cd Cryptids.Web` then `dotnet watch`; in the other, stay at the parent folder and re-run `dotnet test Cryptids.Checks` after each task. Browser for feel, checks for truth.
 
 > [!NOTE]
