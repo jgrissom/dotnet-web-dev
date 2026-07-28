@@ -31,7 +31,19 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] Browser opens → a working, styled site from three commands. Let that breathe
 - [ ] **Anatomy tour in VS Code** (keep `dotnet watch` running): `Controllers/HomeController.cs` → `Views/Home/` → `Views/Shared/_Layout.cshtml` (point at the navbar markup — "week 2 classes, recognize them?") → `wwwroot/lib/bootstrap` ("the *locally bundled* delivery I promised")
 - [ ] Prove the loop: in `Views/Home/Index.cshtml` change `Welcome` → `Common Grounds, now with a server` → save → browser refreshes itself (`dotnet watch`!)
-- [ ] Open `Program.cs`, narrate the **five acts** (notes Part 2 has the script): shopping list → build → the gauntlet → **the map (drumroll)** → open the doors. Mention the `partial class Program` coda only if someone asks
+- [ ] Open `Program.cs`, narrate the **five acts** — full script below; point at `builder.Build()` as the dividing line ("above: describing an app · below: configuring a real one")
+
+  <details><summary>🎭 The five-act narration (read-aloud)</summary>
+
+  1. **The shopping list** (`CreateBuilder` → `AddControllersWithViews`) — "we're starting a list of what this app will need; MVC goes on the list. Nothing is running — this is a recipe."
+  2. **Build the machine** (`builder.Build()`) — "now a real web server is assembled from that list. Everything below configures a machine that exists."
+  3. **The gauntlet** — "every request walks this pipeline in order. In *production* a crash shows a friendly error page — in dev you *want* the raw stack trace, that's the `if`. `UseRouting` reads the URL and decides where it's headed. `UseAuthorization` is the bouncer — bored until week 11, nobody has badges yet. `MapStaticAssets`: asking for a file in `wwwroot`? Just hand it over — that's how Bootstrap's CSS gets served with zero C#."
+  4. **The map** 🥁 — "`MapControllerRoute` — the headliner. This one `pattern` turns URLs into method calls. The rest of tonight lives inside those braces."
+  5. **Open the doors** (`app.Run()`) — "start listening, forever. Everything above was setup; this line *is* the server."
+
+  *(The `partial class Program` coda: only if someone asks — "it lets the checks project see the app; leave it alone.")*
+
+  </details>
 - [ ] **✓ CHECKPOINT:** app running, room has seen every folder earn its name
 
 ## 3 · The MVC journey: Menu + a parameter *(slides 9–13)*
