@@ -37,7 +37,7 @@ By the end of this session, students can:
 | 2:20 | 10 min | **☕ Break** |
 | 2:30 | 35 min | **Passing data and `@model`** *(slides 13–16, demo §4–5)*. Three ways in; the typed handoff; the IntelliSense proof; then Index → Details, `FirstOrDefault`, and `/Details/999` on purpose. Load-bearing segment #2. |
 | 3:05 | 30 min | **Lab: Cryptid Registry** *(slide 17)*. Launch with ~90 seconds of *what done looks like*: your finished copy running + `dotnet test` printing **6 / 6** — a target, not a walkthrough. **In-class target: checks 1–4 green.** Checks 5–6 and the deploy roll into homework by design — say so. |
-| 3:35 | 10 min | **Wrap-up** *(slides 18–19)*. Homework: own topic, Index + Details, deployed, URL + repo via Canvas. The chain slide, then the week-7 promise: this list becomes a table and the `@model` line doesn't change. |
+| 3:35 | 10 min | **Wrap-up** *(slides 18–19)*. Homework: own topic, Index + Details, deployed, URL + repo via Canvas — **and say clearly that this app is theirs for the rest of the semester** (see instructor notes; the topic-choice warning belongs here, not in the handout alone). The chain slide, then the week-7 promise: this list becomes a table and the `@model` line doesn't change. |
 
 ## Instructor notes
 
@@ -47,5 +47,8 @@ By the end of this session, students can:
 - `@model` vs `@Model` (lowercase declares, capital uses) will bite several students during the lab. Call it out during the demo, then again at lab launch — it's cheaper than debugging it six times.
 - The starter's `CryptidData.cs` is **provided** — the lab is controllers, views, and routing, not typing seed data. Point at it during the launch so nobody rewrites it. The unused `IsDebunked` flag is deliberate: it's the "done early" badge exercise.
 - **Show the homework self-checker at the wrap-up**, not just in the handout: `node homework-checks.js <url>` runs the same checks that earn 12 of the homework's 20 points. Students who run it have no excuse for a broken deploy.
+- 🔗 **This week's homework starts the semester project.** The app they build tonight is the one they extend in weeks 5 (layout + theme), 6 (forms + validation), 7 (into SQL Server), 8–9 (CRUD + a related table), and carry into the midterm. Say that out loud at the wrap-up — it turns "build the lab again with different nouns" into "start your project," which is a completely different assignment psychologically.
+- ⚠️ **Push hard on topic choice at the wrap-up.** They must pick something that can plausibly grow a *second, related list* by week 9 — trails/reviews, games/publisher, players/team. A topic that can't (one flat list of unrelated things) means rebuilding in week 9. Thirty seconds of examples now saves that.
+- Part 1 (finishing the Registry) is **not collected and not worth points** — a deliberate change from week 3, where the lab *was* the homework. Say so plainly rather than letting them discover it: it's the guided version of Part 2, and skipping it is what turns a one-hour assignment into a three-hour one.
 - Tag helpers (`asp-controller`) appear in the navbar but we write plain `href`s in our own views tonight. If asked: same output, and forms make tag helpers genuinely worth it in week 6. The lecture notes have the one-paragraph answer.
 - **If time runs short:** the lab can start at check 1 with 20 minutes and still bank the red-to-green habit. Slide 19 (the chain + week 7) survives anything — it's the one that makes tonight feel like a foundation instead of a detour.

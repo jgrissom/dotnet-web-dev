@@ -18,13 +18,16 @@ Full-stack web development with **ASP.NET Core MVC on .NET 10**, **Entity Framew
 | 7 | EF Core + SQL Server: DbContext, migrations, seeding; pointing deployed apps at the school SQL Server | `week-⁠07/` | 🚧&nbsp;Planned |
 | 8 | EF Core CRUD: scaffolding, full create/read/update/delete flows | `week-⁠08/` | 🚧&nbsp;Planned |
 | 9 | EF Core relationships (1-many, many-many), LINQ queries, ViewModels | `week-⁠09/` | 🚧&nbsp;Planned |
-| 10 | Midterm project: guided build tying weeks 3–9 together | `week-⁠10/` | 🚧&nbsp;Planned |
+| 10 | Midterm project: extend your semester project into a finished build, tying weeks 3–9 together | `week-⁠10/` | 🚧&nbsp;Planned |
 | 11 | ASP.NET Core Identity: registration, login, customizing IdentityUser | `week-⁠11/` | 🚧&nbsp;Planned |
 | 12 | Identity pt. 2: roles, claims, `[Authorize]`, securing the app | `week-⁠12/` | 🚧&nbsp;Planned |
 | 13 | ⚡ **Flex week** — polish topics: dependency injection & services, TempData, paging/filtering/search. *In a 15-week semester, skip this week*: nothing later depends on it, and its topics live on as stretch goals | `week-⁠13/` | 🚧&nbsp;Planned |
 | 14 | Intro to Web API: controllers vs. minimal APIs, JSON, testing endpoints | `week-⁠14/` | 🚧&nbsp;Planned |
 | 15 | Consuming your API with JavaScript fetch; production concerns (config, secrets, CI/CD with GitHub Actions) | `week-⁠15/` | 🚧&nbsp;Planned |
 | 16 | Final project work & presentations | `week-⁠16/` | 🚧&nbsp;Planned |
+
+> [!IMPORTANT]
+> **The semester project starts in week 4.** Week 4's homework has each student build a list-and-details site on a topic they choose, and every week after that extends *that same app*: a real layout and theme (5), forms and validation (6), the hard-coded list moves into SQL Server (7), full CRUD (8), a second related table (9), and the midterm builds on whatever they've got. Choose the topic with week 9 in mind — it needs to support a second, related list.
 
 ## How to use this repo
 

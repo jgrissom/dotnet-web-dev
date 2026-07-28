@@ -288,12 +288,12 @@ Tonight's target: **checks 1–4**. The rest is homework.
 
 ## Before next week
 
-- ✅ Lab to **6 / 6** (`dotnet test Cryptids.Checks`)
-- ✅ Your **own** list-and-details site — your topic, ≥5 items
-- ✅ Check it yourself: `node homework-checks.js <your-url>`
+- ✅ Lab to **6 / 6** — not collected, do it anyway
+- ✅ **Start your semester project** — your topic, ≥5 items
+- ✅ `node homework-checks.js <your-url>` — what I grade with
 - ✅ Deployed to Azure, URL + repo via Canvas · 3+ commits
 
-That checker is **the same one I grade with.** Green it before you submit.
+You'll extend that app every week from here. **Pick a topic you can live with.**
 
 ---
 

@@ -3,7 +3,7 @@
 **Due:** before the start of Week 5's class.
 **Submit via Canvas:** your **Azure URL** + your **GitHub repo URL**.
 
-## Part 1 — Finish the Cryptid Registry (not submitted, but do it first)
+## Part 1 — Finish the Cryptid Registry (nobody collects this)
 
 All six checks green:
 
@@ -12,11 +12,20 @@ dotnet test Cryptids.Checks
 # Passed! - Failed: 0, Passed: 6 ...
 ```
 
-If class ended at check 4, that's the `NotFound()` guard and the row links — the [details section](lecture-notes.md#details-and-the-notfound-guard) of the notes has both patterns. **This is practice for Part 2, which is what gets graded.**
+If class ended at check 4, that's the `NotFound()` guard and the row links — the [details section](lecture-notes.md#details-and-the-notfound-guard) of the notes has both patterns.
 
-## Part 2 — Your own catalog (graded)
+> [!IMPORTANT]
+> This isn't submitted and it isn't worth points. It's also the guided version of exactly what Part 2 asks you to do from an empty folder. The people who skip it are the ones who spend three hours on Part 2 instead of one — that's the whole enforcement mechanism, and it's a real one.
+
+## Part 2 — Start your semester project (graded)
 
 Build a **new** MVC app on a topic you pick — *anything except food trucks or cryptids* (those are mine). Video games, hiking trails, recipes, players on a team, national parks, your sneaker collection. Your call.
+
+> [!NOTE]
+> **This one isn't a throwaway.** You'll be extending this same app for the rest of the course: week 5 gives it a real layout and theme, week 6 adds a form with validation, **week 7 moves your hard-coded list into SQL Server**, weeks 8–9 make it full CRUD with a second related table, and the midterm builds on whatever you've got by then. Pick something you can stand to look at for ten weeks.
+
+> [!TIP]
+> **Choosing well matters more than usual now.** Pick a topic that could plausibly grow a *second, related list* later — trails and their **reviews**, games and their **publisher**, players and their **team**, parks and their **campgrounds**. If you can't imagine a second table hanging off yours, pick something else. Week 9 will ask for exactly that, and switching topics then means rebuilding.
 
 It needs:
 
