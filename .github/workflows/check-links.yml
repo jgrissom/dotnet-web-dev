@@ -1,0 +1,24 @@
+name: Check links
+
+on:
+  push:
+    branches: [main]
+    paths: ["**/*.md", "scripts/check-links.js"]
+  schedule:
+    - cron: "0 12 * * 1"   # Mondays: full check including external URLs
+  workflow_dispatch:
+
+jobs:
+  links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --no-save github-slugger
+      - name: Internal links + anchors (every push)
+        run: node scripts/check-links.js .
+      - name: External URLs (scheduled/manual runs only)
+        if: github.event_name != 'push'
+        run: node scripts/check-links.js . --external
