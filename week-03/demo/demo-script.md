@@ -14,7 +14,8 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 ## 1 · Real HTTP in DevTools *(slide 5)*
 
 - [ ] On the hosted coffee page: F12 → **Network** → refresh
-- [ ] Click the first request → **Headers**: there's the verb, path, status `200`, `content-type: text/html`
+- [ ] Click the first request → **Headers**: there's the verb, path, status, `content-type: text/html`
+- [ ] Status says **`304` instead of `200`?** Even better — that's the browser asking "changed since last time?" and the server answering "use your cached copy" (no body sent). Hard-refresh (**Ctrl/Cmd+Shift+R**) to force a full `200` — show both, name the difference
 - [ ] Click a CSS file's request: same anatomy, different `Content-Type` — *everything* is this exchange
 - [ ] Type a garbage path (`…/demo/nope.html`) → **404** in the list, red. "Status codes are clue #1"
 - [ ] **✓ say it:** two weeks of 'the browser asks' — tonight we build the thing that *answers*

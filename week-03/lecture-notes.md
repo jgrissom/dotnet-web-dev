@@ -41,6 +41,7 @@ Content-Type: text/html
 | Code | Meaning | You'll meet it |
 |------|---------|----------------|
 | `200` | OK | constantly |
+| `304` | "not modified — use your cached copy" | probably the first refresh in tonight's demo |
 | `302` | redirect ("look over there") | after form posts, login (week 11) |
 | `404` | not found | tonight, the first time a route doesn't match |
 | `500` | server blew up | your first exception |
