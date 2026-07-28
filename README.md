@@ -21,7 +21,7 @@ Full-stack web development with **ASP.NET Core MVC on .NET 10**, **Entity Framew
 | 10 | Midterm project: guided build tying weeks 3–9 together | `week-⁠10/` | 🚧&nbsp;Planned |
 | 11 | ASP.NET Core Identity: registration, login, customizing IdentityUser | `week-⁠11/` | 🚧&nbsp;Planned |
 | 12 | Identity pt. 2: roles, claims, `[Authorize]`, securing the app | `week-⁠12/` | 🚧&nbsp;Planned |
-| 13 | Polish topics: dependency injection & services, TempData, paging/filtering/search | `week-⁠13/` | 🚧&nbsp;Planned |
+| 13 | ⚡ **Flex week** — polish topics: dependency injection & services, TempData, paging/filtering/search. *In a 15-week semester, skip this week*: nothing later depends on it, and its topics live on as stretch goals | `week-⁠13/` | 🚧&nbsp;Planned |
 | 14 | Intro to Web API: controllers vs. minimal APIs, JSON, testing endpoints | `week-⁠14/` | 🚧&nbsp;Planned |
 | 15 | Consuming your API with JavaScript fetch; production concerns (config, secrets, CI/CD with GitHub Actions) | `week-⁠15/` | 🚧&nbsp;Planned |
 | 16 | Final project work & presentations | `week-⁠16/` | 🚧&nbsp;Planned |
@@ -38,6 +38,7 @@ Full-stack web development with **ASP.NET Core MVC on .NET 10**, **Entity Framew
 2. **In class:** present the slides — `slides.md` in VS Code with the **Marp for VS Code** extension, the exported `slides.html` in any browser (`F` for fullscreen, arrow keys — works offline), or the hosted Pages site. Keep `lecture-notes.md` open on a second screen as your script.
 3. **After class:** `homework.md` is the assignment. Lab answer keys live in the **private** [dotnet-web-dev-answer-keys](https://github.com/jgrissom/dotnet-web-dev-answer-keys) repo — never in this one.
 4. **Drafting future weeks:** work on a branch; merge to `main` when the week goes live. Everything on `main` is public immediately.
+5. **Short semester?** Week 13 is the designated flex week — skip it in a 15-week run and weeks 14–16 shift up one session. Later weeks are written to never depend on it.
 
 ## Weekly Package
 
