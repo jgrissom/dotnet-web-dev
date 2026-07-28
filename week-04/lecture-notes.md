@@ -220,13 +220,24 @@ namespace Curbside.Controllers; // Controllers/TrucksController.cs
 
 - A namespace is a **surname for your types**. `Curbside.Models.Truck` is the type's full name; `Truck` is just what you call it among family.
 - **Being in the same project does not make a type visible.** `Curbside.Controllers` can't see `Curbside.Models` any more than it can see a random NuGet package — you have to import it: `using Curbside.Models;`
-- Views get theirs for free: `Views/_ViewImports.cshtml` already has `@using Curbside.Models`, which is why `@model List<Truck>` just works without you adding anything.
+- **Views never declare a namespace.** You don't write `namespace` in a `.cshtml` file. They get their *imports* handed to them instead: `Views/_ViewImports.cshtml` already contains `@using Curbside.Models`, and it applies to every view in the folder and below — which is why `@model List<Truck>` just works while the controller needed a `using` of its own.
 - **Why anyone bothers:** two classes named `Truck` can coexist if they live in different namespaces, and every scaffolded file you meet from week 7 on — EF Core, Identity — will have one. This is universal .NET furniture, not a Curbside quirk.
 
 > [!NOTE]
 > **Honest footnote, and it explains something you may see live:** C# does *not* force this. Type a class with no `namespace` line at all and it lands in the global namespace, visible everywhere, needing no `using` — the app builds and runs exactly the same. That's why a student who skips the namespace never hits the red squiggle, and why VS Code adding the `using` for you (when you accept `TruckData` from IntelliSense) can make the whole issue invisible.
 >
 > We use namespaces because every professional .NET codebase does, and because the template already put your files in them. **It isn't graded** — but tell them to match the starter's shape, or half the room will be reading different code from the other half by week 7.
+
+> [!TIP]
+> **If someone asks "so what namespace is my view in?"** — a good question, and the answer reinforces the week's thesis. Razor compiles every `.cshtml` into a real C# class at build time, and the build puts it here:
+>
+> ```csharp
+> namespace AspNetCoreGeneratedDocument
+> {
+>     internal sealed class Views_Trucks_Index : RazorPage<List<Truck>>
+> ```
+>
+> The class name is just the file's path with slashes turned into underscores, and the `@model` line became the generic argument. You never write any of it. Land the point: **a view isn't a document the server reads — it's a class the server runs**, which is exactly why the `@foreach` executes before the browser sees anything.
 
 ### Strongly typed views with @model
 
