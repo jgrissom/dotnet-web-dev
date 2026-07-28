@@ -22,7 +22,7 @@ The full chain, end to end: **URL → route → action → data → Razor → HT
 
 - Queue 3–4 student Azure URLs from week 3's homework for the gallery walk
 - Bring back the class **working regions** list — add any new wins/failures
-- Scratch folder ready for the *Curbside* demo (see [demo/README.md](demo/README.md))
+- Empty scratch folder picked for *Curbside* — you create it **live** at the top of the routing segment (demo §0b, 60 seconds), since tonight's homework asks students to do the same thing
 - ⚠️ The demo **breaks the route pattern twice on purpose** — the script flags both restores. Verify `/` still works before §2
 - Remind students to `git pull` for the week-04 starter
 

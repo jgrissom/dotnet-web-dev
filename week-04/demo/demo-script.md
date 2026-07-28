@@ -8,11 +8,13 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 ## 0 · Before class
 
 - [ ] Scratch folder ready; Teaching profile; terminal font sized for the projector
-- [ ] Week 3's demo app handy (or build fresh — §0 takes 60 seconds either way)
 - [ ] Two terminals planned: one for `dotnet watch`, one free
 - [ ] Decide now: you will **restore the route pattern** at the end of §1. Say it out loud when you break it
 
-## 0b · Spin it up *(no slide — do this while the room settles)*
+## 0b · Spin up Curbside — **live, opening the routing segment** *(60 seconds)*
+
+> [!IMPORTANT]
+> Do this **live at 0:15**, as the first thing after the gallery walk — not before class, and not *during* the gallery (that segment needs the projector for their Azure URLs). Tonight's homework asks them to build a new app from an empty folder, so watching you do it is rehearsal, not repetition.
 
 - [ ] VS Code → File → Open Folder → create a new empty **Curbside** and open it
 - [ ] Integrated terminal:
@@ -20,7 +22,9 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   dotnet new mvc --no-https
   dotnet watch
   ```
-- [ ] Working site on `localhost`. Same two commands as last week — the muscle is forming
+- [ ] **✓ say it:** *"Two commands, same as last week — and this is exactly the first thing your homework asks you to do tonight."*
+- [ ] Working site on `localhost`; park a browser tab on `/` — you'll be typing URLs into it in about a minute
+- [ ] **Build it fresh** — don't reuse week 3's CommonGrounds app. §1's predict-then-run table assumes a pristine template (no extra controllers)
 
 ## 1 · Routing: read it, then break it *(slides 3–5)*
 
