@@ -131,11 +131,10 @@ app.UseRouting();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
-
 app.Run();
 ```
 
-That `pattern` line is tonight's most important line.
+**That `pattern` line = tonight's headliner.**
 
 ---
 
