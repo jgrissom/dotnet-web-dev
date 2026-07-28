@@ -14,6 +14,9 @@ dotnet test FirstFlight.Checks
 
 If class ended at check 4, that means finishing `Hello` (checks 5–6) — the [parameters section](lecture-notes.md#passing-data-viewdata-and-parameters) of the notes has the pattern.
 
+> [!TIP]
+> **Keep [`lecture-notes.md`](lecture-notes.md) open while you work** — it's the same material from class, written out. The sections you'll want tonight: [controllers and actions](lecture-notes.md#controllers-and-actions), [views and Razor](lecture-notes.md#views-and-razor), [reading a query parameter](lecture-notes.md#passing-data-viewdata-and-parameters), and [`az webapp up`](lecture-notes.md#az-webapp-up) when you get to the deploy.
+
 ## Part 2 — Put it on GitHub (graded)
 
 1. Create a **public** repo named `first-flight` and push your solution folder to it.
@@ -56,6 +59,14 @@ Every ❌ tells you the next thing to fix. It works on `localhost` too, but **ru
 
 > [!IMPORTANT]
 > If a check fails on your deployed site but passes locally, you almost certainly deployed the wrong folder — `az webapp up` ships the folder you're standing in, so run it from **inside `FirstFlight.Web`**. The deploy-guide's 🆘 section covers the rest.
+
+## 🆘 Stuck?
+
+- **404 on `/Home/About`?** Route → action → view, in that order — [how the URL finds your method](lecture-notes.md#routing-controlleraction). Is the method `public`? Does `Views/Home/About.cshtml` exist, spelled exactly that way?
+- **`Hello` returns nothing useful** — the query string binds *by name*, so `?name=Ada` needs a parameter called `name`. [The parameters section](lecture-notes.md#passing-data-viewdata-and-parameters).
+- **A page 500s** — the terminal running `dotnet watch` prints the real error; the browser doesn't.
+- **The deploy fails or the live site 404s** — the [deploy guide's 🆘 section](deploy-guide.md) covers the common ones, and remember `az webapp up` ships the folder you're standing in.
+- Everything else: the [troubleshooting appendix](lecture-notes.md#appendix-troubleshooting).
 
 ## 📊 Grading (20 pts)
 

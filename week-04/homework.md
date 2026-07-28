@@ -30,15 +30,18 @@ Build a **new** MVC app on a topic you pick — *anything except food trucks or 
 > [!TIP]
 > **Choosing well matters more than usual now.** Pick a topic that could plausibly grow a *second, related list* later — trails and their **reviews**, games and their **publisher**, players and their **team**, parks and their **campgrounds**. If you can't imagine a second table hanging off yours, pick something else. Week 9 will ask for exactly that, and switching topics then means rebuilding.
 
+> [!TIP]
+> **Keep [`lecture-notes.md`](lecture-notes.md) open while you work.** It's the same material from class, written out — every requirement below links to the section that covers it, and the [troubleshooting appendix](lecture-notes.md#appendix-troubleshooting) names the errors you're most likely to hit.
+
 It needs:
 
-1. **A model class** with at least **4 properties**, including an `int Id` and at least one non-string property (a number, a `bool`, a `DateTime`). Put it in a `namespace`, the way the starter's `Cryptid` is — not graded, but it's what every .NET codebase does, and it's why your controller needs a `using`.
+1. **A model class** with at least **4 properties**, including an `int Id` and at least one non-string property (a number, a `bool`, a `DateTime`). Put it in a [`namespace`](lecture-notes.md#namespaces-and-the-using-they-require), the way the starter's `Cryptid` is — not graded, but it's what every .NET codebase does, and it's why your controller needs a `using`.
 2. **A seeded list of at least 5 items** — a `static List<T>` like the starter's `CryptidData`.
-3. **An Index page** listing all of them, built with `@model` and `@foreach`.
-4. **A Details page** — `/Things/Details/3` shows that one item.
-5. **A link from each row** on the Index page to that item's Details page — `href="/Things/Details/@item.Id"` inside your loop. (Same as check 6 in the lab.)
-6. **A 404 guard** — an id nobody has returns `NotFound()`, not a crash.
-7. **A nav link** to your Index page. Copy the `Privacy` `<li>` in `Views/Shared/_Layout.cshtml` and adapt it. *(That's the only layout change you need — the shell is week 5's business.)*
+3. **An Index page** listing all of them, built with [`@model`](lecture-notes.md#strongly-typed-views-with-model) and [`@foreach`](lecture-notes.md#loops-in-a-view). Your controller will need a [`CryptidsController`-style class](lecture-notes.md#conventions-three-names-that-must-agree) and a matching `Views/<Name>/` folder — three names must agree.
+4. **A Details page** — `/Things/Details/3` shows that one item. [The Index → Details pair](lecture-notes.md#index-and-details-the-classic-pair) explains where the `3` comes from.
+5. **A link from each row** on the Index page to that item's Details page — `href="/Things/Details/@item.Id"` [inside your loop](lecture-notes.md#loops-in-a-view). (Same as check 6 in the lab.)
+6. **A 404 guard** — an id nobody has returns `NotFound()`, not a crash. [`FirstOrDefault`, then the null check](lecture-notes.md#details-and-the-notfound-guard).
+7. **A nav link** to your Index page. Copy the `Privacy` `<li>` in `Views/Shared/_Layout.cshtml` and adapt it — [it uses tag helpers](lecture-notes.md#one-last-note-on-the-navbar), which is fine. *(That's the only layout change you need — the shell is week 5's business.)*
 8. **Deployed to Azure**, and **3+ meaningful commits** in a public GitHub repo.
 
 > [!TIP]
@@ -109,6 +112,15 @@ az webapp up --name your-app-XX1234 --sku F1 --os-type Linux \
 ```
 
 Use the **same US region** that worked for you in week 3 — it's on the class list. Leave the app up until grades post.
+
+## 🆘 Stuck?
+
+- **404 on your index page?** Route → action → view, in that order. Class named `XxxController`? Method `public`? View folder named to match? [Three names must agree](lecture-notes.md#conventions-three-names-that-must-agree).
+- **"The view 'Index' was not found"** — read the error, it lists every path it searched. Usually the folder name doesn't match the controller.
+- **"The model item passed into the ViewDataDictionary is of type…"** — your controller and your `@model` line disagree. One passes a list, the other expects a single item, or vice versa.
+- **500 on a details page** — almost always the [missing null guard](lecture-notes.md#details-and-the-notfound-guard).
+- **`YourData` won't resolve in the controller** — you need a [`using` for your Models namespace](lecture-notes.md#namespaces-and-the-using-they-require).
+- Everything else: the [troubleshooting appendix](lecture-notes.md#appendix-troubleshooting).
 
 ## 📊 Grading (20 pts)
 
