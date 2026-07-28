@@ -6,18 +6,19 @@
 //
 //    <script src="https://jgrissom.github.io/dotnet-web-dev/week-04/homework-checks.js"></script>
 //
-//  Then load that page and open the console (F12). It runs automatically.
-//  Type  recheck()  to run it again without refreshing.
+//  Then load that page and open the console (F12). It runs automatically, so
+//  every refresh re-checks your work — the same red-to-green loop as the lab.
+//  Type  recheck()  to run it again without reloading.
 //
-//  It checks whatever site it's loaded on. Run it on your DEPLOYED site
-//  before submitting — that's the one I grade. Take the tag out when you're
-//  done, or leave it: it only writes to the console.
+//  It checks whatever site it's loaded on, so it works on localhost while you
+//  build AND on your deployed app. Leave the tag in or take it out; it only
+//  writes to the console and doesn't affect grading.
 //
 //  (Have Node installed? `node homework-checks.js <url>` works too.)
 //
-//  Your topic is your own, so nothing here is hard-coded: the script finds
-//  your controller the same way a visitor would — by following the link you
-//  put in the navbar. If it can't find that link, neither can I.
+//  Your topic is your own, so nothing here is hard-coded: it finds your
+//  controller the same way a visitor would — by following the link you put in
+//  the navbar. If it can't find that link, neither can I.
 // ═══════════════════════════════════════════════════════════════════════════
 (function () {
   const BAD_ID = 999999;
@@ -53,23 +54,31 @@
   const detailsLinks = (html, route) =>
     [...new Set([...html.matchAll(new RegExp(`/${route}/Details/(\\d+)`, "gi"))].map(m => m[0]))];
 
-  function tally(checks) {
-    return {
-      earned: checks.filter(c => c.pass).reduce((n, c) => n + c.pts, 0),
-      possible: checks.reduce((n, c) => n + c.pts, 0),
-    };
-  }
+  const tally = (checks) => ({
+    earned: checks.filter(c => c.pass).reduce((n, c) => n + c.pts, 0),
+    possible: checks.reduce((n, c) => n + c.pts, 0),
+    green: checks.filter(c => c.pass).length,
+    total: checks.length,
+  });
 
   /**
    * Runs every URL-verifiable check against a base URL.
-   * Returns { route, checks: [{label, pass, pts, hint}], earned, possible }
+   * Returns { route, checks: [{label, pass, pts, hint, blocked, todo}], earned, possible, green, total }
+   * `blocked` = couldn't be judged yet because an earlier step isn't done — not the
+   * student's failure, just not their turn. `todo` is the single next action.
    * Shared with the grader so students and I run identical logic.
    */
   async function runChecks(baseUrl, forcedRoute, onCheck) {
     const root = String(baseUrl).replace(/\/$/, "");
     const checks = [];
-    const add = (pass, pts, label, hint) => {
-      const c = { pass, pts, label, hint: pass ? null : hint };
+    const add = (state, pts, label, opts = {}) => {
+      const c = {
+        pass: state === "pass",
+        blocked: state === "blocked",
+        pts, label,
+        hint: state === "pass" ? null : opts.hint || null,
+        todo: state === "pass" ? null : opts.todo || null,
+      };
       checks.push(c);
       if (onCheck) onCheck(c);          // report as we go — a sleeping app is slow
       return c;
@@ -77,10 +86,12 @@
 
     const home = await getWithWakeup(root + "/");
     if (!home || home.status >= 400) {
-      add(false, 2, "nav link to your index page", "your home page didn't load at all — is the app running / deployed?");
-      add(false, 4, "index page lists all your items", "can't get there until the home page loads");
-      add(false, 4, "details page shows one item", "can't get there until the home page loads");
-      add(false, 2, "a bad id returns 404", "can't get there until the home page loads");
+      add("fail", 2, "nav link to your index page", {
+        hint: "your home page didn't even load — nothing else can be checked until it does.",
+        todo: "Start your app (dotnet watch), or check that your deployed URL is right.",
+      });
+      ["index lists all your items", "details page shows one item", "a bad id returns 404"]
+        .forEach((l, i) => add("blocked", [4, 4, 2][i], l, { hint: "waiting on the home page" }));
       return { route: null, checks, ...tally(checks) };
     }
 
@@ -94,20 +105,25 @@
       if (!route) route = cand;                       // reachable, but no detail links yet
     }
 
-    add(!!route, 2, `nav link to your index page${route ? ` — found /${route}` : ""}`,
-      "no working link to your controller in the navbar. Copy the Privacy <li> in _Layout.cshtml and adapt it.");
+    add(route ? "pass" : "fail", 2,
+      `nav link to your index page${route ? ` — found /${route}` : ""}`, {
+        hint: "I couldn't find a link in your navbar that reaches a controller of yours.",
+        todo: 'Copy the Privacy <li> in Views/Shared/_Layout.cshtml and point it at your controller.',
+      });
 
     if (!route) {
-      add(false, 4, "index page lists all your items", "can't find your index page without that nav link");
-      add(false, 4, "details page shows one item", "can't find your index page without that nav link");
-      add(false, 2, "a bad id returns 404", "can't find your index page without that nav link");
+      ["index lists all your items", "details page shows one item", "a bad id returns 404"]
+        .forEach((l, i) => add("blocked", [4, 4, 2][i], l, { hint: "waiting on that nav link" }));
       return { route: null, checks, ...tally(checks) };
     }
 
-    add(links.length >= 5, 4, `index lists all your items — ${links.length} detail link${links.length === 1 ? "" : "s"} found`,
-      `I count your items by the Details link on each row. Need 5+: seed at least 5 items, and give every row a link like href="/${route}/Details/@item.Id".`);
+    add(links.length >= 5 ? "pass" : "fail", 4,
+      `index lists all your items — ${links.length} found`, {
+        hint: `I count your items by the Details link on each row, and found ${links.length}. You need 5 or more.`,
+        todo: `Seed at least 5 items, and give every row a link: href="/${route}/Details/@item.Id"`,
+      });
 
-    // No links on the index? Don't zero the rest — probe the conventional URL so
+    // No links on the index? Don't block the rest — probe the conventional URL so
     // Details and the 404 guard are still judged on their own merits.
     const probe = links.length ? links[0] : `/${route}/Details/1`;
     const guessed = !links.length;
@@ -115,15 +131,22 @@
     const detail = await getWithWakeup(root + probe);
     const okDetail = detail && detail.status < 400;
     const stillAList = okDetail && detailsLinks(detail.body, route).length >= Math.max(links.length, 2);
-    add(okDetail && !stillAList, 4,
-      `details page shows one item — ${probe}${guessed ? " (guessed: no links on your index)" : ""}`,
-      stillAList
-        ? "that page still lists everything. Your Details action should pass ONE item to the view, not the whole list."
-        : `${probe} didn't load. Does your Details action exist, and is there a Details.cshtml for it?`);
+    add(okDetail && !stillAList ? "pass" : "fail", 4,
+      `details page shows one item — ${probe}${guessed ? " (guessed — no links on your index)" : ""}`, {
+        hint: stillAList
+          ? "that page still lists everything, so it's showing the whole collection."
+          : `${probe} didn't load.`,
+        todo: stillAList
+          ? "In your Details action, pass ONE item to the view — View(item), not View(list)."
+          : `Add a Details(int id) action and a Views/${route}/Details.cshtml to match.`,
+      });
 
     const bad = await getWithWakeup(`${root}/${route}/Details/${BAD_ID}`);
-    add(bad && bad.status === 404, 2, `a bad id returns 404 — got ${bad ? bad.status : "no response"}`,
-      "use FirstOrDefault, then `if (item == null) return NotFound();` before returning the view.");
+    add(bad && bad.status === 404 ? "pass" : "fail", 2,
+      `a bad id returns 404 — got ${bad ? bad.status : "no response"}`, {
+        hint: "an id nobody has should be an honest 404, not a crash or a blank page.",
+        todo: "Use FirstOrDefault, then: if (item == null) return NotFound();",
+      });
 
     return { route, checks, ...tally(checks) };
   }
@@ -132,6 +155,8 @@
     "4 pts — model with 4+ properties (an int Id, plus at least one non-string) and 5+ seeded items",
     "4 pts — 3+ meaningful commits, pushed to a public repo",
   ];
+
+  const isLocal = (url) => /localhost|127\.0\.0\.1|\[::1\]/i.test(String(url));
 
   // ── Node: export for the grader, and support `node homework-checks.js <url>` ──
   if (typeof module !== "undefined" && module.exports) {
@@ -155,46 +180,62 @@
     }
 
     (async () => {
-      console.log(`\n🔎 Checking ${url}`);
-      console.log("   (a sleeping free-tier app can take ~30s for the first one)\n");
-      const { earned, possible, route } = await runChecks(url, forced, (c) => {
-        console.log(`${c.pass ? "✅" : "❌"} ${String(c.pts).padStart(2)} pts  ${c.label}`);
+      console.log(`\n🔎 Week 4 self-check — ${url}`);
+      console.log("   (a sleeping free-tier app can take ~30s for the first check)\n");
+      const res = await runChecks(url, forced, (c) => {
+        console.log(`${c.pass ? "✅" : c.blocked ? "⬜" : "❌"} ${String(c.pts).padStart(2)} pts  ${c.label}`);
         if (c.hint) console.log(`         ↳ ${c.hint}`);
       });
-      console.log(`\n${earned === possible ? "🎉" : "📊"} ${earned} / ${possible} automated points${route ? `  (controller: /${route})` : ""}`);
-      console.log(earned === possible
-        ? "\nEverything I can check from a URL passes. Two things I check by hand — confirm them yourself:"
-        : "\nFix the ❌ above, then run this again. Also check by hand:");
+      const { earned, possible, green, total, route } = res;
+      console.log(`\n📋 ${green} of ${total} checks green · ${earned} of ${possible} points${route ? `  (controller: /${route})` : ""}`);
+
+      const next = res.checks.find(c => !c.pass && c.todo);
+      if (next) console.log(`\n👉 Next: ${next.todo}`);
+      else if (isLocal(url)) console.log("\n⚠️  That was localhost. Run it again on your Azure URL — the deployed one is what I grade.");
+      else console.log("\n🎉 Everything I can check from a URL passes on your deployed site.");
+
+      console.log("\nThe last 8 points I check by hand:");
       BY_HAND.forEach(l => console.log("   • " + l));
       console.log("\nSubmit your Azure URL + repo URL via Canvas.\n");
-      process.exit(earned === possible ? 0 : 1);
+      process.exit(green === total ? 0 : 1);
     })();
   }
 
   // ── Browser: <script src> on your own site, or pasted into the console ───────
   if (typeof window !== "undefined" && typeof document !== "undefined") {
     const bold = "font-weight: bold";
+    const big = `${bold}; font-size: 1.1em`;
 
     const printCheck = (c) => {
-      console.log(`%c${c.pass ? "✅" : "❌"} ${c.pts} pts  ${c.label}`, c.pass ? "color: green" : "color: crimson");
+      const mark = c.pass ? "✅" : c.blocked ? "⬜" : "❌";
+      const color = c.pass ? "color: green" : c.blocked ? "color: gray" : "color: crimson";
+      console.log(`%c${mark} ${c.pts} pts  ${c.label}`, color);
       if (c.hint) console.log(`      ↳ ${c.hint}`);
     };
 
-    const report = ({ earned, possible, route }) => {
-      console.log(`%c${earned === possible ? "🎉" : "📊"} ${earned} / ${possible} automated points${route ? `  (controller: /${route})` : ""}`,
-        `${bold}; font-size: 1.1em`);
-      console.log(`%c${earned === possible
-        ? "Everything I can check from a URL passes. Two things I check by hand:"
-        : "Fix the ❌ above and run it again. Also check by hand:"}`, bold);
+    const report = (res) => {
+      const { earned, possible, green, total, route } = res;
+      console.log(`%c📋 ${green} of ${total} checks green · ${earned} of ${possible} points${route ? `  (controller: /${route})` : ""}`, big);
+
+      const next = res.checks.find(c => !c.pass && c.todo);
+      if (next) {
+        console.log(`%c👉 Next: ${next.todo}`, `${bold}; color: #79c0ff`);
+        console.log("Fix that, refresh this page, and the checks run again.");
+      } else if (isLocal(window.location.origin)) {
+        console.log("%c⚠️  This is localhost. Run it again on your Azure URL — the deployed one is what I grade.", `${bold}; color: #d29922`);
+      } else {
+        console.log("%c🎉 Everything I can check from a URL passes on your deployed site.", `${bold}; color: green`);
+      }
+
+      console.log("%cThe last 8 points I check by hand:", bold);
       BY_HAND.forEach(l => console.log("   • " + l.trim()));
-      console.log("%cRun this on your DEPLOYED site before you submit.", bold);
-      console.log("%cType  recheck()  to run these again without refreshing.", "color: #79c0ff");
+      console.log("%cType  recheck()  to run these again without reloading.", "color: #79c0ff");
     };
 
     const run = () => {
-      console.log(`%c🔎 Week 4 self-check — ${window.location.origin}`, `${bold}; font-size: 1.1em`);
+      console.log(`%c🔎 Week 4 self-check — ${window.location.origin}`, big);
       console.log("Results appear as each check finishes — a sleeping free-tier app can take ~30s for the first one.");
-      console.log("Heads up: a red 404 line will appear partway through. That's expected — one of the checks asks for a bad id on purpose.");
+      console.log("A red 404 line partway through is expected: one check asks for a bad id on purpose.");
       return runChecks(window.location.origin, null, printCheck).then(report);
     };
 
