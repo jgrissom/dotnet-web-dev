@@ -81,7 +81,12 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ## 3 · Razor playground *(slides 8–12)*
 
-Everything here happens in `Views/Trucks/Index.cshtml`. **View Source after every beat** — `Ctrl+U`, or **`⌘⌥U` on a Mac** (plain `⌘U` won't do it in Chrome); right-click → *View Page Source* if you'd rather not think about it. That's the whole point of the section.
+Everything here happens in `Views/Trucks/Index.cshtml`.
+
+> [!IMPORTANT]
+> **Each beat is appended below the last** — keep the `<h1>Curbside</h1>` and the tagline from §2 at the top and let the file grow underneath. Nothing here is a rewrite; you're stacking experiments on one page so the room watches it accumulate. **§4 throws all of it away** and replaces the file with the real typed view, so don't polish anything.
+
+**View Source after every beat** — `Ctrl+U`, or **`⌘⌥U` on a Mac** (plain `⌘U` won't do it in Chrome); right-click → *View Page Source* if you'd rather not think about it. That's the whole point of the section.
 
 - [ ] **Expressions** — add and save:
   ```html
