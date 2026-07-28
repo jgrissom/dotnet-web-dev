@@ -12,7 +12,7 @@ Full-stack web development with **ASP.NET Core MVC on .NET 10**, **Entity Framew
 | 1 | Course intro, environment setup, rapid JavaScript refresher (fundamentals, arrays/objects, DOM & fetch highlights) |  [`week-⁠01/`](week-01/) | ✅&nbsp;Ready |
 | 2 | Bootstrap 5: grid, components, utilities; Bootswatch themes; Google Fonts; build & deploy a static site to GitHub Pages |  [`week-⁠02/`](week-02/) | ✅&nbsp;Ready |
 | 3 | How the web works (HTTP, client/server); ASP.NET Core MVC fundamentals: project anatomy, MVC pattern, first controller & view; first deploy to Azure App Service | [`week-⁠03/`](week-03/) | ✅&nbsp;Ready |
-| 4 | Routing, controllers, passing data to views; Razor syntax deep dive | `week-⁠04/` | 🚧&nbsp;Planned |
+| 4 | Routing, controllers, passing data to views; Razor syntax deep dive | [`week-⁠04/`](week-04/) | ✅&nbsp;Ready |
 | 5 | Razor layouts & partials: the site shell — applying the Bootstrap you already know; Bootswatch swap in `_Layout.cshtml` | `week-⁠05/` | 🚧&nbsp;Planned |
 | 6 | Models, forms, model binding, validation (data annotations) | `week-⁠06/` | 🚧&nbsp;Planned |
 | 7 | EF Core + SQL Server: DbContext, migrations, seeding; pointing deployed apps at the school SQL Server | `week-⁠07/` | 🚧&nbsp;Planned |

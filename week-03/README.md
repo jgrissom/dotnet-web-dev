@@ -21,4 +21,4 @@ The pivot night: HTTP demystified in DevTools, `dotnet new mvc` to a working ser
 - Know who failed Azure activation (week 2 homework screenshots) — pair them up for the deploy segment
 - Remind students to `git pull` for the week-03 starter
 
-**Prev:** [← Week 2 — Bootstrap](../week-02/README.md) · **Next:** Week 4 — Routing & Razor deep dive *(coming)*
+**Prev:** [← Week 2 — Bootstrap](../week-02/README.md) · **Next:** [Week 4 — Routing & Razor →](../week-04/README.md)
