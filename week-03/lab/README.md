@@ -26,9 +26,9 @@ Your first ASP.NET Core MVC app, graded the same way you'll work: run the checks
 | # | Check | What to do |
 |---|-------|------------|
 | 2 | `SiteIsBranded` | Make it yours: the navbar brand in `Views/Shared/_Layout.cshtml` and the home page heading should say **First Flight** (not the project name). |
-| 3 | `AboutPageExists` | Add an `About` [action](lecture-notes.md#controllers-and-actions) to `HomeController` and a matching [view](lecture-notes.md#views-and-razor) — `Views/Home/About.cshtml` with an "About" heading and a sentence about you. |
+| 3 | `AboutPageExists` | Add an `About` [action](../lecture-notes.md#controllers-and-actions) to `HomeController` and a matching [view](../lecture-notes.md#views-and-razor) — `Views/Home/About.cshtml` with an "About" heading and a sentence about you. |
 | 4 | `AboutIsInTheNav` | Add About to the navbar in `_Layout.cshtml` — copy the Privacy `<li>` and adapt it. |
-| 5 | `HelloGreetsByName` | A `Hello` action that [reads a query parameter](lecture-notes.md#passing-data-viewdata-and-parameters): `/Home/Hello?name=Ada` returns `Hello, Ada!` (a `Content(...)` result — no view needed). |
+| 5 | `HelloGreetsByName` | A `Hello` action that [reads a query parameter](../lecture-notes.md#passing-data-viewdata-and-parameters): `/Home/Hello?name=Ada` returns `Hello, Ada!` (a `Content(...)` result — no view needed). |
 | 6 | `HelloHasADefault` | No name given → `Hello, stranger!` — a nullable parameter and `??` do it in one line. |
 
 ## Rules
@@ -39,7 +39,7 @@ Your first ASP.NET Core MVC app, graded the same way you'll work: run the checks
 
 ## 🆘 Stuck?
 
-Route → action → view, in that order — the [troubleshooting appendix](lecture-notes.md#appendix-troubleshooting) walks the diagnosis. The [routing section](lecture-notes.md#routing-controlleraction) explains *why* `/Home/About` finds `HomeController.About()`. The terminal running `dotnet watch` prints the real error when a page 500s.
+Route → action → view, in that order — the [troubleshooting appendix](../lecture-notes.md#appendix-troubleshooting) walks the diagnosis. The [routing section](../lecture-notes.md#routing-controlleraction) explains *why* `/Home/About` finds `HomeController.About()`. The terminal running `dotnet watch` prints the real error when a page 500s.
 
 ## 🚀 Done early?
 
