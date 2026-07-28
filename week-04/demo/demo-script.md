@@ -81,7 +81,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ## 3 · Razor playground *(slides 8–12)*
 
-Everything here happens in `Views/Trucks/Index.cshtml`. **View Source after every beat** (`Ctrl/Cmd+U`) — that's the whole point of the section.
+Everything here happens in `Views/Trucks/Index.cshtml`. **View Source after every beat** — `Ctrl+U`, or **`⌘⌥U` on a Mac** (plain `⌘U` won't do it in Chrome); right-click → *View Page Source* if you'd rather not think about it. That's the whole point of the section.
 
 - [ ] **Expressions** — add and save:
   ```html

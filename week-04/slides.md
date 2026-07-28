@@ -200,7 +200,7 @@ Same kind of site. Different century.
 <!-- this one ships -->
 ```
 
-Then: **View Source** (`Ctrl/Cmd+U`).
+Then: **View Source** — `Ctrl+U`, or `⌘⌥U` on a Mac.
 
 - No `@`. No `foreach`. No `if`. Just HTML.
 - The loop ran on the **server**; the browser got the result.

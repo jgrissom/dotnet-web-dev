@@ -189,7 +189,7 @@ Demo this and View Source it. It's a five-second beat with a real security lesso
 
 ### View Source: the proof
 
-After every Razor beat above, **View Source** (not DevTools' Elements panel — actual View Source, `Ctrl/Cmd+U`).
+After every Razor beat above, **View Source** — not DevTools' Elements panel, actual View Source: `Ctrl+U` on Windows, **`⌘⌥U` on a Mac** (plain `⌘U` is not bound to it in Chrome). Right-click → *View Page Source* always works and is the safest thing to show a mixed room.
 
 - There is no `@`, no `foreach`, no `if` anywhere in what the browser received. Just HTML.
 - The loop ran **on the server**; the browser got the finished product. This is the deepest difference between week 1–2 JavaScript and what you're doing now, and View Source is the proof you can point at.
