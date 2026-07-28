@@ -281,8 +281,8 @@ Then visit `/Trucks/Details/999` on purpose.
 
 - Copy `week-04/lab/starter/` out of the repo clone
 - `dotnet test Cryptids.Checks` → **1 / 6 passing**
-- Six creatures · a details page · a 404 that's honest
-- Same rhythm: one ❌ at a time
+- **Model and data are given** — you write controllers and views
+- A list · a details page · a 404 that's honest
 
 Tonight's target: **checks 1–4**. The rest is homework.
 
