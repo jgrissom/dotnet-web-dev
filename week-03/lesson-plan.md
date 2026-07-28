@@ -28,7 +28,7 @@ By the end of this session, students can:
 
 | Time | Duration | Segment |
 |------|----------|---------|
-| 0:00 | 10 min | **Portfolio gallery walk** *(deck on title slide)*. 3–4 student portfolio URLs on the projector — themes and fonts make this one fun. Quietly collect anyone whose Azure activation (week 2 homework) failed; they pair with a neighbor for tonight's deploy segment. |
+| 0:00 | 10 min | **Portfolio gallery walk** *(deck on title slide)*. 3–4 student portfolio URLs on the projector — themes and fonts make this one fun, and it's the best gallery of the early weeks because everyone's looks different. **Keep ticking names off the rotation list** (everyone gets shown at least once this term — announced in week 1). Quietly collect anyone whose Azure activation (week 2 homework) failed; they pair with a neighbor for tonight's deploy segment. |
 | 0:10 | 30 min | **How the web actually works** *(slides 3–5, demo §1)*. HTTP as text: request anatomy, response anatomy, verbs, status codes. Then DevTools Network tab on the hosted coffee page — real headers, real status codes. Land: 404 = routing, 500 = your code. |
 | 0:40 | 40 min | **Your first server-side app** *(slides 6–8, demo §2)*. `dotnet new mvc` → `dotnet watch` → working site. Anatomy tour (Controllers, Views, wwwroot — wave at bundled Bootstrap). Program.cs read as a story; the `pattern` line gets its drumroll. |
 | 1:20 | 10 min | **☕ Break** |

@@ -28,7 +28,7 @@ By the end of this session, students can:
 
 | Time | Duration | Segment |
 |------|----------|---------|
-| 0:00 | 15 min | **Week 1 homework gallery walk** *(deck on title slide)*. Open 3–4 student Pages URLs on the projector (volunteers first). Triage any setup stragglers — pair them with a neighbor whose environment is green. |
+| 0:00 | 15 min | **Week 1 homework gallery walk** *(deck on title slide)*. Open 3–4 student Pages URLs on the projector. **This is where the rotation starts** — you told them in week 1 that everyone's work gets shown at least once this term, so start a list now and tick names off; take volunteers first while there are any. The uniformity is the *point* here: every page is unstyled browser-default, which is tonight's before picture. Triage any setup stragglers — pair them with a neighbor whose environment is green. |
 | 0:15 | 20 min | **Why CSS frameworks; Bootstrap anatomy** *(slides 2–4)*. The problem Bootstrap solves (consistent, responsive, accessible-by-default UI without writing a design system). The two CDN tags: CSS bundle + JS bundle, and what needs which. Mobile-first mindset. |
 | 0:35 | 45 min | **Live-code: the grid** *(slides 5–7)*. `container` vs `container-fluid`, `row`/`col`, auto vs numbered columns, breakpoints (`col-md-6` — resize the window constantly!), gutters, and the flex utilities (`d-flex`, `justify-content-*`, `align-items-*`). Build the demo coffee-shop page (`demo/index.html`) live — different content from the lab on purpose, so the lab stays a fresh build. |
 | 1:20 | 10 min | **☕ Break** |
