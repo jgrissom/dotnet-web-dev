@@ -1,9 +1,9 @@
-name: Check links
+name: Check docs
 
 on:
   push:
     branches: [main]
-    paths: ["**/*.md", "scripts/check-links.js"]
+    paths: ["**/*.md", "scripts/check-links.js", "scripts/check-tables.js"]
   schedule:
     - cron: "0 12 * * 1"   # Mondays: full check including external URLs
   workflow_dispatch:
@@ -19,6 +19,8 @@ jobs:
       - run: npm install --no-save github-slugger
       - name: Internal links + anchors (every push)
         run: node scripts/check-links.js .
+      - name: Week README tables — columns 1–2 must not wrap
+        run: node scripts/check-tables.js .
       - name: External URLs (scheduled/manual runs only)
         if: github.event_name != 'push'
         run: node scripts/check-links.js . --external
