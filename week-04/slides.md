@@ -77,7 +77,7 @@ Two of these do something you won't expect.
 
 ---
 
-<!-- _footer: '🎨 demo time — script §1: edit the pattern, break it, restore it' -->
+<!-- _footer: '⚠️ §1 continued — break the pattern twice, then RESTORE it before §2' -->
 
 ## The URL is not a file path
 
