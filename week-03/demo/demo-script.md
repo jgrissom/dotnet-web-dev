@@ -31,7 +31,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] Browser opens → a working, styled site from three commands. Let that breathe
 - [ ] **Anatomy tour in VS Code** (keep `dotnet watch` running): `Controllers/HomeController.cs` → `Views/Home/` → `Views/Shared/_Layout.cshtml` (point at the navbar markup — "week 2 classes, recognize them?") → `wwwroot/lib/bootstrap` ("the *locally bundled* delivery I promised")
 - [ ] Prove the loop: in `Views/Home/Index.cshtml` change `Welcome` → `Common Grounds, now with a server` → save → browser refreshes itself (`dotnet watch`!)
-- [ ] Open `Program.cs`, read it top to bottom as a story; drumroll the `pattern` line
+- [ ] Open `Program.cs`, narrate the **five acts** (notes Part 2 has the script): shopping list → build → the gauntlet → **the map (drumroll)** → open the doors. Mention the `partial class Program` coda only if someone asks
 - [ ] **✓ CHECKPOINT:** app running, room has seen every folder earn its name
 
 ## 3 · The MVC journey: Menu + a parameter *(slides 9–13)*

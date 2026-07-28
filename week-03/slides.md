@@ -118,23 +118,23 @@ CommonGrounds.Web/
 
 <!-- _footer: '🎨 demo time — script §2: create it, run it, tour it' -->
 
-## Program.cs — the whole pipeline
+## Program.cs — a five-act story
 
 ```csharp
-var builder = WebApplication.CreateBuilder(args);
+var builder = WebApplication.CreateBuilder(args);   // 1 shopping list
 builder.Services.AddControllersWithViews();
-
-var app = builder.Build();
-app.UseStaticFiles();
+var app = builder.Build();                          // 2 build the machine
+if (!app.Environment.IsDevelopment())
+    app.UseExceptionHandler("/Home/Error");         // 3 the gauntlet…
 app.UseRouting();
-
-app.MapControllerRoute(
+app.UseAuthorization();
+app.MapStaticAssets();
+app.MapControllerRoute(                             // 4 THE map 🥁
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
-app.Run();
+    pattern: "{controller=Home}/{action=Index}/{id?}")
+    .WithStaticAssets();
+app.Run();                                          // 5 open the doors
 ```
-
-**That `pattern` line = tonight's headliner.**
 
 ---
 

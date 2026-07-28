@@ -89,26 +89,18 @@ CommonGrounds.Web/
 
 ### Program.cs — the whole pipeline
 
-```csharp
-var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddControllersWithViews();
+Open the real file and **read it as a five-act story**, top to bottom:
 
-var app = builder.Build();
-app.UseStaticFiles();
-app.UseRouting();
-
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
-
-app.Run();
-```
-
-- Read it as a story: build the app → requests flow through middleware (static files first!) → routing decides which controller answers → run forever.
-- **C# bridge:** this is a normal C# `Main` — top-level statements, but still just a program that starts a server and waits.
+1. **The shopping list.** `CreateBuilder` starts a list of what the app will need; `AddControllersWithViews()` puts MVC on it. Nothing is running — this is a recipe.
+2. **Build the machine.** `builder.Build()` assembles a real web server from that list. Everything after configures a machine that now exists.
+3. **The gauntlet.** Every request walks the pipeline in order: in *production* a crash shows a friendly error page (`UseExceptionHandler`) — in dev you *want* the raw stack trace, hence the `if`. `UseRouting` reads the URL and decides where it's headed. `UseAuthorization` is the bouncer — bored until week 11, nobody has badges yet. `MapStaticAssets`: "asking for a file in `wwwroot`? just hand it over" — that's how Bootstrap's CSS is served with zero C#.
+4. **The map.** `MapControllerRoute` — the headliner, drumroll — one `pattern` turns URLs into method calls. The rest of tonight lives inside those braces.
+5. **Open the doors.** `app.Run()` — start listening, forever. Everything above was setup; this line *is* the server.
 
 > [!NOTE]
-> That `pattern` line is the single most important line of the night — Part 3 is entirely about what it means.
+> Older tutorials say `app.UseStaticFiles()` — same job as act 3's `MapStaticAssets` (the newer, faster replacement in current templates). Recognize it in the wild; write the new one.
+
+- **C# bridge:** this whole file is a normal `Main` — top-level statements, but still just a program that starts a server and waits.
 
 ## Part 3: The MVC pattern (45 min)
 
