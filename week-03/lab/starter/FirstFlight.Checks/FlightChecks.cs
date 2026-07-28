@@ -1,6 +1,6 @@
 // ═══════════════════════════════════════════════════════════════════
 //  READ-ONLY — these are the checks your lab is graded against.
-//  Run them with:  dotnet test        (from the FirstFlight folder)
+//  Run them with:  dotnet test FirstFlight.Checks   (from the parent folder)
 //  Your job is turning ❌ into ✅ by editing FirstFlight.Web — never this file.
 // ═══════════════════════════════════════════════════════════════════
 using Microsoft.AspNetCore.Mvc.Testing;
