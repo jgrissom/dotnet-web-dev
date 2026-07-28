@@ -6,6 +6,7 @@ on:
     paths:
       - "week-*/slides.md"
       - "week-*/demo/**"
+      - "week-*/homework-checks.js"
       - ".github/workflows/export-slides.yml"
   workflow_dispatch:
 
@@ -81,6 +82,12 @@ jobs:
                 mkdir -p "_site/$wk/demo"
                 checklist "$wk/demo/demo-script.md" "_site/$wk/demo/script.html" "$wk-step" "$wk demo script"
                 extra="$extra · <a href=\"$wk/demo/script.html\">script</a>"
+              fi
+              # Student self-check: served so students load it with a one-line
+              # fetch+eval from their OWN site's console (Pages sends CORS *).
+              if [ -f "$wk/homework-checks.js" ]; then
+                cp "$wk/homework-checks.js" "_site/$wk/homework-checks.js"
+                extra="$extra · <a href=\"$wk/homework-checks.js\">checker</a>"
               fi
               echo "<li><a href=\"$wk/\">${wk/week-0/Week }</a>$extra</li>"
             done

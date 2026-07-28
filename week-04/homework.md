@@ -44,11 +44,15 @@ It needs:
 
 **[`homework-checks.js`](homework-checks.js) runs the same checks I grade with.** Nothing in it is specific to my topic or yours — it finds your controller by following the link you put in the navbar, exactly like a visitor would.
 
-**Nothing to install.** Same routine as weeks 1 and 2:
+**Nothing to install, one line to copy.** Same routine as weeks 1 and 2:
 
 1. Open **your own site** in the browser — `localhost` while you're building, your Azure URL before you submit
 2. **F12 → Console**
-3. Paste the whole contents of `homework-checks.js` and press **Enter**
+3. Paste this one line and press **Enter**:
+
+```js
+fetch('https://jgrissom.github.io/dotnet-web-dev/week-04/homework-checks.js').then(r=>r.text()).then(eval)
+```
 
 ```
 🔎 Week 4 self-check — https://trail-guide-ab1234.azurewebsites.net
