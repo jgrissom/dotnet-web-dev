@@ -788,12 +788,13 @@ section footer { color: #9fb2c1; font-size: 0.6em; opacity: 0.85; }
 ;" data-marpit-pagination-total="18">
 <h2 id="one-command-to-the-cloud">One command to the cloud</h2>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-bash"><span class="hljs-built_in">cd</span> FirstFlight.Web        <span class="hljs-comment"># ← INSIDE the web project folder</span>
-az webapp up --name ff-web-XX1234 --runtime DOTNETCORE:10.0 --sku F1
+az webapp up --name ff-web-XX1234 --sku F1 \
+  --runtime DOTNETCORE:10.0 --location northcentralus
 </code></pre>
 <ul>
 <li><code>--name</code> = your public URL — globally unique (initials + digits)</li>
-<li><code>--sku F1</code> = free tier (sleeps when idle; first wake-up is slow — normal)</li>
-<li>Run it again later = <strong>redeploy</strong>. That's the whole update story.</li>
+<li><code>--sku F1</code> = free tier (naps when idle; first wake-up is slow — normal)</li>
+<li><code>--location northcentralus</code> = <strong>required</strong> — a US region, or the school DB blocks you later</li>
 </ul>
 <footer><img class="emoji" draggable="false" alt="🎨" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f3a8.svg" data-marp-twemoji=""/> demo time — script §4: ship it to Azure, live</footer>
 </section>
