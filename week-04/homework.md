@@ -44,26 +44,26 @@ It needs:
 
 **[`homework-checks.js`](homework-checks.js) runs the same checks I grade with.** Nothing in it is specific to my topic or yours — it finds your controller by following the link you put in the navbar, exactly like a visitor would.
 
-While you're building, with `dotnet watch` running:
+**Nothing to install.** Same routine as weeks 1 and 2:
 
-```bash
-node homework-checks.js http://localhost:5199     # use YOUR port
-```
-
-And again on the deployed app, right before you submit:
-
-```bash
-node homework-checks.js https://your-app-XX1234.azurewebsites.net
-```
+1. Open **your own site** in the browser — `localhost` while you're building, your Azure URL before you submit
+2. **F12 → Console**
+3. Paste the whole contents of `homework-checks.js` and press **Enter**
 
 ```
-✅  2 pts  nav link to your index page — found /Trails
-✅  4 pts  index lists all your items — 6 detail links found
-✅  4 pts  details page shows one item — /Trails/Details/1
-✅  2 pts  a bad id returns 404 — got 404
+🔎 Week 4 self-check — https://trail-guide-ab1234.azurewebsites.net
+✅ 2 pts  nav link to your index page — found /Trails
+✅ 4 pts  index lists all your items — 6 detail links found
+✅ 4 pts  details page shows one item — /Trails/Details/1
+✅ 2 pts  a bad id returns 404 — got 404
 
 🎉 12 / 12 automated points
 ```
+
+> [!NOTE]
+> It checks whichever site the console is open on — so open it on **your** app, not on this page. A red `404` line will show up partway through; that's expected, because one of the checks asks for a bad id on purpose.
+
+*(If you happen to have Node installed, `node homework-checks.js <url>` does the same thing from a terminal. You don't need it.)*
 
 Every ❌ comes with a hint about what to fix. **12 of the 20 points are in that script** — there is no reason to lose any of them.
 

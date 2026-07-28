@@ -11,7 +11,7 @@ The night the app stops being a page and becomes a system. Routing gets read *an
 | Projected in class | 🎞️ [slides.md](slides.md) | The deck (GFM, one slide per `##`) — [**present it live**](https://jgrissom.github.io/dotnet-web-dev/week-04/) (arrow keys, `F` for fullscreen) |
 | In class, live-coding | 🎨 [demo/](demo/) | *Curbside* — a food-truck directory built live (different content than the lab); [clickable cue sheet](https://jgrissom.github.io/dotnet-web-dev/week-04/demo/script.html) |
 | In class, last 30 min | 🧪 [lab/](lab/) | *Cryptid Registry* — 6 `dotnet test` checks; 1/6 green out of the box (answer key in the private answer-keys repo) |
-| With the homework | ✅ [homework-checks.js](homework-checks.js) | Student self-check — the same checks the grader runs (12 of the 20 pts) |
+| With the homework | ✅ [homework-checks.js](homework-checks.js) | Student self-check, pasted into the browser console — the same checks the grader runs (12 of the 20 pts) |
 | Assigned at wrap-up | 📤 [homework.md](homework.md) | Your own list-and-details site, deployed to Azure; URL + repo via Canvas |
 
 ## What students walk out with
