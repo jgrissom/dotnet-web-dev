@@ -54,6 +54,14 @@ It needs:
 fetch('https://jgrissom.github.io/dotnet-web-dev/week-04/homework-checks.js').then(r=>r.text()).then(eval)
 ```
 
+> [!IMPORTANT]
+> **The first time you paste into a console, Chrome and Edge will refuse.** You'll see *"Warning: Don't paste code you don't understand"* and it'll ask you to type **`allow pasting`** and press Enter. Do that once, then paste again — the browser remembers.
+>
+> That warning is *correct*, by the way, and worth taking seriously everywhere else: pasting code you can't read into a console is how people get their accounts stolen. Here you can read it — [`homework-checks.js`](homework-checks.js) is in this folder, and it only does GETs against your own site.
+
+> [!TIP]
+> **No internet, or the fetch is blocked?** Open [`homework-checks.js`](homework-checks.js), copy the whole file, and paste that into the console instead. Identical result — the one-liner is just a shortcut for fetching it.
+
 ```
 🔎 Week 4 self-check — https://trail-guide-ab1234.azurewebsites.net
 ✅ 2 pts  nav link to your index page — found /Trails
