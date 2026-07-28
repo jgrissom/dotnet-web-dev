@@ -44,8 +44,39 @@ dotnet test Cryptids.Checks
 > [!TIP]
 > Two terminals: in one, `cd Cryptids.Web` then `dotnet watch`; in the other, stay at the parent folder and re-run `dotnet test Cryptids.Checks` after each task. Browser for feel, checks for truth.
 
-> [!NOTE]
-> **The archive is already written for you.** `Cryptids.Web/Models/Cryptid.cs` and `CryptidData.cs` ship with the starter — six creatures, ready to use as `CryptidData.All`. Tonight's work is controllers, views, and routing. Don't retype the data.
+## What you're given
+
+**The model and the data already exist** — don't write them, and don't retype them. Tonight's work is controllers, views, and routing.
+
+`Cryptids.Web/Models/Cryptid.cs`:
+
+```csharp
+public class Cryptid
+{
+    public int Id { get; set; }
+    public string Name { get; set; } = "";
+    public string Region { get; set; } = "";
+    public int FirstSighting { get; set; }
+    public int Sightings { get; set; }
+    public bool IsDebunked { get; set; }
+}
+```
+
+`Cryptids.Web/Models/CryptidData.cs` — six creatures, reachable anywhere as **`CryptidData.All`**:
+
+```csharp
+public static class CryptidData
+{
+    public static List<Cryptid> All { get; } = new()
+    {
+        new Cryptid { Id = 1, Name = "The Hodag", Region = "Rhinelander, Wisconsin", FirstSighting = 1893, Sightings = 47, IsDebunked = true },
+        // ...Bigfoot, Mothman, the Loch Ness Monster, the Jersey Devil, Chupacabra
+    };
+}
+```
+
+> [!TIP]
+> `CryptidData.All` is a `List<Cryptid>` — that's the thing you hand to the view in check 3, and the thing you search with `FirstOrDefault` in checks 4 and 5. Open both files and read them before you start; it takes a minute and everything after makes more sense.
 
 ## The tasks
 
