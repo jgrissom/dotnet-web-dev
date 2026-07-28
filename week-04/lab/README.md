@@ -104,7 +104,7 @@ public static class CryptidData
 
 ## 🆘 Stuck?
 
-- **404 on `/Cryptids`?** Route → action → view, in that order. Is the class `public` and named `CryptidsController`? The [routing section](../lecture-notes.md#routing-the-pattern-decoded) explains why the URL finds the class.
+- **404 on `/Cryptids`?** Route → action → view, in that order. Is the class `public` and named `CryptidsController`? The [routing section](../lecture-notes.md#routing-the-pattern-decoded) explains why the URL finds the class, and week 3 covers [what a 404 versus a 500 is telling you](../../week-03/lecture-notes.md#verbs-and-status-codes).
 - **"The view 'Index' was not found"?** Read the error — it lists every path it searched. Match the folder name to the controller name exactly.
 - **"The model item passed into the ViewDataDictionary is of type…"?** Your controller and your `@model` line disagree. Make them match.
 - The [troubleshooting appendix](../lecture-notes.md#appendix-troubleshooting) covers the rest — including the `@model` / `@Model` mix-up that gets almost everyone once.
