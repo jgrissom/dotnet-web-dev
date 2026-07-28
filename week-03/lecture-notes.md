@@ -174,7 +174,7 @@ public IActionResult Special(string? item)
 - `Content(...)` returns raw text — the simplest possible action result, perfect for seeing binding work. `View()` and `Content()` are both `IActionResult`s: actions return *results*, not strings.
 - **C# bridge:** `string? item` + `??` — the null-coalescing default they know, doing real web work.
 
-## Part 4: To the cloud — Azure App Service (35 min)
+## Part 4: To the cloud — Azure App Service (40 min)
 
 ### What App Service is
 

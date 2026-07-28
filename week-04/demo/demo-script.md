@@ -14,7 +14,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 ## 0b · Spin up Curbside — **live, opening the routing segment** *(60 seconds)*
 
 > [!IMPORTANT]
-> Do this **live at 0:15**, as the first thing after the gallery walk — not before class, and not *during* the gallery (that segment needs the projector for their Azure URLs). Tonight's homework asks them to build a new app from an empty folder, so watching you do it is rehearsal, not repetition.
+> Do this **live at 0:05**, as the first thing after the 5-minute status check — not before class. Tonight's homework asks them to build a new app from an empty folder, so watching you do it is rehearsal, not repetition.
 
 - [ ] VS Code → File → Open Folder → create a new empty **Curbside** and open it
 - [ ] Integrated terminal:
