@@ -39,13 +39,16 @@ Region availability on student subscriptions varies (Azure load-balances who get
 az appservice list-locations --sku F1 --output table
 ```
 
-From the rows containing **US**, pick the first one you have from this preference order:
+From the rows containing **US**, write down your top three in this preference order:
 **North Central US → Central US → East US 2** → any other US region.
+
+> [!NOTE]
+> This list shows where the free tier is *offered* — it doesn't guarantee your subscription can create there **today** (quotas shift). Expect possibly needing attempt #2; that's normal, not a mistake. **When a region works for you, say so in class** — we keep a running list of currently-working regions so later students skip the guesswork.
 
 > [!IMPORTANT]
 > **It must be a US region — no exceptions, even if Azure suggests Canada.** Apps hosted in Canadian regions have never been able to reach the school SQL Server (which your apps use from week 7 on) — exact cause unknown, pattern very consistent. A Canadian app works fine tonight and dies mysteriously in week 7.
 
-**✓ Verify** — you've written down one US region name, e.g. `"Central US"`. That's your region for the whole semester.
+**✓ Verify** — you have a short list of US region names, e.g. `"North Central US"`, `"Central US"`. Whichever one deploys successfully becomes your region for the semester.
 
 ## 4. Deploy
 
@@ -90,7 +93,12 @@ It remembers the app and just ships the new build. That's the whole update story
 ## 🆘 If it goes sideways
 
 - **Name taken:** pick new digits. Names are global across all of Azure.
-- **"Location is not available" / region rejected:** re-run step 3's discovery command — free-tier availability shifts. Pick the next **US** region on your list. Never a Canada region: apps hosted there have never been able to reach the school SQL Server.
+- **Create fails with a quota / "not available in this region" error:** normal — the offer list doesn't guarantee today's capacity. Retry with the **next US region on your list and fresh digits in the app name** (a clean slate avoids half-created leftovers):
+  ```bash
+  az webapp up --name ff-web-XX5678 --sku F1 \
+    --runtime DOTNETCORE:10.0 --location "Central US"
+  ```
+  Keep walking the list until one sticks — last semester some students needed two or three tries. Never a Canada region: apps hosted there have never been able to reach the school SQL Server.
 - **Runtime error / generic Azure page:** confirm the runtime value with `az webapp list-runtimes --os-type linux | grep -i dotnet` and that you deployed from the web project folder.
 - **Login loops or picks the wrong account:** `az logout`, then `az login` again and choose the school account.
 - **It worked yesterday, slow today:** free tier waking up. ~30 seconds, then normal.

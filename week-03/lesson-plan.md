@@ -34,7 +34,7 @@ By the end of this session, students can:
 | 1:20 | 10 min | **☕ Break** |
 | 1:30 | 45 min | **The MVC pattern** *(slides 9–13, demo §3)*. The request's journey; routing table with predict-then-run URLs (include a 404); controllers/actions; Razor first taste + View Source proof; a parameter-reading action. This is the load-bearing segment — protect it. |
 | 2:15 | 10 min | **☕ Break** |
-| 2:25 | 35 min | **To the cloud** *(slides 14–15, demo §4)*. What App Service is; then you deploy the demo app **live** while students work [`deploy-guide.md`](deploy-guide.md) steps 1–2 (install `az`, login) on their own machines. End with the demo app's Azure URL on screen — and phones out, everyone loads it. |
+| 2:25 | 35 min | **To the cloud** *(slides 14–15, demo §4)*. What App Service is; then you deploy the demo app **live** while students work [`deploy-guide.md`](deploy-guide.md) steps 1–2 (install `az`, login) on their own machines. End with the demo app's Azure URL on screen — and phones out, everyone loads it. **Start a visible "working regions" list** (board/shared doc) — region availability varies per subscription, and the class crowd-sources the good ones within a week. |
 | 3:00 | 35 min | **Lab: First Flight** *(slide 16)*. Launch with ~90 seconds of *what done looks like*: your finished copy running + `dotnet test` printing **6 / 6** — a target, not a walkthrough. **In-class target: checks 1–4 green** (brand, About, nav). Checks 5–6 and the deploy roll into homework by design — say so. |
 | 3:35 | 10 min | **Wrap-up** *(slides 17–18)*. Homework: 6/6 + deploy + URL via Canvas. The summit slide: they now own the whole pipeline — browser → HTTP → routing → C# → HTML → Azure. |
 
