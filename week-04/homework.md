@@ -33,9 +33,10 @@ It needs:
 2. **A seeded list of at least 5 items** — a `static List<T>` like the starter's `CryptidData`.
 3. **An Index page** listing all of them, built with `@model` and `@foreach`.
 4. **A Details page** — `/Things/Details/3` shows that one item.
-5. **A 404 guard** — an id nobody has returns `NotFound()`, not a crash.
-6. **A nav link** to your Index page. Copy the `Privacy` `<li>` in `Views/Shared/_Layout.cshtml` and adapt it. *(That's the only layout change you need — the shell is week 5's business.)*
-7. **Deployed to Azure**, and **3+ meaningful commits** in a public GitHub repo.
+5. **A link from each row** on the Index page to that item's Details page — `href="/Things/Details/@item.Id"` inside your loop. (Same as check 6 in the lab.)
+6. **A 404 guard** — an id nobody has returns `NotFound()`, not a crash.
+7. **A nav link** to your Index page. Copy the `Privacy` `<li>` in `Views/Shared/_Layout.cshtml` and adapt it. *(That's the only layout change you need — the shell is week 5's business.)*
+8. **Deployed to Azure**, and **3+ meaningful commits** in a public GitHub repo.
 
 > [!TIP]
 > Start from `dotnet new mvc --no-https` in a fresh folder. You are not starting from the Registry — building it again from empty is the point, and it takes about 30 minutes once you've done the lab.

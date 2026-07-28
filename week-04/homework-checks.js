@@ -39,10 +39,11 @@
     return await get(url);
   }
 
-  // Nav links that point at a controller: href="/Something" — anything but Home.
+  // Nav links that point at a controller. Tag helpers render "/Trails", but a
+  // hand-written link is often "/Trails/Index" — accept both, and never Home.
   function navCandidates(html) {
     const out = [];
-    for (const m of html.matchAll(/href="\/([A-Za-z]\w*)\/?"/g)) {
+    for (const m of html.matchAll(/href="\/([A-Za-z]\w*)(?:\/(?:Index)?)?"/gi)) {
       if (/^home$/i.test(m[1])) continue;
       if (!out.includes(m[1])) out.push(m[1]);
     }
@@ -64,10 +65,15 @@
    * Returns { route, checks: [{label, pass, pts, hint}], earned, possible }
    * Shared with the grader so students and I run identical logic.
    */
-  async function runChecks(baseUrl, forcedRoute) {
+  async function runChecks(baseUrl, forcedRoute, onCheck) {
     const root = String(baseUrl).replace(/\/$/, "");
     const checks = [];
-    const add = (pass, pts, label, hint) => checks.push({ pass, pts, label, hint: pass ? null : hint });
+    const add = (pass, pts, label, hint) => {
+      const c = { pass, pts, label, hint: pass ? null : hint };
+      checks.push(c);
+      if (onCheck) onCheck(c);          // report as we go — a sleeping app is slow
+      return c;
+    };
 
     const home = await getWithWakeup(root + "/");
     if (!home || home.status >= 400) {
@@ -99,21 +105,21 @@
     }
 
     add(links.length >= 5, 4, `index lists all your items — ${links.length} detail link${links.length === 1 ? "" : "s"} found`,
-      `I count your items by their Details links. Need 5+: seed at least 5 items and give each row a link like href="/${route}/Details/@item.Id".`);
+      `I count your items by the Details link on each row. Need 5+: seed at least 5 items, and give every row a link like href="/${route}/Details/@item.Id".`);
 
-    if (!links.length) {
-      add(false, 4, "details page shows one item", "no Details links on your index page to follow");
-      add(false, 2, "a bad id returns 404", "no Details links on your index page to follow");
-      return { route, checks, ...tally(checks) };
-    }
+    // No links on the index? Don't zero the rest — probe the conventional URL so
+    // Details and the 404 guard are still judged on their own merits.
+    const probe = links.length ? links[0] : `/${route}/Details/1`;
+    const guessed = !links.length;
 
-    const detail = await getWithWakeup(root + links[0]);
+    const detail = await getWithWakeup(root + probe);
     const okDetail = detail && detail.status < 400;
-    const stillAList = okDetail && detailsLinks(detail.body, route).length >= links.length;
-    add(okDetail && !stillAList, 4, `details page shows one item — ${links[0]}`,
+    const stillAList = okDetail && detailsLinks(detail.body, route).length >= Math.max(links.length, 2);
+    add(okDetail && !stillAList, 4,
+      `details page shows one item — ${probe}${guessed ? " (guessed: no links on your index)" : ""}`,
       stillAList
         ? "that page still lists everything. Your Details action should pass ONE item to the view, not the whole list."
-        : "that link didn't load. Does your Details action exist, and is there a Details.cshtml for it?");
+        : `${probe} didn't load. Does your Details action exist, and is there a Details.cshtml for it?`);
 
     const bad = await getWithWakeup(`${root}/${route}/Details/${BAD_ID}`);
     add(bad && bad.status === 404, 2, `a bad id returns 404 — got ${bad ? bad.status : "no response"}`,
@@ -149,12 +155,12 @@
     }
 
     (async () => {
-      console.log(`\n🔎 Checking ${url}\n`);
-      const { checks, earned, possible, route } = await runChecks(url, forced);
-      for (const c of checks) {
+      console.log(`\n🔎 Checking ${url}`);
+      console.log("   (a sleeping free-tier app can take ~30s for the first one)\n");
+      const { earned, possible, route } = await runChecks(url, forced, (c) => {
         console.log(`${c.pass ? "✅" : "❌"} ${String(c.pts).padStart(2)} pts  ${c.label}`);
         if (c.hint) console.log(`         ↳ ${c.hint}`);
-      }
+      });
       console.log(`\n${earned === possible ? "🎉" : "📊"} ${earned} / ${possible} automated points${route ? `  (controller: /${route})` : ""}`);
       console.log(earned === possible
         ? "\nEverything I can check from a URL passes. Two things I check by hand — confirm them yourself:"
@@ -169,11 +175,12 @@
   if (typeof window !== "undefined" && typeof document !== "undefined") {
     const bold = "font-weight: bold";
 
-    const report = ({ checks, earned, possible, route }) => {
-      for (const c of checks) {
-        console.log(`%c${c.pass ? "✅" : "❌"} ${c.pts} pts  ${c.label}`, c.pass ? "color: green" : "color: crimson");
-        if (c.hint) console.log(`      ↳ ${c.hint}`);
-      }
+    const printCheck = (c) => {
+      console.log(`%c${c.pass ? "✅" : "❌"} ${c.pts} pts  ${c.label}`, c.pass ? "color: green" : "color: crimson");
+      if (c.hint) console.log(`      ↳ ${c.hint}`);
+    };
+
+    const report = ({ earned, possible, route }) => {
       console.log(`%c${earned === possible ? "🎉" : "📊"} ${earned} / ${possible} automated points${route ? `  (controller: /${route})` : ""}`,
         `${bold}; font-size: 1.1em`);
       console.log(`%c${earned === possible
@@ -186,8 +193,9 @@
 
     const run = () => {
       console.log(`%c🔎 Week 4 self-check — ${window.location.origin}`, `${bold}; font-size: 1.1em`);
+      console.log("Results appear as each check finishes — a sleeping free-tier app can take ~30s for the first one.");
       console.log("Heads up: a red 404 line will appear partway through. That's expected — one of the checks asks for a bad id on purpose.");
-      return runChecks(window.location.origin).then(report);
+      return runChecks(window.location.origin, null, printCheck).then(report);
     };
 
     window.recheck = run;   // re-run from the console without reloading
