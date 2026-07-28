@@ -189,6 +189,11 @@ Everything here happens in `Views/Trucks/Index.cshtml`. **View Source after ever
       return View(TruckData.All);
   }
   ```
+- [ ] 🔴 **`TruckData` goes red** — the controller can't see the Models namespace yet. Don't just fix it silently; make it a beat: put the cursor on the squiggle, **`Ctrl/Cmd + .`**, and take the offered fix. It adds this line at the top:
+  ```csharp
+  using Curbside.Models;
+  ```
+  "The compiler told us exactly what was missing and offered to fix it — that lightbulb is your friend all semester." *(Students hit this same red squiggle in the lab.)*
 - [ ] Replace the whole of `Views/Trucks/Index.cshtml` — **paste**:
 
   <details><summary>📋 paste: the typed Index view</summary>
