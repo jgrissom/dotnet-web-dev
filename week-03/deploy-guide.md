@@ -98,7 +98,7 @@ It remembers the app and just ships the new build. That's the whole update story
   az webapp up --name ff-web-XX5678 --sku F1 \
     --runtime DOTNETCORE:10.0 --location "Central US"
   ```
-  Keep walking the list until one sticks — last semester some students needed two or three tries. Never a Canada region: apps hosted there have never been able to reach the school SQL Server.
+  Keep walking the list until one sticks — last semester some students needed two or three tries, and **every single one found a region that worked.** It converges; it's just annoying. Never a Canada region: apps hosted there have never been able to reach the school SQL Server.
 - **Runtime error / generic Azure page:** confirm the runtime value with `az webapp list-runtimes --os-type linux | grep -i dotnet` and that you deployed from the web project folder.
 - **Login loops or picks the wrong account:** `az logout`, then `az login` again and choose the school account.
 - **It worked yesterday, slow today:** free tier waking up. ~30 seconds, then normal.
