@@ -195,11 +195,13 @@ your laptop ── az webapp up ──►  Azure App Service ──►  https://
 Students follow **[deploy-guide.md](deploy-guide.md)** (install `az`, login, deploy — ✓-checkpoints like setup night). The command, from inside the web project folder:
 
 ```bash
-az webapp up --name cg-web-XX1234 --runtime DOTNETCORE:10.0 --sku F1
+az webapp up --name cg-web-XX1234 --sku F1 \\
+  --runtime DOTNETCORE:10.0 --location northcentralus
 ```
 
 - `--name` becomes the public URL — globally unique, hence the initials+digits convention.
 - `--sku F1` = the free tier. Fine for coursework; falls asleep when idle (first request after a nap is slow — that's normal, say it now).
+- `--location northcentralus` is **non-negotiable**: unpinned student deployments sometimes land in Canada, and the school SQL Server geo-blocks non-US requests — invisible tonight, fatal in week 7. `az appservice list-locations --sku F1 --output table` shows what a subscription allows if the region is rejected.
 - Re-running the same command later **redeploys** — that's the whole update story for homework.
 
 > [!IMPORTANT]

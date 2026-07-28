@@ -235,12 +235,13 @@ laptop ── az webapp up ──► App Service ──► https://you.azurewebs
 
 ```bash
 cd FirstFlight.Web        # ← INSIDE the web project folder
-az webapp up --name ff-web-XX1234 --runtime DOTNETCORE:10.0 --sku F1
+az webapp up --name ff-web-XX1234 --sku F1 \
+  --runtime DOTNETCORE:10.0 --location northcentralus
 ```
 
 - `--name` = your public URL — globally unique (initials + digits)
-- `--sku F1` = free tier (sleeps when idle; first wake-up is slow — normal)
-- Run it again later = **redeploy**. That's the whole update story.
+- `--sku F1` = free tier (naps when idle; first wake-up is slow — normal)
+- `--location northcentralus` = **required** — a US region, or the school DB blocks you later
 
 ---
 

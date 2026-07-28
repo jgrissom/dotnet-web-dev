@@ -37,11 +37,13 @@ From **inside your web project folder** — the one with the `.csproj`, not the 
 
 ```bash
 cd FirstFlight.Web
-az webapp up --name ff-web-XX1234 --runtime DOTNETCORE:10.0 --sku F1
+az webapp up --name ff-web-XX1234 --sku F1 \\
+  --runtime DOTNETCORE:10.0 --location northcentralus
 ```
 
 - Replace `XX1234` with your initials + any 4 digits — the name becomes your URL and must be **globally unique**. Taken? Change the digits.
 - `--sku F1` is the **free tier**. It sleeps when idle; the first request after a nap takes ~30 seconds. Normal.
+- `--location northcentralus` (Chicago) is **required, not a suggestion** — left to its own devices Azure sometimes places student apps in Canada, and the school SQL Server (week 7+) rejects requests from outside the US. Everyone deploys to the same US region.
 - First run takes a few minutes (it's creating the server). It prints progress; let it finish.
 
 > [!IMPORTANT]
@@ -60,7 +62,8 @@ Open it. Your app. On the internet. **Test it in a private/incognito window and 
 Changed your code? Same command, same folder:
 
 ```bash
-az webapp up --name ff-web-XX1234 --runtime DOTNETCORE:10.0 --sku F1
+az webapp up --name ff-web-XX1234 --sku F1 \\
+  --runtime DOTNETCORE:10.0 --location northcentralus
 ```
 
 It remembers the app and just ships the new build. That's the whole update story.
@@ -71,6 +74,7 @@ It remembers the app and just ships the new build. That's the whole update story
 ## 🆘 If it goes sideways
 
 - **Name taken:** pick new digits. Names are global across all of Azure.
+- **"Location is not available" / region rejected:** your subscription's allowed free-tier regions are listed by `az appservice list-locations --sku F1 --output table`. Pick a **US** region — try `centralus`, then `eastus2`. Never accept a Canada region, even if Azure suggests it: the school SQL Server will block your app later in the course.
 - **Runtime error / generic Azure page:** confirm the runtime value with `az webapp list-runtimes --os-type linux | grep -i dotnet` and that you deployed from the web project folder.
 - **Login loops or picks the wrong account:** `az logout`, then `az login` again and choose the school account.
 - **It worked yesterday, slow today:** free tier waking up. ~30 seconds, then normal.
