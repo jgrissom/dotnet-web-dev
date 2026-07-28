@@ -89,16 +89,16 @@ When it breaks: **the status code is clue #1.**
 
 ---
 
-## Three commands to a working site
+## Two commands to a working site
 
 ```bash
-dotnet new mvc -o CommonGrounds.Web --no-https
-cd CommonGrounds.Web
-dotnet run
+# VS Code: File → Open Folder → a new, empty  CommonGrounds.Web
+dotnet new mvc --no-https    # scaffolds into THIS folder — name = folder name
+dotnet watch                 # runs + restarts on every save
 ```
 
 - A styled, working site on `localhost` — before you write any code
-- `dotnet watch` = restart-on-save (your refresh habit, ported to C#)
+- `dotnet watch` = your refresh-after-save habit, ported to C#
 
 ---
 

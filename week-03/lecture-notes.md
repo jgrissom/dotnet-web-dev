@@ -53,16 +53,20 @@ Content-Type: text/html
 
 ### dotnet new mvc
 
+The course workflow: **make and open the folder first, then scaffold into it** — VS Code is at the right root from the start, and there's no `cd` to forget.
+
+1. VS Code → File → Open Folder → create a new, empty **CommonGrounds.Web** folder and open it.
+2. Terminal (`Ctrl+\``):
+
 ```bash
-dotnet new mvc -o CommonGrounds.Web --no-https
-cd CommonGrounds.Web
-dotnet run
+dotnet new mvc --no-https
+dotnet watch
 ```
 
-Open the printed `http://localhost:5xxx` — a working, styled site in three commands. (`--no-https` keeps localhost simple this semester; real deployments get HTTPS from Azure automatically.)
+Open the printed `http://localhost:5xxx` — a working, styled site in two commands. (`--no-https` keeps localhost simple this semester; deployments get HTTPS from Azure automatically.)
 
-> [!TIP]
-> `dotnet watch` instead of `dotnet run` = auto-restart on save. Worth teaching immediately — it's the refresh-after-save habit from weeks 1–2, ported to C#.
+- `dotnet new` with no `-o` scaffolds into the current folder and **names the project after it** — so name the folder deliberately. (It refuses a non-empty folder; that's a feature.)
+- `dotnet watch` = run + restart on save — the refresh-after-save habit from weeks 1–2, ported to C#.
 
 ### Project anatomy
 

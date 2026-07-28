@@ -22,10 +22,10 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ## 2 · Create it, run it, tour it *(slides 6–8)*
 
-- [ ] In the scratch folder:
+- [ ] VS Code → File → Open Folder → create a new empty **CommonGrounds.Web** (in the scratch area) and open it
+- [ ] Integrated terminal:
   ```bash
-  dotnet new mvc -o CommonGrounds.Web --no-https
-  cd CommonGrounds.Web
+  dotnet new mvc --no-https
   dotnet watch
   ```
 - [ ] Browser opens → a working, styled site from three commands. Let that breathe
