@@ -22,21 +22,21 @@ By the end of this session, students can:
 - `lecture-notes.md` on your second screen — the script, with all predict-then-run answers and the troubleshooting appendix
 - **Demo cue sheet:** [`demo/demo-script.md`](demo/demo-script.md) — keyed to slides ([clickable version](https://jgrissom.github.io/dotnet-web-dev/week-04/demo/script.html))
 - A scratch folder for **Curbside**; terminal font sized for the projector
-- 3–4 student Azure URLs from week 3's homework, queued for the gallery
-- The class **working regions** list from week 3 — bring it back up during the gallery
+- One student Azure URL you can put on screen for the 5-minute status check (ask a volunteer, don't cold-call)
+- The class **working regions** list from week 3, to update
 
 ## Timed agenda
 
 | Time | Duration | Segment |
 |------|----------|---------|
-| 0:00 | 15 min | **Deployed-app gallery** *(deck on title slide)*. 3–4 student First Flight URLs on the projector — first time the class sees each other's *live* work. Update the working-regions list with any new successes/failures. Then a routing warm-up: three URLs against week 3's app, predicted out loud. |
-| 0:15 | 40 min | **Routing deep dive** *(slides 3–5, demo §1)*. **Open with ~60 seconds of `dotnet new mvc` live** (demo §0b) — tonight's homework asks them to build a new app from an empty folder, so this is rehearsal, not repetition. Say so while you type. Slide 3 is the pattern slot by slot; **slide 4 is live** — you type each URL in the browser and the room predicts before you press Enter (protect the `/Privacy` beat, it's the one that lands). Slide 5 is where you edit the pattern: move the default action, delete `{id?}`, watch both break, **restore**. Close on 404-vs-500 as a diagnosis habit. |
-| 0:55 | 30 min | **A second controller** *(slides 6–7, demo §2)*. Three names that must agree. Build it in two steps — `Content()` to prove routing, *then* the view. Misname the view folder on purpose and read the error page out loud. |
-| 1:25 | 10 min | **☕ Break** |
-| 1:35 | 45 min | **Razor for real** *(slides 8–12, demo §3)*. Expressions → code blocks → `@if` → `@foreach` → comments, with **View Source after every beat**. Load-bearing segment #1: the "one `<li>` in, six out" moment is the thesis of the entire week. Don't rush to the model. |
-| 2:20 | 10 min | **☕ Break** |
-| 2:30 | 35 min | **Passing data and `@model`** *(slides 13–16, demo §4–5)*. Three ways in; the typed handoff; the IntelliSense proof; then Index → Details, `FirstOrDefault`, and `/Details/999` on purpose. Load-bearing segment #2. |
-| 3:05 | 30 min | **Lab: Cryptid Registry** *(slide 17)*. Launch with ~90 seconds of *what done looks like*: your finished copy running + `dotnet test` printing **6 / 6** — a target, not a walkthrough. **In-class target: checks 1–4 green.** Checks 5–6 and the deploy roll into homework by design — say so. |
+| 0:00 | 5 min | **Deploy status check** *(deck on title slide)*. **Not a gallery** — everyone built the same First Flight, so there's nothing to compare. Hands up if your Azure URL works; note who's stuck and catch them during the lab. Put **one** volunteer's URL on screen and have the room load it on their phones — that's the "it's really on the internet" moment, and once is enough. Update the working-regions list. Save the real gallery for **week 5**, when they arrive with 25 different topics. |
+| 0:05 | 40 min | **Routing deep dive** *(slides 3–5, demo §1)*. **Open with ~60 seconds of `dotnet new mvc` live** (demo §0b) — tonight's homework asks them to build a new app from an empty folder, so this is rehearsal, not repetition. Say so while you type. Slide 3 is the pattern slot by slot; **slide 4 is live** — you type each URL in the browser and the room predicts before you press Enter (protect the `/Privacy` beat, it's the one that lands). Slide 5 is where you edit the pattern: move the default action, delete `{id?}`, watch both break, **restore**. Close on 404-vs-500 as a diagnosis habit. |
+| 0:45 | 30 min | **A second controller** *(slides 6–7, demo §2)*. Three names that must agree. Build it in two steps — `Content()` to prove routing, *then* the view. Misname the view folder on purpose and read the error page out loud. |
+| 1:15 | 10 min | **☕ Break** |
+| 1:25 | 45 min | **Razor for real** *(slides 8–12, demo §3)*. Expressions → code blocks → `@if` → `@foreach` → comments, with **View Source after every beat**. Load-bearing segment #1: the "one `<li>` in, six out" moment is the thesis of the entire week. Don't rush to the model. |
+| 2:10 | 10 min | **☕ Break** |
+| 2:20 | 35 min | **Passing data and `@model`** *(slides 13–16, demo §4–5)*. Three ways in; the typed handoff; the IntelliSense proof; then Index → Details, `FirstOrDefault`, and `/Details/999` on purpose. Load-bearing segment #2. |
+| 2:55 | 40 min | **Lab: Cryptid Registry** *(slide 17)*. Launch with ~90 seconds of *what done looks like*: your finished copy running + `dotnet test` printing **6 / 6** — a target, not a walkthrough. **In-class target: checks 1–4 green.** Checks 5–6 and the deploy roll into homework by design — say so. |
 | 3:35 | 10 min | **Wrap-up** *(slides 18–19)*. Homework: own topic, Index + Details, deployed, URL + repo via Canvas — **and say clearly that this app is theirs for the rest of the semester** (see instructor notes; the topic-choice warning belongs here, not in the handout alone). The chain slide, then the week-7 promise: this list becomes a table and the `@model` line doesn't change. |
 
 ## Instructor notes
