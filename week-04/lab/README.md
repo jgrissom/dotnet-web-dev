@@ -42,7 +42,7 @@ dotnet test Cryptids.Checks
 > **Git fighting you at the worst moment?** Don't lose lab time to it. On the [repo page](https://github.com/jgrissom/dotnet-web-dev), click **Code → Download ZIP**, unzip it, and copy `week-04/lab/starter` out of that instead. Same files. Sort the clone out afterwards — cloning is still how you'll get every other week.
 
 > [!TIP]
-> Two terminals: in one, `cd Cryptids.Web` then `dotnet watch`; in the other, stay at the parent folder and re-run `dotnet test Cryptids.Checks` after each task. Browser for feel, checks for truth.
+> Two terminals: in one, `cd Cryptids.Web` then [`dotnet watch`](../../week-03/lecture-notes.md#dotnet-new-mvc); in the other, stay at the parent folder and re-run `dotnet test Cryptids.Checks` after each task. Browser for feel, checks for truth.
 
 ## What you're given
 
@@ -89,7 +89,7 @@ public static class CryptidData
 | 6 | `IndexLinksToDetails` | Each row links to its own details page — `href="/Cryptids/Details/@cryptid.Id"` inside the loop. |
 
 > [!TIP]
-> **Your controller needs `using Cryptids.Web.Models;` at the top** before it can see `CryptidData`. Being in the same project isn't enough — a namespace has to be imported.
+> **Your controller needs `using Cryptids.Web.Models;` at the top** before it can see `CryptidData`. Being in the same project isn't enough — [a namespace has to be imported](../lecture-notes.md#namespaces-and-the-using-they-require).
 >
 > If `CryptidData` goes **red**, put your cursor on it and press **Ctrl/Cmd + .** — VS Code offers to add the line for you. If it *doesn't* go red, you probably picked `CryptidData` from the IntelliSense list, and VS Code already added the `using` when you accepted it. Scroll up and look: it's there.
 
@@ -106,7 +106,7 @@ public static class CryptidData
 
 - **404 on `/Cryptids`?** Route → action → view, in that order. Is the class `public` and named `CryptidsController`? The [routing section](../lecture-notes.md#routing-the-pattern-decoded) explains why the URL finds the class, and week 3 covers [what a 404 versus a 500 is telling you](../../week-03/lecture-notes.md#verbs-and-status-codes).
 - **"The view 'Index' was not found"?** Read the error — it lists every path it searched. Match the folder name to the controller name exactly.
-- **"The model item passed into the ViewDataDictionary is of type…"?** Your controller and your `@model` line disagree. Make them match.
+- **"The model item passed into the ViewDataDictionary is of type…"?** Your controller and your [`@model` line](../lecture-notes.md#strongly-typed-views-with-model) disagree — one is passing a list, the other expects a single item, or the reverse. Make them match.
 - The [troubleshooting appendix](../lecture-notes.md#appendix-troubleshooting) covers the rest — including the `@model` / `@Model` mix-up that gets almost everyone once.
 
 ## 🚀 Done early?

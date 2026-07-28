@@ -19,7 +19,7 @@ If class ended at check 4, that's the `NotFound()` guard and the row links — t
 
 ## Part 2 — Start your semester project (graded)
 
-Build a **new** MVC app on a topic you pick — *anything except food trucks or cryptids* (those are mine). Video games, hiking trails, recipes, players on a team, national parks, your sneaker collection. Your call.
+Build a **new** [MVC app](../week-03/lecture-notes.md#dotnet-new-mvc) on a topic you pick — *anything except food trucks or cryptids* (those are mine). Video games, hiking trails, recipes, players on a team, national parks, your sneaker collection. Your call.
 
 > [!NOTE]
 > **This one isn't a throwaway.** You'll be extending this same app for the rest of the course: week 5 gives it a real layout and theme, week 6 adds a form with validation, **week 7 moves your hard-coded list into SQL Server**, weeks 8–9 make it full CRUD with a second related table, and the midterm builds on whatever you've got by then. Pick something you can stand to look at for ten weeks.
