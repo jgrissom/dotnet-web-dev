@@ -418,20 +418,21 @@ section pre .hljs-name { color: #7ee787; }
 section pre .hljs-selector-class, section pre .hljs-selector-pseudo { color: #7ee787; }
 section footer { color: #9fb2c1; font-size: 0.6em; opacity: 0.85; }
 ;" data-marpit-pagination-total="18">
-<h2 id="programcs--the-whole-pipeline">Program.cs — the whole pipeline</h2>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-csharp"><span class="hljs-keyword">var</span> builder = WebApplication.CreateBuilder(<span class="hljs-keyword">args</span>);
+<h2 id="programcs--a-five-act-story">Program.cs — a five-act story</h2>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-csharp"><span class="hljs-keyword">var</span> builder = WebApplication.CreateBuilder(<span class="hljs-keyword">args</span>);   <span class="hljs-comment">// 1 shopping list</span>
 builder.Services.AddControllersWithViews();
-
-<span class="hljs-keyword">var</span> app = builder.Build();
-app.UseStaticFiles();
+<span class="hljs-keyword">var</span> app = builder.Build();                          <span class="hljs-comment">// 2 build the machine</span>
+<span class="hljs-keyword">if</span> (!app.Environment.IsDevelopment())
+    app.UseExceptionHandler(<span class="hljs-string">&quot;/Home/Error&quot;</span>);         <span class="hljs-comment">// 3 the gauntlet…</span>
 app.UseRouting();
-
-app.MapControllerRoute(
+app.UseAuthorization();
+app.MapStaticAssets();
+app.MapControllerRoute(                             <span class="hljs-comment">// 4 THE map <img class="emoji" draggable="false" alt="🥁" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f941.svg" data-marp-twemoji=""/></span>
     name: <span class="hljs-string">&quot;default&quot;</span>,
-    pattern: <span class="hljs-string">&quot;{controller=Home}/{action=Index}/{id?}&quot;</span>);
-app.Run();
+    pattern: <span class="hljs-string">&quot;{controller=Home}/{action=Index}/{id?}&quot;</span>)
+    .WithStaticAssets();
+app.Run();                                          <span class="hljs-comment">// 5 open the doors</span>
 </code></pre>
-<p><strong>That <code>pattern</code> line = tonight's headliner.</strong></p>
 <footer><img class="emoji" draggable="false" alt="🎨" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f3a8.svg" data-marp-twemoji=""/> demo time — script §2: create it, run it, tour it</footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="9" data-class="invert" data-paginate="true" data-theme="gaia" data-style="section pre {
