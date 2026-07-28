@@ -24,7 +24,7 @@ If class ended at check 4, that means finishing `Hello` (checks 5–6) — the [
 Follow **[deploy-guide.md](deploy-guide.md)** — install `az` and log in (done in class), then deploy from inside `FirstFlight.Web`:
 
 ```bash
-az webapp up --name ff-web-XX1234 --sku F1 \\
+az webapp up --name ff-web-XX1234 --sku F1 \
   --runtime DOTNETCORE:10.0 --location northcentralus
 ```
 

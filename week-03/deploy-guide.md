@@ -37,7 +37,7 @@ From **inside your web project folder** — the one with the `.csproj`, not the 
 
 ```bash
 cd FirstFlight.Web
-az webapp up --name ff-web-XX1234 --sku F1 \\
+az webapp up --name ff-web-XX1234 --sku F1 \
   --runtime DOTNETCORE:10.0 --location northcentralus
 ```
 
@@ -62,7 +62,7 @@ Open it. Your app. On the internet. **Test it in a private/incognito window and 
 Changed your code? Same command, same folder:
 
 ```bash
-az webapp up --name ff-web-XX1234 --sku F1 \\
+az webapp up --name ff-web-XX1234 --sku F1 \
   --runtime DOTNETCORE:10.0 --location northcentralus
 ```
 

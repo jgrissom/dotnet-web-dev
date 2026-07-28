@@ -195,7 +195,7 @@ your laptop ── az webapp up ──►  Azure App Service ──►  https://
 Students follow **[deploy-guide.md](deploy-guide.md)** (install `az`, login, deploy — ✓-checkpoints like setup night). The command, from inside the web project folder:
 
 ```bash
-az webapp up --name cg-web-XX1234 --sku F1 \\
+az webapp up --name cg-web-XX1234 --sku F1 \
   --runtime DOTNETCORE:10.0 --location northcentralus
 ```
 

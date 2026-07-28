@@ -77,7 +77,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] (If demoing login) `az login` → school account → subscription table prints
 - [ ] Stop `dotnet watch`. From **inside** `CommonGrounds.Web/`:
   ```bash
-  az webapp up --name cg-web-XXXX --sku F1 \\
+  az webapp up --name cg-web-XXXX --sku F1 \
     --runtime DOTNETCORE:10.0 --location northcentralus
   ```
 - [ ] While it churns (~2–3 min), narrate what it's doing: zip → ship → a managed Linux server gets your app. Students start [deploy-guide](../deploy-guide.md) steps 1–2 now
