@@ -6,17 +6,37 @@ Six legendary creatures, one archive. A list page, a details page, and a 404 tha
 
 ## Setup
 
-1. Update your clone of the course repo, then copy this week out (work on the copy, never in the clone):
-   ```bash
-   cd dotnet-web-dev && git pull
-   ```
-2. Copy the whole `week-04/lab/starter` folder into your own projects folder — two project folders side by side: your app (`Cryptids.Web`) and the read-only checks (`Cryptids.Checks`).
-3. Open the copied parent folder in VS Code. From its terminal:
-   ```bash
-   dotnet test Cryptids.Checks
-   ```
+> [!NOTE]
+> **You don't create anything.** Both projects already exist in the starter — you're copying a folder, not scaffolding a new app. `dotnet new` is not part of this lab.
+
+**1. Update your clone of the course repo:**
+
+```bash
+cd dotnet-web-dev && git pull
+```
+
+**2. Copy the `week-04/lab/starter` folder out to wherever you keep your projects, and rename the copy** to something meaningful — `CryptidRegistry` works. (Copy it *out*; never work inside the clone, or next week's `git pull` will fight you.)
+
+You should end up with exactly this:
+
+```
+CryptidRegistry/            ← the folder you copied and renamed
+├─ Cryptids.Web/           ← your app — ALL your work happens in here
+└─ Cryptids.Checks/        ← the checks — read-only, never edit
+```
+
+**3. Open `CryptidRegistry` in VS Code** — the folder that *contains* both project folders, not one of the projects themselves. (File → Open Folder → pick `CryptidRegistry`.)
+
+**4. In the VS Code terminal, from that same folder:**
+
+```bash
+dotnet test Cryptids.Checks
+```
 
 **1 / 6 passing.** Check 1 is free — it proves the harness works. The other five are the lab.
+
+> [!WARNING]
+> Seeing `error MSB1009: Project file does not exist`? You're one folder too deep — probably inside `Cryptids.Web`. Run `cd ..` and try again; the command goes in the folder that holds *both* projects.
 
 > [!TIP]
 > Two terminals: in one, `cd Cryptids.Web` then `dotnet watch`; in the other, stay at the parent folder and re-run `dotnet test Cryptids.Checks` after each task. Browser for feel, checks for truth.
