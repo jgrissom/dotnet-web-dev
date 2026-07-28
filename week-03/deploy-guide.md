@@ -43,7 +43,7 @@ From the rows containing **US**, pick the first one you have from this preferenc
 **North Central US → Central US → East US 2** → any other US region.
 
 > [!IMPORTANT]
-> **It must be a US region — no exceptions, even if Azure suggests Canada.** The school SQL Server (which your apps use from week 7 on) rejects requests from outside the US. A Canadian app works fine tonight and dies mysteriously in week 7.
+> **It must be a US region — no exceptions, even if Azure suggests Canada.** Apps hosted in Canadian regions have never been able to reach the school SQL Server (which your apps use from week 7 on) — exact cause unknown, pattern very consistent. A Canadian app works fine tonight and dies mysteriously in week 7.
 
 **✓ Verify** — you've written down one US region name, e.g. `"Central US"`. That's your region for the whole semester.
 
@@ -90,7 +90,7 @@ It remembers the app and just ships the new build. That's the whole update story
 ## 🆘 If it goes sideways
 
 - **Name taken:** pick new digits. Names are global across all of Azure.
-- **"Location is not available" / region rejected:** re-run step 3's discovery command — free-tier availability shifts. Pick the next **US** region on your list. Never a Canada region: the school SQL Server will block your app later in the course.
+- **"Location is not available" / region rejected:** re-run step 3's discovery command — free-tier availability shifts. Pick the next **US** region on your list. Never a Canada region: apps hosted there have never been able to reach the school SQL Server.
 - **Runtime error / generic Azure page:** confirm the runtime value with `az webapp list-runtimes --os-type linux | grep -i dotnet` and that you deployed from the web project folder.
 - **Login loops or picks the wrong account:** `az logout`, then `az login` again and choose the school account.
 - **It worked yesterday, slow today:** free tier waking up. ~30 seconds, then normal.

@@ -241,7 +241,7 @@ az webapp up --name ff-web-XX1234 --sku F1 \
 
 - `--name` = your public URL — globally unique (initials + digits)
 - `--sku F1` = free tier (naps when idle; first wake-up is slow — normal)
-- `--location` = **your US region** (guide step 3 finds it) — non-US = blocked by the school DB later
+- `--location` = **your US region** (guide step 3 finds it) — non-US regions have never worked with the school DB
 
 ---
 

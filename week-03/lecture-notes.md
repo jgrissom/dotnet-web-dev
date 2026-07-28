@@ -201,7 +201,7 @@ az webapp up --name cg-web-XX1234 --sku F1 \
 
 - `--name` becomes the public URL — globally unique, hence the initials+digits convention.
 - `--sku F1` = the free tier. Fine for coursework; falls asleep when idle (first request after a nap is slow — that's normal, say it now).
-- `--location` **must be a US region, but which one varies per student** — Microsoft doesn't document why, but in practice free-tier region availability differs by subscription and shifts over time (capacity management, presumably). Don't fight it; route around it: Guide step 3 has each student discover theirs (`az appservice list-locations --sku F1 --output table`) and prefer North Central US → Central US → East US 2. The hard rule is US-only: the school SQL Server geo-blocks non-US requests — invisible tonight, fatal in week 7.
+- `--location` **must be a US region, but which one varies per student** — Microsoft doesn't document why, but in practice free-tier region availability differs by subscription and shifts over time (capacity management, presumably). Don't fight it; route around it: Guide step 3 has each student discover theirs (`az appservice list-locations --sku F1 --output table`) and prefer North Central US → Central US → East US 2. The hard rule is US-only: in every past attempt, apps hosted in Canadian regions could not reach the school SQL Server (cause never confirmed — worth asking IT before week 7). Invisible tonight, fatal in week 7, so we just stay stateside.
 - Re-running the same command later **redeploys** — that's the whole update story for homework.
 
 > [!IMPORTANT]
