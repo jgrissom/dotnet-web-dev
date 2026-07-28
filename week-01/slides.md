@@ -46,6 +46,8 @@ style: |
 
 By week 16: a database-backed, secured web app **and** an API your own JavaScript calls.
 
+**Week 4: you pick your topic** — then grow that same app all semester.
+
 **Nothing stays on localhost:**
 JS work ships to **GitHub Pages** (tonight!) · every .NET assignment deploys to **Azure** (week 3 on)
 

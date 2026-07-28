@@ -11,6 +11,8 @@
 - **Weeks 11–13:** Identity — logins, roles, security, polish.
 - **Weeks 14–16:** Web API + final project — your JavaScript calling your own API.
 
+**The project thread — say this on night one.** In **week 4** each student picks their own topic and builds a small list-and-details site from an empty folder. Every week after that extends *that same app*: a real layout and theme, forms and validation, then the hard-coded data moves into SQL Server, then logins, then an API. It's what they present in week 16. Mentioning it now means week 4's "pick something you can live with" lands as a reminder rather than a surprise — and students start thinking about a topic six weeks early, which is exactly what you want.
+
 **The pitch:** every job posting for a .NET developer asks for exactly this stack — C#, ASP.NET Core, EF Core, SQL Server, and enough JavaScript to be dangerous.
 
 **And nothing stays on localhost.** Tonight your homework goes live on GitHub Pages. From week 3, every .NET assignment deploys to Azure (you get a free Azure for Students account). By finals, you'll have a portfolio of URLs, not a folder of zip files.
