@@ -18,8 +18,22 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ## 1 · The shell you've been ignoring *(slides 3–7)*
 
-- [ ] **Open the question first:** *"Your Index view has an `<h1>` and a table. No `<html>`, no `<head>`, no navbar. So who put the navbar on the page?"* Let them answer
-- [ ] Open `Views/Shared/_Layout.cshtml`. Scroll it top to bottom **once**, slowly, without editing. Name three things: `Views/Shared/` is for what belongs to no single page · the `_` prefix means "a piece, not a page" · it's all just Razor
+### The gap, shown live *(slide 3)* — **do this before saying anything about layouts**
+
+Don't ask the question rhetorically; make them look at both halves. Two windows, thirty seconds.
+
+- [ ] **Editor:** open `Views/Trucks/Index.cshtml` and scroll it end to end. **37 lines.** Starts at `@model`, ends at `</table>`. Point out loud: *no `<html>`, no `<head>`, no navbar, no footer*
+- [ ] **Browser:** switch to the `/Trucks` tab → **View Source** (`⌘⌥U` on a Mac — plain `⌘U` won't do it in Chrome; right-click → *View Page Source* always works)
+- [ ] Scroll View Source to the **top**: `<!DOCTYPE html>`, `<head>`, the stylesheet, the navbar. **None of it was in the file you just read**
+- [ ] `⌘F` / `Ctrl+F` in View Source for `<h1>Curbside` — it's at **line 40**, of **127**
+- [ ] **Say the numbers:** *"You wrote 37 lines. The browser got 127. There are 39 lines above your `h1` and 15 below it that you never typed."*
+- [ ] **Now ask it:** *"So who wrote them?"* — let the room answer before you open anything
+
+> [!NOTE]
+> Those counts are exact for the demo starter **as shipped**. They shift the moment you start editing in a minute, so take the screenshot moment now — and if you rehearsed with a branded copy, re-check the numbers rather than reading these aloud.
+
+- [ ] Open `Views/Shared/_Layout.cshtml`. *"Here it is."* Scroll it top to bottom **once**, slowly, without editing. Name three things: `Views/Shared/` is for what belongs to no single page · the `_` prefix means "a piece, not a page" · it's all just Razor
+- [ ] **Tie it back:** the 39 lines above and 15 below are literally this file, wrapped around their table
 - [ ] Point at `@RenderBody()` inside `<main>`
 
 ### Break it #1 — `@RenderBody()`

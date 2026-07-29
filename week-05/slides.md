@@ -45,17 +45,22 @@ style: |
 
 ---
 
+<!-- _footer: '🖥️ Demo §1' -->
+
 ## A question
 
-Your `Views/Trucks/Index.cshtml` has an `<h1>` and a table.
+**What you wrote** — `Views/Trucks/Index.cshtml`:
+
+```html
+@model List<Truck>
+
+<h1>Curbside</h1>
+<table class="table table-striped">...</table>
+```
 
 No `<html>`. No `<head>`. **No navbar.**
 
-<br>
-
-The page in your browser had all three.
-
-### So who put them there?
+### Now View Source on `/Trucks`. Who wrote the rest?
 
 ---
 

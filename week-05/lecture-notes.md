@@ -10,8 +10,21 @@ Week 4 ended with `/Trucks` and `/Trucks/Details/2` — real pages, generated fr
 
 And yet the page in the browser had all of those. Somebody added them.
 
+**Show this rather than saying it** (demo §1). Put the file and View Source side by side:
+
+| | |
+|---|---|
+| `Views/Trucks/Index.cshtml`, the file you wrote | **37 lines** |
+| What the browser actually received | **127 lines** |
+| Where your `<h1>` shows up in it | **line 40** |
+
+So there are **39 lines above your heading and 15 below it that you never typed.** That gap is tonight.
+
 > [!IMPORTANT]
-> Ask the room the question from last week's reading: **who put the navbar on your page?** Nobody typed it. It's in a file most of them have never opened, and after tonight it's the file they'll edit most.
+> Ask the room the question from last week's reading, *after* they've seen both halves: **who wrote the other 90 lines?** It's a file most of them have never opened, and after tonight it's the file they'll edit most.
+
+> [!TIP]
+> **View Source, not the Elements panel** — `⌘⌥U` on a Mac (plain `⌘U` isn't bound to it in Chrome), or right-click → *View Page Source*. Same distinction as week 4: Elements shows the live DOM, View Source shows the bytes the server sent. Here you want the bytes.
 
 ### The layout file
 
