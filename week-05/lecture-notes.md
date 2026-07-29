@@ -85,6 +85,20 @@ This is the whole trick:
 
 `@RenderBody()` is the hole in the doughnut. When you `return View(...)`, Razor renders **your view** first, then renders the **layout**, and drops your view's HTML at exactly that spot.
 
+> [!IMPORTANT]
+> **Expect to be challenged on that, because it sounds backwards.** The finished page has your content *nested inside* the layout, so the natural assumption is that the layout runs first and the view renders into it. It's the other way round, and the difference is worth being able to defend:
+>
+> | | |
+> |---|---|
+> | **The output** | your HTML sits *inside* the layout's |
+> | **The execution** | your view runs *before* the layout, start to finish |
+>
+> Both are true at once because the view's output is **buffered**, not streamed — Razor renders your view into memory, then runs the layout, and `@RenderBody()` writes that buffer out.
+>
+> The order for one request is `_ViewStart` → **your view** → the layout → `@RenderBody()`.
+>
+> **The proof is a feature you already use.** Your view sets `ViewData["Title"]` and the layout's `<title>` shows it. If the layout ran first, that `<title>` would have been written to the response *before* your view ever executed, and nothing the view did could reach it. Sections work for the same reason: the view declares `@section Scripts` on its way past, and the layout collects it afterwards. **A view can only influence its layout because it goes first.**
+
 > [!TIP]
 > **Predict-then-run (demo §1).** Ask before you do it: *"I'm going to delete `@RenderBody()`. What happens — a blank page, or an error?"* Most rooms say blank page. Let them commit to an answer.
 
