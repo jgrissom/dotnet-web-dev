@@ -209,6 +209,44 @@ Notes-to-self go in `@* *@`.
 
 ---
 
+<!-- _footer: '🎨 demo time — script §4: type the class, paste the six trucks' -->
+
+## The model is just a class
+
+```csharp
+public class Truck
+{
+    public int Id { get; set; }
+    public string Name { get; set; } = "";
+    public double Rating { get; set; }
+    public bool IsOpenLate { get; set; }
+}
+```
+
+No base class. No attributes. Nothing from ASP.NET.
+
+The **M** in MVC is the C# you already write.
+
+---
+
+## Six trucks, no database
+
+```csharp
+public static class TruckData
+{
+    public static List<Truck> All { get; } = new()
+    {
+        new Truck { Id = 1, Name = "Roll Models", ... },
+    };
+}
+```
+
+`static` because **every request gets a new controller** — instance fields wouldn't survive.
+
+Week 7 deletes this file. The controller barely notices.
+
+---
+
 ## Three ways in
 
 | Way | Good for |

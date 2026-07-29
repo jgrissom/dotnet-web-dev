@@ -151,7 +151,7 @@ Everything here happens in `Views/Trucks/Index.cshtml`.
 - [ ] Only one survives. "Notes-to-self go in `@* *@`" — small beat, real security lesson
 - [ ] **✓ CHECKPOINT:** every student can answer "does the browser ever see a `foreach`?"
 
-## 4 · The model arrives *(slides 13–14)*
+## 4 · The model arrives *(slides 13–16)*
 
 - [ ] Create `Models/Truck.cs` — **type it** (it's a plain C# class; nothing web about it):
   ```csharp
@@ -262,7 +262,7 @@ Everything here happens in `Views/Trucks/Index.cshtml`.
 - [ ] **The IntelliSense moment** — inside the loop, type `@truck.` and let the list pop up. Then break it: change `@truck.Name` to `@truck.Titel`, save → **red squiggle + a build error before the refresh**. "`ViewData` would have failed silently. This didn't." Fix it
 - [ ] **✓ CHECKPOINT:** the room has seen typed data go from C# to a table without a single line of JavaScript
 
-## 5 · Details, and an honest 404 *(slides 15–16)*
+## 5 · Details, and an honest 404 *(slides 17–18)*
 
 - [ ] Add to `TrucksController` — **type it**:
   ```csharp
