@@ -149,13 +149,15 @@ The [notes on the layout file](../lecture-notes.md#the-layout-file) walk the sam
 > **Check 5 looks at *where* your script lands**, not just that it's there. A `<script>` typed into the middle of `Details.cshtml` renders in the middle of the page; the same script inside `@section Scripts` renders at the bottom, below the footer, because [the layout decides where a section goes](../lecture-notes.md#the-slot-that-was-always-there).
 
 > [!TIP]
-> **For check 6, copy the whole `<link>` tag from [bootswatch.com](https://bootswatch.com)** (the CDN dropdown on each theme), or use this one and swap the theme name:
+> **For check 6: pick your theme on [bootswatch.com](https://bootswatch.com)** — the **Preview** link on each card shows a full sample page — **but get the `<link>` tag right here**, because the site itself never shows you one (its Download button hands you a CSS *file*; we're loading from the CDN, week-2 style):
 >
 > ```html
 > <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/darkly/bootstrap.min.css" />
 > ```
 >
-> `darkly`, `flatly`, `united`, `vapor`, `superhero`, `morph` — pick one you like. **Hard-refresh after every swap** (⌘⇧R / Ctrl+Shift+R) or you'll be looking at a cached stylesheet and think it failed.
+> **Swap `darkly` for the theme you picked** — the theme name is the only part that changes, spelled in lowercase exactly as the site shows it. **Hard-refresh after every swap** (⌘⇧R / Ctrl+Shift+R) or you'll be looking at a cached stylesheet and think it failed.
+>
+> *(One exception: **Brite** is newer than the `5.3.3` build — if you picked it and the page comes back unstyled, change the version in the URL to `5.3.8`.)*
 
 ## Rules
 
