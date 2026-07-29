@@ -269,3 +269,4 @@ Don't ask the question rhetorically; make them look at both halves. Use the **ho
 - [ ] Say plainly: **the app arrives finished.** Nobody is blocked tonight by an unfinished week 4. Check 1 proves it
 - [ ] **In-class target: checks 1–4.** Checks 5–6 roll into homework by design
 - [ ] Name the three exact strings the checks want: `Cryptid Registry`, `Field Reports Since 1893`, `Cryptid file loaded`
+- [ ] ⚠️ **Say that their second call site is different from yours.** Curbside's card goes on the index *and* the "Also in this city" panel — that panel works because two trucks share Madison. **No two cryptids share a region**, so it would be empty on every details page. Their second spot is the **home page**, featuring one creature. *"Same move, same partial, different second home — because a partial goes wherever you want it, which is the entire point."* Without this line they'll look for an Also-in panel that can't exist

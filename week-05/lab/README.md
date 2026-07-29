@@ -113,7 +113,11 @@ The [notes on the layout file](../lecture-notes.md#the-layout-file) walk the sam
 </div>
 ```
 
-**That's one call site — now the second.** Feature a single creature on the home page. This is the whole of `Views/Home/Index.cshtml` afterwards, and the two 👈 marks are the only things you add:
+**That's one call site — now the second.** Feature a single creature on the home page.
+
+> [!NOTE]
+> **Not the same second spot as the demo, on purpose.** Curbside put its card in an "Also in this city" panel on the details page — which works because two food trucks share Madison. **No two cryptids share a region**, so that panel would be empty on every details page here. The home page is the Registry's second call site instead. The partial doesn't care: that's what makes it a partial.
+ This is the whole of `Views/Home/Index.cshtml` afterwards, and the two 👈 marks are the only things you add:
 
 ```html
 @{
