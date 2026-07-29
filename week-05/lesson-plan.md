@@ -3,7 +3,7 @@
 **Topic:** Razor layouts and partials — the site shell; `_ViewStart` / `_ViewImports`; sections; the Bootswatch swap
 **Session length:** 3h 45m
 
-> The night students stop being tenants of the template and become its landlord. Last week they generated pages from data; every one of those pages arrived wrapped in a file they'd never opened. Tonight they open it, break it four times, and leave with a site that looks like theirs. Two segments carry the week — **partials** (§3, the load-bearing one) and **Bootswatch** (§5, the payoff) — and everything else exists to earn them.
+> The night students stop being tenants of the template and become its landlord. Last week they generated pages from data; every one of those pages arrived wrapped in a file they've been into twice and never read. Tonight they open it, break it four times, and leave with a site that looks like theirs. Two segments carry the week — **partials** (§3, the load-bearing one) and **Bootswatch** (§5, the payoff) — and everything else exists to earn them.
 
 ## Learning objectives
 

@@ -1,6 +1,6 @@
 # Week 5 — Lecture Notes
 
-> Last week you built pages *from data*. Every one of them arrived wrapped in a shell you didn't write and never looked at. Tonight you open that file and take it over — and find out that one line changes the look of every page at once.
+> Last week you built pages *from data*. Every one of them arrived wrapped in a shell you didn't write — one you've now been into twice without reading: once to paste a nav link, once to find `@RenderBody()` for tonight. Tonight you take it over, and find out that one line changes the look of every page at once.
 
 ## Part 1: The shell you've been ignoring (35 min)
 
@@ -21,7 +21,7 @@ And yet the page in the browser had all of those. Somebody added them.
 So there are **39 lines above your heading and 15 below it that you never typed.** That gap is tonight.
 
 > [!IMPORTANT]
-> Ask the room the question from last week's reading, *after* they've seen both halves: **who wrote the other 90 lines?** It's a file most of them have never opened, and after tonight it's the file they'll edit most.
+> Ask the room the question from last week's reading, *after* they've seen both halves: **who wrote the other 90 lines?** They have been in this file twice already — pasting a nav link for requirement 4, and finding `@RenderBody()` for tonight's reading — both times without reading the rest of it. Say that out loud; "you've had this file open twice and never looked at it" lands better than pretending it's new, and after tonight it's the file they'll edit most.
 
 > [!TIP]
 > **View Source, not the Elements panel** — `⌘⌥U` on a Mac (plain `⌘U` isn't bound to it in Chrome), or right-click → *View Page Source*. Same distinction as week 4: Elements shows the live DOM, View Source shows the bytes the server sent. Here you want the bytes.
