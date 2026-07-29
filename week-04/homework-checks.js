@@ -128,9 +128,11 @@
     }
 
     add(links.length >= 5 ? "pass" : "fail", 4,
-      `index lists all your items — ${links.length} found`, {
-        hint: `I count your items by the Details link on each row, and found ${links.length}. You need 5 or more.`,
-        todo: `Seed at least 5 items, and give every row a link: href="/${route}/Details/@item.Id"`,
+      links.length >= 5
+        ? `index lists all your items — ${links.length} found`
+        : `index lists all your items — /${route} loads, but ${links.length} Details link${links.length === 1 ? "" : "s"} found`, {
+        hint: `Your page is there; I just can't count what's on it. I identify your items by the Details link on each row — that's the only thing I can recognise without knowing your topic — and I found ${links.length}. I need 5 or more.`,
+        todo: `Add a link inside your loop: href="/${route}/Details/@item.Id"`,
       });
 
     // No links on the index? Don't block the rest — probe the conventional URL so
