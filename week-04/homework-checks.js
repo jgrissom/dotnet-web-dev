@@ -151,12 +151,21 @@
           : `Add a Details(int id) action and a Views/${route}/Details.cshtml to match.`,
       });
 
-    const bad = await getWithWakeup(`${root}/${route}/Details/${BAD_ID}`);
-    add(bad && bad.status === 404 ? "pass" : "fail", 2,
-      `a bad id returns 404 — got ${bad ? bad.status : "no response"}`, {
-        hint: "an id nobody has should be an honest 404, not a crash or a blank page.",
-        todo: "Use FirstOrDefault, then: if (item == null) return NotFound();",
+    // A missing Details action 404s exactly like a guarded one, so this check is
+    // meaningless until a REAL id works. Don't award it for a page that isn't there.
+    if (!okDetail) {
+      add("blocked", 2, "a bad id returns 404 — can't tell yet", {
+        hint: `everything 404s right now, including ${probe}, so a 404 here proves nothing.`,
+        todo: "Get the Details page working first; then this check means something.",
       });
+    } else {
+      const bad = await getWithWakeup(`${root}/${route}/Details/${BAD_ID}`);
+      add(bad && bad.status === 404 ? "pass" : "fail", 2,
+        `a bad id returns 404 — got ${bad ? bad.status : "no response"}`, {
+          hint: "an id nobody has should be an honest 404, not a crash or a blank page.",
+          todo: "Use FirstOrDefault, then: if (item == null) return NotFound();",
+        });
+    }
 
     return { route, checks, ...tally(checks) };
   }
@@ -199,7 +208,8 @@
       const { earned, possible, green, total, route } = res;
       console.log(`\n📋 ${green} of ${total} checks green · ${earned} of ${possible} points${route ? `  (controller: /${route})` : ""}`);
 
-      const next = res.checks.find(c => !c.pass && c.todo);
+      const next = res.checks.find(c => !c.pass && !c.blocked && c.todo)
+                || res.checks.find(c => !c.pass && c.todo);
       if (next) console.log(`\n👉 Next: ${next.todo}`);
       else if (isLocal(url)) console.log("\n⚠️  That was localhost. Run it again on your Azure URL — the deployed one is what I grade.");
       else console.log("\n🎉 Everything I can check from a URL passes on your deployed site.");
@@ -227,7 +237,8 @@
       const { earned, possible, green, total, route } = res;
       console.log(`%c📋 ${green} of ${total} checks green · ${earned} of ${possible} points${route ? `  (controller: /${route})` : ""}`, big);
 
-      const next = res.checks.find(c => !c.pass && c.todo);
+      const next = res.checks.find(c => !c.pass && !c.blocked && c.todo)
+                || res.checks.find(c => !c.pass && c.todo);
       if (next) {
         console.log(`%c👉 Next: ${next.todo}`, `${bold}; color: #79c0ff`);
         console.log("Fix that, refresh this page, and the checks run again.");
