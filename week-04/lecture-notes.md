@@ -157,8 +157,14 @@ Razor is **HTML with `@` as the door into C#**. One rule covers most of it: `@` 
 
 ### Conditionals in a view
 
+Still no model yet, so the condition reads a local — demo §3 declares it in the block right above:
+
 ```html
-@if (truck.IsOpenLate)
+@{
+    var isOpenLate = true;
+}
+
+@if (isOpenLate)
 {
     <span class="badge bg-success">🌙 Open late</span>
 }
@@ -168,22 +174,31 @@ else
 }
 ```
 
+- Flip the variable to `false`, save, refresh: **different HTML from the same file**, and View Source shows only the branch that ran. The other one never existed.
 - Note there is **no `@` on `else`** — once you've opened `@if`, Razor stays in C# mode through the whole statement. Students will add a stray `@` here; it's the most common Razor typo of the night.
 - The braces belong to C#; the tags inside them are HTML that only gets written **when the branch runs**. That's the whole idea: *markup as an outcome of logic*.
 
 ### Loops in a view
 
+There's still no model at this point in the night, so the loop runs over a **local array you declare in the view** — exactly what demo §3 types:
+
 ```html
+@{
+    var cuisines = new[] { "Korean", "Mexican", "Greek", "Polish" };
+}
+
 <ul>
-    @foreach (var truck in trucks)
+    @foreach (var c in cuisines)
     {
-        <li>@truck.Name — @truck.Cuisine</li>
+        <li>@c</li>
     }
 </ul>
 ```
 
-- One `<li>` written in the source; six `<li>` in the output. **This is the moment the week is built around.** Say it plainly: you no longer write a page, you write a *rule for producing a page*.
-- Callback to week 2: the coffee shop's six menu cards were six hand-typed blocks of HTML. Tonight one loop does that job, and adding a seventh truck means adding *data*, not markup. Same kind of site, different century.
+- One `<li>` written in the source; **four** `<li>` in the output. **This is the moment the week is built around.** Say it plainly: you no longer write a page, you write a *rule for producing a page*.
+- Add a fifth cuisine to the array and the page grows: **data changed, markup didn't.**
+- Callback to week 2: the coffee shop's six menu cards were six hand-typed blocks of HTML. Tonight one loop does that job. Same kind of site, different century.
+- **Forward pointer:** in Part 4 the same loop runs over `Model` instead of a local array — `@foreach (var truck in Model)`. The loop doesn't change; only where the data comes from does.
 
 ### Comments: two kinds, and only one is private
 
@@ -307,6 +322,13 @@ View side, **first line of the file**:
 @model List<Truck>
 
 <p>@Model.Count trucks on the street.</p>
+
+<ul>
+    @foreach (var truck in Model)
+    {
+        <li>@truck.Name — @truck.Cuisine</li>
+    }
+</ul>
 ```
 
 - Lowercase **`@model`** (the declaration, once, at the top) vs. capital **`@Model`** (the value, used everywhere below). This trips everyone; call it out before it bites.

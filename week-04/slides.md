@@ -147,10 +147,10 @@ Different in one huge way: **this runs on the server.**
 
 ```html
 @{
-    var count = 6;
+    var isOpenLate = true;
 }
 
-@if (truck.IsOpenLate)
+@if (isOpenLate)
 {
     <span class="badge bg-success">🌙 Open late</span>
 }
@@ -167,13 +167,17 @@ No `@` on `else` — you're already in C#.
 ## The big idea
 
 ```html
-@foreach (var truck in trucks)
-{
-    <li>@truck.Name — @truck.Cuisine</li>
-}
+@{ var cuisines = new[] { "Korean", "Mexican", "Greek", "Polish" }; }
+
+<ul>
+    @foreach (var c in cuisines)
+    {
+        <li>@c</li>
+    }
+</ul>
 ```
 
-One `<li>` in the source. Six in the output.
+One `<li>` in the source. Four in the output.
 
 You no longer write a page. You write a **rule for producing a page**.
 
@@ -185,7 +189,7 @@ The coffee shop's six menu cards were six hand-typed blocks of HTML.
 
 Tonight, one loop does that job.
 
-Adding a seventh truck means adding **data** — not markup.
+Adding a fifth cuisine means adding **data** — not markup.
 
 Same kind of site. Different century.
 
