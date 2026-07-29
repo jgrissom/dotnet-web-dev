@@ -181,14 +181,14 @@ Copy-paste gives you **three places to fix**, and they *will* drift.
 
 ## Making one — three steps
 
-**1.** Create `Views/Shared/_Footer.cshtml`
+**1.** Create `Views/Shared/_TruckCard.cshtml`
 
-**2.** Move the markup into it
+**2.** `@model Truck` on the first line
 
-**3.** Render it:
+**3.** Render it, handing it one:
 
 ```html
-<partial name="_Footer" />
+<partial name="_TruckCard" model="truck" />
 ```
 
 <br>

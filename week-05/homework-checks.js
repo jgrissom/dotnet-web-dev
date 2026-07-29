@@ -223,13 +223,13 @@
             ? "your three pages show different footers, which means the text is pasted into the views "
               + "instead of living in the layout."
             : stock
-              ? "that's still the template's default footer line. Requirement 3 asks for a footer of "
-                + "your own — your name and the year — in Views/Shared/_Footer.cshtml."
+              ? "that's still the template's default footer line. Requirement 1 asks for a footer of "
+                + "your own — your name and the year — edited in Views/Shared/_Layout.cshtml."
               : "I couldn't find enough footer text to compare.",
         todo: stock
-          ? "Put your own name and the year in Views/Shared/_Footer.cshtml, and render it from the layout."
-          : "Move your footer into Views/Shared/_Footer.cshtml and render it from _Layout.cshtml with "
-            + "<partial name=\"_Footer\" /> so all three pages get the same one.",
+          ? "Put your own name and the year in the <footer> in Views/Shared/_Layout.cshtml."
+          : "Your footer should live in Views/Shared/_Layout.cshtml, so every page gets the same one. "
+            + "If it's pasted into individual views, move it there.",
       });
 
     // ── 4. per-page titles ───────────────────────────────────────────────────
@@ -272,7 +272,7 @@
   }
 
   const BY_HAND = [
-    "3 pts — Views/Shared/_Footer.cshtml exists and _Layout.cshtml renders it with <partial>",
+    "3 pts — a partial in Views/Shared/, rendered from two different views",
     "2 pts — this script is included via @section Scripts, not pasted into the layout",
     "3 pts — 3+ meaningful commits, pushed to a public repo",
   ];

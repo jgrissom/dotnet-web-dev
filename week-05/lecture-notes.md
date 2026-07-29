@@ -145,10 +145,11 @@ Two flavours worth showing side by side:
 
 ### Branding the shell
 
-Two edits, one file, whole site:
+Three edits, one file, whole site:
 
 - the `<title>` suffix — `- Curbside` becomes whatever your app is called
 - the `navbar-brand` text — same
+- the **footer** — your name and the year, replacing the template's `© 2026 - Curbside`
 
 Make both live and click through three pages. **Nothing else changed, and every page is different.** That's the sentence the whole night is built on; say it while it's on screen.
 
@@ -213,38 +214,10 @@ The obvious move is copy-paste. The obvious move is wrong for the obvious reason
 
 ### Making a partial
 
-Start with the easy one — the footer, which is already in the layout and belongs to no page.
+> [!NOTE]
+> **A note on the example, if you've taught this before.** The classic first partial is the footer — cut it out of the layout, render it with `<partial />`. Don't. The footer is already in the layout, and the layout is already on every page, so a footer partial has exactly **one call site**: it demonstrates the syntax while demonstrating none of the point. It also silently breaks the template's footer styling, because `_Layout.cshtml.css` is a *scoped* stylesheet whose rules stop matching once the markup leaves the layout. Real cost, no benefit. We go straight to the case with actual reuse.
 
-**1. Create the file.** `Views/Shared/_Footer.cshtml` — this is the whole file:
-
-```html
-<footer class="border-top footer text-muted">
-    <div class="container">
-        &copy; 2026 - Curbside - Wisconsin's finest, on four wheels -
-        <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-    </div>
-</footer>
-```
-
-**2. Render it.** In `Views/Shared/_Layout.cshtml`, delete the whole `<footer>...</footer>` block you just copied and put this in its place:
-
-```html
-<partial name="_Footer" />
-```
-
-**3. Refresh.** Identical page. That's the point — the *output* didn't change, the *structure* did.
-
-Things to say while it's up:
-
-- `name="_Footer"` is a **file name**, not a path. MVC looks in the current controller's view folder first, then `Views/Shared/`. Same lookup rule as views.
-- The `.cshtml` extension is not included and the underscore *is*.
-- **`<partial />` is a tag helper** — which is why Part 2's `_ViewImports` line mattered. The older spelling `@await Html.PartialAsync("_Footer")` does the same job; you'll meet it in older code and in a lot of Stack Overflow answers. Use `<partial />`.
-
-### Passing a model to a partial
-
-The footer is the same on every page. The interesting case is a partial that renders *different data each time*.
-
-**1. The partial.** `Views/Shared/_TruckCard.cshtml` — the whole file:
+**1. Create the file.** `Views/Shared/_TruckCard.cshtml` — the whole file:
 
 ```html
 @model Truck
@@ -266,6 +239,14 @@ The footer is the same on every page. The interesting case is a partial that ren
 ```
 
 It has an `@model` line exactly like a page does — a partial is strongly typed too. Note it says `@model Truck`, **one truck**, not a list. The partial's job is one card.
+
+Three things to say while it's on screen:
+
+- When you render it, `name="_TruckCard"` will be a **file name, not a path**. MVC looks in the current controller's view folder first, then `Views/Shared/` — the same lookup rule as views.
+- The `.cshtml` extension is left off and the underscore is kept.
+- **`<partial />` is a tag helper** — which is why Part 2's `_ViewImports` line mattered, ten minutes ago. The older spelling `@await Html.PartialAsync("_TruckCard")` does the same job; you'll meet it in older code and in most Stack Overflow answers. Use `<partial />`.
+
+### Passing a model to a partial
 
 **2. Use it in the loop.** Replace the `<table>` in `Views/Trucks/Index.cshtml` — this is the whole file afterwards:
 
@@ -433,7 +414,7 @@ _ViewStart  →  _Layout.cshtml  →  @RenderBody()  →  your view
 ```
 
 - **Tonight:** one file wraps every page; two files you'd never opened explain why; partials kill copy-paste; sections let a page reach outside itself; and a single `<link>` re-skins the lot.
-- **Homework:** your semester project gets the same treatment — brand, per-page titles, a footer partial, a theme.
+- **Homework:** your semester project gets the same treatment — brand, per-page titles, a card partial used twice, a theme.
 - **Next week:** the shell holds a **form**. `@section Scripts` is how validation gets there, and `_ValidationScriptsPartial.cshtml` stops being a mystery.
 
 ## Appendix: Troubleshooting
@@ -450,7 +431,7 @@ _ViewStart  →  _Layout.cshtml  →  @RenderBody()  →  your view
 **`InvalidOperationException: The layout view '_Layout' could not be found`**
 - `_ViewStart.cshtml` names a layout that isn't there. Check the spelling and that the file is `Views/Shared/_Layout.cshtml`. Searched paths are listed in the error.
 
-**`InvalidOperationException: The partial view '_Footer' was not found`**
+**`InvalidOperationException: The partial view '_TruckCard' was not found`**
 - Same lookup rules as views: the controller's own folder, then `Views/Shared/`. Check the file name (underscore included, `.cshtml` excluded from the `name`), and that it's in `Views/Shared/`.
 
 **The partial renders but the data is wrong / `@Model` is null in a partial**

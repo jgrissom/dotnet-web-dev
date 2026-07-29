@@ -64,17 +64,80 @@ The [notes on the layout file](../lecture-notes.md#the-layout-file) walk the sam
 
 | # | Check | What to do |
 |---|-------|------------|
-| 2 | `ShellIsBranded` | The app is called **`Cryptid Registry`**, not `Cryptids.Web`. Change **two things** in `_Layout.cshtml`: the `navbar-brand` text, and the suffix in the `<title>` line. Both must read `Cryptid Registry`. Then look at all three tabs — [one file, every page](../lecture-notes.md#branding-the-shell). |
+| 2 | `ShellIsBranded` | The app is called **`Cryptid Registry`**, not `Cryptids.Web`. Change **three things** in `_Layout.cshtml`: the `navbar-brand` text, the suffix in the `<title>` line, and the footer — which must include exactly **`Field Reports Since 1893`**. Then look at all three tabs: three edits, one file, nine changed pages' worth of effect — [that's the whole idea](../lecture-notes.md#branding-the-shell). |
 | 3 | `EveryPageHasItsOwnTitle` | Give `Views/Cryptids/Index.cshtml` and `Views/Cryptids/Details.cshtml` their own `ViewData["Title"]`. Index's is your call. **Details' must be the creature's name** — `ViewData["Title"] = Model.Name;` — so `/Cryptids/Details/1` shows *The Hodag* in the tab. [How the view and the layout split the title](../lecture-notes.md#viewdatatitle-and-the-browser-tab). |
-| 4 | `FooterIsAPartial` | Create `Views/Shared/_Footer.cshtml`, move the whole `<footer>` block out of `_Layout.cshtml` into it, and render it from the layout with `<partial name="_Footer" />`. The footer text must include exactly **`Field Reports Since 1893`**. [Making a partial](../lecture-notes.md#making-a-partial). |
+| 4 | `CardIsAPartialUsedTwice` | Create `Views/Shared/_CryptidCard.cshtml` (markup below), then render it in **two different views** — a card grid on `/Cryptids`, and one featured creature on the home page. [Passing a model to a partial](../lecture-notes.md#passing-a-model-to-a-partial). |
 | 5 | `DetailsAddsAScript` | Add a `@section Scripts { ... }` block to `Details.cshtml` containing a `<script>` that logs **`Cryptid file loaded`**. It must appear on the details page and **not** on the index. [Sections and the Scripts slot](../lecture-notes.md#the-slot-that-was-always-there). |
 | 6 | `ThemeIsNotTheDefault` | Replace the Bootstrap `<link>` in `_Layout.cshtml` with a [Bootswatch](https://bootswatch.com) theme. **Delete the original line** — it's a replacement, not an addition. [One link, whole site](../lecture-notes.md#the-payoff). |
 
 > [!IMPORTANT]
-> **The exact text matters** for checks 2, 4 and 5 — `Cryptid Registry`, `Field Reports Since 1893`, `Cryptid file loaded`. Everything around it is your call; those strings are how an automated check recognises work it can't see.
+> **The exact text matters** for checks 2 and 5 — `Cryptid Registry`, `Field Reports Since 1893`, `Cryptid file loaded`. Everything around it is your call; those strings are how an automated check recognises work it can't see.
+
+### Task 4 in full
+
+**Create `Views/Shared/_CryptidCard.cshtml`** — this is the whole file. Paste it; tonight's lesson is the partial, not the Bootstrap:
+
+```html
+@model Cryptid
+
+<div class="card cryptid-card h-100">
+    <div class="card-body">
+        <h5 class="card-title">@Model.Name</h5>
+        <h6 class="card-subtitle mb-2 text-muted">@Model.Region</h6>
+        <p class="card-text">First sighted @Model.FirstSighting · @Model.Sightings reports</p>
+        @if (Model.IsDebunked)
+        {
+            <span class="badge bg-danger">🚫 Debunked</span>
+        }
+        else
+        {
+            <span class="badge bg-success">👀 Unconfirmed</span>
+        }
+    </div>
+    <div class="card-footer">
+        <a href="/Cryptids/Details/@Model.Id">Details</a>
+    </div>
+</div>
+```
+
+**Use it twice.** In `Views/Cryptids/Index.cshtml`, replace the whole `<table>` with a card grid:
+
+```html
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    @foreach (var cryptid in Model)
+    {
+        <div class="col">
+            <partial name="_CryptidCard" model="cryptid" />
+        </div>
+    }
+</div>
+```
+
+Then in `Views/Home/Index.cshtml`, feature one creature — this goes **inside the existing `@{ }` block** at the top, and the markup below it:
+
+```html
+@{
+    ViewData["Title"] = "Home";
+    var featured = CryptidData.All.First(c => !c.IsDebunked);
+}
+```
+
+```html
+<h2 class="h5 mt-4">Featured sighting</h2>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="col">
+        <partial name="_CryptidCard" model="featured" />
+    </div>
+</div>
+```
 
 > [!TIP]
-> **Check 4 looks for the file on disk**, not just the text on the page. Pasting `Field Reports Since 1893` into the layout will not pass it — `Views/Shared/_Footer.cshtml` has to exist and the layout has to render it. That's the whole point of the task.
+> **`CryptidData` works in a view without any controller change** — `Views/_ViewImports.cshtml` already has `@using Cryptids.Web.Models`. You shouldn't touch `Controllers/` tonight.
+
+> [!IMPORTANT]
+> **Check 4 wants the partial in *two* views, not one.** A file rendered from a single place isn't reuse — it's the same markup with an extra step. The check looks for the card on `/Cryptids` **and** on `/`, because that's the only way to prove the thing partials are actually for.
+>
+> Once both are rendering, **edit `_CryptidCard.cshtml` once** — change a badge, add an emoji — and refresh both pages. That's the payoff.
 
 > [!TIP]
 > **Check 5 looks at *where* your script lands**, not just that it's there. A `<script>` typed into the middle of `Details.cshtml` renders in the middle of the page; the same script inside `@section Scripts` renders at the bottom, below the footer, because [the layout decides where a section goes](../lecture-notes.md#the-slot-that-was-always-there).
@@ -98,7 +161,8 @@ The [notes on the layout file](../lecture-notes.md#the-layout-file) walk the sam
 ## 🆘 Stuck?
 
 - **Every page is suddenly a 500** — you edited the layout. Read the exception in the `dotnet watch` terminal. If it says `RenderBody has not been called`, you deleted [`@RenderBody()`](../lecture-notes.md#renderbody-where-your-page-lands); put it back inside `<main>`.
-- **`The partial view '_Footer' was not found`** — it looks in this controller's view folder, then `Views/Shared/`. Check the file is in `Views/Shared/`, that the name in `<partial name="_Footer" />` has the underscore, and that it does **not** have `.cshtml` on it.
+- **`The partial view '_CryptidCard' was not found`** — it looks in this controller's view folder, then `Views/Shared/`. Check the file is in `Views/Shared/`, that the name in `<partial name="_CryptidCard" />` has the underscore, and that it does **not** have `.cshtml` on it.
+- **`The model item passed into the ViewDataDictionary is of type List<Cryptid>, but requires Cryptid`** — you rendered the card without handing it one creature. Inside the loop it needs `model="cryptid"`; without it the partial inherits the *page's* model, which is the whole list.
 - **The theme didn't change** — hard-refresh (⌘⇧R / Ctrl+Shift+R). Still stock? View Source and look for the old `bootstrap.min.css` line still sitting there.
 - **The navbar looks wrong on a dark theme** — the template hard-coded `navbar-light bg-white`. [Swap the color utilities](../lecture-notes.md#the-navbar-needs-a-word); your week-2 Bootstrap still works exactly as it did.
 - **Check 3 passes for Index but not Details** — the details title has to come from the data: `ViewData["Title"] = Model.Name;`, not a fixed string.
@@ -107,6 +171,6 @@ The [notes on the layout file](../lecture-notes.md#the-layout-file) walk the sam
 ## 🚀 Done early?
 
 - **Highlight the current page in the navbar.** We deliberately skipped this one — it needs the route data, which the view can reach via `ViewContext.RouteData.Values["controller"]`. Compare it to `"Cryptids"` and add Bootstrap's `active` class when they match.
-- **Make a `_CryptidCard.cshtml` partial** with `@model Cryptid` and use it in *two* places — a card grid on the index instead of the table, and a "more from @Model.Region" panel at the bottom of the details page. [Passing a model to a partial](../lecture-notes.md#passing-a-model-to-a-partial).
+- **Use the card a third time** — put it at the top of the details page as a summary, or feature a *random* creature on the home page instead of the first (`.OrderBy(c => Guid.NewGuid()).First()`). Every extra call site costs one line, which is the argument for partials in one sentence.
 - **A Google Font.** Week 2's trick, now applied site-wide from one file.
 - **`Layout = null;`** on a copy of the details view, to see what a page is without its shell.

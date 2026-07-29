@@ -1,6 +1,6 @@
 # Week 5 — Layouts & Partials: The Site Shell
 
-The night the app stops looking like a template. Every page you built last week arrived wrapped in a file you've pasted into but never read — tonight you take it over, break it on purpose, move its footer into a partial, and re-skin the entire site with one line. Lab is the *Cryptid Registry* again, but the app arrives finished: all the work is in `Views/`.
+The night the app stops looking like a template. Every page you built last week arrived wrapped in a file you've pasted into but never read — tonight you take it over, break it on purpose, build one card that renders on two different pages, and re-skin the entire site with one line. Lab is the *Cryptid Registry* again, but the app arrives finished: all the work is in `Views/`.
 
 ## Use in this order
 

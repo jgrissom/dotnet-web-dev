@@ -65,7 +65,7 @@ public class ShellChecks : IClassFixture<WebApplicationFactory<Program>>
         }
     }
 
-    [Fact] // Task 2: brand the layout — navbar brand AND the <title> suffix
+    [Fact] // Task 2: brand the layout — navbar, <title> suffix, and the footer
     public async Task Check2_ShellIsBranded()
     {
         foreach (var url in new[] { Home, Index, Details })
@@ -80,6 +80,11 @@ public class ShellChecks : IClassFixture<WebApplicationFactory<Program>>
             Assert.True(PageTitle(html).Contains("Cryptid Registry"),
                 $"the browser-tab title on {url} should end with \"Cryptid Registry\" — it is currently "
                 + $"\"{PageTitle(html)}\". That's the <title> line in Views/Shared/_Layout.cshtml.");
+
+            Assert.True(html.Contains("Field Reports Since 1893"),
+                $"the footer on {url} should include \"Field Reports Since 1893\". It's the third and last "
+                + "edit in Views/Shared/_Layout.cshtml — and the reason all three pages change at once "
+                + "is that there is only one of it.");
         }
     }
 
@@ -98,26 +103,30 @@ public class ShellChecks : IClassFixture<WebApplicationFactory<Program>>
             + "A details page title should come from the data: ViewData[\"Title\"] = Model.Name;");
     }
 
-    [Fact] // Task 4: the footer becomes a partial, rendered by the layout
-    public async Task Check4_FooterIsAPartial()
+    [Fact] // Task 4: one card file, rendered from two different views
+    public async Task Check4_CardIsAPartialUsedTwice()
     {
         var contentRoot = _factory.Services
             .GetRequiredService<IWebHostEnvironment>().ContentRootPath;
-        var partial = Path.Combine(contentRoot, "Views", "Shared", "_Footer.cshtml");
+        var partial = Path.Combine(contentRoot, "Views", "Shared", "_CryptidCard.cshtml");
 
         Assert.True(File.Exists(partial),
-            "Views/Shared/_Footer.cshtml doesn't exist yet. Cut the <footer> out of "
-            + "Views/Shared/_Layout.cshtml into that new file, then render it from the layout "
-            + "with <partial name=\"_Footer\" />.");
+            "Views/Shared/_CryptidCard.cshtml doesn't exist yet. Create it with `@model Cryptid` on "
+            + "the first line — the lab README has the markup to paste.");
 
-        foreach (var url in new[] { Home, Index, Details })
-        {
-            var html = await Html(url);
-            Assert.True(html.Contains("Field Reports Since 1893"),
-                $"{url} is missing the footer text \"Field Reports Since 1893\". The partial file exists, "
-                + "so either the layout isn't rendering it (<partial name=\"_Footer\" />) or the text "
-                + "inside it doesn't match exactly.");
-        }
+        var index = await Html(Index);
+        var cardsOnIndex = index.Split("cryptid-card").Length - 1;
+        Assert.True(cardsOnIndex >= 5,
+            $"/Cryptids should render one card per creature, but I count {cardsOnIndex}. Replace the "
+            + "<table> with a card grid and render the partial inside the loop: "
+            + "<partial name=\"_CryptidCard\" model=\"cryptid\" />");
+
+        // The whole point of a partial is that it works in more than one place.
+        var home = await Html(Home);
+        Assert.True(home.Contains("cryptid-card"),
+            "the home page isn't using your card. One file rendered from one place isn't reuse — "
+            + "add a featured creature to Views/Home/Index.cshtml and render the same partial there. "
+            + "CryptidData is already available in views, so no controller change is needed.");
     }
 
     [Fact] // Task 5: a page-specific script, delivered through the layout's Scripts section

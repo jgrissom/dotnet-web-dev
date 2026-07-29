@@ -29,9 +29,9 @@ Same app you built last week — the one you'll still be extending in week 9. Th
 
 It needs:
 
-1. **[A branded shell](lecture-notes.md#branding-the-shell)** — in `Views/Shared/_Layout.cshtml`, the `navbar-brand` text and the `<title>` suffix both say what your app is called, not `YourProject.Web`.
+1. **[A branded shell](lecture-notes.md#branding-the-shell)** — three edits, all in `Views/Shared/_Layout.cshtml`: the `navbar-brand` text, the `<title>` suffix, and the **footer**, which should carry your name and the year. Leave the footer where it is — it's already on every page, because the layout is.
 2. **[A title on every page](lecture-notes.md#viewdatatitle-and-the-browser-tab)** — `ViewData["Title"]` set in your home view, your index view, and your details view, all three different. **The details page's title must be data-driven** — `ViewData["Title"] = Model.Name;` (or whatever your item's name property is), so each item's page names itself in the browser tab.
-3. **[A footer partial](lecture-notes.md#making-a-partial)** — `Views/Shared/_Footer.cshtml`, holding **your name and the year**, rendered from `_Layout.cshtml` with `<partial name="_Footer" />`. Move the footer; don't copy it into each view.
+3. **[A partial, rendered from two different views](lecture-notes.md#passing-a-model-to-a-partial)** — a card for one of your items: `Views/Shared/_ThingCard.cshtml` with `@model Thing` on the first line. Render it from your **index**, inside the loop, and from **one other view** — featuring a single item on your home page is the easy second. *Two* views is the requirement, not one: a partial called from a single place is the same markup with an extra step, and it doesn't demonstrate anything.
 4. **[A Bootswatch theme](lecture-notes.md#the-payoff)** replacing the template's Bootstrap `<link>`. **Delete the original line** — leaving both means the two stylesheets fight and the theme only half applies.
 5. **The self-check script, included via [`@section Scripts`](lecture-notes.md#the-slot-that-was-always-there)** in your index view — see Part 3. This is the one requirement that grades *how* you added something rather than that you added it.
 6. **Everything from week 4 still works** — the nav link to your index, the index list, the details page, and the 404 guard on a bad id.
@@ -80,7 +80,7 @@ Then load that page and open the console — **F12 → Console**. It runs automa
 > It checks **whatever site it's loaded on** — so put the section in *your* app, not on this page. `recheck()` re-runs it without reloading.
 
 > [!TIP]
-> **If it says your footer is "still the template's default line"** — that's requirement 3. The stock footer reads `© 2026 - YourProject - Privacy`; it's identical on every page already, so it can't prove you built anything. Put your own name in it.
+> **If it says your footer is "still the template's default line"** — that's requirement 1. The stock footer reads `© 2026 - YourProject - Privacy`; it's identical on every page already, so it can't prove you built anything. Put your own name and the year in it, in `_Layout.cshtml`.
 
 > [!TIP]
 > **If it can't find your controller**, your nav link from week 4 is missing or points somewhere else — easy to lose while rebuilding a navbar. You can tell it where to look instead — `recheck("Trails")` with *your* controller's name — but that link is worth 2 points on its own, so fix it rather than working around it.
@@ -113,7 +113,7 @@ Use the **same US region** that worked for you before — it's on the class list
 
 - **Every page broke at once** — you edited the layout. That's expected; that's what a shared shell means. The `dotnet watch` terminal has the real exception, and [the appendix](lecture-notes.md#appendix-troubleshooting) lists tonight's by name.
 - **`RenderBody has not been called`** — [you deleted the line your pages render into](lecture-notes.md#renderbody-where-your-page-lands). Put `@RenderBody()` back inside `<main>`.
-- **`The partial view '_Footer' was not found`** — it has to be in `Views/Shared/`, the `name` keeps the underscore and drops `.cshtml`.
+- **`The partial view '_ThingCard' was not found`** — it has to be in `Views/Shared/`, and the `name` keeps the underscore but drops `.cshtml`.
 - **`The model item passed into the ViewDataDictionary is of type ... but requires ...`** — a partial got the wrong thing. [Pass it one item](lecture-notes.md#passing-a-model-to-a-partial): `model="item"`.
 - **`cannot find the section 'Scripts'`** — your layout says `required: true`. It should be [`required: false`](lecture-notes.md#what-required-false-actually-does), which is how the template ships.
 - **The theme didn't change** — hard-refresh (⌘⇧R / Ctrl+Shift+R), then check you deleted the old `<link>`.
@@ -128,7 +128,7 @@ Use the **same US region** that worked for you before — it's on the class list
 | The shell is on every page — same footer, all three pages, not the default | 3 | `homework-checks.js` |
 | Every page has its own title, none of them the default | 3 | `homework-checks.js` |
 | A theme loads, and the stock stylesheet is gone | 2 | `homework-checks.js` |
-| `Views/Shared/_Footer.cshtml` exists and `_Layout.cshtml` renders it | 3 | your repo |
+| A partial in `Views/Shared/`, rendered from **two different views** | 3 | your repo |
 | The self-check script is included via `@section Scripts` | 2 | your repo |
 | Public repo with 3+ meaningful commits | 3 | your repo |
 | **Deductions:** dead submitted URL | −2 | |

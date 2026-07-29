@@ -112,32 +112,12 @@ Don't ask the question rhetorically; make them look at both halves. Use the **ho
 > [!IMPORTANT]
 > If §1 or §2 ran long, take the time out of §5 (drop the extra theme swaps), **not out of this**. The "one file, two places" moment is the one that can't be recovered by reading the notes later.
 
-### The easy one: the footer
+> [!NOTE]
+> **We skip the classic footer partial.** If you've taught this before, the reflex is to cut the `<footer>` out of the layout first because it's easy. Don't: the layout is already on every page, so that partial has **one call site** and proves nothing — and it silently breaks the footer's styling, because `_Layout.cshtml.css` is scoped and its rules stop matching markup the layout no longer renders. Go straight to the card.
 
-- [ ] Frame the problem: *"suppose you want that truck block on the index page too, as a card, and later in a sidebar. The obvious move is copy-paste, and it's wrong for the obvious reason"*
-- [ ] Create `Views/Shared/_Footer.cshtml` — **paste** (the whole file):
+### The card, with a model
 
-  <details><summary>📋 paste: _Footer.cshtml</summary>
-
-  ```html
-  <footer class="border-top footer text-muted">
-      <div class="container">
-          &copy; 2026 - Curbside - Wisconsin's finest, on four wheels -
-          <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-      </div>
-  </footer>
-  ```
-
-  </details>
-
-- [ ] In `_Layout.cshtml`, **delete the whole `<footer>...</footer>` block** and put this in its place — **type it**:
-  ```html
-  <partial name="_Footer" />
-  ```
-- [ ] Refresh. **Identical page.** *"The output didn't change. The structure did"*
-- [ ] Three things while it's up: `name` is a **file name, not a path** (Views/Shared/ is searched) · underscore in, `.cshtml` out · **`<partial />` is a tag helper** — callback to `_ViewImports` from four minutes ago
-
-### The real one: a card, with a model
+- [ ] Frame the problem: *"you want that truck block on the index page as a card, and again in a 'nearby trucks' panel. The obvious move is copy-paste, and it's wrong for the obvious reason — two copies, two places to fix, and they drift"*
 
 - [ ] Create `Views/Shared/_TruckCard.cshtml` — **paste**:
 
@@ -165,6 +145,7 @@ Don't ask the question rhetorically; make them look at both halves. Use the **ho
   </details>
 
 - [ ] **Point at line 1**: `@model Truck` — *one* truck, not a list. A partial is strongly typed exactly like a page
+- [ ] Three things while it's on screen: `name` will be a **file name, not a path** (`Views/Shared/` is searched) · underscore in, `.cshtml` out · **`<partial />` is a tag helper** — callback to `_ViewImports` from four minutes ago
 - [ ] Replace **all of** `Views/Trucks/Index.cshtml` — **paste**:
 
   <details><summary>📋 paste: Index.cshtml, table → card grid</summary>
