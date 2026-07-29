@@ -481,10 +481,10 @@ section pre .hljs-selector-class, section pre .hljs-selector-pseudo { color: #7e
 section footer { color: #9fb2c1; font-size: 0.6em; opacity: 0.85; }
 ;" data-marpit-pagination-total="20">
 <h2 id="making-one--three-steps">Making one — three steps</h2>
-<p><strong>1.</strong> Create <code>Views/Shared/_Footer.cshtml</code></p>
-<p><strong>2.</strong> Move the markup into it</p>
-<p><strong>3.</strong> Render it:</p>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">partial</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;_Footer&quot;</span> /&gt;</span>
+<p><strong>1.</strong> Create <code>Views/Shared/_TruckCard.cshtml</code></p>
+<p><strong>2.</strong> <code>@model Truck</code> on the first line</p>
+<p><strong>3.</strong> Render it, handing it one:</p>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">partial</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;_TruckCard&quot;</span> <span class="hljs-attr">model</span>=<span class="hljs-string">&quot;truck&quot;</span> /&gt;</span>
 </code></pre>
 <br />
 <p>A <strong>file name</strong>, not a path · underscore in, <code>.cshtml</code> out</p>
