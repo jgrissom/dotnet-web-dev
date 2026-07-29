@@ -377,9 +377,37 @@ public IActionResult Details(int id)
 > [!WARNING]
 > Skip the null check and the view blows up on `@Model.Title` with a `NullReferenceException` — a **500**. Students will hit this. The fix is always the guard, and 500-means-your-code (Part 1) is how they'll find it.
 
-### One last note on the navbar
+### The navbar, and the one nav link your homework needs
 
 The navbar's links use `asp-controller` / `asp-action` — **tag helpers**, which generate the same `href` you'd type by hand. Tonight we write plain `href="/Trucks/Details/@truck.Id"` in our own views because it's honest about what the URL is. Tag helpers get their proper introduction in week 6, where forms make them genuinely worth it. If a student asks why the nav looks different from their table links: that's the answer, and it's a good question.
+
+**Your homework asks for one nav link, and this is the whole edit.** We don't do it in the demo — tonight is about routing, and the way to prove a URL is an instruction is to *type* it, not click it. But the homework needs it, so here it is written out.
+
+Open `Views/Shared/_Layout.cshtml` and find the `<ul class="navbar-nav">`. It already has two `<li>` items — Home and Privacy. This is the Privacy one:
+
+```html
+<li class="nav-item">
+    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+</li>
+```
+
+**Copy it, paste it directly below itself, and change three things** — the controller, the action, and the text between the tags:
+
+```html
+<li class="nav-item">
+    <a class="nav-link text-dark" asp-area="" asp-controller="Trucks" asp-action="Index">Trucks</a>
+</li>
+```
+
+- **`asp-controller` is the class name minus the word `Controller`** — `TrucksController` → `"Trucks"`. Same name the URL uses, for the same reason.
+- **`asp-action` is the method name** — `Index`.
+- The text between `<a>` and `</a>` is just what the visitor reads. It doesn't have to match anything.
+- That renders as `href="/Trucks"`, which you can confirm in View Source — the tag helper wrote the same URL you'd have typed.
+
+> [!IMPORTANT]
+> **This is the only change to `_Layout.cshtml` the homework wants, and that's deliberate.** You're pasting one line into a file we haven't explained — the rest of it is week 5, where you take the whole shell over. Don't go exploring in there tonight; it isn't needed and it's a good way to break every page at once.
+>
+> It's also worth 2 points on its own, *and* it's how the self-checker finds your controller — it follows the navbar exactly like a visitor would. No link, no discovery.
 
 ## Wrap-up (10 min)
 
