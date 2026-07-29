@@ -35,8 +35,8 @@ Build a **new** [MVC app](../week-03/lecture-notes.md#dotnet-new-mvc) on a topic
 
 It needs:
 
-1. **A model class** with at least **4 properties**, including an `int Id` and at least one non-string property (a number, a `bool`, a `DateTime`). Put it in a [`namespace`](lecture-notes.md#namespaces-and-the-using-they-require), the way the starter's `Cryptid` is — not graded, but it's what every .NET codebase does, and it's why your controller needs a `using`.
-2. **A seeded list of at least 5 items** — a `static List<T>` like the starter's `CryptidData`.
+1. **[A model class](lecture-notes.md#the-model-a-plain-c-class)** with at least **4 properties**, including an `int Id` and at least one non-string property (a number, a `bool`, a `DateTime`). Put it in a [`namespace`](lecture-notes.md#namespaces-and-the-using-they-require), the way the starter's `Cryptid` is — not graded, but it's what every .NET codebase does, and it's why your controller needs a `using`.
+2. **[A seeded list](lecture-notes.md#the-seeded-list-a-database-that-isnt-one-yet) of at least 5 items** — a `static List<T>` like the starter's `CryptidData`. (It has to be `static`; a new controller is created for every request.)
 3. **An Index page** listing all of them, built with [`@model`](lecture-notes.md#strongly-typed-views-with-model) and [`@foreach`](lecture-notes.md#loops-in-a-view). Your controller will need a [`CryptidsController`-style class](lecture-notes.md#conventions-three-names-that-must-agree) and a matching `Views/<Name>/` folder — three names must agree.
 4. **A Details page** — `/Things/Details/3` shows that one item. [The Index → Details pair](lecture-notes.md#index-and-details-the-classic-pair) explains where the `3` comes from.
 5. **A link from each row** on the Index page to that item's Details page — `href="/Things/Details/@item.Id"` [inside your loop](lecture-notes.md#loops-in-a-view). (Same as check 6 in the lab.)

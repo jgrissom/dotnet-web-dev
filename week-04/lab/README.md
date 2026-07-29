@@ -46,7 +46,7 @@ dotnet test Cryptids.Checks
 
 ## What you're given
 
-**The model and the data already exist** — don't write them, and don't retype them. Tonight's work is controllers, views, and routing.
+**The model and the data already exist** — don't write them, and don't retype them. Tonight's work is controllers, views, and routing. (The notes explain [what a model class is](../lecture-notes.md#the-model-a-plain-c-class) and [why the list is `static`](../lecture-notes.md#the-seeded-list-a-database-that-isnt-one-yet) — worth reading before the homework, where you write your own.)
 
 `Cryptids.Web/Models/Cryptid.cs`:
 

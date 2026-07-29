@@ -199,13 +199,55 @@ After every Razor beat above, **View Source** — not DevTools' Elements panel, 
 
 ## Part 4: Passing data and @model (35 min)
 
+### The model: a plain C# class
+
+Before anything can be passed to a view, there has to be something to pass. The **M** in MVC is just a class — and the first thing to say out loud is how *unremarkable* it is:
+
+```csharp
+namespace Curbside.Models;
+
+public class Truck
+{
+    public int Id { get; set; }
+    public string Name { get; set; } = "";
+    public string Cuisine { get; set; } = "";
+    public double Rating { get; set; }
+    public bool IsOpenLate { get; set; }
+}
+```
+
+- **No base class, no interface, no attributes, nothing from ASP.NET.** It's the same C# they wrote in the prerequisite course. If it looks too simple to be "the model," that's the point.
+- `{ get; set; }` — auto-properties, the shape every model in this course uses.
+- **Why `= ""` on the strings?** The template turns on nullable reference types, so a non-nullable `string` with no initial value gets a compiler warning. `= ""` says "starts empty, never null." Students writing their own model in the homework will hit this — it's a warning, not an error, but tell them what it means rather than letting them wonder.
+- `Id` is an `int` by convention. Week 7's database will make that a primary key for free.
+
+### The seeded list: a database that isn't one yet
+
+```csharp
+public static class TruckData
+{
+    public static List<Truck> All { get; } = new()
+    {
+        new Truck { Id = 1, Name = "Roll Models", Cuisine = "Korean", Rating = 4.6, IsOpenLate = true },
+        // ...five more
+    };
+}
+```
+
+- **Why `static`?** ASP.NET creates a *new controller instance for every request* — instance fields don't survive between them. A `static` list lives for the life of the app, which is what makes it behave like a data store. This surprises people; say it before they discover it.
+- Object-initializer syntax (`new Truck { Id = 1, ... }`) is worth naming, because they'll write a lot of it tonight and again in week 7's seeding.
+- **This whole file is scaffolding.** It exists so the interesting parts — routing, Razor, `@model` — can be taught before the database arrives. Week 7 deletes it and the controller barely changes.
+
+> [!TIP]
+> The lab **hands them both files**, so nobody writes a model during class. The homework asks them to write their own from scratch — this section is the one they'll be reading at home, so don't skip it just because the lab doesn't need it.
+
 ### Three ways to get data into a view
 
 | Way | Looks like | Good for | Trouble |
 |-----|-----------|----------|---------|
 | **Action parameter** | `Details(int id)` | values that come *from the URL* | it's input, not page data |
 | **`ViewData` / `ViewBag`** | `ViewData["Title"] = "Trucks";` | one-off scraps — a title, a flash message | no type safety, no IntelliSense, typos fail silently |
-| **`@model`** ⭐ | `return View(courses);` | **the actual subject of the page** | none — this is the one you want |
+| **`@model`** ⭐ | `return View(trucks);` | **the actual subject of the page** | none — this is the one you want |
 
 The honest summary for students: `ViewData` is a shoebox you toss things into; `@model` is a labeled, typed slot the compiler checks. Use `ViewData` for the page title (the template already does) and `@model` for everything that *is* the page.
 
