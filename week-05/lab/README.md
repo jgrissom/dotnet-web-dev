@@ -87,7 +87,7 @@ The [notes on the layout file](../lecture-notes.md#the-layout-file) walk the sam
         <p class="card-text">First sighted @Model.FirstSighting · @Model.Sightings reports</p>
         @if (Model.IsDebunked)
         {
-            <span class="badge bg-danger">🚫 Debunked</span>
+            <span class="badge bg-danger">💀 Debunked</span>
         }
         else
         {
