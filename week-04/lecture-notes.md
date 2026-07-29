@@ -100,9 +100,13 @@ Views/Trucks/Index.cshtml            ← folder named for the controller,
 
 ### Content() before View()
 
-Build the controller in two steps so each half is provable on its own:
+Build the controller in two steps so each half is provable on its own. This is the **whole file**, top to bottom — `Controllers/TrucksController.cs`:
 
 ```csharp
+using Microsoft.AspNetCore.Mvc;      // Controller, IActionResult
+
+namespace Curbside.Controllers;      // matches the folder, by convention
+
 public class TrucksController : Controller
 {
     public IActionResult Index()
@@ -111,6 +115,9 @@ public class TrucksController : Controller
     }
 }
 ```
+
+- **The `using` is not optional.** `Controller` and `IActionResult` both live in `Microsoft.AspNetCore.Mvc`; without that line neither name resolves. VS Code will offer to add it (`Ctrl/Cmd + .`) — and often adds it silently when you accept `Controller` from IntelliSense.
+- The `namespace` line mirrors the folder. Nothing enforces it, but every file in the project does it, and it's [why your controller later needs a `using` for your Models](#namespaces-and-the-using-they-require).
 
 Visit `/Trucks` → the word "trucks!" on a blank page. No view exists yet and it doesn't matter — routing is proven. *Then* swap `Content(...)` for `View()` and add the `.cshtml`. Two possible failure points, isolated one at a time.
 
@@ -224,6 +231,8 @@ public class Truck
 ### The seeded list: a database that isn't one yet
 
 ```csharp
+namespace Curbside.Models;           // Models/TruckData.cs
+
 public static class TruckData
 {
     public static List<Truck> All { get; } = new()
@@ -301,7 +310,7 @@ View side, **first line of the file**:
 ```
 
 - Lowercase **`@model`** (the declaration, once, at the top) vs. capital **`@Model`** (the value, used everywhere below). This trips everyone; call it out before it bites.
-- The payoff: type `@Model.` in VS Code and **IntelliSense lists the real properties**. Typo one — `@course.Titel` — and you get a red squiggle *before* you refresh. Do this live; it's the most persuasive 15 seconds in the segment.
+- The payoff: type `@Model.` in VS Code and **IntelliSense lists the real properties**. Typo one — `@truck.Titel` — and you get a red squiggle *before* you refresh. Do this live; it's the most persuasive 15 seconds in the segment.
 - **Why it matters beyond convenience:** in week 8 the scaffolder generates views that all start with `@model`. Tonight is what makes that generated code readable instead of magic.
 
 ### Index and Details: the classic pair
@@ -323,6 +332,8 @@ public IActionResult Details(int id)
 
 ### Details and the NotFound guard
 
+A second action **inside the controller you already have** — the `using` and `namespace` at the top of that file are already in place:
+
 ```csharp
 public IActionResult Details(int id)
 {
@@ -337,7 +348,7 @@ public IActionResult Details(int id)
 }
 ```
 
-- **`FirstOrDefault` vs `First`:** `First` *throws* when nothing matches — the user gets a 500 and a stack trace for what is really a perfectly ordinary situation ("that course doesn't exist"). `FirstOrDefault` returns `null` instead, handing *you* the decision. Choosing the API that lets you handle the case is the lesson.
+- **`FirstOrDefault` vs `First`:** `First` *throws* when nothing matches — the user gets a 500 and a stack trace for what is really a perfectly ordinary situation ("that truck doesn't exist"). `FirstOrDefault` returns `null` instead, handing *you* the decision. Choosing the API that lets you handle the case is the lesson.
 - **`NotFound()` returns a 404** — the same status the browser gets for any missing page. It's another `IActionResult`, exactly like `View()` and `Content()`.
 - **Visit `/Trucks/Details/999` on purpose.** Without the guard: a 500, or a page rendering nothing. With it: a clean 404. The difference between "the site is broken" and "that thing doesn't exist" is this `if`.
 
@@ -377,7 +388,7 @@ URL → route pattern → controller action → data → Razor view → HTML →
 - Missing null guard, or an id that doesn't exist. Add the `FirstOrDefault` + `NotFound()` pattern.
 
 **`@Model` is null in the view**
-- The action returned `View()` with no argument. Pass the data: `View(course)`.
+- The action returned `View()` with no argument. Pass the data: `View(truck)`.
 
 **Razor syntax errors that make no sense**
 - Stray `@` on an `else` or on a closing brace — inside a C# block you're already in C#. Also check for a `@` in an email address or CSS selector in your markup; escape it as `@@`.
