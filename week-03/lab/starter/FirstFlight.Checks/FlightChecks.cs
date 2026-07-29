@@ -1,5 +1,6 @@
 // ═══════════════════════════════════════════════════════════════════
-//  READ-ONLY — these are the checks your lab is graded against.
+//  READ-ONLY — these checks are how you know the lab is done. They are not
+//  your grade: the points come from your DEPLOYED app (see homework.md).
 //  Run them with:  dotnet test FirstFlight.Checks   (from the parent folder)
 //  Your job is turning ❌ into ✅ by editing FirstFlight.Web — never this file.
 // ═══════════════════════════════════════════════════════════════════

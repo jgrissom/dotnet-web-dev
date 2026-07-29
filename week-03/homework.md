@@ -3,7 +3,7 @@
 **Due:** before the start of Week 4's class.
 **Submit via Canvas:** your **Azure URL** + your **GitHub repo URL** for the lab solution.
 
-## Part 1 — Finish First Flight (graded)
+## Part 1 — Finish First Flight (nobody collects this)
 
 All six checks green:
 
@@ -13,6 +13,9 @@ dotnet test FirstFlight.Checks
 ```
 
 If class ended at check 4, that means finishing `Hello` (checks 5–6) — the [parameters section](lecture-notes.md#passing-data-viewdata-and-parameters) of the notes has the pattern.
+
+> [!IMPORTANT]
+> **The test suite is your guide, not your grade.** I never run `dotnet test` on your repo — the points come from the *deployed* site in Part 4, and that's the rule for the rest of the course. But every one of those six checks is the local twin of a check I *do* run against your URL. Get to 6/6 first and the graded checks are a formality; skip it and you'll be debugging a live Azure app instead of a local one, which is a much worse place to debug.
 
 > [!TIP]
 > **Keep [`lecture-notes.md`](lecture-notes.md) open while you work** — it's the same material from class, written out. The sections you'll want tonight: [controllers and actions](lecture-notes.md#controllers-and-actions), [views and Razor](lecture-notes.md#views-and-razor), [reading a query parameter](lecture-notes.md#passing-data-viewdata-and-parameters), and [`az webapp up`](lecture-notes.md#az-webapp-up) when you get to the deploy.
@@ -35,7 +38,7 @@ Leave the app up until grades post.
 
 ## Part 4 — Check your deployed site before you submit ✅
 
-`dotnet test` proves your **code** works. It says nothing about whether your **deployed site** works — and that's worth **6 of the 20 points**. [`homework-checks.js`](homework-checks.js) checks exactly what I check.
+**[`homework-checks.js`](homework-checks.js) runs the same checks I grade with — 16 of the 20 points are in that script.** Each one is the deployed twin of a check in `FirstFlight.Checks`: `dotnet test` asks "does my code work?", this asks "does the site I actually shipped work?" They are different questions, and only the second one is worth points.
 
 **Nothing to install** — include it like the Bootstrap CDN from week 2. Add this at the bottom of `Views/Home/Index.cshtml`:
 
@@ -46,16 +49,20 @@ Leave the app up until grades post.
 Then open your **Azure URL**, press **F12 → Console**, and read the results:
 
 ```
-🔎 Week 3 deployed check — https://ff-web-ab1234.azurewebsites.net
-✅ 2 pts  home page is branded First Flight
-✅ 2 pts  /Home/About loads
-✅ 1 pts  /Home/Hello?name=Ada greets by name
-✅ 1 pts  /Home/Hello defaults to stranger
+🔎 Week 3 self-check — https://ff-web-ab1234.azurewebsites.net
+✅  3 pts  home page is branded First Flight
+✅  4 pts  /Home/About loads
+✅  2 pts  About is in the navbar
+✅  4 pts  /Home/Hello?name=Ada greets by name
+✅  3 pts  /Home/Hello defaults to stranger
 
-📋 4 of 4 checks green · 6 of 6 deployed points
+📋 5 of 5 checks green · 16 of 16 points
 ```
 
-Every ❌ tells you the next thing to fix. It works on `localhost` too, but **run it on your Azure URL before submitting** — it'll remind you if you don't. Leave the `<script>` tag in or take it out; it only writes to the console.
+Every ❌ comes with a hint and a `👉 Next:` line naming the one thing to fix. It works on `localhost` too, but **run it on your Azure URL before submitting** — it'll remind you if you don't. Type `recheck()` in the console to run it again without refreshing. Leave the `<script>` tag in or take it out; it only writes to the console and doesn't affect grading.
+
+> [!TIP]
+> **Working offline?** Save [`homework-checks.js`](homework-checks.js) into your `wwwroot` folder and point the tag at it locally instead: `<script src="/homework-checks.js"></script>`. That's the CDN-versus-local-copy trade-off from [week 2](../week-02/lecture-notes.md#setup--two-tags), showing up in real life.
 
 > [!IMPORTANT]
 > If a check fails on your deployed site but passes locally, you almost certainly deployed the wrong folder — `az webapp up` ships the folder you're standing in, so run it from **inside `FirstFlight.Web`**. The deploy-guide's 🆘 section covers the rest.
@@ -70,14 +77,17 @@ Every ❌ tells you the next thing to fix. It works on `localhost` too, but **ru
 
 ## 📊 Grading (20 pts)
 
-| Item | Points |
-|------|--------|
-| `dotnet test` 6 / 6 in your repo (I run it) | 10 |
-| Deployed: home page branded | 2 |
-| Deployed: `/Home/About` works | 2 |
-| Deployed: `/Home/Hello?name=…` + default both work | 2 |
-| Public repo with 3+ meaningful commits | 4 |
-| **Deductions:** checks project edited, or dead submitted URL | −2 each |
+| Item | Points | Checked by |
+|------|--------|------------|
+| Home page branded "First Flight" (deployed) | 3 | `homework-checks.js` |
+| `/Home/About` loads (deployed) | 4 | `homework-checks.js` |
+| About link in the navbar (deployed) | 2 | `homework-checks.js` |
+| `/Home/Hello?name=Ada` greets by name (deployed) | 4 | `homework-checks.js` |
+| `/Home/Hello` defaults to stranger (deployed) | 3 | `homework-checks.js` |
+| Public repo with 3+ meaningful commits | 4 | by hand |
+| **Deductions:** dead submitted URL | −2 | |
+
+*`dotnet test` is not on this table on purpose — see Part 1. It's how you get here, not what I grade.*
 
 *Reminder: the explain-it standard applies — be ready to walk me through any line, especially "why does `/Home/About` find your method?"*
 

@@ -1,6 +1,6 @@
 # Week 3 Lab — First Flight ✈️
 
-Your first ASP.NET Core MVC app, graded the same way you'll work: run the checks, turn red into green.
+Your first ASP.NET Core MVC app, built the way you'll work all term: run the checks, turn red into green.
 
 **Time:** ~35 minutes in class — **in-class target: checks 1–4 green.** Checks 5–6 (and deploying it) roll into the homework by design.
 

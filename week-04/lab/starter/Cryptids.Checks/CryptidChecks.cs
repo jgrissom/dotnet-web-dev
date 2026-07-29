@@ -1,5 +1,6 @@
 // ═══════════════════════════════════════════════════════════════════
-//  READ-ONLY — these are the checks your lab is graded against.
+//  READ-ONLY — these checks are how you know the lab is done. They are not
+//  your grade: the points come from your DEPLOYED app (see homework.md).
 //  Run them with:  dotnet test Cryptids.Checks   (from the parent folder)
 //  Your job is turning ❌ into ✅ by editing Cryptids.Web — never this file.
 // ═══════════════════════════════════════════════════════════════════
