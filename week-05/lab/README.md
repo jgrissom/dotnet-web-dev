@@ -113,23 +113,28 @@ The [notes on the layout file](../lecture-notes.md#the-layout-file) walk the sam
 </div>
 ```
 
-Then in `Views/Home/Index.cshtml`, feature one creature — this goes **inside the existing `@{ }` block** at the top, and the markup below it:
+**That's one call site — now the second.** Feature a single creature on the home page. This is the whole of `Views/Home/Index.cshtml` afterwards, and the two 👈 marks are the only things you add:
 
 ```html
 @{
     ViewData["Title"] = "Home";
-    var featured = CryptidData.All.First(c => !c.IsDebunked);
+    var featured = CryptidData.All.First(c => !c.IsDebunked);   👈 add this line
 }
-```
 
-```html
-<h2 class="h5 mt-4">Featured sighting</h2>
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<h2 class="h5 mt-4">Featured sighting</h2>                       👈 and this block
 <div class="row row-cols-1 row-cols-md-3 g-4">
     <div class="col">
         <partial name="_CryptidCard" model="featured" />
     </div>
 </div>
 ```
+
+*(The 👈 marks aren't code — don't paste them. And you can delete the template's "Welcome" block if you'd rather; nothing checks it.)*
 
 > [!TIP]
 > **`CryptidData` works in a view without any controller change** — `Views/_ViewImports.cshtml` already has `@using Cryptids.Web.Models`. You shouldn't touch `Controllers/` tonight.
