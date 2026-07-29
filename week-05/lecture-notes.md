@@ -83,21 +83,7 @@ This is the whole trick:
 </main>
 ```
 
-`@RenderBody()` is the hole in the doughnut. When you `return View(...)`, Razor renders **your view** first, then renders the **layout**, and drops your view's HTML at exactly that spot.
-
-> [!IMPORTANT]
-> **Expect to be challenged on that, because it sounds backwards.** The finished page has your content *nested inside* the layout, so the natural assumption is that the layout runs first and the view renders into it. It's the other way round, and the difference is worth being able to defend:
->
-> | | |
-> |---|---|
-> | **The output** | your HTML sits *inside* the layout's |
-> | **The execution** | your view runs *before* the layout, start to finish |
->
-> Both are true at once because the view's output is **buffered**, not streamed — Razor renders your view into memory, then runs the layout, and `@RenderBody()` writes that buffer out.
->
-> The order for one request is `_ViewStart` → **your view** → the layout → `@RenderBody()`.
->
-> **The proof is a feature you already use.** Your view sets `ViewData["Title"]` and the layout's `<title>` shows it. If the layout ran first, that `<title>` would have been written to the response *before* your view ever executed, and nothing the view did could reach it. Sections work for the same reason: the view declares `@section Scripts` on its way past, and the layout collects it afterwards. **A view can only influence its layout because it goes first.**
+`@RenderBody()` is the hole in the doughnut. Your view's HTML ends up at exactly that spot — the layout wraps around it.
 
 > [!TIP]
 > **Predict-then-run (demo §1).** Ask before you do it: *"I'm going to delete `@RenderBody()`. What happens — a blank page, or an error?"* Most rooms say blank page. Let them commit to an answer.
@@ -131,6 +117,11 @@ Here's who. In the layout:
 ```
 
 The view runs **first** and puts a value in `ViewData`; the layout runs **second** and reads it. That ordering is the entire mechanism, and it's why a view can influence something that lives outside itself.
+
+> [!NOTE]
+> **If someone objects that this sounds backwards** — the finished page has the view *inside* the layout, so surely the layout ran first? Good question, and the one-line answer is that the view's output is **buffered**: Razor runs the view, holds its HTML, then runs the layout, and `@RenderBody()` writes the held HTML out. Nested in the output, view-first in execution.
+>
+> Don't volunteer this. Nothing they build this week depends on it, and the intuitive picture — the layout wraps the page — predicts everything correctly. But if it comes up, the honest proof is the line above: a view can only set the title *because* it goes first.
 
 > [!TIP]
 > **Break it to prove it (demo §1).** Delete the `ViewData["Title"]` line from `Views/Trucks/Details.cshtml`, refresh, and look at the browser tab: `- Curbside`, with a dangling dash and nothing in front of it. The layout still printed its half; the view just stopped supplying the other half. Put it back.
