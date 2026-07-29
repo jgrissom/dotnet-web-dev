@@ -113,12 +113,12 @@ The [notes on the layout file](../lecture-notes.md#the-layout-file) walk the sam
 </div>
 ```
 
-**That's one call site — now the second.** Feature a single creature on the home page. This is the whole of `Views/Home/Index.cshtml` afterwards, and the two 👈 marks are the only things you add:
+**That's one call site — now the second.** Feature a single creature on the home page. This is the whole of `Views/Home/Index.cshtml` afterwards — safe to paste as-is, the 👈 marks are comments:
 
 ```html
 @{
     ViewData["Title"] = "Home";
-    var featured = CryptidData.All.First(c => !c.IsDebunked);   👈 add this line
+    var featured = CryptidData.All.First(c => !c.IsDebunked);   // 👈 add this line
 }
 
 <div class="text-center">
@@ -126,7 +126,8 @@ The [notes on the layout file](../lecture-notes.md#the-layout-file) walk the sam
     <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
 
-<h2 class="h5 mt-4">Featured sighting</h2>                       👈 and this block
+@* 👈 and this whole block *@
+<h2 class="h5 mt-4">Featured sighting</h2>
 <div class="row row-cols-1 row-cols-md-3 g-4">
     <div class="col">
         <partial name="_CryptidCard" model="featured" />
@@ -134,7 +135,7 @@ The [notes on the layout file](../lecture-notes.md#the-layout-file) walk the sam
 </div>
 ```
 
-*(The 👈 marks aren't code — don't paste them. And you can delete the template's "Welcome" block if you'd rather; nothing checks it.)*
+*(Notice the two comment styles doing week 4's trick: `//` works inside the C# block, and the `@* *@` Razor comment never reaches the browser — View Source and it's simply not there. You can delete the template's "Welcome" block if you'd rather; nothing checks it.)*
 
 > [!TIP]
 > **`CryptidData` works in a view without any controller change** — `Views/_ViewImports.cshtml` already has `@using Cryptids.Web.Models`. You shouldn't touch `Controllers/` tonight.
