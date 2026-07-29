@@ -105,11 +105,21 @@
       if (!route) route = cand;                       // reachable, but no detail links yet
     }
 
-    add(route ? "pass" : "fail", 2,
-      `nav link to your index page${route ? ` — found /${route}` : ""}`, {
-        hint: "I couldn't find a link in your navbar that reaches a controller of yours.",
-        todo: 'Copy the Privacy <li> in Views/Shared/_Layout.cshtml and point it at your controller.',
+    if (forcedRoute) {
+      // You told me where to look, so I skipped the navbar — I can't honestly
+      // claim the link exists. The other three checks still stand on their own.
+      add("blocked", 2, `nav link — not checked (you specified /${forcedRoute})`, {
+        hint: "I skipped discovery because you named the controller, so I can't confirm a navbar link exists.",
+        todo: "Add the nav link, then run recheck() with no argument to earn these 2 points.",
       });
+    } else {
+      add(route ? "pass" : "fail", 2,
+        `nav link to your index page${route ? ` — found /${route}` : ""}`, {
+          hint: "I couldn't find a link in your navbar that reaches a controller of yours — so I don't know where your index page is.",
+          todo: "Copy the Privacy <li> in Views/Shared/_Layout.cshtml and point it at your controller. "
+              + "Not there yet? Run  recheck(\"Trails\")  with YOUR controller name to check everything else meanwhile.",
+        });
+    }
 
     if (!route) {
       ["index lists all your items", "details page shows one item", "a bad id returns 404"]
@@ -229,17 +239,19 @@
 
       console.log("%cThe last 8 points I check by hand:", bold);
       BY_HAND.forEach(l => console.log("   • " + l.trim()));
-      console.log("%cType  recheck()  to run these again without reloading.", "color: #79c0ff");
+      console.log("%cType  recheck()  to run again — or  recheck(\"Trails\")  with your controller name to check before the nav link exists.", "color: #79c0ff");
     };
 
-    const run = () => {
+    const run = (forcedRoute) => {
       console.log(`%c🔎 Week 4 self-check — ${window.location.origin}`, big);
       console.log("Results appear as each check finishes — a sleeping free-tier app can take ~30s for the first one.");
       console.log("A red 404 line partway through is expected: one check asks for a bad id on purpose.");
-      return runChecks(window.location.origin, null, printCheck).then(report);
+      if (forcedRoute) console.log(`Checking /${forcedRoute} directly (you told me where to look).`);
+      return runChecks(window.location.origin, forcedRoute || null, printCheck).then(report);
     };
 
-    window.recheck = run;   // re-run from the console without reloading
+    // recheck() re-runs; recheck("Trails") skips nav discovery and checks that controller
+    window.recheck = run;
     run();
   }
 })();
