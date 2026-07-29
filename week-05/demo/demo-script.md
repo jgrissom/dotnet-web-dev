@@ -251,7 +251,7 @@ Don't ask the question rhetorically; make them look at both halves. Use the **ho
   ```
 - [ ] **Hard-refresh** (⌘⇧R / Ctrl+Shift+R). Whole site, different site
 - [ ] ⚠️ **Hard-refresh at every single swap.** A cached stylesheet looks exactly like "it didn't work" and will eat five minutes if you let it
-- [ ] Swap the theme name only — `darkly`, then `vapor` — hard-refreshing each time. *"One path segment"*
+- [ ] Swap the theme name only — `vapor`, then `darkly` — hard-refreshing each time. *"One path segment"*
 - [ ] Land three points: **`5.3.3` is pinned to match the Bootstrap already in `wwwroot/lib`** — version numbers in CDN URLs aren't decoration · **it replaces, it doesn't add** (leave both and they fight — the lab checks this) · **only the CSS moved**, the local `bootstrap.bundle.min.js` is untouched, so dropdowns still work
 - [ ] The navbar looks wrong on a dark theme — because the template hard-coded it. Fix it inside the `<nav>` you already have:
   ```html

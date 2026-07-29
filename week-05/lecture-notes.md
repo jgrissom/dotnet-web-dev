@@ -376,7 +376,7 @@ Save. Hard-refresh. **The entire site is a different site.**
 > [!WARNING]
 > **Hard-refresh every time you change themes** — ⌘⇧R / Ctrl+Shift+R. Browsers cache stylesheets aggressively, and a cached sheet looks exactly like "Bootswatch didn't work." This wastes five minutes of a class if you let it.
 
-Cycle two or three themes live — `united`, `darkly`, `flatly`, `vapor` — hard-refreshing each time. Swap the last path segment and nothing else.
+Cycle two or three themes live — you land on `united`, then swap to `vapor`, then `darkly` — hard-refreshing each time. Swap the last path segment and nothing else.
 
 Points to land:
 
