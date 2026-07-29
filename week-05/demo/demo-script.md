@@ -20,17 +20,23 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ### The gap, shown live *(slide 3)* — **do this before saying anything about layouts**
 
-Don't ask the question rhetorically; make them look at both halves. Two windows, thirty seconds.
+Don't ask the question rhetorically; make them look at both halves. Use the **home page** — it's the smallest file in the project, so the gap is the widest and the whole thing fits on screen without scrolling. Two windows, thirty seconds.
 
-- [ ] **Editor:** open `Views/Trucks/Index.cshtml` and scroll it end to end. **37 lines.** Starts at `@model`, ends at `</table>`. Point out loud: *no `<html>`, no `<head>`, no navbar, no footer*
-- [ ] **Browser:** switch to the `/Trucks` tab → **View Source** (`⌘⌥U` on a Mac — plain `⌘U` won't do it in Chrome; right-click → *View Page Source* always works)
-- [ ] Scroll View Source to the **top**: `<!DOCTYPE html>`, `<head>`, the stylesheet, the navbar. **None of it was in the file you just read**
-- [ ] `⌘F` / `Ctrl+F` in View Source for `<h1>Curbside` — it's at **line 40**, of **127**
-- [ ] **Say the numbers:** *"You wrote 37 lines. The browser got 127. There are 39 lines above your `h1` and 15 below it that you never typed."*
-- [ ] **Now ask it:** *"So who wrote them?"* — let the room answer before you open anything
+- [ ] **Editor:** open `Views/Home/Index.cshtml`. **The whole file is 8 lines**, and only 4 of them are markup — a `div`, an `h1`, a `p`. No scrolling; the room can see all of it at once. Say it: *no `<html>`, no `<head>`, no navbar, no footer*
+- [ ] **Browser:** the `/` tab → **View Source** (`⌘⌥U` on a Mac — plain `⌘U` won't do it in Chrome; right-click → *View Page Source* always works)
+- [ ] Scroll to the **top**: `<!DOCTYPE html>`, `<head>`, the stylesheet, the navbar. **None of it was in the file you just read**
+- [ ] `⌘F` / `Ctrl+F` for `display-4` — their content is **lines 40–43**, of **58**
+- [ ] **Say the numbers:** *"Four lines of that page are yours. Fifty-four aren't."*
+- [ ] **Point at the rendered page, not just the source** — a navbar, one centred heading, a footer. *"Almost everything you're looking at came from somewhere else."* On the home page the shell **is** the page, which is why we're starting here
+- [ ] **Now ask it:** *"So who wrote it?"* — let the room answer before you open anything
+
+### One more tab, so nobody thinks it's a home-page thing *(15 seconds)*
+
+- [ ] Switch to `/Trucks` → View Source → same `<!DOCTYPE`, same navbar, same footer. **39 lines above their content and 15 below — identical to the home page.** Only the middle changed
+- [ ] *"Two pages, same 54 lines of wrapper. That's not a coincidence, it's a file."* — then open `_Layout.cshtml`
 
 > [!NOTE]
-> Those counts are exact for the demo starter **as shipped**. They shift the moment you start editing in a minute, so take the screenshot moment now — and if you rehearsed with a branded copy, re-check the numbers rather than reading these aloud.
+> Those counts are exact for the demo starter **as shipped**, and they shift the moment you start editing in a minute. If you rehearsed on a branded copy, re-check them rather than reading these aloud.
 
 - [ ] Open `Views/Shared/_Layout.cshtml`. *"Here it is."* Scroll it top to bottom **once**, slowly, without editing. Name three things: `Views/Shared/` is for what belongs to no single page · the `_` prefix means "a piece, not a page" · it's all just Razor
 - [ ] **Tie it back:** the 39 lines above and 15 below are literally this file, wrapped around their table

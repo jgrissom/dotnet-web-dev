@@ -49,18 +49,18 @@ style: |
 
 ## A question
 
-**What you wrote** — `Views/Trucks/Index.cshtml`:
+`Views/Home/Index.cshtml` — **all the markup there is**:
 
 ```html
-@model List<Truck>
-
-<h1>Curbside</h1>
-<table class="table table-striped">...</table>
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="...">ASP.NET Core</a>.</p>
+</div>
 ```
 
 No `<html>`. No `<head>`. **No navbar.**
 
-### Now View Source on `/Trucks`. Who wrote the rest?
+### View Source on `/`. Who wrote the other 54 lines?
 
 ---
 

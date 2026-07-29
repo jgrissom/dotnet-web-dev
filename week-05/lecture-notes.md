@@ -10,15 +10,19 @@ Week 4 ended with `/Trucks` and `/Trucks/Details/2` — real pages, generated fr
 
 And yet the page in the browser had all of those. Somebody added them.
 
-**Show this rather than saying it** (demo §1). Put the file and View Source side by side:
+**Show this rather than saying it** (demo §1), and use the **home page** — it's the smallest file in the project, so the gap is widest and the whole file fits on screen at once:
 
 | | |
 |---|---|
-| `Views/Trucks/Index.cshtml`, the file you wrote | **37 lines** |
-| What the browser actually received | **127 lines** |
-| Where your `<h1>` shows up in it | **line 40** |
+| `Views/Home/Index.cshtml`, start to finish | **8 lines** — 4 of them markup |
+| What the browser actually received | **58 lines** |
+| Where that markup lands in it | **lines 40–43** |
 
-So there are **39 lines above your heading and 15 below it that you never typed.** That gap is tonight.
+**Four lines of that page are yours. Fifty-four aren't.**
+
+Then point at the *rendered* page rather than the source: a navbar, one centred heading, a footer. On the home page the shell **is** the page — which is the whole claim, made visible.
+
+One more tab before you explain anything: View Source on `/Trucks` shows the same 39 lines above the content and the same 15 below. **Two pages, one wrapper.** That's what stops anyone concluding this is a home-page quirk, and it's the setup for `_Layout.cshtml`.
 
 > [!IMPORTANT]
 > Ask the room the question from last week's reading, *after* they've seen both halves: **who wrote the other 90 lines?** They have been in this file twice already — pasting a nav link for requirement 4, and finding `@RenderBody()` for tonight's reading — both times without reading the rest of it. Say that out loud; "you've had this file open twice and never looked at it" lands better than pretending it's new, and after tonight it's the file they'll edit most.
