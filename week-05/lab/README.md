@@ -2,7 +2,7 @@
 
 Same six creatures, same pages. Tonight you build the **shell** around them: one layout you own, a footer that lives in its own file, a script that only loads where it's needed, and a theme that changes everything at once.
 
-**Time:** ~35 minutes in class — **in-class target: checks 1–4 green.** Checks 5–6 roll into the homework by design.
+**Time:** ~45 minutes in class — **in-class target: checks 1–4 green.** Checks 5–6 roll into the homework by design.
 
 ## Setup
 

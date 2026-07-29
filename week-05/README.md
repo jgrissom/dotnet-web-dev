@@ -10,7 +10,7 @@ The night the app stops looking like a template. Every page you built last week 
 | Prep&nbsp;/⁠&nbsp;in-⁠class&nbsp;script | 📖&nbsp;[lecture-⁠notes.md](lecture-notes.md) | Full lecture content, predict-then-run answers, **troubleshooting appendix** |
 | Projected&nbsp;in&nbsp;class | 🎞️&nbsp;[slides.md](slides.md) | The deck (GFM, one slide per `##`) — [**present it live**](https://jgrissom.github.io/dotnet-web-dev/week-05/) (arrow keys, `F` for fullscreen) |
 | In&nbsp;class,&nbsp;live-⁠coding | 🎨&nbsp;[demo/⁠](demo/) | *Curbside* gets a shell — picks up where week 4 left it; [clickable cue sheet](https://jgrissom.github.io/dotnet-web-dev/week-05/demo/script.html) |
-| In&nbsp;class,&nbsp;last&nbsp;35&nbsp;min | 🧪&nbsp;[lab/⁠](lab/) | *The Registry gets a shell* — 6 `dotnet test` checks; 1/6 green out of the box (answer key in the private answer-keys repo) |
+| In&nbsp;class,&nbsp;last&nbsp;45&nbsp;min | 🧪&nbsp;[lab/⁠](lab/) | *The Registry gets a shell* — 6 `dotnet test` checks; 1/6 green out of the box (answer key in the private answer-keys repo) |
 | With&nbsp;the&nbsp;homework | ✅&nbsp;[homework-⁠checks.js](homework-checks.js) | Student self-check — included via `@section Scripts`; the same checks the grader runs (12 of the 20 pts) |
 | Assigned&nbsp;at&nbsp;wrap-⁠up | 📤&nbsp;[homework.md](homework.md) | Your own app gets the same shell, deployed to Azure; URL + repo via Canvas |
 

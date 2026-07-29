@@ -153,7 +153,7 @@ Three edits, one file, whole site:
 
 Make both live and click through three pages. **Nothing else changed, and every page is different.** That's the sentence the whole night is built on; say it while it's on screen.
 
-## Part 2: The two files nobody opens (20 min)
+## Part 2: The two files nobody opens (15 min)
 
 ### _ViewStart: why every view gets a layout
 
