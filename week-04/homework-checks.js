@@ -6,9 +6,14 @@
 //
 //    <script src="https://jgrissom.github.io/dotnet-web-dev/week-04/homework-checks.js"></script>
 //
-//  Then load that page and open the console (F12). It runs automatically, so
-//  every refresh re-checks your work — the same red-to-green loop as the lab.
+//  Then load that page and open the console (F12). It runs automatically.
 //  Type  recheck()  to run it again without reloading.
+//
+//  THIS IS A FINISH LINE, NOT A PROGRESS BAR. It identifies your work by
+//  things that only exist once you're nearly done — a nav link, a Details
+//  link per row, a working /Details/1. Run it half-built and it honestly
+//  reports almost nothing. Build first; check when you think you're done,
+//  then again on your deployed URL before submitting.
 //
 //  It checks whatever site it's loaded on, so it works on localhost while you
 //  build AND on your deployed app. Leave the tag in or take it out; it only

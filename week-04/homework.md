@@ -46,9 +46,15 @@ It needs:
 > [!TIP]
 > Start from `dotnet new mvc --no-https` in a fresh folder. You are not starting from the Registry — building it again from empty is the point, and it takes about 30 minutes once you've done the lab. Week 3's notes cover [creating the app](../week-03/lecture-notes.md#dotnet-new-mvc) and [what every folder is for](../week-03/lecture-notes.md#project-anatomy) if you want the refresher.
 
-## Part 3 — Check it yourself before you submit ✅
+## Part 3 — Check it when you're finished ✅
 
 **[`homework-checks.js`](homework-checks.js) runs the same checks I grade with.** Nothing in it is specific to my topic or yours — it finds your controller by following the link you put in the navbar, exactly like a visitor would.
+
+> [!IMPORTANT]
+> **This is a finish line, not a progress bar.** Build the app first, using `dotnet test` on the lab and the [lecture notes](lecture-notes.md) as your guide. The checker identifies your work by things that only exist once you're nearly done — a nav link, a Details link on each row, a working `/Details/1`. Run it half-built and it will honestly report almost nothing, which tells you very little. **Run it twice:**
+>
+> 1. **When you think you're done locally** — cheap to fix things now
+> 2. **Again on your deployed Azure URL, before you submit** — that's the run that counts
 
 **Nothing to install — you include it exactly like the Bootstrap CDN from week 2.**
 
@@ -58,24 +64,25 @@ Add this one line at the bottom of **`Views/Home/Index.cshtml`** — your home p
 <script src="https://jgrissom.github.io/dotnet-web-dev/week-04/homework-checks.js"></script>
 ```
 
-Then load that page and open the console — **F12 → Console**. It runs automatically, the same way week 1's checker did.
+Then load that page and open the console — **F12 → Console**. It runs automatically.
 
 ```
-🔎 Week 4 self-check — https://trail-guide-ab1234.azurewebsites.net
-✅ 2 pts  nav link to your index page — found /Trails
-✅ 4 pts  index lists all your items — 6 detail links found
-✅ 4 pts  details page shows one item — /Trails/Details/1
+🔎 Week 4 self-check — https://ballparks-ab1234.azurewebsites.net
+✅ 2 pts  nav link to your index page — found /Parks
+✅ 4 pts  index lists all your items — 6 found
+✅ 4 pts  details page shows one item — /Parks/Details/1
 ✅ 2 pts  a bad id returns 404 — got 404
 
-🎉 12 / 12 automated points
+🎉 4 of 4 checks green · 12 of 12 points
 ```
 
 > [!NOTE]
-> It checks **whatever site it's loaded on** — so put the tag in *your* app, not on this page. It finds your controller by following your **nav link** (requirement 4), so add that early or the checker sees nothing.
->
-> **Haven't added the nav link yet?** Type `recheck("Trails")` in the console with *your* controller's name — it skips discovery and checks that controller directly, so you can watch your progress before requirement 4 is done. It works on `localhost` while you build and on your deployed app afterwards. Type `recheck()` in the console to run it again without refreshing, and expect a red `404` partway through: one check asks for a bad id on purpose.
+> It checks **whatever site it's loaded on** — so put the tag in *your* app, not on this page. `recheck()` re-runs it without reloading, and a red `404` partway through is expected: one check asks for a bad id on purpose.
 >
 > Leave the `<script>` tag in or take it out, whichever you prefer. It only writes to the console and doesn't affect grading.
+
+> [!TIP]
+> **If it says it can't find your controller**, your nav link (requirement 4) is missing or points somewhere else. You can tell it where to look instead — `recheck("Parks")` with *your* controller's name — but the nav link is worth 2 points on its own, so fix it rather than working around it.
 
 > [!TIP]
 > **Working offline?** Save [`homework-checks.js`](homework-checks.js) into your `wwwroot` folder and point the tag at it locally instead: `<script src="/homework-checks.js"></script>`. That's the CDN-versus-local-copy trade-off from [week 2](../week-02/lecture-notes.md#setup--two-tags), showing up in real life.
