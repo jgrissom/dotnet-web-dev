@@ -159,6 +159,9 @@ The [notes on the layout file](../lecture-notes.md#the-layout-file) walk the sam
 >
 > *(One exception: **Brite** is newer than the `5.3.3` build — if you picked it and the page comes back unstyled, change the version in the URL to `5.3.8`.)*
 
+> [!NOTE]
+> **Picked a dark theme** (darkly, vapor, superhero, cyborg, slate, solar)? The template hard-coded a *light* navbar — `navbar-light bg-white` — and it'll sit like a white sticker on your dark pages. [Swap the color utilities](../lecture-notes.md#the-navbar-needs-a-word): `navbar-dark bg-primary`, and drop `text-dark` from the nav links. Light themes look fine untouched, and no check reads these classes either way — this one's for your eyes, not your score.
+
 ## Rules
 
 > [!IMPORTANT]
