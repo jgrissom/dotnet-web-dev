@@ -39,7 +39,7 @@ dotnet new console -o Hello
 2. Open `Program.cs`, wait for the status bar to finish loading the project.
 3. Click in the margin left of the `Console.WriteLine` line — a red dot (breakpoint) appears.
 4. Press **F5** (pick "C#" if prompted). The program starts and **pauses on your red dot**.
-5. Press F5 again to let it finish. Done — you just used the debugger.
+5. Press F5 again to let it finish. That's your toolchain proving it can stop your code mid-run — the editor, the SDK and the debugger all talking to each other. *(We come back to what else the debugger can do later in the semester, when there's something worth stopping to look at.)*
 
 > [!TIP]
 > No IntelliSense or the breakpoint won't hit? Make sure you opened the **folder** (not just the file), then give the C# extension a moment — watch the flame icon in the status bar.

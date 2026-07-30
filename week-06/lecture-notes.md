@@ -464,7 +464,7 @@ POST /Trucks/Create  →  model binding     →  Truck object      (by name attr
 - Antiforgery. The action has `[ValidateAntiForgeryToken]` but the form didn't send a token — usually a hand-written `<form>` with `asp-antiforgery="false"`, or markup that isn't inside the `<form>` at all.
 
 **`ModelState.IsValid` is false and I can't see why**
-- Put a breakpoint on the guard and inspect `ModelState`, or temporarily add `<div asp-validation-summary="All">` to the form, which lists every error including the field ones. The usual answer is a non-nullable `int` or `double` that got a blank box.
+- Temporarily switch your summary to `<div asp-validation-summary="All">`, which lists **every** error including the per-field ones — no tooling, one word changed, and you can put it back after. The usual answer is a non-nullable `int` or `double` that got a blank box. *(If you're comfortable with the debugger, a breakpoint on the guard and a look at `ModelState` shows the same thing.)*
 
 **A number field says it's required and I never wrote `[Required]`**
 - Non-nullable value types are implicitly required — an `int` has nowhere to put "empty". Make it `int?` if it's genuinely optional.
