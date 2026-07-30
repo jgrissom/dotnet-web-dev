@@ -33,7 +33,7 @@ It needs:
 2. **[A title on every page](lecture-notes.md#viewdatatitle-and-the-browser-tab)** — `ViewData["Title"]` set in your home view, your index view, and your details view, all three different. **The details page's title must be data-driven** — `ViewData["Title"] = Model.Name;` (or whatever your item's name property is), so each item's page names itself in the browser tab.
 3. **[A partial, rendered from two different views](lecture-notes.md#passing-a-model-to-a-partial)** — a card for one of your items: `Views/Shared/_ThingCard.cshtml` with `@model Thing` on the first line. Render it from your **index**, inside the loop, and from **one other view** — featuring a single item on your home page is the easy second. *Two* views is the requirement, not one: a partial called from a single place is the same markup with an extra step, and it doesn't demonstrate anything.
 4. **[A Bootswatch theme](lecture-notes.md#the-payoff)** replacing the template's Bootstrap `<link>`. **Delete the original line** — leaving both means the two stylesheets fight and the theme only half applies.
-5. **The self-check script, included via [`@section Scripts`](lecture-notes.md#the-slot-that-was-always-there)** in your index view — see Part 3. This is the one requirement that grades *how* you added something rather than that you added it.
+5. **The self-check script, included via [`@section Scripts`](lecture-notes.md#the-slot-that-was-always-there)** — replacing week 4's bare `<script>` tag in `Views/Home/Index.cshtml`, **not** added alongside it. See Part 3. This is the one requirement that grades *how* you added something rather than that you added it.
 6. **Everything from week 4 still works** — the nav link to your index, the index list, the details page, and the 404 guard on a bad id.
 7. **Deployed to Azure**, and **3+ meaningful commits** in your public GitHub repo.
 
@@ -53,9 +53,24 @@ It needs:
 > 1. **When you think you're done locally** — cheap to fix things now
 > 2. **Again on your deployed Azure URL, before you submit** — that's the run that counts
 
-**Installing it *is* requirement 5.** Last week you dropped a `<script>` tag at the bottom of a view. This week it goes in the layout's Scripts slot instead — which is exactly what that slot is for, and it's worth 2 points.
+**Installing it *is* requirement 5.** Last week you dropped a bare `<script>` tag at the bottom of a view. This week the same script goes in the layout's Scripts slot instead — which is exactly what that slot is for, and it's worth 2 points.
 
-At the bottom of **your index view** (e.g. `Views/Trails/Index.cshtml`):
+> [!CAUTION]
+> **This replaces last week's tag. Delete that line — don't add a second one.**
+>
+> Week 4's checker is still sitting in your app, and here's the trap: **it still passes.** It checks *week 4's* requirements, and nothing you did this week broke any of them. Leave it in and you'll load a page, see a screen of green ticks, and submit an assignment that was never actually checked.
+>
+> **The tell is the first line of the report.** `🔎 Week 4 self-check` is the wrong one — this week's says **`Week 5`** and scores out of **12 points**.
+
+**Open `Views/Home/Index.cshtml`** — the file week 4 told you to put its tag in. Find this line and **delete it**:
+
+```html
+<script src="https://jgrissom.github.io/dotnet-web-dev/week-04/homework-checks.js"></script>
+```
+
+*(Not there? Week 4 allowed any view. Search your project for `week-04` — VS Code's **Ctrl+Shift+F** / **⇧⌘F** finds it wherever it landed.)*
+
+And put this at the bottom of that same file in its place — note the `week-05`, and note that it's now wrapped in a section:
 
 ```html
 @section Scripts {
@@ -63,7 +78,7 @@ At the bottom of **your index view** (e.g. `Views/Trails/Index.cshtml`):
 }
 ```
 
-Then load that page and open the console — **F12 → Console**. It runs automatically.
+Then load your home page and open the console — **F12 → Console**. It runs automatically, and it checks your *whole site* from there — home, index, and a details page — so this one tag is all you need.
 
 ```
 🔎 Week 5 self-check — https://trailguide-ab1234.azurewebsites.net
@@ -78,6 +93,9 @@ Then load that page and open the console — **F12 → Console**. It runs automa
 
 > [!NOTE]
 > It checks **whatever site it's loaded on** — so put the section in *your* app, not on this page. `recheck()` re-runs it without reloading.
+
+> [!TIP]
+> **If the report opens with a red `🚨 Week 4's self-check script is STILL installed`** — you added this week's tag but left last week's in place. Both are running. Delete the `week-04` line and refresh.
 
 > [!TIP]
 > **If it says your footer is "still the template's default line"** — that's requirement 1. The stock footer reads `© 2026 - YourProject - Privacy`; it's identical on every page already, so it can't prove you built anything. Put your own name and the year in it, in `_Layout.cshtml`.

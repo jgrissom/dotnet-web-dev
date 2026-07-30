@@ -101,6 +101,19 @@
     total: checks.length,
   });
 
+  // Last week's <script> tag, still installed. This is the nastiest failure mode
+  // of the whole setup, because the old checker WORKS: it checks last week's
+  // requirements, week 5 breaks none of them, so it prints a screen of green and
+  // the student never learns this week went unchecked. Not scored — costs them
+  // nothing but the illusion — so it's a warning, not a check.
+  function staleCheckers(html) {
+    const found = new Set();
+    for (const m of String(html || "").matchAll(/week-0*(\d+)\/homework-checks\.js/gi)) {
+      if (Number(m[1]) !== 5) found.add(Number(m[1]));
+    }
+    return [...found].sort((a, b) => a - b);
+  }
+
   /**
    * Runs every URL-verifiable check against a base URL.
    * Returns { route, checks: [{label, pass, pts, hint, blocked, todo}], earned, possible, green, total }
@@ -151,8 +164,10 @@
           : "Start your app (dotnet watch), or check that your deployed URL is right.",
       });
       blockRest(0);
-      return { route: null, checks, ...tally(checks) };
+      return { route: null, checks, stale: [], ...tally(checks) };
     }
+
+    const stale = new Set(staleCheckers(home.body));
 
     // ── 1. find their controller, exactly the way a visitor would ─────────────
     const tries = forcedRoute ? [forcedRoute] : navCandidates(home.body);
@@ -179,7 +194,7 @@
         });
     }
 
-    if (!route) { blockRest(0); return { route: null, checks, ...tally(checks) }; }
+    if (!route) { blockRest(0); return { route: null, checks, stale: [...stale], ...tally(checks) }; }
 
     // ── 2. week 4 still works (you rebuilt the shell around it) ───────────────
     const detailUrl = links.length ? links[0] : `/${route}/Details/1`;
@@ -197,13 +212,15 @@
             + "Views/Shared/_Layout.cshtml — a missing @RenderBody() takes down every page at once.",
       });
 
-    if (!indexOk || !detailOk) { blockRest(2); return { route, checks, ...tally(checks) }; }
+    if (!indexOk || !detailOk) { blockRest(2); return { route, checks, stale: [...stale], ...tally(checks) }; }
 
     const pages = [
       { url: "/", html: home.body },
       { url: `/${route}`, html: index.body },
       { url: detailUrl, html: detail.body },
     ];
+
+    pages.forEach(p => staleCheckers(p.html).forEach(w => stale.add(w)));
 
     // ── 3. the shell really is shared ────────────────────────────────────────
     const footers = pages.map(p => footerText(p.html));
@@ -268,8 +285,16 @@
             + "https://bootswatch.com, and delete the original line.",
       });
 
-    return { route, checks, ...tally(checks) };
+    return { route, checks, stale: [...stale], ...tally(checks) };
   }
+
+  // Printed above the score, because a stale checker makes the score itself suspect.
+  const staleWarning = (stale) => stale && stale.length
+    ? `Week ${stale.join(" and ")}'s self-check script is STILL installed in your app, and it PASSES — `
+      + "it's checking last week's requirements, which week 5 didn't break. Load a page with that tag on it "
+      + `and you get a screen of green ticks for work you did seven days ago. Delete the <script> tag `
+      + `pointing at week-0${stale[0]}/homework-checks.js.`
+    : null;
 
   const BY_HAND = [
     "3 pts — a partial in Views/Shared/, rendered from two different views",
@@ -308,6 +333,8 @@
         if (c.hint) console.log(`         ↳ ${c.hint}`);
       });
       const { earned, possible, green, total, route } = res;
+      const oldOne = staleWarning(res.stale);
+      if (oldOne) console.log(`\n🚨 ${oldOne}`);
       console.log(`\n📋 ${green} of ${total} checks green · ${earned} of ${possible} points${route ? `  (controller: /${route})` : ""}`);
 
       const next = res.checks.find(c => !c.pass && !c.blocked && c.todo)
@@ -337,6 +364,8 @@
 
     const report = (res) => {
       const { earned, possible, green, total, route } = res;
+      const oldOne = staleWarning(res.stale);
+      if (oldOne) console.log(`%c🚨 ${oldOne}`, `${bold}; color: crimson`);
       console.log(`%c📋 ${green} of ${total} checks green · ${earned} of ${possible} points${route ? `  (controller: /${route})` : ""}`, big);
 
       const next = res.checks.find(c => !c.pass && !c.blocked && c.todo)
