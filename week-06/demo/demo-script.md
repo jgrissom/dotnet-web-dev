@@ -17,7 +17,13 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] `cd Curbside && dotnet watch`
 - [ ] **Park two browser tabs**: `/Trucks` and `/Trucks/Details/2`
 - [ ] **Dev tools open on the `/Trucks` tab, on the Network panel** — you're in it twice tonight and fumbling for it kills the beat
-- [ ] **Size the terminal to be read from the back row.** In §1 it stops being where the app runs and becomes the thing everyone is looking at. `clear` (⌘K) between beats is your friend — a wiped terminal with one object in it reads instantly
+- [ ] **Size the terminal to be read from the back row.** In §1 it stops being where the app runs and becomes the thing everyone is looking at
+- [ ] **Learn how to clear it before you need it — you can't type `clear`.** `dotnet watch` is running in that terminal, so the shell is *not* at a prompt and your keystrokes go to the watcher, not to a shell. Clear it from the **editor** instead:
+  - **Mac:** focus the terminal, press **⌘K**
+  - **Windows / Linux:** **right-click the terminal → Clear** *(there's no default shortcut)*
+  - **Either:** Command Palette (**⇧⌘P** / **Ctrl+Shift+P**) → *Terminal: Clear*
+  
+  You need it twice tonight — once in §1 and once in §3 — and a wiped terminal with exactly one object in it reads instantly from the back row
 - [ ] Teaching profile; terminal font sized for the projector
 - [ ] **Say it before you start: *"lids down for this part — you'll build it yourself in the lab."*** Nobody can follow along tonight even if they want to; Curbside isn't in the public repo. And the five breaks below would take fourteen machines down with them. **The predict-then-run moments are where they participate** — those only work if people are looking up
 - [ ] Sanity check: `/Trucks` shows six cards, `/Trucks/Details/1` shows the "Also in Madison" panel
@@ -81,7 +87,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
   </details>
 
-- [ ] **`clear` the terminal**, then load `/Trucks/Create`. It's ugly. Fill it in — **`Wurst Case Scenario` / `German` / `Appleton` / `4.1`** — and submit
+- [ ] **Clear the terminal** (⌘K, or right-click → Clear), then load `/Trucks/Create`. It's ugly. Fill it in — **`Wurst Case Scenario` / `German` / `Appleton` / `4.1`** — and submit
 - [ ] Browser says *"look at the terminal 👀"*. **Swap to the terminal:**
   ```
   ── model binding built a Truck ──
@@ -253,7 +259,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ### Where do the rules go? *(slide 12)*
 
-- [ ] **`clear` the terminal**, then submit the form with **no name, no city, and a rating of 9000**:
+- [ ] **Clear the terminal** (⌘K, or right-click → Clear), then submit the form with **no name, no city, and a rating of 9000**:
   ```
   ── model binding built a Truck ──
      Name

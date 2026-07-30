@@ -82,7 +82,7 @@ Two details in that output are doing work, and both are worth saying out loud:
 - **`x2 = 8.2`** is the quiet one. **You cannot multiply a string.** The browser sent the characters `4.1`; what reached your method was a `double` you can do arithmetic on. Binding didn't just copy values across, it *converted* them.
 
 > [!TIP]
-> **The terminal is quieter than you'd expect**, because the template sets `"Microsoft.AspNetCore": "Warning"` in `appsettings.Development.json` — so there's no per-request logging to bury your output. And `clear` (or ⌘K in VS Code's terminal) before a beat is free: wipe it, submit once, and the only thing on screen is the object you just built.
+> **The terminal is quieter than you'd expect**, because the template sets `"Microsoft.AspNetCore": "Warning"` in `appsettings.Development.json` — so there's no per-request logging to bury your output. Clearing it before a beat is free — wipe it, submit once, and the only thing on screen is the object you just built. **Note you can't type `clear`**: `dotnet watch` owns that terminal, so the shell isn't at a prompt. Clear it from the editor — **⌘K** on a Mac, or right-click the terminal → **Clear**.
 
 > [!TIP]
 > **Open the Network tab before you submit** (demo §1). Click the `Create` request, then **Payload**. There it is, the whole submission, as one string:
