@@ -50,7 +50,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   dotnet new mvc --no-https
   dotnet watch
   ```
-- [ ] Browser opens → a working, styled site from three commands. Let that breathe
+- [ ] Browser opens → a working, styled site from **two commands**. Let that breathe *(the slide behind you says two — don't say three)*
 
 ### The anatomy tour
 
@@ -71,7 +71,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   4. **The map** 🥁 — "`MapControllerRoute` — the headliner. This one `pattern` turns URLs into method calls. The rest of tonight lives inside those braces."
   5. **Open the doors** (`app.Run()`) — "start listening, forever. Everything above was setup; this line *is* the server."
 
-  *(The `partial class Program` coda: only if someone asks — "it lets the checks project see the app; leave it alone.")*
+  *(**Not in this file** — a fresh `dotnet new mvc` has no `public partial class Program { }`. Their **lab starter** does, and the lab README tells them to leave it alone, so expect the question during the lab rather than here: "it lets the checks project see the app.")*
 
   </details>
 - [ ] **✓ CHECKPOINT:** app running, room has seen every folder earn its name
