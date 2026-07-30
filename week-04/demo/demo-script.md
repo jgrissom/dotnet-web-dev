@@ -39,11 +39,15 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ## 1 · Routing: read it, then break it *(slides 3–5)*
 
+### Read the pattern
+
 - [ ] 🎞️ **GO TO SLIDE 3** — *The pattern, decoded*. Read the slots off the slide, then open the real `Program.cs`
 - [ ] Open `Program.cs`, scroll to the pattern, read it aloud slot by slot:
   ```csharp
   pattern: "{controller=Home}/{action=Index}/{id?}"
   ```
+### Predict-then-run
+
 - [ ] 🎞️ **GO TO SLIDE 4** — *Predict before you press Enter*. **The slide is the exercise** — work the table off it, asking the room each time
 - [ ] **Predict-then-run** each URL — ask for *class + method* before pressing Enter:
 
@@ -67,6 +71,8 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ## 2 · A second controller, in two steps *(slides 6–7)*
 
+### A controller with no view
+
 - [ ] 🎞️ **GO TO SLIDE 6** — *Three names must agree*: `TrucksController` → `/Trucks` → `Views/Trucks/Index.cshtml`
 - [ ] Create `Controllers/TrucksController.cs` — **type it**:
   ```csharp
@@ -83,6 +89,8 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   }
   ```
 - [ ] Visit `/Trucks` → the word **trucks!** on a blank page. No view exists — *routing is proven on its own*
+### Then the view
+
 - [ ] 🎞️ **GO TO SLIDE 7** — *Prove one half at a time*. That's what `Content()` was for; now take the second half
 - [ ] Now swap `Content("trucks!")` for `return View();` → refresh → **error: view not found**
 - [ ] **Read the error out loud.** It lists every path it searched. "This error doesn't say *broken* — it says *I looked here, here, and here*"
@@ -104,6 +112,8 @@ Everything here happens in `Views/Trucks/Index.cshtml`.
 
 **View Source after every beat** — `Ctrl+U`, or **`⌘⌥U` on a Mac** (plain `⌘U` won't do it in Chrome); right-click → *View Page Source* if you'd rather not think about it. That's the whole point of the section.
 
+### Expressions
+
 - [ ] 🎞️ **GO TO SLIDE 8** — *Razor: `@` is the door*
 - [ ] **Expressions** — add and save:
   ```html
@@ -112,6 +122,8 @@ Everything here happens in `Views/Trucks/Index.cshtml`.
   ```
 - [ ] View Source: the *values* are there, no `@` anywhere. "The server did the math"
 - [ ] Refresh a few times — the clock ticks. Server-rendered, every request
+### Blocks and branches
+
 - [ ] 🎞️ **GO TO SLIDE 9** — *Blocks and branches*
 - [ ] **A code block + a conditional** — paste:
 
@@ -139,6 +151,8 @@ Everything here happens in `Views/Trucks/Index.cshtml`.
 
 - [ ] Flip `isOpenLate` to `false`, save, refresh — **different HTML, same file**. View Source: only the branch that ran is there. The other one *never existed*
 - [ ] Point at `else` — **no `@`**. "Once you open `@if`, you're in C# until the braces close." Predict the #1 typo of the night before it happens
+### A loop
+
 - [ ] 🎞️ **GO TO SLIDE 10** — *The big idea*
 - [ ] **A loop** — paste:
 
@@ -163,6 +177,8 @@ Everything here happens in `Views/Trucks/Index.cshtml`.
 - [ ] Add a fifth cuisine to the array → the page grows. **Data changed, markup didn't**
 - [ ] 🎞️ **GO TO SLIDE 11** — *Week 2, revisited*
 - [ ] Callback to week 2: "the coffee shop's six menu cards were six hand-typed blocks. This is that job, done once"
+### Comments
+
 - [ ] 🎞️ **GO TO SLIDE 12** — *What does the browser actually get?*
 - [ ] **Comments** — paste both, save, View Source:
   ```html
@@ -173,6 +189,8 @@ Everything here happens in `Views/Trucks/Index.cshtml`.
 - [ ] **✓ CHECKPOINT:** every student can answer "does the browser ever see a `foreach`?"
 
 ## 4 · The model arrives *(slides 13–16)*
+
+### The model class
 
 - [ ] 🎞️ **GO TO SLIDE 13** — *The model is just a class*
 - [ ] Create `Models/Truck.cs` — **type it** (it's a plain C# class; nothing web about it):
@@ -189,6 +207,8 @@ Everything here happens in `Views/Trucks/Index.cshtml`.
       public bool IsOpenLate { get; set; }
   }
   ```
+### The seed data
+
 - [ ] 🎞️ **GO TO SLIDE 14** — *Six trucks, no database*
 - [ ] Create `Models/TruckData.cs` — **paste**:
 
@@ -214,6 +234,8 @@ Everything here happens in `Views/Trucks/Index.cshtml`.
   </details>
 
 - [ ] Say the week-7 line **now**, while it's on screen: *"this is a hard-coded list today. In week 7 it becomes a database table — and almost none of the code we're about to write changes"*
+### Into the controller
+
 - [ ] 🎞️ **GO TO SLIDE 15** — *Three ways in*
 - [ ] Update `TrucksController.Index` — **type it**:
   ```csharp
@@ -237,6 +259,8 @@ Everything here happens in `Views/Trucks/Index.cshtml`.
   </details>
 
   Either way, land the point: **a namespace isn't visible just because it's in the same project.** *(Students hit this in the lab — the lab README warns them.)*
+### Into the view
+
 - [ ] 🎞️ **GO TO SLIDE 16** — *Strongly typed views*
 - [ ] Replace the whole of `Views/Trucks/Index.cshtml` — **paste**:
 
@@ -289,6 +313,8 @@ Everything here happens in `Views/Trucks/Index.cshtml`.
 
 ## 5 · Details, and an honest 404 *(slides 17–18)*
 
+### The Details action
+
 - [ ] 🎞️ **GO TO SLIDE 17** — *The pair behind every site*
 - [ ] Add to `TrucksController` — **type it**:
   ```csharp
@@ -330,6 +356,8 @@ Everything here happens in `Views/Trucks/Index.cshtml`.
 
 - [ ] Visit `/Trucks/Details/2` → **Cheese Curd Cartel**. Then `/Trucks/Details/5` → Pierogi Party. *Same method, different URL, different page*
 - [ ] Point at the URL: "where did the `2` come from? The **third route slot** — `{id?}`, from slide 3. That's what it was for"
+### An honest 404
+
 - [ ] 🎞️ **GO TO SLIDE 18** — *Guard the door*
 - [ ] **Now visit `/Trucks/Details/999`** → a clean **404**. "Not a crash. Not a blank page. *That truck doesn't exist*, said properly"
 - [ ] *(Optional, if the room is with you)* comment out the null check, refresh `/999` → a **500** and a `NullReferenceException`. Restore the guard. "500 means my code. 404 means routing. Tonight you've now caused both on purpose"

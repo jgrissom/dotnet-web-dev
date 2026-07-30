@@ -28,12 +28,16 @@ Edit-by-edit cue sheet for transforming `index.html` (your **scratch copy**) int
 
 ## 1 · The grid *(slides 5–7)*
 
+### Container and hero
+
 - [ ] 🎞️ **GO TO SLIDE 5** — *The grid: 12 columns, 6 breakpoints*
 - [ ] `<main>` → `<main class="container py-5">` — margins appear, content stops hugging the edges
 - [ ] Hero: `<header id="home">` → add `class="text-center py-5 bg-light"`
 - [ ] Hero: wrap its contents in `<div class="container py-4">`
 - [ ] Hero: `h1` → `display-4` · `p` → `lead text-muted` · link → `btn btn-primary btn-lg mt-2`
 - [ ] **✓ it suddenly looks like a website** — pause and enjoy the reaction
+### The feature row
+
 - [ ] 🎞️ **GO TO SLIDE 6** — *Breakpoints*
 - [ ] Feature row: wrap the three `<section>`s in `<div class="row g-4 text-center">`
 - [ ] 🎞️ **GO TO SLIDE 7** — *Reading a column recipe*. Decode `col-md-4` off the slide, then type it

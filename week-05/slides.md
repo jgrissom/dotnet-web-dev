@@ -165,7 +165,7 @@ Nothing in your Index view asks for a layout. This is why it gets one.
 
 ---
 
-<!-- _footer: '🖥️ Demo §3 · the card' -->
+<!-- _footer: '🖥️ Demo §3 · the problem' -->
 
 ## The problem partials solve
 
@@ -240,7 +240,7 @@ The partial gets **whatever you hand it**.
 
 ---
 
-<!-- _footer: '🖥️ Demo §3 · the card' -->
+<!-- _footer: '🖥️ Demo §3 · one file, two pages' -->
 
 ## One file. Two pages.
 
@@ -312,7 +312,7 @@ Every class you know still works.
 
 ---
 
-<!-- _footer: '🖥️ Demo §5' -->
+<!-- _footer: '🖥️ Demo §5 · three things' -->
 
 ## Three things about that line
 
@@ -326,7 +326,7 @@ Every class you know still works.
 
 ---
 
-<!-- _footer: '🖥️ Demo §5' -->
+<!-- _footer: '🖥️ Demo §5 · the navbar' -->
 
 ## Your Bootstrap still works
 

@@ -83,7 +83,7 @@ Bootstrap solves all four for the price of two `<link>`/`<script>` tags.
 
 ---
 
-<!-- _footer: '🖥️ Demo §1' -->
+<!-- _footer: '🖥️ Demo §1 · container and hero' -->
 
 ## The grid: 12 columns, 6 breakpoints
 
@@ -101,7 +101,7 @@ Bootstrap solves all four for the price of two `<link>`/`<script>` tags.
 
 ---
 
-<!-- _footer: '🖥️ Demo §1' -->
+<!-- _footer: '🖥️ Demo §1 · the feature row' -->
 
 ## Breakpoints
 
@@ -117,7 +117,7 @@ Bootstrap solves all four for the price of two `<link>`/`<script>` tags.
 
 ---
 
-<!-- _footer: '🖥️ Demo §1' -->
+<!-- _footer: '🖥️ Demo §1 · the feature row' -->
 
 ## Reading a column recipe
 

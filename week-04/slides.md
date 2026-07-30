@@ -47,7 +47,7 @@ style: |
 
 ---
 
-<!-- _footer: '🖥️ Demo §1' -->
+<!-- _footer: '🖥️ Demo §1 · read the pattern' -->
 
 ## The pattern, decoded
 
@@ -65,7 +65,7 @@ The `=` parts are **defaults** — they're why `/` works.
 
 ---
 
-<!-- _footer: '🖥️ Demo §1' -->
+<!-- _footer: '🖥️ Demo §1 · predict-then-run' -->
 
 ## Predict before you press Enter
 
@@ -81,7 +81,7 @@ Two of these do something you won't expect.
 
 ---
 
-<!-- _footer: '🖥️ Demo §1' -->
+<!-- _footer: '🖥️ Demo §1 · predict-then-run' -->
 
 ## The URL is not a file path
 
@@ -95,7 +95,7 @@ Routing is configuration, not magic. So let's edit it.
 
 ---
 
-<!-- _footer: '🖥️ Demo §2' -->
+<!-- _footer: '🖥️ Demo §2 · controller, no view' -->
 
 ## Three names must agree
 
@@ -114,7 +114,7 @@ Views/Trucks/Index.cshtml           ← folder = controller
 
 ---
 
-<!-- _footer: '🖥️ Demo §2' -->
+<!-- _footer: '🖥️ Demo §2 · then the view' -->
 
 ## Prove one half at a time
 
@@ -134,7 +134,7 @@ Two failure points, isolated. Make this a habit.
 
 ---
 
-<!-- _footer: '🖥️ Demo §3' -->
+<!-- _footer: '🖥️ Demo §3 · expressions' -->
 
 ## Razor: `@` is the door
 
@@ -151,7 +151,7 @@ Different in one huge way: **this runs on the server.**
 
 ---
 
-<!-- _footer: '🖥️ Demo §3' -->
+<!-- _footer: '🖥️ Demo §3 · blocks and branches' -->
 
 ## Blocks and branches
 
@@ -174,7 +174,7 @@ No `@` on `else` — you're already in C#.
 
 ---
 
-<!-- _footer: '🖥️ Demo §3' -->
+<!-- _footer: '🖥️ Demo §3 · a loop' -->
 
 ## The big idea
 
@@ -195,7 +195,7 @@ You no longer write a page. You write a **rule for producing a page**.
 
 ---
 
-<!-- _footer: '🖥️ Demo §3' -->
+<!-- _footer: '🖥️ Demo §3 · a loop' -->
 
 ## Week 2, revisited
 
@@ -209,7 +209,7 @@ Same kind of site. Different century.
 
 ---
 
-<!-- _footer: '🖥️ Demo §3' -->
+<!-- _footer: '🖥️ Demo §3 · comments' -->
 
 ## What does the browser actually get?
 
@@ -227,7 +227,7 @@ Notes-to-self go in `@* *@`.
 
 ---
 
-<!-- _footer: '🖥️ Demo §4' -->
+<!-- _footer: '🖥️ Demo §4 · the model class' -->
 
 ## The model is just a class
 
@@ -247,7 +247,7 @@ The **M** in MVC is the C# you already write.
 
 ---
 
-<!-- _footer: '🖥️ Demo §4' -->
+<!-- _footer: '🖥️ Demo §4 · the seed data' -->
 
 ## Six trucks, no database
 
@@ -267,7 +267,7 @@ Week 7 deletes this file. The controller barely notices.
 
 ---
 
-<!-- _footer: '🖥️ Demo §4' -->
+<!-- _footer: '🖥️ Demo §4 · into the controller' -->
 
 ## Three ways in
 
@@ -281,7 +281,7 @@ Week 7 deletes this file. The controller barely notices.
 
 ---
 
-<!-- _footer: '🖥️ Demo §4' -->
+<!-- _footer: '🖥️ Demo §4 · into the view' -->
 
 ## Strongly typed views
 
@@ -303,7 +303,7 @@ lowercase `@model` declares · capital `@Model` uses
 
 ---
 
-<!-- _footer: '🖥️ Demo §5' -->
+<!-- _footer: '🖥️ Demo §5 · the Details action' -->
 
 ## The pair behind every site
 
@@ -320,7 +320,7 @@ The `2` lands in `id` — from the route's **third slot**, not a query string.
 
 ---
 
-<!-- _footer: '🖥️ Demo §5' -->
+<!-- _footer: '🖥️ Demo §5 · an honest 404' -->
 
 ## Guard the door
 

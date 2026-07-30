@@ -32,7 +32,7 @@ style: |
 
 ---
 
-<!-- _footer: '🖥️ Demo §1' -->
+<!-- _footer: '🖥️ Demo §1 · the exchange' -->
 
 ## Tonight: the pivot
 
@@ -44,7 +44,7 @@ style: |
 
 ---
 
-<!-- _footer: '🖥️ Demo §1' -->
+<!-- _footer: '🖥️ Demo §1 · the exchange' -->
 
 ## HTTP is just text
 
@@ -68,7 +68,7 @@ Verb + path in · status + body out. That's the whole internet.
 
 ---
 
-<!-- _footer: '🖥️ Demo §1' -->
+<!-- _footer: '🖥️ Demo §1 · verbs & status' -->
 
 ## Verbs
 
@@ -80,7 +80,7 @@ Verb + path in · status + body out. That's the whole internet.
 
 ---
 
-<!-- _footer: '🖥️ Demo §1' -->
+<!-- _footer: '🖥️ Demo §1 · verbs & status' -->
 
 ## Status codes
 
@@ -95,7 +95,7 @@ When it breaks: **the status code is clue #1.**
 
 ---
 
-<!-- _footer: '🖥️ Demo §2' -->
+<!-- _footer: '🖥️ Demo §2 · two commands' -->
 
 ## Two commands to a working site
 
@@ -110,7 +110,7 @@ dotnet watch                 # runs + restarts on every save
 
 ---
 
-<!-- _footer: '🖥️ Demo §2' -->
+<!-- _footer: '🖥️ Demo §2 · the anatomy tour' -->
 
 ## Project anatomy
 
@@ -126,7 +126,7 @@ CommonGrounds.Web/
 
 ---
 
-<!-- _footer: '🖥️ Demo §2' -->
+<!-- _footer: '🖥️ Demo §2 · five acts' -->
 
 ## Program.cs — a five-act story
 
@@ -148,7 +148,7 @@ app.Run();                                          // 5 open the doors
 
 ---
 
-<!-- _footer: '🖥️ Demo §3' -->
+<!-- _footer: '🖥️ Demo §3 · routing, predicted' -->
 
 ## The request's journey
 
@@ -166,7 +166,7 @@ The URL doesn't find a **file** anymore. It finds a **method**.
 
 ---
 
-<!-- _footer: '🖥️ Demo §3' -->
+<!-- _footer: '🖥️ Demo §3 · routing, predicted' -->
 
 ## Routing: the pattern decoded
 
@@ -183,7 +183,7 @@ Predict before each Enter — including the one that 404s.
 
 ---
 
-<!-- _footer: '🖥️ Demo §3' -->
+<!-- _footer: '🖥️ Demo §3 · the controller' -->
 
 ## Controllers and actions
 
@@ -202,7 +202,7 @@ public class MenuController : Controller
 
 ---
 
-<!-- _footer: '🖥️ Demo §3' -->
+<!-- _footer: '🖥️ Demo §3 · the view' -->
 
 ## Views and Razor — first taste
 
@@ -219,7 +219,7 @@ public class MenuController : Controller
 
 ---
 
-<!-- _footer: '🖥️ Demo §3' -->
+<!-- _footer: '🖥️ Demo §3 · a parameter' -->
 
 ## Passing data in
 
@@ -235,7 +235,7 @@ public IActionResult Special(string? item)
 
 ---
 
-<!-- _footer: '🖥️ Demo §4' -->
+<!-- _footer: '🖥️ Demo §4 · what Azure is' -->
 
 ## Azure App Service
 
@@ -249,7 +249,7 @@ laptop ── az webapp up ──► App Service ──► https://you.azurewebs
 
 ---
 
-<!-- _footer: '🖥️ Demo §4' -->
+<!-- _footer: '🖥️ Demo §4 · az webapp up' -->
 
 ## One command to the cloud
 

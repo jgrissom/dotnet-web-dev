@@ -137,10 +137,12 @@ Don't ask the question rhetorically; make them look at both halves. Use the **ho
 > [!NOTE]
 > **We skip the classic footer partial.** If you've taught this before, the reflex is to cut the `<footer>` out of the layout first because it's easy. Don't: the layout is already on every page, so that partial has **one call site** and proves nothing — and it silently breaks the footer's styling, because `_Layout.cshtml.css` is scoped and its rules stop matching markup the layout no longer renders. Go straight to the card.
 
-### The card, with a model
+### The repetition problem
 
 - [ ] 🎞️ **GO TO SLIDE 9** — *The problem partials solve*. Three places, copy-pasted, that will drift
 - [ ] Frame the problem: *"you want that truck block on the index page as a card, and again in a 'nearby trucks' panel. The obvious move is copy-paste, and it's wrong for the obvious reason — two copies, two places to fix, and they drift"*
+
+### The card, with a model
 
 - [ ] 🎞️ **GO TO SLIDE 10** — *Making one — three steps*
 - [ ] Create `Views/Shared/_TruckCard.cshtml` — **paste**:
@@ -228,6 +230,8 @@ Don't ask the question rhetorically; make them look at both halves. Use the **ho
 - [ ] `/Trucks/Details/1` (Roll Models, Madison) → **"Also in Madison: The Gyro Wheel"**, rendered by the same card file
 - [ ] `TruckData` resolves in the view because of `@using Curbside.Models` in `_ViewImports` — **the payoff lands inside the hour**
 - [ ] `/Trucks/Details/5` (Pierogi Party, alone in Stevens Point) → no panel. The `@if` guard. *"'What if there are none' is a question worth always asking"*
+### One file, two pages
+
 - [ ] 🎞️ **GO TO SLIDE 13** — *One file. Two pages.*
 - [ ] 🎯 **THE MOMENT** — open `_TruckCard.cshtml`, change one obvious thing (`text-primary` on the title, or an emoji), save, and refresh **both** `/Trucks` and `/Trucks/Details/1`. **One edit, both pages.** Stop talking for a second and let it land
 - [ ] **✓ CHECKPOINT:** the room can say the difference between a layout and a partial — one wraps around, one drops inside
@@ -282,8 +286,12 @@ Don't ask the question rhetorically; make them look at both halves. Use the **ho
 - [ ] **Hard-refresh** (⌘⇧R / Ctrl+Shift+R). Whole site, different site
 - [ ] ⚠️ **Hard-refresh at every single swap.** A cached stylesheet looks exactly like "it didn't work" and will eat five minutes if you let it
 - [ ] Swap the theme name only — `vapor`, then `darkly` — hard-refreshing each time. *"One path segment"*
+### Three things about that line
+
 - [ ] 🎞️ **GO TO SLIDE 17** — *Three things about that line*
 - [ ] Land three points: **`5.3.3` is pinned to match the Bootstrap already in `wwwroot/lib`** — version numbers in CDN URLs aren't decoration · **it replaces, it doesn't add** (leave both and they fight — the lab checks this) · **only the CSS moved**, the local `bootstrap.bundle.min.js` is untouched, so dropdowns still work
+### The navbar needs a word
+
 - [ ] 🎞️ **GO TO SLIDE 18** — *Your Bootstrap still works*
 - [ ] The navbar looks wrong on a dark theme — because the template hard-coded it. Fix it inside the `<nav>` you already have:
   ```html
