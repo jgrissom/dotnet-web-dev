@@ -27,4 +27,4 @@ The shell, end to end: **one layout wraps every page, two files they'd never ope
 - Your finished Registry running + `dotnet test` at 6/6, for the lab launch
 - Remind students to `git pull` for the week-05 starter
 
-**Prev:** [← Week 4 — Routing & Razor](../week-04/README.md) · **Next:** Week 6 — Forms & validation *(coming)*
+**Prev:** [← Week 4 — Routing & Razor](../week-04/README.md) · **Next:** [Week 6 — Forms & Validation →](../week-06/README.md)
