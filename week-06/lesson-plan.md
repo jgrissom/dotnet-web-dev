@@ -40,7 +40,7 @@ By the end of this session, students can:
 | 2:15 | 20 min | **The same rules, in the browser** *(slides 19–21, demo §4)*. Open `_ValidationScriptsPartial.cshtml` and **collect week 5's promise out loud** — and settle the guesses from the board. One `@section Scripts` block, and the errors appear instantly. Then **break #5**: add `novalidate` in dev tools, submit, and the server refuses it anyway. **Do not rush the sentence at the end of that.** |
 | 2:35 | 10 min | **Where the truck actually went** *(slide 22, demo §5)*. Add a truck, `Ctrl+C`, restart, reload. It's gone. `static List<T>` lives as long as the process. Warn them about free-tier Azure sleeping before the homework. Hand off to week 7 pointing at the controller: *one line changes.* |
 | 2:45 | 50 min | **Lab: the Registry takes reports** *(slide 23)*. Launch with ~90 seconds of *what done looks like* — a working form + `dotnet test` printing **6 / 6**. Then the setup, said once: **`git pull` → copy `week-06/lab/starter` out and rename → open the folder holding *both* projects → `dotnet test Cryptids.Checks`**. **In-class target: checks 1–5.** |
-| 3:35 | 10 min | **Wrap-up** *(slide 24)*. The round-trip diagram. Homework: their own app gets a Create form. Then week 7: the list becomes a table. |
+| 3:35 | 10 min | **Wrap-up** *(slide 24, demo §7)*. The round-trip diagram. Homework: their own app gets a Create form. Then week 7: the list becomes a table. |
 
 ## Instructor notes
 

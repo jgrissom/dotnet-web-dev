@@ -2,7 +2,7 @@
 
 Week 6's demo picks Curbside up where week 5 left it and teaches it to *listen*: a hand-written HTML form first, so model binding is visibly just name-matching, then the same form rebuilt with tag helpers, then rules on the model and the guard that reads them. **Deliberately different content from the lab:** you add a truck to Curbside; students add a creature to the *Cryptid Registry*.
 
-- `demo-script.md` — the edit-by-edit cue sheet, keyed to slide numbers, with a [clickable hosted version](https://jgrissom.github.io/dotnet-web-dev/week-06/demo/script.html). Every block you type or paste is in it.
+- `demo-script.md` — the edit-by-edit cue sheet, keyed to slide numbers, with a [clickable hosted version](https://jgrissom.github.io/dotnet-web-dev/week-06/demo/script.html). Every block you type or paste is in it, and every **🎞️ line is a cue to look up** — it names the slide you should be on and what it's for, so the script alone is enough to run the night from. Between two 🎞️ lines the deck can sit still.
 - **The starting app is not in this repo.** Curbside's finished week-5 state lives in the private answer-keys repo at `week-06/demo-starter/Curbside` — copy it out to a scratch folder before class.
 
 > [!IMPORTANT]
