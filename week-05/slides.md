@@ -346,9 +346,9 @@ Week 2's utility classes. Same as they ever were.
 
 **The app arrives finished.** Tonight is all `Views/`.
 
-- **2** — brand it: navbar + title
+- **2** — brand it: navbar + title + footer
 - **3** — a title per page, data-driven on Details
-- **4** — the footer becomes a partial
+- **4** — one card partial, rendered on **two** pages
 - **5** — a script, in a section
 - **6** — a Bootswatch theme
 
