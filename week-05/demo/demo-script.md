@@ -117,6 +117,7 @@ Don't ask the question rhetorically; make them look at both halves. Use the **ho
 - [ ] Refresh `/Home/Privacy` → an `<h1>` and a `<p>` on a white page. No navbar, no footer, no Bootstrap
 - [ ] **View Source** — there isn't even an `<html>` tag. *"A view produces a fragment. The layout is what makes it a document"*
 - [ ] **RESTORE** — delete the `Layout = null;` line ⚠️
+
 ### `_ViewImports`
 
 - [ ] 🎞️ **GO TO SLIDE 8** — *`Views/_ViewImports.cshtml`*
@@ -230,6 +231,7 @@ Don't ask the question rhetorically; make them look at both halves. Use the **ho
 - [ ] `/Trucks/Details/1` (Roll Models, Madison) → **"Also in Madison: The Gyro Wheel"**, rendered by the same card file
 - [ ] `TruckData` resolves in the view because of `@using Curbside.Models` in `_ViewImports` — **the payoff lands inside the hour**
 - [ ] `/Trucks/Details/5` (Pierogi Party, alone in Stevens Point) → no panel. The `@if` guard. *"'What if there are none' is a question worth always asking"*
+
 ### One file, two pages
 
 - [ ] 🎞️ **GO TO SLIDE 13** — *One file. Two pages.*
@@ -286,10 +288,12 @@ Don't ask the question rhetorically; make them look at both halves. Use the **ho
 - [ ] **Hard-refresh** (⌘⇧R / Ctrl+Shift+R). Whole site, different site
 - [ ] ⚠️ **Hard-refresh at every single swap.** A cached stylesheet looks exactly like "it didn't work" and will eat five minutes if you let it
 - [ ] Swap the theme name only — `vapor`, then `darkly` — hard-refreshing each time. *"One path segment"*
+
 ### Three things about that line
 
 - [ ] 🎞️ **GO TO SLIDE 17** — *Three things about that line*
 - [ ] Land three points: **`5.3.3` is pinned to match the Bootstrap already in `wwwroot/lib`** — version numbers in CDN URLs aren't decoration · **it replaces, it doesn't add** (leave both and they fight — the lab checks this) · **only the CSS moved**, the local `bootstrap.bundle.min.js` is untouched, so dropdowns still work
+
 ### The navbar needs a word
 
 - [ ] 🎞️ **GO TO SLIDE 18** — *Your Bootstrap still works*

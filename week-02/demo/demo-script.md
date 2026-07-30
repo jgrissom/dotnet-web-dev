@@ -36,6 +36,7 @@ Edit-by-edit cue sheet for transforming `index.html` (your **scratch copy**) int
 - [ ] Hero: wrap its contents in `<div class="container py-4">`
 - [ ] Hero: `h1` → `display-4` · `p` → `lead text-muted` · link → `btn btn-primary btn-lg mt-2`
 - [ ] **✓ it suddenly looks like a website** — pause and enjoy the reaction
+
 ### The feature row
 
 - [ ] 🎞️ **GO TO SLIDE 6** — *Breakpoints*

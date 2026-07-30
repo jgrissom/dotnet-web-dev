@@ -28,6 +28,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] 🎞️ **GO TO SLIDE 2** — *Tonight: the pivot*
 - [ ] 🎞️ **GO TO SLIDE 3** — *HTTP is just text*
 - [ ] On the hosted coffee page: F12 → **Network** → refresh
+
 ### Verbs and status codes
 
 - [ ] 🎞️ **GO TO SLIDE 4** — *Verbs*, then find the verb live in the panel
@@ -50,11 +51,13 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   dotnet watch
   ```
 - [ ] Browser opens → a working, styled site from three commands. Let that breathe
+
 ### The anatomy tour
 
 - [ ] 🎞️ **GO TO SLIDE 7** — *Project anatomy*. The folder map is on it; now walk the real thing
 - [ ] **Anatomy tour in VS Code** (keep `dotnet watch` running): `Controllers/HomeController.cs` → `Views/Home/` → `Views/Shared/_Layout.cshtml` (point at the navbar markup — "week 2 classes, recognize them?") → `wwwroot/lib/bootstrap` ("the *locally bundled* delivery I promised")
 - [ ] Prove the loop: in `Views/Home/Index.cshtml` change `Welcome` → `Common Grounds, now with a server` → save → browser refreshes itself (`dotnet watch`!)
+
 ### Program.cs, five acts
 
 - [ ] 🎞️ **GO TO SLIDE 8** — *`Program.cs` — a five-act story*
@@ -80,6 +83,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] 🎞️ **GO TO SLIDE 9** — *The request's journey*
 - [ ] 🎞️ **GO TO SLIDE 10** — *Routing: the pattern decoded*. **The slide is the exercise** — ask each URL off it before you type it
 - [ ] Predict-then-run the routing table with URLs in the browser: `/` · `/Home/Privacy` · then `/Menu` → **404!** ("no `MenuController` exists — yet")
+
 ### The controller
 
 - [ ] 🎞️ **GO TO SLIDE 11** — *Controllers and actions*
@@ -99,6 +103,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   }
   ```
 - [ ] Refresh `/Menu` → **500-ish error: no view.** Read the error out loud — it *tells you* where it looked. Convention, visible
+
 ### The view
 
 - [ ] 🎞️ **GO TO SLIDE 12** — *Views and Razor — first taste*
@@ -112,6 +117,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   ```
 - [ ] `/Menu` works. **✓ say it:** URL → method → view, and nobody registered anything anywhere
 - [ ] View Source on `/Menu`: no Razor in sight — the server rendered pure HTML
+
 ### A parameter
 
 - [ ] 🎞️ **GO TO SLIDE 13** — *Passing data in*
@@ -131,6 +137,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 - [ ] 🎞️ **GO TO SLIDE 14** — *Azure App Service*
 - [ ] (If demoing login) `az login` → school account → subscription table prints
+
 ### az webapp up
 
 - [ ] 🎞️ **GO TO SLIDE 15** — *One command to the cloud*

@@ -46,6 +46,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   ```csharp
   pattern: "{controller=Home}/{action=Index}/{id?}"
   ```
+
 ### Predict-then-run
 
 - [ ] 🎞️ **GO TO SLIDE 4** — *Predict before you press Enter*. **The slide is the exercise** — work the table off it, asking the room each time
@@ -89,6 +90,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   }
   ```
 - [ ] Visit `/Trucks` → the word **trucks!** on a blank page. No view exists — *routing is proven on its own*
+
 ### Then the view
 
 - [ ] 🎞️ **GO TO SLIDE 7** — *Prove one half at a time*. That's what `Content()` was for; now take the second half
@@ -122,6 +124,7 @@ Everything here happens in `Views/Trucks/Index.cshtml`.
   ```
 - [ ] View Source: the *values* are there, no `@` anywhere. "The server did the math"
 - [ ] Refresh a few times — the clock ticks. Server-rendered, every request
+
 ### Blocks and branches
 
 - [ ] 🎞️ **GO TO SLIDE 9** — *Blocks and branches*
@@ -151,6 +154,7 @@ Everything here happens in `Views/Trucks/Index.cshtml`.
 
 - [ ] Flip `isOpenLate` to `false`, save, refresh — **different HTML, same file**. View Source: only the branch that ran is there. The other one *never existed*
 - [ ] Point at `else` — **no `@`**. "Once you open `@if`, you're in C# until the braces close." Predict the #1 typo of the night before it happens
+
 ### A loop
 
 - [ ] 🎞️ **GO TO SLIDE 10** — *The big idea*
@@ -177,6 +181,7 @@ Everything here happens in `Views/Trucks/Index.cshtml`.
 - [ ] Add a fifth cuisine to the array → the page grows. **Data changed, markup didn't**
 - [ ] 🎞️ **GO TO SLIDE 11** — *Week 2, revisited*
 - [ ] Callback to week 2: "the coffee shop's six menu cards were six hand-typed blocks. This is that job, done once"
+
 ### Comments
 
 - [ ] 🎞️ **GO TO SLIDE 12** — *What does the browser actually get?*
@@ -207,6 +212,7 @@ Everything here happens in `Views/Trucks/Index.cshtml`.
       public bool IsOpenLate { get; set; }
   }
   ```
+
 ### The seed data
 
 - [ ] 🎞️ **GO TO SLIDE 14** — *Six trucks, no database*
@@ -234,6 +240,7 @@ Everything here happens in `Views/Trucks/Index.cshtml`.
   </details>
 
 - [ ] Say the week-7 line **now**, while it's on screen: *"this is a hard-coded list today. In week 7 it becomes a database table — and almost none of the code we're about to write changes"*
+
 ### Into the controller
 
 - [ ] 🎞️ **GO TO SLIDE 15** — *Three ways in*
@@ -259,6 +266,7 @@ Everything here happens in `Views/Trucks/Index.cshtml`.
   </details>
 
   Either way, land the point: **a namespace isn't visible just because it's in the same project.** *(Students hit this in the lab — the lab README warns them.)*
+
 ### Into the view
 
 - [ ] 🎞️ **GO TO SLIDE 16** — *Strongly typed views*
@@ -356,6 +364,7 @@ Everything here happens in `Views/Trucks/Index.cshtml`.
 
 - [ ] Visit `/Trucks/Details/2` → **Cheese Curd Cartel**. Then `/Trucks/Details/5` → Pierogi Party. *Same method, different URL, different page*
 - [ ] Point at the URL: "where did the `2` come from? The **third route slot** — `{id?}`, from slide 3. That's what it was for"
+
 ### An honest 404
 
 - [ ] 🎞️ **GO TO SLIDE 18** — *Guard the door*
