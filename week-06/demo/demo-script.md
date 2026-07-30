@@ -66,11 +66,13 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
       Console.WriteLine($"   Cuisine   {truck.Cuisine}");
       Console.WriteLine($"   City      {truck.City}");
       Console.WriteLine($"   Rating    {truck.Rating}   (x2 = {truck.Rating * 2})");
+      Console.WriteLine($"   Open late {truck.IsOpenLate}");
 
       return Content("Submitted — look at the terminal 👀");
   }
   ```
-- [ ] Point at the last two things you typed **before you run it**, so they're primed: `GetType().Name`, and `Rating * 2`. *"Hold onto that times-two"*
+- [ ] Point at two of the things you just typed **before you run it**, so they're primed: `GetType().Name`, and `Rating * 2`. *"Hold onto that times-two"*
+- [ ] `Open late` will print `False` and there's no such box on the form yet — **leave it alone for now**; the checkbox arrives in §2 and this line is what proves it binds
 - [ ] Create `Views/Trucks/Create.cshtml` — **paste**. Say it out loud: *"this is week 2 HTML. No tag helpers, no `@model`, nothing you haven't written before"*
 
   <details><summary>📋 paste: Create.cshtml, plain HTML</summary>
@@ -101,6 +103,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
      Cuisine   German
      City      Appleton
      Rating    4.1   (x2 = 8.2)
+     Open late False
   ```
 - [ ] 🎯 **Point at it and stop.** *"A `Truck` object showed up in my method, fully filled in, and I wrote nothing to build it. That's the whole of Part 1 — why."*
 - [ ] Then the second half, and **don't rush it**: *"look at the top line — `built a Truck`. Not a bag of strings, an instance of the class you wrote in week 4. And look at the bottom — **you cannot multiply a string.** The browser sent me the characters four-point-one. What arrived was a number."*
@@ -128,6 +131,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
      Cuisine   German
      City      Appleton
      Rating    4.1   (x2 = 8.2)
+     Open late False
   dotnet watch ⌚ Files updated: ./Views/Trucks/Create.cshtml
   dotnet watch 🔥 Hot reload succeeded.
   ── model binding built a Truck ──
@@ -135,6 +139,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
      Cuisine
      City      Appleton
      Rating    0   (x2 = 0)
+     Open late False
   ```
 - [ ] 🎯 **Two fingers, one on each block.** *"No error. No warning. Two properties quietly wrong — and for two completely different reasons."*
 - [ ] **`Cuisine` is empty** — binding went looking for a value called `Cuisine`, found nothing, left the property alone. *"It is name-matching, and nothing else."*
@@ -234,18 +239,23 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 - [ ] Refresh. **It's a real form now**, styled by the Bootswatch theme from last week, and you wrote no CSS
 - [ ] **View Source** and land three things:
-  - `IsOpenLate` is a **checkbox** — the `bool` chose that — plus a **hidden `IsOpenLate=false`** right after it. *"An unchecked box sends nothing at all, so without that hidden field a 'no' and a missing field would look identical. Razor sends false, and ticking the box overrides it"*
+  - `IsOpenLate` is a **checkbox** — the `bool` chose that — with `value="true"`. ⚠️ **The companion `<input name="IsOpenLate" type="hidden" value="false" />` is not beside it — Razor parks it at the *bottom of the form*, just inside `</form>`. Scroll down for it** (it's the last thing in the form; you'll be back here in a minute for the token, which sits right before it). *"An unchecked box sends nothing at all, so without that hidden field a 'no' and a missing field would look identical. Razor sends false, and ticking the box overrides it"*
   - `Rating` is still `type="text"` *(the number box is for whole numbers)*, but it picked up **`data-val-number="The field Rating must be a number."`** — 🔗 *"that's the banana rule from twenty minutes ago, now written into the HTML. Nobody's reading it yet"*
   - the `<span>`s and the summary `<div>` rendered **empty**. *"Those are sockets. Part 3 plugs the errors in"*
 - [ ] 🎞️ **GO TO SLIDE 10** — *A checkbox casts a shadow* — straight after you've found the hidden field in View Source, while it's still fresh
-- [ ] Resubmit the form to prove it still works — same `Content()` output as before
+- [ ] **Clear the terminal**, then resubmit — **with the box ticked**. The page just says *"look at the terminal 👀"* as always, so **read the terminal**, and the last line is the new one:
+  ```
+     Open late True
+  ```
+- [ ] *"Nothing about the controller changed. I replaced the whole form and the same `Truck` still turns up — because `asp-for` wrote the same `name` attributes I typed by hand, and one I couldn't have: a `bool` from a checkbox"*
+- [ ] Submit once more with the box **unticked** → `Open late False`, and 🔗 *"that `False` is the hidden field arriving. An unchecked box on its own sends nothing"*
 
 ### The hidden field you didn't write *(slide 11)*
 
 - [ ] 🎞️ **GO TO SLIDE 11** — *The field you didn't write*
-- [ ] In View Source, scroll to just inside `</form>`:
+- [ ] In View Source, scroll to just inside `</form>` — back where you found the checkbox's shadow. **Two hidden fields sit there, the token first:**
   ```html
-  <input name="__RequestVerificationToken" type="hidden" value="CfDJ8L5JyJv3Gm..." />
+  <input name="__RequestVerificationToken" type="hidden" value="CfDJ8L5JyJv3Gm..." /><input name="IsOpenLate" type="hidden" value="false" />
   ```
 - [ ] ⚠️ **Do not say the tag helper added it** — Razor adds it to **every** `<form method="post">`, including the hand-written one from §1. Worth saying explicitly, because it's the obvious wrong conclusion
 - [ ] The one-paragraph why: *"without it, any other site could put a hidden form on their page pointing at your URL, and a logged-in visitor's browser would send it along with their cookies. The token is a value my server planted here and in a cookie; someone else's form can't produce a matching pair"*

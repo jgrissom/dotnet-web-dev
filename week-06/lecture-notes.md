@@ -41,6 +41,7 @@ public IActionResult Create(Truck truck)
     Console.WriteLine($"   Cuisine   {truck.Cuisine}");
     Console.WriteLine($"   City      {truck.City}");
     Console.WriteLine($"   Rating    {truck.Rating}   (x2 = {truck.Rating * 2})");
+    Console.WriteLine($"   Open late {truck.IsOpenLate}");
 
     return Content("Submitted — look at the terminal 👀");
 }
@@ -72,7 +73,10 @@ Fill it in and submit. The browser says to look at the terminal, and the termina
    Cuisine   German
    City      Appleton
    Rating    4.1   (x2 = 8.2)
+   Open late False
 ```
+
+`Open late` prints `False` because this form has no such box yet — the property kept its default. The checkbox turns up in Part 2, and that line is how you'll see it bind.
 
 **A `Truck` object arrived in your action, fully populated, and you didn't write a line of code to build it.** That's the thing to point at. Everything in Part 1 is about why.
 
@@ -231,15 +235,15 @@ That's the conversion rule from Part 1 — the one that quietly turned `banana` 
 Three things worth naming while it's on screen:
 
 - **`@model Truck` at the top.** The form is strongly typed, exactly like the index and details views — that's what lets `asp-for="Name"` be checked at build time.
-- **`asp-for` on a `bool` renders a checkbox**, again from the C# type. It also emits a hidden companion field, which is the fix for an old HTML wart: an unchecked box sends *nothing at all*, so without the hidden field a "no" would be indistinguishable from a missing field. Razor sends `false` alongside, and the checkbox overrides it with `true` when ticked. Show it in View Source; it surprises people who've fought this before.
+- **`asp-for` on a `bool` renders a checkbox**, again from the C# type. It also emits a hidden companion field — **not next to the checkbox, but at the bottom of the form, just inside `</form>`, so scroll down for it in View Source** — which is the fix for an old HTML wart: an unchecked box sends *nothing at all*, so without the hidden field a "no" would be indistinguishable from a missing field. Razor sends `false` alongside, and the checkbox overrides it with `true` when ticked. Show it in View Source; it surprises people who've fought this before. Submit the form with the box ticked and the `Open late` line in the terminal reads `True` — that's the one field the hand-written form couldn't produce.
 - **The `<span>`s and the `<div>` are empty**, and they render as empty. They're the sockets Part 3 plugs error messages into.
 
 ### The hidden field you didn't write
 
-Scroll to the bottom of View Source, just inside `</form>`:
+Scroll to the bottom of View Source, just inside `</form>` — the same place the checkbox's hidden companion turned up. There are two hidden fields down there, and the token comes first:
 
 ```html
-<input name="__RequestVerificationToken" type="hidden" value="CfDJ8L5JyJv3Gm..." />
+<input name="__RequestVerificationToken" type="hidden" value="CfDJ8L5JyJv3Gm..." /><input name="IsOpenLate" type="hidden" value="false" />
 ```
 
 Nobody typed that. Razor adds it to **every** `<form method="post">` it renders — including the hand-written one from Part 1, which is worth pointing out, because it means this isn't something `asp-action` bought you.
