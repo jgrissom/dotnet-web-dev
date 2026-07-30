@@ -107,8 +107,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 > [!IMPORTANT]
 > **Do NOT clear the terminal for this one.** The good result from a minute ago has to stay on screen — the whole beat is the two blocks sitting one above the other.
 
-- [ ] 🎞️ **GO TO SLIDE 6** — *Two silent failures*. **This slide is the question** — put it up, ask it, take a show of hands, and only then touch anything
-- [ ] **Predict first, both of them:** *"I'm going to rename one input from `Cuisine` to `Food`. And this time I'll type `banana` into Rating. Neither is going to be an error — so what do I get?"*
+- [ ] 🎞️ **GO TO SLIDE 6** — *Two silent failures* · **predict both, show of hands, then touch nothing until they answer:** *"I'm going to rename one input from `Cuisine` to `Food`. And this time I'll type `banana` into Rating. Neither is going to be an error — so what do I get?"*
 - [ ] In `Create.cshtml`, `name="Cuisine"` → `name="Food"`. **Watch `dotnet watch` hot-reload it** — two lines, no restart
 - [ ] Back in the browser: fill the form in again, **`banana` in the Rating box**, submit. Swap to the terminal — the new block lands right under the good one:
   ```
@@ -263,8 +262,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
      Rating    9000   (x2 = 18000)
   ```
 - [ ] *"A nameless truck, in no city, rated nine thousand out of five."* **Nothing in the app has an opinion about any of it** *(the action still just prints — nothing is stored yet, and nothing is judged)*
-- [ ] 🎞️ **GO TO SLIDE 12** — *Where do the rules live?* The two wrong answers are on it; work through them out loud
-- [ ] Ask it as a real question: *"somebody has to say what a valid truck is. Where does that live?"* Walk past the two wrong answers — **the view** (rules pasted into markup can't be reused, and a `Truck` gets made in more than one place) and **the controller** (every action grows the same block of ifs) — and land on **the model**
+- [ ] 🎞️ **GO TO SLIDE 12** — *Where do the rules live?* · ask it as a real question: *"somebody has to say what a valid truck is. Where does that live?"* Work through the two wrong answers on the slide out loud — **the view** (rules pasted into markup can't be reused, and a `Truck` gets made in more than one place) and **the controller** (every action grows the same block of ifs) — and land on **the model**
 
 ### Data annotations *(slides 13–14)*
 
@@ -305,8 +303,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   </details>
 
 - [ ] Refresh the form. **The checkbox label now reads "Open late?"** — *"I changed the model and the form changed, because the label was reading the model the whole time"*
-- [ ] 🎞️ **GO TO SLIDE 14** — *...and they end up in the HTML*. Put it up **before** View Source, then go and find the same attributes live
-- [ ] **View Source on the Name input** and read the new attributes out: `data-val="true"`, `data-val-required="Every truck needs a name."`, `maxlength="50"`. *"My rules are in the HTML now. Park that — it pays off in twenty minutes"*
+- [ ] 🎞️ **GO TO SLIDE 14** — *...and they end up in the HTML* · then **View Source on the Name input** and find the same attributes live: `data-val="true"`, `data-val-required="Every truck needs a name."`, `maxlength="50"`. *"My rules are in the HTML now. Park that — it pays off in twenty minutes"*
 - [ ] Mention `{1}` and `{2}` in the Range message: the bounds fill themselves in, so the message can't drift from the rule
 - [ ] ⚠️ **Say the implicit-required thing before it bites them:** *"`Rating` has no `[Required]`, but leave it blank and it'll complain anyway — a `double` has nowhere to put 'empty'. If you want a genuinely optional number, the property has to be `double?`"*
 
@@ -345,12 +342,10 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ### Break it #3 — delete the guard *(slides 16–17)*
 
-- [ ] 🎞️ **GO TO SLIDE 16** — *Delete the guard → "What stops it?"* The question slide again: ask, then go to the editor
-- [ ] **Predict first:** *"if I comment out the IsValid check, what stops the bad truck?"*
+- [ ] 🎞️ **GO TO SLIDE 16** — *Delete the guard* · the question slide again — **predict first, then go to the editor:** *"if I comment out the IsValid check, what stops the bad truck?"*
 - [ ] Comment out the whole `if (!ModelState.IsValid)` block. Submit the blank-name, 9000-rated truck again
 - [ ] **It's on `/Trucks`.** A nameless card rated nine thousand
-- [ ] 🎞️ **GO TO SLIDE 17** — *Attributes describe. The guard decides.* Put it up on the nameless truck and say it to the slide
-- [ ] 🎯 **The sentence:** *"The annotations did their job. They recorded the problem, and nobody read the record. **Attributes describe. The guard decides.**"*
+- [ ] 🎞️ **GO TO SLIDE 17** — *Attributes describe. The guard decides.* · 🎯 put it up on the nameless truck and **say the setup; let the slide land the punchline:** *"The annotations did their job. They recorded the problem, and nobody read the record."*
 - [ ] **RESTORE the block** ⚠️
 
 ### Break it #4 — the redirect *(slide 18)*
@@ -389,8 +384,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   }
   ```
 - [ ] Refresh, submit the **empty** form: errors appear **instantly**. No reload, no round trip
-- [ ] 🎞️ **GO TO SLIDE 20** — *One source of truth*. The two-arrow diagram is the payoff; leave it up while you say the next line
-- [ ] 🎯 *"Nothing in my C# changed. Those two scripts scan the page for the `data-val` attributes we watched appear twenty minutes ago, and enforce whatever they find. **One source of truth — `Models/Truck.cs` — enforced in two places.**"*
+- [ ] 🎞️ **GO TO SLIDE 20** — *One source of truth* · 🎯 leave the two-arrow diagram up and say: *"Nothing in my C# changed. Those two scripts scan the page for the `data-val` attributes we watched appear twenty minutes ago, and enforce whatever they find. **One source of truth — `Models/Truck.cs` — enforced in two places.**"*
 - [ ] Say why the section matters: dropped in the middle of the view it loads **before** jQuery and dies with `$ is not defined`. Week 5's section wasn't a formality
 
 ### Break it #5 — defeat it *(slide 21)*
@@ -398,8 +392,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 > [!IMPORTANT]
 > **This is the security beat of the night. Don't cut it, and don't rush the sentence at the end.**
 
-- [ ] 🎞️ **GO TO SLIDE 21** — *Now turn it off*. Ask the question off the slide, then go to dev tools
-- [ ] **Predict first:** *"if I switch the browser's validation off, does the truck get in?"*
+- [ ] 🎞️ **GO TO SLIDE 21** — *Now turn it off* · **predict off the slide, then go to dev tools:** *"if I switch the browser's validation off, does the truck get in?"*
 - [ ] Dev tools → **Elements** → find the `<form>` → add a **`novalidate`** attribute to it *(double-click the tag, type it in)*
 - [ ] Submit the empty form. **The browser lets it straight through** — no red text, a real POST goes out
 - [ ] **And the server refuses it anyway**, with the same messages as before, because `ModelState.IsValid` never went anywhere
