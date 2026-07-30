@@ -44,6 +44,11 @@ dotnet new console -o Hello
 > [!TIP]
 > No IntelliSense or the breakpoint won't hit? Make sure you opened the **folder** (not just the file), then give the C# extension a moment — watch the flame icon in the status bar.
 
+> [!NOTE]
+> **Optional, but grab it while you're here: Live Server.** Extensions → search **Live Server** (by Ritwick Dey) → Install. Right-click any `.html` file → **Open with Live Server** and it serves the page at `http://127.0.0.1:5500`, reloading the browser every time you save.
+>
+> You'll use it for tonight's homework and heavily in week 2. It isn't on the checklist and nothing is graded on it — but a page opened straight from disk can't do everything a served page can, and the homework checker says so when it hits that limit.
+
 ## 3. SQL Server (mssql) extension
 
 No database install this semester — you each have an account on the **school SQL Server**, and it works from home too.

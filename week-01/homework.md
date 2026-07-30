@@ -37,6 +37,11 @@ Set up a homework folder the same way the lab worked — a page that loads your 
    ```
 3. Open `index.html` in the browser, console on (**F12**). It says **0 / 8 functions passing** — the assignment is turning those green, one at a time, refreshing after every save. Same rhythm as the lab.
 
+> [!TIP]
+> **Recommended: open it with Live Server instead of double-clicking.** In VS Code, Extensions → search **Live Server** (by Ritwick Dey) → Install. Then right-click `index.html` → **Open with Live Server**. It serves the page at `http://127.0.0.1:5500` and reloads the browser every time you save, so you stop alt-tabbing to hit refresh.
+>
+> It also unlocks the checker's **whole-file scan**. A page opened straight from disk (`file://`) isn't allowed by the browser to read its own `.js`, so that scan can't run — the checker will say so and still scan your eight functions. Over Live Server you get the full check with line numbers. It's optional; nothing is graded on it. You'll want it again in week 2.
+
 Now, in `homework.js`, copy this data to the top:
 
 ```js
@@ -76,7 +81,9 @@ console.log(totalCredits(courses));       // 14
 
 ### When are you done?
 
-When the console says **8 / 8 functions passing** and the deduction scan below it is clean (it warns about any `var`/`==` it finds, with line numbers).
+When the console says **8 / 8 functions passing** and the scan under it is clean — it names any `var`, `==` or `!=` it finds in your eight functions.
+
+If you're running from `file://`, the checker will also tell you the *whole-file* scan was skipped; that's expected, and it runs on Live Server or once your page is on GitHub Pages. Either way, anything inside your eight functions is caught wherever you open it.
 
 > [!TIP]
 > **The checker is the exact same check I grade with.** 8 / 8 and no warnings means the function points are yours. Leave `homework-checks.js` in your repo when you submit — it doesn't affect anything.

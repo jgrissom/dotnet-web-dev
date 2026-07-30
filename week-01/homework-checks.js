@@ -44,19 +44,54 @@
   console.log(`%c${passed} / ${results.length} functions passing`,
     passed === results.length ? "color: green; font-weight: bold" : "color: orange; font-weight: bold");
 
-  // Deduction scan: -1 per var / == on the graded rubric
+  // ── Deduction scan: -1 per var / == on the graded rubric ───────────────────
+  // Two passes, because one of them can't always run. Opened as a local file
+  // (file://), fetch is blocked by the browser — so the whole-file scan is only
+  // available over http, i.e. Live Server or your published Pages URL. The
+  // function scan works everywhere, because the functions are already in memory.
+  const scan = (code) => {
+    const flags = [];
+    if (/\bvar\s/.test(code)) flags.push("var");
+    if (/[^=!<>]==[^=]/.test(code)) flags.push("==");
+    if (/[^=!]!=[^=]/.test(code)) flags.push("!=");
+    return flags;
+  };
+
+  const NAMES = ["courseLine", "isFull", "openCourses", "courseTitles",
+                 "openCourseLines", "findCourse", "addCourse", "totalCredits"];
+
+  // Pass 1 — read the source of each function you wrote. Always works.
+  const inFunctions = [];
+  for (const name of NAMES) {
+    let fn;
+    try { fn = eval(name); } catch { continue; }        // not written yet
+    if (typeof fn !== "function") continue;
+    const bad = scan(fn.toString().replace(/\/\/[^\n]*/g, ""));
+    if (bad.length) inFunctions.push(`${name}(): ${bad.join(", ")}`);
+  }
+
+  if (inFunctions.length) {
+    console.log(`%c⚠️ deduction risk (−1 each on grading) — ${inFunctions.join(" · ")}`, "color: orange");
+  } else {
+    console.log("%c✅ no var/==/!= in your 8 functions", "color: green");
+  }
+
+  // Pass 2 — the whole file, with line numbers. Needs http, so it may not run.
   fetch("homework.js").then(r => r.text()).then(src => {
     const flags = [];
     src.split("\n").forEach((line, i) => {
-      const code = line.split("//")[0];
-      if (/\bvar\s/.test(code)) flags.push(`line ${i + 1}: var`);
-      if (/[^=!<>]==[^=]/.test(code)) flags.push(`line ${i + 1}: ==`);
-      if (/[^=!]!=[^=]/.test(code)) flags.push(`line ${i + 1}: !=`);
+      const bad = scan(line.split("//")[0]);
+      bad.forEach(b => flags.push(`line ${i + 1}: ${b}`));
     });
     if (flags.length) {
-      console.log(`%c⚠️ deduction risk (−1 each on grading): ${flags.join(" · ")}`, "color: orange");
+      console.log(`%c⚠️ whole-file scan — ${flags.join(" · ")}`, "color: orange");
     } else {
-      console.log("%c✅ no var/== found — no rule deductions", "color: green");
+      console.log("%c✅ whole-file scan clean — no rule deductions", "color: green");
     }
-  }).catch(() => {});
+  }).catch(() => {
+    console.log("%c… whole-file scan skipped: a page opened straight from disk (file://) "
+      + "isn't allowed to read its own .js. The 8 functions above WERE scanned. For the "
+      + "full check with line numbers, use VS Code's Live Server or your GitHub Pages URL.",
+      "color: gray");
+  });
 })();
