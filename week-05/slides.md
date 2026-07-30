@@ -32,6 +32,8 @@ style: |
 
 ---
 
+<!-- _footer: '🖥️ Demo §1 · the gap' -->
+
 ## Last week vs. tonight
 
 **Week 4:** you built pages *from data*.
@@ -45,7 +47,7 @@ style: |
 
 ---
 
-<!-- _footer: '🖥️ Demo §1' -->
+<!-- _footer: '🖥️ Demo §1 · the gap' -->
 
 ## A question
 
@@ -64,7 +66,7 @@ No `<html>`. No `<head>`. **No navbar.**
 
 ---
 
-<!-- _footer: '🖥️ Demo §1' -->
+<!-- _footer: '🖥️ Demo §1 · the layout file' -->
 
 ## `Views/Shared/_Layout.cshtml`
 
@@ -86,7 +88,7 @@ No `<html>`. No `<head>`. **No navbar.**
 
 ---
 
-<!-- _footer: '🖥️ Demo §1' -->
+<!-- _footer: '🖥️ Demo §1 · break #1' -->
 
 ## `@RenderBody()`
 
@@ -104,7 +106,7 @@ Your view renders **first**. The layout renders **second**, and drops your HTML 
 
 ---
 
-<!-- _footer: '🖥️ Demo §1' -->
+<!-- _footer: '🖥️ Demo §1 · the title' -->
 
 ## The title has two halves
 
@@ -144,7 +146,7 @@ Nothing in your Index view asks for a layout. This is why it gets one.
 
 ---
 
-<!-- _footer: '🖥️ Demo §2' -->
+<!-- _footer: '🖥️ Demo §2 · _ViewImports' -->
 
 ## `Views/_ViewImports.cshtml`
 
@@ -163,6 +165,8 @@ Nothing in your Index view asks for a layout. This is why it gets one.
 
 ---
 
+<!-- _footer: '🖥️ Demo §3 · the card' -->
+
 ## The problem partials solve
 
 You want the same truck block:
@@ -177,7 +181,7 @@ Copy-paste gives you **three places to fix**, and they *will* drift.
 
 ---
 
-<!-- _footer: '🖥️ Demo §3' -->
+<!-- _footer: '🖥️ Demo §3 · the card' -->
 
 ## Making one — three steps
 
@@ -197,7 +201,7 @@ A **file name**, not a path · underscore in, `.cshtml` out
 
 ---
 
-<!-- _footer: '🖥️ Demo §3' -->
+<!-- _footer: '🖥️ Demo §3 · the card' -->
 
 ## Give it a model
 
@@ -220,7 +224,7 @@ Render it with the loop variable:
 
 ---
 
-<!-- _footer: '🖥️ Demo §3' -->
+<!-- _footer: '🖥️ Demo §3 · the card' -->
 
 ## The page and the partial disagree
 
@@ -236,7 +240,7 @@ The partial gets **whatever you hand it**.
 
 ---
 
-<!-- _footer: '🖥️ Demo §3' -->
+<!-- _footer: '🖥️ Demo §3 · the card' -->
 
 ## One file. Two pages.
 
@@ -273,7 +277,7 @@ A page can fill it:
 
 ---
 
-<!-- _footer: '🖥️ Demo §4' -->
+<!-- _footer: '🖥️ Demo §4 · break #4' -->
 
 ## `required: false`
 
@@ -342,6 +346,8 @@ Week 2's utility classes. Same as they ever were.
 
 ---
 
+<!-- _footer: '🖥️ Demo §6' -->
+
 ## Lab: the Registry gets a shell
 
 **The app arrives finished.** Tonight is all `Views/`.
@@ -355,6 +361,8 @@ Week 2's utility classes. Same as they ever were.
 **Target tonight: 1–4 green.**
 
 ---
+
+<!-- _footer: '🖥️ Demo §7' -->
 
 ## Tonight, in one picture
 

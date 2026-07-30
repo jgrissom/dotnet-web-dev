@@ -9,7 +9,13 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 > **Tonight you break the layout four times on purpose.** Every one of them takes down *every page at once* — that's the lesson, and it's also the risk. Each break below has an explicit **restore** step. Do them.
 
 > [!TIP]
-> **🎞️ means stop and switch to the projector.** Every 🎞️ line says the same thing: *pause here, put that slide up, talk to it.* There are no exceptions and no cue that means "not yet" — if a slide has to wait for something, its cue is further down, at the moment it's due. Between two 🎞️ lines you're in the editor or the browser and the deck stays put, so if you lose your place, **the nearest 🎞️ above you is the slide that should be showing.**
+> **This sheet is the running order. The deck is a prop it tells you to pick up.**
+>
+> The projector has two states and you swipe between them: **the slides**, or **VS Code and the browser side by side** (so the editor, the page and the terminal are all visible together — those never need a swipe between them). This sheet stays private on your laptop or tablet.
+>
+> **🎞️ means swipe to the slides.** Every 🎞️ line says the same thing: *put that slide up, talk to it.* There are no exceptions and no cue that means "not yet" — if a slide would give away a punchline, its cue is further down, at the moment it's due. Everything that isn't a 🎞️ line happens in the other state, so **you don't need a cue to come back** — the next ordinary bullet is what to do there.
+>
+> Lost your place? **The nearest 🎞️ above you is the slide that should be showing** — and every slide's footer names the section and beat of this sheet it belongs to, so you can go the other way too.
 
 ## 0 · Before class
 
@@ -25,7 +31,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 ### The gap, shown live *(slides 2–3)* — **do this before saying anything about layouts**
 
 - [ ] 🎞️ **GO TO SLIDE 2** — *Last week vs. tonight*
-- [ ] 🎞️ **GO TO SLIDE 3** — *A question*: the whole of `Views/Home/Index.cshtml`, and *"who wrote the other 54 lines?"* Leave it up while you do the two windows below
+- [ ] 🎞️ **GO TO SLIDE 3** — *A question*: the whole of `Views/Home/Index.cshtml`, and *"who wrote the other 54 lines?"* Ask it off the slide, then swipe back for the two windows below
 
 Don't ask the question rhetorically; make them look at both halves. Use the **home page** — it's the smallest file in the project, so the gap is the widest and the whole thing fits on screen without scrolling. Two windows, thirty seconds.
 
@@ -44,6 +50,8 @@ Don't ask the question rhetorically; make them look at both halves. Use the **ho
 
 > [!NOTE]
 > Those counts are exact for the demo starter **as shipped**, and they shift the moment you start editing in a minute. If you rehearsed on a branded copy, re-check them rather than reading these aloud.
+
+### The layout file
 
 - [ ] 🎞️ **GO TO SLIDE 4** — *`Views/Shared/_Layout.cshtml`*. The shape is on it; now open the real thing
 - [ ] Open `Views/Shared/_Layout.cshtml`. *"Here it is."* Scroll it top to bottom **once**, slowly, without editing. Name three things: `Views/Shared/` is for what belongs to no single page · the `_` prefix means "a piece, not a page" · it's all just Razor
@@ -109,6 +117,8 @@ Don't ask the question rhetorically; make them look at both halves. Use the **ho
 - [ ] Refresh `/Home/Privacy` → an `<h1>` and a `<p>` on a white page. No navbar, no footer, no Bootstrap
 - [ ] **View Source** — there isn't even an `<html>` tag. *"A view produces a fragment. The layout is what makes it a document"*
 - [ ] **RESTORE** — delete the `Layout = null;` line ⚠️
+### `_ViewImports`
+
 - [ ] 🎞️ **GO TO SLIDE 8** — *`Views/_ViewImports.cshtml`*
 - [ ] Open `Views/_ViewImports.cshtml`:
   ```html

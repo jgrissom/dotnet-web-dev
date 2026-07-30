@@ -32,6 +32,8 @@ style: |
 
 ---
 
+<!-- _footer: '🖥️ Demo §0b' -->
+
 ## Last week vs. tonight
 
 **Week 3:** one URL found one method.
@@ -44,6 +46,8 @@ style: |
 - Data flowing from C# into a page — typed
 
 ---
+
+<!-- _footer: '🖥️ Demo §1' -->
 
 ## The pattern, decoded
 
@@ -61,7 +65,7 @@ The `=` parts are **defaults** — they're why `/` works.
 
 ---
 
-<!-- _footer: '🎨 live — script §1: Curbside is running; type each URL, predict first' -->
+<!-- _footer: '🖥️ Demo §1' -->
 
 ## Predict before you press Enter
 
@@ -77,7 +81,7 @@ Two of these do something you won't expect.
 
 ---
 
-<!-- _footer: '⚠️ §1 continued — break the pattern twice, then RESTORE it before §2' -->
+<!-- _footer: '🖥️ Demo §1' -->
 
 ## The URL is not a file path
 
@@ -90,6 +94,8 @@ There is no folder named `Trucks`.
 Routing is configuration, not magic. So let's edit it.
 
 ---
+
+<!-- _footer: '🖥️ Demo §2' -->
 
 ## Three names must agree
 
@@ -108,7 +114,7 @@ Views/Trucks/Index.cshtml           ← folder = controller
 
 ---
 
-<!-- _footer: '🎨 demo time — script §2: build it in two steps, misname a folder on purpose' -->
+<!-- _footer: '🖥️ Demo §2' -->
 
 ## Prove one half at a time
 
@@ -128,6 +134,8 @@ Two failure points, isolated. Make this a habit.
 
 ---
 
+<!-- _footer: '🖥️ Demo §3' -->
+
 ## Razor: `@` is the door
 
 ```html
@@ -142,6 +150,8 @@ Two failure points, isolated. Make this a habit.
 Different in one huge way: **this runs on the server.**
 
 ---
+
+<!-- _footer: '🖥️ Demo §3' -->
 
 ## Blocks and branches
 
@@ -164,6 +174,8 @@ No `@` on `else` — you're already in C#.
 
 ---
 
+<!-- _footer: '🖥️ Demo §3' -->
+
 ## The big idea
 
 ```html
@@ -183,6 +195,8 @@ You no longer write a page. You write a **rule for producing a page**.
 
 ---
 
+<!-- _footer: '🖥️ Demo §3' -->
+
 ## Week 2, revisited
 
 The coffee shop's six menu cards were six hand-typed blocks of HTML.
@@ -195,7 +209,7 @@ Same kind of site. Different century.
 
 ---
 
-<!-- _footer: '🎨 demo time — script §3: Razor playground + View Source after every beat' -->
+<!-- _footer: '🖥️ Demo §3' -->
 
 ## What does the browser actually get?
 
@@ -213,7 +227,7 @@ Notes-to-self go in `@* *@`.
 
 ---
 
-<!-- _footer: '🎨 demo time — script §4: type the class, paste the six trucks' -->
+<!-- _footer: '🖥️ Demo §4' -->
 
 ## The model is just a class
 
@@ -233,6 +247,8 @@ The **M** in MVC is the C# you already write.
 
 ---
 
+<!-- _footer: '🖥️ Demo §4' -->
+
 ## Six trucks, no database
 
 ```csharp
@@ -251,6 +267,8 @@ Week 7 deletes this file. The controller barely notices.
 
 ---
 
+<!-- _footer: '🖥️ Demo §4' -->
+
 ## Three ways in
 
 | Way | Good for |
@@ -262,6 +280,8 @@ Week 7 deletes this file. The controller barely notices.
 `ViewData` is a shoebox. `@model` is a labeled, typed slot.
 
 ---
+
+<!-- _footer: '🖥️ Demo §4' -->
 
 ## Strongly typed views
 
@@ -283,6 +303,8 @@ lowercase `@model` declares · capital `@Model` uses
 
 ---
 
+<!-- _footer: '🖥️ Demo §5' -->
+
 ## The pair behind every site
 
 ```
@@ -298,7 +320,7 @@ The `2` lands in `id` — from the route's **third slot**, not a query string.
 
 ---
 
-<!-- _footer: '🎨 demo time — script §4–5: the model arrives, then Details + the guard' -->
+<!-- _footer: '🖥️ Demo §5' -->
 
 ## Guard the door
 
@@ -319,6 +341,8 @@ Then visit `/Trucks/Details/999` on purpose.
 
 ---
 
+<!-- _footer: '🖥️ Demo §6' -->
+
 ## Lab: Cryptid Registry 👻
 
 - Copy `week-04/lab/starter/` out of the repo clone
@@ -330,6 +354,8 @@ Tonight's target: **checks 1–4**. The rest is homework.
 
 ---
 
+<!-- _footer: '🖥️ Demo §7' -->
+
 ## Before next week
 
 - ✅ Lab to **6 / 6** — not collected, do it anyway
@@ -340,6 +366,8 @@ Tonight's target: **checks 1–4**. The rest is homework.
 You'll extend that app every week from here. **Pick a topic you can live with.**
 
 ---
+
+<!-- _footer: '🖥️ Demo §7' -->
 
 ## The chain, complete
 

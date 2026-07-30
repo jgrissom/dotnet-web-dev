@@ -32,6 +32,8 @@ style: |
 
 ---
 
+<!-- _footer: '🖥️ Demo §0b' -->
+
 ## Tonight
 
 1. Why CSS frameworks exist
@@ -42,6 +44,8 @@ style: |
 6. Ship it to GitHub Pages
 
 ---
+
+<!-- _footer: '🖥️ Demo §0b' -->
 
 ## Why a CSS framework?
 
@@ -56,6 +60,8 @@ Bootstrap solves all four for the price of two `<link>`/`<script>` tags.
 **Trade-off:** every default Bootstrap site looks the same — we fix that tonight too.
 
 ---
+
+<!-- _footer: '🖥️ Demo §0b' -->
 
 ## Setup: two tags via CDN
 
@@ -77,6 +83,8 @@ Bootstrap solves all four for the price of two `<link>`/`<script>` tags.
 
 ---
 
+<!-- _footer: '🖥️ Demo §1' -->
+
 ## The grid: 12 columns, 6 breakpoints
 
 ```html
@@ -93,6 +101,8 @@ Bootstrap solves all four for the price of two `<link>`/`<script>` tags.
 
 ---
 
+<!-- _footer: '🖥️ Demo §1' -->
+
 ## Breakpoints
 
 **Mobile-first:** unprefixed = all sizes; prefixes add behavior at wider screens.
@@ -107,7 +117,7 @@ Bootstrap solves all four for the price of two `<link>`/`<script>` tags.
 
 ---
 
-<!-- _footer: '🎨 demo time — script §1: the grid' -->
+<!-- _footer: '🖥️ Demo §1' -->
 
 ## Reading a column recipe
 
@@ -120,6 +130,8 @@ Bootstrap solves all four for the price of two `<link>`/`<script>` tags.
 - One line of classes = the whole responsive plan
 
 ---
+
+<!-- _footer: '🖥️ Demo §2 · navbar' -->
 
 ## Components: assembled from the docs
 
@@ -134,6 +146,8 @@ Navbar · Cards · Buttons · Forms · Alerts · Badges — all tonight, all cop
 **No memorizing markup.** Professionals read docs.
 
 ---
+
+<!-- _footer: '🖥️ Demo §2 · menu cards' -->
 
 ## Cards in a grid
 
@@ -155,6 +169,8 @@ The pattern you'll use forever — week 8: each card = a **database row**.
 
 ---
 
+<!-- _footer: '🖥️ Demo §2 · footer & polish' -->
+
 ## Utilities: the classes that replace custom CSS
 
 ```html
@@ -173,7 +189,7 @@ If you're writing custom CSS for spacing or alignment, there's probably a utilit
 
 ---
 
-<!-- _footer: '🎨 demo time — script §2: navbar, cards, form, icons' -->
+<!-- _footer: '🖥️ Demo §2 · icons' -->
 
 ## Icons: Bootstrap Icons
 
@@ -194,7 +210,7 @@ One more `<link>` — 2,000+ icons, no image files:
 
 ---
 
-<!-- _footer: '🎨 demo time — script §3: theme swap + dark mode' -->
+<!-- _footer: '🖥️ Demo §3' -->
 
 ## Bootswatch: stop looking like every Bootstrap site
 
@@ -211,7 +227,7 @@ Swap **one line** — the CSS link:
 
 ---
 
-<!-- _footer: '🎨 demo time — script §4: Lora + the override' -->
+<!-- _footer: '🖥️ Demo §4' -->
 
 ## Google Fonts: the finishing move
 
@@ -232,6 +248,8 @@ Swap **one line** — the CSS link:
 
 ---
 
+<!-- _footer: '🖥️ Demo §5' -->
+
 ## Lab: Bootstrap the site
 
 - Starter: an unstyled 3-page site (`lab/README.md` has the checklist)
@@ -240,6 +258,8 @@ Swap **one line** — the CSS link:
 - **Docs open the whole time — that's the exercise**
 
 ---
+
+<!-- _footer: '🖥️ Demo §6' -->
 
 ## Before next week
 

@@ -6,7 +6,13 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 > **Clickable version:** [the hosted script](https://jgrissom.github.io/dotnet-web-dev/week-06/demo/script.html) — checkboxes survive refreshes; Reset button for next run.
 
 > [!TIP]
-> **🎞️ means stop and switch to the projector.** Every 🎞️ line says the same thing: *pause here, put that slide up, talk to it.* There are no exceptions and no cue that means "not yet" — if a slide has to wait for something, its cue is further down the list, at the moment it's actually due. Between two 🎞️ lines you're in the editor or the browser and the deck stays put, so if you lose your place, **the nearest 🎞️ above you is the slide that should be showing.**
+> **This sheet is the running order. The deck is a prop it tells you to pick up.**
+>
+> The projector has two states and you swipe between them: **the slides**, or **VS Code and the browser side by side** (so the editor, the page and the terminal are all visible together — those never need a swipe between them). This sheet stays private on your laptop or tablet.
+>
+> **🎞️ means swipe to the slides.** Every 🎞️ line says the same thing: *put that slide up, talk to it.* There are no exceptions and no cue that means "not yet" — if a slide would give away a punchline, its cue is further down, at the moment it's due. Everything that isn't a 🎞️ line happens in the other state, so **you don't need a cue to come back** — the next ordinary bullet is what to do there.
+>
+> Lost your place? **The nearest 🎞️ above you is the slide that should be showing** — and every slide's footer names the section and beat of this sheet it belongs to, so you can go the other way too.
 
 > [!IMPORTANT]
 > **Tonight you break things four times on purpose**, and unlike week 5 none of them takes the whole site down — each one produces a *wrong result* rather than an error page, which is exactly what makes them worth showing. Every break below has an explicit **restore** step. Do them.
@@ -41,7 +47,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ### A form with no help at all *(slide 4)*
 
-- [ ] 🎞️ **GO TO SLIDE 4** — *A form, with no help at all*. **Leave it up while you type** — the markup and the action are both on it, so anyone who falls behind can read ahead
+- [ ] 🎞️ **GO TO SLIDE 4** — *A form, with no help at all*. **Read it off the slide, then swipe back and type it** — both blocks are on it, so anyone who falls behind can catch up here rather than from your screen
 - [ ] In `Controllers/TrucksController.cs`, below `Details`, **type** the GET action:
   ```csharp
   // GET /Trucks/Create
@@ -88,7 +94,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   </details>
 
 - [ ] **Clear the terminal** (⌘K, or right-click → Clear), then load `/Trucks/Create`. It's ugly. Fill it in — **`Wurst Case Scenario` / `German` / `Appleton` / `4.1`** — and submit
-- [ ] Browser says *"look at the terminal 👀"*. **Swap to the terminal:**
+- [ ] Browser says *"look at the terminal 👀"* — and the terminal is right there beside it. **Read it out:**
   ```
   ── model binding built a Truck ──
      Name      Wurst Case Scenario
@@ -115,7 +121,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 - [ ] 🎞️ **GO TO SLIDE 6** — *Two silent failures* · **predict both, show of hands, then touch nothing until they answer:** *"I'm going to rename one input from `Cuisine` to `Food`. And this time I'll type `banana` into Rating. Neither is going to be an error — so what do I get?"*
 - [ ] In `Create.cshtml`, `name="Cuisine"` → `name="Food"`. **Watch `dotnet watch` hot-reload it** — two lines, no restart
-- [ ] Back in the browser: fill the form in again, **`banana` in the Rating box**, submit. Swap to the terminal — the new block lands right under the good one:
+- [ ] Back in the browser: fill the form in again, **`banana` in the Rating box**, submit. The new block lands in the terminal right under the good one:
   ```
   ── model binding built a Truck ──
      Name      Wurst Case Scenario
@@ -231,7 +237,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   - `IsOpenLate` is a **checkbox** — the `bool` chose that — plus a **hidden `IsOpenLate=false`** right after it. *"An unchecked box sends nothing at all, so without that hidden field a 'no' and a missing field would look identical. Razor sends false, and ticking the box overrides it"*
   - `Rating` is still `type="text"` *(the number box is for whole numbers)*, but it picked up **`data-val-number="The field Rating must be a number."`** — 🔗 *"that's the banana rule from twenty minutes ago, now written into the HTML. Nobody's reading it yet"*
   - the `<span>`s and the summary `<div>` rendered **empty**. *"Those are sockets. Part 3 plugs the errors in"*
-- [ ] 🎞️ **GO TO SLIDE 10** — *A checkbox casts a shadow*, with the hidden field still on screen in View Source
+- [ ] 🎞️ **GO TO SLIDE 10** — *A checkbox casts a shadow* — straight after you've found the hidden field in View Source, while it's still fresh
 - [ ] Resubmit the form to prove it still works — same `Content()` output as before
 
 ### The hidden field you didn't write *(slide 11)*
@@ -272,7 +278,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ### Data annotations *(slides 13–14)*
 
-- [ ] 🎞️ **GO TO SLIDE 13** — *Data annotations*. The attributes are on it, so this is a read-along while you type
+- [ ] 🎞️ **GO TO SLIDE 13** — *Data annotations*. Read the attributes off the slide, then swipe back and type them
 - [ ] Open `Models/Truck.cs`. **Type the `using` and the first two attributes**, paste the rest:
 
   <details><summary>📋 paste: Truck.cs with annotations</summary>
@@ -351,7 +357,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] 🎞️ **GO TO SLIDE 16** — *Delete the guard* · the question slide again — **predict first, then go to the editor:** *"if I comment out the IsValid check, what stops the bad truck?"*
 - [ ] Comment out the whole `if (!ModelState.IsValid)` block. Submit the blank-name, 9000-rated truck again
 - [ ] **It's on `/Trucks`.** A nameless card rated nine thousand
-- [ ] 🎞️ **GO TO SLIDE 17** — *Attributes describe. The guard decides.* · 🎯 put it up on the nameless truck and **say the setup; let the slide land the punchline:** *"The annotations did their job. They recorded the problem, and nobody read the record."*
+- [ ] 🎞️ **GO TO SLIDE 17** — *Attributes describe. The guard decides.* · 🎯 leave the nameless truck on screen for a beat, then swipe to the deck and **say the setup; let the slide land the punchline:** *"The annotations did their job. They recorded the problem, and nobody read the record."*
 - [ ] **RESTORE the block** ⚠️
 
 ### Break it #4 — the redirect *(slide 18)*
@@ -376,7 +382,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ### The partial week 5 promised *(slides 19–20)*
 
-- [ ] 🎞️ **GO TO SLIDE 19** — *The partial from last week*. Both blocks are on it; open the real file alongside
+- [ ] 🎞️ **GO TO SLIDE 19** — *The partial from last week*. Both blocks are on it; then swipe back and open the real file
 - [ ] Open `Views/Shared/_ValidationScriptsPartial.cshtml`. **The whole file:**
   ```html
   <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
@@ -411,7 +417,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] Show `/Trucks` with your added trucks on it. Seven, eight cards **(stay in the browser — the slide is the answer, and it would give this away)**
 - [ ] In the terminal: **`Ctrl+C`**, then `dotnet watch` again. Reload `/Trucks`
 - [ ] **Six.** *"Gone."*
-- [ ] 🎞️ **GO TO SLIDE 22** — *Where did the truck go?* Now, on the six cards
+- [ ] 🎞️ **GO TO SLIDE 22** — *Where did the truck go?* Now — straight off the six cards they just watched vanish
 - [ ] Open `Models/TruckData.cs` and point at `static List<Truck>`. *"A variable in a running program. It lives exactly as long as the process does. Everything tonight was real — the form, the binding, the validation, the redirect. The **storage** is a placeholder, and it always has been. You just couldn't tell, because until tonight nothing ever changed"*
 - [ ] ⚠️ **Warn them before the homework:** on Azure this is worse — a free-tier app **sleeps**, and wakes up with the hard-coded items only. If their test entries are missing when they check tomorrow, nothing is broken
 - [ ] 🔗 **Week 7, pointing at the controller while you say it:** *"next week `TruckData.cs` is deleted and that list becomes a SQL Server table. And look at what changes in here — `ModelState.IsValid`, the guard, the redirect, all of it stays. One line changes: where the list comes from"*

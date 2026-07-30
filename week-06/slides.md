@@ -32,6 +32,8 @@ style: |
 
 ---
 
+<!-- _footer: '🖥️ Demo §1 · frame it' -->
+
 ## Five weeks, one direction
 
 The browser asked. You told.
@@ -46,7 +48,7 @@ The browser asked. You told.
 
 ---
 
-<!-- _footer: '🖥️ Demo §1' -->
+<!-- _footer: '🖥️ Demo §1 · frame it' -->
 
 ## GET vs. POST
 
@@ -68,7 +70,7 @@ The browser asked. You told.
 
 ---
 
-<!-- _footer: '🖥️ Demo §1' -->
+<!-- _footer: '🖥️ Demo §1 · the plain form' -->
 
 ## A form, with no help at all
 
@@ -92,7 +94,7 @@ public IActionResult Create(Truck truck)
 
 ---
 
-<!-- _footer: '🖥️ Demo §1' -->
+<!-- _footer: '🖥️ Demo §1 · the Network tab' -->
 
 ## What arrived — in the terminal
 
@@ -115,7 +117,7 @@ Name=Wurst+Case+Scenario&Cuisine=German&City=Appleton
 
 ---
 
-<!-- _footer: '🖥️ Demo §1' -->
+<!-- _footer: '🖥️ Demo §1 · break #1' -->
 
 ## Two silent failures
 
@@ -131,7 +133,7 @@ Name=Wurst+Case+Scenario&Cuisine=German&City=Appleton
 
 ---
 
-<!-- _footer: '🖥️ Demo §1' -->
+<!-- _footer: '🖥️ Demo §1 · break #2' -->
 
 ## Two actions, one name
 
@@ -150,7 +152,7 @@ Drop `[HttpPost]` and both claim every verb:
 
 ---
 
-<!-- _footer: '🖥️ Demo §2' -->
+<!-- _footer: '🖥️ Demo §2 · asp-for' -->
 
 ## `asp-for` — one attribute, four jobs
 
@@ -170,7 +172,7 @@ becomes
 
 ---
 
-<!-- _footer: '🖥️ Demo §2' -->
+<!-- _footer: '🖥️ Demo §2 · the whole form' -->
 
 ## Three sockets per field
 
@@ -188,7 +190,7 @@ The `<span>` renders **empty**. It's where the error will go.
 
 ---
 
-<!-- _footer: '🖥️ Demo §2' -->
+<!-- _footer: '🖥️ Demo §2 · the whole form' -->
 
 ## A checkbox casts a shadow
 
@@ -205,7 +207,7 @@ Without the hidden field, "no" and "missing" look identical.
 
 ---
 
-<!-- _footer: '🖥️ Demo §2' -->
+<!-- _footer: '🖥️ Demo §2 · the hidden field' -->
 
 ## The field you didn't write
 
@@ -226,7 +228,7 @@ It's already in the page. This is what makes the server *look*:
 
 ---
 
-<!-- _footer: '🖥️ Demo §3' -->
+<!-- _footer: '🖥️ Demo §3 · where rules live' -->
 
 ## Where do the rules live?
 
@@ -241,7 +243,7 @@ Somebody has to say what a valid `Truck` is.
 
 ---
 
-<!-- _footer: '🖥️ Demo §3' -->
+<!-- _footer: '🖥️ Demo §3 · annotations' -->
 
 ## Data annotations
 
@@ -259,7 +261,7 @@ public bool IsOpenLate { get; set; }
 
 ---
 
-<!-- _footer: '🖥️ Demo §3' -->
+<!-- _footer: '🖥️ Demo §3 · annotations' -->
 
 ## ...and they end up in the HTML
 
@@ -277,7 +279,7 @@ Nobody is reading those yet.
 
 ---
 
-<!-- _footer: '🖥️ Demo §3' -->
+<!-- _footer: '🖥️ Demo §3 · ModelState' -->
 
 ## The guard
 
@@ -298,7 +300,7 @@ public IActionResult Create(Truck truck)
 
 ---
 
-<!-- _footer: '🖥️ Demo §3' -->
+<!-- _footer: '🖥️ Demo §3 · break #3' -->
 
 ## Delete the guard
 
@@ -310,7 +312,7 @@ Submit a truck with **no name**, rated **9000**.
 
 ---
 
-<!-- _footer: '🖥️ Demo §3' -->
+<!-- _footer: '🖥️ Demo §3 · break #3' -->
 
 ## Attributes describe. The guard decides.
 
@@ -320,7 +322,7 @@ They wrote the problem down, and nobody read it.
 
 ---
 
-<!-- _footer: '🖥️ Demo §3' -->
+<!-- _footer: '🖥️ Demo §3 · break #4' -->
 
 ## Redirect, don't render
 
@@ -338,7 +340,7 @@ The list appears. The URL still says `/Trucks/Create`.
 
 ---
 
-<!-- _footer: '🖥️ Demo §4' -->
+<!-- _footer: '🖥️ Demo §4 · the validation partial' -->
 
 ## The partial from last week
 
@@ -359,7 +361,7 @@ A partial. In a section. Both of last week's ideas, one job.
 
 ---
 
-<!-- _footer: '🖥️ Demo §4' -->
+<!-- _footer: '🖥️ Demo §4 · the validation partial' -->
 
 ## One source of truth
 
@@ -374,7 +376,7 @@ Those scripts read the **`data-val-*` attributes** from twenty minutes ago.
 
 ---
 
-<!-- _footer: '🖥️ Demo §4' -->
+<!-- _footer: '🖥️ Demo §4 · break #5' -->
 
 ## Now turn it off
 
@@ -410,6 +412,8 @@ A variable in a running program. **Next week: a table.**
 
 ---
 
+<!-- _footer: '🖥️ Demo §6' -->
+
 ## Lab: the Registry takes reports
 
 - **2** — rules on `Cryptid.cs`
@@ -421,6 +425,8 @@ A variable in a running program. **Next week: a table.**
 **Target tonight: 1–5 green.**
 
 ---
+
+<!-- _footer: '🖥️ Demo §7' -->
 
 ## Tonight, in one picture
 

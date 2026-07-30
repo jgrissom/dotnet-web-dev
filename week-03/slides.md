@@ -32,6 +32,8 @@ style: |
 
 ---
 
+<!-- _footer: '🖥️ Demo §1' -->
+
 ## Tonight: the pivot
 
 - Two weeks on the **client** side. Tonight we build the **server**.
@@ -41,6 +43,8 @@ style: |
 - **Your code, live on Azure, before you leave**
 
 ---
+
+<!-- _footer: '🖥️ Demo §1' -->
 
 ## HTTP is just text
 
@@ -64,6 +68,8 @@ Verb + path in · status + body out. That's the whole internet.
 
 ---
 
+<!-- _footer: '🖥️ Demo §1' -->
+
 ## Verbs
 
 | Verb | Meaning | You'll use it |
@@ -74,7 +80,7 @@ Verb + path in · status + body out. That's the whole internet.
 
 ---
 
-<!-- _footer: '🎨 demo time — script §1: watch real HTTP in DevTools' -->
+<!-- _footer: '🖥️ Demo §1' -->
 
 ## Status codes
 
@@ -89,6 +95,8 @@ When it breaks: **the status code is clue #1.**
 
 ---
 
+<!-- _footer: '🖥️ Demo §2' -->
+
 ## Two commands to a working site
 
 ```bash
@@ -101,6 +109,8 @@ dotnet watch                 # runs + restarts on every save
 - `dotnet watch` = your refresh-after-save habit, ported to C#
 
 ---
+
+<!-- _footer: '🖥️ Demo §2' -->
 
 ## Project anatomy
 
@@ -116,7 +126,7 @@ CommonGrounds.Web/
 
 ---
 
-<!-- _footer: '🎨 demo time — script §2: create it, run it, tour it' -->
+<!-- _footer: '🖥️ Demo §2' -->
 
 ## Program.cs — a five-act story
 
@@ -138,6 +148,8 @@ app.Run();                                          // 5 open the doors
 
 ---
 
+<!-- _footer: '🖥️ Demo §3' -->
+
 ## The request's journey
 
 ```
@@ -154,6 +166,8 @@ The URL doesn't find a **file** anymore. It finds a **method**.
 
 ---
 
+<!-- _footer: '🖥️ Demo §3' -->
+
 ## Routing: the pattern decoded
 
 `{controller=Home}/{action=Index}/{id?}`
@@ -168,6 +182,8 @@ The URL doesn't find a **file** anymore. It finds a **method**.
 Predict before each Enter — including the one that 404s.
 
 ---
+
+<!-- _footer: '🖥️ Demo §3' -->
 
 ## Controllers and actions
 
@@ -186,6 +202,8 @@ public class MenuController : Controller
 
 ---
 
+<!-- _footer: '🖥️ Demo §3' -->
+
 ## Views and Razor — first taste
 
 ```html
@@ -201,7 +219,7 @@ public class MenuController : Controller
 
 ---
 
-<!-- _footer: '🎨 demo time — script §3: a new page + a greeting with a parameter' -->
+<!-- _footer: '🖥️ Demo §3' -->
 
 ## Passing data in
 
@@ -217,6 +235,8 @@ public IActionResult Special(string? item)
 
 ---
 
+<!-- _footer: '🖥️ Demo §4' -->
+
 ## Azure App Service
 
 ```
@@ -229,7 +249,7 @@ laptop ── az webapp up ──► App Service ──► https://you.azurewebs
 
 ---
 
-<!-- _footer: '🎨 demo time — script §4: ship it to Azure, live' -->
+<!-- _footer: '🖥️ Demo §4' -->
 
 ## One command to the cloud
 
@@ -245,6 +265,8 @@ az webapp up --name ff-web-XX1234 --sku F1 --os-type Linux \
 
 ---
 
+<!-- _footer: '🖥️ Demo §5' -->
+
 ## Lab: First Flight
 
 - Copy `week-03/lab/starter/` out of the repo clone
@@ -254,6 +276,8 @@ az webapp up --name ff-web-XX1234 --sku F1 --os-type Linux \
 
 ---
 
+<!-- _footer: '🖥️ Demo §6' -->
+
 ## Before next week
 
 - ✅ Lab to **6 / 6** (`dotnet test FirstFlight.Checks`)
@@ -262,6 +286,8 @@ az webapp up --name ff-web-XX1234 --sku F1 --os-type Linux \
 - **Next week:** Razor for real — loops, conditionals, and pages built from data
 
 ---
+
+<!-- _footer: '🖥️ Demo §6' -->
 
 ## The semester, from tonight's summit
 
