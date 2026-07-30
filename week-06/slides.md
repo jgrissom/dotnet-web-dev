@@ -84,7 +84,9 @@ The browser asked. You told.
 [HttpPost]
 public IActionResult Create(Truck truck)
 {
-    return Content($"You sent: {truck.Name}");
+    Console.WriteLine($"built a {truck.GetType().Name}");
+    Console.WriteLine($"Rating {truck.Rating}  x2 = {truck.Rating * 2}");
+    return Content("look at the terminal 👀");
 }
 ```
 
@@ -92,17 +94,20 @@ public IActionResult Create(Truck truck)
 
 <!-- _footer: '🖥️ Demo §1' -->
 
-## What arrived
+## What arrived — in the terminal
 
 ```
-You sent: Wurst Case Scenario, German, Appleton, rated 4.1
+── model binding built a Truck ──
+   Name      Wurst Case Scenario
+   Cuisine   German
+   Rating    4.1   (x2 = 8.2)
 ```
 
-A `Truck` object, fully populated. **You wrote nothing to build it.**
+**You wrote nothing to build that** — and you can't multiply a string.
 
 <br>
 
-In the Network tab, the body was just:
+The browser only ever sent text:
 
 ```
 Name=Wurst+Case+Scenario&Cuisine=German&City=Appleton
@@ -112,15 +117,17 @@ Name=Wurst+Case+Scenario&Cuisine=German&City=Appleton
 
 <!-- _footer: '🖥️ Demo §1' -->
 
-## One renamed attribute
+## Two silent failures
 
 ```html
 <input name="Food" />     <!-- was name="Cuisine" -->
 ```
 
+...and someone types `banana` into Rating.
+
 <br>
 
-### Error — or something worse?
+### Neither one is an error. So what do you get?
 
 ---
 

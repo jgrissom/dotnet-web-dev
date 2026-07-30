@@ -17,6 +17,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] `cd Curbside && dotnet watch`
 - [ ] **Park two browser tabs**: `/Trucks` and `/Trucks/Details/2`
 - [ ] **Dev tools open on the `/Trucks` tab, on the Network panel** — you're in it twice tonight and fumbling for it kills the beat
+- [ ] **Size the terminal to be read from the back row.** In §1 it stops being where the app runs and becomes the thing everyone is looking at. `clear` (⌘K) between beats is your friend — a wiped terminal with one object in it reads instantly
 - [ ] Teaching profile; terminal font sized for the projector
 - [ ] **Say it before you start: *"lids down for this part — you'll build it yourself in the lab."*** Nobody can follow along tonight even if they want to; Curbside isn't in the public repo. And the five breaks below would take fourteen machines down with them. **The predict-then-run moments are where they participate** — those only work if people are looking up
 - [ ] Sanity check: `/Trucks` shows six cards, `/Trucks/Details/1` shows the "Also in Madison" panel
@@ -43,14 +44,21 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
       return View();
   }
   ```
-- [ ] Then the POST action — **type this one too**, and say what `Content()` is for: *"no view, no redirect, no cleverness. I just want to see what arrived"*:
+- [ ] Then the POST action — **type this one too**. Say what it's for: *"no view, no redirect, no cleverness. I just want to print what arrived and look at it"*:
   ```csharp
   [HttpPost]
   public IActionResult Create(Truck truck)
   {
-      return Content($"You sent: {truck.Name}, {truck.Cuisine}, {truck.City}, rated {truck.Rating}");
+      Console.WriteLine($"── model binding built a {truck.GetType().Name} ──");
+      Console.WriteLine($"   Name      {truck.Name}");
+      Console.WriteLine($"   Cuisine   {truck.Cuisine}");
+      Console.WriteLine($"   City      {truck.City}");
+      Console.WriteLine($"   Rating    {truck.Rating}   (x2 = {truck.Rating * 2})");
+
+      return Content("Submitted — look at the terminal 👀");
   }
   ```
+- [ ] Point at the last two things you typed **before you run it**, so they're primed: `GetType().Name`, and `Rating * 2`. *"Hold onto that times-two"*
 - [ ] Create `Views/Trucks/Create.cshtml` — **paste**. Say it out loud: *"this is week 2 HTML. No tag helpers, no `@model`, nothing you haven't written before"*
 
   <details><summary>📋 paste: Create.cshtml, plain HTML</summary>
@@ -73,32 +81,56 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
   </details>
 
-- [ ] Load `/Trucks/Create`. It's ugly. Fill it in — **`Wurst Case Scenario` / `German` / `Appleton` / `4.1`** — and submit:
+- [ ] **`clear` the terminal**, then load `/Trucks/Create`. It's ugly. Fill it in — **`Wurst Case Scenario` / `German` / `Appleton` / `4.1`** — and submit
+- [ ] Browser says *"look at the terminal 👀"*. **Swap to the terminal:**
   ```
-  You sent: Wurst Case Scenario, German, Appleton, rated 4.1
+  ── model binding built a Truck ──
+     Name      Wurst Case Scenario
+     Cuisine   German
+     City      Appleton
+     Rating    4.1   (x2 = 8.2)
   ```
 - [ ] 🎯 **Point at it and stop.** *"A `Truck` object showed up in my method, fully filled in, and I wrote nothing to build it. That's the whole of Part 1 — why."*
+- [ ] Then the second half, and **don't rush it**: *"look at the top line — `built a Truck`. Not a bag of strings, an instance of the class you wrote in week 4. And look at the bottom — **you cannot multiply a string.** The browser sent me the characters four-point-one. What arrived was a number."*
 
 ### The Network tab *(slide 5)*
 
-- [ ] 🎞️ **GO TO SLIDE 5** — *What arrived*: the echo, with the payload underneath. Up now; the live Network tab below is the proof
+- [ ] 🎞️ **GO TO SLIDE 5** — *What arrived — in the terminal*, with the raw payload underneath. Up now; the live Network tab below is the proof
 - [ ] Back, resubmit with the **Network** panel open. Click the `Create` request → **Payload**:
   ```
   Name=Wurst+Case+Scenario&Cuisine=German&City=Appleton&Rating=4.1
   ```
 - [ ] **Week-3 callback:** *"that's the query-string format you already know — `key=value&key=value` — riding in the body instead of the URL. The form serialised itself and the server took it apart"*
 
-### Break it #1 — the name attribute *(slide 6)*
+### Break it #1 — two silent failures *(slide 6)*
 
-- [ ] 🎞️ **GO TO SLIDE 6** — *One renamed attribute*. **This slide is the question** — put it up, ask it, take a show of hands, and only then touch the editor
-- [ ] **Predict first:** *"I'm going to rename one input from `Cuisine` to `Food`, and change nothing else. Error, or something worse?"*
-- [ ] In `Create.cshtml`, `name="Cuisine"` → `name="Food"`. Resubmit the same values:
+> [!IMPORTANT]
+> **Do NOT clear the terminal for this one.** The good result from a minute ago has to stay on screen — the whole beat is the two blocks sitting one above the other.
+
+- [ ] 🎞️ **GO TO SLIDE 6** — *Two silent failures*. **This slide is the question** — put it up, ask it, take a show of hands, and only then touch anything
+- [ ] **Predict first, both of them:** *"I'm going to rename one input from `Cuisine` to `Food`. And this time I'll type `banana` into Rating. Neither is going to be an error — so what do I get?"*
+- [ ] In `Create.cshtml`, `name="Cuisine"` → `name="Food"`. **Watch `dotnet watch` hot-reload it** — two lines, no restart
+- [ ] Back in the browser: fill the form in again, **`banana` in the Rating box**, submit. Swap to the terminal — the new block lands right under the good one:
   ```
-  You sent: Wurst Case Scenario, , Appleton, rated 4.1
+  ── model binding built a Truck ──
+     Name      Wurst Case Scenario
+     Cuisine   German
+     City      Appleton
+     Rating    4.1   (x2 = 8.2)
+  dotnet watch ⌚ Files updated: ./Views/Trucks/Create.cshtml
+  dotnet watch 🔥 Hot reload succeeded.
+  ── model binding built a Truck ──
+     Name      Wurst Case Scenario
+     Cuisine
+     City      Appleton
+     Rating    0   (x2 = 0)
   ```
-- [ ] **No error. An empty string.** *"Binding looked for something called Cuisine, didn't find it, and left the property alone. It is name-matching, and nothing else."*
-- [ ] Say the payoff: *"when a field mysteriously arrives blank, this is always why"*
+- [ ] 🎯 **Two fingers, one on each block.** *"No error. No warning. Two properties quietly wrong — and for two completely different reasons."*
+- [ ] **`Cuisine` is empty** — binding went looking for a value called `Cuisine`, found nothing, left the property alone. *"It is name-matching, and nothing else."*
+- [ ] **`Rating` is `0`** — `banana` isn't a number, so it couldn't convert and kept the default. And `x2 = 0` proves *a number* is sitting there, not the word they typed
+- [ ] Say the payoff: *"when a field mysteriously arrives blank or zero, it's one of these two. Every time."*
 - [ ] **RESTORE `name="Cuisine"`** ⚠️
+- [ ] 🔗 **Plant it:** *"neither of those threw — but neither went unrecorded either. Something wrote both down. You meet it after the break."*
 - [ ] Mention in passing, don't demo: binding is **case-insensitive**, and it's the same mechanism that filled `int id` from the route in week 4
 
 ### Break it #2 — two actions, one name *(slide 7)*
@@ -222,7 +254,15 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ### Where do the rules go? *(slide 12)*
 
-- [ ] Submit the form with **no name and a rating of 9000**. The echo comes back cheerfully — *"You sent: , German, Appleton, rated 9000"*. **Nothing in the app has an opinion about any of it** *(the action is still the `Content()` echo — nothing is being stored yet, and nothing is being judged)*
+- [ ] **`clear` the terminal**, then submit the form with **no name, no city, and a rating of 9000**:
+  ```
+  ── model binding built a Truck ──
+     Name
+     Cuisine   German
+     City
+     Rating    9000   (x2 = 18000)
+  ```
+- [ ] *"A nameless truck, in no city, rated nine thousand out of five."* **Nothing in the app has an opinion about any of it** *(the action still just prints — nothing is stored yet, and nothing is judged)*
 - [ ] 🎞️ **GO TO SLIDE 12** — *Where do the rules live?* The two wrong answers are on it; work through them out loud
 - [ ] Ask it as a real question: *"somebody has to say what a valid truck is. Where does that live?"* Walk past the two wrong answers — **the view** (rules pasted into markup can't be reused, and a `Truck` gets made in more than one place) and **the controller** (every action grows the same block of ifs) — and land on **the model**
 

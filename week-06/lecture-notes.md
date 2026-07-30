@@ -31,11 +31,18 @@ public IActionResult Create()
 }
 
 // POST /Trucks/Create — the filled-in form lands here.
-// Content() just echoes it back as plain text; that's temporary, and it's the point.
+// It prints what arrived to the terminal and gets out of the way. Temporary,
+// and the printing is the point.
 [HttpPost]
 public IActionResult Create(Truck truck)
 {
-    return Content($"You sent: {truck.Name}, {truck.Cuisine}, {truck.City}, rated {truck.Rating}");
+    Console.WriteLine($"── model binding built a {truck.GetType().Name} ──");
+    Console.WriteLine($"   Name      {truck.Name}");
+    Console.WriteLine($"   Cuisine   {truck.Cuisine}");
+    Console.WriteLine($"   City      {truck.City}");
+    Console.WriteLine($"   Rating    {truck.Rating}   (x2 = {truck.Rating * 2})");
+
+    return Content("Submitted — look at the terminal 👀");
 }
 ```
 
@@ -57,13 +64,25 @@ And `Views/Trucks/Create.cshtml` — **this is the whole file**, hand-written HT
 </form>
 ```
 
-Fill it in and submit. The browser shows:
+Fill it in and submit. The browser says to look at the terminal, and the terminal says:
 
 ```
-You sent: Wurst Case Scenario, German, Appleton, rated 4.1
+── model binding built a Truck ──
+   Name      Wurst Case Scenario
+   Cuisine   German
+   City      Appleton
+   Rating    4.1   (x2 = 8.2)
 ```
 
 **A `Truck` object arrived in your action, fully populated, and you didn't write a line of code to build it.** That's the thing to point at. Everything in Part 1 is about why.
+
+Two details in that output are doing work, and both are worth saying out loud:
+
+- **`built a Truck`** comes from `truck.GetType().Name`. The thing that turned up isn't a bag of strings — it's an instance of the class you wrote in week 4.
+- **`x2 = 8.2`** is the quiet one. **You cannot multiply a string.** The browser sent the characters `4.1`; what reached your method was a `double` you can do arithmetic on. Binding didn't just copy values across, it *converted* them.
+
+> [!TIP]
+> **The terminal is quieter than you'd expect**, because the template sets `"Microsoft.AspNetCore": "Warning"` in `appsettings.Development.json` — so there's no per-request logging to bury your output. And `clear` (or ⌘K in VS Code's terminal) before a beat is free: wipe it, submit once, and the only thing on screen is the object you just built.
 
 > [!TIP]
 > **Open the Network tab before you submit** (demo §1). Click the `Create` request, then **Payload**. There it is, the whole submission, as one string:
@@ -81,15 +100,26 @@ Here is the entire rule. For each public settable property on the parameter's ty
 `name="Cuisine"` → `truck.Cuisine`. That's the whole contract, and it is made of strings.
 
 > [!IMPORTANT]
-> **Break it (demo §1).** Change one attribute in the view — `name="Cuisine"` becomes `name="Food"` — and resubmit the same form:
+> **Break it twice (demo §1), and don't clear the terminal in between** — the two failures land underneath the good one, and the comparison is the lesson.
+>
+> **First**, change one attribute in the view: `name="Cuisine"` becomes `name="Food"`. **Then**, without touching the code again, type `banana` into the Rating box. Submit:
 >
 > ```
-> You sent: Wurst Case Scenario, , Appleton, rated 4.1
+> ── model binding built a Truck ──
+>    Name      Wurst Case Scenario
+>    Cuisine
+>    City      Appleton
+>    Rating    0   (x2 = 0)
 > ```
 >
-> **No error. No warning. An empty string where the cuisine should be.** Binding didn't fail; it looked for something called `Cuisine`, found nothing, and left the property alone. This is the single most useful thing to know about forms: when a field mysteriously arrives blank, the name attribute and the property name have stopped matching. **Put it back.**
+> **No error. No warning. Two properties quietly wrong, for two different reasons.**
+>
+> - `Cuisine` is empty because binding went looking for a value called `Cuisine`, found nothing, and left the property alone. **It is name-matching, and nothing else.**
+> - `Rating` is `0` because `banana` is not a number. Binding couldn't convert it, so the property kept its default — and `x2 = 0` proves it really is a number sitting there, not the text they typed.
+>
+> **Put the name attribute back.** This is the single most useful thing to know about forms: when a field mysteriously arrives blank or zero, the two candidates are a name that stopped matching and a value that wouldn't convert.
 
-- Ask the room what they think happens with `Rating`, which is a `double`, if someone types `banana`. It doesn't throw either — the property stays `0` and a *conversion error* is quietly recorded. You'll meet that record by name in Part 3; it's called `ModelState`, and it's already been keeping notes this whole time.
+- **Neither failure threw, but neither went unrecorded.** Both were written down — the conversion failure especially — into a thing you'll meet by name in Part 3. It's called `ModelState`, and it has been keeping notes this whole time.
 - Binding is **case-insensitive**, so `name="cuisine"` would have worked fine. It's the *spelling* that has to match, not the capitalisation.
 - Nothing about this is specific to forms. The `int id` in `Details(int id)` arrived by exactly the same mechanism in week 4 — from the route instead of the body. Same binder, different source.
 
@@ -227,7 +257,17 @@ public IActionResult Create(Truck truck)
 
 ## Part 3: Rules that live on the model (40 min)
 
-Submit the form with no name, no city, and a rating of 9000. The echo comes back cheerfully — *"You sent: , , Appleton, rated 9000"* — because nothing in the app has an opinion about any of it. Somebody has to say what a valid truck is. The question is *where* that lives.
+Submit the form with no name, no city, and a rating of 9000. The terminal reports it quite happily:
+
+```
+── model binding built a Truck ──
+   Name
+   Cuisine   German
+   City
+   Rating    9000   (x2 = 18000)
+```
+
+A nameless truck in no city with a rating of nine thousand, and **nothing in the app has an opinion about any of it.** Somebody has to say what a valid truck is. The question is *where* that lives.
 
 Not in the view: the view is one of several places a `Truck` can be created, and rules pasted into markup can't be reused. Not in the controller either, or every action grows the same block of `if` statements. It belongs on the **model** — one description of what a valid `Truck` is, that the form, the controller and (in week 7) the database can all read.
 
