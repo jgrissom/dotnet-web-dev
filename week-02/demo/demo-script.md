@@ -5,19 +5,32 @@ Edit-by-edit cue sheet for transforming `index.html` (your **scratch copy**) int
 > [!TIP]
 > **Clickable version:** [the hosted script](https://jgrissom.github.io/dotnet-web-dev/week-02/demo/script.html) has working checkboxes that survive refreshes — keep it open on your second screen and tick as you go (Reset button at the top for next time).
 
+> [!TIP]
+> **🎞️ means stop and switch to the projector.** Every 🎞️ line says the same thing: *pause here, put that slide up, talk to it.* There are no exceptions and no cue that means "not yet" — if a slide has to wait for something, its cue is further down, at the moment it's due. Between two 🎞️ lines you're in the editor or the browser and the deck stays put, so if you lose your place, **the nearest 🎞️ above you is the slide that should be showing.**
+
 ## 0 · Before class
 
 - [ ] Scratch copy of `demo/index.html` open in VS Code (Teaching profile) + browser at half-width
+- [ ] **Say it before you start: *"lids down for this part — you'll do it to your own site in the lab."*** You assemble the coffee shop; their lab is their portfolio. Same patterns, fresh retrieval — which only works if they aren't typing along with you
 - [ ] Hosted [before](https://jgrissom.github.io/dotnet-web-dev/week-02/demo/before.html) / [after](https://jgrissom.github.io/dotnet-web-dev/week-02/demo/) open in two tabs for the opening pitch
+
+## 0b · The opening pitch *(slides 2–4)*
+
+- [ ] 🎞️ **GO TO SLIDE 2** — *Tonight*
+- [ ] 🎞️ **GO TO SLIDE 3** — *Why a CSS framework?* Flip between the **before** and **after** tabs while it's up — same content, transformed almost entirely by classes
+- [ ] 🎞️ **GO TO SLIDE 4** — *Setup: two tags via CDN*. Point at the two tags already sitting in your scratch copy
 
 ## 1 · The grid *(slides 5–7)*
 
+- [ ] 🎞️ **GO TO SLIDE 5** — *The grid: 12 columns, 6 breakpoints*
 - [ ] `<main>` → `<main class="container py-5">` — margins appear, content stops hugging the edges
 - [ ] Hero: `<header id="home">` → add `class="text-center py-5 bg-light"`
 - [ ] Hero: wrap its contents in `<div class="container py-4">`
 - [ ] Hero: `h1` → `display-4` · `p` → `lead text-muted` · link → `btn btn-primary btn-lg mt-2`
 - [ ] **✓ it suddenly looks like a website** — pause and enjoy the reaction
+- [ ] 🎞️ **GO TO SLIDE 6** — *Breakpoints*
 - [ ] Feature row: wrap the three `<section>`s in `<div class="row g-4 text-center">`
+- [ ] 🎞️ **GO TO SLIDE 7** — *Reading a column recipe*. Decode `col-md-4` off the slide, then type it
 - [ ] Each `<section>` → `class="col-md-4"` · each `h2` → `fs-4` · each `p` → `text-muted`
   — *multi-cursor trick:* select `<section>`, then **Ctrl+Shift+L** (**Cmd+Shift+L** on Mac) puts a cursor on *every* match — or **Ctrl+D** (**Cmd+D**) grabs them *one at a time* (safer when there might be matches off-screen; **Ctrl+K Ctrl+D** skips one, Esc collapses). Same trick for the `h2`s and `p`s (and the six `<article>`s later). Narrate it; students love this one
 - [ ] **✓ CHECKPOINT: resize slowly** — stacked on phone → thirds on desktop. This *is* the responsive lecture
@@ -26,6 +39,7 @@ Edit-by-edit cue sheet for transforming `index.html` (your **scratch copy**) int
 
 ### Navbar — from the docs, live
 
+- [ ] 🎞️ **GO TO SLIDE 8** — *Components: assembled from the docs*
 - [ ] Open [docs → Navbar](https://getbootstrap.com/docs/5.3/components/navbar/), copy the example **with a toggler**, replace the plain `<nav>`
 - [ ] Adapt: brand → `Common Grounds` (`href="#home"`); links → Home `#home` (`.active`), Menu `#menu`, Contact `#contact`
 - [ ] Point out the matched pair the docs example came with: the toggler's `data-bs-target="#navbarSupportedContent"` ↔ the collapse div's `id="navbarSupportedContent"` (name varies by example). Keep the docs' name or rename it — but **always change both halves together**; mismatch = silently dead hamburger
@@ -35,6 +49,7 @@ Edit-by-edit cue sheet for transforming `index.html` (your **scratch copy**) int
 
 ### Menu cards
 
+- [ ] 🎞️ **GO TO SLIDE 9** — *Cards in a grid*
 - [ ] `<h2 id="menu">` → `class="mt-5 mb-4"`
 - [ ] Wrap the six `<article>`s in `<div class="row g-4">`
 - [ ] Transform the **Espresso `<article>` in place** — evolve what's there, don't retype the content:
@@ -141,11 +156,13 @@ Edit-by-edit cue sheet for transforming `index.html` (your **scratch copy**) int
 
 ### Footer & polish
 
+- [ ] 🎞️ **GO TO SLIDE 10** — *Utilities: the classes that replace custom CSS*. Everything in this beat is utilities
 - [ ] `<footer>` → `class="text-center text-muted py-4 border-top"` · its `p` → `mb-0`
 - [ ] Back-to-top `<p>`s → `class="text-end mt-3"` · links → `text-muted text-decoration-none`
 
 ### Icons *(slide 11)*
 
+- [ ] 🎞️ **GO TO SLIDE 11** — *Icons: Bootstrap Icons*
 - [ ] Add to `<head>`: `<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">`
 - [ ] `<i class="bi bi-cup-hot"></i>` inside the hero button and the footer text
 - [ ] The showpiece — one icon `<div>` above each feature heading:
@@ -158,6 +175,7 @@ Edit-by-edit cue sheet for transforming `index.html` (your **scratch copy**) int
 
 ## 3 · Bootswatch *(slide 12)*
 
+- [ ] 🎞️ **GO TO SLIDE 12** — *Bootswatch: stop looking like every Bootstrap site*
 - [ ] Show the gallery at [bootswatch.com](https://bootswatch.com) — this is where "take requests" shops
 - [ ] Replace the Bootstrap `<link>` with the Bootswatch CDN version (the site itself only offers downloads — the CDN pattern is ours to teach):
   ```html
@@ -173,6 +191,7 @@ Edit-by-edit cue sheet for transforming `index.html` (your **scratch copy**) int
 
 ## 4 · Google Fonts *(slide 13)*
 
+- [ ] 🎞️ **GO TO SLIDE 13** — *Google Fonts: the finishing move*
 - [ ] On [fonts.google.com](https://fonts.google.com): pick **Lora** (400 + 700), copy the `<link>`, add to `<head>`
   — *(deliberately a serif: Lux's built-in font is Nunito Sans, so a sans swap would be invisible — pick something the room can SEE)*
 - [ ] Then:
@@ -183,3 +202,11 @@ Edit-by-edit cue sheet for transforming `index.html` (your **scratch copy**) int
   ```
 - [ ] **✓ prove it applied:** DevTools → select a paragraph → **Computed** panel → *Rendered Fonts* at the bottom says `Lora`. (Also show the Network tab's `fonts.gstatic.com` request — that's the font arriving.) This is how you check ANY font question forever
 - [ ] **✓ FINAL CHECKPOINT** — your page matches the hosted [after](https://jgrissom.github.io/dotnet-web-dev/week-02/demo/). Leave both on screen going into the lab launch
+
+## 5 · Hand off to the lab *(slide 14)*
+
+- [ ] 🎞️ **GO TO SLIDE 14** — *Lab: Bootstrap the site*. Leave it up for the whole lab; it's the task list
+
+## 6 · Wrap-up, after the lab *(slide 15)*
+
+- [ ] 🎞️ **GO TO SLIDE 15** — *Before next week*. The homework, the deploy, and the reading

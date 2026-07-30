@@ -29,7 +29,7 @@ By the end of this session, students can:
 | Time | Duration | Segment |
 |------|----------|---------|
 | 0:00 | 5 min | **Status check** *(deck on title slide)*. **No student work on the projector** — showing each other's apps starts in week 5. Tonight is triage: quietly collect anyone whose Azure activation (week 2 homework) failed and pair them with a neighbor for the deploy segment. That segment is the riskiest 40 minutes of the night; going in knowing who's blocked is worth more than a gallery. |
-| 0:05 | 30 min | **How the web actually works** *(slides 3–5, demo §1)*. HTTP as text: request anatomy, response anatomy, verbs, status codes. Then DevTools Network tab on the hosted coffee page — real headers, real status codes. Land: 404 = routing, 500 = your code. |
+| 0:05 | 30 min | **How the web actually works** *(slides 2–5, demo §1)*. HTTP as text: request anatomy, response anatomy, verbs, status codes. Then DevTools Network tab on the hosted coffee page — real headers, real status codes. Land: 404 = routing, 500 = your code. |
 | 0:35 | 40 min | **Your first server-side app** *(slides 6–8, demo §2)*. `dotnet new mvc` → `dotnet watch` → working site. Anatomy tour (Controllers, Views, wwwroot — wave at bundled Bootstrap). Program.cs read as a story; the `pattern` line gets its drumroll. |
 | 1:15 | 10 min | **☕ Break** |
 | 1:25 | 45 min | **The MVC pattern** *(slides 9–13, demo §3)*. The request's journey; routing table with predict-then-run URLs (include a 404); controllers/actions; Razor first taste + View Source proof; a parameter-reading action. This is the load-bearing segment — protect it. |

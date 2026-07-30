@@ -18,12 +18,13 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] **Park two browser tabs**: `/Trucks` and `/Trucks/Details/2`
 - [ ] **Dev tools open on the `/Trucks` tab, on the Network panel** — you're in it twice tonight and fumbling for it kills the beat
 - [ ] Teaching profile; terminal font sized for the projector
+- [ ] **Say it before you start: *"lids down for this part — you'll build it yourself in the lab."*** Nobody can follow along tonight even if they want to; Curbside isn't in the public repo. And the five breaks below would take fourteen machines down with them. **The predict-then-run moments are where they participate** — those only work if people are looking up
 - [ ] Sanity check: `/Trucks` shows six cards, `/Trucks/Details/1` shows the "Also in Madison" panel
 
 > [!NOTE]
 > **You will add trucks to a list that resets on restart.** `dotnet watch` restarts on every C# edit, so trucks you added five minutes ago will vanish mid-demo. That's not a problem — it's §5's punchline arriving early. If it happens, say so and move on.
 
-## 1 · The round trip *(slides 3–7)*
+## 1 · The round trip *(slides 2–7)*
 
 ### Frame it *(slides 2–3)*
 
