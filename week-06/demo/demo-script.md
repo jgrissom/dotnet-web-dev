@@ -6,7 +6,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 > **Clickable version:** [the hosted script](https://jgrissom.github.io/dotnet-web-dev/week-06/demo/script.html) — checkboxes survive refreshes; Reset button for next run.
 
 > [!TIP]
-> **🎞️ lines are your cue to look up.** Each one names the slide you should be on and what it's there for. Between two of them you're in the editor or the browser and the deck can sit still — so if you lose your place, the nearest 🎞️ *above* you is the slide that should be showing.
+> **🎞️ means stop and switch to the projector.** Every 🎞️ line says the same thing: *pause here, put that slide up, talk to it.* There are no exceptions and no cue that means "not yet" — if a slide has to wait for something, its cue is further down the list, at the moment it's actually due. Between two 🎞️ lines you're in the editor or the browser and the deck stays put, so if you lose your place, **the nearest 🎞️ above you is the slide that should be showing.**
 
 > [!IMPORTANT]
 > **Tonight you break things four times on purpose**, and unlike week 5 none of them takes the whole site down — each one produces a *wrong result* rather than an error page, which is exactly what makes them worth showing. Every break below has an explicit **restore** step. Do them.
@@ -27,13 +27,13 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ### Frame it *(slides 2–3)*
 
-- [ ] 🎞️ **SLIDE 2** — *Five weeks, one direction*
+- [ ] 🎞️ **GO TO SLIDE 2** — *Five weeks, one direction*
 - [ ] *"Five weeks, and every single page has been the same shape: the browser asks, we tell. Nothing has ever come the other way. Tonight it does — and three questions show up at once. How does their typing become a C# object, who decides if it's any good, and where does it go."*
-- [ ] 🎞️ **SLIDE 3** — *GET vs. POST*. **Land the third row** — *"refreshing a POST sends it again"*. **The orange `no` and the orange sentence underneath are deliberately the same colour: point at one, then the other.** *"That word is the entire reason tonight ends the way it does"* — then leave it hanging; you collect it at break #4, an hour and a half later
+- [ ] 🎞️ **GO TO SLIDE 3** — *GET vs. POST*. **Land the third row** — *"refreshing a POST sends it again"*. **The orange `no` and the orange sentence underneath are deliberately the same colour: point at one, then the other.** *"That word is the entire reason tonight ends the way it does"* — then leave it hanging; you collect it at break #4, an hour and a half later
 
 ### A form with no help at all *(slide 4)*
 
-- [ ] 🎞️ **SLIDE 4** — *A form, with no help at all*. **Leave it up while you type** — the markup and the action are both on it, so anyone who falls behind can read ahead
+- [ ] 🎞️ **GO TO SLIDE 4** — *A form, with no help at all*. **Leave it up while you type** — the markup and the action are both on it, so anyone who falls behind can read ahead
 - [ ] In `Controllers/TrucksController.cs`, below `Details`, **type** the GET action:
   ```csharp
   // GET /Trucks/Create
@@ -80,7 +80,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ### The Network tab *(slide 5)*
 
-- [ ] 🎞️ **SLIDE 5** — *What arrived*: the echo, with the payload underneath. Up now; the live Network tab below is the proof
+- [ ] 🎞️ **GO TO SLIDE 5** — *What arrived*: the echo, with the payload underneath. Up now; the live Network tab below is the proof
 - [ ] Back, resubmit with the **Network** panel open. Click the `Create` request → **Payload**:
   ```
   Name=Wurst+Case+Scenario&Cuisine=German&City=Appleton&Rating=4.1
@@ -89,7 +89,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ### Break it #1 — the name attribute *(slide 6)*
 
-- [ ] 🎞️ **SLIDE 6** — *One renamed attribute*. **This slide is the question** — put it up, ask it, take a show of hands, and only then touch the editor
+- [ ] 🎞️ **GO TO SLIDE 6** — *One renamed attribute*. **This slide is the question** — put it up, ask it, take a show of hands, and only then touch the editor
 - [ ] **Predict first:** *"I'm going to rename one input from `Cuisine` to `Food`, and change nothing else. Error, or something worse?"*
 - [ ] In `Create.cshtml`, `name="Cuisine"` → `name="Food"`. Resubmit the same values:
   ```
@@ -102,7 +102,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ### Break it #2 — two actions, one name *(slide 7)*
 
-- [ ] 🎞️ **SLIDE 7** — *Two actions, one name*. Both signatures and the exception are on it; talk to the slide, then break it live
+- [ ] 🎞️ **GO TO SLIDE 7** — *Two actions, one name*. Both signatures and the exception are on it; talk to the slide, then break it live
 - [ ] Point at the two `Create` methods. *"C# is fine with these — they're overloads. Routing isn't; it only sees `/Trucks/Create`, and both of them answer to it"*
 - [ ] Delete the `[HttpPost]` line and **just reload `/Trucks/Create`** — no need to submit:
   ```
@@ -119,7 +119,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ### `asp-for`, one field at a time *(slide 8)*
 
-- [ ] 🎞️ **SLIDE 8** — *`asp-for` — one attribute, four jobs*. The before-and-after markup is on it; you're about to prove it in View Source
+- [ ] 🎞️ **GO TO SLIDE 8** — *`asp-for` — one attribute, four jobs*. The before-and-after markup is on it; you're about to prove it in View Source
 - [ ] Replace **just the Name field** in `Create.cshtml` and add `@model Truck` at the top:
   ```html
   <label asp-for="Name" class="form-label"></label>
@@ -136,7 +136,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ### The whole form *(slides 9–10)*
 
-- [ ] 🎞️ **SLIDE 9** — *Three sockets per field*. Point at the empty `<span>`: *"remember that one — Part 3 fills it in"*
+- [ ] 🎞️ **GO TO SLIDE 9** — *Three sockets per field*. Point at the empty `<span>`: *"remember that one — Part 3 fills it in"*
 - [ ] Replace **all of** `Views/Trucks/Create.cshtml` — **paste**:
 
   <details><summary>📋 paste: Create.cshtml, tag helper version</summary>
@@ -193,12 +193,12 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   - `IsOpenLate` is a **checkbox** — the `bool` chose that — plus a **hidden `IsOpenLate=false`** right after it. *"An unchecked box sends nothing at all, so without that hidden field a 'no' and a missing field would look identical. Razor sends false, and ticking the box overrides it"*
   - `Rating` is still `type="text"` *(the number box is for whole numbers)*, but it picked up **`data-val-number="The field Rating must be a number."`** — 🔗 *"that's the banana rule from twenty minutes ago, now written into the HTML. Nobody's reading it yet"*
   - the `<span>`s and the summary `<div>` rendered **empty**. *"Those are sockets. Part 3 plugs the errors in"*
-- [ ] 🎞️ **SLIDE 10** — *A checkbox casts a shadow*, with the hidden field still on screen in View Source
+- [ ] 🎞️ **GO TO SLIDE 10** — *A checkbox casts a shadow*, with the hidden field still on screen in View Source
 - [ ] Resubmit the form to prove it still works — same `Content()` output as before
 
 ### The hidden field you didn't write *(slide 11)*
 
-- [ ] 🎞️ **SLIDE 11** — *The field you didn't write*
+- [ ] 🎞️ **GO TO SLIDE 11** — *The field you didn't write*
 - [ ] In View Source, scroll to just inside `</form>`:
   ```html
   <input name="__RequestVerificationToken" type="hidden" value="CfDJ8L5JyJv3Gm..." />
@@ -222,12 +222,12 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 ### Where do the rules go? *(slide 12)*
 
 - [ ] Submit the form with **no name and a rating of 9000**. The echo comes back cheerfully — *"You sent: , German, Appleton, rated 9000"*. **Nothing in the app has an opinion about any of it** *(the action is still the `Content()` echo — nothing is being stored yet, and nothing is being judged)*
-- [ ] 🎞️ **SLIDE 12** — *Where do the rules live?* The two wrong answers are on it; work through them out loud
+- [ ] 🎞️ **GO TO SLIDE 12** — *Where do the rules live?* The two wrong answers are on it; work through them out loud
 - [ ] Ask it as a real question: *"somebody has to say what a valid truck is. Where does that live?"* Walk past the two wrong answers — **the view** (rules pasted into markup can't be reused, and a `Truck` gets made in more than one place) and **the controller** (every action grows the same block of ifs) — and land on **the model**
 
 ### Data annotations *(slides 13–14)*
 
-- [ ] 🎞️ **SLIDE 13** — *Data annotations*. The attributes are on it, so this is a read-along while you type
+- [ ] 🎞️ **GO TO SLIDE 13** — *Data annotations*. The attributes are on it, so this is a read-along while you type
 - [ ] Open `Models/Truck.cs`. **Type the `using` and the first two attributes**, paste the rest:
 
   <details><summary>📋 paste: Truck.cs with annotations</summary>
@@ -264,14 +264,14 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   </details>
 
 - [ ] Refresh the form. **The checkbox label now reads "Open late?"** — *"I changed the model and the form changed, because the label was reading the model the whole time"*
-- [ ] 🎞️ **SLIDE 14** — *...and they end up in the HTML*. Put it up **before** View Source, then go and find the same attributes live
+- [ ] 🎞️ **GO TO SLIDE 14** — *...and they end up in the HTML*. Put it up **before** View Source, then go and find the same attributes live
 - [ ] **View Source on the Name input** and read the new attributes out: `data-val="true"`, `data-val-required="Every truck needs a name."`, `maxlength="50"`. *"My rules are in the HTML now. Park that — it pays off in twenty minutes"*
 - [ ] Mention `{1}` and `{2}` in the Range message: the bounds fill themselves in, so the message can't drift from the rule
 - [ ] ⚠️ **Say the implicit-required thing before it bites them:** *"`Rating` has no `[Required]`, but leave it blank and it'll complain anyway — a `double` has nowhere to put 'empty'. If you want a genuinely optional number, the property has to be `double?`"*
 
 ### ModelState *(slide 15)*
 
-- [ ] 🎞️ **SLIDE 15** — *The guard*. The whole action is on it; talk it through before you type it
+- [ ] 🎞️ **GO TO SLIDE 15** — *The guard*. The whole action is on it; talk it through before you type it
 - [ ] Call back to §1: *"remember I said typing `banana` into Rating doesn't throw? Here's where that went"*
 - [ ] *"While binding runs it keeps notes — every value it saw, every conversion it couldn't do, and now every rule that was broken. Those notes are called ModelState, and they're already on your controller"*
 - [ ] Rewrite the POST action — **type the guard, paste the rest**:
@@ -304,17 +304,17 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ### Break it #3 — delete the guard *(slides 16–17)*
 
-- [ ] 🎞️ **SLIDE 16** — *Delete the guard → "What stops it?"* The question slide again: ask, then go to the editor
+- [ ] 🎞️ **GO TO SLIDE 16** — *Delete the guard → "What stops it?"* The question slide again: ask, then go to the editor
 - [ ] **Predict first:** *"if I comment out the IsValid check, what stops the bad truck?"*
 - [ ] Comment out the whole `if (!ModelState.IsValid)` block. Submit the blank-name, 9000-rated truck again
 - [ ] **It's on `/Trucks`.** A nameless card rated nine thousand
-- [ ] 🎞️ **SLIDE 17** — *Attributes describe. The guard decides.* Put it up on the nameless truck and say it to the slide
+- [ ] 🎞️ **GO TO SLIDE 17** — *Attributes describe. The guard decides.* Put it up on the nameless truck and say it to the slide
 - [ ] 🎯 **The sentence:** *"The annotations did their job. They recorded the problem, and nobody read the record. **Attributes describe. The guard decides.**"*
 - [ ] **RESTORE the block** ⚠️
 
 ### Break it #4 — the redirect *(slide 18)*
 
-- [ ] 🎞️ **SLIDE 18** — *Redirect, don't render*. 🔗 **This is where slide 3's orange `no` gets collected** — say so
+- [ ] 🎞️ **GO TO SLIDE 18** — *Redirect, don't render*. 🔗 **This is where slide 3's orange `no` gets collected** — say so
 - [ ] *"Last line of the happy path is a redirect, and it looks like a pointless extra step. Watch."*
 - [ ] Change the last line to:
   ```csharp
@@ -334,7 +334,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ### The partial week 5 promised *(slides 19–20)*
 
-- [ ] 🎞️ **SLIDE 19** — *The partial from last week*. Both blocks are on it; open the real file alongside
+- [ ] 🎞️ **GO TO SLIDE 19** — *The partial from last week*. Both blocks are on it; open the real file alongside
 - [ ] Open `Views/Shared/_ValidationScriptsPartial.cshtml`. **The whole file:**
   ```html
   <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
@@ -348,7 +348,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   }
   ```
 - [ ] Refresh, submit the **empty** form: errors appear **instantly**. No reload, no round trip
-- [ ] 🎞️ **SLIDE 20** — *One source of truth*. The two-arrow diagram is the payoff; leave it up while you say the next line
+- [ ] 🎞️ **GO TO SLIDE 20** — *One source of truth*. The two-arrow diagram is the payoff; leave it up while you say the next line
 - [ ] 🎯 *"Nothing in my C# changed. Those two scripts scan the page for the `data-val` attributes we watched appear twenty minutes ago, and enforce whatever they find. **One source of truth — `Models/Truck.cs` — enforced in two places.**"*
 - [ ] Say why the section matters: dropped in the middle of the view it loads **before** jQuery and dies with `$ is not defined`. Week 5's section wasn't a formality
 
@@ -357,7 +357,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 > [!IMPORTANT]
 > **This is the security beat of the night. Don't cut it, and don't rush the sentence at the end.**
 
-- [ ] 🎞️ **SLIDE 21** — *Now turn it off*. Ask the question off the slide, then go to dev tools
+- [ ] 🎞️ **GO TO SLIDE 21** — *Now turn it off*. Ask the question off the slide, then go to dev tools
 - [ ] **Predict first:** *"if I switch the browser's validation off, does the truck get in?"*
 - [ ] Dev tools → **Elements** → find the `<form>` → add a **`novalidate`** attribute to it *(double-click the tag, type it in)*
 - [ ] Submit the empty form. **The browser lets it straight through** — no red text, a real POST goes out
@@ -368,17 +368,17 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ## 5 · Where the truck actually went *(slide 22)*
 
-- [ ] 🎞️ **SLIDE 22** — *Where did the truck go?* Hold it back until **after** the restart below; the slide is the answer, not the setup
-- [ ] Show `/Trucks` with your added trucks on it. Seven, eight cards
+- [ ] Show `/Trucks` with your added trucks on it. Seven, eight cards **(stay in the browser — the slide is the answer, and it would give this away)**
 - [ ] In the terminal: **`Ctrl+C`**, then `dotnet watch` again. Reload `/Trucks`
 - [ ] **Six.** *"Gone."*
+- [ ] 🎞️ **GO TO SLIDE 22** — *Where did the truck go?* Now, on the six cards
 - [ ] Open `Models/TruckData.cs` and point at `static List<Truck>`. *"A variable in a running program. It lives exactly as long as the process does. Everything tonight was real — the form, the binding, the validation, the redirect. The **storage** is a placeholder, and it always has been. You just couldn't tell, because until tonight nothing ever changed"*
 - [ ] ⚠️ **Warn them before the homework:** on Azure this is worse — a free-tier app **sleeps**, and wakes up with the hard-coded items only. If their test entries are missing when they check tomorrow, nothing is broken
 - [ ] 🔗 **Week 7, pointing at the controller while you say it:** *"next week `TruckData.cs` is deleted and that list becomes a SQL Server table. And look at what changes in here — `ModelState.IsValid`, the guard, the redirect, all of it stays. One line changes: where the list comes from"*
 
 ## 6 · Hand off to the lab *(slide 23)*
 
-- [ ] 🎞️ **SLIDE 23** — *Lab: the Registry takes reports*. Leave it up for the whole lab; it's the task list
+- [ ] 🎞️ **GO TO SLIDE 23** — *Lab: the Registry takes reports*. Leave it up for the whole lab; it's the task list
 - [ ] Show **what done looks like** — your finished Registry with a working form + `dotnet test` printing **6 / 6**. ~90 seconds, a target not a walkthrough
 - [ ] Setup on screen, said once: **`git pull` → copy `week-06/lab/starter` out and rename it → open the folder holding *both* projects → `dotnet test Cryptids.Checks`**
 - [ ] Say plainly: **the app arrives with last week's shell on it.** Nobody is blocked tonight by an unfinished week 5. Check 1 proves it
@@ -389,6 +389,6 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ## 7 · Wrap-up, after the lab *(slide 24)*
 
-- [ ] 🎞️ **SLIDE 24** — *Tonight, in one picture*. The round-trip diagram; walk it once, top to bottom
+- [ ] 🎞️ **GO TO SLIDE 24** — *Tonight, in one picture*. The round-trip diagram; walk it once, top to bottom
 - [ ] Homework: **their own app gets a Create form** — same moves, their model
 - [ ] 🔗 Week 7: *"the list stops being a variable"* — and almost none of tonight's controller changes
