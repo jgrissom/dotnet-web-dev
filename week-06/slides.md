@@ -50,6 +50,12 @@ The browser asked. You told.
 
 ## GET vs. POST
 
+<style scoped>
+  /* the "no" and the sentence it causes, in one colour — they are one idea */
+  tbody tr:last-child strong,
+  section p strong { color: #ffa657; }
+</style>
+
 | | GET | POST |
 |---|---|---|
 | Means | "give me this" | "here, take this" |
@@ -58,7 +64,7 @@ The browser asked. You told.
 
 <br>
 
-That last row is why tonight ends with a redirect.
+**That last row is why tonight ends with a redirect.**
 
 ---
 

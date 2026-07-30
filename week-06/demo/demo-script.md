@@ -25,7 +25,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 ### Frame it *(slide 2)*
 
 - [ ] *"Five weeks, and every single page has been the same shape: the browser asks, we tell. Nothing has ever come the other way. Tonight it does — and three questions show up at once. How does their typing become a C# object, who decides if it's any good, and where does it go."*
-- [ ] Slide 3 is the GET/POST table. **Land the third row** — *"refreshing a POST sends it again"* — and tell them it's why the night ends with a redirect
+- [ ] Slide 3 is the GET/POST table. **Land the third row** — *"refreshing a POST sends it again"*. **The orange `no` and the orange sentence underneath are deliberately the same colour: point at one, then the other.** *"That word is the entire reason tonight ends the way it does"* — then leave it hanging; you collect it at break #4, an hour and a half later
 
 ### A form with no help at all *(slide 4)*
 
