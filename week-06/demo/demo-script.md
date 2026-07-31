@@ -21,6 +21,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 - [ ] **Copy `week-06/demo-starter/Curbside` out of the answer-keys repo** to a scratch folder. This is Curbside exactly as week 5's demo left it — branded, themed, card partial on two pages, a `@section Scripts` on Details
 - [ ] `cd Curbside && dotnet watch`
+- [ ] **Set the Port box at the top of this page** to whatever `dotnet watch` just printed — `Now listening on: http://localhost:5164`. Every `localhost` URL in this sheet retargets to match, including what the **Copy** buttons put on your clipboard, and it's remembered next time. §2's `curl` is the one that cares
 - [ ] **Park two browser tabs**: `/Trucks` and `/Trucks/Details/2`
 - [ ] **Dev tools open on the `/Trucks` tab, on the Network panel** — you're in it twice tonight and fumbling for it kills the beat
 - [ ] **Size the terminal to be read from the back row.** In §1 it stops being where the app runs and becomes the thing everyone is looking at
@@ -267,7 +268,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 You can't stage this attack in the browser — the browser is *on your site*, so Razor keeps putting a valid token in the page. `curl` is the other site: a request from nowhere, no page, no token. Same command twice, one line of C# in between. Budget two minutes.
 
 - [ ] **Split the terminal — don't kill `dotnet watch`.** ⌃⇧5 in VS Code, or the split icon on the terminal pane. You want the watch output still visible in the other pane; **that pane is the evidence**, both times
-- [ ] ⚠️ **Check your port** in the watch output (`http://localhost:5164` unless you changed it) and fix the command before you paste it
+- [ ] ⚠️ **The port below is whatever the Port box at the top says** — set it in §0 and the `curl` is already correct. If you're reading this as raw Markdown on GitHub there's no box, so check the command against the watch output before you paste it
 
 **Before — the attribute is not there yet:**
 
