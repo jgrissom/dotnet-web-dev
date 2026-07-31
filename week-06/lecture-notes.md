@@ -258,6 +258,25 @@ public IActionResult Create(Truck truck)
 
 - The token is already in the page whether or not you check it. The attribute is what makes the server *look*.
 - Its failure mode is memorable: a **400**, before your action runs, with nothing of yours in the stack trace. If a form starts 400ing the day someone rewrites it by hand with `asp-antiforgery="false"`, this is why.
+- ⚠️ **Restart after adding this attribute — don't trust hot reload with it.** MVC builds each action's filter list at startup, and an attribute-only edit rebuilds it only sometimes; `dotnet watch` prints *Hot reload succeeded* either way. Press `Ctrl+R` in the watch terminal. This only bites you when you try to *test* the attribute and it appears to do nothing — which is exactly what the next section has you do.
+
+### Seeing it yourself
+
+You can't demonstrate this from the browser — your browser is on your own site, so Razor keeps handing it a valid token. You need a request from outside. Run the app, then from a **second** terminal (`dotnet watch` owns the first one):
+
+```bash
+curl -i -X POST http://localhost:5164/Trucks/Create \
+  -d "Name=Totally Legit&Cuisine=Fake&City=Nowhere&Rating=5"
+```
+
+Check the port against what `dotnet watch` printed. **Without** the attribute you get `HTTP/1.1 200 OK`, and a fully-built `Truck` prints in the other terminal — a request that never loaded your page just reached your action. **With** the attribute (and after a restart) the same command gets:
+
+```
+HTTP/1.1 400 Bad Request
+Content-Length: 0
+```
+
+and nothing at all appears in the other terminal. That absence is the real result: the action never ran. Note `Content-Length: 0` — an antiforgery rejection has an empty body and writes nothing to the log, so in a browser it looks like a blank white page. Worth recognising once.
 
 ## Part 3: Rules that live on the model (40 min)
 

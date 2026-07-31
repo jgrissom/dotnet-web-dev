@@ -259,14 +259,61 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   ```
 - [ ] ⚠️ **Do not say the tag helper added it** — Razor adds it to **every** `<form method="post">`, including the hand-written one from §1. Worth saying explicitly, because it's the obvious wrong conclusion
 - [ ] The one-paragraph why: *"without it, any other site could put a hidden form on their page pointing at your URL, and a logged-in visitor's browser would send it along with their cookies. The token is a value my server planted here and in a cookie; someone else's form can't produce a matching pair"*
+- [ ] **Don't add the attribute yet.** First show that the door is open — **the same request, before and after** [§2 the curl, before and after ↓](#2-the-curl-before-and-after)
+- [ ] **✓ CHECKPOINT:** everyone can say what `asp-for` writes into the HTML
+
+### §2 the curl, before and after
+
+You can't stage this attack in the browser — the browser is *on your site*, so Razor keeps putting a valid token in the page. `curl` is the other site: a request from nowhere, no page, no token. Same command twice, one line of C# in between. Budget two minutes.
+
+- [ ] **Split the terminal — don't kill `dotnet watch`.** ⌃⇧5 in VS Code, or the split icon on the terminal pane. You want the watch output still visible in the other pane; **that pane is the evidence**, both times
+- [ ] ⚠️ **Check your port** in the watch output (`http://localhost:5164` unless you changed it) and fix the command before you paste it
+
+**Before — the attribute is not there yet:**
+
+- [ ] **Predict first, show of hands:** *"nothing on my site sent this. No form, no browser, no token. Does it work?"*
+- [ ] In the new pane — **paste**:
+  ```bash
+  curl -i -X POST http://localhost:5164/Trucks/Create \
+    -d "Name=Totally Legit&Cuisine=Fake&City=Nowhere&Rating=5"
+  ```
+  ```
+  HTTP/1.1 200 OK
+  Content-Length: 39
+
+  Submitted — look at the terminal 👀
+  ```
+- [ ] 🎯 **Point at the other pane** — a whole truck, built from a request that never loaded your page:
+  ```
+  ── model binding built a Truck ──
+     Name      Totally Legit
+     Cuisine   Fake
+     City      Nowhere
+     Rating    5   (x2 = 10)
+     Open late False
+  ```
+- [ ] *"That's the paragraph I just read you, actually happening. Anyone who can guess this URL can post to it."*
+
+**After — one line of C#:**
+
 - [ ] Add the attribute to the POST action — **type it**:
   ```csharp
   [HttpPost]
   [ValidateAntiForgeryToken]
   public IActionResult Create(Truck truck)
   ```
-- [ ] *"The token was already in the page. This is what makes the server look."* Its failure mode is a **400 before your code runs** — worth recognising once
-- [ ] **✓ CHECKPOINT:** everyone can say what `asp-for` writes into the HTML
+- [ ] ⚠️ **`Ctrl+R` in the watch pane to restart — don't trust hot reload for this one.** MVC builds each action's filter list at startup, and a metadata-only edit rebuilds it only *sometimes*: in testing this went live on two runs out of three and was silently inert on the third, with `Hot reload succeeded` printed every time. **On the bad roll your "after" is identical to your "before" in front of the room, with nothing on screen to explain why.** The restart costs nothing here — the action still returns `Content()`, so there are no trucks in the list to wipe yet
+- [ ] **Re-run the exact same `curl`** — ⬆ in that pane:
+  ```
+  HTTP/1.1 400 Bad Request
+  Content-Length: 0
+  ```
+- [ ] 🎯 **Point at the other pane again — and this time at the *absence*.** *"No `built a Truck`. Not a bad truck, not an empty truck. My method never ran at all. It was refused before it got there."*
+- [ ] **`Content-Length: 0`** — say it: *"a 400 with an empty body, and nothing in the log either. In a browser that's a blank white page. If you ever submit a form and get a blank page, this is a candidate"*
+- [ ] Now **submit the real form in the browser** — it still works. *"Same server, same action. The difference is that this request came from a page that had the token in it."*
+
+> [!TIP]
+> Short on time? Cut this whole section — it's a recognition item, not a mental model, and §3 needs the minutes more. Type the attribute anyway (it's on slide 11), say the 400 out loud, and move on: nothing later in the demo depends on the filter actually being live, because every submission from here on comes from a real page with a real token.
 
 ## 3 · Rules that live on the model *(slides 12–18)* — **the load-bearing segment**
 
