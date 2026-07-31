@@ -238,6 +238,18 @@ Three things worth naming while it's on screen:
 - **`asp-for` on a `bool` renders a checkbox**, again from the C# type. It also emits a hidden companion field — **not next to the checkbox, but at the bottom of the form, just inside `</form>`, so scroll down for it in View Source** — which is the fix for an old HTML wart: an unchecked box sends *nothing at all*, so without the hidden field a "no" would be indistinguishable from a missing field. Razor sends `false` alongside, and the checkbox overrides it with `true` when ticked. Show it in View Source; it surprises people who've fought this before. Submit the form with the box ticked and the `Open late` line in the terminal reads `True` — that's the one field the hand-written form couldn't produce.
 - **The `<span>`s and the `<div>` are empty**, and they render as empty. They're the sockets Part 3 plugs error messages into.
 
+### Getting to the form
+
+A form nobody can reach is a form nobody uses, and so far the only way to `/Trucks/Create` has been typing it into the address bar. Put a button at the top of the list page — in `Views/Trucks/Index.cshtml`, just under the count:
+
+```html
+<a asp-action="Create" class="btn btn-primary mb-4">＋ Add a truck</a>
+```
+
+That's the same `asp-action` you just used on the `<form>`, and the same one the navbar has been using since week 4 — on an `<a>` it writes the `href` instead of the `action`. **No `asp-controller` needed:** you're in a view belonging to `TrucksController`, so it fills in the controller you're already in. Add one and the rendered HTML is plain old `<a class="btn btn-primary mb-4" href="/Trucks/Create">`.
+
+Build the link before the action exists and it 404s — which is worth doing once on purpose, because it's the clearest demonstration that `asp-action` generates a URL from a *route*, not from a file that has to be sitting there.
+
 ### The hidden field you didn't write
 
 Scroll to the bottom of View Source, just inside `</form>` — the same place the checkbox's hidden companion turned up. There are two hidden fields down there, and the token comes first:

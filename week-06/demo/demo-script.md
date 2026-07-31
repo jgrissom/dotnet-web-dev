@@ -19,7 +19,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ## 0 · Before class
 
-- [ ] **Copy `week-06/demo-starter/Curbside` out of the answer-keys repo** to a scratch folder. This is Curbside exactly as week 5's demo left it — branded, themed, card partial on two pages, a `@section Scripts` on Details
+- [ ] **Copy `week-06/demo-starter/Curbside` out of the answer-keys repo** to a scratch folder. This is Curbside as week 5's demo left it — branded, themed, card partial on two pages, a `@section Scripts` on Details — **plus one thing week 5 didn't have: an `＋ Add a truck` button on `/Trucks` that goes nowhere.** It 404s until §1 builds the action behind it. That's deliberate; it's tonight's job, and from §1 on it's how you get to the form instead of retyping the URL
 - [ ] `cd Curbside && dotnet watch`
 - [ ] **Set the Port box at the top of this page** to whatever `dotnet watch` just printed — `Now listening on: http://localhost:5164`. Every `localhost` URL in this sheet retargets to match, including what the **Copy** buttons put on your clipboard, and it's remembered next time. §2's `curl` is the one that cares
 - [ ] **Park two browser tabs**: `/Trucks` and `/Trucks/Details/2`
@@ -33,7 +33,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   You need it twice tonight — once in §1 and once in §3 — and a wiped terminal with exactly one object in it reads instantly from the back row
 - [ ] Teaching profile; terminal font sized for the projector
 - [ ] **Say it before you start: *"lids down for this part — you'll build it yourself in the lab."*** Nobody can follow along tonight even if they want to; Curbside isn't in the public repo. And the five breaks below would take fourteen machines down with them. **The predict-then-run moments are where they participate** — those only work if people are looking up
-- [ ] Sanity check: `/Trucks` shows six cards, `/Trucks/Details/1` shows the "Also in Madison" panel
+- [ ] Sanity check: `/Trucks` shows six cards **and the `＋ Add a truck` button**, `/Trucks/Details/1` shows the "Also in Madison" panel. **Don't click the button yet** — a 404 during setup is expected, but you want its first press to be the one in §1 that works
 
 > [!NOTE]
 > **You will add trucks to a list that resets on restart.** `dotnet watch` restarts on every C# edit, so trucks you added five minutes ago will vanish mid-demo. That's not a problem — it's §5's punchline arriving early. If it happens, say so and move on.
@@ -96,7 +96,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
   </details>
 
-- [ ] **Clear the terminal** (⌘K, or right-click → Clear), then load `/Trucks/Create`. It's ugly. Fill it in — **`Wurst Case Scenario` / `German` / `Appleton` / `4.1`** — and submit
+- [ ] **Clear the terminal** (⌘K, or right-click → Clear), then go to `/Trucks` and **click `＋ Add a truck`** — the dead button from setup now goes somewhere. *"One action, one view, and the link that's been 404ing works. That's the whole of last week's routing still doing its job"*. It's ugly. Fill it in — **`Wurst Case Scenario` / `German` / `Appleton` / `4.1`** — and submit
 - [ ] Browser says *"look at the terminal 👀"* — and the terminal is right there beside it. **Read it out:**
   ```
   ── model binding built a Truck ──
@@ -407,7 +407,7 @@ You can't stage this attack in the browser — the browser is *on your site*, so
 
 - [ ] Read it out: **`IsValid` is a question, not a command** — validation already ran during binding, before your first line · **`View(truck)`** hands back everything they typed · **the guard returns**, so everything below it can assume a good truck
 - [ ] Submit a **good** truck — `Wurst Case Scenario / German / Appleton / 4.1`. It lands on `/Trucks` as a seventh card 🎉
-- [ ] Submit a **bad** one — blank name, rating 9000. The form comes back, **their input still in it**, red messages beside two fields
+- [ ] You're on `/Trucks` now — **click `＋ Add a truck`** and submit a **bad** one: blank name, rating 9000. The form comes back, **their input still in it**, red messages beside two fields
 - [ ] Point at where the messages landed: *"the empty spans from twenty minutes ago"*. And at the input itself — it picked up `input-validation-error` and Bootswatch outlined it red, and you wrote no CSS
 
 ### Break it #3 — delete the guard *(slides 16–17)*
@@ -426,9 +426,9 @@ You can't stage this attack in the browser — the browser is *on your site*, so
   ```csharp
   return View("Index", TruckData.All);
   ```
-- [ ] Submit a good truck — **it works**, the list appears. Now **point at the address bar**: it still says `/Trucks/Create`
+- [ ] **Click `＋ Add a truck`** (the C# edit just restarted the app, so you're back to six trucks) and submit a good one — **it works**, the list appears. Now **point at the address bar**: it still says `/Trucks/Create`
 - [ ] **Hit refresh.** Browser: *"Confirm Form Resubmission?"* → say yes → **two identical trucks in the list**
-- [ ] **RESTORE `return RedirectToAction(nameof(Index));`** ⚠️ Submit another truck, then **refresh: nothing happens**, because the page you're on arrived by GET
+- [ ] **RESTORE `return RedirectToAction(nameof(Index));`** ⚠️ The page still shows the *list* at `/Trucks/Create`, so **click `＋ Add a truck`** to get a real form back. Submit another truck, then **refresh: nothing happens**, because the page you're on arrived by GET
 - [ ] Name it: **POST-Redirect-GET**. *"It's why every form you have ever used bounces you to a different URL after you submit"*
 - [ ] Show it in the **Network** panel: the POST comes back **302** with a `Location` header, then a separate GET. Two requests
 - [ ] `nameof(Index)` over `"Index"` — renaming the action becomes a compile error instead of a 404
