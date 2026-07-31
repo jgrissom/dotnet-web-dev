@@ -350,7 +350,7 @@ Then visit `/Trucks/Details/999` on purpose.
 - **Model and data are given** — you write controllers and views
 - A list · a details page · a 404 that's honest
 
-Tonight's target: **checks 1–4**. The rest is homework.
+**⏱️ 40 minutes · tonight's target: checks 1–4.** The rest is homework.
 
 ---
 

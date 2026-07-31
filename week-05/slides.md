@@ -358,7 +358,7 @@ Week 2's utility classes. Same as they ever were.
 - **5** — a script, in a section
 - **6** — a Bootswatch theme
 
-**Target tonight: 1–4 green.**
+**⏱️ 45 minutes · target tonight: 1–4 green.**
 
 ---
 

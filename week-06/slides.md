@@ -422,7 +422,7 @@ A variable in a running program. **Next week: a table.**
 - **5** — the `ModelState.IsValid` guard
 - **6** — validation in the browser
 
-**Target tonight: 1–5 green.**
+**⏱️ 50 minutes · target tonight: 1–5 green.**
 
 ---
 

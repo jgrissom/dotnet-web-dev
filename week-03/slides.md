@@ -274,6 +274,8 @@ az webapp up --name ff-web-XX1234 --sku F1 --os-type Linux \
 - Brand it · add an About page · put it in the nav · greet by name
 - Same rhythm as always: one ❌ at a time
 
+**⏱️ 35 minutes**
+
 ---
 
 <!-- _footer: '🖥️ Demo §6' -->

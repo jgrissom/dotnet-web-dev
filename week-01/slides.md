@@ -337,6 +337,8 @@ loadUsers()   // ← type this to run it, then watch the console
 - Exercises 1–8 in `lab/README.md`
 - Pairs encouraged · answers live in the browser console
 
+**⏱️ 30 minutes**
+
 ---
 
 ## Before next week

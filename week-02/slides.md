@@ -257,6 +257,8 @@ Swap **one line** — the CSS link:
 - Then: pick your Bootswatch theme + font pairing
 - **Docs open the whole time — that's the exercise**
 
+**⏱️ 50 minutes**
+
 ---
 
 <!-- _footer: '🖥️ Demo §6' -->
