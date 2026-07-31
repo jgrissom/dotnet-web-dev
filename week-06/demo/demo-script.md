@@ -467,6 +467,7 @@ You can't stage this attack in the browser — the browser is *on your site*, so
 - [ ] Submit the empty form. **The browser lets it straight through** — no red text, a real POST goes out
 - [ ] **And the server refuses it anyway**, with the same messages as before, because `ModelState.IsValid` never went anywhere
 - [ ] 🎯 **Say this slowly:** *"Anything in the browser is a suggestion. It's someone else's computer — they can edit it, turn JavaScript off, or skip your page entirely and post to that URL from a terminal. The browser copy is for **speed**. The server copy is the one that's actually enforcing anything."*
+- [ ] 🔗 **If you ran §2's `curl`, collect it here** — *"and you watched me do exactly that an hour ago. No browser, no page, no JavaScript. That request still reached the server, and the server is where it got stopped."*
 - [ ] *"And that's why we did them in that order tonight. Do it the other way round and you learn to trust the wrong one"*
 - [ ] **✓ CHECKPOINT:** nobody in the room thinks client-side validation is a security feature
 
