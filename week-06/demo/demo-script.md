@@ -463,9 +463,12 @@ You can't stage this attack in the browser — the browser is *on your site*, so
 > **This is the security beat of the night. Don't cut it, and don't rush the sentence at the end.**
 
 - [ ] 🎞️ **GO TO SLIDE 21** — *Now turn it off* · **predict off the slide, then go to dev tools:** *"if I switch the browser's validation off, does the truck get in?"*
-- [ ] Dev tools → **Elements** → find the `<form>` → add a **`novalidate`** attribute to it *(double-click the tag, type it in)*
-- [ ] Submit the empty form. **The browser lets it straight through** — no red text, a real POST goes out
-- [ ] **And the server refuses it anyway**, with the same messages as before, because `ModelState.IsValid` never went anywhere
+- [ ] ⚠️ **Do not reach for `novalidate` — it does nothing here, and the form already has it.** jQuery Validate stamps `novalidate="novalidate"` on every form it takes over, so it's sitting in the Elements panel looking exactly like the switch you want. It isn't: it disables the browser's *built-in* validation, and these tag helpers never used that — they emit `data-val-*`, not `required`. Verified: with it in place the empty form still won't submit, and **zero** requests reach the server. Deleting `data-val="true"` doesn't work either; unobtrusive read the rules once at page load and no longer cares about the attribute
+- [ ] **Turn off the thing that's actually doing the work — JavaScript.** Dev tools → **⌘⇧P** / **Ctrl+Shift+P** → type `Disable JavaScript` → Enter. **Then reload the form** — the scripts have to not *run*, so the reload is the part that matters
+- [ ] Submit the empty form. **It goes straight through** — no red text, a real POST leaves the browser
+- [ ] **And the server refuses it anyway**, red messages beside the same fields, because `ModelState.IsValid` never went anywhere
+- [ ] Three messages are word-for-word what the browser was showing. **`Rating` is different** — `The value '' is invalid.` 🔗 *"that's the empty-`double` thing from earlier: the browser was enforcing my `[Range]`, but an empty box can't even become a number, so binding fails before the rule gets a look."* Don't dwell, just don't let it look like a bug
+- [ ] ⚠️ **RESTORE: ⌘⇧P → `Enable JavaScript`, then reload** — miss this and client validation stays off for the rest of the night
 - [ ] 🎯 **Say this slowly:** *"Anything in the browser is a suggestion. It's someone else's computer — they can edit it, turn JavaScript off, or skip your page entirely and post to that URL from a terminal. The browser copy is for **speed**. The server copy is the one that's actually enforcing anything."*
 - [ ] 🔗 **If you ran §2's `curl`, collect it here** — *"and you watched me do exactly that an hour ago. No browser, no page, no JavaScript. That request still reached the server, and the server is where it got stopped."*
 - [ ] *"And that's why we did them in that order tonight. Do it the other way round and you learn to trust the wrong one"*

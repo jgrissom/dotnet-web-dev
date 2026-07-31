@@ -445,9 +445,11 @@ How it works, and it's the payoff for the `data-val` attributes from Part 3: tho
 ### Client-side validation is a courtesy, not a gate
 
 > [!IMPORTANT]
-> **Break it (demo §4), and make this one land.** With client-side validation working, open dev tools, find the `<form>` element and add a `novalidate` attribute to it — or delete `data-val="true"` from the name input. Now submit the empty form.
+> **Break it (demo §4), and make this one land.** With client-side validation working, open dev tools, press `⌘⇧P` / `Ctrl+Shift+P`, run **Disable JavaScript**, and **reload the page**. Now submit the empty form.
 >
-> The browser lets it straight through. And the server still refuses it, with the same red messages as before, because `ModelState.IsValid` never went anywhere.
+> It goes straight through. And the server still refuses it, red messages beside the same fields, because `ModelState.IsValid` never went anywhere. (Turn JavaScript back on afterwards.)
+>
+> **Why not just add `novalidate` to the form?** Because it does nothing here — and it's already there. jQuery Validate adds `novalidate="novalidate"` to any form it takes over, so you'll see it in the Elements panel and think you've found the switch. All it turns off is the browser's *own* built-in validation, which these tag helpers never asked for: `asp-for` emits `data-val-*` attributes, not `required`, so the browser had nothing to enforce in the first place. Deleting `data-val="true"` afterwards doesn't work either — unobtrusive reads the rules once when the page loads and doesn't look at the attribute again. **The only way to stop it is to stop the JavaScript.**
 >
 > **Anything in the browser is a suggestion.** It's someone else's computer; they can edit it, disable JavaScript, or skip the page entirely and post to your URL from a terminal. Client-side validation exists so honest people get instant feedback. **Server-side validation is the one that's actually enforcing anything**, and it is not optional.
 

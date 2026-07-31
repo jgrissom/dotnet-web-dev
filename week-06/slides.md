@@ -380,7 +380,7 @@ Those scripts read the **`data-val-*` attributes** from twenty minutes ago.
 
 ## Now turn it off
 
-Dev tools. Add `novalidate` to the `<form>`. Submit.
+Dev tools → **Disable JavaScript**. Reload. Submit.
 
 <br>
 
