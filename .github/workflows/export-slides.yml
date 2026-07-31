@@ -35,6 +35,26 @@ jobs:
             npx -y @marp-team/marp-cli "$f" -o "${f%.md}.html"
           done
 
+      # The lab slide's "⏱️ NN minutes" becomes a live countdown with a Start
+      # button. Marp turns the ⏱️ into a twemoji <img>, so the script keys off
+      # that image and the duration text after it — nothing to author per week,
+      # and a deck with no lab slide is left alone.
+      - name: Add the lab countdown to each deck
+        run: |
+          node -e '
+            const fs = require("fs");
+            const js = fs.readFileSync("scripts/lab-timer.js", "utf8");
+            let n = 0;
+            for (const f of process.argv.slice(1)) {
+              let h = fs.readFileSync(f, "utf8");
+              if (h.includes("data-lab-timer")) continue;
+              if (!h.includes("</body>")) { console.log("no </body>: " + f); continue; }
+              fs.writeFileSync(f, h.replace("</body>", "<script data-lab-timer>" + js + "</script></body>"));
+              n++;
+            }
+            console.log("lab timer injected into " + n + " deck(s)");
+          ' week-*/slides.html
+
       - name: Commit regenerated decks
         run: |
           git config user.name "github-actions[bot]"
