@@ -445,15 +445,24 @@ How it works, and it's the payoff for the `data-val` attributes from Part 3: tho
 ### Client-side validation is a courtesy, not a gate
 
 > [!IMPORTANT]
-> **Break it (demo §4), and make this one land.** With client-side validation working, open dev tools, press `⌘⇧P` / `Ctrl+Shift+P`, run **Disable JavaScript**, and **reload the page**. Now submit the empty form.
+> **Client-side for convenience. Server-side for security.** You need both, and one does not stand in for the other.
 >
-> It goes straight through. And the server still refuses it, red messages beside the same fields, because `ModelState.IsValid` never went anywhere. (Turn JavaScript back on afterwards.)
+> The browser copy is a courtesy: instant red text, no round trip, no waiting. It's most of what your users will ever notice, and it enforces **nothing**. **Anything in the browser is a suggestion** — it's someone else's computer, and they can edit it, disable JavaScript, or skip your page entirely and post to your URL from a terminal. You already saw that last one work, back in [Seeing it yourself](#seeing-it-yourself): a request reached the action with no browser and no JavaScript involved at all. Nothing the browser checks was ever in its way.
 >
-> **Why not just add `novalidate` to the form?** Because it does nothing here — and it's already there. jQuery Validate adds `novalidate="novalidate"` to any form it takes over, so you'll see it in the Elements panel and think you've found the switch. All it turns off is the browser's *own* built-in validation, which these tag helpers never asked for: `asp-for` emits `data-val-*` attributes, not `required`, so the browser had nothing to enforce in the first place. Deleting `data-val="true"` afterwards doesn't work either — unobtrusive reads the rules once when the page loads and doesn't look at the attribute again. **The only way to stop it is to stop the JavaScript.**
->
-> **Anything in the browser is a suggestion.** It's someone else's computer; they can edit it, disable JavaScript, or skip the page entirely and post to your URL from a terminal. Client-side validation exists so honest people get instant feedback. **Server-side validation is the one that's actually enforcing anything**, and it is not optional.
+> **Server-side validation is the one that's actually enforcing anything**, and it is not optional.
 
 That's the sentence to take away: *the browser copy is for speed; the server copy is for real.* It's also why the order tonight was server first, browser second — the reverse teaches people to trust the wrong one.
+
+### Turning the browser copy off (if you want to see it)
+
+Optional, and fiddlier than it looks. The obvious moves both fail:
+
+- **Adding `novalidate` to the `<form>` does nothing** — and it's already there. jQuery Validate stamps `novalidate="novalidate"` on any form it takes over, so you'll spot it in the Elements panel and think you've found the switch. All it governs is the browser's *own* built-in validation, which these tag helpers never asked for: `asp-for` emits `data-val-*` attributes, not `required`. The browser had nothing to enforce in the first place.
+- **Deleting `data-val="true"` does nothing either** — unobtrusive reads the rules once when the page loads and never looks at the attribute again.
+
+The only real switch is **disabling JavaScript** — dev tools, `⌘⇧P` / `Ctrl+Shift+P`, *Disable JavaScript*, then reload. Submit the empty form and it goes to the server, which refuses it and hands the form back with the same messages. Turn JavaScript back on afterwards.
+
+Be warned that it's a weak demonstration: what you're looking for is a full page round trip, and on a fast connection that's invisible — the page comes back looking almost identical to the client-side version. **Keep the Network panel open** and watch the POST appear, which is the only part you can actually see. The `curl` from Part 2 makes the same point far more plainly.
 
 ## Part 5: Where the truck actually went (10 min)
 

@@ -32,7 +32,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   
   You need it twice tonight — once in §1 and once in §3 — and a wiped terminal with exactly one object in it reads instantly from the back row
 - [ ] Teaching profile; terminal font sized for the projector
-- [ ] **Say it before you start: *"lids down for this part — you'll build it yourself in the lab."*** Nobody can follow along tonight even if they want to; Curbside isn't in the public repo. And the five breaks below would take fourteen machines down with them. **The predict-then-run moments are where they participate** — those only work if people are looking up
+- [ ] **Say it before you start: *"lids down for this part — you'll build it yourself in the lab."*** Nobody can follow along tonight even if they want to; Curbside isn't in the public repo. And the four breaks below would take fourteen machines down with them. **The predict-then-run moments are where they participate** — those only work if people are looking up
 - [ ] Sanity check: `/Trucks` shows six cards **and the `＋ Add a truck` button**, `/Trucks/Details/1` shows the "Also in Madison" panel. **Don't click the button yet** — a 404 during setup is expected, but you want its first press to be the one in §1 that works
 
 > [!NOTE]
@@ -457,21 +457,18 @@ You can't stage this attack in the browser — the browser is *on your site*, so
 - [ ] 🎞️ **GO TO SLIDE 20** — *One source of truth* · 🎯 leave the two-arrow diagram up and say: *"Nothing in my C# changed. Those two scripts scan the page for the `data-val` attributes we watched appear twenty minutes ago, and enforce whatever they find. **One source of truth — `Models/Truck.cs` — enforced in two places.**"*
 - [ ] Say why the section matters: dropped in the middle of the view it loads **before** jQuery and dies with `$ is not defined`. Week 5's section wasn't a formality
 
-### Break it #5 — defeat it *(slide 21)*
+### Why both *(slide 21)*
 
 > [!IMPORTANT]
-> **This is the security beat of the night. Don't cut it, and don't rush the sentence at the end.**
+> **This is the security beat of the night, and it's the one place tonight where the payoff is a sentence rather than a screen.** Nothing to type, nothing to break — you're collecting evidence the room has already seen. Slow down and say it properly.
 
-- [ ] 🎞️ **GO TO SLIDE 21** — *Now turn it off* · **predict off the slide, then go to dev tools:** *"if I switch the browser's validation off, does the truck get in?"*
-- [ ] ⚠️ **Do not reach for `novalidate` — it does nothing here, and the form already has it.** jQuery Validate stamps `novalidate="novalidate"` on every form it takes over, so it's sitting in the Elements panel looking exactly like the switch you want. It isn't: it disables the browser's *built-in* validation, and these tag helpers never used that — they emit `data-val-*`, not `required`. Verified: with it in place the empty form still won't submit, and **zero** requests reach the server. Deleting `data-val="true"` doesn't work either; unobtrusive read the rules once at page load and no longer cares about the attribute
-- [ ] **Turn off the thing that's actually doing the work — JavaScript.** Dev tools → **⌘⇧P** / **Ctrl+Shift+P** → type `Disable JavaScript` → Enter. **Then reload the form** — the scripts have to not *run*, so the reload is the part that matters
-- [ ] Submit the empty form. **It goes straight through** — no red text, a real POST leaves the browser
-- [ ] **And the server refuses it anyway**, red messages beside the same fields, because `ModelState.IsValid` never went anywhere
-- [ ] Three messages are word-for-word what the browser was showing. **`Rating` is different** — `The value '' is invalid.` 🔗 *"that's the empty-`double` thing from earlier: the browser was enforcing my `[Range]`, but an empty box can't even become a number, so binding fails before the rule gets a look."* Don't dwell, just don't let it look like a bug
-- [ ] ⚠️ **RESTORE: ⌘⇧P → `Enable JavaScript`, then reload** — miss this and client validation stays off for the rest of the night
-- [ ] 🎯 **Say this slowly:** *"Anything in the browser is a suggestion. It's someone else's computer — they can edit it, turn JavaScript off, or skip your page entirely and post to that URL from a terminal. The browser copy is for **speed**. The server copy is the one that's actually enforcing anything."*
-- [ ] 🔗 **If you ran §2's `curl`, collect it here** — *"and you watched me do exactly that an hour ago. No browser, no page, no JavaScript. That request still reached the server, and the server is where it got stopped."*
+- [ ] 🎞️ **GO TO SLIDE 21** — *Why both* · **ask it before you answer it:** *"the server already throws out a bad truck. So why did I just spend twenty minutes putting a second copy of the same rules in the browser?"*
+- [ ] The easy half: **the browser copy is for speed.** No round trip, no wait, red text the instant you leave the box. *"That's a courtesy to honest people, and it's most of what your users will ever notice."*
+- [ ] The half that matters: **it enforces nothing.** 🔗 **Collect §2's `curl` — this is what it was for.** *"You already watched a request reach that action with no browser, no page and no JavaScript anywhere near it. Whatever the browser was checking, that request never went past it."*
+- [ ] 🎯 **Say this slowly:** *"Anything in the browser is a suggestion. It's someone else's computer — they can edit it, turn JavaScript off, or skip your page entirely and post to that URL from a terminal, which is exactly what I did in front of you. The browser copy is for **speed**. The server copy is the one that's actually enforcing anything."*
+- [ ] **Land it as one sentence: client-side for convenience, server-side for security — you need both, and they don't substitute for each other**
 - [ ] *"And that's why we did them in that order tonight. Do it the other way round and you learn to trust the wrong one"*
+- [ ] 💡 **If someone asks "can't you just switch the browser's validation off and show us?"** — answer it, don't demo it. Three reasons it isn't worth the minutes: `novalidate` does nothing (jQuery Validate already put it on the form itself, and it only governs the browser's *built-in* validation, which `asp-for` never uses — it emits `data-val-*`, not `required`); deleting `data-val="true"` does nothing either, because unobtrusive read the rules once at page load; and the only real switch, disabling JavaScript, proves it by way of a page round trip that is **invisible on a fast connection** — the form comes back looking almost exactly like the client-side version. The `curl` showed the same thing an hour ago and showed it better
 - [ ] **✓ CHECKPOINT:** nobody in the room thinks client-side validation is a security feature
 
 ## 5 · Where the truck actually went *(slide 22)*

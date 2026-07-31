@@ -376,15 +376,15 @@ Those scripts read the **`data-val-*` attributes** from twenty minutes ago.
 
 ---
 
-<!-- _footer: '🖥️ Demo §4 · break #5' -->
+<!-- _footer: '🖥️ Demo §4 · why both' -->
 
-## Now turn it off
+## Why both
 
-Dev tools → **Disable JavaScript**. Reload. Submit.
+**Client-side** — instant feedback, no round trip. A courtesy.
 
 <br>
 
-The browser lets it through. **The server still refuses.**
+**Server-side** — the only copy that enforces anything.
 
 <br>
 
