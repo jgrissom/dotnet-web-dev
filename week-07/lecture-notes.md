@@ -126,10 +126,19 @@ dotnet user-secrets set "ConnectionStrings:DefaultConnection" "Server=<SCHOOL-SQ
 You get **one database per application**, and you name each one:
 
 ```
-AppName_##_AAA
+AppName_<COURSE-NUMBER>_<YOUR-INITIALS>
 ```
 
-`AppName` is the app it belongs to, `##` is the course number, `AAA` is your initials. So the lab's Registry is `Cryptids_##_AAA`, and your own semester project gets its own — `TrailGuide_##_AAA`, or whatever yours is called.
+`AppName` is the app it belongs to, and the other two are yours. Filled in, it looks like this:
+
+```
+Cryptids_42_ABL
+```
+
+So the lab's Registry is one database, and your own semester project gets another — `TrailGuide_42_ABL`, or whatever yours is called.
+
+> [!TIP]
+> **If someone in the class already has your initials**, put a number after yours — `ABL2`. Everyone's databases live on one server, so two people deriving the same name is the one collision worth avoiding.
 
 **You don't create it.** The first `dotnet ef database update` creates the database if it isn't there, then builds the tables inside it. Naming a database that doesn't exist yet is normal and expected — that's the whole of "creating" one.
 

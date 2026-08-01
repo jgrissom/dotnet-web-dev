@@ -94,10 +94,13 @@ dotnet user-secrets set "ConnectionStrings:DefaultConnection" "Server=<SCHOOL-SQ
 **`<YOUR-DATABASE>` is different — you name it**, [following the convention](../lecture-notes.md#naming-your-database). For tonight that's:
 
 ```
-Cryptids_##_AAA
+Cryptids_<COURSE-NUMBER>_<YOUR-INITIALS>
 ```
 
-`##` is the course number, `AAA` is your initials. **It doesn't exist yet, and that's fine** — task 4's `dotnet ef database update` creates it. You'll name a *different* one for your own app in the homework, because it's one database per application.
+which filled in looks like `Cryptids_42_ABL`. **It doesn't exist yet, and that's fine** — task 4's `dotnet ef database update` creates it. You'll name a *different* one for your own app in the homework, because it's one database per application.
+
+> [!WARNING]
+> **Fill both parts in.** A name with the angle brackets still in it is a real, creatable database name — and everyone else who left them in would be pointing at the same one, on the same server. Check 3 refuses a connection string containing `<` or `>` for exactly this reason.
 
 **Keep the quotes around the value.** Your connection string is full of `;`, and your shell reads an unquoted `;` as the end of the command — it would store `Server=...` and silently throw the rest away.
 
