@@ -20,7 +20,13 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 ## 0 · Before class
 
 - [ ] **Copy `week-07/demo-starter/Curbside` out of the answer-keys repo** to a scratch folder. This is Curbside exactly as week 6's demo left it: the form, the annotations, the `ModelState` guard, the redirect, `_ValidationScriptsPartial` in a section. Nothing about it knows what a database is
-- [ ] ⚠️ **Fill in your own connection string before class and test it.** Everything after §2 depends on it, and *"Login failed for user"* in front of the room costs you the segment. Run `dotnet ef database update` once as a rehearsal, then **drop the database again** so the class watches it get created:
+- [ ] ⚠️ **Set your own connection string in user secrets before class and test it.** Everything after §2 depends on it, and *"Login failed for user"* in front of the room costs you the segment. From inside `Curbside`:
+  ```bash
+  dotnet user-secrets init
+  dotnet user-secrets set "ConnectionStrings:DefaultConnection" "Server=...;Database=...;User ID=...;Password=...;TrustServerCertificate=True"
+  ```
+- [ ] Confirm it took: `dotnet user-secrets list` prints the connection string. **§2 shows this already done rather than doing it live** — your real password never goes on the projector
+- [ ] Rehearse `dotnet ef database update` once, then **drop the database again** so the class watches it get created:
   ```bash
   dotnet ef database drop --force
   ```
@@ -106,16 +112,20 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 ### Where the connection string lives *(slide 7)*
 
 - [ ] 🎞️ **GO TO SLIDE 7** — *Where the connection string lives*
-- [ ] Open `appsettings.json` and **paste** the section, then fill in your own values in front of them:
-  ```json
-  "ConnectionStrings": {
-    "DefaultConnection": "Server=<SCHOOL-SQL-SERVER>;Database=<YOUR-DATABASE>;User ID=<YOUR-USERNAME>;Password=<YOUR-PASSWORD>;TrustServerCertificate=True"
-  }
+- [ ] **Open `appsettings.json` and put the cursor in it — then don't type anything.** Ask it out loud: *"this is where configuration lives. Who thinks the connection string goes here?"* Let hands go up
+- [ ] 🎯 **Then say why not:** *"it would work. And it contains a working password, and your homework repo is public. So no"*
+- [ ] Close `appsettings.json` **without editing it**. It stays in the repo all night — that's the point
+- [ ] **Show the two commands on screen** — these are the ones they'll run in the lab. Say you ran them before class, and why: *"I'm not typing a live password onto a projector, and neither should you into a repo"*
+  ```bash
+  dotnet user-secrets init
+  dotnet user-secrets set "ConnectionStrings:DefaultConnection" "Server=...;Database=...;User ID=...;Password=...;TrustServerCertificate=True"
   ```
-- [ ] ⚠️ **Watch the trailing comma** — it goes after `"AllowedHosts": "*"`, and a broken `appsettings.json` fails at startup with a JSON parse error rather than anything helpful
-- [ ] Walk the four parts: which machine · which database · who you are · **and `TrustServerCertificate=True`**
+- [ ] **Prove it's really there:** `dotnet user-secrets list` in the second terminal
+- [ ] **Show what `init` did:** open `Curbside.csproj` and point at the `<UserSecretsId>` line. *"That's a folder name, not a secret. It gets committed — it's how the tooling finds the file next time"*
+- [ ] 🎯 **Then the part they'll misremember otherwise — where the file actually is.** Say the path out loud: `~/.microsoft/usersecrets/<that GUID>/secrets.json`. *"Not in the project. Not in the repo. In my user profile"*
+- [ ] Walk the four parts of the string: which machine · which database · who you are · **and `TrustServerCertificate=True`**
 - [ ] Give the certificate line its sentence, because someone always asks: *"SQL Server encrypts by default and then checks the server's certificate, the way your browser checks an https certificate. Ours is self-signed, so that check fails and the connection is refused. This says encrypt anyway, skip the identity check. On a school network that's the pragmatic answer. It is not what you'd write for a bank"*
-- [ ] 🔗 **Say the public-repo problem now, not at the end:** *"that line contains a working password and your homework repo is public. Keeping it out of git is part of the homework, and there's a step everybody gets wrong — the notes have it"*
+- [ ] 🎯 **The sentence that does the work:** *"the file with my password in it is not in this folder. It's in my user profile. There is no `.gitignore` line to forget, because there is nothing here to ignore"*
 
 ### One registration *(slide 8)*
 
@@ -128,7 +138,27 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] Add the `using Curbside.Data;` and `using Microsoft.EntityFrameworkCore;` at the top when the editor complains — **let it complain first**, so they see which one is missing
 - [ ] 🔗 **Point at `AddControllersWithViews()` two lines up:** *"you've been writing lines like this since week 3 and I never said what that collection was. It's a list of 'if anyone asks for one of these, here's how to build it.' It's called dependency injection, and in fifteen minutes you'll write the other end of it"*
 - [ ] Three things in the one line: **which context** · **which provider** (*"swap that one call and the same code talks to PostgreSQL"*) · **the address read from configuration by name**, not typed here
-- [ ] **✓ CHECKPOINT:** the room can say what a `DbSet` property means
+- [ ] 🎯 **Land the absence:** *"read that line again. It asks for a connection string by name. It does not say where it came from — and that turns out to be the whole reason this app can run on my laptop and on Azure without a rebuild"*
+
+#### Watch the stack resolve
+
+- [ ] **Predict-then-run.** Ask first: *"the string is in my user profile. What does the app see?"* Then, in the second terminal:
+  ```bash
+  dotnet ef dbcontext info
+  ```
+- [ ] Point at **`Data source:`** — your server name. *"It found it. Nothing in this project contains that."*
+- [ ] Now run it again as production — **paste this whole line**:
+  ```bash
+  ASPNETCORE_ENVIRONMENT=Production dotnet ef dbcontext info
+  ```
+- [ ] 🎯 **`Data source:` is blank.** Sit on it. *"Same code, same machine, same secret on disk. User secrets are a development-only thing — a deployed app doesn't read them at all. That's not a limitation, it's the safety: your password cannot leak into production by accident, because production isn't looking"*
+- [ ] Then the third row, so all three are on screen once:
+  ```bash
+  ConnectionStrings__DefaultConnection="Server=env-wins;Database=Demo;User ID=u;Password=p;TrustServerCertificate=True" dotnet ef dbcontext info
+  ```
+- [ ] **`Data source: env-wins`.** *"Environment variables beat everything. Hold on to that — it's how you'll tell Azure where the database is in §7"*
+- [ ] ⚠️ **Nothing connected to anything.** `dbcontext info` only resolves configuration — say so, or someone thinks you just logged into a server called `env-wins`
+- [ ] **✓ CHECKPOINT:** the room can say what a `DbSet` property means, and why Azure won't see your secret
 
 ## 3 · Migrations *(slides 9–12)*
 
@@ -316,8 +346,11 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] 🎞️ **GO TO SLIDE 21** — *The deployed app*
 - [ ] ⚠️ **Nothing is deployed tonight — this is a talk-through, not a demo.** Say so: *"I'm not deploying this; the only Azure deploy I do all term was week 3. This is what **you** do for the homework"*
 - [ ] Walk the three things a deployed app needs: the packages (they ship with the build) · the code (it's in your repo) · **the connection string**, which is the interesting one
-- [ ] 🎯 **The bit worth saying carefully:** *"`az webapp up` deploys the files in your folder, not the files in your git history. So `appsettings.json` goes up with the deploy even though git never sees it — which is exactly the arrangement you want"*
-- [ ] Show the deploy command on the slide; it's the same one they've run for four weeks
+- [ ] 🔗 **Collect §2's blank `Data source:` — this is what it was for.** *"Your secret is on your laptop, in your user profile. It is not in your repo, so it isn't in the deploy. And you watched a production app refuse to read it. So Azure has to be told separately"*
+- [ ] Show **both** commands on the slide. The first is the one they've run for four weeks; the second is new and runs **once per app, ever**
+- [ ] 🎯 **Point at the double underscore and say why:** *"`ConnectionStrings__DefaultConnection`. Two underscores, because an environment variable can't have a colon in it on every platform. .NET translates it straight back to the name your code already asks for. Nothing in your code changes"*
+- [ ] ⚠️ **Order matters, and it bites:** deploy **first**, then set the app setting — the setting needs an app that already exists. *"Between those two commands your site will error. That's not a broken deploy"*
+- [ ] ⚠️ **Say the resource-group thing before anyone hits it.** They've never typed one — `az webapp up` made it silently in week 3. *"It's a folder in your Azure account. `az webapp list -o table` tells you yours, and the notes have the command"*
 - [ ] ⚠️ **US region.** Apps in Canadian regions have never been able to reach the school's server. *"Use the one that worked for you before"*
 
 ### One database, two apps *(slide 22)*
@@ -326,14 +359,16 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] 🔗 **Collect slide 3's third row:** *"this is the one I told you to hold onto at the start. Your deployed app and your laptop point at the same database"*
 - [ ] **Give them the exercise out loud, and tell them it's the best two minutes of the homework:** *"add a truck on your deployed site. Then run your app locally and look at your list. It's there. Two programs, two computers, one set of data"*
 - [ ] Then the honest footnote: *"sharing one database between dev and production is not what a real project does — you'd have two. Week 15 covers what real projects do. For a course it's fine, and it makes the point better than two databases would"*
-- [ ] ⚠️ **The public-repo step, said once and pointed at the notes:** `.gitignore` gets `appsettings.json` — **and that alone does nothing**, because git is already tracking it. `git rm --cached` is the second half. *"The notes have both lines. Don't skip the second one"*
+- [ ] 🎯 **Close the secrets thread, and make it the smallest possible step:** *"and notice what isn't in your homework this week. There's no `.gitignore` line, nothing to untrack, nothing to clean out of your history — because the password was never in the folder. That's the entire reason we did it that way in §2"*
+- [ ] Say the one that matters for anyone who gets it wrong: *"if you do put it in `appsettings.json` and commit it, deleting it later doesn't help — it's in every commit you already pushed. Come and tell me and we'll change your password. Much better to make that mistake here than at work"*
 
 ## 8 · Hand off to the lab *(slide 23)*
 
 - [ ] 🎞️ **GO TO SLIDE 23** — *Lab: the Registry gets a filing cabinet*. Leave it up for the whole lab; it's the task list
 - [ ] Show **what done looks like** — the answer key **running on localhost**, seven creatures after a restart, and `dotnet test Cryptids.Checks` printing **6 / 6**. That's `week-07/lab/solution` in the answer-keys repo; `dotnet run` from `Cryptids.Web`, `dotnet test` from the folder above it. ~90 seconds, a target not a walkthrough. **Nothing is deployed for this** — Azure is their homework, not tonight
-- [ ] Setup on screen, said once: **`git pull` → copy `week-07/lab/starter` out and rename it → open the folder holding *both* projects → put your connection string in `appsettings.json` → `dotnet test Cryptids.Checks`**
-- [ ] ⚠️ **The connection string is task 1 and it is the thing that will eat the lab.** Say it plainly: *"fill it in first, before anything else, and get one `dotnet ef database update` to succeed. If that command works, the rest of the lab is C#. If it doesn't, come and get me — don't spend twenty minutes on it"*
+- [ ] Setup on screen, said once: **`git pull` → copy `week-07/lab/starter` out and rename it → open the folder holding *both* projects → `cd Cryptids.Web` and set your connection string in user secrets → `dotnet test Cryptids.Checks`**
+- [ ] ⚠️ **The connection string is task 1 and it is the thing that will eat the lab.** Say it plainly: *"two commands, `init` then `set`, from inside `Cryptids.Web` — then get one `dotnet ef database update` to succeed. If that command works, the rest of the lab is C#. If it doesn't, come and get me — don't spend twenty minutes on it"*
+- [ ] ⚠️ **For anyone on a lab PC that resets itself:** *"you'll set that secret again next time you sit down here. It lives in your user profile, not your project. Keep the connection string somewhere that isn't this machine"*
 - [ ] Say that **the EF packages are already in the starter's `.csproj`**, so nobody is stuck behind NuGet on the class wifi. *"You'll run those two commands yourself in the homework; they're in the notes"*
 - [ ] ⚠️ **Warn them the checks never touch SQL Server.** They run the app against an in-memory database, so `dotnet test` works with no network. *"That means 6/6 does not prove your connection string is right — your own browser does. Both matter"*
 - [ ] **In-class target: checks 1–5.** Check 6 is `Add` + `SaveChanges` and rolls into the homework if time goes

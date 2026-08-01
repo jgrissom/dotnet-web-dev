@@ -50,7 +50,7 @@ dotnet test Cryptids.Checks
 
 | File | What you do to it |
 |---|---|
-| `Cryptids.Web/appsettings.json` | your connection string — task 1 |
+| *(user secrets — not a file in this project)* | your connection string — task 1 |
 | `Cryptids.Web/Data/CryptidContext.cs` | **new file** — the context and the seed data — task 2 |
 | `Cryptids.Web/Program.cs` | one registration — task 3 |
 | `Cryptids.Web/Migrations/` | **generated** — don't hand-write these — task 4 |
@@ -66,7 +66,7 @@ dotnet test Cryptids.Checks
 
 | # | Check | What to do |
 |---|-------|------------|
-| 1 | *(no check)* | Put your connection string in `appsettings.json` and get one `dotnet ef database update` to succeed. Nothing else works until this does. **[Task 1 in full ↓](#task-1-in-full)** |
+| 1 | *(no check)* | Put your connection string in [user secrets](../lecture-notes.md#where-the-connection-string-lives) and get one `dotnet ef database update` to succeed. Nothing else works until this does. **[Task 1 in full ↓](#task-1-in-full)** |
 | 2 | `TheContextDescribesTheDatabase` | A new `Data/CryptidContext.cs`: a [`DbContext`](../lecture-notes.md#the-dbcontext) with a `DbSet<Cryptid>`, and the six creatures [seeded](../lecture-notes.md#the-table-is-empty) in `OnModelCreating`. **[Task 2 in full ↓](#task-2-in-full)** |
 | 3 | `TheAppIsWiredToSqlServer` | [One `AddDbContext` line](../lecture-notes.md#one-registration) in `Program.cs`, reading the connection string from configuration. **[Task 3 in full ↓](#task-3-in-full)** |
 | 4 | `AMigrationDescribesTheTable` | [`dotnet ef migrations add InitialCreate`](../lecture-notes.md#writing-a-model-doesnt-create-a-table), then `dotnet ef database update`. **[Task 4 in full ↓](#task-4-in-full)** |
@@ -80,17 +80,27 @@ dotnet test Cryptids.Checks
 
 **No check for this one** — but every other check depends on it, and it's the only task tonight that reading can't unblock. **If it isn't working ten minutes in, ask.**
 
-Open `Cryptids.Web/appsettings.json`. It ships with a placeholder:
+Your connection string has a working password in it, so it does **not** go in a file in this project. It goes in [user secrets](../lecture-notes.md#where-the-connection-string-lives) — a file in your own user profile that git can't see.
 
-```json
-"ConnectionStrings": {
-  "DefaultConnection": "Server=<SCHOOL-SQL-SERVER>;Database=<YOUR-DATABASE>;User ID=<YOUR-USERNAME>;Password=<YOUR-PASSWORD>;TrustServerCertificate=True"
-}
+**From inside `Cryptids.Web`** (`cd Cryptids.Web` first — same folder as every `dotnet ef` command tonight):
+
+```bash
+dotnet user-secrets init
+dotnet user-secrets set "ConnectionStrings:DefaultConnection" "Server=<SCHOOL-SQL-SERVER>;Database=<YOUR-DATABASE>;User ID=<YOUR-USERNAME>;Password=<YOUR-PASSWORD>;TrustServerCertificate=True"
 ```
 
 Replace all four angle-bracketed parts with the details on the class handout. Leave `TrustServerCertificate=True` exactly as it is — [it's why the connection isn't refused](../lecture-notes.md#where-the-connection-string-lives).
 
-You can't test it yet (there's no context for it to use), so the real test is task 4. But you can rule out typos now: open the **mssql** extension in VS Code, connect with the same four values, and see your database in the list. If that fails, the connection string is wrong and nothing later will save you.
+Check it landed:
+
+```bash
+dotnet user-secrets list
+```
+
+You can't fully test it yet (there's no context for it to use), so the real test is task 4. But you can rule out typos now: open the **mssql** extension in VS Code, connect with the same four values, and see your database in the list. If that fails, the connection string is wrong and nothing later will save you.
+
+> [!TIP]
+> **On a lab PC that resets when it reboots, do this again next session.** Your secret lives in your user profile, not in your project, so it doesn't come back with your files. Keep the connection string somewhere that isn't this machine — one `dotnet user-secrets set` restores it.
 
 The two errors, and they send you to different halves of the same line:
 
@@ -161,7 +171,7 @@ using Cryptids.Web.Data;
 ```
 
 - **Above `builder.Build()`**, not below. Services have to be registered before the app is built, and the error if you get it backwards doesn't say so.
-- **`GetConnectionString("DefaultConnection")`** has to match the key in `appsettings.json` exactly. Misspell it and it returns `null`, `UseSqlServer(null)` throws, and your app won't start at all.
+- **`GetConnectionString("DefaultConnection")`** has to match the key you set in task 1 exactly — `ConnectionStrings:DefaultConnection`. Misspell either end and it returns `null`, `UseSqlServer(null)` throws, and your app won't start at all.
 
 ### Task 4 in full
 
@@ -280,7 +290,7 @@ public IActionResult Create(Cryptid cryptid)
 - **`No project was found in the current working directory`** — `dotnet ef` runs from inside `Cryptids.Web`, not the folder above. This is the opposite of `dotnet test`.
 - **`Login failed for user '...'`** — the server answered and rejected you: username or password. The server name is right.
 - **`A network-related or instance-specific error occurred`** — nothing answered: server name is wrong, or this network can't reach it. Takes ~30s to fail.
-- **`Value cannot be null. (Parameter 'connectionString')`, and the app won't start** — `GetConnectionString("DefaultConnection")` returned nothing. The key in `appsettings.json` doesn't match the name in `Program.cs`, or it's outside the `ConnectionStrings` object.
+- **`Value cannot be null. (Parameter 'connectionString')`, and the app won't start** — `GetConnectionString("DefaultConnection")` returned nothing. Run `dotnet user-secrets list` from inside `Cryptids.Web`: if it's empty, task 1 didn't take on *this* machine. If it's there, the key is misspelled — it has to be exactly `ConnectionStrings:DefaultConnection`.
 - **`Invalid object name 'Cryptids'`** — the table isn't there. You generated the migration but never ran `dotnet ef database update`.
 - **`Unable to resolve service for type ... CryptidContext`** — task 3's line is missing, or it's *below* `builder.Build()`.
 - **The registry is empty and there's no error** — the table exists but has no rows. Open your migration: if there's no `InsertData` in it, you generated it before writing `HasData`. Delete the `Migrations` folder and do task 4 again.

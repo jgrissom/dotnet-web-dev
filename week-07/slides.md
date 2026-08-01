@@ -120,19 +120,21 @@ public class CurbsideContext : DbContext
 
 ## Where the connection string lives
 
-`appsettings.json` — **never in `Program.cs`**
+**Not** `appsettings.json` — your repo is public
 
-```json
-"ConnectionStrings": {
-  "DefaultConnection":
-    "Server=...;Database=...;User ID=...;Password=...;
-     TrustServerCertificate=True"
-}
+```
+appsettings.json
+   ↓  beaten by
+user secrets          ← your profile, not your project
+   ↓  beaten by
+environment variables ← how Azure will do it
 ```
 
-Which machine · which database · who you are
+```bash
+dotnet user-secrets set "ConnectionStrings:DefaultConnection" "..."
+```
 
-...and *"encrypt anyway, but skip the certificate check."*
+Later wins. Nothing to gitignore, because nothing is here.
 
 ---
 
@@ -356,14 +358,18 @@ The first thing you've built that outlived the program that built it.
 
 ## The deployed app
 
+**Two** commands. Azure never saw your secret.
+
 ```bash
 az webapp up --name your-app-XX1234 --sku F1 --os-type Linux \
   --runtime DOTNETCORE:10.0 --location "<YOUR-US-REGION>"
+
+az webapp config appsettings set --name your-app-XX1234 \
+  --resource-group <RG> \
+  --settings ConnectionStrings__DefaultConnection="..."
 ```
 
-<br>
-
-`az webapp up` ships the **files in your folder**, not your git history.
+`__` is `:` — the bottom of the stack from slide 7.
 
 ⚠️ **US region.** Canadian regions can't reach the school server.
 

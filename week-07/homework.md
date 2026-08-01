@@ -32,7 +32,7 @@ It needs:
 1. **[The two packages](lecture-notes.md#two-packages)** — `Microsoft.EntityFrameworkCore.SqlServer` and `Microsoft.EntityFrameworkCore.Design`, added from inside your web project folder. *(The lab handed these to you; here you run them yourself.)*
 2. **[A `DbContext`](lecture-notes.md#the-dbcontext)** in a new `Data/` folder — a class deriving from `DbContext`, with a `DbSet<YourThing>` property and a constructor that takes `DbContextOptions`.
 3. **[Your seed data on the model](lecture-notes.md#the-table-is-empty)** — the items that were in your `YourThingData.cs`, moved into `OnModelCreating` with `HasData`, **each with an explicit `Id`**. Keep the same ids they had, so existing details links still work.
-4. **[A connection string](lecture-notes.md#where-the-connection-string-lives)** in `appsettings.json`, under `ConnectionStrings:DefaultConnection`, using your own account on the school server.
+4. **[A connection string in user secrets](lecture-notes.md#where-the-connection-string-lives)** — `dotnet user-secrets init` then `dotnet user-secrets set "ConnectionStrings:DefaultConnection" "..."`, using your own account on the school server. **Not in `appsettings.json`** — your repo is public. Commit the `<UserSecretsId>` line that `init` adds to your `.csproj`.
 5. **[The registration](lecture-notes.md#one-registration)** — one `AddDbContext` call in `Program.cs`, with `UseSqlServer`, reading the connection string **from configuration** rather than a string typed into the file.
 6. **[A migration](lecture-notes.md#writing-a-model-doesnt-create-a-table)**, generated and applied: `dotnet ef migrations add InitialCreate` then `dotnet ef database update`. The `Migrations/` folder gets committed.
 7. **[The controller reads and writes through the context](lecture-notes.md#asking-for-the-context)** — injected in the constructor, `ToList()` in your index, `FirstOrDefault` in your details, and **[`Add` + `SaveChanges()`](lecture-notes.md#writing)** in your POST.
@@ -61,44 +61,62 @@ The lab's `Cryptid` won't transfer, but the moves do. A few translations:
 > [!WARNING]
 > **Seed data must not use `DateTime.Now`, `Guid.NewGuid()`, or anything else that changes.** EF Core compares your seed data against the last snapshot every time you add a migration; if the values move, every migration contains pointless updates. Hard-code them.
 
-## Part 3 — Keep your password out of your public repo 🔐
+## Part 3 — Check your password isn't in your public repo 🔐
 
-Your connection string has a working password in it and **your homework repo is public**.
+There is no work in this part. That's the point of it.
 
-**1. Add it to `.gitignore`** (in your repo root):
-
-```
-appsettings.json
-```
-
-**2. This is the step everyone misses.** `.gitignore` only affects files git *isn't already tracking*, and `appsettings.json` has been in your repo since week 3. The line above changes nothing on its own:
+Because your connection string went into [user secrets](lecture-notes.md#where-the-connection-string-lives) rather than a file in your project, there is nothing to remove from git, nothing to add to `.gitignore`, and nothing sitting in your repo's history. Confirm it in about fifteen seconds:
 
 ```bash
-git rm --cached YourApp/appsettings.json
-git commit -m "Stop tracking appsettings.json"
+git status
 ```
 
-`--cached` removes it from git and **leaves the file on your disk** — which is what you want, because your app needs it.
-
-**3. Check it worked.** `git status` should show `appsettings.json` as ignored, not modified. Then look at your repo on GitHub: the file should be gone.
-
-> [!NOTE]
-> **Your deployed app still gets it.** `az webapp up` ships the files in your folder, not the files in your git history — so `appsettings.json` goes up with the deploy even though git never sees it.
+Nothing about your connection string appears, because there's nothing in the repo for it to appear as. Then look at your repo on GitHub and search it for `Password=` — you should find nothing.
 
 > [!IMPORTANT]
-> The password is still in your repo's *history*, in commits you already made. Removing it from history is more work than it's worth here, and nothing about this course's server is worth attacking. The habit is the point: form it now, on a credential that doesn't matter, so it's automatic on one that does.
+> **If you *did* put it in `appsettings.json` first and commit it**, deleting it now is not enough — it stays in every commit you already pushed, and a public repo's history is public. Tell me, set a different password on your database, and move on. This is exactly the mistake the user-secrets step exists to make impossible, and it is much better to make it here than at work.
+
+> [!NOTE]
+> **`appsettings.json` stays in your repo**, same as it's been since week 3. It holds your logging settings and nothing secret. Don't gitignore it.
 
 ## Part 4 — Deploy it (graded)
 
-Same as the last four weeks. Follow **[week 3's deploy-guide](../week-03/deploy-guide.md)**. From inside your web project folder:
+This week it's **two commands, not one** — because your connection string is deliberately not in anything you deploy.
+
+**1. Deploy**, same as the last four weeks. Follow **[week 3's deploy-guide](../week-03/deploy-guide.md)**. From inside your web project folder:
 
 ```bash
 az webapp up --name your-app-XX1234 --sku F1 --os-type Linux \
   --runtime DOTNETCORE:10.0 --location "<YOUR-US-REGION>"
 ```
 
+**2. Tell the deployed app where the database is.** Your secret is on your laptop; Azure has never seen it, and a deployed app doesn't read user secrets at all. Give it the [connection string as an app setting](lecture-notes.md#part-7-the-deployed-app-10-min):
+
+```bash
+az webapp config appsettings set --name your-app-XX1234 \
+  --resource-group <YOUR-RESOURCE-GROUP> \
+  --settings ConnectionStrings__DefaultConnection="Server=...;Database=...;User ID=...;Password=...;TrustServerCertificate=True"
+```
+
+**Two underscores**, not a colon. Azure hands that to your app as an environment variable, and `GetConnectionString("DefaultConnection")` finds it without a single line of your code changing.
+
+> [!TIP]
+> **Don't know your resource group?** You've never had to type it before — `az webapp up` made one for you and named it after your app. This prints it:
+>
+> ```bash
+> az webapp list --query "[].{app:name, group:resourceGroup}" -o table
+> ```
+>
+> A *resource group* is just a folder in your Azure account that your app and its plan live in. That's the whole concept.
+
 > [!WARNING]
-> **Use the same US region that worked before.** Apps deployed to Canadian regions have never been able to reach the school's SQL Server. If your deployed app throws a 500 while localhost is fine, check the region first.
+> **In that order.** `az webapp config appsettings set` needs an app that already exists — run it first and you get "resource not found". Between the two commands your site *will* error; that's expected, not a broken deploy.
+
+> [!TIP]
+> **Once per app, not once per deploy.** The setting lives on the Azure app, so it survives every later `az webapp up`. You won't do this again in weeks 8 and 9.
+
+> [!WARNING]
+> **Use the same US region that worked before.** Apps deployed to Canadian regions have never been able to reach the school's SQL Server. If your deployed app throws a 500 while localhost is fine, check the region first — then check the app setting above.
 
 > [!IMPORTANT]
 > **You don't run migrations against a separate production database.** Your laptop and your Azure app point at the *same* database, and you already migrated it. That's not what a real project does — week 15 covers what real projects do — but it's what makes the next part possible.
@@ -174,7 +192,8 @@ Then load your home page and open the console — **F12 → Console**.
 
 - **`No project was found in the current working directory`** — `dotnet ef` runs from the folder with your `.csproj`, not the one above it.
 - **`Login failed for user`** vs **`A network-related or instance-specific error`** — the first is your username/password, the second is your server name or your network. [Both explained here](lecture-notes.md#the-two-errors-you-will-actually-get).
-- **The app won't start: `Value cannot be null. (Parameter 'connectionString')`** — the key in `appsettings.json` and the name in `Program.cs` don't match.
+- **The app won't start: `Value cannot be null. (Parameter 'connectionString')`** — run `dotnet user-secrets list` from your web project folder. Empty means no secret on *this* machine (a second computer, or a lab PC that resets). Otherwise the key name doesn't match `ConnectionStrings:DefaultConnection`.
+- **Localhost is fine, the deployed app 500s** — Azure doesn't read your user secrets. Check the app setting: `az webapp config appsettings list --name your-app-XX1234 --resource-group <YOUR-RESOURCE-GROUP>` should show `ConnectionStrings__DefaultConnection`, with **two underscores**.
 - **`Invalid object name 'YourThings'`** — [you never ran `dotnet ef database update`](lecture-notes.md#applying-it).
 - **`Unable to resolve service for type ... YourContext`** — the `AddDbContext` line is missing, or it's below `builder.Build()`.
 - **The list is empty, no errors** — your seed data was written after the migration was generated. Check the migration for `InsertData`.
@@ -194,7 +213,7 @@ Then load your home page and open the console — **F12 → Console**.
 | A good record is accepted and lands in your list | 2 | `homework-checks.js` |
 | The new record's id was assigned by the database | 1 | `homework-checks.js` |
 | A `DbContext` with a `DbSet`, and seed data in `OnModelCreating` | 4 | your repo |
-| `AddDbContext` + `UseSqlServer`, connection string read from config | 2 | your repo |
+| `AddDbContext` + `UseSqlServer`, connection string read from config — **and no password committed anywhere in the repo** | 2 | your repo |
 | A migration that creates your table **and** inserts your seed rows | 3 | your repo |
 | The old static list class is deleted, and `SaveChanges()` is called | 2 | your repo |
 | Public repo with 3+ meaningful commits | 3 | your repo |

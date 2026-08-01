@@ -101,16 +101,15 @@ Three things, and each is doing real work:
 
 ### Where the connection string lives
 
-A connection string says which server, which database, and who you are. It goes in **`appsettings.json`** — never in `Program.cs`:
+A connection string says which server, which database, and who you are. Two things are true about it at once: your code needs it, and **it contains a working password while your homework repo is public.**
 
-```json
-{
-  "Logging": { ... },
-  "AllowedHosts": "*",
-  "ConnectionStrings": {
-    "DefaultConnection": "Server=<SCHOOL-SQL-SERVER>;Database=<YOUR-DATABASE>;User ID=<YOUR-USERNAME>;Password=<YOUR-PASSWORD>;TrustServerCertificate=True"
-  }
-}
+So it does not go in `Program.cs`, and it does not go in `appsettings.json` either. It goes in **user secrets** — a file in your own user profile, outside your project folder, which git therefore cannot see even by accident.
+
+Two commands, from inside your web project folder:
+
+```bash
+dotnet user-secrets init
+dotnet user-secrets set "ConnectionStrings:DefaultConnection" "Server=<SCHOOL-SQL-SERVER>;Database=<YOUR-DATABASE>;User ID=<YOUR-USERNAME>;Password=<YOUR-PASSWORD>;TrustServerCertificate=True"
 ```
 
 Fill in the four angle-bracketed parts from the class handout. Piece by piece:
@@ -124,8 +123,32 @@ Fill in the four angle-bracketed parts from the class handout. Piece by piece:
 
 That last one deserves a sentence rather than a shrug. Modern SQL Server clients encrypt by default and then check the server's certificate, the same way a browser checks an `https` certificate. The school's server has a self-signed one, so the check fails and the connection is refused. `TrustServerCertificate=True` says *encrypt anyway, but skip the identity check*. On a school network that's the pragmatic answer; it is not what you'd write for a bank.
 
-> [!WARNING]
-> **That string contains a working password, and your homework repo is public.** Keep `appsettings.json` out of git — there's a section on exactly how at the end of these notes, including the part everyone gets wrong: adding a file to `.gitignore` does **not** stop git tracking a file it is already tracking.
+### What those two commands actually did
+
+`dotnet user-secrets init` added one line to your `.csproj`:
+
+```xml
+<UserSecretsId>79d5a4f2-9c34-4f51-a744-e3a3afab0b3e</UserSecretsId>
+```
+
+Yours will be a different GUID — `init` generates one. It is **not** a secret; it's a folder name. **Commit it** — it's how the tooling finds your secrets next time, and without it in the repo you'd have to run `init` again on every machine.
+
+`dotnet user-secrets set` wrote your connection string into that folder, which lives in your user profile:
+
+| | |
+|---|---|
+| macOS / Linux | `~/.microsoft/usersecrets/<the GUID>/secrets.json` |
+| Windows | `%APPDATA%\Microsoft\UserSecrets\<the GUID>\secrets.json` |
+
+Read that path again: it is nowhere near your project. There is no `.gitignore` rule to remember and no file to accidentally `git add`, because the file is not in the repository at all. `dotnet user-secrets list` prints what's in there.
+
+> [!IMPORTANT]
+> **Secrets do not travel with your repo, and that is the whole point.** Clone your project onto a second machine and the connection string is not there — you run `dotnet user-secrets set` again. Same if you work on a lab PC that resets itself when it reboots: your repo comes back from GitHub, your secret does not.
+>
+> So keep the connection string somewhere you can actually get to — your phone, a password manager, the class handout — and **not only on the machine that wipes itself**. One `set` command restores both `dotnet run` and `dotnet ef`; they read the same store.
+
+> [!NOTE]
+> **`appsettings.json` stays in your repo**, exactly as it has since week 3. It still holds your logging settings, and it has never held anything secret. The only thing that never goes in it is the connection string.
 
 ### One registration
 
@@ -142,10 +165,44 @@ This line says three things:
 
 1. **`AddDbContext<CurbsideContext>`** — when something asks for a `CurbsideContext`, make one.
 2. **`UseSqlServer(...)`** — build it against the SQL Server provider. Swap this one call and the same context talks to PostgreSQL or SQLite instead.
-3. **`GetConnectionString("DefaultConnection")`** — read the address out of configuration, by name. Not from a string literal here. Changing servers is now an edit to a config file, not to code — which is the entire reason your deployed app can point somewhere different from your laptop without a rebuild.
+3. **`GetConnectionString("DefaultConnection")`** — read the address out of configuration, **by name**. Not from a string literal here. Changing servers is now a change to configuration, not to code — which is the entire reason your deployed app can point somewhere different from your laptop without a rebuild.
+
+Point 3 is the one to hold on to. `Program.cs` never says *where* the connection string came from. That turns out to matter a lot.
 
 > [!TIP]
-> **`GetConnectionString("X")` is shorthand for `Configuration["ConnectionStrings:X"]`.** Same thing, and worth knowing because the error you get when it returns `null` mentions neither: `UseSqlServer(null)` throws `ArgumentNullException`, and your app won't start. If the app dies immediately on launch with that, the name in `appsettings.json` and the name in `Program.cs` don't match.
+> **`GetConnectionString("X")` is shorthand for `Configuration["ConnectionStrings:X"]`.** Same thing, and worth knowing because the error you get when it returns `null` mentions neither: `UseSqlServer(null)` throws `ArgumentNullException`, and your app won't start. If the app dies immediately on launch with that, either the name doesn't match or nothing set the value — on a machine where you haven't run `dotnet user-secrets set`, it's the second one.
+
+### Where configuration actually comes from
+
+`builder.Configuration` is not a file. It's a **stack of sources**, read in order, and **later ones win**:
+
+```
+appsettings.json
+   ↓  overridden by
+appsettings.Development.json
+   ↓  overridden by
+user secrets            ← only when running in Development
+   ↓  overridden by
+environment variables
+```
+
+Three consequences, and all three are load-bearing this week:
+
+1. **Your laptop reads the secret.** You run in Development, so user secrets are in the stack.
+2. **Azure does not.** A deployed app runs in Production, where user secrets are *skipped entirely* — which is why your Azure app needs to be told the connection string separately, and why a secret can never leak into production by accident.
+3. **An environment variable beats everything.** That's the hook Azure uses, and it's how you'll configure the deployed app in Part 7.
+
+> [!TIP]
+> **You can see the whole thing resolve.** `dotnet ef dbcontext info` prints the connection string your app would actually use, without connecting to anything:
+>
+> ```bash
+> dotnet ef dbcontext info
+> ```
+>
+> Look at the `Data source:` line. Set a secret and it appears; run the same command with `ASPNETCORE_ENVIRONMENT=Production` in front of it and it's blank again. That's the third row of the stack switching off in front of you.
+
+> [!NOTE]
+> **In configuration, `__` means `:`.** An environment variable called `ConnectionStrings__DefaultConnection` sets exactly the same value as `"ConnectionStrings": { "DefaultConnection": ... }` in a file. Environment variables can't contain a colon on every platform, so a double underscore stands in. You'll type this name in Part 7.
 
 ## Part 3: Migrations (25 min)
 
@@ -368,16 +425,42 @@ Two more things worth doing while it's fresh:
 
 ## Part 7: The deployed app (10 min)
 
-Your Azure app needs the same three things: the packages (they ship with the build), the code (it's in your repo), and **the connection string** — which is the one that needs thinking about, because it's the one you're deliberately keeping out of your repo.
+Your Azure app needs the same three things: the packages (they ship with the build), the code (it's in your repo), and **the connection string** — which is the one that needs thinking about, because it is deliberately in neither of those places.
 
-`az webapp up` deploys the *files in your folder*, not the files in your git history. So `appsettings.json` goes up with the deploy even though git never saw it, and your deployed app reads the same connection string your laptop does. Deploy exactly as you have for four weeks:
+Your secret is on your laptop, in your user profile. Azure has never seen it, your repo doesn't contain it, and a deployed app runs in **Production**, where user secrets aren't even read. So the deployed app has to be told separately — and the way to tell it is the bottom row of that stack from Part 2: **an environment variable.**
+
+Deploy first, exactly as you have for four weeks:
 
 ```bash
 az webapp up --name your-app-XX1234 --sku F1 --os-type Linux \
   --runtime DOTNETCORE:10.0 --location "<YOUR-US-REGION>"
 ```
 
-Then — and this is the demonstration that makes the whole night land — **add a record on the deployed site and reload your local app.** Same row. One database, two applications, two machines. That is what you built.
+Then give that app the connection string. This is a **setting on the app in Azure**, not a file — it's stored by Azure and handed to your app as an environment variable every time it starts:
+
+```bash
+az webapp config appsettings set --name your-app-XX1234 \
+  --resource-group <YOUR-RESOURCE-GROUP> \
+  --settings ConnectionStrings__DefaultConnection="Server=...;Database=...;User ID=...;Password=...;TrustServerCertificate=True"
+```
+
+That's the `__` from Part 2 doing its job: Azure sets an environment variable named `ConnectionStrings__DefaultConnection`, and your app reads it as `ConnectionStrings:DefaultConnection` — the same name `GetConnectionString("DefaultConnection")` has been asking for all night. **Nothing in your code changes. Nothing in your repo changes.**
+
+You've never had to name a **resource group** before, because `az webapp up` quietly made one for you. It's a folder in your Azure account holding your app and its plan — that's the entire concept. To find yours:
+
+```bash
+az webapp list --query "[].{app:name, group:resourceGroup}" -o table
+```
+
+Setting it restarts the app on its own. Load your site and the creatures are there.
+
+Then — and this is the demonstration that makes the whole night land — **add a record on the deployed site and reload your local app.** Same row. One database, two applications, two machines, two completely different ways of being told where it is. That is what you built.
+
+> [!WARNING]
+> **Deploy first, then set the connection string.** `az webapp config appsettings set` needs an app that already exists, so running it before your first `az webapp up` fails with "resource not found." On that very first deploy the site will error until you set it — that's expected, not a broken deploy.
+
+> [!TIP]
+> **You only do this once per app.** App settings live on the Azure app, not in your code, so they survive every later `az webapp up`. Redeploy in weeks 8 and 9 and the connection string is still there.
 
 > [!WARNING]
 > **Stay in a US region.** Apps deployed to Canadian regions have never been able to reach the school's SQL Server. Use the region that worked for you in weeks 3–6; it's on the class list.
@@ -387,22 +470,24 @@ Then — and this is the demonstration that makes the whole night land — **add
 
 ### Keeping the password out of a public repo
 
-Your repo is public and your connection string has a working password in it. Add it to `.gitignore`:
+Here is the part worth noticing: **you didn't have to do anything.**
 
-```
-appsettings.json
-```
+Your repo is public. Your connection string has a working password in it. And there is no step in this week's work where you delete it from a file, add anything to `.gitignore`, or untrack something you'd already committed — because the password was never in your project folder in the first place.
 
-**This is the part that catches people:** `.gitignore` only affects files git isn't already tracking, and `appsettings.json` has been in your repo since week 3. Adding the line changes nothing by itself. You have to tell git to stop tracking it:
+That's not a convenience, it's the difference between two outcomes:
 
-```bash
-git rm --cached Curbside/appsettings.json
-git commit -m "Stop tracking appsettings.json"
-```
+| | Password in `appsettings.json`, then removed | Password in user secrets |
+|---|---|---|
+| In your working tree | until you remember to remove it | never |
+| In your repo's **history** | **forever**, in every commit you already pushed | never |
+| Fix if it leaks | rotate the password — the old one is public | nothing to fix |
 
-`--cached` removes it from git while leaving the file on your disk — which is exactly what you want, since your app needs it. Check with `git status` that it's now ignored, and check on GitHub that the file is gone.
+The second row is the one that matters. Deleting a secret from a file doesn't delete it from the commits that already contain it; a public repo's history is public too. Getting the credential out of the folder *before* the first `git add` is the only version of this that actually works.
 
-Note what this does *not* do: the password is still in your repo's history, in the commits you already made. Rotating a password you've published is the honest fix, and it's why the habit is worth forming before the credential is one that matters.
+> [!TIP]
+> **Check it yourself.** Run `git status` after setting your secret — nothing about it appears, because there's nothing in the repo to appear. The only file this week's secret work touched is your `.csproj`, and all it gained was that GUID.
+
+You'll do this again for real. Week 10 adds sign-in, and the same store holds the same kind of thing.
 
 ## Wrap-up (10 min)
 
@@ -432,7 +517,8 @@ TrucksController       asks for a context in its constructor
 - `AddDbContext` isn't in `Program.cs`, or it's below `builder.Build()`. Services have to be registered before the app is built.
 
 **The app won't start at all, with `ArgumentNullException` / `Value cannot be null. (Parameter 'connectionString')`**
-- `GetConnectionString("DefaultConnection")` returned nothing. The key in `appsettings.json` is misspelled, is outside the `ConnectionStrings` object, or the whole section is missing.
+- `GetConnectionString("DefaultConnection")` returned nothing. Most often **no secret is set on this machine** — a fresh clone, a second computer, or a lab PC that reset itself. Run `dotnet user-secrets list` from your web project folder; if it's empty, that's your answer. Otherwise the key name is misspelled — it has to be exactly `ConnectionStrings:DefaultConnection`.
+- `dotnet ef dbcontext info` shows what your app resolves. A blank `Data source:` is the same diagnosis without starting the app.
 
 **`Login failed for user '...'`**
 - The server answered and rejected you: username or password. The server name is right.
@@ -462,7 +548,7 @@ TrucksController       asks for a context in its constructor
 - Last week's `item.Id = ...Max(...) + 1` line is still there. Delete it; the database assigns ids now.
 
 **Everything works locally, and the deployed app throws a 500**
-- Almost always the connection string or the region. Check Azure's **Log stream** for the actual exception, confirm `appsettings.json` was in the folder you deployed from, and confirm the app is in a **US** region.
+- Almost always the connection string or the region. **Your laptop's user secret is not on Azure** — that's by design, and it's the first thing to check: `az webapp config appsettings list --name your-app-XX1234 --resource-group <YOUR-RESOURCE-GROUP>` should show `ConnectionStrings__DefaultConnection`, spelled with two underscores. Then check Azure's **Log stream** for the actual exception, and confirm the app is in a **US** region.
 
 **`dotnet ef` warns the tools are older than the runtime**
 - `dotnet tool update --global dotnet-ef`. Worth doing; version skew here produces strange failures.

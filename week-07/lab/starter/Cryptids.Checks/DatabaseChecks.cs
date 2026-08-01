@@ -158,7 +158,7 @@ public class DatabaseChecks : IClassFixture<RegistryApp>
         }
     }
 
-    [Fact] // Task 3: Program.cs points the context at SQL Server, via appsettings.json
+    [Fact] // Task 3: Program.cs points the context at SQL Server, via user secrets
     public async Task Check3_TheAppIsWiredToSqlServer()
     {
         await Task.CompletedTask;
@@ -200,23 +200,24 @@ public class DatabaseChecks : IClassFixture<RegistryApp>
             + "    options.UseSqlServer(builder.Configuration.GetConnectionString(\"DefaultConnection\"))\n"
             + $"(I found: {string.Join(", ", extensions.Select(e => e.GetType().Name))})");
 
-        // The connection string has to come from configuration, and it has to be
-        // filled in — the starter ships a placeholder full of angle brackets.
+        // The connection string has to come from configuration — and it lives in user
+        // secrets, which is a file in YOUR user profile, not a file in this project.
         var config = plain.Services.GetRequiredService<IConfiguration>();
         var connectionString = config.GetConnectionString("DefaultConnection");
 
         Assert.False(string.IsNullOrWhiteSpace(connectionString),
-            "there's no ConnectionStrings:DefaultConnection in appsettings.json. That's where the "
-            + "connection string lives — not in Program.cs, so that changing servers never means "
-            + "changing code:\n"
-            + "    \"ConnectionStrings\": {\n"
-            + "      \"DefaultConnection\": \"Server=...;Database=...;User ID=...;Password=...;TrustServerCertificate=True\"\n"
-            + "    }");
+            "no connection string reached the app. It doesn't live in a file in this project — it "
+            + "lives in user secrets, in your own user profile. From inside Cryptids.Web:\n"
+            + "    dotnet user-secrets init\n"
+            + "    dotnet user-secrets set \"ConnectionStrings:DefaultConnection\" \"Server=...;Database=...;User ID=...;Password=...;TrustServerCertificate=True\"\n"
+            + "If you already set this on another machine, set it again here — secrets don't travel "
+            + "with your repo, and a lab PC that reboots clean loses them.");
 
         Assert.False(connectionString!.Contains('<') || connectionString.Contains('>'),
-            "your connection string is still the placeholder that shipped with the starter — it has "
-            + "angle brackets in it. Replace <SCHOOL-SQL-SERVER>, <YOUR-DATABASE>, <YOUR-USERNAME> "
-            + "and <YOUR-PASSWORD> with the details on the class handout.");
+            "your connection string still has the angle-bracket placeholders in it. Replace "
+            + "<SCHOOL-SQL-SERVER>, <YOUR-DATABASE>, <YOUR-USERNAME> and <YOUR-PASSWORD> with the "
+            + "details on the class handout, then set it again:\n"
+            + "    dotnet user-secrets set \"ConnectionStrings:DefaultConnection\" \"...\"");
     }
 
     [Fact] // Task 4: a migration exists, and it builds the table
