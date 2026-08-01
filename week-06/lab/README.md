@@ -202,7 +202,17 @@ public IActionResult Create(Cryptid cryptid)
 }
 ```
 
-File a report and watch it land on `/Cryptids` as a seventh card. Then notice what it *also* accepts right now — a blank name, a first sighting in the year 99999 — and that's task 5.
+File a report and watch it land on `/Cryptids` as a seventh card. Here's one that satisfies every rule you wrote in task 2, if you'd rather not invent one:
+
+| Field | Value |
+|---|---|
+| Name | `Champ` |
+| Region | `Lake Champlain, Vermont` |
+| First sighted | `1819` |
+| Reports on file | `318` |
+| Already debunked? | leave unchecked |
+
+Then notice what the action *also* accepts right now — a blank name, a first sighting in the year 99999 — and that's task 5.
 
 > [!TIP]
 > **Give it the id before you add it.** Without that line the creature goes in with `Id` 0, its card links to `/Cryptids/Details/0`, and the moment a second report arrives they both answer to the same URL. The check catches this one specifically.
