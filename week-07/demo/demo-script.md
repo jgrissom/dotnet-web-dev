@@ -287,7 +287,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 ### Asking for the context *(slide 16)*
 
 - [ ] 🎞️ **GO TO SLIDE 16** — *Asking for the context*
-- [ ] At the top of `TrucksController`, **type it**:
+- [ ] At the top of `TrucksController` (inside the class), **type it**:
   ```csharp
   private readonly CurbsideContext _context;
 

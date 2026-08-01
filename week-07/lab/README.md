@@ -220,7 +220,7 @@ Then load `/Cryptids` in a browser. Six creatures, out of SQL Server. *(The page
 
 **Check:** `Check5_TheRegistryReadsFromTheDatabase`
 
-**First, the constructor.** At the top of `CryptidsController`, above the actions:
+**First, the constructor.** At the top of `CryptidsController` **(inside the class)**, above the actions:
 
 ```csharp
 private readonly CryptidContext _context;
