@@ -91,11 +91,15 @@ dotnet user-secrets set "ConnectionStrings:DefaultConnection" "Server=<SCHOOL-SQ
 
 Replace all four angle-bracketed parts with the details on the class handout. Leave `TrustServerCertificate=True` exactly as it is — [it's why the connection isn't refused](../lecture-notes.md#where-the-connection-string-lives).
 
-Check it landed:
+**Keep the quotes around the value.** Your connection string is full of `;`, and your shell reads an unquoted `;` as the end of the command — it would store `Server=...` and silently throw the rest away.
+
+Check it landed — this is the only command that tells you the truth, because `set` prints `Successfully saved` whatever you give it:
 
 ```bash
 dotnet user-secrets list
 ```
+
+You want **one** line, starting exactly `ConnectionStrings:DefaultConnection`, with the whole string after it. [If it's wrong, here's how to fix it](../lecture-notes.md#when-you-type-it-wrong) — a bad value just needs another `set`; a misspelled key needs `dotnet user-secrets remove`.
 
 You can't fully test it yet (there's no context for it to use), so the real test is task 4. But you can rule out typos now: open the **mssql** extension in VS Code, connect with the same four values, and see your database in the list. If that fails, the connection string is wrong and nothing later will save you.
 
@@ -290,7 +294,7 @@ public IActionResult Create(Cryptid cryptid)
 - **`No project was found in the current working directory`** — `dotnet ef` runs from inside `Cryptids.Web`, not the folder above. This is the opposite of `dotnet test`.
 - **`Login failed for user '...'`** — the server answered and rejected you: username or password. The server name is right.
 - **`A network-related or instance-specific error occurred`** — nothing answered: server name is wrong, or this network can't reach it. Takes ~30s to fail.
-- **`Value cannot be null. (Parameter 'connectionString')`, and the app won't start** — `GetConnectionString("DefaultConnection")` returned nothing. Run `dotnet user-secrets list` from inside `Cryptids.Web`: if it says *"No secrets configured for this application"*, task 1 didn't take **for this project** — secrets are per application, so one you set for a different app doesn't count. If secrets *are* listed, the key is misspelled — it has to be exactly `ConnectionStrings:DefaultConnection`.
+- **`Value cannot be null. (Parameter 'connectionString')`, and the app won't start** — `GetConnectionString("DefaultConnection")` returned nothing. Run `dotnet user-secrets list` from inside `Cryptids.Web`: if it says *"No secrets configured for this application"*, task 1 didn't take **for this project** — secrets are per application, so one you set for a different app doesn't count. If secrets *are* listed, look at them closely: the key has to be exactly `ConnectionStrings:DefaultConnection` (`ConnectionString` singular is the usual typo — `dotnet user-secrets remove` the wrong one), and the value has to be the *whole* string, not just `Server=...` chopped at the first `;` by missing quotes. [Fixing both](../lecture-notes.md#when-you-type-it-wrong).
 - **`Invalid object name 'Cryptids'`** — the table isn't there. You generated the migration but never ran `dotnet ef database update`.
 - **`Unable to resolve service for type ... CryptidContext`** — task 3's line is missing, or it's *below* `builder.Build()`.
 - **The registry is empty and there's no error** — the table exists but has no rows. Open your migration: if there's no `InsertData` in it, you generated it before writing `HasData`. Delete the `Migrations` folder and do task 4 again.

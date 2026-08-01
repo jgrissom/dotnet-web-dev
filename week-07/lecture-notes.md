@@ -154,6 +154,45 @@ Which means you will run these two commands more than once tonight, and that's c
 
 .NET's own wording gives it away: run `dotnet user-secrets list` in a project you haven't set up and it says *"No secrets configured for **this application**."*
 
+### When you type it wrong
+
+You will, and the tooling will not tell you. **`set` accepts anything you hand it and always prints `Successfully saved`** — it does not check the key, the value, or whether any of it makes sense. That message means "written to disk," not "correct."
+
+So there is exactly one command that tells you the truth:
+
+```bash
+dotnet user-secrets list
+```
+
+Three ways it goes wrong, in order of how quietly they fail:
+
+**1. You forgot to quote the value.** This is the silent one. A connection string is full of `;`, and your shell reads `;` as *end of command*. Without quotes, everything after the first semicolon is chopped off and run as a separate command:
+
+```bash
+dotnet user-secrets set "ConnectionStrings:DefaultConnection" Server=x;Database=y   # ✗
+```
+
+stores `Server=x` and nothing else. You get `Successfully saved`, no error — the leftover `Database=y` looks like a shell variable assignment, so your shell doesn't complain either. Then the app fails with a connection error that makes no sense against the string you *think* you typed. **Always put the value in quotes.**
+
+**2. You misspelled the key.** `ConnectionString` instead of `ConnectionStrings` is the classic — one letter, and `GetConnectionString("DefaultConnection")` finds nothing. `set` stores it happily as a *second, useless* entry, so `list` shows both:
+
+```
+ConnectionStrings:DefaultConnection = Server=...
+ConnectionString:DefaultConnection  = Server=...
+```
+
+Read those two lines carefully; they are hard to tell apart on purpose. Delete the wrong one:
+
+```bash
+dotnet user-secrets remove "ConnectionString:DefaultConnection"
+```
+
+*(`remove` prints nothing when it works. Run `list` again to confirm.)*
+
+**3. The value itself is wrong** — a typo'd server, username or password. This one is easy: **just run `set` again with the same key.** It overwrites, and you don't need to remove anything first.
+
+And if you want to start over entirely, `dotnet user-secrets clear` empties the store for that application.
+
 > [!IMPORTANT]
 > **Secrets do not travel with your repo, and that is the whole point.** Clone your project onto a second machine and the connection string is not there — you run `dotnet user-secrets set` again. Same if you work on a lab PC that resets itself when it reboots: your repo comes back from GitHub, your secret does not.
 >

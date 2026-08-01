@@ -120,7 +120,8 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   dotnet user-secrets init
   dotnet user-secrets set "ConnectionStrings:DefaultConnection" "Server=...;Database=...;User ID=...;Password=...;TrustServerCertificate=True"
   ```
-- [ ] **Prove it's really there:** `dotnet user-secrets list` in the second terminal
+- [ ] ⚠️ **Point at the quotes around the value and say why** — *"that string is full of semicolons, and your shell reads a semicolon as end-of-command. Leave the quotes off and it saves `Server=` and throws the rest away, and still tells you it worked"*. It's the silent one, and it will happen in the lab
+- [ ] **Prove it's really there:** `dotnet user-secrets list` in the second terminal. *"`set` says `Successfully saved` no matter what you give it — this is the command that actually tells you"*
 - [ ] **Show what `init` did:** open `Curbside.csproj` and point at the `<UserSecretsId>` line. *"That's a folder name, not a secret. It gets committed — it's how the tooling finds the file next time"*
 - [ ] 🎯 **Then the part they'll misremember otherwise — where the file actually is.** Say the path out loud: `~/.microsoft/usersecrets/<that GUID>/secrets.json`. *"Not in the project. Not in the repo. In my user profile"*
 - [ ] Walk the four parts of the string: which machine · which database · who you are · **and `TrustServerCertificate=True`**
