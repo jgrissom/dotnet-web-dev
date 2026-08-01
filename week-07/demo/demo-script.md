@@ -32,7 +32,17 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] **Install and sign into the VS Code `mssql` extension**, with a saved, **tested** connection — but the panel closed. You open it five times tonight and a login prompt each time kills the beat
 - [ ] ⚠️ **Save that connection to the *server*, with the database field left blank** — not to Curbside's database, which does not exist yet and won't until §3 creates it. A profile naming a database that isn't there fails to connect, and you'd be debugging it at 1:35 in front of the room. From §3 on you expand the new database underneath that server connection
 - [ ] **Size the terminal for the back row and keep it visible all night.** Unlike week 6 you never need to clear it — the scroll *is* the story
-- [ ] **Check `dotnet ef` is current:** `dotnet ef --version` against `dotnet --version`. A skew warning on the projector invites a question you don't want in §3
+- [ ] **Check `dotnet ef` isn't a version behind.** Run both and compare the **first number only**:
+  ```bash
+  dotnet --version
+  dotnet ef --version
+  ```
+  `10.0.102` and `10.0.10` both start with **10** — that's a match, and the rest is meant to differ (one is the SDK, one is the EF tools). A `9.x` tools version against a `10.x` SDK is the problem: every `dotnet ef` command in §3 then prints *"The Entity Framework tools version … is older than that of the runtime"* **above** the migration output you want them reading
+- [ ] **If the majors differ — or you'd rather not check — just run this.** It's quick, idempotent, and safe to do every time:
+  ```bash
+  dotnet tool update --global dotnet-ef
+  ```
+  *(`Command not found: dotnet ef` instead? It was never installed: `dotnet tool install --global dotnet-ef`.)*
 - [ ] Teaching profile; terminal font sized for the projector
 - [ ] **Say it before you start: *"lids down — you'll build this yourself in the lab."*** Curbside isn't in the public repo, so nobody can follow along, and tonight's paste blocks are big
 - [ ] Sanity check: `/Trucks` shows **six** cards, `/Trucks/Create` renders the form, filing a truck works and lands it on the list
