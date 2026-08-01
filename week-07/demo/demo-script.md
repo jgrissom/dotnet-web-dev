@@ -26,11 +26,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   dotnet user-secrets set "ConnectionStrings:DefaultConnection" "Server=...;Database=...;User ID=...;Password=...;TrustServerCertificate=True"
   ```
 - [ ] Confirm it took: `dotnet user-secrets list` prints the connection string. **§2 shows this already done rather than doing it live** — your real password never goes on the projector
-- [ ] Rehearse `dotnet ef database update` once, then **drop the database again** so the class watches it get created:
-  ```bash
-  dotnet ef database drop --force
-  ```
-- [ ] **Decide which database you're demoing into.** Your own account on the school server. It is *not* a student's, and it is not the one you use for the lab answer key — you're about to drop and recreate it twice
+- [ ] **Point Curbside at its own database** — same server, same account, **different `Database=`** from the Cryptids one behind the lab answer key. One database per application. It matters because the demo *drops* Curbside's database and rebuilds it live in §3, and you run the answer key on screen at §8: share one database and you destroy the thing you're about to demo
 - [ ] `cd Curbside && dotnet watch`
 - [ ] **Park two browser tabs**: `/Trucks` and `/Trucks/Create`
 - [ ] **Install and sign into the VS Code `mssql` extension**, with the connection to your database saved and **tested**, but the panel closed. You open it three times tonight and a login prompt each time kills the beat
