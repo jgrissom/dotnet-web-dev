@@ -29,7 +29,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] **Point Curbside at its own database** — same server, same account, **different `Database=`** from the Cryptids one behind the lab answer key. One database per application. It matters because the demo *drops* Curbside's database and rebuilds it live in §3, and you run the answer key on screen at §8: share one database and you destroy the thing you're about to demo
 - [ ] `cd Curbside && dotnet watch`
 - [ ] **Park two browser tabs**: `/Trucks` and `/Trucks/Create`
-- [ ] **Install and sign into the VS Code `mssql` extension**, with a saved, **tested** connection — but the panel closed. You open it six times tonight, starting in §3 where the point is that it shows *nothing*, and a login prompt each time kills the beat
+- [ ] **Install and sign into the VS Code `mssql` extension**, with a saved, **tested** connection — but the panel closed to start. **It's your main instrument from §3 onward**: you open it in §3 to show there's *nothing there*, and from then on you refresh it rather than reopening. A login prompt at any of those kills the beat
 - [ ] ⚠️ **Save that connection to the *server*, with the database field left blank** — not to Curbside's database, which does not exist yet and won't until §3 creates it. A profile naming a database that isn't there fails to connect, and you'd be debugging it at 1:35 in front of the room. From §3 on you expand the new database underneath that server connection
 - [ ] **Size the terminal for the back row and keep it visible all night.** Unlike week 6 you never need to clear it — the scroll *is* the story
 - [ ] **Check `dotnet ef` isn't a version behind.** Run both and compare the **first number only**:
@@ -321,7 +321,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] **Predict before you reload:** *"twenty minutes ago I put a truck in the database that has never been in this project. How many cards am I about to see?"*
 - [ ] **Reload `/Trucks`.** 🎯 **Seven cards, and `Sconnie Sliders` is one of them.** *"There it is. That truck has never existed in a file. The page is reading the database — that's not me telling you, that's a truck that had nowhere else to come from"*
 - [ ] **Read the terminal** — EF Core logs the SQL it generated. 🎯 *"And there's the SELECT that fetched it. You can read it"*
-- [ ] Load `/Trucks/Details/2` and read that one too: *"`FirstOrDefault(t => t.Id == id)` didn't fetch six trucks and pick one — it became a WHERE clause, and the server did the picking"*
+- [ ] Load `/Trucks/Details/2` and read that one too: *"`FirstOrDefault(t => t.Id == id)` didn't fetch seven trucks and pick one — it became a WHERE clause, and the server did the picking"*
 - [ ] 💡 Say this is worth keeping an eye on all term: *"in week 9 a query gets expensive, and this terminal is how you'll notice"*
 
 ### Break it #2 — writing *(slide 18)*
@@ -335,32 +335,32 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   ```
 - [ ] Delete the old `truck.Id = TruckData.All.Max(...) + 1;` line while you're in there — you come back to it on the next slide
 - [ ] **Predict, show of hands:** *"guard's intact, I've added it to the context, I redirect. Does the truck turn up?"*
-- [ ] File a truck — **`Ghost Kitchen` / `Fusion` / `Madison` / `4.9`**. The form submits. The redirect happens. **`/Trucks` shows six**
-- [ ] 🎯 **Sit in it.** *"No error. No warning. The form worked perfectly and nothing was saved. Check the terminal — there's no INSERT. Check the table —"* open the **mssql** panel and refresh — *"six rows"*
+- [ ] File a truck — **`Ghost Kitchen` / `Fusion` / `Madison` / `4.9`**. The form submits. The redirect happens. **`/Trucks` still shows seven** — the same seven as before, with no `Ghost Kitchen` among them
+- [ ] 🎯 **Sit in it.** *"No error. No warning. The form worked perfectly and nothing was saved. Check the terminal — there's no INSERT. Check the table —"* open the **mssql** panel and refresh — *"still seven rows"*
 - [ ] Now say why: **`Add` does not write anything.** *"It tells the context 'I intend to insert this.' Nothing has left the process"*
 - [ ] **Add the line** — ⚠️ **and say it's a C# edit so `dotnet watch` will restart**:
   ```csharp
   _context.SaveChanges();
   ```
-- [ ] File the same truck again. **Seven cards** 🎉 — and the terminal shows the `INSERT`
+- [ ] File the same truck again. **Eight cards** 🎉 — and the terminal shows the `INSERT`
 - [ ] ⚠️ **Name it as the bug of the week:** *"forgetting `SaveChanges` is the single most common thing that goes wrong tonight, and it is completely silent. If your form works and the record isn't there, this is it. Every time"*
 
 ### The line you delete *(slide 19)*
 
 - [ ] 🎞️ **GO TO SLIDE 19** — *The line you delete* · 🔗 **collect §3:** *"remember `SqlServer:Identity` in the migration"*
 - [ ] Point at the deleted `Max(t => t.Id) + 1` line. *"SQL Server picks the number now. And EF Core reads the real value back onto your object during `SaveChanges` — so `truck.Id` is correct on the line **after** the save, which is exactly when you'd want to redirect to it"*
-- [ ] Show it in the **mssql** panel: the new truck's `Id` is **7**, and nothing in your code chose it
+- [ ] Show it in the **mssql** panel: the new truck's `Id` is **8** — the seed filled 1 through 7, so SQL Server carried on from there, and nothing in your code chose it
 - [ ] Now delete **`Models/TruckData.cs`** 🎯 — *"and if the project stops compiling, the compiler is about to tell me every place that was still reading the old list. That's a much nicer way to find them than clicking around"*
 - [ ] ⚠️ **`dotnet watch` will NOT hot-reload this — it prints `error ENC0033: Deleting class 'Curbside.Models.TruckData' requires restarting the application` and keeps serving the old build.** That red line is expected, not a failure. **`Ctrl+C` and `dotnet watch` again**, or the page you reload next is a stale binary still holding the deleted class — which would make the next beat a lie
-- [ ] After the restart: it compiles, and `/Trucks` still shows **seven**. Curbside only read the old list from the controller. ⚠️ **Warn them theirs may differ:** *"in your own app there may be more than one. The home page is the usual suspect — if your `Views/Home/Index.cshtml` has a `var featured = TruckData.All.First(...)` in it, that's a view reading data directly, and it needs the same treatment: inject the context into `HomeController`, query it there, pass it to the view"*
+- [ ] After the restart: it compiles, and `/Trucks` still shows **eight**. Curbside only read the old list from the controller. ⚠️ **Warn them theirs may differ:** *"in your own app there may be more than one. The home page is the usual suspect — if your `Views/Home/Index.cshtml` has a `var featured = TruckData.All.First(...)` in it, that's a view reading data directly, and it needs the same treatment: inject the context into `HomeController`, query it there, pass it to the view"*
 - [ ] **✓ CHECKPOINT:** the room can say what `Add` does and what `SaveChanges` does
 
 ## 6 · The payoff *(slide 20)*
 
-- [ ] **Stay in the browser.** `/Trucks` with seven cards on it, the seventh one yours
+- [ ] **Stay in the browser.** `/Trucks` with eight cards on it, the eighth one yours
 - [ ] In the terminal: **`Ctrl+C`**. Then `dotnet watch` again. Reload
-- [ ] **Seven.** 🎯 **Say nothing for a beat and let them get there first**
-- [ ] 🎞️ **GO TO SLIDE 20** — *Restart it.* Now — straight off the seven cards that didn't disappear
+- [ ] **Eight.** 🎯 **Say nothing for a beat and let them get there first**
+- [ ] 🎞️ **GO TO SLIDE 20** — *Restart it.* Now — straight off the eight cards that didn't disappear
 - [ ] 🔗 *"Same three keystrokes as the first two minutes of tonight. Different answer. That's the week — it's the first time anything you've built has outlived the program that built it"*
 - [ ] Open the **mssql** panel one last time with the app **stopped**: *"the app isn't even running and the data is still there. It was never yours to lose"*
 - [ ] 🎯 **Then the other half, pointing at the editor:** *"and look at what didn't change. The form. Model binding. The annotations. `ModelState.IsValid`. The redirect. The error messages. The layout, the partial, the theme. You changed where the data lives and nothing above it noticed"*

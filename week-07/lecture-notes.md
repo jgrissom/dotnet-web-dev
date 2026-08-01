@@ -463,7 +463,7 @@ public IActionResult Details(int id)
 
 Compare that to last week, honestly: `TruckData.All` became `_context.Trucks`, and `Index` gained a `.ToList()`. The `FirstOrDefault`, the null check, the `NotFound()`, the `View(truck)` — all identical. **The LINQ you learned against a `List<T>` works against a table**, which is most of why EF Core is pleasant to use.
 
-The difference is where it runs. `_context.Trucks` is not a list; it's a *query that hasn't happened yet*. `ToList()` and `FirstOrDefault()` are the moment it goes to the server. And `FirstOrDefault(t => t.Id == id)` doesn't fetch six trucks and pick one — it becomes a `WHERE` clause, and SQL Server does the picking.
+The difference is where it runs. `_context.Trucks` is not a list; it's a *query that hasn't happened yet*. `ToList()` and `FirstOrDefault()` are the moment it goes to the server. And `FirstOrDefault(t => t.Id == id)` doesn't fetch every truck and pick one — it becomes a `WHERE` clause, and SQL Server does the picking.
 
 > [!TIP]
 > **Watch it happen.** `appsettings.Development.json` sets `"Microsoft.AspNetCore": "Warning"`, but EF Core logs at Information, so the generated SQL prints in your terminal on every request. Load `/Trucks` and read the `SELECT`. It's the single best way to build an accurate picture of what this library is doing on your behalf — and in week 9, when a query gets expensive, it's how you'll notice.
