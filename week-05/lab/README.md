@@ -75,6 +75,8 @@ The [notes on the layout file](../lecture-notes.md#the-layout-file) walk the sam
 
 ### Task 4 in full
 
+**Check:** `Check4_CardIsAPartialUsedTwice`
+
 **Create `Views/Shared/_CryptidCard.cshtml`** — this is the whole file. Paste it; tonight's lesson is the partial, not the Bootstrap:
 
 ```html
@@ -147,6 +149,8 @@ The [notes on the layout file](../lecture-notes.md#the-layout-file) walk the sam
 
 ### Task 5 in full
 
+**Check:** `Check5_DetailsAddsAScript`
+
 Open `Views/Cryptids/Details.cshtml` and add this at the bottom:
 
 ```html
@@ -161,6 +165,8 @@ Then open the console (F12) on a details page — the creature's name is in the 
 > **Check 5 looks at *where* your script lands**, not just that it's there. A `<script>` typed into the middle of `Details.cshtml` renders in the middle of the page; the same script inside `@section Scripts` renders at the bottom, below the footer, because [the layout decides where a section goes](../lecture-notes.md#the-slot-that-was-always-there).
 
 ### Task 6 in full
+
+**Check:** `Check6_ThemeIsNotTheDefault`
 
 Pick your theme on [bootswatch.com](https://bootswatch.com) — the **Preview** link on each card shows a full sample page — **but get the `<link>` tag right here**, because the site itself never shows you one (its Download button hands you a CSS *file*; we're loading from the CDN, week-2 style):
 

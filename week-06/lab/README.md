@@ -70,6 +70,8 @@ dotnet test Cryptids.Checks
 
 ### Task 2 in full
 
+**Check:** `Check2_TheModelCarriesItsRules`
+
 **This is the whole of `Models/Cryptid.cs`** afterwards. Type it rather than pasting — the four attributes in here (`[Required]`, `[StringLength]`, `[Range]`, `[Display]`) are the week's entire vocabulary:
 
 ```csharp
@@ -109,6 +111,8 @@ public class Cryptid
 > **Check 2 passes on its own, before any form exists.** Run `dotnet test Cryptids.Checks` now — 2/6. It reads the attributes straight off the class, which is the point: the rules are a property of the *model*, not of any page.
 
 ### Task 3 in full
+
+**Check:** `Check3_TheFormPageExists`
 
 **First, the action.** Inside `CryptidsController`, below `Details`:
 
@@ -181,6 +185,8 @@ public IActionResult Create()
 
 ### Task 4 in full
 
+**Check:** `Check4_AGoodReportGetsFiled`
+
 A **second** action, same name, in the same controller. `[HttpPost]` is what stops the two of them fighting over the same URL:
 
 ```csharp
@@ -206,6 +212,8 @@ File a report and watch it land on `/Cryptids` as a seventh card. Then notice wh
 
 ### Task 5 in full
 
+**Check:** `Check5_ABadReportIsRefused`
+
 The guard goes at the very top of the POST action, above the id assignment:
 
 ```csharp
@@ -222,6 +230,8 @@ Now file a report with **no name and a first sighting of 99999**. The form comes
 - The messages appear in the empty `<span asp-validation-for="...">` sockets that were already in task 3's markup. [Where the errors come from](../lecture-notes.md#showing-the-errors).
 
 ### Task 6 in full
+
+**Check:** `Check6_ValidationRunsInTheBrowserToo`
 
 At the very bottom of `Create.cshtml`, below the closing `</form>`:
 
