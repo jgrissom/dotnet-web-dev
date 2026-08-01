@@ -26,7 +26,7 @@ By the end of this session, students can:
 - **Demo cue sheet:** [`demo/demo-script.md`](demo/demo-script.md) — keyed to slides ([clickable version](https://jgrissom.github.io/dotnet-web-dev/week-07/demo/script.html))
 - **Curbside**, copied out of the private answer-keys repo (`week-07/demo-starter/Curbside`) to a scratch folder — week 6's finished state, form and all — running under `dotnet watch`
 - ⚠️ **Your own connection string set in user secrets and tested before class** (`dotnet user-secrets list` to confirm), and the demo database **dropped** (`dotnet ef database drop --force`) so the room watches it get created. §2 shows the commands already run — your real password never goes on the projector
-- **VS Code `mssql` extension** installed, connected, tested, panel closed. You open it four times tonight
+- **VS Code `mssql` extension** installed, panel closed, with a saved and tested connection **to the server, database field blank** — Curbside's database doesn't exist until §3 creates it, so a profile naming it would fail. You open the panel five times tonight
 - **2–3 student Azure URLs** picked in advance for the gallery
 - Your finished Registry with `dotnet test` at 6/6, ready to show at lab launch
 

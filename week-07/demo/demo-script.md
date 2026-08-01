@@ -29,7 +29,8 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] **Point Curbside at its own database** — same server, same account, **different `Database=`** from the Cryptids one behind the lab answer key. One database per application. It matters because the demo *drops* Curbside's database and rebuilds it live in §3, and you run the answer key on screen at §8: share one database and you destroy the thing you're about to demo
 - [ ] `cd Curbside && dotnet watch`
 - [ ] **Park two browser tabs**: `/Trucks` and `/Trucks/Create`
-- [ ] **Install and sign into the VS Code `mssql` extension**, with the connection to your database saved and **tested**, but the panel closed. You open it three times tonight and a login prompt each time kills the beat
+- [ ] **Install and sign into the VS Code `mssql` extension**, with a saved, **tested** connection — but the panel closed. You open it five times tonight and a login prompt each time kills the beat
+- [ ] ⚠️ **Save that connection to the *server*, with the database field left blank** — not to Curbside's database, which does not exist yet and won't until §3 creates it. A profile naming a database that isn't there fails to connect, and you'd be debugging it at 1:35 in front of the room. From §3 on you expand the new database underneath that server connection
 - [ ] **Size the terminal for the back row and keep it visible all night.** Unlike week 6 you never need to clear it — the scroll *is* the story
 - [ ] **Check `dotnet ef` is current:** `dotnet ef --version` against `dotnet --version`. A skew warning on the projector invites a question you don't want in §3
 - [ ] Teaching profile; terminal font sized for the projector

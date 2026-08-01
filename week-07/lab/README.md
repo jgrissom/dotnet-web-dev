@@ -112,7 +112,11 @@ dotnet user-secrets list
 
 You want **one** line, starting exactly `ConnectionStrings:DefaultConnection`, with the whole string after it. [If it's wrong, here's how to fix it](../lecture-notes.md#when-you-type-it-wrong) — a bad value just needs another `set`; a misspelled key needs `dotnet user-secrets remove`.
 
-You can't fully test it yet (there's no context for it to use), so the real test is task 4. But you can rule out typos now: open the **mssql** extension in VS Code, connect with the same four values, and see your database in the list. If that fails, the connection string is wrong and nothing later will save you.
+You can't fully test it yet (there's no context for it to use), so the real test is task 4. But you can rule out a bad server name or password now, in the **mssql** extension:
+
+**Connect to the *server* — leave the database field blank.** Use the server, username and password from the handout. **Don't** name your database: it doesn't exist yet, and a connection that names a database that isn't there just fails, which tells you nothing about whether your credentials are right.
+
+If that connects, your server name and login are good. Your database shows up underneath it after task 4 creates it. If it *doesn't* connect, the connection string is wrong and nothing later will save you — the two failure messages are in the table below.
 
 > [!TIP]
 > **On a lab PC that resets when it reboots, do this again next session.** Your secret lives in your user profile, not in your project, so it doesn't come back with your files. Keep the connection string somewhere that isn't this machine — one `dotnet user-secrets set` restores it.
