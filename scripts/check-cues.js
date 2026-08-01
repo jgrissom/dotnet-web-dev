@@ -18,6 +18,15 @@
 //   3. each cue sits inside the slide range its section claims
 //   4. every cued slide carries a footer, pointing at the section it's cued in
 //   5. a cue under a `###` sub-beat has a footer naming a beat (` · `)
+//   6. no code fence opens on a `- [ ]` line, and fences are balanced
+//
+// (6) is a different class of bug and the nastiest so far. Writing a beat as
+// "- [ ] ```bash" with the command indented under it looks correct on GitHub,
+// but `marked` makes no code block from it — so no styling and no Copy button —
+// and the unbalanced fence swallows the content after it. Week 7 shipped two
+// and lost NINE checklist items: the source had 170 `- [ ]` lines and the built
+// page rendered 161. Nothing else could see it. check-links passed, and
+// comparing Copy buttons to <pre> count matches, because both are absent.
 
 const fs = require("fs");
 const path = require("path");
@@ -91,6 +100,18 @@ for (const wk of fs.readdirSync(root).filter(d => /^week-\d+$/.test(d)).sort()) 
     if (c.beat && !slide.footer.includes("·"))
       say(`slide ${c.n} is cued under a ### sub-beat but its footer names no beat`);
   }
+
+  // 6 — the sheet has to survive `marked`
+  let fences = 0;
+  fs.readFileSync(script, "utf8").split("\n").forEach((line, i) => {
+    if (/^\s*```/.test(line)) fences++;
+    if (/^\s*[-*] \[[ xX]\]\s*```/.test(line))
+      say(`demo-script.md:${i + 1} opens a code fence on the checkbox line — `
+        + `marked makes no code block from that (no styling, no Copy button) and `
+        + `it swallows the items after it. Put the fence on its own line.`);
+  });
+  if (fences % 2)
+    say(`demo-script.md has ${fences} fence lines — an odd count means one is unclosed`);
 }
 
 if (problems.length) {
