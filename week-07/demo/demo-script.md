@@ -15,7 +15,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 > Lost your place? **The nearest 🎞️ above you is the slide that should be showing** — and every slide's footer names the section and beat of this sheet it belongs to, so you can go the other way too.
 
 > [!IMPORTANT]
-> **Tonight is more typing and less breaking than week 6.** There are only two deliberate breaks (§3 and §5), and both are the errors students will actually hit in the lab. The compensation is that **the terminal is the star all night** — migration output, generated SQL, and two error messages worth recognising on sight. Size it accordingly.
+> **Tonight is more typing and less breaking than week 6.** There is **one** deliberate break (§5's missing `SaveChanges`), and it's the silent one students will actually hit in the lab. The compensation is that **the terminal and the mssql panel are the stars all night** — migration output, generated SQL, and a database that goes from not existing to holding their data. Size both for the back row.
 
 ## 0 · Before class
 
@@ -29,7 +29,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] **Point Curbside at its own database** — same server, same account, **different `Database=`** from the Cryptids one behind the lab answer key. One database per application. It matters because the demo *drops* Curbside's database and rebuilds it live in §3, and you run the answer key on screen at §8: share one database and you destroy the thing you're about to demo
 - [ ] `cd Curbside && dotnet watch`
 - [ ] **Park two browser tabs**: `/Trucks` and `/Trucks/Create`
-- [ ] **Install and sign into the VS Code `mssql` extension**, with a saved, **tested** connection — but the panel closed. You open it five times tonight and a login prompt each time kills the beat
+- [ ] **Install and sign into the VS Code `mssql` extension**, with a saved, **tested** connection — but the panel closed. You open it six times tonight, starting in §3 where the point is that it shows *nothing*, and a login prompt each time kills the beat
 - [ ] ⚠️ **Save that connection to the *server*, with the database field left blank** — not to Curbside's database, which does not exist yet and won't until §3 creates it. A profile naming a database that isn't there fails to connect, and you'd be debugging it at 1:35 in front of the room. From §3 on you expand the new database underneath that server connection
 - [ ] **Size the terminal for the back row and keep it visible all night.** Unlike week 6 you never need to clear it — the scroll *is* the story
 - [ ] **Check `dotnet ef` isn't a version behind.** Run both and compare the **first number only**:
@@ -177,16 +177,14 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ## 3 · Migrations *(slides 9–12)*
 
-### Break it #1 — a model is not a database *(slide 9)*
+### A model is not a database *(slide 9)*
 
-- [ ] 🎞️ **GO TO SLIDE 9** — *A model is not a database* · **predict first, show of hands:** *"I've described the table. I've said where the server is. I've registered the whole thing. What happens if I load `/Trucks` right now?"*
-- [ ] Reload `/Trucks`:
-  ```
-  SqlException: Invalid object name 'Trucks'.
-  ```
-- [ ] 🎯 *"It connected. It logged in. It sent a `SELECT` and the server said: there's no such table. Describing a table in C# does not create one — **nothing has happened to any database yet**"*
-- [ ] ⚠️ **Say plainly that this is tonight's most common lab error**, and that the message is unusually honest: *"invalid object name means the table isn't there, which nearly always means you didn't run the update command"*
-- [ ] No restore needed — the next two commands are the fix
+- [ ] 🎞️ **GO TO SLIDE 9** — *A model is not a database* · **predict first, show of hands:** *"I've described the table. I've said where the server is. I've registered the whole thing. So how much of my database exists right now?"*
+- [ ] **Open the mssql panel and expand the server.** Let them look at it for a second before you say anything
+- [ ] 🎯 **There is no database there at all.** *"Not an empty table. Not a table with no rows. Nothing. Describing a table in C# does not create one — **nothing has happened to any server yet**. Everything I've written so far is a description sitting in my project"*
+- [ ] ⚠️ **Name the error they'll meet in the lab, even though you can't show it here** — *"when you wire your controller up to the context and forget the command we're about to run, you get `Invalid object name 'Trucks'`. It means exactly what it says: the table isn't there. It's the most common error of tonight's lab, and now you know what causes it"*
+- [ ] **Leave the panel open** — you refresh it right after `database update` and the difference is the payoff
+- [ ] ℹ️ *Why not just load `/Trucks` and show it failing? Because it doesn't. `TrucksController` still reads `TruckData.All` until §5, and `AddDbContext` only registers a factory — nothing connects until something asks for a context and uses it. The page renders six trucks quite happily with a connection string pointing at a server that doesn't exist.*
 
 ### Generating the migration *(slide 10)*
 
@@ -218,7 +216,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   ```
 - [ ] **Let the SQL scroll past and don't apologise for it.** *"That's the CREATE TABLE it just ran, and you can read it"*
 - [ ] Reload `/Trucks`. **It loads. It's empty.** *"No error. Zero trucks on the street"*
-- [ ] Open the **mssql** panel and expand the database — 🎯 **two tables**: `Trucks`, and `__EFMigrationsHistory` with one row
+- [ ] **Refresh the mssql panel you left open in §3** — 🎯 the database that wasn't there **now is**, and expanding it shows **two tables**: `Trucks`, and `__EFMigrationsHistory` with one row. *"Ten minutes ago this server had nothing of mine on it. One command."*
 - [ ] *"That second table is how `database update` knows what it's already done. Run the command again —"* do it — *"and nothing happens, because the history says so. It's not clever. It's a list"*
 - [ ] 💡 If asked about the two error messages: **`Login failed for user`** = the server answered and said no (username/password) · **`A network-related or instance-specific error`** = nothing answered (server name, or you're on the wrong network), and it takes ~30 seconds to fail so it feels like a hang
 - [ ] **✓ CHECKPOINT:** the room can say what `migrations add` produces versus what `database update` does

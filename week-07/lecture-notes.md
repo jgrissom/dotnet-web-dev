@@ -291,7 +291,10 @@ Three consequences, and all three are load-bearing this week:
 
 ### Writing a model doesn't create a table
 
-Run the app now and nothing works, because there is no database yet. This is the step people skip and then spend twenty minutes on.
+Open the **mssql** extension and look at your server right now. **Your database isn't there.** Not empty — absent. You described a table, named a server, and registered the whole thing, and nothing has touched SQL Server at all. This is the step people skip and then spend twenty minutes on.
+
+> [!NOTE]
+> **Your app still runs at this point, and that surprises people.** `AddDbContext` only registers *how* to build a context; nothing connects until something asks for one and uses it. Your controller still reads the old static list, so the pages work exactly as they did. The missing database doesn't announce itself until something queries it — which is when you'd meet `Invalid object name 'Trucks'`.
 
 You have a C# class. SQL Server has no idea it exists. A **migration** is the bridge: a generated C# file that says, in EF Core's vocabulary, "create a table called Trucks with these columns." From inside the web project folder:
 

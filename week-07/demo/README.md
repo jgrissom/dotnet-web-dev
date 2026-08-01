@@ -15,9 +15,11 @@ Week 7's demo picks Curbside up where week 6 left it — form working, annotatio
 > Everything from §3 onwards needs a live database. If your connection string is wrong in front of the room you lose §3 and §4 both, and unlike week 6's breaks there is no way to keep going without it. Rehearse the whole thing once end to end.
 
 > [!IMPORTANT]
-> **Two deliberate breaks tonight, not four — and both are errors students will actually hit in the lab.**
+> **One deliberate break tonight, not four — plus one moment that looks like a break and isn't.**
 >
-> **§3: `Invalid object name 'Trucks'`.** Everything registered, everything described, and the page still fails — because describing a table doesn't create one. This is the single most valuable error of the night: showing it on purpose is what stops it being a twenty-minute panic during the lab.
+> **§3: the empty server.** Everything described, everything registered, and the mssql panel shows **no database of yours at all**. Not an empty table — nothing. Describing a table doesn't create one.
+>
+> This replaces an earlier version of the beat that loaded `/Trucks` and expected `Invalid object name 'Trucks'`. **That error cannot occur there:** `TrucksController` still reads `TruckData.All` until §5, and `AddDbContext` only registers a factory, so the page renders six trucks even with a connection string pointing at a server that doesn't exist. The error is still the most valuable one of the night — students meet it in the lab the moment they wire up the controller and forget `database update` — so §3 *names* it rather than staging it.
 >
 > **§5: the missing `SaveChanges()`.** Rewrite the POST action leaving it out, and *don't announce that you have*. The form submits, the guard passes, the redirect happens, and nothing is saved — no error, nowhere. Have the mssql panel open so the absence is visible rather than asserted. It is the most common bug of the week and it is completely silent.
 

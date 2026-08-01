@@ -154,7 +154,7 @@ Which context · which provider · **the address, read from config by name**
 
 ---
 
-<!-- _footer: '🖥️ Demo §3 · break it #1' -->
+<!-- _footer: '🖥️ Demo §3 · a model is not a database' -->
 
 ## A model is not a database
 
@@ -162,7 +162,7 @@ Table described. Server named. Context registered.
 
 <br>
 
-### So what happens when I load `/Trucks`?
+### So how much of it exists on the server?
 
 ---
 
