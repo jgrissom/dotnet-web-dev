@@ -262,12 +262,14 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 ### The second migration *(slide 15)*
 
 - [ ] 🎞️ **GO TO SLIDE 15** — *The second migration*
-- [ ] ```bash
+- [ ] Generate it — **don't apply it yet**:
+  ```bash
   dotnet ef migrations add SeedTrucks
   ```
 - [ ] **Open it before applying it.** 🎯 *"Look what's in here. No CreateTable — just seven InsertData calls. EF Core compared my model against the snapshot it saved last time, found seven rows that weren't there, and wrote the difference"*
 - [ ] 🎯 **That's the whole idea, and it's worth saying as one sentence:** *"you describe what you want; it works out the steps from what it last saw"*
-- [ ] ```bash
+- [ ] Now apply it:
+  ```bash
   dotnet ef database update
   ```
 - [ ] **Refresh the mssql panel.** 🎯 **Seven rows**, `Sconnie Sliders` among them
