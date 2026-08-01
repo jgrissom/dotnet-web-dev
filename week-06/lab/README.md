@@ -206,10 +206,10 @@ File a report and watch it land on `/Cryptids` as a seventh card. Here's one tha
 
 | Field | Value |
 |---|---|
-| Name | `Champ` |
-| Region | `Lake Champlain, Vermont` |
-| First sighted | `1819` |
-| Reports on file | `318` |
+| Name | `Mothman` |
+| Region | `Point Pleasant, West Virginia` |
+| First sighted | `1966` |
+| Reports on file | `102` |
 | Already debunked? | leave unchecked |
 
 Then notice what the action *also* accepts right now — a blank name, a first sighting in the year 99999 — and that's task 5.
