@@ -26,7 +26,6 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   ```
 - [ ] **Decide which database you're demoing into.** Your own account on the school server. It is *not* a student's, and it is not the one you use for the lab answer key — you're about to drop and recreate it twice
 - [ ] `cd Curbside && dotnet watch`
-- [ ] **Set the Port box at the top of this page** to whatever `dotnet watch` printed — `Now listening on: http://localhost:5164`. Every `localhost` URL in this sheet retargets to match, including what the **Copy** buttons put on your clipboard, and it's remembered next time
 - [ ] **Park two browser tabs**: `/Trucks` and `/Trucks/Create`
 - [ ] **Install and sign into the VS Code `mssql` extension**, with the connection to your database saved and **tested**, but the panel closed. You open it three times tonight and a login prompt each time kills the beat
 - [ ] **Size the terminal for the back row and keep it visible all night.** Unlike week 6 you never need to clear it — the scroll *is* the story
