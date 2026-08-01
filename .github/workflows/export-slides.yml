@@ -81,9 +81,10 @@ jobs:
                 | perl -0pe 's{<blockquote>\s*<p>\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]\s*}{<blockquote class="alert \L$1\E"><p>}g'
               echo "<script>document.querySelectorAll('input[type=checkbox]').forEach((cb,i)=>{cb.disabled=false;const k='$3-'+i;cb.checked=localStorage.getItem(k)==='1';cb.addEventListener('change',()=>localStorage.setItem(k,cb.checked?'1':'0'));});</script>"
               # The whole line toggles its box — the sheet is read off a tablet mid-demo
-              # and the box alone is a poor target. Clicks on a link, a Copy button or a
-              # code block must NOT toggle, and neither should finishing a text selection.
-              echo "<script>document.querySelectorAll('li').forEach(function(li){var cb=li.querySelector(':scope > input[type=checkbox], :scope > p > input[type=checkbox]');if(!cb)return;li.classList.add('task');li.addEventListener('click',function(e){if(e.target===cb)return;if(e.target.closest('a,button,pre'))return;if(e.target.closest('li')!==li)return;if((getSelection()+'').length)return;cb.checked=!cb.checked;cb.dispatchEvent(new Event('change'));});});</script>"
+              # and the box alone is a poor target. Anything interactive inside the line
+              # must NOT toggle: links, Copy buttons, code blocks, and <details> (whose
+              # triangle is a widget, not text). Nor should finishing a text selection.
+              echo "<script>document.querySelectorAll('li').forEach(function(li){var cb=li.querySelector(':scope > input[type=checkbox], :scope > p > input[type=checkbox]');if(!cb)return;li.classList.add('task');li.addEventListener('click',function(e){if(e.target===cb)return;if(e.target.closest('a,button,pre,details'))return;if(e.target.closest('li')!==li)return;if((getSelection()+'').length)return;cb.checked=!cb.checked;cb.dispatchEvent(new Event('change'));});});</script>"
               # Copy button on every code block — you're grabbing these mid-demo.
               echo "<script>document.querySelectorAll('pre').forEach(function(pre){var b=document.createElement('button');b.type='button';b.className='copy';b.textContent='Copy';b.addEventListener('click',function(){var c=pre.querySelector('code');var t=(c||pre).innerText;navigator.clipboard.writeText(t).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy';},1200);},function(){var r=document.createRange();r.selectNodeContents(c||pre);var s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='Press Cmd/Ctrl+C';setTimeout(function(){b.textContent='Copy';},2000);});});pre.appendChild(b);});</script>"
               # Port box: the demo app's port varies by machine, and a wrong port in a
