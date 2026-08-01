@@ -142,6 +142,18 @@ Yours will be a different GUID — `init` generates one. It is **not** a secret;
 
 Read that path again: it is nowhere near your project. There is no `.gitignore` rule to remember and no file to accidentally `git add`, because the file is not in the repository at all. `dotnet user-secrets list` prints what's in there.
 
+**And notice what names that folder: the GUID.** `init` generates a fresh one per project, so **every application has its own separate store.** The lab's Registry and your own semester project are two different applications with two different GUIDs — so they have two different secret files, even sitting side by side on the same laptop, even pointing at the same database with the same connection string.
+
+Which means you will run these two commands more than once tonight, and that's correct, not a mistake:
+
+| Doing this | Needs its own `init` + `set` |
+|---|---|
+| the lab's `Cryptids.Web` | yes |
+| your own semester project | yes — separately |
+| the same project on a second machine | `set` only; the GUID came across in the `.csproj` |
+
+.NET's own wording gives it away: run `dotnet user-secrets list` in a project you haven't set up and it says *"No secrets configured for **this application**."*
+
 > [!IMPORTANT]
 > **Secrets do not travel with your repo, and that is the whole point.** Clone your project onto a second machine and the connection string is not there — you run `dotnet user-secrets set` again. Same if you work on a lab PC that resets itself when it reboots: your repo comes back from GitHub, your secret does not.
 >
