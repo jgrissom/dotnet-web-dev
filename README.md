@@ -15,7 +15,7 @@ Full-stack web development with **ASP.NET Core MVC on .NET 10**, **Entity Framew
 | 4 | Routing, controllers, passing data to views; Razor syntax deep dive | [`week-⁠04/`](week-04/) | ✅&nbsp;Ready |
 | 5 | Razor layouts & partials: the site shell — applying the Bootstrap you already know; Bootswatch swap in `_Layout.cshtml` | [`week-⁠05/`](week-05/) | ✅&nbsp;Ready |
 | 6 | Models, forms, model binding, validation (data annotations); POST-Redirect-GET | [`week-⁠06/`](week-06/) | ✅&nbsp;Ready |
-| 7 | EF Core + SQL Server: DbContext, migrations, seeding; pointing deployed apps at the school SQL Server | `week-⁠07/` | 🚧&nbsp;Planned |
+| 7 | EF Core + SQL Server: DbContext, migrations, seeding; pointing deployed apps at the school SQL Server | [`week-⁠07/`](week-07/) | ✅&nbsp;Ready |
 | 8 | EF Core CRUD: scaffolding, full create/read/update/delete flows | `week-⁠08/` | 🚧&nbsp;Planned |
 | 9 | EF Core relationships (1-many, many-many), LINQ queries, ViewModels | `week-⁠09/` | 🚧&nbsp;Planned |
 | 10 | Midterm project: extend your semester project into a finished build, tying weeks 3–9 together | `week-⁠10/` | 🚧&nbsp;Planned |

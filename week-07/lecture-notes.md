@@ -1,0 +1,468 @@
+# Week 7 — Lecture Notes
+
+> Last week ended with a truck disappearing. You added it, restarted the app, and it was gone — and the explanation was a shrug: `TruckData.All` is a variable in a running program, and programs end. Tonight that stops being true. The list moves out of the process and into SQL Server, where it belongs to nobody's memory and outlives every restart, deploy and crash. The promise made at the end of last week was that the controller would barely change. You're going to find out how honest that was.
+
+## Part 1: Why a variable isn't storage (20 min)
+
+### The thing you already felt
+
+Start where week 6 ended. Add a truck. It's on `/Trucks`. Stop the app, start it again, reload.
+
+**Six trucks.**
+
+```csharp
+public static List<Truck> All { get; } = new() { ... };
+```
+
+That's not a bug and it never was. It's a `static List<Truck>` — a variable, living in the memory of one running process, and it lives exactly as long as that process does. Everything else you built was real. The storage was always a stand-in.
+
+On Azure it's worse, and by now some of you will have seen it: a free-tier app **sleeps** when nobody's using it, and wakes up as a brand-new process with the six hard-coded items and nothing else. Anything a visitor added is gone. Students who added test data on Monday and found it missing on Wednesday were not looking at a broken app.
+
+### What "outside the process" buys you
+
+A database is a separate program, usually on a separate machine, whose entire job is to hold onto data and hand it back. That one move — **the data lives somewhere your app isn't** — is what fixes all of this at once:
+
+| | `static List<T>` | A database |
+|---|---|---|
+| Survives a restart | no | yes |
+| Survives a deploy | no | yes |
+| Two apps see the same data | no | yes |
+| Survives the app crashing | no | yes |
+| Someone else can look at it | no | yes |
+
+That third row is the one that surprises people, and it's the one you can *feel* tonight: your laptop and your deployed Azure app will point at the same database. Add something on the deployed site, run your app locally, and it's there. Two programs, two computers, one set of data. Nothing you have built so far could do that.
+
+> [!NOTE]
+> **We are using the school's SQL Server**, and you each have your own account on it. It's reachable from off campus, which is what makes it work for both your laptop and your Azure app. There is nothing to install — the only new tool is the VS Code **SQL Server (mssql)** extension, for looking at tables.
+
+### The three pieces you're adding
+
+Everything tonight is one of these, and it's worth putting the shape up before any of it arrives:
+
+1. **A `DbContext`** — one C# class that stands for your database. It says which tables exist and what's in them.
+2. **A connection string** — where that database is, and who you are. It lives in configuration, never in code.
+3. **A migration** — the step that turns your C# classes into actual tables. Writing the model doesn't create anything; a migration is what does.
+
+Then the controller changes, and it changes less than you'd think.
+
+## Part 2: The context (30 min)
+
+### Two packages
+
+EF Core isn't in the box. From inside your **web project** folder — the one with the `.csproj` in it:
+
+```bash
+dotnet add package Microsoft.EntityFrameworkCore.SqlServer
+dotnet add package Microsoft.EntityFrameworkCore.Design
+```
+
+- **`.SqlServer`** is EF Core plus the SQL Server provider — the part that knows how to turn your LINQ into T-SQL.
+- **`.Design`** is only used by the `dotnet ef` command-line tool. Your app never calls it. Leave it out and `dotnet ef migrations add` fails with a message about design-time services, which is a confusing way to find out.
+
+You also need the tool itself, once per machine — not per project:
+
+```bash
+dotnet tool install --global dotnet-ef
+```
+
+If you already have it, `dotnet tool update --global dotnet-ef`. It warns you when it's older than your runtime, and the warning is worth acting on.
+
+> [!TIP]
+> **Check `.csproj` after these commands.** Two `<PackageReference>` lines appear. That's all `dotnet add package` does — it edits a file and restores. There's no magic install location, and the file is what gets committed.
+
+### The DbContext
+
+**This is the whole of `Data/CurbsideContext.cs`** — a new folder, `Data`, alongside `Models` and `Controllers`:
+
+```csharp
+using Microsoft.EntityFrameworkCore;
+using Curbside.Models;
+
+namespace Curbside.Data;
+
+public class CurbsideContext : DbContext
+{
+    public CurbsideContext(DbContextOptions<CurbsideContext> options) : base(options)
+    {
+    }
+
+    public DbSet<Truck> Trucks => Set<Truck>();
+}
+```
+
+Three things, and each is doing real work:
+
+- **`: DbContext`** — this class *is* the database, as far as your code is concerned. Every query and every save goes through an instance of it.
+- **`DbSet<Truck> Trucks`** — **this property is the table.** Its presence is what tells EF Core there should be a `Trucks` table at all, and its type says what a row looks like. Querying `Trucks` is querying SQL Server.
+- **The constructor** — it takes `DbContextOptions` and hands them to the base class. This is how the context finds out *which* database and *where*, and the important part is what's missing: the context never decides that for itself. It's told. That's what lets the same class point at the school's server in production and at something else entirely in a test.
+
+> [!NOTE]
+> **`Set<Truck>()` versus `{ get; set; }`.** You'll see both. `public DbSet<Truck> Trucks { get; set; }` is the older shape and works fine; `=> Set<Truck>()` is the same thing without a nullable-warning fight, since it computes the value rather than leaving a property to be filled in. Pick either; don't mix them in one file.
+
+### Where the connection string lives
+
+A connection string says which server, which database, and who you are. It goes in **`appsettings.json`** — never in `Program.cs`:
+
+```json
+{
+  "Logging": { ... },
+  "AllowedHosts": "*",
+  "ConnectionStrings": {
+    "DefaultConnection": "Server=<SCHOOL-SQL-SERVER>;Database=<YOUR-DATABASE>;User ID=<YOUR-USERNAME>;Password=<YOUR-PASSWORD>;TrustServerCertificate=True"
+  }
+}
+```
+
+Fill in the four angle-bracketed parts from the class handout. Piece by piece:
+
+| Part | What it is |
+|---|---|
+| `Server=` | the machine the database is on |
+| `Database=` | which database on it — yours |
+| `User ID=` / `Password=` | SQL Server Authentication: your account on that server |
+| `TrustServerCertificate=True` | "don't refuse the connection because the encryption certificate isn't one a browser would trust" |
+
+That last one deserves a sentence rather than a shrug. Modern SQL Server clients encrypt by default and then check the server's certificate, the same way a browser checks an `https` certificate. The school's server has a self-signed one, so the check fails and the connection is refused. `TrustServerCertificate=True` says *encrypt anyway, but skip the identity check*. On a school network that's the pragmatic answer; it is not what you'd write for a bank.
+
+> [!WARNING]
+> **That string contains a working password, and your homework repo is public.** Keep `appsettings.json` out of git — there's a section on exactly how at the end of these notes, including the part everyone gets wrong: adding a file to `.gitignore` does **not** stop git tracking a file it is already tracking.
+
+### One registration
+
+`Program.cs`, above `var app = builder.Build();`:
+
+```csharp
+builder.Services.AddDbContext<CurbsideContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+```
+
+You've been adding things to `builder.Services` since week 3 without much comment — `AddControllersWithViews()` is the same kind of line. That collection is the **dependency injection container**: a list of "if anybody asks for one of these, here's how to build it."
+
+This line says three things:
+
+1. **`AddDbContext<CurbsideContext>`** — when something asks for a `CurbsideContext`, make one.
+2. **`UseSqlServer(...)`** — build it against the SQL Server provider. Swap this one call and the same context talks to PostgreSQL or SQLite instead.
+3. **`GetConnectionString("DefaultConnection")`** — read the address out of configuration, by name. Not from a string literal here. Changing servers is now an edit to a config file, not to code — which is the entire reason your deployed app can point somewhere different from your laptop without a rebuild.
+
+> [!TIP]
+> **`GetConnectionString("X")` is shorthand for `Configuration["ConnectionStrings:X"]`.** Same thing, and worth knowing because the error you get when it returns `null` mentions neither: `UseSqlServer(null)` throws `ArgumentNullException`, and your app won't start. If the app dies immediately on launch with that, the name in `appsettings.json` and the name in `Program.cs` don't match.
+
+## Part 3: Migrations (25 min)
+
+### Writing a model doesn't create a table
+
+Run the app now and nothing works, because there is no database yet. This is the step people skip and then spend twenty minutes on.
+
+You have a C# class. SQL Server has no idea it exists. A **migration** is the bridge: a generated C# file that says, in EF Core's vocabulary, "create a table called Trucks with these columns." From inside the web project folder:
+
+```bash
+dotnet ef migrations add InitialCreate
+```
+
+`InitialCreate` is just a name — it becomes part of the filename. Pick something that describes the change; you'll be adding more of these in weeks 8 and 9.
+
+A `Migrations/` folder appears with three files. The one to open is `<timestamp>_InitialCreate.cs`:
+
+```csharp
+protected override void Up(MigrationBuilder migrationBuilder)
+{
+    migrationBuilder.CreateTable(
+        name: "Trucks",
+        columns: table => new
+        {
+            Id = table.Column<int>(type: "int", nullable: false)
+                .Annotation("SqlServer:Identity", "1, 1"),
+            Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+            Cuisine = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
+            City = table.Column<string>(type: "nvarchar(max)", nullable: false),
+            Rating = table.Column<double>(type: "float", nullable: false),
+            IsOpenLate = table.Column<bool>(type: "bit", nullable: false)
+        },
+        constraints: table =>
+        {
+            table.PrimaryKey("PK_Trucks", x => x.Id);
+        });
+}
+```
+
+**Read that carefully, because it is last week's homework staring back at you.**
+
+- **`nvarchar(50)`** on `Name`. Where did 50 come from? `[StringLength(50, MinimumLength = 2)]`. You wrote a validation rule in week 6 and it just became a column width.
+- **`nullable: false`** on `Name`, `Cuisine` and `City` — that's `[Required]`, now a database constraint.
+- **`City` is `nvarchar(max)`** because it has `[Required]` but no `[StringLength]`. Nothing said how long it could be, so EF Core reserved room for anything. Worth noticing: an annotation you *didn't* write shows up too.
+- **`Id` gets `SqlServer:Identity`.** The column auto-numbers itself. EF Core assumed a property called `Id` is the primary key — by convention, no attribute needed — and made SQL Server responsible for assigning it. **Remember this; in Part 5 it deletes a line of your code.**
+
+One model, two enforcers, exactly like week 6's client-and-server pair: the same annotations produce the browser's `data-val-*` attributes *and* the table's shape.
+
+> [!IMPORTANT]
+> **A migration is a snapshot of your model at the moment you generated it.** Change the model afterwards and the migration doesn't follow — you add another one. This is why the order matters so much tonight: seed data written *after* `migrations add` isn't in the migration, and the most common lab failure is exactly that.
+
+### Applying it
+
+The migration is a description. Nothing has happened to any database yet:
+
+```bash
+dotnet ef database update
+```
+
+Now it has. This connects using your connection string, creates the database if it isn't there, runs the `Up` method, and records that it did.
+
+That last part is worth a look. Open the database in the **mssql** extension and there are *two* tables: `Trucks`, and `__EFMigrationsHistory` with one row in it. That's how `database update` knows what it has already done — run it again and it does nothing, because the history says so. It isn't magic and it isn't clever; it's a list of migrations that have been applied.
+
+> [!TIP]
+> **`dotnet ef` commands run from the folder with your `.csproj` in it**, not the folder above it. This is the opposite of `dotnet test` in the labs, and it catches people every week. If you get *"No project was found"*, you're in the wrong folder.
+
+### The two errors you will actually get
+
+**`Login failed for user '...'`** — the connection string reached the server and the server said no. Username or password is wrong. The server name is fine, or you'd have got the other error.
+
+**`A network-related or instance-specific error occurred while establishing a connection`** — nothing answered. Server name is wrong, or you're not on a network that can reach it. It takes ~30 seconds to fail, which makes it feel like a hang.
+
+Those two are worth telling apart on sight, because they send you to different halves of the same line.
+
+## Part 4: Seeding (15 min)
+
+### The table is empty
+
+`/Trucks` loads. It shows nothing. That's correct — you created a table and nobody put anything in it. The six trucks were in `TruckData.cs`, which is about to be deleted, and they need somewhere to live.
+
+They go **on the model**, in `OnModelCreating`:
+
+```csharp
+protected override void OnModelCreating(ModelBuilder modelBuilder)
+{
+    modelBuilder.Entity<Truck>().HasData(
+        new Truck { Id = 1, Name = "Roll Models", Cuisine = "Korean", City = "Madison", Rating = 4.6, IsOpenLate = true },
+        new Truck { Id = 2, Name = "Cheese Curd Cartel", Cuisine = "Comfort", City = "Green Bay", Rating = 4.8, IsOpenLate = true },
+        // ...and the rest
+    );
+}
+```
+
+`HasData` says: these rows are part of what this database *is*. Not "insert these now" — part of the description, the same way the columns are.
+
+- **Every seeded row needs an explicit `Id`.** Normally the database assigns ids, but seed data is different: EF Core has to be able to tell next time whether row 3 changed, was removed, or is new, and it needs a stable identity to do that. Leave the `Id` off and you get an error saying so.
+- **Seed data is for rows that are part of the app** — reference data, categories, a starting set. It is not a place to put test records.
+
+### The second migration
+
+The model changed, so the database is out of date. Same two commands:
+
+```bash
+dotnet ef migrations add SeedTrucks
+dotnet ef database update
+```
+
+Open the new migration: it's nothing but `InsertData` calls. EF Core compared your model against the snapshot it saved last time, found six rows that weren't there before, and wrote the inserts.
+
+**That comparison is the whole idea of migrations.** You describe what you want; EF Core works out the difference from what it last saw and writes the steps.
+
+> [!TIP]
+> **You could have written `HasData` before the first migration** and got one migration doing both jobs — which is what the lab has you do, because it's fewer moving parts. Doing it in two steps here is deliberate: watching a *second* migration contain only the difference is the clearest demonstration of what these things are.
+
+## Part 5: The controller barely changes (25 min)
+
+Here's the promise from the end of last week, and it's time to test it.
+
+### Asking for the context
+
+```csharp
+public class TrucksController : Controller
+{
+    private readonly CurbsideContext _context;
+
+    public TrucksController(CurbsideContext context)
+    {
+        _context = context;
+    }
+
+    // ...actions
+}
+```
+
+**Nothing in this class ever creates a context, and nothing in it knows where the database is.** It declares in its constructor that it needs one, and the framework — which knows how, because of that one line in `Program.cs` — hands it over when it builds the controller for a request. That's **dependency injection**, and this is the first time in the course you've written the receiving end of it.
+
+The `readonly` is habit, not requirement: the field is set once in the constructor and nothing should reassign it.
+
+> [!NOTE]
+> **You get a fresh context per request, and that's on purpose.** `AddDbContext` registers it as *scoped*, and in a web app a scope is one HTTP request. A context accumulates state about everything it has loaded, so a long-lived one is a memory leak with extra steps. This matters more in week 8; for now, know that the object is short-lived and cheap.
+
+### Reading
+
+```csharp
+public IActionResult Index()
+{
+    return View(_context.Trucks.ToList());
+}
+
+public IActionResult Details(int id)
+{
+    var truck = _context.Trucks.FirstOrDefault(t => t.Id == id);
+
+    if (truck == null)
+    {
+        return NotFound();
+    }
+
+    return View(truck);
+}
+```
+
+Compare that to last week, honestly: `TruckData.All` became `_context.Trucks`, and `Index` gained a `.ToList()`. The `FirstOrDefault`, the null check, the `NotFound()`, the `View(truck)` — all identical. **The LINQ you learned against a `List<T>` works against a table**, which is most of why EF Core is pleasant to use.
+
+The difference is where it runs. `_context.Trucks` is not a list; it's a *query that hasn't happened yet*. `ToList()` and `FirstOrDefault()` are the moment it goes to the server. And `FirstOrDefault(t => t.Id == id)` doesn't fetch six trucks and pick one — it becomes a `WHERE` clause, and SQL Server does the picking.
+
+> [!TIP]
+> **Watch it happen.** `appsettings.Development.json` sets `"Microsoft.AspNetCore": "Warning"`, but EF Core logs at Information, so the generated SQL prints in your terminal on every request. Load `/Trucks` and read the `SELECT`. It's the single best way to build an accurate picture of what this library is doing on your behalf — and in week 9, when a query gets expensive, it's how you'll notice.
+
+### Writing
+
+```csharp
+[HttpPost]
+[ValidateAntiForgeryToken]
+public IActionResult Create(Truck truck)
+{
+    if (!ModelState.IsValid)
+    {
+        return View(truck);
+    }
+
+    _context.Trucks.Add(truck);
+    _context.SaveChanges();
+
+    return RedirectToAction(nameof(Index));
+}
+```
+
+The guard, the `View(truck)`, the redirect: untouched. Two lines changed in the middle, and one line disappeared.
+
+- **`Add` does not write anything.** It tells the context "I intend to insert this." Nothing has left your process.
+- **`SaveChanges()` is where it happens** — one round trip, wrapped in a transaction. Forget it and your form appears to work perfectly: no error, redirect happens, and the record simply isn't there. **That is the single most common bug of the week**, and it is silent, which should sound familiar after last week.
+
+### The line you delete
+
+```csharp
+truck.Id = TruckData.All.Max(t => t.Id) + 1;      // ← gone
+```
+
+The `Id` column is an `IDENTITY`. SQL Server picks the next number, and EF Core reads the real value back onto your object during `SaveChanges()` — so `truck.Id` is correct on the line *after* the save, which is exactly when you'd want to redirect to it.
+
+Keep the old line and you're fighting the database for the job. Set `Id` to something yourself and, at best, EF Core tries to insert it and SQL Server refuses.
+
+Then delete `Models/TruckData.cs`. If the project stops compiling, **the compiler is now telling you every place that was still reading the old list** — which is a much nicer way to find them than clicking around. On Curbside there's only the controller. **In your own app there may be more than one**, and the home page is the usual suspect: if your `Views/Home/Index.cshtml` has a line like `var featured = TruckData.All.First(...)`, that view is reading data directly, and it now needs the same treatment — inject the context into `HomeController`, query it there, and pass the result to the view as a model.
+
+## Part 6: The payoff (10 min)
+
+Add a truck through the form. It appears.
+
+Now `Ctrl+C`. Start the app again. Reload.
+
+**It's still there.**
+
+That's the week. Nothing else tonight matters as much as that reload, because it's the first time anything you have built has outlived the program that built it.
+
+Two more things worth doing while it's fresh:
+
+- **Open the table in the mssql extension** and look at the row. Your truck, in a database, with an id SQL Server chose. The app isn't even running.
+- **Note what didn't change.** The form, model binding, the annotations, `ModelState.IsValid`, the redirect, the validation messages, the layout, the partial. Week 6's work is untouched and still correct. You changed where the data lives, and nothing above it noticed.
+
+## Part 7: The deployed app (10 min)
+
+Your Azure app needs the same three things: the packages (they ship with the build), the code (it's in your repo), and **the connection string** — which is the one that needs thinking about, because it's the one you're deliberately keeping out of your repo.
+
+`az webapp up` deploys the *files in your folder*, not the files in your git history. So `appsettings.json` goes up with the deploy even though git never saw it, and your deployed app reads the same connection string your laptop does. Deploy exactly as you have for four weeks:
+
+```bash
+az webapp up --name your-app-XX1234 --sku F1 --os-type Linux \
+  --runtime DOTNETCORE:10.0 --location "<YOUR-US-REGION>"
+```
+
+Then — and this is the demonstration that makes the whole night land — **add a record on the deployed site and reload your local app.** Same row. One database, two applications, two machines. That is what you built.
+
+> [!WARNING]
+> **Stay in a US region.** Apps deployed to Canadian regions have never been able to reach the school's SQL Server. Use the region that worked for you in weeks 3–6; it's on the class list.
+
+> [!IMPORTANT]
+> **You do not need to run migrations against a "production" database**, because there isn't one — your laptop and your Azure app share a single database, and you already migrated it. That's unusual for a real deployment and completely fine for a course. Week 15 talks about what real projects do instead.
+
+### Keeping the password out of a public repo
+
+Your repo is public and your connection string has a working password in it. Add it to `.gitignore`:
+
+```
+appsettings.json
+```
+
+**This is the part that catches people:** `.gitignore` only affects files git isn't already tracking, and `appsettings.json` has been in your repo since week 3. Adding the line changes nothing by itself. You have to tell git to stop tracking it:
+
+```bash
+git rm --cached Curbside/appsettings.json
+git commit -m "Stop tracking appsettings.json"
+```
+
+`--cached` removes it from git while leaving the file on your disk — which is exactly what you want, since your app needs it. Check with `git status` that it's now ignored, and check on GitHub that the file is gone.
+
+Note what this does *not* do: the password is still in your repo's history, in the commits you already made. Rotating a password you've published is the honest fix, and it's why the habit is worth forming before the credential is one that matters.
+
+## Wrap-up (10 min)
+
+```
+Models/Truck.cs        the shape of a row       (unchanged since week 6)
+   ↓  [Required], [StringLength]  →  nullable: false, nvarchar(50)
+Data/CurbsideContext   DbSet<Truck> Trucks      = the table
+   ↓  dotnet ef migrations add    →  a C# description of the change
+   ↓  dotnet ef database update   →  the change actually happens
+SQL Server             Trucks + __EFMigrationsHistory
+   ↑  _context.Trucks.ToList()          SELECT
+   ↑  Add + SaveChanges()               INSERT, and the Id comes back
+TrucksController       asks for a context in its constructor
+```
+
+- **Tonight:** the data left the process. A `DbContext` describes the database, a connection string says where it is, a migration builds it, `HasData` fills it, and the controller asks for a context instead of reaching for a static list.
+- **The honest version of last week's promise:** it wasn't one line — it was a constructor, two lines in each read, and `SaveChanges()`. But the *shape* held. Every decision about validation, redirecting and rendering survived untouched, because none of them ever cared where the list came from.
+- **Homework:** your own app's list moves into SQL Server. Same six steps, your model.
+- **Next week:** the other two letters of CRUD — edit and delete — and the framework writing most of it for you.
+
+## Appendix: Troubleshooting
+
+**`No project was found in the current working directory`**
+- `dotnet ef` runs from the folder containing your `.csproj`. In a lab layout that's `Cryptids.Web`, not the folder above it.
+
+**`Unable to create a 'DbContext' of type ''` / *"Unable to resolve the service for type DbContextOptions"*
+- `AddDbContext` isn't in `Program.cs`, or it's below `builder.Build()`. Services have to be registered before the app is built.
+
+**The app won't start at all, with `ArgumentNullException` / `Value cannot be null. (Parameter 'connectionString')`**
+- `GetConnectionString("DefaultConnection")` returned nothing. The key in `appsettings.json` is misspelled, is outside the `ConnectionStrings` object, or the whole section is missing.
+
+**`Login failed for user '...'`**
+- The server answered and rejected you: username or password. The server name is right.
+
+**`A network-related or instance-specific error occurred`**
+- Nothing answered: server name is wrong, or this network can't reach it. Takes ~30s to fail, so it looks like a hang.
+
+**`A connection was successfully established ... but then an error occurred during the login process` / a certificate complaint**
+- `TrustServerCertificate=True` is missing from the connection string.
+
+**`Invalid object name 'Trucks'`**
+- The table isn't there. You created the migration but never ran `dotnet ef database update` — or you ran it against a different database than the app is using. Check both connection strings are the same one.
+
+**`The model for context has pending changes` / *"...changes have been made to the model since the last migration"***
+- You edited the model after generating the migration. Add another one: `dotnet ef migrations add WhateverChanged`.
+
+**The list page is empty and there are no errors**
+- The table exists but has no rows. Either `HasData` isn't in `OnModelCreating`, or it was added *after* the migration was generated. Check the migration file for `InsertData`; if it isn't in there, the migration predates your seed data.
+
+**The seed data won't apply: `The seed entity for entity type 'X' cannot be added because no value was provided for the required property 'Id'`**
+- Seeded rows need explicit `Id` values. EF Core has to be able to identify them across migrations.
+
+**The form redirects, no error, and the record isn't in the list**
+- No `SaveChanges()`. `Add` only records an intention. This is the quiet one.
+
+**The new record shows up with Id 0, or `Cannot insert explicit value for identity column`**
+- Last week's `item.Id = ...Max(...) + 1` line is still there. Delete it; the database assigns ids now.
+
+**Everything works locally, and the deployed app throws a 500**
+- Almost always the connection string or the region. Check Azure's **Log stream** for the actual exception, confirm `appsettings.json` was in the folder you deployed from, and confirm the app is in a **US** region.
+
+**`dotnet ef` warns the tools are older than the runtime**
+- `dotnet tool update --global dotnet-ef`. Worth doing; version skew here produces strange failures.

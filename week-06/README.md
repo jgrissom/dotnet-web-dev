@@ -28,4 +28,4 @@ The round trip, end to end: **a form posts, binding fills an object by matching 
 - Your finished Registry with a working form + `dotnet test` at 6/6, for the lab launch
 - Remind students to `git pull` for the week-06 starter
 
-**Prev:** [← Week 5 — Layouts & Partials](../week-05/README.md) · **Next:** Week 7 — EF Core & SQL Server *(coming)*
+**Prev:** [← Week 5 — Layouts & Partials](../week-05/README.md) · **Next:** [Week 7 — EF Core & SQL Server →](../week-07/README.md)
