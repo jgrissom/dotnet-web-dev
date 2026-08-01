@@ -367,7 +367,10 @@ Those two are worth telling apart on sight, because they send you to different h
 
 ### The table is empty
 
-`/Trucks` loads. It shows nothing. That's correct — you created a table and nobody put anything in it. The six trucks were in `TruckData.cs`, which is about to be deleted, and they need somewhere to live.
+Open the `Trucks` table in the **mssql** extension. It exists, and it has no rows. That's correct — you created a table and nobody put anything in it. The six trucks are still in `TruckData.cs`, which is about to be deleted, and they need somewhere to live.
+
+> [!NOTE]
+> **Your page hasn't changed, and won't for a while yet.** `/Trucks` still shows six, because your controller still reads the old static list. The database and the page are two separate things until you connect them, which is the next part. Judge the database by the mssql panel, not the browser — the browser is still describing the past.
 
 They go **on the model**, in `OnModelCreating`:
 

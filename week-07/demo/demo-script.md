@@ -215,8 +215,9 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   dotnet ef database update
   ```
 - [ ] **Let the SQL scroll past and don't apologise for it.** *"That's the CREATE TABLE it just ran, and you can read it"*
-- [ ] Reload `/Trucks`. **It loads. It's empty.** *"No error. Zero trucks on the street"*
 - [ ] **Refresh the mssql panel you left open in §3** — 🎯 the database that wasn't there **now is**, and expanding it shows **two tables**: `Trucks`, and `__EFMigrationsHistory` with one row. *"Ten minutes ago this server had nothing of mine on it. One command."*
+- [ ] **Open the `Trucks` table. It has no rows.** *"A table, correctly built, completely empty. Nobody has put anything in it"*
+- [ ] ⚠️ **Then point at the browser, still showing six trucks, and name the gap** — it runs all the way to §5: *"and the page hasn't changed at all. Six trucks, same as an hour ago. It is still reading `TruckData.All` out of a file, because nothing has told the controller the database exists. Watch that gap; it closes in about twenty minutes"*
 - [ ] *"That second table is how `database update` knows what it's already done. Run the command again —"* do it — *"and nothing happens, because the history says so. It's not clever. It's a list"*
 - [ ] 💡 If asked about the two error messages: **`Login failed for user`** = the server answered and said no (username/password) · **`A network-related or instance-specific error`** = nothing answered (server name, or you're on the wrong network), and it takes ~30 seconds to fail so it feels like a hang
 - [ ] **✓ CHECKPOINT:** the room can say what `migrations add` produces versus what `database update` does
@@ -226,14 +227,14 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 ### An empty table *(slide 13)*
 
 - [ ] 🎞️ **GO TO SLIDE 13** — *An empty table*
-- [ ] Put `/Trucks` and `Models/TruckData.cs` on screen together. *"The page is right — the table really is empty. And the six trucks are still sitting here in a file I'm about to delete. They need somewhere to live"*
+- [ ] Put the **mssql panel** and `Models/TruckData.cs` on screen together. 🎯 *"An empty table on one side. Six trucks in a file on the other, and I'm going to delete that file before the night is out. They need somewhere to live"*
 
 ### HasData *(slide 14)*
 
 - [ ] 🎞️ **GO TO SLIDE 14** — *HasData*
 - [ ] Back in `Data/CurbsideContext.cs`, **paste** `OnModelCreating` below the `DbSet`:
 
-  <details><summary>📋 paste: OnModelCreating with the six trucks</summary>
+  <details><summary>📋 paste: OnModelCreating with the six trucks — and a seventh</summary>
 
   ```csharp
   protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -244,17 +245,19 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
           new Truck { Id = 3, Name = "Taco Tornado", Cuisine = "Mexican", City = "Milwaukee", Rating = 4.4, IsOpenLate = false },
           new Truck { Id = 4, Name = "The Gyro Wheel", Cuisine = "Greek", City = "Madison", Rating = 4.2, IsOpenLate = true },
           new Truck { Id = 5, Name = "Pierogi Party", Cuisine = "Polish", City = "Stevens Point", Rating = 4.7, IsOpenLate = false },
-          new Truck { Id = 6, Name = "Banh Mi Mobile", Cuisine = "Vietnamese", City = "Milwaukee", Rating = 4.5, IsOpenLate = false }
+          new Truck { Id = 6, Name = "Banh Mi Mobile", Cuisine = "Vietnamese", City = "Milwaukee", Rating = 4.5, IsOpenLate = false },
+          new Truck { Id = 7, Name = "Sconnie Sliders", Cuisine = "Burgers", City = "Eau Claire", Rating = 4.9, IsOpenLate = true }
       );
   }
   ```
 
   </details>
 
+- [ ] 🎯 **Stop on truck 7 and set the experiment up out loud.** It is the whole reason the next twenty minutes prove anything: *"`Sconnie Sliders` has never existed. It is not in `TruckData.cs`, it has never been on that page. It exists only in the database. So if this page ever shows seven trucks, there is exactly one place they could have come from"*
 - [ ] *"`HasData` says: these rows are part of what this database **is**. Not 'insert them now' — part of the description, the same way the columns are"*
 - [ ] ⚠️ **Point at the explicit `Id`s and say why**, because the error message for getting this wrong is long: *"normally the database picks ids. Seed rows are different — EF Core has to be able to tell next time whether row 3 changed, vanished or is new, and it can't do that without a stable identity"*
 - [ ] Say what seed data is *for*: reference data, categories, a starting set. **Not test records**
-- [ ] **Reload `/Trucks`.** Still empty 🎯 — *"I changed the model. Why isn't it in the table?"* Let them answer with the snapshot rule from ten minutes ago
+- [ ] **Refresh the `Trucks` table in the mssql panel.** 🎯 **Still no rows** — *"I changed the model. Why isn't it in the table?"* Let them answer with the snapshot rule from ten minutes ago
 
 ### The second migration *(slide 15)*
 
@@ -262,13 +265,14 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] ```bash
   dotnet ef migrations add SeedTrucks
   ```
-- [ ] **Open it before applying it.** 🎯 *"Look what's in here. No CreateTable — just six InsertData calls. EF Core compared my model against the snapshot it saved last time, found six rows that weren't there, and wrote the difference"*
+- [ ] **Open it before applying it.** 🎯 *"Look what's in here. No CreateTable — just seven InsertData calls. EF Core compared my model against the snapshot it saved last time, found seven rows that weren't there, and wrote the difference"*
 - [ ] 🎯 **That's the whole idea, and it's worth saying as one sentence:** *"you describe what you want; it works out the steps from what it last saw"*
 - [ ] ```bash
   dotnet ef database update
   ```
-- [ ] Reload `/Trucks`. **Six cards.** They came out of SQL Server this time
-- [ ] Show the rows in the **mssql** panel next to the page. Same six, in a table, on another machine
+- [ ] **Refresh the mssql panel.** 🎯 **Seven rows**, `Sconnie Sliders` among them
+- [ ] ⚠️ **Now put the panel and the browser side by side and let the contradiction sit there.** *"Seven in the database. Six on the page. Both of those are true right now, and they're going to stay true until I change one line in the controller"*
+- [ ] Say what nobody should conclude yet: *"nothing on that page has come out of SQL Server. Not one card. It is still a file"*
 - [ ] 💡 Mention, don't demo: *"I could have written `HasData` before the first migration and got one migration doing both jobs — that's what the lab has you do. I split it so you could watch the second one contain only the difference"*
 
 ## 5 · The controller barely changes *(slides 16–19)*
@@ -310,7 +314,9 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   ```
 - [ ] 🎯 **Put last week's version next to it and count the changes out loud:** `TruckData.All` → `_context.Trucks`, and a `.ToList()`. *"The null check, the `NotFound`, the `View(truck)` — untouched. The LINQ you learned against a `List<T>` works against a table"*
 - [ ] Then the honest difference: *"`_context.Trucks` is not a list. It's a query that hasn't happened yet. `ToList()` is the moment it goes to the server"*
-- [ ] **Reload `/Trucks` and read the terminal** — EF Core logs the SQL it generated. 🎯 *"There's the SELECT. You can read it"*
+- [ ] **Predict before you reload:** *"twenty minutes ago I put a truck in the database that has never been in this project. How many cards am I about to see?"*
+- [ ] **Reload `/Trucks`.** 🎯 **Seven cards, and `Sconnie Sliders` is one of them.** *"There it is. That truck has never existed in a file. The page is reading the database — that's not me telling you, that's a truck that had nowhere else to come from"*
+- [ ] **Read the terminal** — EF Core logs the SQL it generated. 🎯 *"And there's the SELECT that fetched it. You can read it"*
 - [ ] Load `/Trucks/Details/2` and read that one too: *"`FirstOrDefault(t => t.Id == id)` didn't fetch six trucks and pick one — it became a WHERE clause, and the server did the picking"*
 - [ ] 💡 Say this is worth keeping an eye on all term: *"in week 9 a query gets expensive, and this terminal is how you'll notice"*
 
@@ -341,7 +347,8 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] Point at the deleted `Max(t => t.Id) + 1` line. *"SQL Server picks the number now. And EF Core reads the real value back onto your object during `SaveChanges` — so `truck.Id` is correct on the line **after** the save, which is exactly when you'd want to redirect to it"*
 - [ ] Show it in the **mssql** panel: the new truck's `Id` is **7**, and nothing in your code chose it
 - [ ] Now delete **`Models/TruckData.cs`** 🎯 — *"and if the project stops compiling, the compiler is about to tell me every place that was still reading the old list. That's a much nicer way to find them than clicking around"*
-- [ ] It compiles: Curbside only read it from the controller. ⚠️ **Warn them theirs may differ:** *"in your own app there may be more than one. The home page is the usual suspect — if your `Views/Home/Index.cshtml` has a `var featured = TruckData.All.First(...)` in it, that's a view reading data directly, and it needs the same treatment: inject the context into `HomeController`, query it there, pass it to the view"*
+- [ ] ⚠️ **`dotnet watch` will NOT hot-reload this — it prints `error ENC0033: Deleting class 'Curbside.Models.TruckData' requires restarting the application` and keeps serving the old build.** That red line is expected, not a failure. **`Ctrl+C` and `dotnet watch` again**, or the page you reload next is a stale binary still holding the deleted class — which would make the next beat a lie
+- [ ] After the restart: it compiles, and `/Trucks` still shows **seven**. Curbside only read the old list from the controller. ⚠️ **Warn them theirs may differ:** *"in your own app there may be more than one. The home page is the usual suspect — if your `Views/Home/Index.cshtml` has a `var featured = TruckData.All.First(...)` in it, that's a view reading data directly, and it needs the same treatment: inject the context into `HomeController`, query it there, pass it to the view"*
 - [ ] **✓ CHECKPOINT:** the room can say what `Add` does and what `SaveChanges` does
 
 ## 6 · The payoff *(slide 20)*

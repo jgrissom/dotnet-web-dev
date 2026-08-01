@@ -219,11 +219,13 @@ That second one is how it knows what it has already done.
 
 ## An empty table
 
-`/Trucks` loads. Nothing on it.
+The table exists. It has **no rows**.
 
 <br>
 
-**Correct.** You built a table. Nobody put anything in it.
+**Correct.** You built it. Nobody put anything in it.
+
+*(The page still shows six — it isn't reading this yet.)*
 
 ---
 
