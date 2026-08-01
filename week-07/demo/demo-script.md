@@ -121,6 +121,8 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] **Show what `init` did:** open `Curbside.csproj` and point at the `<UserSecretsId>` line. *"That's a folder name, not a secret. It gets committed — it's how the tooling finds the file next time"*
 - [ ] 🎯 **Then the part they'll misremember otherwise — where the file actually is.** Say the path out loud: `~/.microsoft/usersecrets/<that GUID>/secrets.json`. *"Not in the project. Not in the repo. In my user profile"*
 - [ ] Walk the four parts of the string: which machine · which database · who you are · **and `TrustServerCertificate=True`**
+- [ ] 🎯 **Name the database convention off your own string, since it's on screen:** *"`Curbside_##_AAA` — the app, the course number, my initials. One database per application. In the lab yours is `Cryptids_##_AAA`, and your own project gets a third"*
+- [ ] Say the part that sounds wrong: *"that database does not exist yet. I'm naming one that isn't there — `database update` in §3 creates it. You never make one by hand"*
 - [ ] Give the certificate line its sentence, because someone always asks: *"SQL Server encrypts by default and then checks the server's certificate, the way your browser checks an https certificate. Ours is self-signed, so that check fails and the connection is refused. This says encrypt anyway, skip the identity check. On a school network that's the pragmatic answer. It is not what you'd write for a bank"*
 - [ ] 🎯 **The sentence that does the work:** *"the file with my password in it is not in this folder. It's in my user profile. There is no `.gitignore` line to forget, because there is nothing here to ignore"*
 

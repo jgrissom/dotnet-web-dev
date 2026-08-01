@@ -33,12 +33,13 @@ It needs:
 2. **[A `DbContext`](lecture-notes.md#the-dbcontext)** in a new `Data/` folder — a class deriving from `DbContext`, with a `DbSet<YourThing>` property and a constructor that takes `DbContextOptions`.
 3. **[Your seed data on the model](lecture-notes.md#the-table-is-empty)** — the items that were in your `YourThingData.cs`, moved into `OnModelCreating` with `HasData`, **each with an explicit `Id`**. Keep the same ids they had, so existing details links still work.
 4. **[A connection string in user secrets](lecture-notes.md#where-the-connection-string-lives)** — `dotnet user-secrets init` then `dotnet user-secrets set "ConnectionStrings:DefaultConnection" "..."`, using your own account on the school server. **Not in `appsettings.json`** — your repo is public. Commit the `<UserSecretsId>` line that `init` adds to your `.csproj`. **Yes, you already did this in the lab — do it again here.** [Secrets are stored per application](lecture-notes.md#what-those-two-commands-actually-did), so the lab's app and this one keep separate stores even on the same laptop.
-5. **[The registration](lecture-notes.md#one-registration)** — one `AddDbContext` call in `Program.cs`, with `UseSqlServer`, reading the connection string **from configuration** rather than a string typed into the file.
-6. **[A migration](lecture-notes.md#writing-a-model-doesnt-create-a-table)**, generated and applied: `dotnet ef migrations add InitialCreate` then `dotnet ef database update`. The `Migrations/` folder gets committed.
-7. **[The controller reads and writes through the context](lecture-notes.md#asking-for-the-context)** — injected in the constructor, `ToList()` in your index, `FirstOrDefault` in your details, and **[`Add` + `SaveChanges()`](lecture-notes.md#writing)** in your POST.
-8. **[The old static list class is deleted](lecture-notes.md#the-line-you-delete)**, along with the line that assigned an `Id` by hand.
-9. **Everything from weeks 4–6 still works** — the nav link, the list, the details pages, the shared shell, your theme, the Create form and its validation.
-10. **Deployed to Azure**, and **3+ meaningful commits** in your public GitHub repo.
+5. **[Its own database](lecture-notes.md#naming-your-database)** — one per application, so **not** the `Cryptids_##_AAA` you used in the lab. Name yours after this app: `YourAppName_##_AAA`, with the course number and your initials. It doesn't exist until your first `dotnet ef database update`, which creates it.
+6. **[The registration](lecture-notes.md#one-registration)** — one `AddDbContext` call in `Program.cs`, with `UseSqlServer`, reading the connection string **from configuration** rather than a string typed into the file.
+7. **[A migration](lecture-notes.md#writing-a-model-doesnt-create-a-table)**, generated and applied: `dotnet ef migrations add InitialCreate` then `dotnet ef database update`. The `Migrations/` folder gets committed.
+8. **[The controller reads and writes through the context](lecture-notes.md#asking-for-the-context)** — injected in the constructor, `ToList()` in your index, `FirstOrDefault` in your details, and **[`Add` + `SaveChanges()`](lecture-notes.md#writing)** in your POST.
+9. **[The old static list class is deleted](lecture-notes.md#the-line-you-delete)**, along with the line that assigned an `Id` by hand.
+10. **Everything from weeks 4–6 still works** — the nav link, the list, the details pages, the shared shell, your theme, the Create form and its validation.
+11. **Deployed to Azure**, and **3+ meaningful commits** in your public GitHub repo.
 
 ### Your model isn't mine
 

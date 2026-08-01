@@ -89,7 +89,15 @@ dotnet user-secrets init
 dotnet user-secrets set "ConnectionStrings:DefaultConnection" "Server=<SCHOOL-SQL-SERVER>;Database=<YOUR-DATABASE>;User ID=<YOUR-USERNAME>;Password=<YOUR-PASSWORD>;TrustServerCertificate=True"
 ```
 
-Replace all four angle-bracketed parts with the details on the class handout. Leave `TrustServerCertificate=True` exactly as it is — [it's why the connection isn't refused](../lecture-notes.md#where-the-connection-string-lives).
+`<SCHOOL-SQL-SERVER>`, `<YOUR-USERNAME>` and `<YOUR-PASSWORD>` come from the class handout. Leave `TrustServerCertificate=True` exactly as it is — [it's why the connection isn't refused](../lecture-notes.md#where-the-connection-string-lives).
+
+**`<YOUR-DATABASE>` is different — you name it**, [following the convention](../lecture-notes.md#naming-your-database). For tonight that's:
+
+```
+Cryptids_##_AAA
+```
+
+`##` is the course number, `AAA` is your initials. **It doesn't exist yet, and that's fine** — task 4's `dotnet ef database update` creates it. You'll name a *different* one for your own app in the homework, because it's one database per application.
 
 **Keep the quotes around the value.** Your connection string is full of `;`, and your shell reads an unquoted `;` as the end of the command — it would store `Server=...` and silently throw the rest away.
 

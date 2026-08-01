@@ -112,14 +112,28 @@ dotnet user-secrets init
 dotnet user-secrets set "ConnectionStrings:DefaultConnection" "Server=<SCHOOL-SQL-SERVER>;Database=<YOUR-DATABASE>;User ID=<YOUR-USERNAME>;Password=<YOUR-PASSWORD>;TrustServerCertificate=True"
 ```
 
-Fill in the four angle-bracketed parts from the class handout. Piece by piece:
+**Three of those come from the class handout. The database name you make up yourself** — following the convention below. Piece by piece:
 
 | Part | What it is |
 |---|---|
-| `Server=` | the machine the database is on |
-| `Database=` | which database on it — yours |
-| `User ID=` / `Password=` | SQL Server Authentication: your account on that server |
+| `Server=` | the machine the database is on — from the handout |
+| `Database=` | which database on it. **You name this**, and it doesn't have to exist yet |
+| `User ID=` / `Password=` | SQL Server Authentication: your account on that server — from the handout |
 | `TrustServerCertificate=True` | "don't refuse the connection because the encryption certificate isn't one a browser would trust" |
+
+### Naming your database
+
+You get **one database per application**, and you name each one:
+
+```
+AppName_##_AAA
+```
+
+`AppName` is the app it belongs to, `##` is the course number, `AAA` is your initials. So the lab's Registry is `Cryptids_##_AAA`, and your own semester project gets its own — `TrailGuide_##_AAA`, or whatever yours is called.
+
+**You don't create it.** The first `dotnet ef database update` creates the database if it isn't there, then builds the tables inside it. Naming a database that doesn't exist yet is normal and expected — that's the whole of "creating" one.
+
+Keeping them separate is what stops your semester project's tables and the lab's from ending up in the same place, which gets confusing fast when you open the **mssql** extension and try to work out which `__EFMigrationsHistory` belongs to what.
 
 That last one deserves a sentence rather than a shrug. Modern SQL Server clients encrypt by default and then check the server's certificate, the same way a browser checks an `https` certificate. The school's server has a self-signed one, so the check fails and the connection is refused. `TrustServerCertificate=True` says *encrypt anyway, but skip the identity check*. On a school network that's the pragmatic answer; it is not what you'd write for a bank.
 
