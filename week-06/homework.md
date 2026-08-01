@@ -28,7 +28,7 @@ It needs:
 
 1. **[Rules on your model](lecture-notes.md#data-annotations)** — data annotations in your `Models/YourThing.cs`: **at least three, across at least two properties**, and at least two of them real rules rather than labels. `[Required]` on the text that matters, `[StringLength]` on your strings, `[Range]` on your numbers. Add `using System.ComponentModel.DataAnnotations;` at the top.
 2. **A Create page at `/YourThing/Create`** — a `Create()` action and a `Views/YourThing/Create.cshtml` [built with tag helpers](lecture-notes.md#the-whole-form-field-by-field): `asp-for` on every label and input, an `asp-validation-for` span beside each one, and an `asp-validation-summary` at the top. **The action has to be called `Create`** — it's the name the framework's own scaffolding uses, week 8 assumes it, and it's where the checker looks.
-3. **[A link to it from your index page](lecture-notes.md#getting-to-the-form)** — a button at the top of your list. A page nobody can reach is a page nobody uses.
+3. **[A link to it from your list page](lecture-notes.md#getting-to-the-form)** — a button at the top of the page your nav link opens (`Views/YourThing/Index.cshtml`), **not** your site's home page. A page nobody can reach is a page nobody uses.
 4. **[The POST action](lecture-notes.md#modelstate-the-notes-the-binder-was-already-taking)** — a *second* `Create`, marked `[HttpPost]`, taking your model as a parameter. Give the new item an id (`Max(x => x.Id) + 1`), add it to your static list, and **[redirect](lecture-notes.md#redirect-dont-render)** with `RedirectToAction(nameof(Index))`.
 5. **The guard** — `if (!ModelState.IsValid) { return View(item); }`, above the id assignment. A bad submission must come back as the form, **with the messages showing and their input still in the boxes**.
 6. **[Client-side validation](lecture-notes.md#the-partial-week-5-promised)** — `_ValidationScriptsPartial` rendered inside a `@section Scripts` block at the bottom of your Create view.
@@ -159,7 +159,7 @@ Use the **same US region** that worked for you before — it's on the class list
 
 | Item | Points | Checked by |
 |------|--------|------------|
-| Your index page links to a working `/YourThing/Create` (deployed) | 2 | `homework-checks.js` |
+| Your list page links to a working `/YourThing/Create` (deployed) | 2 | `homework-checks.js` |
 | The Create page is a real form that posts, with more than one field | 2 | `homework-checks.js` |
 | Your fields carry rules from your model, beyond the free `required` | 3 | `homework-checks.js` |
 | A bad submission is refused, with messages, and nothing is added | 3 | `homework-checks.js` |

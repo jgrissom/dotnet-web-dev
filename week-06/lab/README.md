@@ -9,7 +9,7 @@ Six creatures, filed by whoever wrote the seed data. Tonight the Registry starts
 > [!IMPORTANT]
 > **The app arrives with last week's shell already on it** — branded layout, card partial, Bootswatch theme, the lot. If your own week-5 lab never got finished, you are **not** behind tonight. Check 1 passes before you touch anything, and it proves it.
 >
-> Tonight you work in the model, the controller, one new view, and one line of your index page. Nothing in `Views/Shared/` gets touched at all.
+> Tonight you work in the model, the controller, one new view, and one line of `Views/Cryptids/Index.cshtml`. Nothing in `Views/Shared/` gets touched at all.
 
 **1. Update your clone of the course repo:**
 
@@ -60,7 +60,7 @@ dotnet test Cryptids.Checks
 | # | Check | What to do |
 |---|-------|------------|
 | 2 | `TheModelCarriesItsRules` | Add [data annotations](../lecture-notes.md#data-annotations) to `Models/Cryptid.cs`: `Name` needs `[Required]` **and** `[StringLength(60, MinimumLength = 2)]`, `Region` needs `[Required]`, `FirstSighting` needs `[Range(500, 2026)]` **and** `[Display(Name = "First sighted")]`, `Sightings` needs `[Range(0, 100000)]`. Don't forget `using System.ComponentModel.DataAnnotations;` at the top. **[Task 2 in full ↓](#task-2-in-full)** |
-| 3 | `TheFormPageExists` | A `Create()` action, a `Views/Cryptids/Create.cshtml` [built with tag helpers](../lecture-notes.md#the-whole-form-field-by-field), and a link to it from the top of `Index.cshtml`. **[Task 3 in full ↓](#task-3-in-full)** has every line to paste. |
+| 3 | `TheFormPageExists` | A `Create()` action, a `Views/Cryptids/Create.cshtml` [built with tag helpers](../lecture-notes.md#the-whole-form-field-by-field), and a link to it from the top of `Views/Cryptids/Index.cshtml` — the list page, **not** `Views/Home/Index.cshtml`. **[Task 3 in full ↓](#task-3-in-full)** has every line to paste. |
 | 4 | `AGoodReportGetsFiled` | A **second** `Create` action, marked `[HttpPost]`, that takes a `Cryptid`, gives it an id, adds it to `CryptidData.All`, and [redirects to the index](../lecture-notes.md#redirect-dont-render). **[Task 4 in full ↓](#task-4-in-full)** |
 | 5 | `ABadReportIsRefused` | Guard that POST action with [`if (!ModelState.IsValid)`](../lecture-notes.md#modelstate-the-notes-the-binder-was-already-taking) and hand the form back instead of filing it. The error messages need somewhere to land — task 3's markup already has the sockets. **[Task 5 in full ↓](#task-5-in-full)** |
 | 6 | `ValidationRunsInTheBrowserToo` | Render `_ValidationScriptsPartial` inside a [`@section Scripts`](../../week-05/lecture-notes.md#the-slot-that-was-always-there) block at the bottom of `Create.cshtml`, so the same rules run in the browser. **[Task 6 in full ↓](#task-6-in-full)** |

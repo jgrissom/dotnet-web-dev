@@ -337,7 +337,9 @@
             + "page nobody uses.",
         todo: !createOk
           ? `Add a Create() action to your ${route} controller and a Views/${route}/Create.cshtml to go with it.`
-          : `Add <a asp-action="Create" class="btn btn-primary">Add one</a> to the top of your index view.`,
+          : `Add <a asp-action="Create" class="btn btn-primary">Add one</a> to the top of `
+            + `Views/${route}/Index.cshtml — your LIST page, the one your nav link opens. `
+            + `Not Views/Home/Index.cshtml: I only look at /${route}.`,
       });
 
     if (!createOk) { blockRest(0); return done(route); }
