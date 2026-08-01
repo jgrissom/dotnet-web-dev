@@ -351,8 +351,24 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] Point at the deleted `Max(t => t.Id) + 1` line. *"SQL Server picks the number now. And EF Core reads the real value back onto your object during `SaveChanges` — so `truck.Id` is correct on the line **after** the save, which is exactly when you'd want to redirect to it"*
 - [ ] Show it in the **mssql** panel: the new truck's `Id` is **8** — the seed filled 1 through 7, so SQL Server carried on from there, and nothing in your code chose it
 - [ ] Now delete **`Models/TruckData.cs`** 🎯 — *"and if the project stops compiling, the compiler is about to tell me every place that was still reading the old list. That's a much nicer way to find them than clicking around"*
-- [ ] ⚠️ **`dotnet watch` will NOT hot-reload this — it prints `error ENC0033: Deleting class 'Curbside.Models.TruckData' requires restarting the application` and keeps serving the old build.** That red line is expected, not a failure. **`Ctrl+C` and `dotnet watch` again**, or the page you reload next is a stale binary still holding the deleted class — which would make the next beat a lie
-- [ ] After the restart: it compiles, and `/Trucks` still shows **eight**. Curbside only read the old list from the controller. ⚠️ **Warn them theirs may differ:** *"in your own app there may be more than one. The home page is the usual suspect — if your `Views/Home/Index.cshtml` has a `var featured = TruckData.All.First(...)` in it, that's a view reading data directly, and it needs the same treatment: inject the context into `HomeController`, query it there, pass it to the view"*
+- [ ] 🎯 **It does stop compiling, and that is the beat.** `dotnet watch` prints:
+  ```
+  Views/Trucks/Details.cshtml(18,20): error CS0103: The name 'TruckData' does not exist in the current context
+  ```
+  *"There it is. I forgot one — and I didn't have to remember, because the compiler just told me exactly where"*
+- [ ] ⚠️ **Don't rush past it.** That line is a **view** reading data directly: `Details.cshtml` builds its *"Also in {City}"* list straight out of `TruckData.All`. **This is the exact thing they'll hit in their own apps**, and Curbside having it too is worth saying out loud: *"I wrote this app and I still forgot"*
+- [ ] Fix it the way you'd tell them to — **query in the controller, hand it to the view.** In `Details`, above `return View(truck);`:
+  ```csharp
+  ViewData["AlsoHere"] = _context.Trucks
+      .Where(t => t.City == truck.City && t.Id != truck.Id)
+      .ToList();
+  ```
+- [ ] Then in `Views/Trucks/Details.cshtml`, **replace line 18** with:
+  ```csharp
+  var alsoHere = (List<Truck>)ViewData["AlsoHere"]!;
+  ```
+- [ ] ⚠️ **Restart rather than trusting the reload** — `Ctrl+C`, `dotnet watch`. Deleting a class is a rude edit for hot reload (`ENC0033`), and a failed build leaves the *previous* binary serving, so a page that looks right may be the old one
+- [ ] After the restart it compiles, and `/Trucks` still shows **eight**. 🎯 **Land the general lesson:** *"two places in an app this small. In yours it might be three. You don't have to find them — delete the file and let the compiler walk you through it"*
 - [ ] **✓ CHECKPOINT:** the room can say what `Add` does and what `SaveChanges` does
 
 ## 6 · The payoff *(slide 20)*

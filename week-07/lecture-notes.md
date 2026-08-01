@@ -502,7 +502,26 @@ The `Id` column is an `IDENTITY`. SQL Server picks the next number, and EF Core 
 
 Keep the old line and you're fighting the database for the job. Set `Id` to something yourself and, at best, EF Core tries to insert it and SQL Server refuses.
 
-Then delete `Models/TruckData.cs`. If the project stops compiling, **the compiler is now telling you every place that was still reading the old list** — which is a much nicer way to find them than clicking around. On Curbside there's only the controller. **In your own app there may be more than one**, and the home page is the usual suspect: if your `Views/Home/Index.cshtml` has a line like `var featured = TruckData.All.First(...)`, that view is reading data directly, and it now needs the same treatment — inject the context into `HomeController`, query it there, and pass the result to the view as a model.
+Then delete `Models/TruckData.cs`. **It will stop compiling, and that's the useful part** — the compiler is now telling you every place that was still reading the old list, which is a much nicer way to find them than clicking around.
+
+Curbside has two, and the second one is easy to forget: `Views/Trucks/Details.cshtml` builds its *"Also in {City}"* list straight out of `TruckData.All`. **That's a view reading data directly**, and the fix is the one you'd expect — query it in the controller and hand the result over. In `Details`, before returning:
+
+```csharp
+ViewData["AlsoHere"] = _context.Trucks
+    .Where(t => t.City == truck.City && t.Id != truck.Id)
+    .ToList();
+```
+
+and in the view:
+
+```csharp
+var alsoHere = (List<Truck>)ViewData["AlsoHere"]!;
+```
+
+**Your own app may have more**, and the home page is the usual suspect: if your `Views/Home/Index.cshtml` has a line like `var featured = TruckData.All.First(...)`, that view needs exactly the same treatment — inject the context into `HomeController`, query it there, and pass the result to the view.
+
+> [!TIP]
+> **Restart rather than trusting the reload.** Deleting a class is more than `dotnet watch` can hot-patch, and a build that fails leaves the *previous* version running — so a page that looks fine may be the old one. `Ctrl+C`, then `dotnet watch` again.
 
 ## Part 6: The payoff (10 min)
 
