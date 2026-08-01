@@ -187,6 +187,15 @@ So there is exactly one command that tells you the truth:
 dotnet user-secrets list
 ```
 
+> [!WARNING]
+> **That prints your password.** Fine on your own screen — but if you're sharing a screen, or pasting the output somewhere to ask for help, mask it first:
+>
+> ```bash
+> dotnet user-secrets list | sed 's/Password=[^;]*/Password=********/'
+> ```
+>
+> Everything you actually need to debug is still visible: the key name, the server, the database, the user.
+
 Three ways it goes wrong, in order of how quietly they fail:
 
 **1. You forgot to quote the value.** This is the silent one. A connection string is full of `;`, and your shell reads `;` as *end of command*. Without quotes, everything after the first semicolon is chopped off and run as a separate command:

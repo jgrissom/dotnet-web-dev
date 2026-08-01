@@ -128,7 +128,12 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   dotnet user-secrets set "ConnectionStrings:DefaultConnection" "Server=...;Database=...;User ID=...;Password=...;TrustServerCertificate=True"
   ```
 - [ ] ⚠️ **Point at the quotes around the value and say why** — *"that string is full of semicolons, and your shell reads a semicolon as end-of-command. Leave the quotes off and it saves `Server=` and throws the rest away, and still tells you it worked"*. It's the silent one, and it will happen in the lab
-- [ ] **Prove it's really there:** `dotnet user-secrets list` in the second terminal. *"`set` says `Successfully saved` no matter what you give it — this is the command that actually tells you"*
+- [ ] **Prove it's really there** — in the second terminal, **masked, because this is a projector**:
+  ```bash
+  dotnet user-secrets list | sed 's/Password=[^;]*/Password=********/'
+  ```
+- [ ] 🎯 **Say why you piped it — it's the whole lesson in miniature:** *"the command is just `dotnet user-secrets list`; that's what you'll run. I'm hiding the password because fourteen people are looking at my screen. Same instinct as keeping it out of a public repo — it's someone else's eyes either way"*
+- [ ] Point at what's still visible — the server, the database, the `User ID`, and above all **the key name**: *"`set` prints `Successfully saved` no matter what you hand it. This is the command that tells you what actually landed"*
 - [ ] **Show what `init` did:** open `Curbside.csproj` and point at the `<UserSecretsId>` line. *"That's a folder name, not a secret. It gets committed — it's how the tooling finds the file next time"*
 - [ ] 🎯 **Then the part they'll misremember otherwise — where the file actually is.** Say the path out loud: `~/.microsoft/usersecrets/<that GUID>/secrets.json`. *"Not in the project. Not in the repo. In my user profile"*
 - [ ] Walk the four parts of the string: which machine · which database · who you are · **and `TrustServerCertificate=True`**
