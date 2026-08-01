@@ -390,6 +390,13 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 - **Every seeded row needs an explicit `Id`.** Normally the database assigns ids, but seed data is different: EF Core has to be able to tell next time whether row 3 changed, was removed, or is new, and it needs a stable identity to do that. Leave the `Id` off and you get an error saying so.
 - **Seed data is for rows that are part of the app** — reference data, categories, a starting set. It is not a place to put test records.
 
+> [!NOTE]
+> **If your migration says `4.5999999999999996` where you wrote `4.6`, nothing is wrong.** A `double` stores fractions in binary, and binary can only write fractions whose denominator is a power of two. 4.6 is 23/5, so it repeats forever and gets cut off — the same reason `0.1 + 0.2` gives you `0.30000000000000004` in JavaScript. It's the identical number format.
+>
+> It only *looks* like that in the migration file, where EF Core writes 17 digits deliberately so the literal can't be misread. **SQL Server stores the same value and shows `4.6`, and your page will print `4.6`.** Notice that a rating of `4.5` comes out clean — a half is exact in binary.
+>
+> If you're storing money rather than a rating, use `decimal` instead: it works in base 10, so it has no such surprise. `[Column(TypeName = "decimal(18,2)")]` sets its precision.
+
 ### The second migration
 
 The model changed, so the database is out of date. Same two commands:

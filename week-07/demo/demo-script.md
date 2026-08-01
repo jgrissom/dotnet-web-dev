@@ -268,6 +268,8 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   ```
 - [ ] **Open it before applying it.** 🎯 *"Look what's in here. No CreateTable — just seven InsertData calls. EF Core compared my model against the snapshot it saved last time, found seven rows that weren't there, and wrote the difference"*
 - [ ] 🎯 **That's the whole idea, and it's worth saying as one sentence:** *"you describe what you want; it works out the steps from what it last saw"*
+- [ ] 💡 **Someone will read `4.5999999999999996` out loud — it's in there for every rating except 4.5.** One sentence, and it lands because they already know JavaScript: *"that is the same number format JavaScript uses. `0.1 + 0.2` gives you `0.30000000000000004` for exactly this reason. 4.6 is 23/5, and binary can only write fractions whose denominator is a power of two — so it repeats forever and gets cut off. That's why 4.5 came out clean: a half is exact"*
+- [ ] 🎯 **Then close it, because the reassurance is the part that matters:** *"and it only looks like that **here**. EF writes 17 digits into the file on purpose, so the literal can't be ambiguous. The database stores the same eight bytes and shows you `4.6`. Your page will say `4.6`. Nothing you build displays that number"* — you can prove it in the mssql panel two beats from now
 - [ ] Now apply it:
   ```bash
   dotnet ef database update
