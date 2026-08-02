@@ -211,10 +211,10 @@ dotnet ef database update
 - `Id` gets `.Annotation("SqlServer:Identity", "1, 1")` — the column numbers itself. **That deletes a line of your code in task 6.**
 - Below `CreateTable` there should be an **`InsertData`** with six rows in it. **If there isn't, your seed data wasn't there when you generated this** — delete the whole `Migrations` folder, check task 2, and run both commands again.
 
-Then load `/Cryptids` in a browser. Six creatures, out of SQL Server. *(The page won't work yet if you haven't done task 5 — the controller is still reading the old list. That's next.)*
+**Check this in the mssql extension, not the browser.** Expand your database → Tables. There are **two**: `Cryptids` with six rows in it, and `__EFMigrationsHistory` with one. That second table is how `database update` knows what it has already done — run the command again and nothing happens.
 
-> [!TIP]
-> **Look at the database.** In the mssql extension, expand your database → Tables. There are **two**: `Cryptids`, and `__EFMigrationsHistory` with one row in it. That second table is how `database update` knows what it has already done — run the command again and nothing happens.
+> [!NOTE]
+> **`/Cryptids` looks exactly the same as it did an hour ago, and that's correct.** It's still showing six creatures out of `CryptidData.cs`, because nothing has told your controller the database exists — that's task 5. Right now you have the same six creatures in two places at once. Task 5 is where the page starts reading the one that survives a restart.
 
 ### Task 5 in full
 
@@ -258,12 +258,17 @@ public IActionResult Details(int id)
 
 `CryptidData.All` became `_context.Cryptids`, and `Index` gained a `.ToList()`. The null check, the `NotFound()`, the `View(cryptid)` — untouched.
 
+**Reload `/Cryptids` now, before you delete anything.** Same six creatures — but this time they came out of SQL Server, and you can prove it.
+
+> [!TIP]
+> **Watch the SQL.** Look at the terminal running `dotnet watch` — EF Core prints the `SELECT` it generated. Load `/Cryptids/Details/2` and read that one too: `FirstOrDefault(c => c.Id == id)` didn't fetch six creatures and pick one, it became a `WHERE` clause.
+
 **Then delete `Models/CryptidData.cs`.**
 
 If the project stops compiling, that's the point: the compiler is telling you every place still reading the old list. Here it's just the POST action, which is task 6.
 
-> [!TIP]
-> **Watch the SQL.** Reload `/Cryptids` and look at the terminal running `dotnet watch` — EF Core prints the `SELECT` it generated. Load `/Cryptids/Details/2` and read that one too: `FirstOrDefault(c => c.Id == id)` didn't fetch six creatures and pick one, it became a `WHERE` clause.
+> [!WARNING]
+> **Your app won't build again until task 6 is done**, and that's expected — the POST action is still reaching for the list you just deleted. Don't undo the deletion; fix the POST.
 
 ### Task 6 in full
 
