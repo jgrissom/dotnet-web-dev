@@ -266,17 +266,16 @@ public class DatabaseChecks : IClassFixture<RegistryApp>
             + "Migrations folder and run dotnet ef migrations add InitialCreate again.");
     }
 
-    [Fact] // Task 5: the pages read from the database, and the static list is gone
+    [Fact] // Task 5: the read pages come from the database
+    //
+    // Deliberately does NOT require CryptidData.cs to be gone. Deleting it breaks
+    // the build until the POST action is rewritten, and a broken build means no
+    // check runs at all — so demanding it here made check 5 impossible to pass
+    // without also finishing task 6, and made the in-class target of 1–5
+    // unreachable. Task 6 owns the deletion.
     public async Task Check5_TheRegistryReadsFromTheDatabase()
     {
         RequireContext();
-
-        Assert.True(RegistryApp.CryptidDataIsGone,
-            "Models/CryptidData.cs is still in your project. The whole point of tonight is that the "
-            + "list moved into SQL Server — the static List<Cryptid> is now a duplicate copy of the "
-            + "data that nothing should be reading. Delete the file. If the project stops compiling, "
-            + "whatever broke is a place still reading the old list, and that's the code task 5 asks "
-            + "you to rewrite.");
 
         var indexHtml = await Html(Index);
         foreach (var name in Seeded)
@@ -325,6 +324,15 @@ public class DatabaseChecks : IClassFixture<RegistryApp>
     public async Task Check6_AFiledReportIsSaved()
     {
         RequireContext();
+
+        // The deletion lives here, not in check 5: removing the file breaks the
+        // build until this action stops using it, so the two go together.
+        Assert.True(RegistryApp.CryptidDataIsGone,
+            "Models/CryptidData.cs is still in your project. The whole point of tonight is that the "
+            + "list moved into SQL Server — the static List<Cryptid> is now a duplicate copy of the "
+            + "data that nothing should be reading. Delete the file. The only thing that will stop "
+            + "compiling is the POST action below, which is exactly the code this task asks you to "
+            + "rewrite.");
 
         var before = DetailsIds(await Html(Index));
 

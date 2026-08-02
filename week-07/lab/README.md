@@ -55,7 +55,7 @@ dotnet test Cryptids.Checks
 | `Cryptids.Web/Program.cs` | one registration — task 3 |
 | `Cryptids.Web/Migrations/` | **generated** — don't hand-write these — task 4 |
 | `Cryptids.Web/Controllers/CryptidsController.cs` | reads and writes go through the context — tasks 5 and 6 |
-| `Cryptids.Web/Models/CryptidData.cs` | **deleted** — task 5 |
+| `Cryptids.Web/Models/CryptidData.cs` | **deleted** — task 6 |
 
 > [!NOTE]
 > **The checks never connect to SQL Server.** They run your app against an in-memory database seeded from the `HasData` you write, so `dotnet test` works with no network and can't be broken by fourteen people connecting at once.
@@ -70,8 +70,8 @@ dotnet test Cryptids.Checks
 | 2 | `TheContextDescribesTheDatabase` | A new `Data/CryptidContext.cs`: a [`DbContext`](../lecture-notes.md#the-dbcontext) with a `DbSet<Cryptid>`, and the six creatures [seeded](../lecture-notes.md#the-table-is-empty) in `OnModelCreating`. **[Task 2 in full ↓](#task-2-in-full)** |
 | 3 | `TheAppIsWiredToSqlServer` | [One `AddDbContext` line](../lecture-notes.md#one-registration) in `Program.cs`, reading the connection string from configuration. **[Task 3 in full ↓](#task-3-in-full)** |
 | 4 | `AMigrationDescribesTheTable` | [`dotnet ef migrations add InitialCreate`](../lecture-notes.md#writing-a-model-doesnt-create-a-table), then `dotnet ef database update`. **[Task 4 in full ↓](#task-4-in-full)** |
-| 5 | `TheRegistryReadsFromTheDatabase` | [Inject the context](../lecture-notes.md#asking-for-the-context) into `CryptidsController`, rewrite `Index` and `Details` [against the table](../lecture-notes.md#reading), and delete `Models/CryptidData.cs`. **[Task 5 in full ↓](#task-5-in-full)** |
-| 6 | `AFiledReportIsSaved` | [`Add` then `SaveChanges`](../lecture-notes.md#writing) in the POST action — and [delete the line that made the id](../lecture-notes.md#the-line-you-delete). **[Task 6 in full ↓](#task-6-in-full)** |
+| 5 | `TheRegistryReadsFromTheDatabase` | [Inject the context](../lecture-notes.md#asking-for-the-context) into `CryptidsController` and rewrite `Index` and `Details` [against the table](../lecture-notes.md#reading). **[Task 5 in full ↓](#task-5-in-full)** |
+| 6 | `AFiledReportIsSaved` | [`Add` then `SaveChanges`](../lecture-notes.md#writing) in the POST action, [delete the line that made the id](../lecture-notes.md#the-line-you-delete), then delete `Models/CryptidData.cs`. **[Task 6 in full ↓](#task-6-in-full)** |
 
 > [!IMPORTANT]
 > **Do tasks 2 and 3 before task 4.** A migration is a photograph of your model at the moment you generate it — run `migrations add` before the seed data exists and you get a migration with no creatures in it, an empty registry, and no error message explaining why.
@@ -258,17 +258,12 @@ public IActionResult Details(int id)
 
 `CryptidData.All` became `_context.Cryptids`, and `Index` gained a `.ToList()`. The null check, the `NotFound()`, the `View(cryptid)` — untouched.
 
-**Reload `/Cryptids` now, before you delete anything.** Same six creatures — but this time they came out of SQL Server, and you can prove it.
+**Reload `/Cryptids`.** Same six creatures — but this time they came out of SQL Server, and you can prove it.
 
 > [!TIP]
 > **Watch the SQL.** Look at the terminal running `dotnet watch` — EF Core prints the `SELECT` it generated. Load `/Cryptids/Details/2` and read that one too: `FirstOrDefault(c => c.Id == id)` didn't fetch six creatures and pick one, it became a `WHERE` clause.
 
-**Then delete `Models/CryptidData.cs`.**
-
-If the project stops compiling, that's the point: the compiler is telling you every place still reading the old list. Here it's just the POST action, which is task 6.
-
-> [!WARNING]
-> **Your app won't build again until task 6 is done**, and that's expected — the POST action is still reaching for the list you just deleted. Don't undo the deletion; fix the POST.
+**Leave `Models/CryptidData.cs` alone for now.** Your POST action still uses it, so deleting it here would stop the project compiling — and a project that doesn't compile can't run any checks at all. **Task 6 deletes it**, right after the POST stops needing it.
 
 ### Task 6 in full
 
@@ -296,6 +291,10 @@ public IActionResult Create(Cryptid cryptid)
 - **The guard and the redirect don't change.** They never cared where the list was.
 - **Delete `cryptid.Id = CryptidData.All.Max(c => c.Id) + 1;`.** `Id` is an `IDENTITY` column now — SQL Server picks the number, and EF Core reads it back onto your object during `SaveChanges()`.
 - ⚠️ **`Add` does not write anything.** It records an intention. **`SaveChanges()` is the line that goes to the database**, and forgetting it is the most common bug of the week: the form submits, the redirect happens, no error appears anywhere, and the record simply isn't there.
+
+**Then delete `Models/CryptidData.cs`** — the POST was the last thing using it.
+
+If anything else stops compiling, that's useful rather than alarming: the compiler is naming every remaining place that still reads the old list. In this app there shouldn't be any. In your own project next week, there may well be.
 
 **Now the part that's actually the point of tonight.** File a report. Then stop the app (`Ctrl+C`), start it again, and reload `/Cryptids`.
 
