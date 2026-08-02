@@ -159,7 +159,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   AmbiguousMatchException: The request matched multiple endpoints.
   ```
 - [ ] *"A 500 on the page that worked a second ago. With no verb attribute, both actions claim every verb, and routing refuses to guess"*
-- [ ] **RESTORE `[HttpPost]`. Reload and confirm the form comes back** ⚠️
+- [ ] ⚠️ **RESTORE `[HttpPost]` — then `Ctrl+R` in the watch pane before you reload.** Same reason as the antiforgery beat later tonight: this is an attribute-only edit, MVC works out each action's verb at startup, and hot reload applies it only *sometimes*. **The restore is the dangerous half** — on a bad roll the exception survives a correct file, and you are debugging a non-bug in front of the room. Restart, reload, confirm the form is back
 - [ ] ⚠️ **Say the silent-failure version out loud, because it's the one they'll hit in the lab:** *"if you write only the GET action and no POST at all, clicking Submit gives you back a blank form. No error, nothing in the log — the POST just landed on the GET action. If your form 'does nothing', that's it."*
 - [ ] **✓ CHECKPOINT:** the room can say what model binding matches on
 

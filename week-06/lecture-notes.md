@@ -140,7 +140,7 @@ Two methods called `Create`, in one controller. C# allows that — they're overl
 > AmbiguousMatchException: The request matched multiple endpoints.
 > ```
 >
-> **A 500 on the page that was working a second ago.** With no verb attribute, both actions claim the same URL for every verb, and routing refuses to guess. **Put `[HttpPost]` back and confirm the page loads.**
+> **A 500 on the page that was working a second ago.** With no verb attribute, both actions claim the same URL for every verb, and routing refuses to guess. **Put `[HttpPost]` back, restart the app (`Ctrl+C`, then `dotnet watch`), and confirm the page loads.** The restart matters more than it looks: an attribute-only edit is one `dotnet watch` applies only *sometimes*, so a correct restore can leave the exception on screen and send you hunting a bug you have already fixed.
 
 > [!WARNING]
 > **The other half of this is the failure they'll actually hit in the lab**, and it's silent. Write only the GET `Create()` and no POST action at all: submitting the form gives you back a **blank form**, no error, nothing in the log. An action with no verb attribute answers *every* verb, so the POST reached the GET action, which returned the empty view. Nothing is broken — nothing is listening. If someone's form "does nothing when I click the button," this is it.
