@@ -8,6 +8,19 @@ on:
       - "week-*/demo/**"
       - "week-*/homework-checks.js"
       - ".github/workflows/export-slides.yml"
+  # Safety net. On 2026-08-02 GitHub recorded a push to main and simply never
+  # created a run for it, so the decks and the Pages site sat stale until the
+  # workflow was dispatched by hand — and nothing announces that: the symptom
+  # is a hosted cue sheet or self-check quietly serving last week's file.
+  # (Not a path-filter bug; three earlier workflow-file-only pushes each
+  # triggered correctly. It was a one-off dropped event.)
+  # A daily re-render republishes within a day if an event is ever lost again.
+  # This is only affordable because the export is now deterministic — before
+  # the scoped-token fix below, every run committed, so a daily run would have
+  # meant a commit a day of pure noise. Off-the-hour: scheduled jobs queued at
+  # :00 get badly delayed.
+  schedule:
+    - cron: "23 12 * * *"
   workflow_dispatch:
 
 permissions:
