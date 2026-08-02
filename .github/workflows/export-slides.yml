@@ -35,6 +35,34 @@ jobs:
             npx -y @marp-team/marp-cli "$f" -o "${f%.md}.html"
           done
 
+      # Marpit keys a `<style scoped>` block to a RANDOM token, regenerated on
+      # every render — so a deck containing one (week 6's GET vs POST table is
+      # the only one) differs from ITSELF run to run, and the commit step below
+      # fired on every single run whether or not a slide had changed. That was
+      # 80-odd "Regenerate slide decks" commits of pure noise, and a push race
+      # for anyone who pushed and then pushed again.
+      #
+      # Rewrite each distinct token to a stable name, numbered per file in order
+      # of first appearance. Numbering (rather than one fixed string) keeps two
+      # scoped styles in the same deck distinct, which a blanket replace would
+      # merge. The token is only a selector name; renaming it in the CSS and on
+      # the <section> together leaves the deck byte-identical in every way that
+      # renders.
+      - name: Stabilise scoped-style tokens
+        run: |
+          node -e '
+            const fs = require("fs");
+            for (const f of process.argv.slice(1)) {
+              const src = fs.readFileSync(f, "utf8");
+              const seen = new Map();
+              const out = src.replace(/data-marpit-scope-[A-Za-z0-9]+/g, (m) => {
+                if (!seen.has(m)) seen.set(m, `data-marpit-scope-s${seen.size}`);
+                return seen.get(m);
+              });
+              if (out !== src) fs.writeFileSync(f, out);
+            }
+          ' week-*/slides.html
+
       # The lab slide's "⏱️ NN minutes" becomes a live countdown with a Start
       # button. Marp turns the ⏱️ into a twemoji <img>, so the script keys off
       # that image and the duration text after it — nothing to author per week,
