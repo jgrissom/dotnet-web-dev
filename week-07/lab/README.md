@@ -66,7 +66,7 @@ dotnet test Cryptids.Checks
 
 | # | Check | What to do |
 |---|-------|------------|
-| 1 | *(no check)* | Put your connection string in [user secrets](../lecture-notes.md#where-the-connection-string-lives) and get one `dotnet ef database update` to succeed. Nothing else works until this does. **[Task 1 in full ↓](#task-1-in-full)** |
+| 1 | *(no check)* | Put your connection string in [user secrets](../lecture-notes.md#where-the-connection-string-lives) — two commands, from inside `Cryptids.Web`. Nothing later works until this is right, and task 4 is where you find out. **[Task 1 in full ↓](#task-1-in-full)** |
 | 2 | `TheContextDescribesTheDatabase` | A new `Data/CryptidContext.cs`: a [`DbContext`](../lecture-notes.md#the-dbcontext) with a `DbSet<Cryptid>`, and the six creatures [seeded](../lecture-notes.md#the-table-is-empty) in `OnModelCreating`. **[Task 2 in full ↓](#task-2-in-full)** |
 | 3 | `TheAppIsWiredToSqlServer` | [One `AddDbContext` line](../lecture-notes.md#one-registration) in `Program.cs`, reading the connection string from configuration. **[Task 3 in full ↓](#task-3-in-full)** |
 | 4 | `AMigrationDescribesTheTable` | [`dotnet ef migrations add InitialCreate`](../lecture-notes.md#writing-a-model-doesnt-create-a-table), then `dotnet ef database update`. **[Task 4 in full ↓](#task-4-in-full)** |
