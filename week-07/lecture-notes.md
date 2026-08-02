@@ -57,7 +57,14 @@ dotnet add package Microsoft.EntityFrameworkCore.Design
 ```
 
 - **`.SqlServer`** is EF Core plus the SQL Server provider — the part that knows how to turn your LINQ into T-SQL.
-- **`.Design`** is only used by the `dotnet ef` command-line tool. Your app never calls it. Leave it out and `dotnet ef migrations add` fails with a message about design-time services, which is a confusing way to find out.
+- **`.Design`** is only used by the `dotnet ef` command-line tool. Your app never calls it — which is exactly why it's the one people skip. Leave it out and every `dotnet ef` command stops before it starts:
+
+  ```
+  Your startup project 'YourApp' doesn't reference Microsoft.EntityFrameworkCore.Design.
+  This package is required for the Entity Framework Core Tools to work.
+  ```
+
+  Unusually helpful, as errors go: it names the package you're missing.
 
 You also need the tool itself, once per machine — not per project:
 
