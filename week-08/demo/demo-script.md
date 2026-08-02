@@ -24,12 +24,12 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   ```bash
   dotnet user-secrets set "ConnectionStrings:DefaultConnection" "Server=...;Database=...;User ID=...;Password=...;TrustServerCertificate=True"
   ```
-- [ ] ⚠️ **Drop last week's database first: `dotnet ef database drop --force`**, then `database update`. The shipped migrations are new files with new ids — a database that already has a week-7 `__EFMigrationsHistory` refuses them with *"there is already an object named 'Trucks'"*. Same trap the lab's task 1 drop exists to avoid; better to meet it here than at 2:45
-- [ ] **Build the database before class:**
+- [ ] ⚠️ **Drop last week's database and rebuild it, before class:**
   ```bash
+  dotnet ef database drop --force
   dotnet ef database update
   ```
-  Then check `/Trucks` shows **seven** cards. Tonight nobody watches this get created — that was last week's show
+  **The drop is what makes the update work.** The shipped migrations are new files with new ids — a database that still has your week-7 `__EFMigrationsHistory` refuses them with *"there is already an object named 'Trucks'"*. Same trap the lab's task 1 drop exists to avoid; better to meet it here than at 2:45. Then check `/Trucks` shows **seven** cards. Tonight nobody watches this get created — that was last week's show
 - [ ] **Install the scaffolder tool now** — it's per-machine, it's boring, and it's not part of the show:
   ```bash
   dotnet tool install --global dotnet-aspnet-codegenerator
