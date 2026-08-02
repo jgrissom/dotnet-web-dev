@@ -191,7 +191,11 @@ public async Task<IActionResult> Edit(int id, [Bind(...)] Truck truck)
     }
 ```
 
-Two ids arrive — one in the URL, one in the form — and the first thing the action does is check they agree. If they don't, someone's tampering or something's broken, and either way the answer is no. **When the hidden input is missing, this guard is what fires:** the form posts `Id = 0`, the URL says otherwise, 404. That's the most common edit bug there is, and now you know its exact shape.
+Two ids arrive — one in the URL, one in the form — and the first thing the action does is check they agree. If they don't, someone's tampering or something's broken, and either way the answer is no.
+
+**So what happens if the hidden input goes missing?** Less than you'd expect, and the precise answer is worth having. The binder looks for `Id` in the form **and** in the route, so a form posting to `/Trucks/Edit/8` still arrives with `truck.Id = 8` — taken from the URL — and the edit saves correctly. The guard doesn't fire, because the two ids agree.
+
+The line earns its keep when the URL *can't* answer. A form whose action carries no id posts `Id = 0`, and `_context.Update()` treats an **unset key as a new record** — so instead of correcting record 8 you quietly gain a second one. No error, no 404; just a duplicate in the list. Keep the hidden input and the form never depends on the URL's shape.
 
 ### The guest list
 
@@ -651,7 +655,11 @@ D   ask first  →  Remove + SaveChangesAsync DELETE    ← GET asks, POST acts
 - Tool/SDK skew: `dotnet tool update --global dotnet-aspnet-codegenerator`. Same family as week 7's `dotnet ef` warning.
 
 **Saving an edit returns 404**
-- The URL's id and the posted `Id` disagree, and the `if (id != model.Id)` guard fired. Nearly always: **the hidden `Id` input is missing from the Edit form** — the form posted `Id = 0`. One line: `<input type="hidden" asp-for="Id" />`.
+- The URL's id and the posted `Id` genuinely disagree, and the `if (id != model.Id)` guard fired — a hand-edited hidden input, or a stale form. Note a *missing* hidden `Id` does **not** cause this: the binder falls back to the URL's id, the two agree, and the save goes through.
+- The other 404 on save is the concurrency catch: the record was **deleted while your form was open**. That one is the code working, not failing.
+
+**Saving an edit added a second record instead of changing the first**
+- Your Edit form has no hidden `Id` **and** its action carries no id either, so the POST arrived with `Id = 0`. `Update()` treats an unset key as a *new* record and inserts it. One line fixes it: `<input type="hidden" asp-for="Id" />`. (The same symptom comes from calling `Add` instead of `Update` — check both.)
 
 **An edit redirects fine, but one field comes back empty — and its old value is gone**
 - That field isn't in the `[Bind]` list on your Edit POST. The binder left it `null`, `Update` marked everything modified, and the save wrote the null. Add the property's name to the list. This is the silent one this week.

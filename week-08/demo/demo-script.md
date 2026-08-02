@@ -15,7 +15,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 > Lost your place? **The nearest 🎞️ above you is the slide that should be showing** — and every slide's footer names the section and beat of this sheet it belongs to, so you can go the other way too.
 
 > [!IMPORTANT]
-> **Tonight has two deliberate breaks and one staged 404, and none of them gets announced.** §4 removes the hidden `Id` and watches an edit refuse itself; §6 saves an edit to a record that was deleted under it; §8 types a slogan into a form whose `[Bind]` list doesn't include it — and the save quietly **erases** the old value. That last one is the nastiest bug of the homework, met on your machine first. The terminal shares the stage with a new instrument tonight: **the debugger**, attached to a live process in §5.
+> **Tonight has two deliberate failures, and neither gets announced.** §6 saves an edit to a record that was deleted under it; §8 types a slogan into a form whose `[Bind]` list doesn't include it — and the save quietly **erases** the old value. That last one is the nastiest bug of the homework, met on your machine first. The terminal shares the stage with a new instrument tonight: **the debugger**, attached to a live process in §5.
 
 ## 0 · Before class
 
@@ -271,9 +271,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] Open its Details → **Edit this truck**. 🎯 *"pre-filled — that's `FindAsync` and `View(truck)` doing what the slide promised"*
 - [ ] Change the rating to **4.7**. **Predict before saving:** *"what SQL is about to appear — and what will its WHERE clause say?"*
 - [ ] Save. **Read the terminal:** an `UPDATE [Trucks] SET ... WHERE [Id] = @p...` 🎯 *"there's the hidden Id, arriving at SQL Server as a WHERE clause. One row touched"*
-- [ ] ⚠️ **Break #1 — don't announce it.** Open `Views/Trucks/Edit.cshtml` and **delete the hidden `Id` line.** Reload the Edit page, change nothing, hit Save
-- [ ] **404.** 🎯 *"The URL said truck 8. The form, with its pocket picked, said truck 0. The guard refused the mismatch — that's `id != truck.Id` earning its keep. When you meet a 404 on saving an edit in the lab, this line is missing. It is the most common edit bug there is"*
-- [ ] Put the line back. Save the file, reload, confirm an edit works again
+- [ ] 💡 **If someone asks "what if I leave the hidden `Id` out?"** — answer honestly, don't demo it: *"you'd probably get away with it here, and that's the interesting part. The binder looks for `Id` in the form and in the URL, and this form posts to `/Trucks/Edit/8` — so the URL answers and the edit saves. The line earns its keep when the URL can't answer: a form whose action carries no id posts `Id = 0`, and `Update()` treats an unset key as a **new** record. You don't get an error. You get a second truck"*
 
 ## 5 · The debugger, finally *(slides 14–15)*
 

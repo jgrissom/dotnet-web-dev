@@ -28,7 +28,7 @@ It needs:
 
 1. **[The two packages and the tool](lecture-notes.md#two-packages-and-a-tool)** — `Microsoft.VisualStudio.Web.CodeGeneration.Design` and `Microsoft.EntityFrameworkCore.Tools` added to your web project, and `dotnet-aspnet-codegenerator` installed globally. *(The lab handed you the packages; here you run the commands yourself.)*
 2. **[A scaffolded reference controller](lecture-notes.md#the-command-piece-by-piece)** — run the scaffolder against **your** model and context (`-m YourThing -dc YourContext`, name it `YourThingsScaffoldController`). Browse it once; read it once.
-3. **[The Edit pair, ported](lecture-notes.md#the-edit-pair)** — both `Edit` actions in your real controller, **async**, with an `Edit.cshtml` in your app's own style. The **[hidden `Id`](lecture-notes.md#the-hidden-id)** is the line that makes it work, and an **Edit link** on your details page (or your cards) is the way in.
+3. **[The Edit pair, ported](lecture-notes.md#the-edit-pair)** — both `Edit` actions in your real controller, **async**, with an `Edit.cshtml` in your app's own style. The **[hidden `Id`](lecture-notes.md#the-hidden-id)** is what lets the form carry its own identity, and an **Edit link** on your details page (or your cards) is the way in.
 4. **[The Delete pair, ported](lecture-notes.md#the-delete-pair)** — a GET that shows a confirmation page and changes nothing, a `DeleteConfirmed` POST that deletes, a `Delete.cshtml`, and a Delete link. [Why it's two requests](lecture-notes.md#why-delete-asks-first) is the kind of thing I ask about in person.
 5. **The scaffold deleted again** — controller and views both, before you commit. It was a reference. *(Restart after — deleting a class is a rude edit, week 7's lesson.)*
 6. **[One new column, added forward](lecture-notes.md#the-additive-migration)** — your model grows **one property of your choosing** (a nullable `string?` is the easy win — a note, a tagline, a location detail; [why nullable](lecture-notes.md#nullable-and-why)). Then `dotnet ef migrations add AddWhatever` + `database update`. **Additive** — your `Migrations` folder only grows now. Seeding values for your existing records with `HasData` is optional but makes your list look finished.
@@ -51,7 +51,7 @@ The lab's moves transfer one-for-one; only the names change. Translations that c
 > [!CAUTION]
 > **The two silent failures, one more time, because they will both visit somebody this week:**
 >
-> - **Edit saves return 404** → the hidden `Id` input is missing from your Edit form.
+> - **An edit files a second record instead of correcting the first** → the hidden `Id` input is missing from your Edit form.
 > - **Saving an edit *erases* your new column's value** → the property isn't in the `[Bind]` list, so the binder left it `null` and `Update` wrote the null. [The mechanism](lecture-notes.md#the-guest-list-bites) is worth being able to explain, not just fix.
 
 > [!WARNING]
@@ -123,7 +123,7 @@ Then load your home page and open the console — **F12 → Console**:
 ```
 
 > [!TIP]
-> **If the edit check 404s** — hidden `Id`. **If the correction "saves" but nothing changed** — missing `SaveChangesAsync`. **If your list *grew*** — the POST calls `Add` instead of `Update`. **If delete returns 405** — the `DeleteConfirmed` + `[ActionName("Delete")]` pair didn't port intact. Each check's ↳ hint says which.
+> **If the correction "saves" but nothing changed** — missing `SaveChangesAsync`. **If your list *grew*** — either the POST calls `Add` instead of `Update`, or the hidden `Id` is missing and `Update` filed an unset key as new. **If delete returns 405** — the `DeleteConfirmed` + `[ActionName("Delete")]` pair didn't port intact. Each check's ↳ hint says which.
 
 *(If you have Node installed, `node homework-checks.js <url>` does the same from a terminal. You don't need it.)*
 
@@ -132,7 +132,7 @@ Then load your home page and open the console — **F12 → Console**:
 - **The scaffolder won't run at all** — [tool not installed](lecture-notes.md#two-packages-and-a-tool) (`dotnet tool install --global dotnet-aspnet-codegenerator`), or you're not in your web project folder.
 - **`...install Entity Framework core packages... Microsoft.EntityFrameworkCore.Tools`** — requirement 1's second package is missing. This is the one your app never calls, which is why it's easy to skip.
 - **`Scaffolding failed: Build failed`** — your project has to compile before the scaffolder will touch it. `dotnet build`, read the error, fix, retry.
-- **Saving an edit → 404** — [the hidden `Id`](lecture-notes.md#the-hidden-id). The most common edit bug there is.
+- **Saving an edit files a duplicate instead of correcting the record** — [the hidden `Id`](lecture-notes.md#the-hidden-id) is missing and your form's action carries no id either, so `Update()` filed an unset key as a new record. The quiet one this week, after `[Bind]`.
 - **An edit redirects but changes nothing** — no `await SaveChangesAsync()`. Marked, never written.
 - **An edit *added* a record** — `Add` where `Update` belongs.
 - **Saving an edit erased a field** — [the `[Bind]` list](lecture-notes.md#the-guest-list-bites). Your new property's name has to be on it. **Then restart before re-testing** (`Ctrl+C`, `dotnet watch`): that's an attribute-only edit, hot reload can keep the old list, and the erase happening *again* after a correct fix is how people end up rewriting code that was already right.

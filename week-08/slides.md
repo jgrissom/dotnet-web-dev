@@ -236,7 +236,7 @@ The hidden Id, arrived as a **WHERE clause**. One row.
 
 <br>
 
-Remove the hidden input, and the guard answers **404**.
+Without it, the form leans on the URL — and `Update` files a **duplicate** if that can't answer either.
 
 ---
 

@@ -261,7 +261,7 @@ using Microsoft.EntityFrameworkCore;
 }
 ```
 
-- **The hidden `Id` is the one line your Create form never had** — [it's how the POST knows which record](../lecture-notes.md#the-hidden-id). Check 2 looks for it by name, and check 3's error message when it's missing describes the 404 you'd get.
+- **The hidden `Id` is the one line your Create form never had** — [it's how the POST carries its own identity](../lecture-notes.md#the-hidden-id), instead of depending on the URL's shape. Check 2 looks for it by name; leave it out and check 3 catches the duplicate record you get instead.
 - The `[Bind]` list is [the guest list from the notes](../lecture-notes.md#the-guest-list) — six names now. **Task 6 comes back for it.**
 
 **Last, the way in.** In `Views/Cryptids/Details.cshtml`, below the badge, add:
@@ -555,7 +555,8 @@ public async Task<IActionResult> Index()
 - **`...install Entity Framework core packages and try again: Microsoft.EntityFrameworkCore.Tools`** — you're not inside `Cryptids.Web` (the starter has the packages), or in the homework, your own app doesn't have them yet.
 - **`Scaffolding failed: Build failed`** — the scaffolder compiles first. `dotnet build` shows the real error; fix it, scaffold again.
 - **`There is already an object named 'Cryptids'`** on `database update` — you skipped task 1's `dotnet ef database drop --force`, so your **week-7 tables and migration history are still there**. Run the drop, then `database update` again. (Only ever in this lab — never on your own project's database.)
-- **Saving an edit returns 404** — the hidden `Id` input is missing from your Edit form, so the form posted `Id = 0` and the `id != cryptid.Id` guard refused. One line: `<input type="hidden" asp-for="Id" />`.
+- **Saving an edit returns 404** — the posted `Id` and the URL's id genuinely disagree (a hand-edited hidden input, or a stale form), or the record was deleted while your form was open — that second one is the concurrency catch working. A *missing* hidden `Id` doesn't cause this; the binder falls back to the URL.
+- **Saving an edit added a second creature instead of correcting the first** — no hidden `Id` **and** no id in the form's action, so the POST arrived with `Id = 0`; `Update()` treats an unset key as new and inserts. One line: `<input type="hidden" asp-for="Id" />`. Check 3 catches this by counting records.
 - **An edit redirects but nothing changed** — `Update` only marks; the write is `await _context.SaveChangesAsync();`.
 - **Editing created a duplicate instead** — the POST calls `Add` somewhere. An edit goes through `Update`.
 - **Saving an edit erased the Latin name / plate** — the `[Bind]` list doesn't include the new names. Task 6's caution block is the fix, and this is *the* silent bug of the week.
