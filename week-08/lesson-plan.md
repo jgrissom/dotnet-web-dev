@@ -1,0 +1,70 @@
+# Week 8 — Lesson Plan
+
+**Topic:** EF Core CRUD — the scaffolder, reading generated code, async, edit and delete, and a column added to a live table
+**Session length:** 3h 45m
+
+> The night the framework starts writing code for them — and the real skill being taught is *reading it*. Three moments carry the week: **§2's one command** (four weeks of their work, generated in three seconds, followed immediately by what it *didn't* write), **§5's debugger gap** (stepping over `Update()` and seeing no SQL, then over `SaveChangesAsync()` and seeing the UPDATE), and **§8's guest-list bite** (a typed slogan that saving silently *erases*). Tonight also collects two promises: the reading's "where does the Id come from?", answered by one hidden input, and week 7's "the app setting survives redeploys," collected in the wrap-up.
+
+## Learning objectives
+
+By the end of this session, students can:
+
+1. Run `dotnet aspnet-codegenerator` against their own model and context, and say what the tool read to do its work.
+2. Read an async action and map it to what they know: `Task<T>` is `Promise<T>`, `await` is `await` — and say what `async` marks.
+3. Explain how an edit knows which record it's editing: the hidden `Id`'s round trip, and the `id != model.Id` guard.
+4. Say what `[Bind]` does, and what happens to a property that isn't on the list — including why the failure writes a `null` rather than keeping the old value.
+5. Say what `Update()` does and what `SaveChangesAsync()` does, having watched the gap between them in a debugger.
+6. Attach the VS Code debugger to a running process, set a breakpoint, and inspect a bound model mid-request.
+7. Explain why Delete is two requests — a GET that shows and a POST that acts — and why a GET must never change data.
+8. Add a nullable column to a table that has rows, with an additive migration — and say why delete-the-folder-and-regenerate stopped being an option this week.
+9. Port scaffolded actions and views into their own controller, keeping their theme and names.
+
+## Materials
+
+- `slides.md` / `slides.html` — the deck (hosted at jgrissom.github.io/dotnet-web-dev)
+- `lecture-notes.md` on your second screen — the script, the generated-code walkthrough, and the troubleshooting appendix
+- **Demo cue sheet:** [`demo/demo-script.md`](demo/demo-script.md) — keyed to slides ([clickable version](https://jgrissom.github.io/dotnet-web-dev/week-08/demo/script.html))
+- **Curbside**, copied out of the private answer-keys repo (`week-08/demo-starter/Curbside`) to a scratch folder — week 7's demo end state: context, two migrations, seven seeded trucks, `TruckData.cs` gone — running under `dotnet watch`
+- ⚠️ **Your connection string set (`set` only — the `<UserSecretsId>` ships), pointed at a FRESH database name, and `dotnet ef database update` run before class.** The shipped migrations are new files: a database with week 7's rehearsal history refuses them. Nobody watches the database get created tonight — that was last week's show
+- **`dotnet-aspnet-codegenerator` installed globally before class** (`dotnet tool install --global dotnet-aspnet-codegenerator`) — and one rehearsal run done, which also warms the NuGet cache so §2's live `dotnet add package` commands are instant on class wifi
+- **mssql extension** signed in, tested, panel closed — it appears twice (§8's new column, and the wrap-up), a supporting actor this week
+- **2–3 student Azure URLs** picked in advance for the gallery
+- Your finished week-8 Registry (`week-08/lab/solution`) with `dotnet test` at 6/6, ready for the lab launch — **the plates make their first appearance here**
+
+## Timed agenda
+
+| Time | Duration | Segment |
+|------|----------|---------|
+| 0:00 | 10 min | **Deployed-app gallery** *(deck on title slide)*. 2–3 student apps, **2 minutes each, hard stop**. Their data now survives the free-tier sleep — worth saying out loud when an app wakes up still populated. |
+| 0:10 | 15 min | **Where we left off** *(slides 2–4, demo §1)*. Restart the app before any slide — seven trucks, still there, no drama: *"that's what a foundation is."* **Collect the reading** on slide 3: what does Edit need that Create didn't? Then the question that doesn't get answered yet: *"your Create form never sends an Id — where does Edit's come from?"* Close with the shape of the night: a tool writes it, you read it, you keep what's yours. |
+| 0:25 | 30 min | **The scaffolder, and reading what it wrote** *(slides 5–11, demo §2–§3)*. Two packages live, then **the one command** — predict first: *"how much of your four weeks does this write?"* Browse `/TrucksScaffold`, **edit a truck in the scaffold UI and watch it appear on `/Trucks`** — two UIs, one table. Then slide 7 before anyone deflates: what it *didn't* write is every decision. Then read the controller: async via Promises (**lean on their JS**), the Edit pair, **the hidden Id** (collect the reading question — it's one line), `[Bind]` (plant the warning, don't spoil §8), `Update` + save, and the concurrency catch (*"you'll watch it fire within the hour"*). |
+| 0:55 | 20 min | **Port Edit** *(slides 12–13, demo §4)*. Reference-not-foundation speech, then the pair into `TrucksController`, the themed `Edit.cshtml`, the Details link. **File Ghost Kitchen — tonight's test subject — edit its rating, read the UPDATE's WHERE clause.** Then **break #1, unannounced**: delete the hidden `Id` line, save, **404** — the most common edit bug in the lab, met here first. Restore it. |
+| 1:15 | 10 min | **☕ Break** |
+| 1:25 | 15 min | **The debugger, finally** *(slides 14–15, demo §5)*. **Load-bearing — this is the debugger's promised slot.** Attach to the Curbside process (⚠️ attach *after* the last code edit), breakpoint on the Edit guard, submit the form. Walk `truck` in Variables — *"model binding, on faith since week 6, live on screen."* **F10 past `Update()`: no SQL. F10 past `SaveChangesAsync()`: the UPDATE.** Detach, then slide 15 to fix what they saw. |
+| 1:40 | 20 min | **Delete asks first** *(slides 16–18, demo §6)*. Predict: *"why isn't Delete just a link?"* — a GET must never change data. Port the pair; give `DeleteConfirmed` + `[ActionName]` its beat (same name + signature won't compile). Then the **two-tab story**: edit form open on Ghost Kitchen in one tab, delete it in the other, save the edit — **404, and the §3 catch just fired for real.** Slide 18 *after* that reveal. |
+| 2:00 | 5 min | **The scaffold comes down** *(slide 19, demo §7)*. Delete the controller and views, **restart** (rude edit, `ENC0033` — week 7's lesson repeating). `/TrucksScaffold` is an honest 404. *"In the lab, check 4 refuses to pass while yours is still up."* |
+| 2:05 | 10 min | **☕ Break** |
+| 2:15 | 25 min | **A column on a live table** *(slides 20–22, demo §8)*. `string? Slogan` — **the `?` gets its own beat**: the table has rows, a required column demands answers that don't exist. Seed update, then predict the migration's contents: **AddColumn + seven UpdateData, no CreateTable.** Read EF's data-loss warning and defuse it (it's about `Down`). **Say the rule change in plain words: delete-and-regenerate died tonight; forward only.** Then **break #2, the one to protect**: add the field to the form, type a new slogan, save — **the old one is erased, not ignored.** Let them work out why before pointing at `[Bind]`. Fix, re-edit, sticks. *"Model grows ⇒ view, form, and the guest list."* |
+| 2:40 | 5 min | **Lab launch** *(slide 23, demo §9)*. ~90 seconds of *what done looks like*: the answer key **on localhost** — the plates' first appearance, the placeholder on a hand-filed record, `dotnet test` printing **6/6**. **Nothing is deployed for this.** Setup once, then ⚠️ **the new database name, with the why**. **In-class target: checks 1–4.** |
+| 2:45 | 50 min | **Lab: the Registry gets a corrections desk** *(slide 23 stays up)*. Tasks 5–6 (the plates) roll into the homework if the clock wins. |
+| 3:35 | 10 min | **Wrap-up** *(slide 24, demo §10)*. The four verbs, each with its two-step. **Collect week 7's promise:** redeploying is one command now — the app setting survived. Homework: same moves on their app, plus one column, added forward. Week 9 tease: a second table. |
+
+## Instructor notes
+
+- **Students watch the demo; they don't type along.** Same as every week: Curbside lives only in the private answer-keys repo, and the lab is a different app. Say it at the start — tonight's paste blocks are the biggest yet, and the scaffolder makes fourteen simultaneous copies of it very tempting.
+- ⚠️ **The demo database must be built before class, from a fresh name.** The shipped migrations carry new timestamps; a database that remembers your week-7 rehearsal refuses them with *"there is already an object named 'Trucks'"*. That same trap is why the lab uses a new database name — if you hit it in prep, you've rehearsed the explanation.
+- 🎯 **The scaffold-edits-your-data beat in §2 is the week's thesis, cheap and early.** Editing a truck through the ugly generated UI and watching it change on their themed page proves the generated code and their code are the same kind of thing. Don't skip it to save two minutes; everything in §3 reads differently once it's landed.
+- **Lean on JavaScript for async, and stop there.** `Task` is a `Promise`, `await` is `await`, `async` marks a method that actually awaits. One sentence on *why* (a waiting request frees its thread). **Don't** teach `Task.Run`, thread pools, `ConfigureAwait`, or deadlocks — nothing they type this term needs any of it. The honest rule for the room: sync code from week 7 keeps working; new code is async because the scaffolder writes it.
+- **The concurrency catch is taught as the deleted-row case, because that's what it is here.** Without a concurrency token, `DbUpdateConcurrencyException` fires when the UPDATE matches zero rows — i.e. the record was deleted under the form. Two people *editing* simultaneously just means last-save-wins, silently. Don't call it "conflict detection"; §6's two-tab beat shows exactly what it actually catches, and the honest version is more memorable.
+- ⚠️ **Break #2 (the guest-list bite) is the one to protect — if §8 runs long, cut the mssql panel visit, not the break.** It's the most dangerous homework bug: silent, destructive, and certain to happen the moment anyone adds a property. The sequencing matters: the field must be **on the form and working as a display** before the save fails, or the room concludes the form was broken all along. And it must be *unannounced* — the slide comes after the reveal.
+- 🎯 **Ghost Kitchen is a continuity device — one truck, whole arc.** Filed in §4, corrected in §4, inspected in the debugger in §5, deleted in §6, and its ghost 404s the open edit form. If a beat goes sideways and it dies early, file it again under the same name; nothing depends on its id except your narration (say "on a fresh database it lands as 8" and move on).
+- ⚠️ **Attach the debugger *after* the last code edit of §4.** A breakpoint set against a binary `dotnet watch` has since replaced shows hollow and never fires — which in front of a room reads as "the debugger doesn't work." If it happens: detach, let the rebuild finish, re-attach. Two on-screen processes can match "Curbside"; the app, not the watcher, is the one to pick.
+- **The debugger gets one job tonight and does it completely: the gap between `Update()` and `SaveChangesAsync()`.** Resist the tour — no watch expressions, no conditional breakpoints, no call stack. Attach, inspect the bound model, step the two lines, detach. Weeks 9+ can assume attach-to-process exists; that's the whole win.
+- **`_context.Update()` marks the entire record modified — teach it as "mark everything, write everything."** Someone may notice the UPDATE sets every column. That's correct and it's what makes the `[Bind]` bite destructive (the unbound property is `null` on the posted object, and `Update` writes it faithfully). The load-then-copy alternative that updates only changed columns exists — one sentence for whoever asks, not a slide.
+- **The scaffolder's own comment introduces `[Bind]` — read it off the screen.** "To protect from overposting attacks…" is the tool documenting itself; taking it up on that beats delivering a security lecture. The `IsAdmin` hypothetical is one sentence. The *real* teaching happens in §8 when the list bites.
+- **§7 is five minutes and should stay five minutes.** Delete, restart, 404, move on. Its real payload is the sentence about lab check 4 refusing to pass while the scaffold stands.
+- ⚠️ **Frozen lab PCs lose the scaffolder tool as well as the secrets.** Same drill, same speech at lab launch: `dotnet tool install --global dotnet-aspnet-codegenerator`, then `dotnet user-secrets set`, both under a minute. The lab README leads with it.
+- **The lab's watch-for is task 2, not task 1.** Task 1 is week 7's secret-and-update drill with a new database name — most of the room has done it twice now. Task 2 is where the new failure modes live: tool not installed, the command run from the wrong folder, a typo in `-dc CryptidContext`. The scaffolder's errors name what's missing; teach people to read them rather than re-run. **Sweep the room at task 2**, then again when the first Edit ports land (the hidden-Id 404 from break #1 will be making its rounds).
+- **Checks 5 and 6 rolling into homework is the designed outcome, not a failure.** Say it at launch: 1–4 is the corrections desk; 5–6 (the plates) are the same moves the homework needs on their own app, with the answer key's markup to crib from.
+- 🔗 **Two promises get collected tonight.** The reading's Id question (slide 10, one hidden input) and week 7's "once per app, not once per deploy" (wrap-up: redeploying is now one command). Students notice when a promise is kept.
+- **Don't reopen the database decision, and don't teach `AsNoTracking`.** The scaffolded read actions are fine as generated; query optimization is week 9's territory, where a query will actually get expensive.
