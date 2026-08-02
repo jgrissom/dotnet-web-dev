@@ -52,7 +52,7 @@ dotnet test Cryptids.Checks
 
 | File | What you do to it |
 |---|---|
-| *(user secrets — not a file in this project)* | your connection string, **new database name** — task 1 |
+| *(user secrets — not a file in this project)* | your connection string, **same database name as last week** — task 1 |
 | `Controllers/CryptidsScaffoldController.cs` | **generated** in task 2 · **deleted** in task 4 |
 | `Views/CryptidsScaffold/` | **generated** in task 2 · **deleted** in task 4 |
 | `Controllers/CryptidsController.cs` | gains the Edit and Delete pairs — tasks 3 and 4 |
@@ -68,7 +68,7 @@ dotnet test Cryptids.Checks
 
 | # | Check | What to do |
 |---|-------|------------|
-| 1 | *(check 1 is already green)* | Install the scaffolder tool, put your connection string in user secrets with a **new database name**, and let one `dotnet ef database update` build the whole database. **[Task 1 in full ↓](#task-1-in-full)** |
+| 1 | *(check 1 is already green)* | Install the scaffolder tool, put your connection string in user secrets, then **drop last week's database** and let one `dotnet ef database update` rebuild the whole thing. **[Task 1 in full ↓](#task-1-in-full)** |
 | 2 | *(no check — it's the reference)* | [Scaffold](../lecture-notes.md#the-command-piece-by-piece) `CryptidsScaffoldController` and browse what one command wrote. **[Task 2 in full ↓](#task-2-in-full)** |
 | 3 | `TheEditFormShowsTheRecord`, `ACorrectionIsSaved` | Port [the Edit pair](../lecture-notes.md#the-edit-pair) into `CryptidsController`, with a `Views/Cryptids/Edit.cshtml` in the Registry's own style. **[Task 3 in full ↓](#task-3-in-full)** |
 | 4 | `AFileCanBeClosed` | Port [the Delete pair](../lecture-notes.md#the-delete-pair), then **delete the scaffold** — the check refuses to pass while it's still standing. **[Task 4 in full ↓](#task-4-in-full)** |
@@ -91,21 +91,28 @@ dotnet tool install --global dotnet-aspnet-codegenerator
 
 ```bash
 dotnet user-secrets init
-dotnet user-secrets set "ConnectionStrings:DefaultConnection" "Server=<SCHOOL-SQL-SERVER>;Database=CryptidsCrud_<COURSE-NUMBER>_<YOUR-INITIALS>;User ID=<YOUR-USERNAME>;Password=<YOUR-PASSWORD>;TrustServerCertificate=True"
+dotnet user-secrets set "ConnectionStrings:DefaultConnection" "Server=<SCHOOL-SQL-SERVER>;Database=Cryptids_<COURSE-NUMBER>_<YOUR-INITIALS>;User ID=<YOUR-USERNAME>;Password=<YOUR-PASSWORD>;TrustServerCertificate=True"
 ```
 
-Same drill as last week — server, username and password from the handout, quotes around the value, `dotnet user-secrets list` to see what actually landed. **This is a different application from last week's, so it needs its own `init` and `set` — that's how secrets work, not a punishment.**
+Same drill as last week — server, username and password from the handout, quotes around the value, `dotnet user-secrets list` to see what actually landed. **This is a fresh copy of the project, so it needs its own `init` and `set`** — secrets are keyed to the project, not to you.
 
-> [!WARNING]
-> **The database name is NEW — `CryptidsCrud_42_ABL`-shaped — and that's not optional.** Your week-7 database was built by *your* migration files, and its `__EFMigrationsHistory` remembers them by name. Tonight's starter ships *its own* migration files, with different names. Point the starter at your old database and `database update` fails with **`There is already an object named 'Cryptids'`** — the history and the files can't be reconciled. A fresh name sidesteps all of it.
+**The database name is the same one you used last week**, though. The folder is new so you don't overwrite week 7's work, but this is the same application — the Cryptid Registry — and [one application gets one database](../../week-07/lecture-notes.md#naming-your-database).
 
-**Now build the database — one command:**
+**Now reset it and rebuild it — two commands:**
 
 ```bash
+dotnet ef database drop --force
 dotnet ef database update
 ```
 
-Watch what that just did: created the database, built the table, inserted the six creatures — schema *and* data, from files that came to you in a git clone. **The fact that that works is what a migration is:** a database you can carry in a repo.
+*(Didn't finish last week's lab? The drop will tell you there's nothing there. That's fine — carry on.)*
+
+> [!WARNING]
+> **The drop is not optional, and this is the only time all semester you should run it.** Your week-7 database was built by *your* migration files, and its `__EFMigrationsHistory` remembers them by name. Tonight's starter ships *its own* migration files, with different names. Point the starter at that database without dropping it first and `database update` fails with **`There is already an object named 'Cryptids'`** — the history and the files can't be reconciled.
+>
+> **Never do this to your own project's database.** Tonight's is a throwaway you can rebuild from a git clone in one command; your project's holds records you can't get back. There, [a bad migration is fixed by adding another one](../lecture-notes.md#forward-only).
+
+Watch what those two just did: dropped last week's database, then created it again, built the table and inserted the six creatures — schema *and* data, from files that came to you in a git clone. **The fact that that works is what a migration is:** a database you can carry in a repo.
 
 `dotnet watch`, open `/Cryptids`, count six. Then leave it running.
 
@@ -545,7 +552,7 @@ public async Task<IActionResult> Index()
 - **`Could not execute because the specified command or file was not found`** running the scaffolder — the tool isn't on this machine: `dotnet tool install --global dotnet-aspnet-codegenerator`. Frozen lab PCs lose it on reboot.
 - **`...install Entity Framework core packages and try again: Microsoft.EntityFrameworkCore.Tools`** — you're not inside `Cryptids.Web` (the starter has the packages), or in the homework, your own app doesn't have them yet.
 - **`Scaffolding failed: Build failed`** — the scaffolder compiles first. `dotnet build` shows the real error; fix it, scaffold again.
-- **`There is already an object named 'Cryptids'`** on `database update` — you pointed tonight's starter at your **week-7 database**. Task 1's new database name exists precisely for this. Change `Database=` in your secret and run `database update` again.
+- **`There is already an object named 'Cryptids'`** on `database update` — you skipped task 1's `dotnet ef database drop --force`, so your **week-7 tables and migration history are still there**. Run the drop, then `database update` again. (Only ever in this lab — never on your own project's database.)
 - **Saving an edit returns 404** — the hidden `Id` input is missing from your Edit form, so the form posted `Id = 0` and the `id != cryptid.Id` guard refused. One line: `<input type="hidden" asp-for="Id" />`.
 - **An edit redirects but nothing changed** — `Update` only marks; the write is `await _context.SaveChangesAsync();`.
 - **Editing created a duplicate instead** — the POST calls `Add` somewhere. An edit goes through `Update`.

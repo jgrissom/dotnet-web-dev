@@ -403,7 +403,7 @@ the view · the form · **the `[Bind]` list**
 
 ## Lab: the Registry gets a corrections desk
 
-- **1** — a NEW database (`CryptidsCrud_…`), one `database update`
+- **1** — drop last week's database, one `database update`
 - **2** — scaffold the reference controller
 - **3** — port Edit
 - **4** — port Delete · the scaffold comes down
