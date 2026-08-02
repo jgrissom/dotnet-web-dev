@@ -679,7 +679,7 @@ D   ask first  →  Remove + SaveChangesAsync DELETE    ← GET asks, POST acts
 - `dotnet watch` is the watcher; the process named like your app is the app. Pick that one.
 
 **`There is already an object named 'Trucks'` (or `'Cryptids'`) during `database update`**
-- You're pointing migrations at a database that was built by a *different* set of migration files — this week, usually the lab starter aimed at your week-7 database. The starter's migrations aren't yours, and histories don't mix. Lab task 1's `dotnet ef database drop --force` clears both the tables and the history; run it, then `database update` again. **That is a lab-only move** — on your own project's database, a bad migration is fixed by adding another one.
+- You're pointing migrations at a database that was built by a *different* set of migration files — this week, usually the lab starter aimed at your week-7 database. The starter's migrations aren't yours, and histories don't mix. Lab task 1's `dotnet ef database drop --force` clears both the tables and the history; run it, then `database update` again. Note that drops the *database* — the `Migrations/` files stay put, and they're what rebuilds it. **That is a lab-only move** — on your own project's database, a bad migration is fixed by adding another one.
 
 **`The model for context has pending changes`**
 - You changed the model after generating the migration. Add another one — forward only.

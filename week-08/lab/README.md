@@ -111,6 +111,8 @@ dotnet ef database update
 > **The drop is not optional, and this is the only time all semester you should run it.** Your week-7 database was built by *your* migration files, and its `__EFMigrationsHistory` remembers them by name. Tonight's starter ships *its own* migration files, with different names. Point the starter at that database without dropping it first and `database update` fails with **`There is already an object named 'Cryptids'`** — the history and the files can't be reconciled.
 >
 > **Never do this to your own project's database.** Tonight's is a throwaway you can rebuild from a git clone in one command; your project's holds records you can't get back. There, [a bad migration is fixed by adding another one](../lecture-notes.md#forward-only).
+>
+> **And it's the *database* you're dropping — not the `Migrations/` folder.** Those files stay exactly where they are; they're what `database update` replays to rebuild the table and the six creatures. Deleting *them* is the move that's gone as of this week.
 
 Watch what those two just did: dropped last week's database, then created it again, built the table and inserted the six creatures — schema *and* data, from files that came to you in a git clone. **The fact that that works is what a migration is:** a database you can carry in a repo.
 
