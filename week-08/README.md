@@ -22,7 +22,7 @@ The night the framework starts writing code — and the skill being taught is re
 
 - **Deployed-app gallery** — 2–3 student Azure URLs picked in advance; 2 minutes each. Their data survives the free-tier sleep now; worth noticing out loud
 - Collect the reading in §1 — *"what would have to change to turn your Create form into an Edit form?"* — and hold its second question (*where does the Id come from?*) unanswered until slide 10
-- ⚠️ **Copy `week-08/demo-starter/Curbside` out of the private answer-keys repo**, set your secret (`set` only — the id ships), then run `dotnet ef database drop --force` and `dotnet ef database update` *before* class. The shipped migrations refuse a database that remembers week 7's rehearsal
+- ⚠️ **Copy `week-08/demo-starter/Curbside` out of the private answer-keys repo**, set your secret (`set` only — the id ships), then run `dotnet ef database drop --force` and `dotnet ef database update` — **after your last rehearsal**, as the final prep step. The shipped migrations refuse a database that remembers week 7's rehearsal, and every copy shares one `<UserSecretsId>`, so rehearsing dirties the same database you teach from
 - **`dotnet tool install --global dotnet-aspnet-codegenerator`** before class — and one rehearsal pass, which also warms the NuGet cache for §2's live `dotnet add package`
 - **mssql extension** signed in and tested, panel closed — two appearances tonight (§8's new column, the wrap-up)
 - Terminal sized for the back row; the SQL log gains `UPDATE` and `DELETE` tonight

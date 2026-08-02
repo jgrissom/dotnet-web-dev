@@ -24,7 +24,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   ```bash
   dotnet user-secrets set "ConnectionStrings:DefaultConnection" "Server=...;Database=...;User ID=...;Password=...;TrustServerCertificate=True"
   ```
-- [ ] ⚠️ **Drop last week's database and rebuild it, before class:**
+- [ ] ⚠️ **Rebuild the database — before your rehearsal, and again after it:**
   ```bash
   dotnet ef database drop --force
   dotnet ef database update
@@ -36,6 +36,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   ```
   *(Already have it? `dotnet tool update --global dotnet-aspnet-codegenerator` — a 9.x tool against a 10.x SDK fails with a runtime error, same family as last week's `dotnet ef` skew.)*
 - [ ] **Rehearse the whole script once in a separate copy (≈40 min).** Besides finding what's broken, the rehearsal warms your NuGet cache — §2 adds two packages live, and a warm cache makes those commands instant on class wifi
+- [ ] 🚨 **Then run the drop + rebuild above again — the rehearsal used the same database.** A separate *copy* is not a separate database: the `<UserSecretsId>` ships in the `.csproj`, so every copy reads one secret and points at one database. Forty minutes of rehearsal leaves it in tonight's **end** state — `Slogan` column added, Ghost Kitchen gone — and §8 has nothing left to add in front of the room. **Last thing before class, always: drop, update, `/Trucks` shows seven cards**
 - [ ] `cd Curbside && dotnet watch`
 - [ ] **Open a second terminal in the same folder.** `dotnet watch` owns the first one all night; everything you type tonight goes in the second — §2's two `dotnet add package` commands and the scaffolder, then §8's `dotnet ef migrations add` and `dotnet ef database update`
 - [ ] **Park two browser tabs**: `/Trucks` and `/Trucks/Details/2`
