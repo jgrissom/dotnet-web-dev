@@ -517,6 +517,8 @@ public async Task<IActionResult> Index()
 > ```
 >
 > Skip this and the form *looks* perfect — but [the guest list drops the unbound fields and `Update` writes the resulting nulls](../lecture-notes.md#the-guest-list-bites), so saving an edit **erases** a record's Latin name and plate. Silently. Check 6 catches it by editing The Hodag's Latin name through your form and reading what actually landed.
+>
+> ⚠️ **Then restart — `Ctrl+C`, `dotnet watch`.** You changed *only* an attribute, and MVC reads each action's binding from its attributes at startup, so hot reload can report success and keep the old list. Re-test without restarting and the erase can happen again **with the correct fix already in place** — which sends you hunting a bug you've already fixed.
 
 **Try the whole thing:** reload `/Cryptids` — six plates. Home page — a random creature, plate and all. Edit The Hodag, refine its Latin name, save — it sticks. File a fresh report — *artist unknown*.
 

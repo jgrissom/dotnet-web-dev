@@ -135,7 +135,7 @@ Then load your home page and open the console — **F12 → Console**:
 - **Saving an edit → 404** — [the hidden `Id`](lecture-notes.md#the-hidden-id). The most common edit bug there is.
 - **An edit redirects but changes nothing** — no `await SaveChangesAsync()`. Marked, never written.
 - **An edit *added* a record** — `Add` where `Update` belongs.
-- **Saving an edit erased a field** — [the `[Bind]` list](lecture-notes.md#the-guest-list-bites). Your new property's name has to be on it.
+- **Saving an edit erased a field** — [the `[Bind]` list](lecture-notes.md#the-guest-list-bites). Your new property's name has to be on it. **Then restart before re-testing** (`Ctrl+C`, `dotnet watch`): that's an attribute-only edit, hot reload can keep the old list, and the erase happening *again* after a correct fix is how people end up rewriting code that was already right.
 - **Delete POST → 405** — the POST half needs `[HttpPost, ActionName("Delete")]` on `DeleteConfirmed`.
 - **"already defines a member called 'Delete'"** — that's *why* it's `DeleteConfirmed`. [The one-attribute fix](lecture-notes.md#deleteconfirmed-and-why-its-named-that).
 - **`There is already an object named '...'`** — you regenerated migrations against a database that remembers the old ones. [Forward only](lecture-notes.md#forward-only) — and if you already deleted the folder, come talk to me; it's recoverable but fiddly.

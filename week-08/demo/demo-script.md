@@ -39,7 +39,8 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] `cd Curbside && dotnet watch`
 - [ ] **Open a second terminal in the same folder.** `dotnet watch` owns the first one all night; §2 runs `dotnet add package` twice and the scaffolder from the second
 - [ ] **Park two browser tabs**: `/Trucks` and `/Trucks/Details/2`
-- [ ] **mssql extension** signed in, saved server connection tested, panel closed. It appears twice tonight — §8's new column, and the final payoff — so it's a supporting actor now, not the lead
+- [ ] **mssql extension** signed in, saved server connection tested, panel closed. It has **one** appearance tonight — §8, confirming the new column and its seven slogans — so it's a supporting actor this week, not the lead it was in week 7
+- [ ] **Rehearse the §5 debugger attach once on this machine.** The first-ever *Attach to a .NET process* can stop to fetch debugger assets, and that download is not something you want between a breakpoint and a room full of people. Once it's cached, the attach is instant all term
 - [ ] **Size the terminal for the back row.** The generated SQL is still the evidence: tonight adds `UPDATE` and `DELETE` to the vocabulary, and §5 watches the gap between `Update()` and `SaveChangesAsync()` through it
 - [ ] Teaching profile; editor font sized for the projector
 - [ ] **Say it before you start: *"lids down — you'll run the scaffolder yourself in the lab."*** Curbside isn't in the public repo, so nobody can follow along, and tonight's paste blocks are big

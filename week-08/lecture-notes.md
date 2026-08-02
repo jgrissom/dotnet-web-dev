@@ -608,6 +608,9 @@ No error, no warning, no validation message. Here's the mechanism, and it's wort
 [Bind("Id,Name,Cuisine,City,Rating,IsOpenLate,Slogan")]
 ```
 
+> [!WARNING]
+> **Restart before you re-test it — `Ctrl+C`, then `dotnet watch` again.** That edit changed *only* an attribute, and MVC works out each action's binding from its attributes at startup: hot reload prints success and can keep the old guest list. Re-test without restarting and your slogan may vanish a second time — with a correct fix on screen and nothing to explain it. Same family as week 7's rude edits, and it is the reason to suspect your *process* rather than your code when a fix seems not to take.
+
 ### Three files care
 
 The rule to carry into the homework, where your own model grows a property of your choosing:
