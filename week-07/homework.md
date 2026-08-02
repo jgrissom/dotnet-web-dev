@@ -101,6 +101,16 @@ az webapp config appsettings set --name your-app-XX1234 \
 
 **Two underscores**, not a colon. Azure hands that to your app as an environment variable, and `GetConnectionString("DefaultConnection")` finds it without a single line of your code changing.
 
+**Then wait, and don't re-run it.** Setting an app setting restarts the app on its own, and on the free F1 tier the first request after a restart routinely takes **30 seconds or more**. This is the part that catches people: a site that's still broken looks *identical* whether the setting hasn't taken effect yet or is genuinely wrong — so give it a minute before you start changing things that were already right.
+
+If it's still wrong after that, watch it start up instead of refreshing and guessing:
+
+```bash
+az webapp log tail --name your-app-XX1234 --resource-group <YOUR-RESOURCE-GROUP>
+```
+
+That shows you the actual exception rather than a 500. There's also `az webapp restart --name your-app-XX1234 --resource-group <YOUR-RESOURCE-GROUP>` if you want to force it — but it restarts the same clock, so it rarely gets you there faster.
+
 > [!TIP]
 > **Don't know your resource group?** You've never had to type it before — `az webapp up` made one for you and named it after your app. This prints it:
 >
@@ -185,7 +195,7 @@ Then load your home page and open the console — **F12 → Console**.
 > **If a good record "isn't accepted"** and you got a redirect anyway — you're missing `SaveChanges()`. `Add` only records an intention; nothing reaches the database until you save. No error is produced, which is what makes this one expensive.
 
 > [!TIP]
-> **If everything works locally and the deployed app 500s** — connection string or region. Check Azure's **Log stream** for the real exception. `A network-related or instance-specific error` from a deployed app almost always means a non-US region.
+> **If everything works locally and the deployed app 500s** — first, if you set the app setting in the last minute, **wait**: it restarts the app, and one that's still starting looks exactly like a broken one. After that it's the connection string or the region. Read the log with `az webapp log tail --name your-app-XX1234 --resource-group <YOUR-RESOURCE-GROUP>` (or **Log stream** in the portal) for the real exception. `A network-related or instance-specific error` from a deployed app almost always means a non-US region.
 
 *(If you have Node installed, `node homework-checks.js <url>` does the same from a terminal. You don't need it.)*
 

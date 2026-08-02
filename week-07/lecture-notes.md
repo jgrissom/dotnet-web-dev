@@ -574,7 +574,11 @@ You've never had to name a **resource group** before, because `az webapp up` qui
 az webapp list --query "[].{app:name, group:resourceGroup}" -o table
 ```
 
-Setting it restarts the app on its own. Load your site and the creatures are there.
+Setting it restarts the app on its own — **so wait rather than running it again.** On the free F1 tier the first request after a restart routinely takes 30 seconds or more, and a site that hasn't come back up yet looks exactly like a site with the wrong connection string. Give it a minute before you conclude anything.
+
+If it's still wrong after that, watch it start instead of refreshing blindly — `az webapp log tail --name your-app-XX1234 --resource-group <YOUR-RESOURCE-GROUP>` prints the real exception. `az webapp restart` will force a bounce, but it restarts the same clock rather than shortening it.
+
+Then load your site and the creatures are there.
 
 Then — and this is the demonstration that makes the whole night land — **add a record on the deployed site and reload your local app.** Same row. One database, two applications, two machines, two completely different ways of being told where it is. That is what you built.
 
@@ -670,7 +674,8 @@ TrucksController       asks for a context in its constructor
 - Last week's `item.Id = ...Max(...) + 1` line is still there. Delete it; the database assigns ids now.
 
 **Everything works locally, and the deployed app throws a 500**
-- Almost always the connection string or the region. **Your laptop's user secret is not on Azure** — that's by design, and it's the first thing to check: `az webapp config appsettings list --name your-app-XX1234 --resource-group <YOUR-RESOURCE-GROUP>` should show `ConnectionStrings__DefaultConnection`, spelled with two underscores. Then check Azure's **Log stream** for the actual exception, and confirm the app is in a **US** region.
+- **If you set the app setting less than a minute ago, wait.** It restarts the app, and a free-tier app that's still coming back up looks exactly like a broken one. Changing things during that window is how people break something that was working.
+- Otherwise: almost always the connection string or the region. **Your laptop's user secret is not on Azure** — that's by design, and it's the first thing to check: `az webapp config appsettings list --name your-app-XX1234 --resource-group <YOUR-RESOURCE-GROUP>` should show `ConnectionStrings__DefaultConnection`, spelled with two underscores. Then read the log — `az webapp log tail --name your-app-XX1234 --resource-group <YOUR-RESOURCE-GROUP>`, or **Log stream** in the portal — for the actual exception, and confirm the app is in a **US** region.
 
 **`dotnet ef` warns the tools are older than the runtime**
 - `dotnet tool update --global dotnet-ef`. Worth doing; version skew here produces strange failures.
