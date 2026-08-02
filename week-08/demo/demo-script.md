@@ -37,6 +37,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   *(Already have it? `dotnet tool update --global dotnet-aspnet-codegenerator` — a 9.x tool against a 10.x SDK fails with a runtime error, same family as last week's `dotnet ef` skew.)*
 - [ ] **Rehearse the whole script once in a separate copy (≈40 min).** Besides finding what's broken, the rehearsal warms your NuGet cache — §2 adds two packages live, and a warm cache makes those commands instant on class wifi
 - [ ] `cd Curbside && dotnet watch`
+- [ ] **Open a second terminal in the same folder.** `dotnet watch` owns the first one all night; §2 runs `dotnet add package` twice and the scaffolder from the second
 - [ ] **Park two browser tabs**: `/Trucks` and `/Trucks/Details/2`
 - [ ] **mssql extension** signed in, saved server connection tested, panel closed. It appears twice tonight — §8's new column, and the final payoff — so it's a supporting actor now, not the lead
 - [ ] **Size the terminal for the back row.** The generated SQL is still the evidence: tonight adds `UPDATE` and `DELETE` to the vocabulary, and §5 watches the gap between `Update()` and `SaveChangesAsync()` through it
@@ -469,6 +470,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   ```csharp
   [Bind("Id,Name,Cuisine,City,Rating,IsOpenLate,Slogan")]
   ```
+- [ ] ⚠️ **Restart before re-testing — `Ctrl+C`, `dotnet watch`.** That edit changed *only* an attribute, and MVC works out each action's binding from its attributes at startup: hot reload prints success and keeps the old guest list on some runs. Skip the restart and the slogan can vanish a second time with nothing on screen to explain it — which destroys the beat you just built. Same family as week 7's rude edits
 - [ ] Edit Roll Models again → **`Kimchi at midnight`** → Save → it sticks, on the card
 - [ ] 🎯 **The takeaway, for the lab and the homework:** *"when your model grows a property, three files care: the view that shows it, the form that edits it, and the `[Bind]` list that lets it through. Miss the third and the failure is silent — and destructive"*
 - [ ] **✓ CHECKPOINT:** the room can say why the slogan vanished instead of just not saving

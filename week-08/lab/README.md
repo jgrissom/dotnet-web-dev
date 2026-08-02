@@ -446,7 +446,7 @@ Four small view jobs, and one attribute that will try to sabotage you.
 </div>
 ```
 
-**3. The home page gets a featured record** — and this is [the "views don't read data" rule](../lecture-notes.md#the-guest-list-bites) done properly: the query lives in the controller. **`Controllers/HomeController.cs`** gets the same constructor move as `CryptidsController`:
+**3. The home page gets a featured record** — and this is [the "views don't read data" rule](../../week-07/lecture-notes.md#the-line-you-delete) done properly: the query lives in the controller. **`Controllers/HomeController.cs`** gets the same constructor move as `CryptidsController`:
 
 ```csharp
 private readonly CryptidContext _context;
@@ -546,7 +546,7 @@ public async Task<IActionResult> Index()
 - **Check 4 is red but delete works in the browser** — read the message: the scaffold controller is still in the project. Task 4 ends by deleting it (and restarting).
 - **`The model for context 'CryptidContext' has pending changes`** — you edited the model after generating the migration. Add another: `dotnet ef migrations add WhatYouChanged`. Forward only.
 - **The plates 404 in the browser** — the `src` should start `/img/cryptids/` (leading slash, no `wwwroot`). The files are already in the starter; nothing needs downloading.
-- **Home page throws `Unable to resolve service`** — `HomeController` asks for the context now; that's fine (task 3's registration covers every controller), but check the constructor's parameter type is `CryptidContext`.
+- **Home page throws `Unable to resolve service`** — `HomeController` asks for the context now; that's fine ([the one registration](../../week-07/lecture-notes.md#one-registration) in `Program.cs` covers every controller, and it shipped with the starter), but check the constructor's parameter type is `CryptidContext`.
 - The [troubleshooting appendix](../lecture-notes.md#appendix-troubleshooting) covers the rest.
 
 ## 🚀 Done early?
