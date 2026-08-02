@@ -39,6 +39,14 @@ dotnet test Cryptids.Checks
 
 > [!CAUTION]
 > **Same folder split as last week, and it still trips everybody:** `dotnet test Cryptids.Checks` runs from the folder holding *both* projects; `dotnet ef`, `dotnet user-secrets`, `dotnet watch` and tonight's new `dotnet aspnet-codegenerator` all run from **inside `Cryptids.Web`**.
+>
+> **So open three terminals now, before you start** — `dotnet watch` stays running all lab and you can't type in it:
+>
+> | Terminal | Where | What runs in it |
+> |---|---|---|
+> | 1 | inside `Cryptids.Web` | `dotnet watch` — started in task 1, left alone after that |
+> | 2 | inside `Cryptids.Web` | everything else: `dotnet user-secrets`, `dotnet ef`, `dotnet aspnet-codegenerator` |
+> | 3 | the folder holding **both** projects | `dotnet test Cryptids.Checks` |
 
 ## Where tonight's work happens
 

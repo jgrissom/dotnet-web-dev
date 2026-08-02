@@ -17,6 +17,11 @@
 //  of that works, it leaves your data exactly as it found it — the deletion
 //  is the clean-up, and it's also the D being checked.
 //
+//  The edit fills EVERY box on your form, then reads the form back. A box
+//  that returns empty after I typed into it is this week's silent bug: the
+//  property isn't in your [Bind] list, so it arrived null and Update() wrote
+//  the null over what was there. That check is inside "a correction is saved".
+//
 //  If the delete step fails, a record called "SelfCheck entry (edited)"
 //  stays in your list until your Delete works (or you remove it by hand).
 //
@@ -212,6 +217,26 @@
     if (token) body.__RequestVerificationToken = token;
     return body;
   };
+
+  // The same, but every visible box leaves here carrying a value. An unbound
+  // property can only be SEEN to vanish if it had something to lose: a column
+  // the model grew this week is empty on a freshly filed record, so posting the
+  // form back untouched would prove nothing either way.
+  const bodyFilled = (fields, overrides, token) => {
+    const body = {};
+    for (const f of fields) {
+      if (overrides[f.name] !== undefined) body[f.name] = overrides[f.name];
+      else if (f.hidden) body[f.name] = f.value;           // the Id has to survive intact
+      else body[f.name] = f.value !== "" ? f.value : validValue(f);
+    }
+    if (token) body.__RequestVerificationToken = token;
+    return body;
+  };
+
+  // Boxes whose round trip is worth trusting: real <input>s, visible, and not
+  // checkboxes (whose "value" is a tick, not text) or <select>s (whose value
+  // lives on an <option>, so reading it back always looks empty).
+  const roundTrips = (f) => !f.hidden && f.tag === "input" && f.type !== "checkbox";
 
   // A bad edit: hidden fields keep their values (the Id has to survive, or
   // you're testing the wrong failure), everything visible gets rubbish.
@@ -436,8 +461,8 @@
     const target = textField(editFields);
     const editedValue = clip(EDITED, target);
     const overrides = target ? { [target.name]: editedValue } : {};
-    const editPost = await post(root + editUrl,
-      bodyAsRendered(editFields, overrides, tokenOf(editPage.body)));
+    const sentBody = bodyFilled(editFields, overrides, tokenOf(editPage.body));
+    const editPost = await post(root + editUrl, sentBody);
 
     const afterEdit = await getWithWakeup(`${root}/${route}`);
     const idsAfterEdit = afterEdit ? detailsIds(afterEdit.body, route) : [];
@@ -446,7 +471,19 @@
     const valueSaved = detailsAfterEdit && detailsAfterEdit.status < 400 &&
                        detailsAfterEdit.body.includes(editedValue);
 
-    add(editPost && editPost.redirected && sameCount && valueSaved ? "pass" : "fail", 3,
+    // Read the form back. A visible box I sent a value in that returns EMPTY
+    // was dropped by the [Bind] list on the way in — and Update() then wrote
+    // the resulting null straight over whatever used to be there. Only an
+    // outright blank counts: a reformatted or rounded value is not an erase.
+    const reread = await getWithWakeup(root + editUrl);
+    const rereadFields = reread && reread.status < 400
+      ? formFields(formHtml(reread.body)) : [];
+    const erased = rereadFields.filter(f =>
+      roundTrips(f) && f.value === "" &&
+      sentBody[f.name] !== undefined && String(sentBody[f.name]) !== "");
+
+    add(editPost && editPost.redirected && sameCount && valueSaved && !erased.length
+        ? "pass" : "fail", 3,
       "a correction is saved — as an update, not a copy", {
         hint: !editPost
           ? "the edit submission didn't get a response at all."
@@ -460,9 +497,23 @@
             ? `the edit went through, but your list grew from ${idsAfterCreate.length} to `
               + `${idsAfterEdit.length} records — the POST filed a duplicate instead of updating. `
               + "That's Add where Update should be."
-          : "you redirected, but the record still shows its old value. Update() only marks the "
-            + "record modified — nothing reaches the database until SaveChangesAsync().",
-        todo: "The scaffold's POST half is the reference: _context.Update(item); "
+          : !valueSaved
+            ? "you redirected, but the record still shows its old value. Update() only marks the "
+              + "record modified — nothing reaches the database until SaveChangesAsync()."
+            : `I typed a value into every box on your Edit form and saved. `
+              + `${erased.map(f => f.name).join(" and ")} came back EMPTY — the value posted, and `
+              + "your app threw it away. That's the [Bind] list: it's a guest list, only the names "
+              + "on it are read out of the form, so the property arrived null — and Update() marks "
+              + "the WHOLE record modified, so the save wrote that null over what was there. Not "
+              + "ignored. Erased.",
+        todo: erased.length
+          ? `Add ${erased.map(f => f.name).join(" and ")} to the [Bind] list on your Edit POST:\n`
+            + "[Bind(\"Id,...,YourNewProperty\")]\n"
+            + "Then STOP the app and start it again (Ctrl+C, dotnet watch) before you re-test. "
+            + "That edit changed only an attribute, and MVC works out each action's binding from "
+            + "its attributes at startup — hot reload prints success and can keep the old list, "
+            + "which erases the value a second time with the correct fix already on screen."
+          : "The scaffold's POST half is the reference: _context.Update(item); "
             + "await _context.SaveChangesAsync(); then redirect.",
       });
 

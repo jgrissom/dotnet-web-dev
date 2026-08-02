@@ -655,6 +655,7 @@ D   ask first  →  Remove + SaveChangesAsync DELETE    ← GET asks, POST acts
 
 **An edit redirects fine, but one field comes back empty — and its old value is gone**
 - That field isn't in the `[Bind]` list on your Edit POST. The binder left it `null`, `Update` marked everything modified, and the save wrote the null. Add the property's name to the list. This is the silent one this week.
+- **Then restart before you re-test — `Ctrl+C`, `dotnet watch`.** Adding a name to `[Bind]` changes *only* an attribute, and MVC works out each action's binding from its attributes at startup: hot reload prints success and can keep the old list. Skip the restart and the field is erased a *second* time with the correct fix already on screen — which is how people end up rewriting code that was right.
 
 **An edit redirects, but nothing changed at all**
 - No `SaveChangesAsync()` — `Update` only marks. Same disease as week 7's missing `SaveChanges`, same silence.

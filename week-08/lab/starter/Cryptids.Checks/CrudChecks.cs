@@ -364,7 +364,10 @@ public class CrudChecks : IClassFixture<RegistryApp>
         RequireController();
 
         var indexHtml = await Html(Index);
-        Assert.True(Regex.Matches(indexHtml, "/img/cryptids/").Count >= 6,
+        // Count against the records actually on the page, not a fixed 6: check 4
+        // closes a file, and these checks share one in-memory database.
+        var onIndex = DetailsIds(indexHtml).Count;
+        Assert.True(onIndex > 0 && Regex.Matches(indexHtml, "/img/cryptids/").Count >= onIndex,
             "the registry page doesn't show the plates. The card partial gets an image at the "
             + "top:\n"
             + "    <img src=\"@(Model.ImageUrl ?? \"/img/cryptids/unillustrated.webp\")\" "
