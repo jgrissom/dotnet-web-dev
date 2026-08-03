@@ -292,7 +292,8 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] Hover `ModelState` → `IsValid: true`. *"The guard you're paused on is reading this"*
 - [ ] **F10** — step over the guard, the `ModelState` check, down to `_context.Update(truck)`. **F10 past it**, then 🎯 **point at the terminal: no SQL.** *"Update ran. Nothing happened. Marked, not written — last week I could only assert that about `Add`; tonight you're watching the gap"*
 - [ ] **F10 over `SaveChangesAsync`** — 🎯 **the UPDATE appears in the terminal.** *"There. That line is the database call. Everything else was bookkeeping"*
-- [ ] **F5** to let the request finish; the browser gets its redirect. **`Shift+F5` to detach**
+- [ ] **F5** to let the request finish; the browser gets its redirect
+- [ ] ⚠️ **`Shift+F5` to detach — before §6, not optional.** Your breakpoint is on `if (id != truck.Id)`, the first line of the Edit POST, and **§6 submits an edit** to fire the concurrency 404. Stay attached and VS Code grabs the screen at the breakpoint instead — the beat dies for a reason that looks like nothing. Detaching is enough; the red dot can stay, it can't fire with nothing attached
 - [ ] 🎞️ **GO TO SLIDE 15** — *Update marks. SaveChanges writes.* · recap on the slide what they just watched, because it goes on being true without a debugger attached: *"bind → guard → mark → write. You watched the space between the last two, which is where week 7's silent bug lived"*
 - [ ] 💡 If asked "when would I use this myself?": *"any time the question is 'what is this object right now?' — a form that binds zeros, a guard that fails when you're sure it shouldn't. Attach, breakpoint, look. It's faster than ten `Console.WriteLine`s and it can't lie to you"*
 - [ ] **✓ CHECKPOINT:** the room can say what `Update()` did and what `SaveChangesAsync()` did — having seen the gap between them
