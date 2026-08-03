@@ -39,6 +39,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] 🚨 **Then run the drop + rebuild above again — the rehearsal used the same database.** A separate *copy* is not a separate database: the `<UserSecretsId>` ships in the `.csproj`, so every copy reads one secret and points at one database. Forty minutes of rehearsal leaves it in tonight's **end** state — `Slogan` column added, Ghost Kitchen gone — and §8 has nothing left to add in front of the room. **Last thing before class, always: drop, update, `/Trucks` shows seven cards**
 - [ ] `cd Curbside && dotnet watch`
 - [ ] **Open a second terminal in the same folder.** `dotnet watch` owns the first one all night; everything you type tonight goes in the second — §2's two `dotnet add package` commands and the scaffolder, then §8's `dotnet ef migrations add` and `dotnet ef database update`
+- [ ] ⚠️ **Know the one prompt that will bite you, and answer it `a` the first time.** Creating a *new* `.cshtml` (§4's `Edit.cshtml`, §6's `Delete.cshtml`) is a change hot reload can't apply, so watch stops and asks **`Do you want to restart your app? Yes (y) / No (n) / Always (a)`** — **in terminal 1, while you're typing in terminal 2.** Miss it and the page 500s with *"The view 'Edit' was not found"*, naming the exact path the file is sitting at. Answer **`a`** at the first prompt and it never asks again all night
 - [ ] **Park two browser tabs**: `/Trucks` and `/Trucks/Details/2`
 - [ ] **mssql extension** signed in, saved server connection tested, panel closed. It has **one** appearance tonight — §8, confirming the new column and its seven slogans — so it's a supporting actor this week, not the lead it was in week 7
 - [ ] **Rehearse the §5 debugger attach once on this machine.** The first-ever *Attach to a .NET process* can stop to fetch debugger assets, and that download is not something you want between a breakpoint and a room full of people. Once it's cached, the attach is instant all term
@@ -260,6 +261,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
   </details>
 
+- [ ] ⚠️ **First new `.cshtml` of the night — terminal 1 is asking to restart.** Answer **`a`** (Always) and you won't see the prompt again tonight; §6 adds another view. Skip it and the Edit page 500s with *"The view 'Edit' was not found"*, listing the very path the file is at
 - [ ] Add the link in `Views/Trucks/Details.cshtml`, under the badge block:
   ```html
   <p><a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-secondary">✏️ Edit this truck</a></p>
@@ -376,6 +378,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
   </details>
 
+- [ ] ⚠️ **`Delete.cshtml` is a new file — glance at terminal 1.** If you didn't answer `a` back in §0, watch is sitting on `Do you want to restart your app?` and the confirmation page will 500 with *"The view 'Delete' was not found"* despite the file being right there. Answer it before you go on
 - [ ] Add the link next to Edit in `Views/Trucks/Details.cshtml`:
   ```html
   <p><a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-outline-danger">🗑️ Remove this truck</a></p>

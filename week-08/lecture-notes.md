@@ -680,8 +680,10 @@ D   ask first  →  Remove + SaveChangesAsync DELETE    ← GET asks, POST acts
 **Two `Delete` methods won't compile: "already defines a member called 'Delete' with the same parameter types"**
 - That's the constraint `DeleteConfirmed` exists to solve. Rename the POST and pin its URL with `[ActionName("Delete")]`.
 
-**`InvalidOperationException: The view 'Edit' was not found`**
-- The action exists, the view doesn't. Your copy of the scaffold's view belongs at `Views/YourThings/Edit.cshtml` (same for `Delete.cshtml`).
+**`InvalidOperationException: The view 'Edit' was not found` — and the error lists the exact path where your file is sitting**
+- **Look at the `dotnet watch` terminal.** Adding a *new* `.cshtml` is a change hot reload can't apply — the generated Razor class carries an attribute, so you get `ENC0021: Adding attribute requires restarting the application`, and watch **stops and asks**: `Do you want to restart your app? Yes (y) / No (n) / Always (a) / Never (v)`. Until you answer, the app keeps serving the build from before your file existed, so the framework searches the right folder and honestly doesn't find it.
+- Press **`y`**, or **`a`** to stop being asked every time you add a view. This happens twice in the lab (`Edit.cshtml`, `Delete.cshtml`) and again on your own app in the homework. **Don't move the file** — it's already where it belongs.
+- If the file genuinely isn't at `Views/YourThings/Edit.cshtml`, that's the other cause. Check the folder and the spelling before you blame the reload.
 
 **My breakpoint is a hollow circle and never fires**
 - It's set against a build `dotnet watch` has since replaced. Detach (⇧F5), let the rebuild finish, re-attach. Attach *after* your last code edit.

@@ -132,6 +132,7 @@ Then load your home page and open the console — **F12 → Console**:
 - **The scaffolder won't run at all** — [tool not installed](lecture-notes.md#two-packages-and-a-tool) (`dotnet tool install --global dotnet-aspnet-codegenerator`), or you're not in your web project folder.
 - **`...install Entity Framework core packages... Microsoft.EntityFrameworkCore.Tools`** — requirement 1's second package is missing. This is the one your app never calls, which is why it's easy to skip.
 - **`Scaffolding failed: Build failed`** — your project has to compile before the scaffolder will touch it. `dotnet build`, read the error, fix, retry.
+- **`The view 'Edit' was not found` — and the error names the exact path your file is at** — look at the `dotnet watch` terminal: a *new* `.cshtml` can't be hot-reloaded, so watch stopped and asked **`Do you want to restart your app? Yes (y) / No (n) / Always (a)`**. Until you answer, the running app is the one built before your file existed. Press **`a`**. **Don't move the file** — it's already in the right place.
 - **Saving an edit files a duplicate instead of correcting the record** — [the hidden `Id`](lecture-notes.md#the-hidden-id) is missing and your form's action carries no id either, so `Update()` filed an unset key as a new record. The quiet one this week, after `[Bind]`.
 - **An edit redirects but changes nothing** — no `await SaveChangesAsync()`. Marked, never written.
 - **An edit *added* a record** — `Add` where `Update` belongs.
