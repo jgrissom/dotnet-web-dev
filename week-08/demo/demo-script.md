@@ -468,7 +468,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   }
   ```
 - [ ] Reload `/Trucks` — slogans on every card. Open **Edit on Roll Models** — the Slogan box shows *Seoul food, street speed*. *"Form updated, column live. Looks done"*
-- [ ] ⚠️ **Break #2 — don't announce it.** Change the slogan to something new — **`Kimchi at midnight`** — and Save. Redirect, list loads…
+- [ ] ⚠️ **Break #2 — don't announce it.** On **Roll Models**' Edit form (already open from the beat above), change the slogan to **`Kimchi at midnight`** and Save. Redirect, list loads…
 - [ ] 🎯 **The slogan is *gone*. Not the old one — none at all.** Sit in it. *"No error. No warning. I typed a new slogan and saving erased the one that existed"*
 - [ ] **Predict/collect:** *"I warned you a guest list has a failure mode. What happened?"* — let someone get close before you point at `[Bind("Id,Name,Cuisine,City,Rating,IsOpenLate")]`
 - [ ] 🎞️ **GO TO SLIDE 22** — *The guest list bites* · walk the mechanism: *"Slogan isn't on the list, so the binder never set it — the posted truck arrived with `Slogan = null`. Then `Update` marked the **whole record** modified, and the save faithfully wrote every column, null included. The guest list didn't just ignore my field. It fed the database a blank one"*
