@@ -81,7 +81,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] Name the split: **`CodeGeneration.Design`** is the scaffolder's templates · **`EntityFrameworkCore.Tools`** is the part that reads your `DbContext`. 🎯 *"Skip the second and the scaffolder stops with an error that names it — that's how I found out it was needed, too"*
 - [ ] Mention the tool itself is already installed (per-machine, like `dotnet ef`): `dotnet-aspnet-codegenerator`. *"You'll install it once in the lab, and again every time a frozen lab PC forgets it"*
 - [ ] Point at the `.csproj` — two more `<PackageReference>` lines, same as every package since week 7. *"Nothing magical arrived. A file changed"*
-- [ ] ⚠️ **`dotnet watch` now prints yellow `NU1901` warnings — name them, don't skip past them:** *"NuGet audits every package you depend on, including the ones your packages depend on. `NuGet.Packaging` and `NuGet.Protocol` come in six levels under the scaffolder, and they've got a **low**-severity advisory against them. Read the line above it — **build succeeded**. It's a warning, not an error, and it'll be there for the rest of the night"*
+- [ ] ⚠️ **`dotnet watch` now prints yellow `NU1901` warnings — name them, don't skip past them:** *"NuGet audits every package you depend on, including the ones your packages depend on. `NuGet.Packaging` and `NuGet.Protocol` come in six levels under the scaffolder, and they've got a **low**-severity advisory against them. Read the line above it — **build succeeded**. Warnings, not errors"* — then plant the payoff: *"remember these. They go away tonight, and you'll see exactly why"* (§7 removes the packages)
 
 ### One command *(slide 6)*
 
@@ -400,6 +400,13 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] Delete **`Controllers/TrucksScaffoldController.cs`** and the **`Views/TrucksScaffold/`** folder
 - [ ] ⚠️ **Restart, don't trust the reload** — deleting a class is a rude edit, same as week 7: `dotnet watch` prints `ENC0033` and keeps serving the old build. `Ctrl+C`, `dotnet watch`
 - [ ] `/Trucks` works, Edit works, `/TrucksScaffold` is an honest 404. *"In the lab, check 4 refuses to go green while your scaffold is still standing"*
+- [ ] **Now take the tool out too** — in the second terminal:
+  ```bash
+  dotnet remove package Microsoft.VisualStudio.Web.CodeGeneration.Design
+  dotnet remove package Microsoft.EntityFrameworkCore.Tools
+  ```
+- [ ] 🎯 **Watch the yellow `NU1901` warnings stop.** *"Those have been on screen since §2 — they came from packages the scaffolder dragged in. The scaffolder wrote our code, we kept what was worth keeping, and now the machinery goes back in the box. A build-time tool you've finished with is not a dependency; it's litter"*
+- [ ] ⚠️ **Say what's still there and why:** *"`EntityFrameworkCore.Design` stays — that's what `dotnet ef` runs on, and §8 needs it in about four minutes. It came with week 7, not with the scaffolder"*
 
 ## 8 · A column on a live table *(slides 20–22)*
 

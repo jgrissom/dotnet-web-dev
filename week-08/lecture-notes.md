@@ -47,7 +47,9 @@ dotnet add package Microsoft.EntityFrameworkCore.Tools
   ```
 
 > [!NOTE]
-> **After these go in, every build prints yellow `NU1901` warnings. They're expected.** NuGet audits your dependencies *and their dependencies*, and `NuGet.Packaging` / `NuGet.Protocol` arrive six levels beneath the scaffolder carrying a **low**-severity advisory. The line to read is the one above them — `Build succeeded`. Warnings, not errors: the app builds, runs and hot-reloads exactly as before. Nothing to fix, and nothing you could fix without pinning a package you never asked for.
+> **After these go in, every build prints yellow `NU1901` warnings. They're expected, and they're temporary.** NuGet audits your dependencies *and their dependencies*, and `NuGet.Packaging` / `NuGet.Protocol` arrive six levels beneath the scaffolder carrying a **low**-severity advisory. The line to read is the one above them — `Build succeeded`. Warnings, not errors: the app builds, runs and hot-reloads exactly as before.
+>
+> **They stop when you take the scaffolder back out** — see [Part 7](#part-7-the-scaffold-comes-down-5-min). A scaffolder is a tool you run once, not a dependency your app has; once it has written your code, both packages come off and the warnings go with them.
 
   Like week 7's `.Design` message: unusually helpful, as errors go.
 
@@ -529,6 +531,22 @@ Delete **`Controllers/TrucksScaffoldController.cs`** and the whole **`Views/Truc
 > **Restart rather than trusting the reload.** Deleting a class is a rude edit — `dotnet watch` prints `ENC0033` and **keeps serving the previous build**, exactly as it did when week 7 deleted `TruckData.cs`. `Ctrl+C`, `dotnet watch`, then check: `/Trucks` works, Edit works, `/TrucksScaffold` is an honest 404.
 
 The lab's check 4 makes this a rule rather than advice: it refuses to pass while your scaffold controller is still in the project.
+
+### And the tool goes back in the box
+
+The generated files are gone; the machinery that wrote them is still in your `.csproj`. Take it out:
+
+```bash
+dotnet remove package Microsoft.VisualStudio.Web.CodeGeneration.Design
+dotnet remove package Microsoft.EntityFrameworkCore.Tools
+```
+
+**The yellow `NU1901` warnings stop** — they came from packages the scaffolder dragged in with it. That's the point worth keeping: **a build-time tool you've finished with isn't a dependency, it's litter.** Your app never called the scaffolder at runtime; it only needed it long enough to have code written for it.
+
+> [!IMPORTANT]
+> **`Microsoft.EntityFrameworkCore.Design` stays.** That's the one `dotnet ef` runs on, and Part 8 needs it minutes from now — `migrations add` and `database update` both stop working without it. It arrived in week 7 with the database, not with the scaffolder. Remove the two named above and nothing else.
+
+Need to scaffold again later? Add the packages back — it's the same two commands, and they're in the notes.
 
 ## Part 8: A column on a live table (25 min)
 

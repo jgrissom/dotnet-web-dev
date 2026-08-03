@@ -11,7 +11,7 @@ The Registry can take reports and show them. It cannot fix a typo in one, and it
 >
 > **The two scaffolding packages are already in `Cryptids.Web.csproj`** (`Microsoft.VisualStudio.Web.CodeGeneration.Design` and `Microsoft.EntityFrameworkCore.Tools`), so nobody spends the lab waiting on NuGet. You'll add them to your own app yourself in the homework — they're in [the notes](../lecture-notes.md#two-packages-and-a-tool).
 >
-> **Because they're already in, your first build prints yellow `NU1901` warnings — expected, ignore them.** They're low-severity advisories against `NuGet.Packaging` / `NuGet.Protocol`, which arrive six levels beneath the scaffolder. Read the line above: `Build succeeded`. Warnings, not errors.
+> **Because they're already in, your first build prints yellow `NU1901` warnings — expected, and temporary.** They're low-severity advisories against `NuGet.Packaging` / `NuGet.Protocol`, which arrive six levels beneath the scaffolder. Read the line above: `Build succeeded`. Warnings, not errors — and **task 4 removes the packages, which stops them.**
 >
 > **The seven plate images are already in `wwwroot/img/cryptids/`.** Task 6 puts them on screen; nothing has to be downloaded.
 
@@ -73,7 +73,7 @@ dotnet test Cryptids.Checks
 | 1 | *(check 1 is already green)* | Install the scaffolder tool, put your connection string in user secrets, then **drop last week's database** and let one `dotnet ef database update` rebuild the whole thing. **[Task 1 in full ↓](#task-1-in-full)** |
 | 2 | *(no check — it's the reference)* | [Scaffold](../lecture-notes.md#the-command-piece-by-piece) `CryptidsScaffoldController` and browse what one command wrote. **[Task 2 in full ↓](#task-2-in-full)** |
 | 3 | `TheEditFormShowsTheRecord`, `ACorrectionIsSaved` | Port [the Edit pair](../lecture-notes.md#the-edit-pair) into `CryptidsController`, with a `Views/Cryptids/Edit.cshtml` in the Registry's own style. **[Task 3 in full ↓](#task-3-in-full)** |
-| 4 | `AFileCanBeClosed` | Port [the Delete pair](../lecture-notes.md#the-delete-pair), then **delete the scaffold** — the check refuses to pass while it's still standing. **[Task 4 in full ↓](#task-4-in-full)** |
+| 4 | `AFileCanBeClosed` | Port [the Delete pair](../lecture-notes.md#the-delete-pair), then **delete the scaffold** — the check refuses to pass while it's still standing — and remove the two scaffolding packages. **[Task 4 in full ↓](#task-4-in-full)** |
 | 5 | `TheRegistryGrowsTwoColumns` | Two [nullable properties](../lecture-notes.md#nullable-and-why), Latin names and plates in the seed data, and one [additive migration](../lecture-notes.md#the-additive-migration). **[Task 5 in full ↓](#task-5-in-full)** |
 | 6 | `ThePlatesAreOnDisplay` | Plates on the cards and details, a featured record on the home page, the new fields on the Edit form — and [the `[Bind]` list](../lecture-notes.md#the-guest-list-bites) lets them through. **[Task 6 in full ↓](#task-6-in-full)** |
 
@@ -363,6 +363,18 @@ public async Task<IActionResult> DeleteConfirmed(int id)
 
 > [!WARNING]
 > **Restart after deleting it** — `Ctrl+C`, then `dotnet watch`. Deleting a class is a rude edit: `dotnet watch` prints `ENC0033` and keeps serving the old build, exactly like week 7's `CryptidData.cs` deletion.
+
+**Then the tool goes back in the box.** The generated files are gone; the machinery that wrote them is still in your `.csproj`. From inside `Cryptids.Web`:
+
+```bash
+dotnet remove package Microsoft.VisualStudio.Web.CodeGeneration.Design
+dotnet remove package Microsoft.EntityFrameworkCore.Tools
+```
+
+**The yellow `NU1901` warnings you've had since your first build stop.** They came from packages the scaffolder brought with it — [a build-time tool you've finished with isn't a dependency](../lecture-notes.md#and-the-tool-goes-back-in-the-box).
+
+> [!IMPORTANT]
+> **Remove those two and nothing else. `Microsoft.EntityFrameworkCore.Design` stays** — that's what `dotnet ef` runs on, and task 5's `migrations add` needs it. It came with week 7's database, not with the scaffolder.
 
 `dotnet test Cryptids.Checks`: **4 / 6** — and that's tonight's in-class target. 🎉 The rest is the plates.
 
