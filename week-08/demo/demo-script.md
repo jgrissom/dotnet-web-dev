@@ -280,7 +280,8 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 - [ ] 🎞️ **GO TO SLIDE 14** — *The debugger, finally* · *"Since week 1 you've had a debugger and we've never needed it — `Console.WriteLine` and the SQL log answered everything. Tonight there's a question they can't answer: what does the object look like in the moment between the form and the database? Time to attach"*
 - [ ] Say why it's *attach* and not F5: *"`dotnet watch` owns the app, so we don't launch a second copy — we attach to the one that's running"*
-- [ ] **Cmd+Shift+P → "Debug: Attach to a .NET 5+ or .NET Core process" → type `Curbside` → pick the process.** ⚠️ Two appear on some machines — `dotnet watch` and `Curbside`; you want **Curbside**, the app itself
+- [ ] **⇧⌘P → "Debug: Attach to a .NET 5+ or .NET Core process" → type `Curbside` → pick the process.** ⚠️ Two appear on some machines — `dotnet watch` and `Curbside`; you want **Curbside**, the app itself
+- [ ] 🗣️ **Say the Windows shortcut, not the one you just pressed** — *"Ctrl+Shift+P for most of you"*. The slide shows both; almost everyone in the room is on Windows and you are not
 - [ ] Set a breakpoint on the **`if (id != truck.Id)`** line of the ported Edit POST — click in the gutter, red dot
 - [ ] ⚠️ **Attach *after* the last code edit** — a breakpoint set against a build the watcher has since replaced shows as a hollow circle and never fires. If that happens: detach (`Shift+F5`), let the rebuild finish, re-attach
 

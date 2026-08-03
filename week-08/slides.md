@@ -244,7 +244,7 @@ Without it, the form leans on the URL — and `Update` files a **duplicate** if 
 
 ## The debugger, finally
 
-**⇧⌘P → “Attach to a .NET process” → Curbside**
+**Ctrl+Shift+P** / **⇧⌘P** → “Attach to a .NET process” → **Curbside**
 
 Breakpoint. Submit the form. **Time stops mid-request.**
 
