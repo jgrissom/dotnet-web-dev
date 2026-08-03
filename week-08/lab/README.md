@@ -136,7 +136,7 @@ dotnet aspnet-codegenerator controller -name CryptidsScaffoldController -m Crypt
 Six lines of output: **one controller, five views.** Then:
 
 - **Browse `/CryptidsScaffold`.** A complete working CRUD site — plain tables, none of your styling, all of your creatures.
-- **Prove it's your data:** use the scaffold's own Edit page to change a creature's `Sightings`, save, then reload `/Cryptids`. The change is on *your* page. Two UIs, one table.
+- **Prove it's your data:** use the scaffold's own Edit page to change a creature's **Reports on file** (the `Sightings` property — `[Display]` is why the label differs), save, then reload `/Cryptids`. The change is on *your* page. Two UIs, one table.
 - **Open `Controllers/CryptidsScaffoldController.cs` and skim it.** It's your week-7 controller with armor on — same constructor, same context, async everywhere, plus the Edit and Delete pairs you're about to take. The [notes walk every line](../lecture-notes.md#task-is-a-promise).
 
 | If it says | It means |
@@ -277,7 +277,10 @@ using Microsoft.EntityFrameworkCore;
 </div>
 ```
 
-Correct a record in the browser — change Mothman's `Sightings`, watch the `UPDATE ... WHERE` in the terminal — then `dotnet test Cryptids.Checks`: **3 / 6.**
+Correct a record in the browser — change Mothman's **Reports on file** box, watch the `UPDATE ... WHERE` in the terminal — then `dotnet test Cryptids.Checks`: **3 / 6.**
+
+> [!NOTE]
+> **Looking for a "Sightings" field? There isn't one on screen.** The property is `Sightings`, but it carries `[Display(Name = "Reports on file")]`, and that's what the label renders — same `[Display]` you met in week 6. The C# name is what you write in `asp-for`; the display name is what the page shows.
 
 ### Task 4 in full
 
