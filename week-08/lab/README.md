@@ -468,20 +468,55 @@ Four small view jobs, and one attribute that will try to sabotage you.
 
 **The `??` is the null-safety this was all for:** a record with no plate shows the *artist unknown* placeholder instead of a broken image. File a report through your form and look at its card — that's the placeholder working, and check 6 does exactly that.
 
-**2. Details.** Same treatment in `Views/Cryptids/Details.cshtml` — plate on the left, facts on the right. A two-column shape that works:
+**2. Details.** `Views/Cryptids/Details.cshtml` gets the plate on the left and the facts on the right. **Two different things happen here:** everything already on the page *moves* into the right-hand column, and the **Latin name is new** — it didn't exist before task 5, so it isn't something you're moving.
+
+**This is the whole file:**
 
 ```html
+@model Cryptid
+@{
+    ViewData["Title"] = Model.Name;
+}
+
 <div class="row">
     <div class="col-md-5">
         <img src="@(Model.ImageUrl ?? "/img/cryptids/unillustrated.webp")" class="img-fluid rounded mb-3" alt="Field-guide plate: @Model.Name" />
     </div>
     <div class="col-md-7">
-        @* ...everything the page already had: heading, Latin name in
-           <p class="fst-italic text-muted"> if it isn't null, lead, badges,
-           your Edit/Delete buttons, the back link... *@
+        <h1>@Model.Name</h1>
+        @if (Model.LatinName != null)
+        {
+            <p class="fst-italic text-muted">@Model.LatinName</p>
+        }
+        <p class="lead">@Model.Region · first sighted @Model.FirstSighting</p>
+        <p>@Model.Sightings reports on file.</p>
+
+        @if (Model.IsDebunked)
+        {
+            <p><span class="badge bg-danger">💀 Debunked</span></p>
+        }
+        else
+        {
+            <p><span class="badge bg-success">👀 Unconfirmed</span></p>
+        }
+
+        <div class="mt-4">
+            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-secondary">✏️ Correct the record</a>
+            <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-outline-danger">🗑️ Close the file</a>
+        </div>
+
+        <p class="mt-4"><a href="/Cryptids">← Back to the registry</a></p>
     </div>
 </div>
+
+@section Scripts {
+    <script>
+        console.log("Cryptid file loaded: @Model.Name");
+    </script>
+}
 ```
+
+**The `@if` on the Latin name is the same `?` from task 5 earning its keep** — records filed through your form have no Latin name, and a blank italic line under the heading would look like a bug. The plate uses `??` for the same reason one line above.
 
 **3. The home page gets a featured record** — and this is [the "views don't read data" rule](../../week-07/lecture-notes.md#the-line-you-delete) done properly: the query lives in the controller. **`Controllers/HomeController.cs`** gets the same constructor move as `CryptidsController`:
 
