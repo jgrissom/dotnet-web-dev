@@ -11,6 +11,8 @@ The Registry can take reports and show them. It cannot fix a typo in one, and it
 >
 > **The two scaffolding packages are already in `Cryptids.Web.csproj`** (`Microsoft.VisualStudio.Web.CodeGeneration.Design` and `Microsoft.EntityFrameworkCore.Tools`), so nobody spends the lab waiting on NuGet. You'll add them to your own app yourself in the homework — they're in [the notes](../lecture-notes.md#two-packages-and-a-tool).
 >
+> **Because they're already in, your first build prints yellow `NU1901` warnings — expected, ignore them.** They're low-severity advisories against `NuGet.Packaging` / `NuGet.Protocol`, which arrive six levels beneath the scaffolder. Read the line above: `Build succeeded`. Warnings, not errors.
+>
 > **The seven plate images are already in `wwwroot/img/cryptids/`.** Task 6 puts them on screen; nothing has to be downloaded.
 
 **1. Update your clone of the course repo:**

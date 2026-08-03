@@ -80,6 +80,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] Name the split: **`CodeGeneration.Design`** is the scaffolder's templates · **`EntityFrameworkCore.Tools`** is the part that reads your `DbContext`. 🎯 *"Skip the second and the scaffolder stops with an error that names it — that's how I found out it was needed, too"*
 - [ ] Mention the tool itself is already installed (per-machine, like `dotnet ef`): `dotnet-aspnet-codegenerator`. *"You'll install it once in the lab, and again every time a frozen lab PC forgets it"*
 - [ ] Point at the `.csproj` — two more `<PackageReference>` lines, same as every package since week 7. *"Nothing magical arrived. A file changed"*
+- [ ] ⚠️ **`dotnet watch` now prints yellow `NU1901` warnings — name them, don't skip past them:** *"NuGet audits every package you depend on, including the ones your packages depend on. `NuGet.Packaging` and `NuGet.Protocol` come in six levels under the scaffolder, and they've got a **low**-severity advisory against them. Read the line above it — **build succeeded**. It's a warning, not an error, and it'll be there for the rest of the night"*
 
 ### One command *(slide 6)*
 

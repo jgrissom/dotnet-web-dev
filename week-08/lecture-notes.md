@@ -46,6 +46,9 @@ dotnet add package Microsoft.EntityFrameworkCore.Tools
   packages and try again: Microsoft.EntityFrameworkCore.Tools
   ```
 
+> [!NOTE]
+> **After these go in, every build prints yellow `NU1901` warnings. They're expected.** NuGet audits your dependencies *and their dependencies*, and `NuGet.Packaging` / `NuGet.Protocol` arrive six levels beneath the scaffolder carrying a **low**-severity advisory. The line to read is the one above them — `Build succeeded`. Warnings, not errors: the app builds, runs and hot-reloads exactly as before. Nothing to fix, and nothing you could fix without pinning a package you never asked for.
+
   Like week 7's `.Design` message: unusually helpful, as errors go.
 
 And the command-line tool, **once per machine** — the same deal as `dotnet-ef`:
