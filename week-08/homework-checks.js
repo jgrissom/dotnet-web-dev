@@ -489,14 +489,18 @@
           ? "the edit submission didn't get a response at all."
           : editPost.status === 404
             ? "posting the edit came back 404. The action compares the URL's id with the posted "
-              + "record's Id and refuses a mismatch — if the hidden Id field is missing or empty, "
-              + "this is exactly what you see."
+              + "record's Id and refuses a mismatch — so check the VALUE of your hidden Id input. "
+              + "(An empty or wrong one does this. A missing one wouldn't: the binder reads Id "
+              + "from the URL when the form doesn't carry it, so the two agree and the save goes "
+              + "through. Missing shows up as a duplicate record instead.)"
           : !editPost.redirected
             ? `posting a valid correction returned ${editPost.status} instead of a redirect.`
           : !sameCount
             ? `the edit went through, but your list grew from ${idsAfterCreate.length} to `
               + `${idsAfterEdit.length} records — the POST filed a duplicate instead of updating. `
-              + "That's Add where Update should be."
+              + "Two causes: Add where Update should be, or a missing hidden Id on a form whose "
+              + "action carries no id either — the POST then arrives with Id 0, and Update() "
+              + "treats an unset key as a new record."
           : !valueSaved
             ? "you redirected, but the record still shows its old value. Update() only marks the "
               + "record modified — nothing reaches the database until SaveChangesAsync()."
