@@ -203,6 +203,9 @@ public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Region,FirstSightin
 }
 ```
 
+> [!NOTE]
+> **This isn't quite the scaffold's version, and the difference matters.** The scaffold's catch calls `CryptidExists(...)`, a `private` helper it wrote for itself — and that helper lives in the scaffold controller you delete in task 4. The block above **inlines** it (`_context.Cryptids.Any(...)`) so there's nothing extra to port. Copying the helper across instead works just as well; copying the *call* without the *method* doesn't compile. [Both options](../lecture-notes.md#what-porting-means) — this comes up again in the homework, on your own app.
+
 You'll need one more `using` at the top of the file — let the editor complain about `DbUpdateConcurrencyException` first, then add:
 
 ```csharp

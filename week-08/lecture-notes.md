@@ -262,6 +262,20 @@ The scaffold is a **reference, not a foundation**. Its controller and views work
 
 You're allowed to make the code yours as it crosses. Curbside's port flips the scaffold's nested `if (ModelState.IsValid)` into the early-out guard our Create has always used — same logic, house style.
 
+> [!IMPORTANT]
+> **The one porting choice that will bite you: `XxxExists`.** The scaffold's catch calls a helper it wrote for itself —
+>
+> ```csharp
+> private bool TruckExists(int id) => _context.Trucks.Any(e => e.Id == id);
+> ```
+>
+> — and that helper is **`private` to the scaffold controller**, which you delete in Part 7. Copy the catch across on its own and your project stops compiling: *"the name 'TruckExists' does not exist in the current context."* Two fixes, both correct:
+>
+> - **Inline it** — `if (!_context.Trucks.Any(t => t.Id == truck.Id))`. One less thing to port, and it's what the code below does.
+> - **Port the helper too** — copy that method into your controller as well. The Cryptid Registry's answer key does exactly this.
+>
+> Pick either. Just don't port the *call* without the *method*.
+
 ### The Edit actions
 
 These go **inside `TrucksController`**, below Create — plus `using Microsoft.EntityFrameworkCore;` at the top of the file, which `DbUpdateConcurrencyException` needs:
