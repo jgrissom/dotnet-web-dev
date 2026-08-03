@@ -188,7 +188,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
       }
       catch (DbUpdateConcurrencyException)
       {
-          if (!_context.Trucks.Any(t => t.Id == truck.Id))
+          if (!TruckExists(truck.Id))
           {
               return NotFound();
           }
@@ -199,11 +199,17 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
       }
       return RedirectToAction(nameof(Index));
   }
+
+  private bool TruckExists(int id)
+  {
+      return _context.Trucks.Any(e => e.Id == id);
+  }
   ```
 
   </details>
 
 - [ ] 💡 One porting choice worth narrating: *"I flipped the guard to our house shape — `if (!ModelState.IsValid) return View(truck);` early-out, like our Create — instead of the scaffold's nested `if (ModelState.IsValid)`. Same logic. When you port code, you're allowed to make it yours"*
+- [ ] ⚠️ **Point at `TruckExists` and say it out loud — this one emails you at 10pm otherwise:** *"three things crossed over, not two. The catch calls this little helper, and the scaffolder kept it private at the bottom of the file we're about to delete. Take the two actions and leave it behind and your project stops compiling — 'the name TruckExists does not exist'. It's in the paste; don't scroll past it"*
 - [ ] Create `Views/Trucks/Edit.cshtml` — **paste, then point at what's different from the scaffold's version**: our `mb-3` spacing, our button labels, our partial. The mechanics — hidden `Id`, tag helpers, validation spans, Scripts section — are the scaffold's:
 
   <details><summary>📋 paste: Views/Trucks/Edit.cshtml</summary>

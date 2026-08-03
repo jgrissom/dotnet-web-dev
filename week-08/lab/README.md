@@ -190,7 +190,7 @@ public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Region,FirstSightin
     }
     catch (DbUpdateConcurrencyException)
     {
-        if (!_context.Cryptids.Any(c => c.Id == cryptid.Id))
+        if (!CryptidExists(cryptid.Id))
         {
             return NotFound();
         }
@@ -201,10 +201,17 @@ public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Region,FirstSightin
     }
     return RedirectToAction(nameof(Index));
 }
+
+// The helper the catch above calls — it came with the scaffold, and it
+// crosses over with the actions, because it's what makes the catch compile.
+private bool CryptidExists(int id)
+{
+    return _context.Cryptids.Any(e => e.Id == id);
+}
 ```
 
 > [!NOTE]
-> **This isn't quite the scaffold's version, and the difference matters.** The scaffold's catch calls `CryptidExists(...)`, a `private` helper it wrote for itself — and that helper lives in the scaffold controller you delete in task 4. The block above **inlines** it (`_context.Cryptids.Any(...)`) so there's nothing extra to port. Copying the helper across instead works just as well; copying the *call* without the *method* doesn't compile. [Both options](../lecture-notes.md#what-porting-means) — this comes up again in the homework, on your own app.
+> **That's three things, not two — the `CryptidExists` helper comes across too.** The scaffold's catch calls it, and the scaffolder kept it `private` at the bottom of the controller you delete in task 4. Port the two actions without it and the build stops with *"the name 'CryptidExists' does not exist in the current context."* [Same on your own app in the homework](../lecture-notes.md#what-porting-means).
 
 You'll need one more `using` at the top of the file — let the editor complain about `DbUpdateConcurrencyException` first, then add:
 
