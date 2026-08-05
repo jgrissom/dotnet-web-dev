@@ -51,12 +51,25 @@ function cuesOf(file) {
   const out = [];
   let sec = null, lo = null, hi = null, beat = false;
   for (const line of fs.readFileSync(file, "utf8").split("\n")) {
-    let m = line.match(/^## (\d+[a-z]?) · (.+?)\s*(?:\*\(slides? (\d+)(?:[–—-](\d+))?\)\*)?\s*(?:—.*)?$/);
+    // Both emphasis delimiters are accepted. Markdown treats *em* and _em_ as
+    // the same thing, and a formatter on save (Prettier rewrites * to _) will
+    // silently swap one for the other across a whole file. That's cosmetic in
+    // the render, but an asterisk-only regex reads the swapped file as having
+    // no cues at all — every slide reports "no 🎞️ cue" and CI fails on a week
+    // nobody edited. .prettierignore stops the rewrite; this makes the gate
+    // survive it if it ever happens anyway. The title's delimiter is captured
+    // and back-referenced rather than accepted from a class, because titles
+    // legitimately contain underscores (*`Views/_ViewStart.cshtml`*) and only
+    // the delimiter that opened may close. A code span is consumed whole for
+    // the same reason: week 5's three `Views/_View*.cshtml` titles put an
+    // underscore inside backticks, so a plain "anything but the delimiter"
+    // inner would close on it and capture "`Views/".
+    let m = line.match(/^## (\d+[a-z]?) · (.+?)\s*(?:[*_]\(slides? (\d+)(?:[–—-](\d+))?\)[*_])?\s*(?:—.*)?$/);
     if (m) { sec = m[1]; lo = m[3] ? +m[3] : null; hi = m[4] ? +m[4] : lo; beat = false; continue; }
     if (/^## /.test(line)) { sec = null; continue; }
     if (/^### /.test(line) && sec) { beat = true; continue; }
-    m = line.match(/🎞️ \*\*GO TO SLIDE (\d+)\*\* — \*([^*]+)\*/);
-    if (m && sec) out.push({ n: +m[1], title: m[2].trim(), sec, lo, hi, beat });
+    m = line.match(/🎞️ \*\*GO TO SLIDE (\d+)\*\* — ([*_])((?:`[^`]*`|(?!\2).)+?)\2/);
+    if (m && sec) out.push({ n: +m[1], title: m[3].trim(), sec, lo, hi, beat });
   }
   return out;
 }

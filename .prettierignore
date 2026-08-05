@@ -1,0 +1,5 @@
+# Course prose is hand-tuned and checked by scripts/check-*.js.
+# Prettier rewrites *em* to _em_ and reflows the README tables whose
+# &nbsp;/word-joiner padding check-tables.js maintains deliberately —
+# so markdown is off-limits. JS and JSON still format normally.
+*.md
