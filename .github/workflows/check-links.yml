@@ -3,7 +3,7 @@ name: Check docs
 on:
   push:
     branches: [main]
-    paths: ["**/*.md", "scripts/check-links.js", "scripts/check-tables.js", "scripts/check-cues.js"]
+    paths: ["**/*.md", "scripts/check-links.js", "scripts/check-tables.js", "scripts/check-cues.js", "scripts/check-emphasis.js"]
   schedule:
     - cron: "0 12 * * 1"   # Mondays: full check including external URLs
   workflow_dispatch:
@@ -24,6 +24,10 @@ jobs:
 
       - name: Demo cues line up with the slide decks
         run: node scripts/check-cues.js .
+
+      - name: Nested emphasis the published pages would drop
+        run: node scripts/check-emphasis.js .
+
       - name: External URLs (scheduled/manual runs only)
         if: github.event_name != 'push'
         run: node scripts/check-links.js . --external

@@ -454,7 +454,7 @@ You can't stage this attack in the browser — the browser is *on your site*, so
   }
   ```
 - [ ] Refresh, submit the **empty** form: errors appear **instantly**. No reload, no round trip
-- [ ] 🎞️ **GO TO SLIDE 20** — *One source of truth* · 🎯 leave the two-arrow diagram up and say: *"Nothing in my C# changed. Those two scripts scan the page for the `data-val` attributes we watched appear twenty minutes ago, and enforce whatever they find. **One source of truth — `Models/Truck.cs` — enforced in two places.**"*
+- [ ] 🎞️ **GO TO SLIDE 20** — *One source of truth* · 🎯 leave the two-arrow diagram up and say: *"Nothing in my C# changed. Those two scripts scan the page for the `data-val` attributes we watched appear twenty minutes ago, and enforce whatever they find. **One source of truth — `Models/Truck.cs` — enforced in two places**."*
 - [ ] Say why the section matters: dropped in the middle of the view it loads **before** jQuery and dies with `$ is not defined`. Week 5's section wasn't a formality
 
 ### Why both *(slide 21)*

@@ -639,7 +639,7 @@ TrucksController       asks for a context in its constructor
 **`No project was found in the current working directory`**
 - `dotnet ef` runs from the folder containing your `.csproj`. In a lab layout that's `Cryptids.Web`, not the folder above it.
 
-**`Unable to create a 'DbContext' of type ''` / *"Unable to resolve the service for type DbContextOptions"*
+**`Unable to create a 'DbContext' of type ''`** / *"Unable to resolve the service for type DbContextOptions"*
 - `AddDbContext` isn't in `Program.cs`, or it's below `builder.Build()`. Services have to be registered before the app is built.
 
 **The app won't start at all, with `ArgumentNullException` / `Value cannot be null. (Parameter 'connectionString')`**
