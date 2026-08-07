@@ -7,6 +7,15 @@ on:
       - "week-*/slides.md"
       - "week-*/demo/**"
       - "week-*/homework-checks.js"
+      # scripts/ holds build inputs — lab-timer.js is injected into every deck,
+      # render-cue-html.js renders every cue sheet. Editing one and pushing used
+      # to publish NOTHING until the next day's cron, with nothing on screen to
+      # say so. Deliberately the whole directory rather than a list of the files
+      # in use: a hand-maintained list is true by maintenance, not construction,
+      # and forgetting to extend it brings the silent staleness straight back.
+      # The export is deterministic, so a run triggered by check-links.js and
+      # friends commits nothing and just redeploys identical content.
+      - "scripts/**"
       - ".github/workflows/export-slides.yml"
   # Safety net. On 2026-08-02 GitHub recorded a push to main and simply never
   # created a run for it, so the decks and the Pages site sat stale until the
