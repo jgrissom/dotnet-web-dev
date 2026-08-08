@@ -93,7 +93,7 @@ Browser (client)  ── HTTP request ──►  Server (ASP.NET app)
 
 ## About that database…
 
-- **"It installed" ≠ "it works."** Green checks on all five before week 2
+- **"It installed" ≠ "it works."** Green checks on all five tools from the last slide, before week 2
 - **No local SQL Server install** — ever
 - You each have your own account on the **school SQL Server**
 - It's reachable from home, too — same connection everywhere, all semester
@@ -187,7 +187,7 @@ const add = (a, b) => a + b;           // modern default
 const greet = (name = "friend") => `Hello, ${name}!`;
 ```
 
-- Valid C# too: `(a, b) => a + b` — you already know this
+- Valid C# too: `(a, b) => a + b` — same syntax, both languages
 - No overloads, no type checks: missing args become `undefined`
 
 ---

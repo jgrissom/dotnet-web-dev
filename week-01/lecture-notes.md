@@ -11,7 +11,7 @@
 - **Weeks 11–13:** Identity — logins, roles, security, polish.
 - **Weeks 14–16:** Web API + final project — your JavaScript calling your own API.
 
-**The project thread — say this on night one.** In **week 4** each student picks their own topic and builds a small list-and-details site from an empty folder. Every week after that extends *that same app*: a real layout and theme, forms and validation, then the hard-coded data moves into SQL Server, then logins, then an API. It's what they present in week 16. Mentioning it now means week 4's "pick something you can live with" lands as a reminder rather than a surprise — and students start thinking about a topic six weeks early, which is exactly what you want.
+**The project thread — say this on night one.** In **week 4** each student picks their own topic and builds a small list-and-details site from an empty folder. Every week after that extends *that same app*: a real layout and theme, forms and validation, then the hard-coded data moves into SQL Server, then logins, then an API. It's what they present in week 16. Mentioning it now means week 4's "pick something you can live with" lands as a reminder rather than a surprise — and students start thinking about a topic three weeks early, which is exactly what you want.
 
 **The pitch:** every job posting for a .NET developer asks for exactly this stack — C#, ASP.NET Core, EF Core, SQL Server, and enough JavaScript to be dangerous.
 
@@ -22,7 +22,7 @@
 >
 > Announce it in week 1 for two reasons. First, fairness: nobody should discover in week 7 that their work is going on a screen. Second, it changes behaviour *before* the first submission — people finish things they know will be seen. Frame it the way the industry does: demos, code review, and standups are all just showing your work to colleagues, and this is the low-stakes version.
 >
-> Two things to promise and keep: you show **working** software, not a debugging session on someone's broken app; and when you want to demonstrate a failure mode, you use **your own** broken example. Week 4 is deliberately exempt — everyone builds the same First Flight, so there's nothing worth looking at.
+> Two things to promise and keep: you show **working** software, not a debugging session on someone's broken app; and when you want to demonstrate a failure mode, you use **your own** broken example. Week 3's First Flight isn't in the rotation — everyone builds the same one, so there's nothing worth looking at. It starts in week 5, with week 4's apps, which are the first ones on a topic each student picked.
 
 ### One mental model to start
 
@@ -58,7 +58,7 @@ Students work through **[setup-guide.md](setup-guide.md)** at their own pace —
 
 ---
 
-## Part 3: Why JavaScript in a .NET course? (15 min)
+## Part 3: Why JavaScript in a .NET course? (10 min)
 
 - The browser only runs one language: JavaScript. Whatever the server is written in — C#, Python, Java — the interactive parts of a web page are JS.
 - In this course JS shows up three times: form validation feedback (week 6), sprinkles of interactivity throughout, and the finale — **week 15, your JavaScript calls the Web API you built.**
@@ -170,7 +170,7 @@ greet("Ada");   // "Hello, Ada!"
 ```
 
 - **C# bridge:** arrow functions ARE lambdas — `(a, b) => a + b` is valid in both languages.
-- We'll use both forms; arrow functions dominate modern code and become essential with `fetch` in week 2.
+- We'll use both forms; arrow functions dominate modern code and become essential with `fetch` in week 15.
 
 > [!WARNING]
 > Call a JS function with too few arguments and the missing ones are silently `undefined` — no compiler error. This is where dynamic typing bites; default parameters are the guard rail.
@@ -211,7 +211,7 @@ const perfect = scores.find(s => s === 100); // 100              — first match
 ```
 
 > [!NOTE]
-> **This is LINQ!** `map` = `Select`, `filter` = `Where`, `find` = `FirstOrDefault` — you already think this way.
+> **This is LINQ!** `map` = `Select`, `filter` = `Where`, `find` = `FirstOrDefault` — if you've used LINQ, you already think this way.
 - None of these mutate the original array — they return new ones.
 
 ### Objects
@@ -329,7 +329,7 @@ loadUsers();
 > **Delivery tip:** the console supports top-level `await`, so demo it line-by-line instead of pasting the whole function — `const response = await fetch(...)` ⏎, inspect `response`, `const users = await response.json()` ⏎, expand `users` in the console (triangle = "JSON is arrays of objects" made visible), then `users.map(u => u.name)`. Each Enter is a prediction moment. The slide's `async () =>` wrapper is the *file* form they'll write in week 15; mention that, don't retype it.
 - Land this: the API returns **an array of objects** — everything from Part 5 applies. In week 15, the URL will be *your* API instead of a placeholder.
 - Don't go deeper tonight (no error handling, no POST) — that arrives when they build against real endpoints.
-- **"The action has been blocked" / CSP error:** someone ran the demo in the console of a Chrome-internal page (new tab, `chrome://settings`…). The console runs code *as the current page*, and Chrome's own pages block outside network requests. Fix: open the lab's `index.html` (or any normal website) first, then F12. Expect ~3 students to hit this.
+- **"The action has been blocked" / CSP error:** someone ran the demo in the console of a Chrome-internal page (new tab, `chrome://settings`…). The console runs code *as the current page*, and Chrome's own pages block outside network requests. Fix: open the lab's `index.html` (or any normal website) first, then F12. Expect a few students to hit this.
 - **Offline fallback:** if classroom internet (or jsonplaceholder) is down, paste a hardcoded `const users = [{ name: "Leanne Graham" }, { name: "Ervin Howell" }]` and run the same `.map` line — you lose the network moment but keep the JSON-is-arrays-of-objects point. The real fetch becomes a "try it at home."
 
 ---
