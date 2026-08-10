@@ -183,14 +183,18 @@ Many Bootswatch themes already pull a Google Font (Flatly ships Lato) — so you
 
 1. Browse fonts.google.com; pick a pairing (heading + body). Demo picking one live.
 2. Copy the `<link>` tag it generates (choose only the weights you need — usually 400 + 700).
-3. Point Bootstrap at it:
+3. Point Bootstrap at it — this goes in a `<style>` block in your `<head>`, below the font `<link>`. It is the one piece of custom CSS the course allows:
 
-```css
-:root {
-  --bs-body-font-family: "Inter", system-ui, sans-serif;
-}
-h1, h2, h3, h4, h5, h6 { font-family: "Fraunces", Georgia, serif; }
+```html
+<style>
+  :root {
+    --bs-body-font-family: "Inter", system-ui, sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 { font-family: "Fraunces", Georgia, serif; }
+</style>
 ```
+
+Two families means **both** names go in the Google Fonts URL — a heading rule naming a font you never linked silently falls through to the fallback (here, Georgia).
 
 Bootstrap reads its body font from the `--bs-body-font-family` CSS variable — override the variable, don't fight the framework. (First sighting of CSS custom properties; they'll reappear.)
 

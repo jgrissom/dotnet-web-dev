@@ -16,7 +16,7 @@ The `week-02` folder you copy below is a working but completely unstyled 3-page 
 4. Open `index.html` in the browser; keep the window at half width and resize as you go.
 
 > [!TIP]
-> **Optional — Live Server.** If you installed it in week 1, use it tonight: right-click `index.html` → **Open with Live Server** and the page reloads on every save. You will be changing a class and re-checking constantly, so it saves more clicks here than it did last week. Double-clicking the file still works.
+> **Optional — Live Server.** If you installed it in week 1, use it tonight: right-click `index.html` → **Open with Live Server** and the page reloads on every save. You will be changing a class and re-checking constantly, so it saves more clicks here than it did last week. Don't have it? Extensions panel → **Live Server** (Ritwick Dey) → Install takes seconds. Double-clicking the file still works.
 
 > [!TIP]
 > **Each page grades itself.** A checker (`portfolio-checks.js`) is already wired into all three pages — open the console (F12) and it scores *that page's* checklist ✅/❌, plus the "make it yours" items and warnings about custom-CSS deductions. Same rhythm as week 1: work one ❌ at a time, and check **all three pages** — each has its own list.
