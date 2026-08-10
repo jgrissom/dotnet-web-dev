@@ -5,6 +5,18 @@
 
 ## Part 1 — Finish First Flight (nobody collects this)
 
+> [!IMPORTANT]
+> **Start the git history before you start the work.** Three meaningful commits are graded, and they only exist if you make them as you go — a single "done" commit at 11:58pm costs a point, and by then the only fix is dishonest. In the VS Code terminal (`` Ctrl+` ``), from inside your `week-03` copy:
+>
+> ```bash
+> git init
+> git add .
+> git commit -m "First Flight starter"
+> ```
+>
+> Then commit at each natural stopping point below. Part 2 pushes whatever history you built.
+
+
 All six checks green:
 
 ```bash
@@ -23,7 +35,7 @@ If class ended at check 4, that means finishing `Hello` (checks 5–6) — the [
 ## Part 2 — Put it on GitHub (graded)
 
 1. Create a **public** repo named `first-flight` and push your `week-03` copy — the folder in `dotnet-web` holding `FirstFlight.Web` and `FirstFlight.Checks` — to it.
-2. **Commit as you go — at least 3 meaningful commits** (a natural rhythm: one per check you turn green; the `.gitignore` in the starter already keeps build output out).
+2. **`git log --oneline` should already show 3+ commits** — one per check you turn green is the natural rhythm, and the `.gitignore` in the starter already keeps build output out.
 
 ## Part 3 — Deploy it (graded)
 

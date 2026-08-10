@@ -55,6 +55,19 @@ const courses = [
 ];
 ```
 
+**Now start the git history — before you write a single function.** Three meaningful commits are part of the grade, and they only exist if you make them as you go. In the VS Code terminal (`` Ctrl+` ``), from inside `web-dev-week01`:
+
+```bash
+git init
+git add .
+git commit -m "Page skeleton and data"
+```
+
+Then commit each time the checker turns something green. One commit per function is a perfectly good rhythm — **three is the floor, not the target**, so more and smaller is always the safer side to be on. Part 4 pushes whatever history you built here.
+
+> [!WARNING]
+> **This is the one part of the homework you cannot go back and do.** A single "done" commit at 11:58pm costs a point, and by then the only fix is dishonest. It is two seconds each time.
+
 Write the following functions. Some come with a hint; some deliberately don't — for those, *choosing* the right tool from [the big three](lecture-notes.md#the-big-three-map-filter-find) is part of the exercise.
 
 > [!WARNING]
@@ -96,15 +109,8 @@ In this course, nothing stays on your laptop. Your JavaScript work goes live on 
 
 1. Create a GitHub account if you don't have one (use your school email — it also qualifies you for the [GitHub Student Developer Pack](https://education.github.com/pack)).
 2. Create a **public** repo named `web-dev-week01`.
-3. Push your homework folder — and **commit as you go**, not once at the end:
+3. Push the history you have been building since Part 3 — commit anything still outstanding first:
    ```bash
-   git init
-   git add .
-   git commit -m "Page skeleton and data"
-   # ...write some functions, get them passing...
-   git add .
-   git commit -m "Functions 1-4 passing"
-   # ...finish up...
    git add .
    git commit -m "All checks green"
    git branch -M main
@@ -113,7 +119,7 @@ In this course, nothing stays on your laptop. Your JavaScript work goes live on 
    ```
 
 > [!NOTE]
-> **At least 3 meaningful commits.** Your commit history is the story of your work — a single giant "done" commit at 11:58pm tells a different story, and costs a point. A natural rhythm: commit every time the checker turns something green.
+> **Check what you are about to push:** `git log --oneline` should show **at least three** commits, and they should read like the work happening — not one giant "done".
 4. Enable Pages: repo → **Settings → Pages** → Source: *Deploy from a branch* → Branch: `main`, folder `/ (root)` → Save.
 5. Wait ~1 minute, then visit `https://YOUR-USERNAME.github.io/web-dev-week01/` — open the console (F12) and confirm your output appears.
 6. Submit that URL.

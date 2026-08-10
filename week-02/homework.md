@@ -5,6 +5,18 @@
 
 ## Part 1 — Finish the lab checklist
 
+> [!IMPORTANT]
+> **Start the git history before you start the work.** Three meaningful commits are graded, and they only exist if you make them as you go — a single "done" commit at 11:58pm costs a point, and by then the only fix is dishonest. In the VS Code terminal (`` Ctrl+` ``), from inside your `week-02` copy:
+>
+> ```bash
+> git init
+> git add .
+> git commit -m "Lab starter"
+> ```
+>
+> Then commit at each natural stopping point below. Part 3 pushes whatever history you built.
+
+
 Complete every unchecked item in `lab/README.md` on all three pages: navbar, hero, feature row, card grid with badges, contact form with alert, footer, and Bootstrap Icons on every page. Rules still apply — no custom CSS except the font override.
 
 ## Part 2 — Make it genuinely yours (graded)
@@ -18,8 +30,9 @@ This site becomes your portfolio — by finals it will link to deployed .NET app
 
 ## Part 3 — Deploy + get ready for Azure
 
-1. Push the site — your `week-02` copy in `dotnet-web` — to a **public** repo named `portfolio`, and enable GitHub Pages (same flow as week 1). **Commit as you go — at least 3 meaningful commits** (e.g., after the lab checklist, after your theme + fonts, after your extra component).
-2. Test the URL in a private/incognito window — check **all three pages** and the navbar links between them.
+1. Push the site — your `week-02` copy in `dotnet-web` — to a **public** repo named `portfolio`, and enable GitHub Pages (same flow as week 1).
+2. **Check the history before you push:** `git log --oneline` should already show 3+ commits — after the lab checklist, after your theme and fonts, after your extra component.
+3. Test the URL in a private/incognito window — check **all three pages** and the navbar links between them.
 
 > [!TIP]
 > **Do this on your phone too.** Your site is public now — pull it up on your own phone and hand it to someone. If the navbar hamburger doesn't work there, the JS bundle tag is missing on that page.
