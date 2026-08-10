@@ -275,11 +275,11 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ### Watch the UPDATE *(slide 13)*
 
-- [ ] 🎞️ **GO TO SLIDE 13** — *The UPDATE*
 - [ ] **File tonight's test subject** through the form: **`Ghost Kitchen` / `Fusion` / `Madison` / `4.9`**. *"This truck is going to have a long night"* — on a fresh database it lands as **Id 8**
-- [ ] Open its Details → **Edit this truck**. 🎯 *"pre-filled — that's `FindAsync` and `View(truck)` doing what the slide promised"*
+- [ ] Open its Details → **Edit this truck**. 🎯 *"pre-filled — that is `FindAsync` and `View(truck)`, doing exactly what slide 9 said the GET half was for"*
 - [ ] Change the rating to **4.7**. **Predict before saving:** *"what SQL is about to appear — and what will its WHERE clause say?"*
 - [ ] Save. **Read the terminal:** an `UPDATE [Trucks] SET ... WHERE [Id] = @p...` 🎯 *"there's the hidden Id, arriving at SQL Server as a WHERE clause. One row touched"*
+- [ ] 🎞️ **GO TO SLIDE 13** — *The UPDATE*
 - [ ] 💡 **If someone asks "what if I leave the hidden `Id` out?"** — answer honestly, don't demo it: *"you'd probably get away with it here, and that's the interesting part. The binder looks for `Id` in the form and in the URL, and this form posts to `/Trucks/Edit/8` — so the URL answers and the edit saves. The line earns its keep when the URL can't answer: a form whose action carries no id posts `Id = 0`, and `Update()` treats an unset key as a **new** record. You don't get an error. You get a second truck"*
 
 ## 5 · The debugger, finally *(slides 14–15)*
