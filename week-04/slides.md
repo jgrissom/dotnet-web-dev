@@ -243,7 +243,7 @@ public class Truck
 
 No base class. No attributes. Nothing from ASP.NET.
 
-The **M** in MVC is the C# you already write.
+The **M** in MVC is plain C#.
 
 ---
 

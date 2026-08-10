@@ -62,7 +62,7 @@ Students work through **[setup-guide.md](setup-guide.md)** at their own pace —
 
 - The browser only runs one language: JavaScript. Whatever the server is written in — C#, Python, Java — the interactive parts of a web page are JS.
 - In this course JS shows up three times: form validation feedback (week 6), sprinkles of interactivity throughout, and the finale — **week 15, your JavaScript calls the Web API you built.**
-- You already know C# *and* JavaScript. Tonight is a refresher, not a lesson — we're calibrating everyone to the modern idioms this course uses, and flagging the places where JS habits from older tutorials (or a rusty memory) will bite.
+- This is a refresher, not a lesson. The prerequisite is C#, and the course assumes some JavaScript — tonight calibrates everyone to the modern idioms this course uses, and flagging the places where JS habits from older tutorials (or a rusty memory) will bite.
 
 Key differences to set expectations:
 

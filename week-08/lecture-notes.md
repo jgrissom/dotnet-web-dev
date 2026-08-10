@@ -125,9 +125,9 @@ public async Task<IActionResult> Index()
 }
 ```
 
-You already know this material — you've written it in JavaScript for two semesters:
+If you have written `async`/`await` in JavaScript, this material is a renaming exercise:
 
-| C# | JavaScript you've written |
+| C# | JavaScript |
 |---|---|
 | `Task<IActionResult>` | `Promise<result>` |
 | `await _context.Trucks.ToListAsync()` | `await fetch(url)` |
@@ -165,7 +165,7 @@ public async Task<IActionResult> Edit(int? id)
 Three stops:
 
 - **`int? id`** — defensive. `/TrucksScaffold/Edit` with no number at all binds `null`, and null gets an honest 404 instead of a crash. (Your week-7 `Details(int id)` handles the same case by a different path — a missing value binds `0`, no truck has id 0, `NotFound()`. Both are fine; the scaffolder's version says what it means.)
-- **`FindAsync(id)`** — fetch one row by primary key. It's the async single-row cousin of the `FirstOrDefault` you already write; you'll see `FirstOrDefaultAsync` in the same file doing the same job with a full predicate.
+- **`FindAsync(id)`** — fetch one row by primary key. It's the async single-row cousin of `FirstOrDefault`; you'll see `FirstOrDefaultAsync` in the same file doing the same job with a full predicate.
 - **`return View(truck)`** — the entire "pre-filled form" feature. Look the record up, hand it to the view; the tag helpers do the filling, exactly as they did in week 6 when Create's guard handed back your typed input.
 
 ### The hidden Id
@@ -430,7 +430,7 @@ For everything else, the terminal is still the right tool — the SQL log needs 
 
 ### Why Delete asks first
 
-Delete *could* be one link — click it, record's gone. Nobody builds it that way, for a rule you already know from week 6:
+Delete *could* be one link — click it, record's gone. Nobody builds it that way, for a rule week 6 landed:
 
 **A GET must never change data.**
 

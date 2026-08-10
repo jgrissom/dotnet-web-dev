@@ -78,7 +78,7 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
 ## 3 · Why JavaScript is here *(slide 8)*
 
 - [ ] 🎞️ **GO TO SLIDE 8** — *Why JavaScript in a .NET course?*
-- [ ] 🎯 **Set the register for the next hour — this is the sentence that stops it feeling remedial:** *"you already know this language. Tonight is calibration, not instruction. We are agreeing on which dialect this course speaks, and flagging the habits from older tutorials that will bite you"*
+- [ ] 🎯 **Set the register for the next hour — this is the sentence that stops it feeling remedial:** *"tonight is calibration, not instruction — nobody is here to be taught JavaScript. We are agreeing on which dialect this course speaks, and flagging the habits from older tutorials that will bite you"*
 - [ ] *"It shows up three times: validation feedback in week 6, sprinkles throughout, and in week 15 your JavaScript calls the Web API you built"*
 
 ## 4 · The dialect this course speaks *(slides 9–14)*
@@ -191,7 +191,7 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
 
 ### Functions
 
-- [ ] **Still no slide** — *"one more piece of syntax, and it is one you already write in C#"*
+- [ ] **Still no slide** — *"one more piece of syntax, and this one has a C# twin"*
 - [ ] Paste the two declarations, then call each one:
 
     ```js
@@ -222,7 +222,7 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
 
 - [ ] **`NaN`.** *"No overloads, no type checking, and no error. The missing argument became `undefined`, `2 + undefined` is NaN — and that value is now travelling through your program looking like a number"*
 - [ ] 🎞️ **GO TO SLIDE 14** — *Arrow functions = lambdas*
-- [ ] **Point at the top line — the one thing here the console never showed you.** `function add(a, b) { return a + b; }` and the arrow underneath are the same function twice. *"You have written the top one for years. The bottom one is what this course writes, and it is the same shape C# uses"*
+- [ ] **Point at the top line — the one thing here the console never showed you.** `function add(a, b) { return a + b; }` and the arrow underneath are the same function twice. *"the top one is the spelling most of us learned first. The bottom one is what this course writes — and it is the shape C# uses too"*
 - [ ] **✓ CHECKPOINT:** the room can say why `===` and why `const`, without hedging
 
 ## 5 · Arrays and objects *(slides 15–20)*
@@ -276,7 +276,7 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
 
 ### Objects, and the shape of everything
 
-- [ ] **Still no slide** — *"an object literal. Braces, key colon value. You have typed this in every language you know"*
+- [ ] **Still no slide** — *"an object literal. Braces, key colon value — and near enough this shape exists in most languages"*
 - [ ] Paste:
 
     ```js
@@ -376,8 +376,8 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
     });
     ```
 
-- [ ] **Click the button.** *"An event and a lambda for the handler. You have written this exact shape in C#"*
-- [ ] *"`querySelector` takes a CSS selector — the same `#id` and `.class` you already write in stylesheets. One syntax, two jobs"*
+- [ ] **Click the button.** *"an event, and a lambda for the handler. If you have wired a C# event, this is that shape"*
+- [ ] *"`querySelector` takes a CSS selector — the same `#id` and `.class` that go in a stylesheet. One syntax, two jobs"*
 
 ### fetch, and a look at week 15
 

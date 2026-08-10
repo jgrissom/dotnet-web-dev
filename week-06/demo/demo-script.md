@@ -116,7 +116,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   ```
   Name=Wurst+Case+Scenario&Cuisine=German&City=Appleton&Rating=4.1
   ```
-- [ ] **Week-3 callback:** *"that's the query-string format you already know — `key=value&key=value` — riding in the body instead of the URL. The form serialised itself and the server took it apart"*
+- [ ] **Week-3 callback:** *"that's the query-string format from week 3 — `key=value&key=value` — riding in the body instead of the URL. The form serialised itself and the server took it apart"*
 
 ### Break it #1 — two silent failures *(slide 6)*
 

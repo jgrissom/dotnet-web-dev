@@ -115,7 +115,7 @@ Browser (client)  ── HTTP request ──►  Server (ASP.NET app)
   1. Validation feedback & UI sprinkles
   2. Working alongside Bootstrap
   3. **Week 15: your JS calls your own Web API**
-- You already know JS — tonight is a **refresher**: calibrating to the modern idioms this course speaks, and un-learning old-tutorial habits.
+- Tonight is a **refresher**, not a lesson: calibrating to the modern idioms this course speaks, and un-learning old-tutorial habits.
 
 ---
 

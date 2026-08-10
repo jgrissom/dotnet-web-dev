@@ -111,7 +111,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 ### The view
 
 - [ ] 🎞️ **GO TO SLIDE 12** — *Views and Razor — first taste*
-- [ ] **Point at the `@`** — *"that is the only new character. Everything else on this slide is HTML you already write"*
+- [ ] **Point at the `@`** — *"that is the only new character on the slide. Everything around it is ordinary HTML"*
 - [ ] Create `Views/Menu/Index.cshtml` — **type it**:
   ```html
   @{

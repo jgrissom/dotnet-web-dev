@@ -198,7 +198,7 @@ Everything here happens in `Views/Trucks/Index.cshtml`.
 ### The model class
 
 - [ ] 🎞️ **GO TO SLIDE 13** — *The model is just a class*
-- [ ] 🎯 **Land the four words at the bottom:** *"no base class, no attributes, nothing from ASP.NET. The M in MVC is the C# you already write — this is the least new thing tonight"*
+- [ ] 🎯 **Land the four words at the bottom:** *"no base class, no attributes, nothing from ASP.NET. The M in MVC is plain C# — this is the least new thing tonight"*
 - [ ] Create `Models/Truck.cs` — **type it** (it's a plain C# class; nothing web about it):
   ```csharp
   namespace Curbside.Models;
@@ -328,7 +328,7 @@ Everything here happens in `Views/Trucks/Index.cshtml`.
 ### The Details action
 
 - [ ] 🎞️ **GO TO SLIDE 17** — *The pair behind every site*
-- [ ] 🎯 **Land it as the shape of the whole web:** *"a list, and a details page. Every site you have ever used is this pair, and by the end of tonight you have written both"*
+- [ ] 🎯 **Land it as the shape of the whole web:** *"a list, and a details page. That pair is most of the web — and tonight's lab is exactly those two pages"*
 - [ ] Add to `TrucksController` — **type it**:
   ```csharp
   public IActionResult Details(int id)
