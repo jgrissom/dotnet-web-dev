@@ -131,14 +131,15 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
 - [ ] **`typeof null` is `"object"`** — let the groan happen. *"A bug from 1995 that can never be fixed, because fixing it would break the web"*
 - [ ] 🎞️ **GO TO SLIDE 10** — *Types live in values, not variables*
 
-> [!NOTE]
-> **If someone asks why — and someone usually does. Don't volunteer it: it is three minutes, and it changes nothing they write.**
->
-> Early JavaScript stored every value as a small **type tag** plus a payload, and the tag for *object* was **zero**. `null` was the null pointer — a word of all zeros. So `typeof` read the tag, saw zero, and answered `"object"`. Nobody decided this; it fell out of how values were laid out in memory.
->
-> **It has been proposed as a fix, and rejected.** Not because it is hard — because an enormous amount of deployed code says `typeof x === "object"` and then rules out null separately with `x !== null`. Change what `typeof` returns and every one of those branches quietly starts behaving differently, on pages nobody maintains any more. The committee's standing constraint is *don't break the web*: a fix with no migration path and no way to audit the blast radius does not ship, however wrong the thing being fixed.
->
-> **The half worth saying out loud even when nobody asks:** `typeof` cannot detect `null`. `x === null` is the check.
+  <details><summary>❓ <b>Only if someone asks why</b> — three minutes, and it changes nothing they write</summary>
+
+  Early JavaScript stored every value as a small **type tag** plus a payload, and the tag for *object* was **zero**. `null` was the null pointer — a word of all zeros. So `typeof` read the tag, saw zero, and answered `"object"`. Nobody decided this; it fell out of how values were laid out in memory.
+
+  **It has been proposed as a fix, and rejected.** Not because it is hard — because an enormous amount of deployed code says `typeof x === "object"` and then rules out null separately with `x !== null`. Change what `typeof` returns and every one of those branches quietly starts behaving differently, on pages nobody maintains any more. The committee's standing constraint is *don't break the web*: a fix with no migration path and no way to audit the blast radius does not ship, however wrong the thing being fixed.
+
+  </details>
+
+- [ ] **The half worth saying even when nobody asks:** *"`typeof` cannot detect `null` — it says `object` for both. When you mean null, `x === null` is the check"*
 - [ ] *"`undefined` means never set. `null` means deliberately empty. That distinction matters in week 6"*
 
 ### Strings and comparison
