@@ -1,6 +1,6 @@
 # Week 2 Demo Script — building Common Grounds live
 
-Edit-by-edit cue sheet for transforming `index.html` (your **scratch copy**) into `finished.html`, in lecture order, keyed to the slides. Type the *first* instance of every pattern; paste repeats from `finished.html`.
+Edit-by-edit cue sheet for transforming your **scratch copy** of `index.html` (see §0) into `finished.html`, in lecture order, keyed to the slides. Type the *first* instance of every pattern; paste repeats from `finished.html`.
 
 > [!TIP]
 > **Clickable version:** [the hosted script](https://jgrissom.github.io/dotnet-web-dev/week-02/demo/script.html) has working checkboxes that survive refreshes — keep it open on your second screen and tick as you go (Reset button at the top for next time).
@@ -16,7 +16,8 @@ Edit-by-edit cue sheet for transforming `index.html` (your **scratch copy**) int
 
 ## 0 · Before class
 
-- [ ] Scratch copy of `demo/index.html` open in VS Code (Teaching profile) + browser at half-width
+- [ ] **Make tonight's canvas:** duplicate `demo/index.html` → `demo/scratch.html`, open **that** in VS Code (Teaching profile), browser at half-width. It's gitignored, so it won't clutter `git status` while you teach
+  - ⚠️ **Edit the copy, never `index.html` itself.** That file is what CI publishes as tonight's [before](https://jgrissom.github.io/dotnet-web-dev/week-02/demo/before.html) page — a stray edit republishes a half-Bootstrapped "before" picture, and the opening pitch is gone for good
 - [ ] **Say it before you start: *"lids down for this part — you'll do it to your own site in the lab."*** You assemble the coffee shop; their lab is their portfolio. Same patterns, fresh retrieval — which only works if they aren't typing along with you
 - [ ] Hosted [before](https://jgrissom.github.io/dotnet-web-dev/week-02/demo/before.html) / [after](https://jgrissom.github.io/dotnet-web-dev/week-02/demo/) open in two tabs for the opening pitch
 

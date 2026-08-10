@@ -3,3 +3,7 @@ node_modules/
 bin/
 obj/
 *.user
+
+# Week 2's demo canvas — the copy the instructor edits live. demo/index.html
+# itself is published as the "before" page, so it must stay pristine.
+week-02/demo/scratch.html
