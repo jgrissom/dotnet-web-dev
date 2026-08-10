@@ -314,15 +314,10 @@ Every DB query result and API response in this course is this shape.
 <!-- _footer: '🖥️ Demo §6 · the DOM' -->
 ## The DOM in three APIs
 
-Runs *against a page* — tonight's demo playground, console on:
-
-```html
-<p id="status">Loading…</p>
-<button id="go">Go</button>
-```
+Runs *against a page* — tonight's playground has `#status` and `#go`:
 
 ```js
-const status = document.querySelector("#status"); // 1. select (CSS selectors!)
+const status = document.querySelector("#status"); // 1. select
 status.textContent = "Ready.";                    // 2. write — watch the page
 document.querySelector("#go")                     // 3. listen
   .addEventListener("click", () => {
