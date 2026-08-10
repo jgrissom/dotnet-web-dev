@@ -182,6 +182,7 @@ Week 5 callback (preview it now): swapping this same link inside `_Layout.cshtml
 Many Bootswatch themes already pull a Google Font (Flatly ships Lato) — so you've been using this all evening. Now do it deliberately:
 
 1. Browse fonts.google.com; pick a pairing (heading + body). Demo picking one live.
+   ⚠️ **Pick a body font you can actually see arrive.** Most Bootswatch themes already ship a sans — Flatly ships Lato, Lux ships Nunito Sans — so a *sans* body font can land correctly and look like nothing happened. A serif against a sans theme makes it obvious, which is why the demo uses Lora. (A serif heading font like Fraunces below shows up either way.)
 2. Copy the `<link>` tag it generates (choose only the weights you need — usually 400 + 700).
 3. Point Bootstrap at it — this goes in a `<style>` block in your `<head>`, below the font `<link>`. It is the one piece of custom CSS the course allows:
 
@@ -225,3 +226,5 @@ Bootstrap reads its body font from the `--bs-body-font-family` CSS variable — 
 **Bootswatch link works but looks broken** — version mismatch with the markup (check both are 5.3.x), or the link is placed *after* a plain Bootstrap link (last stylesheet wins).
 
 **Google Font doesn't apply** — the `family=` name in the URL must match the `font-family` name exactly (spaces included); check DevTools → Network to confirm the font actually loaded.
+
+**The font loaded and the page looks identical** — that is not always a bug. Your Bootswatch theme ships its own font, and one sans replacing another sans is a real change you cannot see. Settle it instead of guessing: DevTools → select a paragraph → **Computed** → *Rendered Fonts* at the bottom names the font actually drawing that text.
