@@ -26,6 +26,6 @@ The round trip, end to end: **a form posts, binding fills an object by matching 
 - **Open dev tools on the Network panel before you start.** You need it in §1 and again in §3
 - ⚠️ The demo **breaks things four times**, and unlike week 5 none of them shows an error page — each produces a *wrong result* that looks fine. The script flags all four restores
 - Your finished Registry with a working form + `dotnet test` at 6/6, for the lab launch
-- Remind students to `git pull` for the week-06 starter
+- Remind students to `git pull` the starters repo for the week-06 folder
 
 **Prev:** [← Week 5 — Layouts & Partials](../week-05/README.md) · **Next:** [Week 7 — EF Core & SQL Server →](../week-07/README.md)

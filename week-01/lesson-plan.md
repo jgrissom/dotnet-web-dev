@@ -19,7 +19,7 @@ By the end of this session, students can:
 - `slides.md` / `slides.html` — the deck (also hosted at jgrissom.github.io/dotnet-web-dev)
 - `lecture-notes.md` open on your second screen — the script, with expected outputs
 - `setup-guide.md` URL ready to put on screen; **server address + credentials handout** printed
-- Lab starter ships in this repo (`lab/starter/`) — nothing to post
+- Lab starter ships in the starters repo (`dotnet-web-starters/week-01/`) — nothing to post
 - **Demo canvas:** the console + the hosted DOM/fetch playground ([demo/](demo/) → [https://jgrissom.github.io/dotnet-web-dev/week-01/demo/](https://jgrissom.github.io/dotnet-web-dev/week-01/demo/)); `demo/demo-script.js` has every console example in slide order for pasting when typing runs slow
 - Install links posted to Canvas ahead of time (ask students to pre-install if possible)
 

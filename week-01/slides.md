@@ -333,7 +333,7 @@ loadUsers()   // ← type this to run it, then watch the console
 
 ## Lab: JS Refresher Gauntlet
 
-- Clone the week-01 starter from the course repo
+- Copy `week-01/` out of the starters repo
 - Exercises 1–8 in `lab/README.md`
 - Pairs encouraged · answers live in the browser console
 

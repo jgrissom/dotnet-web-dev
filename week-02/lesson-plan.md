@@ -19,7 +19,7 @@ By the end of this session, students can:
 
 - `slides.md` / `slides.html` — the deck (also hosted at jgrissom.github.io/dotnet-web-dev)
 - `lecture-notes.md` open on your second screen — the script, with the common-snags appendix
-- Lab starter ships in this repo (`lab/starter/`, self-checking) — nothing to post
+- Lab starter ships in the starters repo (`dotnet-web-starters/week-02/`, self-checking) — nothing to post
 - **Demo cue sheet:** [`demo/demo-script.md`](demo/demo-script.md) — edit-by-edit build order, keyed to slide numbers; keep it beside the lecture notes
 - **Demo canvas:** a fresh copy of [`demo/index.html`](demo/index.html) (the coffee-shop page — deliberately *not* the lab site); `demo/finished.html` is the rehearsal reference (hosted: [after](https://jgrissom.github.io/dotnet-web-dev/week-02/demo/) · [before](https://jgrissom.github.io/dotnet-web-dev/week-02/demo/before.html) — two tabs = the "why Bootstrap" pitch)
 - Your own [hosted unstyled coffee page](https://jgrissom.github.io/dotnet-web-dev/week-02/demo/before.html) open in a tab — that's tonight's "before picture," not student work

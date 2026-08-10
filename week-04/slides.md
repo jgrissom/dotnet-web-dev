@@ -345,7 +345,7 @@ Then visit `/Trucks/Details/999` on purpose.
 
 ## Lab: Cryptid Registry 👻
 
-- Copy `week-04/lab/starter/` out of the repo clone
+- Copy `week-04/` out of the starters clone
 - `dotnet test Cryptids.Checks` → **1 / 6 passing**
 - **Model and data are given** — you write controllers and views
 - A list · a details page · a 404 that's honest

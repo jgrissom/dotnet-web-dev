@@ -16,7 +16,7 @@ Setup night plus a rapid JS recalibration: modern idioms, arrays/objects the LIN
 
 ## 📋 Before class, don't forget
 
-- Post install links; remind students the lab starter is in this repo (`week-01/lab/starter/`)
+- Post install links; remind students the lab starter is in the starters repo (`dotnet-web-starters/week-01/`), which they clone tonight
 - Print/queue the **school SQL Server address + credentials handout**
 - Queue the finished demo app if you're showing one
 

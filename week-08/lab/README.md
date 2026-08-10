@@ -15,13 +15,13 @@ The Registry can take reports and show them. It cannot fix a typo in one, and it
 >
 > **The seven plate images are already in `wwwroot/img/cryptids/`.** Task 6 puts them on screen; nothing has to be downloaded.
 
-**1. Update your clone of the course repo:**
+**1. Update your starters clone:**
 
 ```bash
-cd dotnet-web-dev && git pull
+cd dotnet-web-starters && git pull
 ```
 
-**2. Copy the `week-08/lab/starter` folder out to wherever you keep your projects, and rename the copy** — `CryptidsCrud` works. (Copy it *out*; never work inside the clone.)
+**2. Copy the `week-08` folder out to wherever you keep your projects, and rename the copy** — `CryptidsCrud` works. (Copy it *out*; never work inside the clone.)
 
 ```
 CryptidsCrud/              ← the folder you copied and renamed

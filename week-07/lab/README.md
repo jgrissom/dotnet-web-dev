@@ -11,13 +11,13 @@ Six creatures that vanish every time you restart the app. Tonight they move into
 >
 > **The two EF Core packages are already in `Cryptids.Web.csproj`**, so nobody spends the lab waiting on NuGet. You'll run those commands yourself in the homework — they're in [the notes](../lecture-notes.md#two-packages).
 
-**1. Update your clone of the course repo:**
+**1. Update your starters clone:**
 
 ```bash
-cd dotnet-web-dev && git pull
+cd dotnet-web-starters && git pull
 ```
 
-**2. Copy the `week-07/lab/starter` folder out to wherever you keep your projects, and rename the copy** — `CryptidsDb` works. (Copy it *out*; never work inside the clone.)
+**2. Copy the `week-07` folder out to wherever you keep your projects, and rename the copy** — `CryptidsDb` works. (Copy it *out*; never work inside the clone.)
 
 You should end up with exactly this:
 

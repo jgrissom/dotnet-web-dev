@@ -35,7 +35,7 @@ Full-stack web development with **ASP.NET Core MVC on .NET 10**, **Entity Framew
 
 **Tap/click a week folder** (or the link in the course map above) — each one opens to its own index page with the documents in the order you use them.
 
-**Students:** clone this repo once (`git clone https://github.com/jgrissom/dotnet-web-dev.git`), then `git pull` at the start of each week. Copy the week's `lab/starter/` folder out into your own projects folder and work on the copy — never inside the clone. Slides are also hosted at **https://jgrissom.github.io/dotnet-web-dev/**.
+**Students: you read this repo in your browser — there is nothing here to clone.** The code you copy each week lives in **[dotnet-web-starters](https://github.com/jgrissom/dotnet-web-starters)**, which holds nothing but week folders. **Each week is one copy:** `git pull` it, copy the `week-NN` folder out to wherever you keep your projects, and work on the copy — never inside the clone. Slides are also hosted at **https://jgrissom.github.io/dotnet-web-dev/**.
 
 **Instructors** — the weekly rhythm:
 
@@ -54,7 +54,7 @@ Each `week-NN/` folder contains:
 - `slides.md` — slide deck in GitHub-flavored markdown, one slide per `##` section, Marp-enabled *(projected)*
 - `slides.html` — standalone exported deck for presenting. Regenerated **automatically** by the `Export and publish slide decks` workflow whenever a `slides.md` is pushed; decks are also published to **https://jgrissom.github.io/dotnet-web-dev/**
 - `lecture-notes.md` — full lecture content with code examples *(instructor script)*
-- `lab/` — in-class lab: `README.md` instructions and `starter/` code *(answer keys live in the private answer-keys repo)*
+- `lab/README.md` — in-class lab instructions. The starter code it tells you to copy lives in [dotnet-web-starters](https://github.com/jgrissom/dotnet-web-starters) *(answer keys live in the private answer-keys repo)*
 - `homework.md` — assignment due before the next session *(student-facing)*
 
 ## Toolchain
