@@ -394,7 +394,7 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
 
 - [ ] 🎞️ **GO TO SLIDE 22** — *fetch + async/await — a preview of week 15*
 - [ ] **Point at three things on the slide, in order:** the `async` wrapper, the two `await`s, then `.json()`. *"That is the whole shape of talking to an API — go and get it, wait, then turn what came back into objects"*
-- [ ] ⚠️ **Now the console, and warn them it will not look like the slide** — no wrapper, because the console lets you `await` without a function. `loadUsers` never gets called tonight; the slide is there for the shape, not to be run
+- [ ] ⚠️ **Now the console, and warn them it will not look like the slide** — *"no wrapper, because the console lets you `await` without a function."* `loadUsers` never gets called tonight; the slide is there for the shape, not to be run
 - [ ] **Unwrapped, and expand the result each time:** *"the same two steps, one line at a time, so we can see what each one hands back"*
 
     ```js
