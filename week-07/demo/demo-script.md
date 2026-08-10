@@ -123,7 +123,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] **Open `appsettings.json` and put the cursor in it — then don't type anything.** Ask it out loud: *"this is where configuration lives. Who thinks the connection string goes here?"* Let hands go up
 - [ ] 🎯 **Then say why not:** *"it would work. And it contains a working password, and your homework repo is public. So no"*
 - [ ] Close `appsettings.json` **without editing it**. It stays in the repo all night — that's the point
-- [ ] **Show the two commands on screen** — these are the ones they'll run in the lab. Say you ran them before class, and why: *"I'm not typing a live password onto a projector, and neither should you into a repo"*
+- [ ] **Show the two commands on screen** — these are the ones they'll run in the lab. Say you ran them before class, and why: *"I'm not typing a live password onto a shared screen, and neither should you into a repo"*
   ```bash
   dotnet user-secrets init
   dotnet user-secrets set "ConnectionStrings:DefaultConnection" "Server=...;Database=...;User ID=...;Password=...;TrustServerCertificate=True"
@@ -133,7 +133,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   ```bash
   dotnet user-secrets list | sed 's/Password=[^;]*/Password=********/'
   ```
-- [ ] 🎯 **Say why you piped it — it's the whole lesson in miniature:** *"the command is just `dotnet user-secrets list`; that's what you'll run. I'm hiding the password because fourteen people are looking at my screen. Same instinct as keeping it out of a public repo — it's someone else's eyes either way"*
+- [ ] 🎯 **Say why you piped it — it's the whole lesson in miniature:** *"the command is just `dotnet user-secrets list`; that's what you'll run. I'm hiding the password because everyone on this call is looking at my screen. Same instinct as keeping it out of a public repo — it's someone else's eyes either way"*
 - [ ] Point at what's still visible — the server, the database, the `User ID`, and above all **the key name**: *"`set` prints `Successfully saved` no matter what you hand it. This is the command that tells you what actually landed"*
 - [ ] **Show what `init` did:** open `Curbside.csproj` and point at the `<UserSecretsId>` line. *"That's a folder name, not a secret. It gets committed — it's how the tooling finds the file next time"*
 - [ ] 🎯 **Then the part they'll misremember otherwise — where the file actually is.** Say the path out loud: `~/.microsoft/usersecrets/<that GUID>/secrets.json`. *"Not in the project. Not in the repo. In my user profile"*

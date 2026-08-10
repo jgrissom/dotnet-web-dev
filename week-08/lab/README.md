@@ -110,7 +110,7 @@ dotnet ef database update
 *(Didn't finish last week's lab? The drop will tell you there's nothing there. That's fine — carry on.)*
 
 > [!WARNING]
-> **The drop is not optional, and this is the only time all semester you should run it.** Your week-7 database was built by *your* migration files, and its `__EFMigrationsHistory` remembers them by name. Tonight's starter ships *its own* migration files, with different names. Point the starter at that database without dropping it first and `database update` fails with **`There is already an object named 'Cryptids'`** — the history and the files can't be reconciled.
+> **The drop is not optional here — and a drop is only ever safe on a database you could rebuild from scratch, which is exactly what the lab's is.** Your week-7 database was built by *your* migration files, and its `__EFMigrationsHistory` remembers them by name. Tonight's starter ships *its own* migration files, with different names. Point the starter at that database without dropping it first and `database update` fails with **`There is already an object named 'Cryptids'`** — the history and the files can't be reconciled.
 >
 > **Never do this to your own project's database.** Tonight's is a throwaway you can rebuild from a git clone in one command; your project's holds records you can't get back. There, [a bad migration is fixed by adding another one](../lecture-notes.md#forward-only).
 >
