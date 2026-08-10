@@ -94,6 +94,7 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
 
 - [ ] **Open cold — no slide yet:** *"first pair, `let` and `const`. Four lines; predict which one complains"*
 - [ ] **Swipe to the playground tab** and paste this into its console — **then stop.** Ask which line throws before you press Enter:
+  *(All four in one block on purpose — the room needs to see the other three to pick the fourth. Everything after this is one Copy button per Enter.)*
 
     ```js
     let score = 0;
@@ -147,6 +148,9 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
 
     ```js
     const name = "Ada";
+    ```
+
+    ```js
     `Hello, ${name}! You have ${3 + 4} messages.`
     ```
 
@@ -169,7 +173,13 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
 
     ```js
     Boolean("")
+    ```
+
+    ```js
     Boolean(0)
+    ```
+
+    ```js
     Boolean("hi")
     ```
 
@@ -211,7 +221,13 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
 
     ```js
     const scores = [90, 85, 72, 100];
+    ```
+
+    ```js
     scores[0]
+    ```
+
+    ```js
     scores.push(65)
     ```
 
@@ -250,8 +266,17 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
 
     ```js
     const student = { name: "Ada", gpa: 3.9 };
+    ```
+
+    ```js
     student.name
+    ```
+
+    ```js
     student.year = 2;
+    ```
+
+    ```js
     student
     ```
 
@@ -262,6 +287,9 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
 
     ```js
     const { gpa } = student;
+    ```
+
+    ```js
     gpa
     ```
 
