@@ -12,7 +12,7 @@ Work through the 8 exercises in `exercises.js`. Each one is a small function wit
    git clone https://github.com/jgrissom/dotnet-web-starters.git
    ```
 2. **Copy the `week-01` folder into `dotnet-web`** — next to the clone, never inside it. Every week works this way: pull the clone, copy that week out, work on the copy.
-3. Open your copy in VS Code.
+3. **Stay where you are** — `week-01` is already in the VS Code Explorer, under `dotnet-web`. Expand it and open `exercises.js`. (Weeks 1 and 2 are plain HTML and JavaScript, so you work straight out of `dotnet-web`. From week 3 the .NET tooling wants each project opened on its own, and those labs say so.)
 4. Open `index.html` in your browser (double-click is fine).
 5. Open DevTools (**F12**) → **Console** tab.
 

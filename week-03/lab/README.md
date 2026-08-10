@@ -11,7 +11,7 @@ Your first ASP.NET Core MVC app, built the way you'll work all term: run the che
    cd dotnet-web-starters && git pull
    ```
 2. **Copy the whole `week-03` folder into `dotnet-web`** — next to the clone, never inside it. It's just two project folders side by side: your app (`FirstFlight.Web`) and the read-only checks (`FirstFlight.Checks`).
-3. Open the copied parent folder in VS Code. From its terminal:
+3. **This week you do open the copy** — `File → Open Folder` → your `week-03` copy. It is the first .NET week, and both the C# extension and `dotnet test` want to be standing in the project. From its terminal:
    ```bash
    dotnet test FirstFlight.Checks
    ```
