@@ -222,6 +222,7 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
 
 - [ ] **`NaN`.** *"No overloads, no type checking, and no error. The missing argument became `undefined`, `2 + undefined` is NaN — and that value is now travelling through your program looking like a number"*
 - [ ] 🎞️ **GO TO SLIDE 14** — *Arrow functions = lambdas*
+- [ ] **Point at the top line — the one thing here the console never showed you.** `function add(a, b) { return a + b; }` and the arrow underneath are the same function twice. *"You have written the top one for years. The bottom one is what this course writes, and it is the same shape C# uses"*
 - [ ] **✓ CHECKPOINT:** the room can say why `===` and why `const`, without hedging
 
 ## 5 · Arrays and objects *(slides 15–20)*
@@ -229,6 +230,7 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
 ### The big three
 
 - [ ] 🎞️ **GO TO SLIDE 15** — *Arrays*
+- [ ] **Read the two questions off the slide before you touch the console** — what does `scores[0]` give back, and after the `push`, *did it change?* Take both now. Note the `for…of` at the bottom too: *"same loop you already write, and the only line on this slide we will not run"*
 - [ ] Paste, and **ask "did it change?" before the last line**:
 
     ```js
@@ -250,6 +252,7 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
 - [ ] *"`const` stopped you reassigning the variable. It never stopped you changing what is inside it"*
 - [ ] C# bridge: *"closer to `List<T>` than to an array — it resizes"*
 - [ ] 🎞️ **GO TO SLIDE 16** — *The big three (this is LINQ!)*
+- [ ] **Point at the three arrows first, before anything runs** — `Select`, `Where`, `FirstOrDefault`. *"You have written all three in C#. Different names, same three ideas"* — the question is the last line
 - [ ] **The console echoes each result — predict before every Enter:**
 
     ```js
@@ -274,6 +277,7 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
 ### Objects, and the shape of everything
 
 - [ ] 🎞️ **GO TO SLIDE 17** — *Objects*
+- [ ] **Two ways in — dot and bracket — then the line that matters.** Point at `student.year = 2`: *"a property added to a thing that already exists, and there is no class anywhere on this slide"*
 - [ ] Paste:
 
     ```js
@@ -295,6 +299,7 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
 - [ ] *"No class anywhere. You added a property to a thing that already existed, at runtime. C# will not let you do that, and week 4 is where you meet the version that will not"*
 - [ ] **✓ say it:** *"this is the shape of JSON, and JSON is what every API in week 15 hands you"*
 - [ ] 🎞️ **GO TO SLIDE 18** — _Destructuring: pulling values *out*_
+- [ ] **Both shapes are up there** — braces unpack an object, brackets unpack an array. *"Instead of pulling out `student.name` then `student.gpa` one at a time, one line does both"* — then the question at the bottom
 - [ ] Paste — **short, and the point is the shape**:
 
     ```js
@@ -323,6 +328,7 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
 
 - [ ] *"Rightmost wins, and the original is untouched. Both of those are on your homework — exercise 8 fails on purpose if you mutate"*
 - [ ] 🎞️ **GO TO SLIDE 20** — *Real data = arrays of objects*
+- [ ] **This is the payoff slide — read the line under the code and mean it:** *"every database query result and every API response you touch this semester is this shape"*. Then the question: who made the honor roll?
 - [ ] Paste, then chain it:
 
     ```js
@@ -349,6 +355,7 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
 
 - [ ] **Same tab you have been in since §4 — but now make the page itself visible** alongside the console, because this is the segment where it changes. It has exactly two elements: a `#status` paragraph and a `#go` button
 - [ ] 🎞️ **GO TO SLIDE 21** — *The DOM in three APIs*
+- [ ] **Name the three APIs off the slide, in order** — select, write, listen. *"Three calls. That is the whole DOM for tonight"* — then do all three on the page underneath
 - [ ] Back on the page, paste the three moves **one at a time, watching the page after each**:
 
     ```js
@@ -374,6 +381,7 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
 ### fetch, and a look at week 15
 
 - [ ] 🎞️ **GO TO SLIDE 22** — *fetch + async/await — a preview of week 15*
+- [ ] **Read it top to bottom once, on the slide** — the `async` wrapper, the two `await`s, the `.json()`. *"Four lines. Then we run it one at a time and watch what each hands back"*
 - [ ] **Line by line, and expand the result each time:**
 
     ```js
