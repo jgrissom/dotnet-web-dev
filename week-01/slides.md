@@ -31,6 +31,7 @@ style: |
 
 ---
 
+<!-- _footer: '🖥️ Demo §1 · the arc' -->
 ## What you'll build in this course
 
 - **Week 1** — rapid JavaScript refresher *(the client)*
@@ -42,6 +43,7 @@ style: |
 
 ---
 
+<!-- _footer: '🖥️ Demo §1 · the arc' -->
 ## Where you end up
 
 By week 16: a database-backed, secured web app **and** an API your own JavaScript calls.
@@ -55,6 +57,7 @@ You graduate with **URLs, not zip files**.
 
 ---
 
+<!-- _footer: '🖥️ Demo §1 · the rules' -->
 ## The rules of the road
 
 - **AI (Copilot, ChatGPT, Claude):** using it to *explain* or *debug* — fine.
@@ -66,6 +69,7 @@ You graduate with **URLs, not zip files**.
 
 ---
 
+<!-- _footer: '🖥️ Demo §1 · the mental model' -->
 ## The one mental model
 
 ```
@@ -79,6 +83,7 @@ Browser (client)  ── HTTP request ──►  Server (ASP.NET app)
 
 ---
 
+<!-- _footer: '🖥️ Demo §1 · toolchain' -->
 ## Toolchain — install AND verify
 
 | Tool | Verify with |
@@ -91,6 +96,7 @@ Browser (client)  ── HTTP request ──►  Server (ASP.NET app)
 
 ---
 
+<!-- _footer: '🖥️ Demo §1 · toolchain' -->
 ## About that database…
 
 - **"It installed" ≠ "it works."** Green checks on all five tools from the last slide, before week 2
@@ -101,6 +107,7 @@ Browser (client)  ── HTTP request ──►  Server (ASP.NET app)
 
 ---
 
+<!-- _footer: '🖥️ Demo §3 · why JavaScript' -->
 ## Why JavaScript in a .NET course?
 
 - The browser runs exactly one language — and it isn't C#
@@ -112,6 +119,7 @@ Browser (client)  ── HTTP request ──►  Server (ASP.NET app)
 
 ---
 
+<!-- _footer: '🖥️ Demo §4 · variables and types' -->
 ## Variables: `let` and `const`
 
 ```js
@@ -127,6 +135,7 @@ maxScore = 200;  // ❌ TypeError
 
 ---
 
+<!-- _footer: '🖥️ Demo §4 · variables and types' -->
 ## Types live in values, not variables
 
 ```js
@@ -141,6 +150,7 @@ typeof [1, 2];    // "object"   — arrays are objects
 
 ---
 
+<!-- _footer: '🖥️ Demo §4 · strings and comparison' -->
 ## Template literals
 
 ```js
@@ -153,6 +163,7 @@ const name = "Ada";
 
 ---
 
+<!-- _footer: '🖥️ Demo §4 · strings and comparison' -->
 ## Equality: always `===`
 
 ```js
@@ -164,6 +175,7 @@ const name = "Ada";
 
 ---
 
+<!-- _footer: '🖥️ Demo §4 · strings and comparison' -->
 ## Truthiness
 
 Falsy: `false` · `0` · `""` · `null` · `undefined` · `NaN`
@@ -177,6 +189,7 @@ if (username) {
 
 ---
 
+<!-- _footer: '🖥️ Demo §4 · functions' -->
 ## Arrow functions = lambdas
 
 ```js
@@ -192,6 +205,7 @@ const greet = (name = "friend") => `Hello, ${name}!`;
 
 ---
 
+<!-- _footer: '🖥️ Demo §5 · the big three' -->
 ## Arrays
 
 ```js
@@ -210,6 +224,7 @@ C# bridge: closer to `List<T>` than an array — resizable.
 
 ---
 
+<!-- _footer: '🖥️ Demo §5 · the big three' -->
 ## The big three (this is LINQ!)
 
 ```js
@@ -226,6 +241,7 @@ scores                       // after all that — changed or not?
 
 ---
 
+<!-- _footer: '🖥️ Demo §5 · objects' -->
 ## Objects
 
 ```js
@@ -240,6 +256,7 @@ C# bridge: no class behind it — a bag of key/values, like `Dictionary<string, 
 
 ---
 
+<!-- _footer: '🖥️ Demo §5 · objects' -->
 ## Destructuring: pulling values *out*
 
 ```js
@@ -257,6 +274,7 @@ Instead of `student.name`, `student.gpa` one at a time — unpack in one line.
 
 ---
 
+<!-- _footer: '🖥️ Demo §5 · objects' -->
 ## Spread: copying everything *in*
 
 ```js
@@ -275,6 +293,7 @@ combined
 
 ---
 
+<!-- _footer: '🖥️ Demo §5 · objects' -->
 ## Real data = arrays of objects
 
 ```js
@@ -292,6 +311,7 @@ Every DB query result and API response in this course is this shape.
 
 ---
 
+<!-- _footer: '🖥️ Demo §6 · the DOM' -->
 ## The DOM in three APIs
 
 Runs *against a page* — tonight's demo playground, console on:
@@ -314,6 +334,7 @@ C# bridge: an event + a lambda for the handler.
 
 ---
 
+<!-- _footer: '🖥️ Demo §6 · fetch' -->
 ## fetch + async/await — a preview of week 15
 
 ```js
@@ -331,6 +352,7 @@ loadUsers()   // ← type this to run it, then watch the console
 
 ---
 
+<!-- _footer: '🖥️ Demo §7 · hand off' -->
 ## Lab: JS Refresher Gauntlet
 
 - Copy `week-01/` out of the starters repo
@@ -341,6 +363,7 @@ loadUsers()   // ← type this to run it, then watch the console
 
 ---
 
+<!-- _footer: '🖥️ Demo §8 · wrap-up' -->
 ## Before next week
 
 - ✅ Homework: JS exercises (`homework.md`) — **shipped live to GitHub Pages**
