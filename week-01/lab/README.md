@@ -2,7 +2,7 @@
 
 Work through the 8 exercises in `exercises.js`. Each one is a small function with a `// TODO` — your job is to make it work.
 
-**Time:** ~35 minutes in class. Exercises 7–8 roll into homework if you run out of time.
+**Time:** ~20 minutes of work in class — we review 2–3 of them together in the last 10. Exercises 7–8 roll into homework if you run out of time.
 **Pairs encouraged.** Talk through each one before typing.
 
 ## Setup

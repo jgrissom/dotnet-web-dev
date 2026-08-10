@@ -1,6 +1,6 @@
 # Week 1 — Environment Setup Guide
 
-Work through this top to bottom. Each step ends with a **✓ Verify** — don't move on until it passes. Raise a hand when stuck; if you finish early, help a neighbor.
+Work through this top to bottom. Each step ends with a **✓ Verify** — don't move on until it passes. Raise a hand when stuck; if you finish early, help a classmate.
 
 > [!NOTE]
 > Windows, macOS, and Linux all work this semester — the steps below are identical except where marked. You need permission to install software on your machine (personal laptops: you're fine; locked-down work laptops: see me).
@@ -105,7 +105,7 @@ Version prints, and your name comes back.
 | 4 | `git --version` + `git config user.name` | both answer |
 | 5 | Logged in to GitHub | avatar top-right |
 
-All five green? 🎉 You're done for the whole semester — this is the only install night. Help a neighbor or start the lab early.
+All five green? 🎉 You're done for the whole semester — this is the only install night. Help a classmate or start the lab early.
 
 > [!IMPORTANT]
 > Couldn't finish in class? This **must** be working before week 2 — it's Part 1 of tonight's homework. Use the [troubleshooting appendix](lecture-notes.md#appendix-setup-troubleshooting), then email me.

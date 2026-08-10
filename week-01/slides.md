@@ -61,7 +61,7 @@ You graduate with **URLs, not zip files**.
   Submitting code you can't explain — **not fine**.
 - **The explain-it standard:** any week, I can ask you to walk me through any line you submitted. Can't explain it → not your work.
 - **Commit as you go:** graded homework needs **3+ meaningful commits**.
-- **Your work gets shown.** It's public with your name on it, and everyone's app goes on the projector at least once this term.
+- **Your work gets shown.** It's public with your name on it, and everyone's app goes on screen at least once this term.
   Build a portfolio you can **defend in an interview** — that's the game.
 
 ---

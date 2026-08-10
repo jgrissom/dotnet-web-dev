@@ -38,7 +38,7 @@ It needs:
 7. **Deployed to Azure**, and **3+ meaningful commits** in your public GitHub repo.
 
 > [!NOTE]
-> **Design isn't graded, and it isn't the point.** The rubric asks whether a theme loads, not whether it's a good one. Pick a Bootswatch theme that suits your topic and move on — I'll still tell you what I think of it when yours is on the projector.
+> **Design isn't graded, and it isn't the point.** The rubric asks whether a theme loads, not whether it's a good one. Pick a Bootswatch theme that suits your topic and move on — I'll still tell you what I think of it when yours is on screen.
 
 > [!TIP]
 > **Nothing here needs a controller change.** If you find yourself in `Controllers/`, you've probably wandered off the assignment.
