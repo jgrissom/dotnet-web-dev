@@ -23,7 +23,8 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
 - [ ] **Browser open with the console docked and the font sized up.** You live in it for two hours tonight — `Cmd/Ctrl +` in DevTools raises console text independently of the page
 - [ ] **Park two browser tabs:** the [setup guide](https://github.com/jgrissom/dotnet-web-dev/blob/main/week-01/setup-guide.md) and the [hosted playground](https://jgrissom.github.io/dotnet-web-dev/week-01/demo/). You need the guide's URL on screen at 0:20 and the playground at 2:40
 - [ ] ⚠️ **Print or queue the school SQL Server address + credentials handout.** §2 stops dead without it, and it is the one thing in this session you cannot improvise
-- [ ] **Every console block below has a Copy button on the hosted sheet** — that is your paste source. **Type the prediction moments** anyway; the clipboard is a safety net, not the performance
+- [ ] **Every console block below has a Copy button on the hosted sheet — paste, do not type.** Nothing tonight is taught by watching characters appear; the teaching is in the bet before each Enter
+- [ ] ⚠️ **Do the `allow pasting` dance now, not in front of the room.** Chrome and Edge block the first paste into the console until you type **`allow pasting`** and press Enter. It is once per profile and it sticks — but it is a baffling thirty seconds if you meet it at 1:25 with a slide up
 - [ ] *(Offline fallback: `demo/demo-script.js` holds the same blocks in slide order, for a night when Pages is unreachable.)*
 - [ ] ⚠️ **Clear the console between sections** (the 🚫 button, or `Ctrl+L`). Tonight's scroll is not the story — the current answer is, and a screen of old output is where the back row loses you
 - [ ] Sanity check: the playground loads, and `document.querySelector("#status")` returns the paragraph rather than `null`
@@ -79,12 +80,12 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
 ## 4 · The dialect this course speaks *(slides 9–14)*
 
 > [!IMPORTANT]
-> **Rapid-fire, and every block is a bet before it is an answer.** Type the prediction moments; paste the rest. If the room is clearly solid, compress — the lab is the real diagnostic.
+> **Rapid-fire, and every block is a bet before it is an answer.** Paste each block, **then stop before Enter** and take the prediction — that pause is the whole segment. If the room is clearly solid, compress — the lab is the real diagnostic.
 
 ### Variables and types
 
 - [ ] 🎞️ **GO TO SLIDE 9** — *Variables: `let` and `const`*
-- [ ] In the console — **type this one**, then ask which line throws before you press Enter:
+- [ ] Paste this into the console — **then stop.** Ask which line throws before you press Enter:
 
     ```js
     let score = 0;
@@ -96,7 +97,7 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
 - [ ] **✓ say it:** *"`const` by default, `let` if it genuinely changes, `var` never. That is the house rule and the homework checks it"*
 - [ ] C# bridge: *"`const` is closest to `readonly` — the binding is fixed, the contents are not"*
 - [ ] 🎞️ **GO TO SLIDE 10** — *Types live in values, not variables*
-- [ ] **Type these one at a time. Take bets on the fourth:**
+- [ ] **Paste these one at a time**, and take bets on the fourth before its Enter:
 
     ```js
     typeof 42
