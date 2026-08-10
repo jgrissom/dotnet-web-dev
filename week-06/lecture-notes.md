@@ -47,6 +47,13 @@ public IActionResult Create(Truck truck)
 }
 ```
 
+> [!NOTE]
+> **`[HttpPost]` is an attribute, and this is the first one in the course.** Anything in square brackets above a declaration is a label attached to it — it doesn't run, and it isn't a statement. The framework reads these when the app starts and changes how it treats the thing underneath: `[HttpPost]` tells routing that *this* `Create` answers POSTs, not GETs.
+>
+> **It's the same idea as the HTML attributes you already know** — extra information hung on a thing rather than instructions to carry out — except the reader is ASP.NET rather than the browser. Keep the two straight this week: `name="Cuisine"` is an HTML attribute, `[HttpPost]` is a C# one, and the notes below use "attribute" for both.
+>
+> You'll meet several more: `[Required]` and friends on the model in Part 3, `[ValidateAntiForgeryToken]` in Part 4, and in week 8 `[Bind]`, which is the one that bites hardest when it's wrong.
+
 And `Views/Trucks/Create.cshtml` — **this is the whole file**, hand-written HTML:
 
 ```html

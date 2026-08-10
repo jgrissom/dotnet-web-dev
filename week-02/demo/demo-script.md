@@ -23,8 +23,10 @@ Edit-by-edit cue sheet for transforming `index.html` (your **scratch copy**) int
 ## 0b · The opening pitch *(slides 2–4)*
 
 - [ ] 🎞️ **GO TO SLIDE 2** — *Tonight*
-- [ ] 🎞️ **GO TO SLIDE 3** — *Why a CSS framework?* Flip between the **before** and **after** tabs while it's up — same content, transformed almost entirely by classes
-- [ ] 🎞️ **GO TO SLIDE 4** — *Setup: two tags via CDN*. Point at the two tags already sitting in your scratch copy
+- [ ] 🎞️ **GO TO SLIDE 3** — *Why a CSS framework?*
+- [ ] Flip between the **before** and **after** tabs — same content, transformed almost entirely by classes
+- [ ] 🎞️ **GO TO SLIDE 4** — *Setup: two tags via CDN*
+- [ ] Point at the same two tags already sitting in your scratch copy
 
 ## 1 · The grid *(slides 5–7)*
 
