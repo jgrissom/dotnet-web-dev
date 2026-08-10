@@ -993,11 +993,8 @@ section pre .hljs-name { color: #7ee787; }
 section pre .hljs-selector-class, section pre .hljs-selector-pseudo { color: #7ee787; }
 ;" data-marpit-pagination-total="24">
 <h2 id="the-dom-in-three-apis">The DOM in three APIs</h2>
-<p>Runs <em>against a page</em> — tonight's demo playground, console on:</p>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;status&quot;</span>&gt;</span>Loading…<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;go&quot;</span>&gt;</span>Go<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-</code></pre>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-js"><span class="hljs-keyword">const</span> status = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&quot;#status&quot;</span>); <span class="hljs-comment">// 1. select (CSS selectors!)</span>
+<p>Runs <em>against a page</em> — tonight's playground has <code>#status</code> and <code>#go</code>:</p>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-js"><span class="hljs-keyword">const</span> status = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&quot;#status&quot;</span>); <span class="hljs-comment">// 1. select</span>
 status.<span class="hljs-property">textContent</span> = <span class="hljs-string">&quot;Ready.&quot;</span>;                    <span class="hljs-comment">// 2. write — watch the page</span>
 <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&quot;#go&quot;</span>)                     <span class="hljs-comment">// 3. listen</span>
   .<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&quot;click&quot;</span>, <span class="hljs-function">() =&gt;</span> {
