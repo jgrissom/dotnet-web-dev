@@ -21,7 +21,9 @@ If you didn't finish exercises 1–8 in class, finish them. The console must sho
 
 Set up a homework folder the same way the lab worked — a page that loads your script, so the browser console is your test loop from the first line you write:
 
-1. Create a folder with three files: `index.html`, an empty `homework.js`, and a copy of [`homework-checks.js`](homework-checks.js) from the course repo.
+1. Create a folder with three files: `index.html`, an empty `homework.js`, and a copy of **`homework-checks.js`**.
+
+   You don't have the course repo on your machine — you read it in the browser — so download that one file: open [`homework-checks.js`](homework-checks.js), click **Download raw file** (the ⤓ button above the code), and move it into your folder next to the other two.
 2. `index.html`:
    ```html
    <!DOCTYPE html>
