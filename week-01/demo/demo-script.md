@@ -26,13 +26,24 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
 - [ ] **Size the console text for the back row** — `Cmd/Ctrl +` inside DevTools raises it independently of the page
 - [ ] ⚠️ **Print or queue the school SQL Server address + credentials handout.** §2 stops dead without it, and it is the one thing in this session you cannot improvise
 - [ ] **Every console block below has a Copy button on the hosted sheet — paste, do not type.** Nothing tonight is taught by watching characters appear; the teaching is in the bet before each Enter
-- [ ] 🛑 **Turn OFF eager evaluation — this one decides whether tonight works.** DevTools → **F1** → Preferences → **Console** → untick **Eager evaluation**. Chrome previews the result of any complete expression *before* you press Enter, in grey, right under the line. Every bet in §4 and §5 dies the instant the room can read the answer — and **typing does not save you**, because the preview appears the moment the expression is syntactically complete either way. One tick, once per profile, and the whole segment works
-- [ ] **✓ Verify it took** — no restart needed, it applies to the next line you paste. Paste `1 + 1` into the console and **do not press Enter**: if grey `2` appears underneath, it is still on. Nothing underneath means you are set. *(Still showing? Close and reopen DevTools — F12 twice — not the browser.)*
-- [ ] ⚠️ **Do the `allow pasting` dance now, not in front of the room.** Chrome and Edge block the first paste into the console until you type **`allow pasting`** and press Enter. It is once per profile and it sticks — but it is a baffling thirty seconds if you meet it at 1:25 with a slide up
 - [ ] *(Offline fallback: `demo/demo-script.js` holds the same blocks in slide order, for a night when Pages is unreachable.)*
 - [ ] ⚠️ **Clear the console between sections** (the 🚫 button, or `Ctrl+L`). Tonight's scroll is not the story — the current answer is, and a screen of old output is where the back row loses you
 - [ ] Sanity check: the playground loads, and `document.querySelector("#status")` returns the paragraph rather than `null`
 - [ ] **Say it at the top: *"lids down for the lecture parts — you have a setup workshop and a lab tonight where the laptop is the point."*** Nobody codes along with a refresher
+
+### Chrome console prep
+
+⚠️ **Three settings, all once per Chrome profile, all of which stick.** Do them now. Each one costs a baffling thirty seconds if you meet it at 1:25 with a slide up, and the first two decide whether the predict-then-run beats work at all.
+
+- [ ] 🛑 **Eager evaluation OFF.** DevTools → **F1** → Preferences → **Console** → untick **Eager evaluation**. Chrome previews the result of any complete expression *before* you press Enter, in grey, right under the line. Every bet in §4 and §5 dies the instant the room can read the answer — and **typing does not save you**, because the preview appears the moment the expression is syntactically complete either way
+- [ ] 🛑 **AI autocomplete OFF — this one argues with the deck.** Same **F1** settings, in the AI section (headed *AI innovations* or *AI assistance*, depending on your Chrome). Untick everything in it. It offers a rewrite of what you paste, as grey ghost text: on §5's spread line it proposes `const updated = Object.assign({}, student, { gpa: 4.0 });` — which is the old-tutorial habit slide 8 says tonight exists to un-learn, on screen while slide 18 teaches the opposite. *(Section missing or greyed out means WCTC manages it: `chrome://policy`, look for `DevToolsGenAiSettings`. You cannot change it, but you will know to expect the ghost text.)*
+- [ ] 🛑 **`allow pasting`.** Chrome and Edge block the first paste into the console until you type **`allow pasting`** and press Enter — a self-XSS guard, and every Copy button on this sheet hits it
+- [ ] **✓ Verify all three with two pastes, neither of which you send.** No restart needed; the settings apply to the next line. First paste `1 + 1` — Chrome will ask for `allow pasting` here, so type it and paste again — and **stop, do not press Enter**: grey `2` underneath means eager evaluation is still on. Then paste the line below and again **do not press Enter** — grey text trailing it means the AI is still on. Nothing grey either time and you are set. *(Still there? Close and reopen DevTools — F12 twice — not the browser.)*
+
+    ```js
+    const updated = { ...student, gpa: 4.0 };
+    ```
+
 
 ## 1 · Welcome and the shape of the course *(slides 2–7)*
 
