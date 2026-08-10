@@ -109,20 +109,20 @@ In this course, nothing stays on your laptop. Your JavaScript work goes live on 
 
 1. Create a GitHub account if you don't have one (use your school email — it also qualifies you for the [GitHub Student Developer Pack](https://education.github.com/pack)).
 2. Create a **public** repo named `web-dev-week01`.
-3. Push the history you have been building since Part 3 — commit anything still outstanding first:
+3. **Check the history first.** `git log --oneline` should show **at least three** commits reading like the work happening, not one giant "done". Commit whatever is still outstanding:
    ```bash
    git add .
    git commit -m "All checks green"
+   ```
+4. Now push it:
+   ```bash
    git branch -M main
    git remote add origin https://github.com/YOUR-USERNAME/web-dev-week01.git
    git push -u origin main
    ```
-
-> [!NOTE]
-> **Check what you are about to push:** `git log --oneline` should show **at least three** commits, and they should read like the work happening — not one giant "done".
-4. Enable Pages: repo → **Settings → Pages** → Source: *Deploy from a branch* → Branch: `main`, folder `/ (root)` → Save.
-5. Wait ~1 minute, then visit `https://YOUR-USERNAME.github.io/web-dev-week01/` — open the console (F12) and confirm your output appears.
-6. Submit that URL.
+5. Enable Pages: repo → **Settings → Pages** → Source: *Deploy from a branch* → Branch: `main`, folder `/ (root)` → Save.
+6. Wait ~1 minute, then visit `https://YOUR-USERNAME.github.io/web-dev-week01/` — open the console (F12) and confirm your output appears.
+7. Submit that URL.
 
 > [!IMPORTANT]
 > **Test your URL in a private/incognito window before submitting** — if it 404s for you, it 404s for me, and a dead link grades as not submitted.

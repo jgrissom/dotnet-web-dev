@@ -16,7 +16,6 @@
 >
 > Then commit at each natural stopping point below. Part 3 pushes whatever history you built.
 
-
 Complete every unchecked item in `lab/README.md` on all three pages: navbar, hero, feature row, card grid with badges, contact form with alert, footer, and Bootstrap Icons on every page. Rules still apply — no custom CSS except the font override.
 
 ## Part 2 — Make it genuinely yours (graded)
@@ -30,8 +29,8 @@ This site becomes your portfolio — by finals it will link to deployed .NET app
 
 ## Part 3 — Deploy + get ready for Azure
 
-1. Push the site — your `week-02` copy in `dotnet-web` — to a **public** repo named `portfolio`, and enable GitHub Pages (same flow as week 1).
-2. **Check the history before you push:** `git log --oneline` should already show 3+ commits — after the lab checklist, after your theme and fonts, after your extra component.
+1. **Check the history first:** `git log --oneline` should already show 3+ commits — after the lab checklist, after your theme and fonts, after your extra component. Commit anything still outstanding now.
+2. Push the site — your `week-02` copy in `dotnet-web` — to a **public** repo named `portfolio`, and enable GitHub Pages (same flow as week 1).
 3. Test the URL in a private/incognito window — check **all three pages** and the navbar links between them.
 
 > [!TIP]
