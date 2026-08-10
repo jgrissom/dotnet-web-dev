@@ -136,6 +136,9 @@ In this course, nothing stays on your laptop. Your JavaScript work goes live on 
 - **A grey line saying the whole-file scan was skipped** — that is not an error and nothing is wrong. A page opened straight from disk isn't allowed to read its own `.js`, so only that one extra scan can't run; your eight functions **were** checked, and everything graded is covered. It goes away over Live Server or on your Pages URL.
 - **A function passes but still gets flagged** — the ✅ is correctness, the ⚠️ line underneath is the rules. `var`, `==` and `!=` cost a point each even in a function that works.
 - **Your Pages URL 404s** — give it a minute or two after you enable it, then reload. If it is still dead, re-check **Settings → Pages** says branch `main` and folder `/ (root)`, and that the repo is **public**. Always test it in a private/incognito window; a page that loads for you can still 404 for me.
+- **`fatal: remote origin already exists`** — you ran `git remote add origin` twice. `git remote set-url origin <url>` fixes it; `git remote -v` shows what it is pointing at now.
+- **`repository not found` on push** — the repo has to exist on GitHub first; `git push` will not create it. Make it at [github.com/new](https://github.com/new), public, and **don't** let it add a README — an empty repo is what you want here.
+- **`git push` asks for a password and rejects yours** — GitHub stopped taking account passwords. Use a personal access token as the password, or install [GitHub CLI](https://cli.github.com) and run `gh auth login` once.
 - Everything else: the [troubleshooting appendix](lecture-notes.md#appendix-setup-troubleshooting).
 
 ## 📊 Grading (20 pts)
