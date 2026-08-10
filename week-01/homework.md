@@ -129,6 +129,15 @@ In this course, nothing stays on your laptop. Your JavaScript work goes live on 
 > [!IMPORTANT]
 > **Test your URL in a private/incognito window before submitting** — if it 404s for you, it 404s for me, and a dead link grades as not submitted.
 
+## 🆘 Stuck?
+
+- **`❌ 4. courseTitles (error: courseTitles is not defined)`** — the name has to match the spec exactly, including capitals. The checker looks for these eight and nothing else: `courseLine`, `isFull`, `openCourses`, `courseTitles`, `openCourseLines`, `findCourse`, `addCourse`, `totalCredits`.
+- **`0 / 8` when you know you have written some** — check the order of the two `<script>` tags in `index.html`. `homework.js` has to come **first**; the checker runs the moment it loads, so if it loads first there is nothing there yet.
+- **A grey line saying the whole-file scan was skipped** — that is not an error and nothing is wrong. A page opened straight from disk isn't allowed to read its own `.js`, so only that one extra scan can't run; your eight functions **were** checked, and everything graded is covered. It goes away over Live Server or on your Pages URL.
+- **A function passes but still gets flagged** — the ✅ is correctness, the ⚠️ line underneath is the rules. `var`, `==` and `!=` cost a point each even in a function that works.
+- **Your Pages URL 404s** — give it a minute or two after you enable it, then reload. If it is still dead, re-check **Settings → Pages** says branch `main` and folder `/ (root)`, and that the repo is **public**. Always test it in a private/incognito window; a page that loads for you can still 404 for me.
+- Everything else: the [troubleshooting appendix](lecture-notes.md#appendix-setup-troubleshooting).
+
 ## 📊 Grading (20 pts)
 
 | Item | Points |
