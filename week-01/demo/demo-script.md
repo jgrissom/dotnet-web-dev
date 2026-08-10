@@ -143,7 +143,7 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
 
 ### Strings and comparison
 
-- [ ] 🎞️ **GO TO SLIDE 11** — *Template literals*
+- [ ] **Still no slide** — *"backticks instead of quotes. Watch what happens inside the curly braces"*
 - [ ] Paste:
 
     ```js
@@ -153,6 +153,7 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
     ```js
     `Hello, ${name}! You have ${3 + 4} messages.`
     ```
+- [ ] 🎞️ **GO TO SLIDE 11** — *Template literals*
 
 - [ ] C# bridge: *"it is `$"Hello, {name}"` with the dollar sign moved inside. Same idea, and it does arithmetic in there too"*
 - [ ] *"Two lines that differ by one character. Call both before I run either"*
