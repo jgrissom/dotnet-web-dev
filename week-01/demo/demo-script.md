@@ -193,11 +193,15 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
 ### Functions
 
 - [ ] 🎞️ **GO TO SLIDE 14** — *Arrow functions = lambdas*
-- [ ] Paste, then call it both ways:
+- [ ] Paste the two declarations, then call each one:
 
     ```js
     const add = (a, b) => a + b;
     const greet = (nm = "friend") => `Hello, ${nm}!`;
+    ```
+
+    ```js
+    add(2, 3)
     ```
 
     ```js
@@ -208,8 +212,16 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
     greet("Ada")
     ```
 
+- [ ] *"`greet()` with nothing gets `friend` — that is a default parameter, and C# has had them for years"*
+
 - [ ] C# bridge: *"`(a, b) => a + b` is valid C# too. Same syntax, both languages — this is the one that surprises people"*
-- [ ] ⚠️ **Name the difference that bites:** *"no overloads, and no type checking. A missing argument does not error, it becomes `undefined` and travels"*
+- [ ] ⚠️ **Now show the difference that bites, rather than asserting it. Take a prediction first — C# would not compile this:**
+
+    ```js
+    add(2)
+    ```
+
+- [ ] **`NaN`.** *"No overloads, no type checking, and no error. The missing argument became `undefined`, `2 + undefined` is NaN — and that value is now travelling through your program looking like a number"*
 - [ ] **✓ CHECKPOINT:** the room can say why `===` and why `const`, without hedging
 
 ## 5 · Arrays and objects *(slides 15–20)*
