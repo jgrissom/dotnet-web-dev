@@ -340,7 +340,7 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
 
 - [ ] *"Rightmost wins, and the original is untouched. Both of those are on your homework — exercise 8 fails on purpose if you mutate"*
 - [ ] 🎞️ **GO TO SLIDE 20** — *Real data = arrays of objects*
-- [ ] **This is the payoff slide — read the line under the code and mean it:** *"every database query result and every API response you touch this semester is this shape"*. Then the question: who made the honor roll?
+- [ ] **This is the payoff slide — read the line under the code and mean it:** *"every database query result and every API response you touch this semester is this shape"*. Then the question: *"who made the honor roll?"*
 - [ ] Paste, then chain it:
 
     ```js
