@@ -20,8 +20,10 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
 ## 0 · Before class
 
 - [ ] **Teaching profile** in VS Code (gear → Profiles): C# and mssql extensions only, no C# Dev Kit — your editor matches theirs. Bump the font for the back row
-- [ ] **Browser open with the console docked and the font sized up.** You live in it for two hours tonight — `Cmd/Ctrl +` in DevTools raises console text independently of the page
-- [ ] **Park two browser tabs:** the [setup guide](https://github.com/jgrissom/dotnet-web-dev/blob/main/week-01/setup-guide.md) and the [hosted playground](https://jgrissom.github.io/dotnet-web-dev/week-01/demo/). You need the guide's URL on screen at 0:20 and the playground at 2:40
+- [ ] **Park two browser tabs:** the [setup guide](https://github.com/jgrissom/dotnet-web-dev/blob/main/week-01/setup-guide.md) and the [hosted playground](https://jgrissom.github.io/dotnet-web-dev/week-01/demo/). The guide goes on screen at 0:20; the playground is your home for the rest of the night
+- [ ] ⚠️ **The playground tab is where your console lives, all evening — open it there now (F12) and dock it.** §4 and §5 never touch the page, only the console, so any tab would do; using this one means **§6 needs no setup at all**, because the page it manipulates is already under you
+- [ ] ⚠️ **Not on the slides.** If the console is docked on the deck, putting the console on screen puts the deck on screen with it — and the whole sheet assumes those are two separate states you swipe between
+- [ ] **Size the console text for the back row** — `Cmd/Ctrl +` inside DevTools raises it independently of the page
 - [ ] ⚠️ **Print or queue the school SQL Server address + credentials handout.** §2 stops dead without it, and it is the one thing in this session you cannot improvise
 - [ ] **Every console block below has a Copy button on the hosted sheet — paste, do not type.** Nothing tonight is taught by watching characters appear; the teaching is in the bet before each Enter
 - [ ] ⚠️ **Do the `allow pasting` dance now, not in front of the room.** Chrome and Edge block the first paste into the console until you type **`allow pasting`** and press Enter. It is once per profile and it sticks — but it is a baffling thirty seconds if you meet it at 1:25 with a slide up
@@ -80,12 +82,14 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
 ## 4 · The dialect this course speaks *(slides 9–14)*
 
 > [!IMPORTANT]
-> **Rapid-fire, and every block is a bet before it is an answer.** Paste each block, **then stop before Enter** and take the prediction — that pause is the whole segment. If the room is clearly solid, compress — the lab is the real diagnostic.
+> **Rapid-fire, and every block is a bet before it is an answer.** Paste each block, **then stop before Enter** and take the prediction — that pause is the whole segment.
+>
+> **All of it happens in the playground tab's console**, the one you docked in §0. The page behind it is irrelevant until §6 — you are using it as a console and nothing more. If the room is clearly solid, compress — the lab is the real diagnostic.
 
 ### Variables and types
 
 - [ ] 🎞️ **GO TO SLIDE 9** — *Variables: `let` and `const`*
-- [ ] Paste this into the console — **then stop.** Ask which line throws before you press Enter:
+- [ ] **Swipe to the playground tab** and paste this into its console — **then stop.** Ask which line throws before you press Enter:
 
     ```js
     let score = 0;
@@ -241,7 +245,7 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
 
 ### The DOM, on a real page
 
-- [ ] **Swipe to the [playground](https://jgrissom.github.io/dotnet-web-dev/week-01/demo/)** — page visible, console open. It has exactly two elements: a `#status` paragraph and a `#go` button
+- [ ] **Same tab you have been in since §4 — but now make the page itself visible** alongside the console, because this is the segment where it changes. It has exactly two elements: a `#status` paragraph and a `#go` button
 - [ ] 🎞️ **GO TO SLIDE 21** — *The DOM in three APIs*
 - [ ] Back on the page, paste the three moves **one at a time, watching the page after each**:
 
