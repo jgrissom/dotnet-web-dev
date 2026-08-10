@@ -23,6 +23,6 @@ The full chain, end to end: **URL → route → action → data → Razor → HT
 - Bring back the class **working regions** list — add any new wins/failures. *(No student apps on screen this week; showing their work starts in week 5, when every topic is different.)*
 - Empty scratch folder picked for *Curbside* — you create it **live** at the top of the routing segment (demo §0b, 60 seconds), since tonight's homework asks students to do the same thing
 - ⚠️ The demo **breaks the route pattern twice on purpose** — the script flags both restores. Verify `/` still works before §2
-- Remind students to `git pull` for the week-04 starter
+- Remind students to `git pull` the starters repo for the week-04 folder
 
 **Prev:** [← Week 3 — Hello, Server](../week-03/README.md) · **Next:** [Week 5 — Layouts & Partials →](../week-05/README.md)

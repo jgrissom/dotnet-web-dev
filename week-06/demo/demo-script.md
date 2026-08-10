@@ -485,7 +485,7 @@ You can't stage this attack in the browser — the browser is *on your site*, so
 
 - [ ] 🎞️ **GO TO SLIDE 23** — *Lab: the Registry takes reports*. Leave it up for the whole lab; it's the task list
 - [ ] Show **what done looks like** — the answer key **running on localhost**, form working, and `dotnet test Cryptids.Checks` printing **6 / 6**. That's `week-06/lab/solution` in the answer-keys repo; `dotnet run` from `Cryptids.Web`, `dotnet test` from the folder above it. ~90 seconds, a target not a walkthrough. **Nothing is deployed for this** — Azure is their homework, not tonight
-- [ ] Setup on screen, said once: **`git pull` → copy `week-06` out and rename it → open the folder holding *both* projects → `dotnet test Cryptids.Checks`**
+- [ ] Setup on screen, said once: **`cd dotnet-web-starters && git pull` → copy `week-06` out and rename it → open the folder holding *both* projects → `dotnet test Cryptids.Checks`**
 - [ ] Say plainly: **the app arrives with last week's shell on it.** Nobody is blocked tonight by an unfinished week 5. Check 1 proves it
 - [ ] **In-class target: checks 1–5.** Check 6 is a three-line paste and rolls into the homework
 - [ ] Name the one exact string check 2 wants: **`[Display(Name = "First sighted")]`**

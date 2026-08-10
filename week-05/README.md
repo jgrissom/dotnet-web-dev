@@ -25,6 +25,6 @@ The shell, end to end: **one layout wraps every page, two files they'd never ope
 - **Copy `week-05/demo-starter/Curbside` out of the private answer-keys repo** to a scratch folder — it's Curbside exactly where week 4 left it. `dotnet watch`, then park three browser tabs on `/`, `/Trucks`, `/Trucks/Details/2`
 - ⚠️ The demo **breaks the layout four times on purpose**, and each one takes down every page. The script flags all four restores — trust it
 - Your finished Registry running + `dotnet test` at 6/6, for the lab launch
-- Remind students to `git pull` for the week-05 starter
+- Remind students to `git pull` the starters repo for the week-05 folder
 
 **Prev:** [← Week 4 — Routing & Razor](../week-04/README.md) · **Next:** [Week 6 — Forms & Validation →](../week-06/README.md)

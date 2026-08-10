@@ -16,7 +16,7 @@ Students turn an unstyled 3-page site into a personalized, responsive portfolio 
 ## 📋 Before class, don't forget
 
 - Know who's still fighting their setup from week 1 — the 5-minute opener is triage, not a gallery *(showing student work starts in week 5)*
-- Remind students to `git pull` this repo for the week-02 starter
+- Remind students to `git pull` the starters repo for the week-02 folder
 - Have bootswatch.com and fonts.google.com open in tabs for the live demos
 
 **Prev:** [← Week 1 — Setup & JS Refresher](../week-01/README.md) · **Next:** [Week 3 — Hello, Server →](../week-03/README.md)

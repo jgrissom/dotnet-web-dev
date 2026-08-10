@@ -37,7 +37,7 @@ By the end of this session, students can:
 | 1:55 | 10 min | **☕ Break** |
 | 2:05 | 20 min | **Sections** *(slides 14–15, demo §4)*. The slot that was always there. Add `@section Scripts`, View Source, find it below the footer and below jQuery. Then `required: true` → index 500s, details still fine. **Restore.** **Say the week-6 line here**, pointing at `_ValidationScriptsPartial.cshtml`. |
 | 2:25 | 25 min | **Bootswatch** *(slides 16–18, demo §5)*. **The payoff.** One `<link>`, hard-refresh, different site. Cycle two or three themes. Pinned version, replaces-not-adds, only-the-CSS-moved. Fix the navbar classes, and say the reassurance out loud: *your Bootstrap knowledge is intact*. Close on the week-2 callback. |
-| 2:50 | 45 min | **Lab: the Registry gets a shell** *(slide 19)*. Launch with ~90 seconds of *what done looks like* — finished copy + `dotnet test` printing **6 / 6**. Then the setup, said once: **`git pull` → copy `week-05` out and rename → open the folder holding *both* projects → `dotnet test Cryptids.Checks`**. **In-class target: checks 1–4 green.** |
+| 2:50 | 45 min | **Lab: the Registry gets a shell** *(slide 19)*. Launch with ~90 seconds of *what done looks like* — finished copy + `dotnet test` printing **6 / 6**. Then the setup, said once: **`cd dotnet-web-starters && git pull` → copy `week-05` out and rename → open the folder holding *both* projects → `dotnet test Cryptids.Checks`**. **In-class target: checks 1–4 green.** |
 | 3:35 | 10 min | **Wrap-up** *(slide 20)*. The shell diagram. Homework: their own app gets the same five moves. Then week 6: the shell holds a **form**, and the Scripts slot is how validation arrives. |
 
 ## Instructor notes

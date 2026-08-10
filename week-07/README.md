@@ -28,6 +28,6 @@ The night the data stops belonging to the process. For four weeks the list has b
 - **Size the terminal for the back row and leave it up all night.** Unlike week 6 you never clear it: migration output, generated SQL and two error messages are the story
 - Check `dotnet ef --version` matches your runtime — a skew warning on the projector invites a question you don't want
 - Your finished Registry with `dotnet test` at 6/6, for the lab launch
-- Remind students to `git pull` for the week-07 starter
+- Remind students to `git pull` the starters repo for the week-07 folder
 
 **Prev:** [← Week 6 — Forms & Validation](../week-06/README.md) · **Next:** [Week 8 — EF Core CRUD →](../week-08/README.md)

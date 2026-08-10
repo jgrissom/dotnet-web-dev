@@ -20,6 +20,6 @@ The pivot night: HTTP demystified in DevTools, `dotnet new mvc` to a working ser
 - Know who failed Azure activation in week 2 — the 5-minute opener is triage, not a gallery *(showing student work starts in week 5)*
 - Scratch folder + Azure app name ready for the demo (see [demo/README.md](demo/README.md))
 - Know who failed Azure activation (week 2 homework screenshots) — pair them up for the deploy segment
-- Remind students to `git pull` for the week-03 starter
+- Remind students to `git pull` the starters repo for the week-03 folder
 
 **Prev:** [← Week 2 — Bootstrap](../week-02/README.md) · **Next:** [Week 4 — Routing & Razor →](../week-04/README.md)
