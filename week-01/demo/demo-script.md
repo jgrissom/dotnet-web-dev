@@ -247,7 +247,7 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
     scores
     ```
 
-- [ ] *"`const` stopped you reassigning the variable. It never stopped you changing what is inside it — that is the contents-versus-binding line from twenty minutes ago"*
+- [ ] *"`const` stopped you reassigning the variable. It never stopped you changing what is inside it"*
 - [ ] C# bridge: *"closer to `List<T>` than to an array — it resizes"*
 - [ ] 🎞️ **GO TO SLIDE 16** — *The big three (this is LINQ!)*
 - [ ] **The console echoes each result — predict before every Enter:**
