@@ -71,7 +71,9 @@ Then commit each time the checker turns something green. One commit per function
 Write the following functions. Some come with a hint; some deliberately don't — for those, *choosing* the right tool from [the big three](lecture-notes.md#the-big-three-map-filter-find) is part of the exercise.
 
 > [!WARNING]
-> **Rules, enforced in grading:** `const`/`let` only, `===` only, arrow functions, and no mutation of `courses`. Each `var`, `==`, or mutation costs a point — see the deductions row below.
+> **Two rules cost points:** no `var` (use `const`/`let`) and no `==`/`!=` (use `===`/`!==`), plus no mutation of `courses`. Each one is −1 — see the deductions row below. The self-check scans inside the eight functions you write *and*, when the page is served, the whole file with line numbers.
+>
+> **Write them as arrow functions** — `const courseLine = (course) => { … };` is the shape all eight take. That is the course's default and what the notes use; it is house style rather than a deduction, so a `function` declaration will not cost you a point.
 
 1. `courseLine(course)` — returns `"WEB250: .NET Web Dev (4 credits)"` for the given course. Use [destructuring](lecture-notes.md#destructuring-and-spread) + a [template literal](lecture-notes.md#template-literals).
 2. `isFull(course)` — returns `true` if `enrolled` equals `cap` (remember [`===`](lecture-notes.md#equality--always)).
