@@ -271,13 +271,12 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
     scores
     ```
 
-- [ ] 🎯 **Land the C# bridge hard, because it is the whole slide:** *"`map` is `Select`. `filter` is `Where`. `find` is `FirstOrDefault`. You have written all three in C# — they are the same three ideas with different names"*
+- [ ] 🎯 **Land the C# bridge hard, because it is the whole slide:** *"`map` is `Select`. `filter` is `Where`. `find` is `FirstOrDefault` - the same three ideas with different names"*
 - [ ] **✓ say it:** *"and the original is untouched. All three hand you a new thing. That is the habit the homework is testing"*
 
 ### Objects, and the shape of everything
 
-- [ ] 🎞️ **GO TO SLIDE 17** — *Objects*
-- [ ] **Two ways in — dot and bracket — then the line that matters.** Point at `student.year = 2`: *"a property added to a thing that already exists, and there is no class anywhere on this slide"*
+- [ ] **Still no slide** — *"an object literal. Braces, key colon value. You have typed this in every language you know"*
 - [ ] Paste:
 
     ```js
@@ -297,6 +296,8 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
     ```
 
 - [ ] *"No class anywhere. You added a property to a thing that already existed, at runtime. C# will not let you do that, and week 4 is where you meet the version that will not"*
+- [ ] 🎞️ **GO TO SLIDE 17** — *Objects*
+- [ ] **Two ways in — dot and bracket — then the line that matters.** Point at `student.year = 2`: *"a property added to a thing that already exists, and there is no class anywhere on this slide"*
 - [ ] **✓ say it:** *"this is the shape of JSON, and JSON is what every API in week 15 hands you"*
 - [ ] 🎞️ **GO TO SLIDE 18** — _Destructuring: pulling values *out*_
 - [ ] **Both shapes are up there** — braces unpack an object, brackets unpack an array. *"Instead of pulling out `student.name` then `student.gpa` one at a time, one line does both"* — then the question at the bottom
