@@ -26,6 +26,7 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
 - [ ] **Size the console text for the back row** — `Cmd/Ctrl +` inside DevTools raises it independently of the page
 - [ ] ⚠️ **Print or queue the school SQL Server address + credentials handout.** §2 stops dead without it, and it is the one thing in this session you cannot improvise
 - [ ] **Every console block below has a Copy button on the hosted sheet — paste, do not type.** Nothing tonight is taught by watching characters appear; the teaching is in the bet before each Enter
+- [ ] 🛑 **Turn OFF eager evaluation — this one decides whether tonight works.** DevTools → **F1** → Preferences → **Console** → untick **Eager evaluation**. Chrome previews the result of any complete expression *before* you press Enter, in grey, right under the line. Every bet in §4 and §5 dies the instant the room can read the answer — and **typing does not save you**, because the preview appears the moment the expression is syntactically complete either way. One tick, once per profile, and the whole segment works
 - [ ] ⚠️ **Do the `allow pasting` dance now, not in front of the room.** Chrome and Edge block the first paste into the console until you type **`allow pasting`** and press Enter. It is once per profile and it sticks — but it is a baffling thirty seconds if you meet it at 1:25 with a slide up
 - [ ] *(Offline fallback: `demo/demo-script.js` holds the same blocks in slide order, for a night when Pages is unreachable.)*
 - [ ] ⚠️ **Clear the console between sections** (the 🚫 button, or `Ctrl+L`). Tonight's scroll is not the story — the current answer is, and a screen of old output is where the back row loses you
@@ -84,7 +85,9 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
 > [!IMPORTANT]
 > **Rapid-fire, and every block is a bet before it is an answer.** Paste each block, **then stop before Enter** and take the prediction — that pause is the whole segment.
 >
-> **All of it happens in the playground tab's console**, the one you docked in §0. The page behind it is irrelevant until §6 — you are using it as a console and nothing more. If the room is clearly solid, compress — the lab is the real diagnostic.
+> **All of it happens in the playground tab's console**, the one you docked in §0. The page behind it is irrelevant until §6 — you are using it as a console and nothing more.
+>
+> ⚠️ **This segment only works with eager evaluation off** (§0). Leave it on and Chrome prints the answer in grey under every line before you press Enter, and there is nothing left to bet on. If the room is clearly solid, compress — the lab is the real diagnostic.
 
 ### Variables and types
 
