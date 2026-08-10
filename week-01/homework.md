@@ -119,14 +119,14 @@ In this course, nothing stays on your laptop. Your JavaScript work goes live on 
 > [!IMPORTANT]
 > **Test your URL in a private/incognito window before submitting** — if it 404s for you, it 404s for me, and a dead link grades as not submitted.
 
-## 📊 Grading (24 pts)
+## 📊 Grading (20 pts)
 
 | Item | Points |
 |------|--------|
-| Part 1 screenshots | 4 |
+| Part 1 screenshots | 2 |
 | Functions 1–7 correct (2 pts each) | 14 |
 | Function 8 (`reduce`) | 2 |
-| Part 4: Pages URL live, console output visible | 4 |
+| Part 4: Pages URL live, console output visible | 2 |
 | **Deductions:** any use of `var` or `==`, or mutating `courses`; fewer than 3 meaningful commits | −1 each |
 
 *Reminder: the explain-it standard applies — be ready to walk me through any line you submitted.*
