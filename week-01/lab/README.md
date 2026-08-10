@@ -19,6 +19,10 @@ Work through the 8 exercises in `exercises.js`. Each one is a small function wit
 The page runs a check for every exercise. The console shows ✅ or ❌ per exercise — refresh the browser after each save to re-run.
 
 > [!TIP]
+> **Optional — Live Server.** If you took the optional note in [setup](../setup-guide.md#2-vs-code--the-c-extension) you already have it: right-click `index.html` → **Open with Live Server**, and the page reloads itself on every save, so the manual refresh above goes away. Don't have it? Extensions panel → **Live Server** (Ritwick Dey) → Install takes seconds.
+> **Nothing tonight needs it** — double-clicking `index.html` works fine. It earns its keep in the homework and again in week 2.
+
+> [!TIP]
 > **The goal — and the workflow:** take it one check at a time. Pick the first ❌, modify just that function, save, refresh, and watch it flip to ✅. Then move to the next one. Repeat until the console says **8 / 8 passing**. Don't try to write all eight and debug at the end — one red-to-green at a time is how real developers work too.
 
 ## The exercises

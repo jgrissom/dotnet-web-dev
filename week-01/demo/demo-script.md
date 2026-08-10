@@ -432,6 +432,7 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
 - [ ] **Setup on screen, said once — they cloned the starters in §2, so tonight is only the copy:** in `dotnet-web`, copy the `week-01` folder out of `dotnet-web-starters` and drop it beside the clone. *"Never work inside the clone — every week you pull it again, and it will fight you"*
 - [ ] ⚠️ **Head off the question that always comes next: no second window.** The copy is already in the Explorer under `dotnet-web`. *"Expand `week-01` and open `exercises.js` right there. Then `index.html` in the browser, F12 for the console"*
 - [ ] **The rhythm, said once:** *"one ❌ at a time. Pick the first red one, fix that function, save, refresh. Do not write all eight and debug at the end"*
+- [ ] **Offer Live Server, do not demo it** — it is in the lab README and again in the homework, so this is only so nobody misses it. *"Some of you installed Live Server in setup — if you did, right-click `index.html` and Open with Live Server, and the page reloads itself when you save. If you did not, it is in Extensions and it takes seconds. Completely optional; double-clicking the file works fine tonight"*
 - [ ] **Pairs encouraged.** Review the two or three trickiest on screen in the last ten minutes
 - [ ] ⚠️ **Exercises 7 and 8 roll into the homework if time runs out** — say so at the start, so nobody reads the clock as failure
 
