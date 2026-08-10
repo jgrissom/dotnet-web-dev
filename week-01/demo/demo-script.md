@@ -92,7 +92,7 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
 
 ### Variables and types
 
-- [ ] 🎞️ **GO TO SLIDE 9** — *Variables: `let` and `const`*
+- [ ] **Open cold — no slide yet:** *"first pair, `let` and `const`. Four lines; predict which one complains"*
 - [ ] **Swipe to the playground tab** and paste this into its console — **then stop.** Ask which line throws before you press Enter:
 
     ```js
@@ -101,10 +101,11 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
     score = 10;
     maxScore = 200;
     ```
+- [ ] 🎞️ **GO TO SLIDE 9** — *Variables: `let` and `const`*
 
 - [ ] **✓ say it:** *"`const` by default, `let` if it genuinely changes, `var` never. That is the house rule and the homework checks it"*
 - [ ] C# bridge: *"`const` is closest to `readonly` — the binding is fixed, the contents are not"*
-- [ ] 🎞️ **GO TO SLIDE 10** — *Types live in values, not variables*
+- [ ] *"Now what `typeof` says about five values. Call each one before I press Enter"*
 - [ ] **One Copy button per line — paste, Enter, read it, next.** Take the bet before the fourth:
 
     ```js
@@ -126,8 +127,8 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
     ```js
     typeof [1, 2]
     ```
-
 - [ ] **`typeof null` is `"object"`** — let the groan happen. *"A bug from 1995 that can never be fixed, because fixing it would break the web"*
+- [ ] 🎞️ **GO TO SLIDE 10** — *Types live in values, not variables*
 
 > [!NOTE]
 > **If someone asks why — and someone usually does. Don't volunteer it: it is three minutes, and it changes nothing they write.**
@@ -150,7 +151,7 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
     ```
 
 - [ ] C# bridge: *"it is `$"Hello, {name}"` with the dollar sign moved inside. Same idea, and it does arithmetic in there too"*
-- [ ] 🎞️ **GO TO SLIDE 12** — *Equality: always `===`*
+- [ ] *"Two lines that differ by one character. Call both before I run either"*
 - [ ] ⚠️ **Predictions mandatory on both lines:**
 
     ```js
@@ -160,9 +161,10 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
     ```js
     1 === "1"
     ```
+- [ ] 🎞️ **GO TO SLIDE 12** — *Equality: always `===`*
 
 - [ ] **✓ say it:** *"`==` converts before it compares, and the conversions are not always the ones you would pick. `===` checks type and value. This one is a deduction on your homework"*
-- [ ] 🎞️ **GO TO SLIDE 13** — *Truthiness*
+- [ ] *"Four values through `Boolean()`. The last one splits the room every year"*
 - [ ] **The last line is the trap — take a vote first:**
 
     ```js
@@ -174,6 +176,7 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
     ```js
     Boolean([])
     ```
+- [ ] 🎞️ **GO TO SLIDE 13** — *Truthiness*
 
 - [ ] *"An empty array is truthy. Everything is, except those six falsy values on the slide"*
 
@@ -262,7 +265,7 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
     gpa
     ```
 
-- [ ] 🎞️ **GO TO SLIDE 19** — _Spread: copying everything *in*_
+- [ ] *"I am about to copy an object and change one field on the way in. Two questions first"*
 - [ ] **Two questions before you run it: which `gpa` wins, and does the original change?**
 
     ```js
@@ -276,6 +279,7 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
     ```js
     student
     ```
+- [ ] 🎞️ **GO TO SLIDE 19** — _Spread: copying everything *in*_
 
 - [ ] *"Rightmost wins, and the original is untouched. Both of those are on your homework — exercise 8 fails on purpose if you mutate"*
 - [ ] 🎞️ **GO TO SLIDE 20** — *Real data = arrays of objects*
