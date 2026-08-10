@@ -323,7 +323,7 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
     ```
 
 - [ ] *"I am about to copy an object and change one field on the way in. Two questions first"*
-- [ ] **Two questions before you run it: which `gpa` wins, and does the original change?**
+- [ ] Two questions before you run it: *"which `gpa` wins, and does the original change?"*
 
     ```js
     const updated = { ...student, gpa: 4.0 };
