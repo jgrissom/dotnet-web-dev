@@ -47,6 +47,16 @@ Open the console on **each of the three pages** — every ❌ green across Requi
 > [!TIP]
 > **The checker is the same one I grade with.** Green on all three pages locks in the checklist and theme/fonts points; the responsive look, your extra component, and the Azure screenshot are the human-graded remainder.
 
+## 🆘 Stuck?
+
+- **All green, but you are not done.** The self-check grades **only the page you are looking at** — that is what `check all 3 pages!` on the last line means. Open the console on `index.html`, `projects.html` *and* `contact.html`; each has its own list.
+- **`❌ current page marked .active in nav`** on a page that looks fine — `active` moves. Copy the same navbar to all three pages, then on each one put `active` on that page's own link and take it off the others.
+- **`❌ footer: centered, muted, padded`** — three requirements behind one label, and it is nearly always the muted one. The check wants **`text-muted`**, which is what the notes and the demo use. If you went to the Bootstrap docs and picked up `text-body-secondary`, that is the 5.3 replacement and this check does not accept it — swap it back and the footer turns green.
+- **`❌ Bootstrap JS bundle at end of body`**, or the hamburger does nothing on a narrow window — it has to be **`bootstrap.bundle.min.js`**, not `bootstrap.min.js`. The plain file leaves out the JavaScript the navbar toggler needs, and a dead toggler is also a deduction.
+- **Your Bootswatch theme is not showing** — the theme link **replaces** the stock Bootstrap one, it does not join it. A Bootswatch URL ends in `bootstrap.min.css` too, so one link satisfies both *Bootstrap CSS linked* and *Bootswatch theme*. Keep both and whichever loads last wins.
+- **`⚠️ custom CSS beyond the font override?`** — that is the deduction warning, and it means your `<style>` block has a rule that is not the `--bs-body-font-family` override. Everything else has to be Bootstrap utility classes on the elements.
+- Everything else: the [appendix of common snags](lecture-notes.md#appendix-common-snags).
+
 ## 📊 Grading (20 pts)
 
 | Item | Points |
