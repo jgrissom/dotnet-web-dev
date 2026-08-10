@@ -101,13 +101,25 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
 - [ ] **✓ say it:** *"`const` by default, `let` if it genuinely changes, `var` never. That is the house rule and the homework checks it"*
 - [ ] C# bridge: *"`const` is closest to `readonly` — the binding is fixed, the contents are not"*
 - [ ] 🎞️ **GO TO SLIDE 10** — *Types live in values, not variables*
-- [ ] **Paste these one at a time**, and take bets on the fourth before its Enter:
+- [ ] **One Copy button per line — paste, Enter, read it, next.** Take the bet before the fourth:
 
     ```js
     typeof 42
+    ```
+
+    ```js
     typeof "hello"
+    ```
+
+    ```js
     typeof undefined
+    ```
+
+    ```js
     typeof null
+    ```
+
+    ```js
     typeof [1, 2]
     ```
 
@@ -130,6 +142,9 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
 
     ```js
     1 == "1"
+    ```
+
+    ```js
     1 === "1"
     ```
 
@@ -141,6 +156,9 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
     Boolean("")
     Boolean(0)
     Boolean("hi")
+    ```
+
+    ```js
     Boolean([])
     ```
 
@@ -154,7 +172,13 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
     ```js
     const add = (a, b) => a + b;
     const greet = (nm = "friend") => `Hello, ${nm}!`;
+    ```
+
+    ```js
     greet()
+    ```
+
+    ```js
     greet("Ada")
     ```
 
@@ -173,6 +197,9 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
     const scores = [90, 85, 72, 100];
     scores[0]
     scores.push(65)
+    ```
+
+    ```js
     scores
     ```
 
@@ -183,8 +210,17 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
 
     ```js
     scores.map(s => s + 5)
+    ```
+
+    ```js
     scores.filter(s => s >= 80)
+    ```
+
+    ```js
     scores.find(s => s === 100)
+    ```
+
+    ```js
     scores
     ```
 
@@ -218,7 +254,13 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
 
     ```js
     const updated = { ...student, gpa: 4.0 };
+    ```
+
+    ```js
     updated
+    ```
+
+    ```js
     student
     ```
 
@@ -232,6 +274,9 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
       { name: "Linus", gpa: 3.4 },
       { name: "Grace", gpa: 4.0 },
     ];
+    ```
+
+    ```js
     students.filter(s => s.gpa >= 3.5).map(s => s.name)
     ```
 
@@ -251,6 +296,9 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
 
     ```js
     const status = document.querySelector("#status");
+    ```
+
+    ```js
     status.textContent = "Ready.";
     ```
 
@@ -273,8 +321,17 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
 
     ```js
     const response = await fetch("https://jsonplaceholder.typicode.com/users");
+    ```
+
+    ```js
     response
+    ```
+
+    ```js
     const users = await response.json();
+    ```
+
+    ```js
     users
     ```
 
