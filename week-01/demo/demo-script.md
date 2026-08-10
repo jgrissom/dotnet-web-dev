@@ -306,7 +306,7 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
     student
     ```
 
-- [ ] *"No class anywhere. You added a property to a thing that already existed, at runtime. C# will not let you do that, and week 4 is where you meet the version that will not"*
+- [ ] *"No class anywhere. We added a property to a thing that already existed, at runtime. C# will not let you do that, and week 4 is where you meet the version that will not"*
 - [ ] 🎞️ **GO TO SLIDE 17** — *Objects*
 - [ ] **Two ways in — dot and bracket — then the line that matters.** Point at `student.year = 2`: *"a property added to a thing that already exists, and there is no class anywhere on this slide"*
 - [ ] **✓ say it:** *"this is the shape of JSON, and JSON is what every API in week 15 hands you"*
