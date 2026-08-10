@@ -108,6 +108,12 @@ typeof [1, 2, 3];   // "object"  ← arrays are objects too
 
 - Variables don't have types; **values** do. The same variable can hold a number, then a string. (Don't do this on purpose.)
 - `undefined` = never assigned. `null` = deliberately empty. Rough C# analogy: `null` is `null`; `undefined` has no C# equivalent.
+- ⚠️ **`typeof` cannot detect `null`.** It answers `"object"`, so `typeof x === "object"` is true for `null` as well as for real objects. When you mean null, write `x === null`.
+
+> [!NOTE]
+> **Why is it `"object"`?** Early JavaScript stored each value as a small type tag plus a payload, and the tag for *object* was zero — while `null` was the null pointer, a word of all zeros. `typeof` read the tag, saw zero, and said `"object"`. It fell out of the memory layout; nobody chose it.
+>
+> It has been proposed as a fix and rejected, because a great deal of deployed code branches on `typeof x === "object"` and rules out null separately. Changing the answer would silently alter those branches on pages nobody maintains. It is a 1995 implementation detail the web is now built on top of.
 
 ### Template literals
 
