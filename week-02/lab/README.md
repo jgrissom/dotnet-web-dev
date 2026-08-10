@@ -1,8 +1,8 @@
 # Week 2 Lab — Bootstrap the Site
 
-The `starter/` folder is a working but completely unstyled 3-page portfolio site: `index.html`, `projects.html`, `contact.html`. Your job is to turn it into something you'd show someone — using Bootstrap classes, not custom CSS.
+The `week-02` folder you copy below is a working but completely unstyled 3-page portfolio site: `index.html`, `projects.html`, `contact.html`. Your job is to turn it into something you'd show someone — using Bootstrap classes, not custom CSS.
 
-**Time:** ~40 minutes in class — which is *not* enough to finish, on purpose. **In-class target: `index.html` fully ✅ (navbar, hero, feature row, icons, footer) and that navbar copied to the other two pages.** The projects grid, contact form, and make-it-yours phase are expected to roll into the homework — that's Part 1 of it.
+**Time:** ~50 minutes in class — which is *not* enough to finish, on purpose. **In-class target: `index.html` fully ✅ (navbar, hero, feature row, icons, footer) and that navbar copied to the other two pages.** The projects grid, contact form, and make-it-yours phase are expected to roll into the homework — that's Part 1 of it.
 **Docs open the whole time:** [getbootstrap.com/docs](https://getbootstrap.com/docs/5.3/) — find → copy → adapt is the exercise.
 
 ## Setup
