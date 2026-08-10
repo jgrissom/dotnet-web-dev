@@ -11,18 +11,18 @@ Six creatures, filed by whoever wrote the seed data. Tonight the Registry starts
 >
 > Tonight you work in the model, the controller, one new view, and one line of `Views/Cryptids/Index.cshtml`. Nothing in `Views/Shared/` gets touched at all.
 
-**1. Update your starters clone:**
+**1. Update the starters clone.** Open `dotnet-web` in VS Code, then `` Ctrl+` `` for a terminal standing in it:
 
 ```bash
 cd dotnet-web-starters && git pull
 ```
 
-**2. Copy the `week-06` folder out to wherever you keep your projects, and rename the copy** — `CryptidForms` works. (Copy it *out*; never work inside the clone, or next week's `git pull` will fight you.)
+**2. Copy the `week-06` folder into `dotnet-web`** — next to the clone, never inside it — **and rename the copy.** `CryptidForms` works. (Copy it *out*; never work inside the clone, or next week's `git pull` will fight you.)
 
 You should end up with exactly this:
 
 ```
-CryptidForms/               ← the folder you copied and renamed
+CryptidForms/               ← in `dotnet-web`, the folder you copied and renamed
 ├─ Cryptids.Web/           ← your app — ALL your work happens in here
 └─ Cryptids.Checks/        ← the checks — read-only, never edit
 ```

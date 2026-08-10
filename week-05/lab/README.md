@@ -11,18 +11,18 @@ Same six creatures, same pages. Tonight you build the **shell** around them: one
 >
 > Almost every edit tonight happens in **`Views/`**. You will not open a controller.
 
-**1. Update your starters clone:**
+**1. Update the starters clone.** Open `dotnet-web` in VS Code, then `` Ctrl+` `` for a terminal standing in it:
 
 ```bash
 cd dotnet-web-starters && git pull
 ```
 
-**2. Copy the `week-05` folder out to wherever you keep your projects, and rename the copy** — `CryptidShell` works. (Copy it *out*; never work inside the clone, or next week's `git pull` will fight you.)
+**2. Copy the `week-05` folder into `dotnet-web`** — next to the clone, never inside it — **and rename the copy.** `CryptidShell` works. (Copy it *out*; never work inside the clone, or next week's `git pull` will fight you.)
 
 You should end up with exactly this:
 
 ```
-CryptidShell/               ← the folder you copied and renamed
+CryptidShell/               ← in `dotnet-web`, the folder you copied and renamed
 ├─ Cryptids.Web/           ← your app — ALL your work happens in here
 └─ Cryptids.Checks/        ← the checks — read-only, never edit
 ```

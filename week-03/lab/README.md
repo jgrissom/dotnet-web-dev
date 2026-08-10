@@ -6,11 +6,11 @@ Your first ASP.NET Core MVC app, built the way you'll work all term: run the che
 
 ## Setup
 
-1. Update your starters clone, then copy this week out (work on the copy, never in the clone):
+1. **Update the starters clone.** Open `dotnet-web` in VS Code, then `` Ctrl+` `` for a terminal standing in it:
    ```bash
    cd dotnet-web-starters && git pull
    ```
-2. Copy the whole `week-03` folder into your own projects folder — it's just two project folders side by side: your app (`FirstFlight.Web`) and the read-only checks (`FirstFlight.Checks`).
+2. **Copy the whole `week-03` folder into `dotnet-web`** — next to the clone, never inside it. It's just two project folders side by side: your app (`FirstFlight.Web`) and the read-only checks (`FirstFlight.Checks`).
 3. Open the copied parent folder in VS Code. From its terminal:
    ```bash
    dotnet test FirstFlight.Checks

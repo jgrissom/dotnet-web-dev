@@ -15,16 +15,16 @@ The Registry can take reports and show them. It cannot fix a typo in one, and it
 >
 > **The seven plate images are already in `wwwroot/img/cryptids/`.** Task 6 puts them on screen; nothing has to be downloaded.
 
-**1. Update your starters clone:**
+**1. Update the starters clone.** Open `dotnet-web` in VS Code, then `` Ctrl+` `` for a terminal standing in it:
 
 ```bash
 cd dotnet-web-starters && git pull
 ```
 
-**2. Copy the `week-08` folder out to wherever you keep your projects, and rename the copy** — `CryptidsCrud` works. (Copy it *out*; never work inside the clone.)
+**2. Copy the `week-08` folder into `dotnet-web`** — next to the clone, never inside it — **and rename the copy.** `CryptidsCrud` works. (Copy it *out*; never work inside the clone.)
 
 ```
-CryptidsCrud/              ← the folder you copied and renamed
+CryptidsCrud/              ← in `dotnet-web`, the folder you copied and renamed
 ├─ Cryptids.Web/          ← your app — ALL your work happens in here
 └─ Cryptids.Checks/       ← the checks — read-only, never edit
 ```

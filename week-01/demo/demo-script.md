@@ -80,11 +80,12 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
 > **45 minutes, and the guide does the walking.** Your job is unblocking, not narrating. Put the guide's URL on screen and get out of the way.
 
 - [ ] **Put the [setup guide](https://github.com/jgrissom/dotnet-web-dev/blob/main/week-01/setup-guide.md) URL on screen** and leave it there. Distribute the server address + credentials handout
-- [ ] **Say the shape once:** *"five steps, each one ends with a way to prove it worked. Do not move on until yours passes. Raise a hand when stuck; if you finish early, help a classmate"*
+- [ ] **Say the shape once:** *"six steps, each one ends with a way to prove it worked. Do not move on until yours passes. Raise a hand when stuck; if you finish early, help a classmate"*
 - [ ] ⚠️ **Step 3 is where the room piles up** — the mssql connection. The three failures, in order of likelihood: a typo in the server address, **Windows Authentication selected instead of SQL Server Authentication**, and wifi. The [troubleshooting appendix](../lecture-notes.md#appendix-setup-troubleshooting) has the rest
 - [ ] **Step 2's F5 breakpoint is the one people skip.** It is the only proof the debugger works, and it is the only time it gets checked before week 7
+- [ ] ⚠️ **Step 6 is new and nobody will think it matters — it does.** It makes `dotnet-web` and clones the starters inside it. Every later week opens with `cd dotnet-web-starters && git pull`, which only works from there. *"One folder holds this whole course. Make it where you will find it again — not the Desktop, not Downloads"*
 - [ ] ⚠️ **Anyone still broken at the end goes home with an email address.** Setup is part of the homework, and week 2 does not work without it — say that plainly rather than leaving it implied
-- [ ] **✓ CHECKPOINT:** every laptop shows five green checks, or its owner knows exactly which one is red and what to do about it
+- [ ] **✓ CHECKPOINT:** every laptop shows six green checks, or its owner knows exactly which one is red and what to do about it
 
 ## 3 · Why JavaScript is here *(slide 8)*
 
@@ -428,11 +429,7 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
 - [ ] **Show what done looks like, ~90 seconds:** your finished copy of the gauntlet open in the browser, console reading **8 / 8 passing**. A target, not a walkthrough
 - [ ] ⚠️ **Nothing is deployed for this** — it is a folder open from your own machine, exactly like theirs will be
 - [ ] 🎞️ **GO TO SLIDE 23** — *Lab: JS Refresher Gauntlet*. Leave it up for the whole lab; it is the task list
-- [ ] **Setup on screen, said once:**
-
-    ```bash
-    git clone https://github.com/jgrissom/dotnet-web-starters.git
-    ```
+- [ ] **Setup on screen, said once — they cloned the starters in §2, so this is just the copy:** open `dotnet-web`, copy `week-01` out of `dotnet-web-starters` and drop it alongside the clone
 
 - [ ] **Then: copy the `week-01` folder out of the clone, open your copy, open `index.html` in the browser, console on.** *"Never work inside the clone — every week you pull it again"*
 - [ ] **The rhythm, said once:** *"one ❌ at a time. Pick the first red one, fix that function, save, refresh. Do not write all eight and debug at the end"*
@@ -444,5 +441,5 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
 - [ ] 🎞️ **GO TO SLIDE 24** — *Before next week*
 - [ ] **The homework, in one sentence each:** the two setup screenshots, the eight roster functions, and it goes **live on GitHub Pages tonight**
 - [ ] 🎯 **The deploy is the part to sell:** *"your code has an address by the end of the week. From week 3 every .NET assignment does too. That is why there are no zip files in this course"*
-- [ ] ⚠️ **Say the setup deadline out loud:** *"if any of your five checks is still red, email me before next class. Week 2 does not work without them, and I would rather fix it Thursday than in the first ten minutes of the session"*
+- [ ] ⚠️ **Say the setup deadline out loud:** *"if any of your six checks is still red, email me before next class. Week 2 does not work without them, and I would rather fix it Thursday than in the first ten minutes of the session"*
 - [ ] **Preview week 2:** Bootstrap — a real, styled, multi-page site, deployed, and it becomes the portfolio the rest of the course links into

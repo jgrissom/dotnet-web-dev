@@ -7,11 +7,11 @@ Work through the 8 exercises in `exercises.js`. Each one is a small function wit
 
 ## Setup
 
-1. Clone the starters repo (first time only — future weeks just need `git pull`):
+1. **You cloned the starters in [setup](../setup-guide.md#6-your-course-folder)**, so `dotnet-web-starters` is already sitting inside `dotnet-web`. Never cloned it? Open `dotnet-web` in VS Code, then `` Ctrl+` `` for a terminal standing in it:
    ```bash
    git clone https://github.com/jgrissom/dotnet-web-starters.git
    ```
-2. **Copy** the `week-01` folder out of the clone into your own projects folder — never work inside the clone itself.
+2. **Copy the `week-01` folder into `dotnet-web`** — next to the clone, never inside it. Every week works this way: pull the clone, copy that week out, work on the copy.
 3. Open your copy in VS Code.
 4. Open `index.html` in your browser (double-click is fine).
 5. Open DevTools (**F12**) → **Console** tab.

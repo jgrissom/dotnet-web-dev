@@ -18,7 +18,7 @@ This site becomes your portfolio — by finals it will link to deployed .NET app
 
 ## Part 3 — Deploy + get ready for Azure
 
-1. Push the site to a **public** repo named `portfolio` and enable GitHub Pages (same flow as week 1). **Commit as you go — at least 3 meaningful commits** (e.g., after the lab checklist, after your theme + fonts, after your extra component).
+1. Push the site — your `week-02` copy in `dotnet-web` — to a **public** repo named `portfolio`, and enable GitHub Pages (same flow as week 1). **Commit as you go — at least 3 meaningful commits** (e.g., after the lab checklist, after your theme + fonts, after your extra component).
 2. Test the URL in a private/incognito window — check **all three pages** and the navbar links between them.
 
 > [!TIP]

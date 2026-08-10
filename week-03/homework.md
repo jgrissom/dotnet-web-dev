@@ -22,7 +22,7 @@ If class ended at check 4, that means finishing `Hello` (checks 5–6) — the [
 
 ## Part 2 — Put it on GitHub (graded)
 
-1. Create a **public** repo named `first-flight` and push your solution folder to it.
+1. Create a **public** repo named `first-flight` and push your `week-03` copy — the folder in `dotnet-web` holding `FirstFlight.Web` and `FirstFlight.Checks` — to it.
 2. **Commit as you go — at least 3 meaningful commits** (a natural rhythm: one per check you turn green; the `.gitignore` in the starter already keeps build output out).
 
 ## Part 3 — Deploy it (graded)

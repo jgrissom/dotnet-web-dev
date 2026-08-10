@@ -350,7 +350,7 @@ loadUsers()   // ← type this to run it, then watch the console
 <!-- _footer: '🖥️ Demo §7 · hand off' -->
 ## Lab: JS Refresher Gauntlet
 
-- Copy `week-01/` out of the starters repo
+- Copy `week-01/` into `dotnet-web`, beside the clone
 - Fix the 8 functions in `exercises.js` — see the folder's README
 - Pairs encouraged · answers live in the browser console
 

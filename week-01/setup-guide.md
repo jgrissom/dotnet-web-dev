@@ -95,6 +95,37 @@ Version prints, and your name comes back.
 > [!NOTE]
 > Tonight's homework pushes code to GitHub and puts it **live on the internet** via GitHub Pages. The account isn't optional.
 
+## 6. Your course folder
+
+Everything you make this semester goes in one folder. Make it now and it never has to be thought about again.
+
+**VS Code → File → Open Folder → *New Folder* → name it `dotnet-web` → Open.**
+
+⚠️ **Put it somewhere sensible and permanent** — your home folder, or wherever you keep projects. **Not the Desktop, not Downloads.** You'll add something to it most weeks for the rest of the term.
+
+Then get the starters — my repo of lab folders, one per week, and the only thing you ever clone. Open the terminal in VS Code with `` Ctrl+` `` (backtick, top-left of your keyboard). It opens standing **inside** `dotnet-web`, which is exactly where the clone belongs:
+
+```bash
+git clone https://github.com/jgrissom/dotnet-web-starters.git
+```
+
+**✓ Verify** — `dotnet-web-starters` appears in the VS Code Explorer, and `ls` (macOS) or `dir` (Windows) lists it.
+
+By week 8 the folder looks roughly like this. Nothing here is created ahead of time — each line arrives the week it's needed:
+
+```
+dotnet-web/                  ← everything for this course
+├─ dotnet-web-starters/      ← my repo · git pull each week · never work in here
+├─ week-01/ … week-08/       ← your copy of each week's lab
+├─ web-dev-week01/           ← week 1 homework → GitHub Pages
+├─ portfolio/                ← week 2 homework → GitHub Pages
+├─ first-flight/             ← week 3 homework → Azure
+└─ your-project/             ← weeks 4–16 · the app you present in week 16
+```
+
+> [!NOTE]
+> Those last four are separate GitHub repos, because each one deploys somewhere of its own. They live side by side in `dotnet-web` — **never inside each other**, and never inside the starters clone.
+
 ## 🏁 Final checklist
 
 | # | Check | Proof |
@@ -104,8 +135,9 @@ Version prints, and your name comes back.
 | 3 | mssql extension connected to the school server | Databases visible in sidebar |
 | 4 | `git --version` + `git config user.name` | both answer |
 | 5 | Logged in to GitHub | avatar top-right |
+| 6 | `dotnet-web` folder exists, with `dotnet-web-starters` inside it | both in the Explorer |
 
-All five green? 🎉 You're done for the whole semester — this is the only install night. Help a classmate or start the lab early.
+All six green? 🎉 You're done for the whole semester — this is the only install night. Help a classmate or start the lab early.
 
 > [!IMPORTANT]
 > Couldn't finish in class? This **must** be working before week 2 — it's Part 1 of tonight's homework. Use the [troubleshooting appendix](lecture-notes.md#appendix-setup-troubleshooting), then email me.

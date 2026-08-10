@@ -44,7 +44,7 @@ It needs:
 7. **Deployed to Azure**, and **3+ meaningful commits** in a public GitHub repo.
 
 > [!TIP]
-> Start from `dotnet new mvc --no-https` in a fresh folder. You are not starting from the Registry — building it again from empty is the point, and it takes about 30 minutes once you've done the lab. Week 3's notes cover [creating the app](../week-03/lecture-notes.md#dotnet-new-mvc) and [what every folder is for](../week-03/lecture-notes.md#project-anatomy) if you want the refresher.
+> Start from `dotnet new mvc --no-https` in a fresh folder inside `dotnet-web`, named for your topic — it is the app you extend every week to the end of the course. You are not starting from the Registry — building it again from empty is the point, and it takes about 30 minutes once you've done the lab. Week 3's notes cover [creating the app](../week-03/lecture-notes.md#dotnet-new-mvc) and [what every folder is for](../week-03/lecture-notes.md#project-anatomy) if you want the refresher.
 
 ## Part 3 — Check it when you're finished ✅
 

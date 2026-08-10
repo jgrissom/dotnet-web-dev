@@ -9,18 +9,18 @@ Six legendary creatures, one archive. A list page, a details page, and a 404 tha
 > [!NOTE]
 > **You don't create anything.** Both projects already exist in the starter — you're copying a folder, not scaffolding a new app. `dotnet new` is not part of this lab.
 
-**1. Update your starters clone:**
+**1. Update the starters clone.** Open `dotnet-web` in VS Code, then `` Ctrl+` `` for a terminal standing in it:
 
 ```bash
 cd dotnet-web-starters && git pull
 ```
 
-**2. Copy the `week-04` folder out to wherever you keep your projects, and rename the copy** to something meaningful — `CryptidRegistry` works. (Copy it *out*; never work inside the clone, or next week's `git pull` will fight you.)
+**2. Copy the `week-04` folder into `dotnet-web`** — next to the clone, never inside it — **and rename the copy** to something meaningful. `CryptidRegistry` works. (Copy it *out*; never work inside the clone, or next week's `git pull` will fight you.)
 
 You should end up with exactly this:
 
 ```
-CryptidRegistry/            ← the folder you copied and renamed
+CryptidRegistry/            ← in `dotnet-web`, the folder you copied and renamed
 ├─ Cryptids.Web/           ← your app — ALL your work happens in here
 └─ Cryptids.Checks/        ← the checks — read-only, never edit
 ```

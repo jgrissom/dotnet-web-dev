@@ -7,11 +7,11 @@ The `starter/` folder is a working but completely unstyled 3-page portfolio site
 
 ## Setup
 
-1. Update your starters clone, then copy this week out (work on the copy, never in the clone):
+1. **Update the starters clone.** Open `dotnet-web` in VS Code, then `` Ctrl+` `` for a terminal standing in it:
    ```bash
    cd dotnet-web-starters && git pull
    ```
-2. Copy the `week-02` folder into your own projects folder and open your copy in VS Code.
+2. **Copy the `week-02` folder into `dotnet-web`** — next to the clone, never inside it — and open your copy in VS Code.
 3. The Bootstrap CSS + JS CDN tags are already in each page (and the viewport meta — don't delete it).
 4. Open `index.html` in the browser; keep the window at half width and resize as you go.
 
