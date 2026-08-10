@@ -73,6 +73,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 ### Two packages and a tool *(slide 5)*
 
 - [ ] 🎞️ **GO TO SLIDE 5** — *Two packages and a tool*
+- [ ] **Two packages and one global tool** — *"and the tool is the one that goes back in the box before you commit. It is scaffolding in the builder's sense: up while you work, gone before anyone sees the house"*
 - [ ] In the second terminal — **type the first, paste the second**:
   ```bash
   dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design

@@ -31,6 +31,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 ### The gap, shown live *(slides 2–3)* — **do this before saying anything about layouts**
 
 - [ ] 🎞️ **GO TO SLIDE 2** — *Last week vs. tonight*
+- [ ] **Land the contrast — it is the whole reason for tonight:** *"last week you built pages from data. Tonight you build everything around them, once, in one file"*
 - [ ] 🎞️ **GO TO SLIDE 3** — *A question*: the whole of `Views/Home/Index.cshtml`, and *"who wrote the other 54 lines?"* Ask it off the slide, then swipe back for the two windows below
 
 Don't ask the question rhetorically; make them look at both halves. Use the **home page** — it's the smallest file in the project, so the gap is the widest and the whole thing fits on screen without scrolling. Two windows, thirty seconds.
@@ -146,6 +147,7 @@ Don't ask the question rhetorically; make them look at both halves. Use the **ho
 ### The card, with a model
 
 - [ ] 🎞️ **GO TO SLIDE 10** — *Making one — three steps*
+- [ ] **Read the three steps off the slide before doing any of them** — *"create it, declare its model, render it handing one over. Three steps, and step two is the one people forget"*
 - [ ] Create `Views/Shared/_TruckCard.cshtml` — **paste**:
 
   <details><summary>📋 paste: _TruckCard.cshtml</summary>
@@ -174,6 +176,7 @@ Don't ask the question rhetorically; make them look at both halves. Use the **ho
 - [ ] **Point at line 1**: `@model Truck` — *one* truck, not a list. A partial is strongly typed exactly like a page
 - [ ] Three things while it's on screen: `name` will be a **file name, not a path** (`Views/Shared/` is searched) · underscore in, `.cshtml` out · **`<partial />` is a tag helper** — callback to `_ViewImports` from four minutes ago
 - [ ] 🎞️ **GO TO SLIDE 11** — *Give it a model*
+- [ ] **Point at the first line** — *"`@model Truck`. That one line is what turns `@Model.Name` from a guess into something the editor can check"*
 - [ ] Replace **all of** `Views/Trucks/Index.cshtml` — **paste**:
 
   <details><summary>📋 paste: Index.cshtml, table → card grid</summary>
@@ -275,6 +278,7 @@ Don't ask the question rhetorically; make them look at both halves. Use the **ho
 ## 5 · Bootswatch — one link, whole site *(slides 16–18)*
 
 - [ ] 🎞️ **GO TO SLIDE 16** — *Bootswatch*
+- [ ] ⚠️ **Say both halves before you touch it:** *"delete the old Bootstrap link — do not add a second one — and hard-refresh afterwards, or a cached stylesheet will look exactly like it did not work"*
 - [ ] Open [bootswatch.com](https://bootswatch.com) on the projector and scroll the themes for ten seconds
 - [ ] Frame it: **not a different framework — the same Bootstrap, recompiled with different variables.** Every class from week 2 still works
 - [ ] In `_Layout.cshtml`, **replace** the Bootstrap line:

@@ -23,6 +23,7 @@ Edit-by-edit cue sheet for transforming `index.html` (your **scratch copy**) int
 ## 0b · The opening pitch *(slides 2–4)*
 
 - [ ] 🎞️ **GO TO SLIDE 2** — *Tonight*
+- [ ] Read the four rows, **don't dwell** — and land the last one: *"by the end of tonight you have a styled site you would actually show someone"*
 - [ ] 🎞️ **GO TO SLIDE 3** — *Why a CSS framework?*
 - [ ] Flip between the **before** and **after** tabs — same content, transformed almost entirely by classes
 - [ ] 🎞️ **GO TO SLIDE 4** — *Setup: two tags via CDN*
@@ -53,6 +54,7 @@ Edit-by-edit cue sheet for transforming `index.html` (your **scratch copy**) int
 ### Navbar — from the docs, live
 
 - [ ] 🎞️ **GO TO SLIDE 8** — *Components: assembled from the docs*
+- [ ] 🎯 **Land the numbered workflow — it is the actual skill tonight, not the class names:** *"find it in the docs, copy the example, adapt it. That is what you will still be doing in ten years. Nobody memorises Bootstrap"*
 - [ ] Open [docs → Navbar](https://getbootstrap.com/docs/5.3/components/navbar/), copy the example **with a toggler**, replace the plain `<nav>`
 - [ ] Adapt: brand → `Common Grounds` (`href="#home"`); links → Home `#home` (`.active`), Menu `#menu`, Contact `#contact`
 - [ ] Point out the matched pair the docs example came with: the toggler's `data-bs-target="#navbarSupportedContent"` ↔ the collapse div's `id="navbarSupportedContent"` (name varies by example). Keep the docs' name or rename it — but **always change both halves together**; mismatch = silently dead hamburger
@@ -176,6 +178,7 @@ Edit-by-edit cue sheet for transforming `index.html` (your **scratch copy**) int
 ### Icons *(slide 11)*
 
 - [ ] 🎞️ **GO TO SLIDE 11** — *Icons: Bootstrap Icons*
+- [ ] *"One more `<link>`, same CDN pattern as the top of the night. Two thousand icons and not a single image file to download"*
 - [ ] Add to `<head>`: `<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">`
 - [ ] `<i class="bi bi-cup-hot"></i>` inside the hero button and the footer text
 - [ ] The showpiece — one icon `<div>` above each feature heading:
@@ -189,6 +192,7 @@ Edit-by-edit cue sheet for transforming `index.html` (your **scratch copy**) int
 ## 3 · Bootswatch *(slide 12)*
 
 - [ ] 🎞️ **GO TO SLIDE 12** — *Bootswatch: stop looking like every Bootstrap site*
+- [ ] 🎯 **Point at the one line that changes:** *"the whole site relands on a different palette, different type, different button shapes — by swapping one word in one URL. That is what a framework buys you"*
 - [ ] Show the gallery at [bootswatch.com](https://bootswatch.com) — this is where "take requests" shops
 - [ ] Replace the Bootstrap `<link>` with the Bootswatch CDN version (the site itself only offers downloads — the CDN pattern is ours to teach):
   ```html

@@ -26,6 +26,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 ### The exchange, live
 
 - [ ] 🎞️ **GO TO SLIDE 2** — *Tonight: the pivot*
+- [ ] **Land the word *pivot*:** *"two weeks on the client. Tonight we build the thing that answers it — and everything from here is the right-hand side"*
 - [ ] 🎞️ **GO TO SLIDE 3** — *HTTP is just text*
 - [ ] On the hosted coffee page: F12 → **Network** → refresh
 
@@ -61,6 +62,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 ### Program.cs, five acts
 
 - [ ] 🎞️ **GO TO SLIDE 8** — *`Program.cs` — a five-act story*
+- [ ] **Point at the five numbers on the slide first**, then open the real file and walk them. *"Five acts. Every ASP.NET app you ever open starts with these"*
 - [ ] Open `Program.cs`, narrate the **five acts** — full script below; point at `builder.Build()` as the dividing line ("above: describing an app · below: configuring a real one")
 
   <details><summary>🎭 The five-act narration (read-aloud)</summary>
@@ -81,12 +83,14 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 ### Routing, predicted
 
 - [ ] 🎞️ **GO TO SLIDE 9** — *The request's journey*
+- [ ] 🎯 **Trace the arrow with your finger — this is the whole night in one picture:** *"URL comes in, routing picks a method, the method picks a view, HTML goes out. Everything after tonight is detail on top of this"*
 - [ ] 🎞️ **GO TO SLIDE 10** — *Routing: the pattern decoded*. **The slide is the exercise** — ask each URL off it before you type it
 - [ ] Predict-then-run the routing table with URLs in the browser: `/` · `/Home/Privacy` · then `/Menu` → **404!** ("no `MenuController` exists — yet")
 
 ### The controller
 
 - [ ] 🎞️ **GO TO SLIDE 11** — *Controllers and actions*
+- [ ] **Two bullets, and the second is the one that matters:** *"an action is just a public method. And there is no wiring, no registration, no config file — convention over configuration. That word `Menu` in the URL is what finds this class"*
 - [ ] Create `Controllers/MenuController.cs` — **type it**:
   ```csharp
   using Microsoft.AspNetCore.Mvc;
@@ -107,6 +111,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 ### The view
 
 - [ ] 🎞️ **GO TO SLIDE 12** — *Views and Razor — first taste*
+- [ ] **Point at the `@`** — *"that is the only new character. Everything else on this slide is HTML you already write"*
 - [ ] Create `Views/Menu/Index.cshtml` — **type it**:
   ```html
   @{
@@ -121,6 +126,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 ### A parameter
 
 - [ ] 🎞️ **GO TO SLIDE 13** — *Passing data in*
+- [ ] **Point at the parameter and the `??`** — *"the name in the query string has to match the name of the parameter. That is the entire mechanism, and the `??` is what makes it optional"*
 - [ ] Add to `MenuController` — **type it**:
   ```csharp
   public IActionResult Special(string? item)
@@ -141,6 +147,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 ### az webapp up
 
 - [ ] 🎞️ **GO TO SLIDE 15** — *One command to the cloud*
+- [ ] ⚠️ **Read the comment on the first line out loud before anything else:** *"inside the web project folder. `az webapp up` ships the folder you are standing in, and standing in the wrong one is the single most common way this goes wrong"*
 - [ ] Stop `dotnet watch`. From **inside** `CommonGrounds.Web/`:
   ```bash
   az webapp up --name cg-web-XXXX --sku F1 --os-type Linux \

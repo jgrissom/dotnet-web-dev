@@ -120,6 +120,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 ### Where the connection string lives *(slide 7)*
 
 - [ ] 🎞️ **GO TO SLIDE 7** — *Where the connection string lives*
+- [ ] 🎯 **Walk the chain top to bottom, then land the last line:** *"each one beats the one above it. Your laptop uses the middle rung, Azure uses the bottom one, and the app never knows the difference. And there is nothing to gitignore — because nothing is in the project"*
 - [ ] **Open `appsettings.json` and put the cursor in it — then don't type anything.** Ask it out loud: *"this is where configuration lives. Who thinks the connection string goes here?"* Let hands go up
 - [ ] 🎯 **Then say why not:** *"it would work. And it contains a working password, and your homework repo is public. So no"*
 - [ ] Close `appsettings.json` **without editing it**. It stays in the repo all night — that's the point
@@ -190,6 +191,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 ### Generating the migration *(slide 10)*
 
 - [ ] 🎞️ **GO TO SLIDE 10** — *The migration, generated*
+- [ ] *"A generated C# file. Not SQL, not magic — a file you can open and read, which is exactly what we are about to do"*
 - [ ] In the second terminal, **from the folder with the `.csproj` in it** — say that out loud, it's the opposite of `dotnet test`:
   ```bash
   dotnet ef migrations add InitialCreate

@@ -198,6 +198,7 @@ Everything here happens in `Views/Trucks/Index.cshtml`.
 ### The model class
 
 - [ ] 🎞️ **GO TO SLIDE 13** — *The model is just a class*
+- [ ] 🎯 **Land the four words at the bottom:** *"no base class, no attributes, nothing from ASP.NET. The M in MVC is the C# you already write — this is the least new thing tonight"*
 - [ ] Create `Models/Truck.cs` — **type it** (it's a plain C# class; nothing web about it):
   ```csharp
   namespace Curbside.Models;
@@ -216,6 +217,7 @@ Everything here happens in `Views/Trucks/Index.cshtml`.
 ### The seed data
 
 - [ ] 🎞️ **GO TO SLIDE 14** — *Six trucks, no database*
+- [ ] *"A static list standing in for a database. Point at it and remember it — in week 7 this file gets deleted and this exact shape becomes a SQL Server table"*
 - [ ] Create `Models/TruckData.cs` — **paste**:
 
   <details><summary>📋 paste: the seeded list</summary>
@@ -244,6 +246,7 @@ Everything here happens in `Views/Trucks/Index.cshtml`.
 ### Into the controller
 
 - [ ] 🎞️ **GO TO SLIDE 15** — *Three ways in*
+- [ ] **Read the three rows off the table** — *"URL, query string, form. Tonight is the first. Week 6 is the third"*
 - [ ] Update `TrucksController.Index` — **type it**:
   ```csharp
   public IActionResult Index()
@@ -270,6 +273,7 @@ Everything here happens in `Views/Trucks/Index.cshtml`.
 ### Into the view
 
 - [ ] 🎞️ **GO TO SLIDE 16** — *Strongly typed views*
+- [ ] **Two halves, and they have to agree** — *"the controller hands something over, and the view declares what it is expecting on its first line. When those two disagree you get the error you are about to see me cause"*
 - [ ] Replace the whole of `Views/Trucks/Index.cshtml` — **paste**:
 
   <details><summary>📋 paste: the typed Index view</summary>
@@ -324,6 +328,7 @@ Everything here happens in `Views/Trucks/Index.cshtml`.
 ### The Details action
 
 - [ ] 🎞️ **GO TO SLIDE 17** — *The pair behind every site*
+- [ ] 🎯 **Land it as the shape of the whole web:** *"a list, and a details page. Every site you have ever used is this pair, and by the end of tonight you have written both"*
 - [ ] Add to `TrucksController` — **type it**:
   ```csharp
   public IActionResult Details(int id)

@@ -230,7 +230,7 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
 ### The big three
 
 - [ ] 🎞️ **GO TO SLIDE 15** — *Arrays*
-- [ ] **Read the two questions off the slide before you touch the console** — what does `scores[0]` give back, and after the `push`, *did it change?* Take both now. Note the `for…of` at the bottom too: *"same loop you already write, and the only line on this slide we will not run"*
+- [ ] **Read the two questions off the slide before you touch the console** — *"what does `scores[0]` give back, and after the `push`, did it change?"* Take both now.
 - [ ] Paste, and **ask "did it change?" before the last line**:
 
     ```js
@@ -252,7 +252,7 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
 - [ ] *"`const` stopped you reassigning the variable. It never stopped you changing what is inside it"*
 - [ ] C# bridge: *"closer to `List<T>` than to an array — it resizes"*
 - [ ] 🎞️ **GO TO SLIDE 16** — *The big three (this is LINQ!)*
-- [ ] **Point at the three arrows first, before anything runs** — `Select`, `Where`, `FirstOrDefault`. *"You have written all three in C#. Different names, same three ideas"* — the question is the last line
+- [ ] **Point at the three arrows first, before anything runs** — `Select`, `Where`, `FirstOrDefault`. *"You have probably seen all three in C#. Different names, same three ideas"* — the question is the last line
 - [ ] **The console echoes each result — predict before every Enter:**
 
     ```js
