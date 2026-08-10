@@ -426,7 +426,7 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
 ## 7 · Hand off to the lab *(slide 23)*
 
 - [ ] **Show what done looks like, ~90 seconds:** your finished copy of the gauntlet open in the browser, console reading **8 / 8 passing**. A target, not a walkthrough
-- [ ] ⚠️ **Nothing is deployed for this** — it is a folder of three files open from your own machine, exactly like theirs will be
+- [ ] ⚠️ **Nothing is deployed for this** — it is a folder open from your own machine, exactly like theirs will be
 - [ ] 🎞️ **GO TO SLIDE 23** — *Lab: JS Refresher Gauntlet*. Leave it up for the whole lab; it is the task list
 - [ ] **Setup on screen, said once:**
 

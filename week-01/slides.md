@@ -351,7 +351,7 @@ loadUsers()   // ← type this to run it, then watch the console
 ## Lab: JS Refresher Gauntlet
 
 - Copy `week-01/` out of the starters repo
-- Exercises 1–8 in `lab/README.md`
+- Fix the 8 functions in `exercises.js` — see the folder's README
 - Pairs encouraged · answers live in the browser console
 
 **⏱️ 30 minutes**
