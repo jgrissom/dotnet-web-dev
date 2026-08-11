@@ -29,7 +29,7 @@ Edit-by-edit cue sheet for transforming your **scratch copy** of `index.html` (s
 - [ ] 🎯 **Land the two on the list nobody can show you:** *"spacing and responsive you are about to watch me do. Accessible components and browser quirks are the two you never see — already solved, by people who do this full time. That is most of what you are buying"*
 - [ ] Then flip between the **before** and **after** tabs — same content, transformed almost entirely by classes
 - [ ] 🎞️ **GO TO SLIDE 4** — *Setup: two tags via CDN*
-- [ ] 🎯 **The two tags do different jobs — say which:** *"the top one is the look. The bottom one is the behaviour, and everything that moves tonight comes from it. Leave it out and your page looks perfect and does nothing"* — this is the #1 lab bug, and it gets said again at the lab launch
+- [ ] 🎯 **The two tags do different jobs — say which:** *"the top one is the look. The bottom one is the behavior, and everything that moves tonight comes from it. Leave it out and your page looks perfect and does nothing"* — this is the #1 lab bug, and it gets said again at the lab launch
 - [ ] Then swipe and point at the same two tags already sitting in your scratch copy
 
 ## 1 · The grid *(slides 5–7)*
@@ -47,7 +47,7 @@ Edit-by-edit cue sheet for transforming your **scratch copy** of `index.html` (s
 ### The feature row
 
 - [ ] 🎞️ **GO TO SLIDE 6** — *Breakpoints*
-- [ ] 🎯 **Read the table once — it is the only airing these numbers get tonight:** *"mobile-first means no prefix applies everywhere, and a prefix only adds behaviour as the screen gets wider. `md` is 768 pixels — and every single column I write tonight has `md` in it"*
+- [ ] 🎯 **Read the table once — it is the only airing these numbers get tonight:** *"mobile-first means no prefix applies everywhere, and a prefix only adds behavior as the screen gets wider. `md` is 768 pixels — and every single column I write tonight has `md` in it"*
 - [ ] Feature row: wrap the three `<section>`s in `<div class="row g-4 text-center">`
 - [ ] 🎞️ **GO TO SLIDE 7** — *Reading a column recipe*. Read the slide's `col-12 col-md-6 col-lg-4` left to right, then apply that same reading to the shorter `col-md-4` you're about to type: full width on phones, one third from `md` up
 - [ ] Each `<section>` → `class="col-md-4"` · each `h2` → `fs-4` · each `p` → `text-muted`
@@ -59,7 +59,7 @@ Edit-by-edit cue sheet for transforming your **scratch copy** of `index.html` (s
 ### Navbar — from the docs, live
 
 - [ ] 🎞️ **GO TO SLIDE 8** — *Components: assembled from the docs*
-- [ ] 🎯 **Land the numbered workflow — it is the actual skill tonight, not the class names:** *"find it in the docs, copy the example, adapt it. That is still what I do. Nobody memorises Bootstrap"*
+- [ ] 🎯 **Land the numbered workflow — it is the actual skill tonight, not the class names:** *"find it in the docs, copy the example, adapt it. That is still what I do. Nobody memorizes Bootstrap"*
 - [ ] Open [docs → Navbar](https://getbootstrap.com/docs/5.3/components/navbar/), copy the example **with a toggler**, replace the plain `<nav>`
 - [ ] Adapt: brand → `Common Grounds` (`href="#home"`); links → Home `#home` (`.active`), Menu `#menu`, Contact `#contact`
 - [ ] Point out the matched pair the docs example came with: the toggler's `data-bs-target="#navbarSupportedContent"` ↔ the collapse div's `id="navbarSupportedContent"` (name varies by example). Keep the docs' name or rename it — but **always change both halves together**; mismatch = silently dead hamburger
