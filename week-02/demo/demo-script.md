@@ -60,10 +60,39 @@ Each line below is a comment you can `Ctrl+F` for, spelled exactly as it appears
 
 - [ ] 🎞️ **GO TO SLIDE 5** — *The grid: 12 columns, 6 breakpoints*
 - [ ] 🎯 **The one rule the whole grid rests on:** *"every row is twelve units wide. Always twelve. Eight and four on the slide — that is a full row. Add up past twelve and the extra wraps onto the next line, which is the rule working, not a bug"* — the 8/4 split lives only on this slide; the demo builds thirds
-- [ ] `<main>` → `<main class="container py-5">` — margins appear, content stops hugging the edges
-- [ ] The hero is `<header id="home">`, sitting **above** `<main>` — the `h1`, the tagline `<p>`, and the "See the menu" link. Add `class="text-center py-5 bg-light"`
-- [ ] Hero: wrap those three — select them, **Wrap with Abbreviation**, `div.container.py-4` — the header is outside the container you just put on `<main>`, so the tinted band runs edge to edge while the text inside lines up with the rest of the page
-- [ ] Hero: `h1` → `display-4` · `p` → `lead text-muted` · link → `btn btn-primary btn-lg mt-2`
+- [ ] `<main>` first — margins appear, content stops hugging the edges
+
+  ```diff
+  -  <main>
+  +  <main class="container py-5">
+  ```
+- [ ] The hero is `<header id="home">`, sitting **above** `<main>` — the `h1`, the tagline `<p>`, and the "See the menu" link. Give it the band:
+
+  ```diff
+  -  <header id="home">
+  +  <header id="home" class="text-center py-5 bg-light">
+  ```
+- [ ] Hero: select its three children → **Wrap with Abbreviation** → `div.container.py-4`. The header is outside the container you just put on `<main>`, so the tinted band runs edge to edge while the text inside lines up with the rest of the page
+
+  ```diff
+     <header id="home" class="text-center py-5 bg-light">
+  +    <div class="container py-4">
+         <h1>Common Grounds Coffee</h1>
+         <p>Campus coffee, roasted around the corner, open until midnight during finals.</p>
+         <a href="#menu">See the menu</a>
+  +    </div>
+     </header>
+  ```
+- [ ] Hero: now the three classes
+
+  ```diff
+  -      <h1>Common Grounds Coffee</h1>
+  -      <p>Campus coffee, roasted around the corner, open until midnight during finals.</p>
+  -      <a href="#menu">See the menu</a>
+  +      <h1 class="display-4">Common Grounds Coffee</h1>
+  +      <p class="lead text-muted">Campus coffee, roasted around the corner, open until midnight during finals.</p>
+  +      <a href="#menu" class="btn btn-primary btn-lg mt-2">See the menu</a>
+  ```
 - [ ] **✓ it suddenly looks like a website** — pause and enjoy the reaction
 
 ### The feature row
@@ -71,8 +100,28 @@ Each line below is a comment you can `Ctrl+F` for, spelled exactly as it appears
 - [ ] 🎞️ **GO TO SLIDE 6** — *Breakpoints*
 - [ ] 🎯 **Read the table once — it is the only airing these numbers get tonight:** *"mobile-first means no prefix applies everywhere, and a prefix only adds behavior as the screen gets wider. `md` is 768 pixels — and every single column I write tonight has `md` in it"*
 - [ ] Feature row: select the three `<section>`s → **Wrap with Abbreviation** → `div.row.g-4.text-center`
+
+  ```diff
+  +    <div class="row g-4 text-center">
+         <section>
+           <h2>Locally roasted</h2>
+           <p>Beans from the roastery two blocks over, delivered every Tuesday.</p>
+         </section>
+         …two more sections…
+  +    </div>
+  ```
 - [ ] 🎞️ **GO TO SLIDE 7** — *Reading a column recipe*. Read the slide's `col-12 col-md-6 col-lg-4` left to right, then apply that same reading to the shorter `col-md-4` you're about to type: full width on phones, one third from `md` up
-- [ ] Each `<section>` → `class="col-md-4"` · each `h2` → `fs-4` · each `p` → `text-muted`
+- [ ] Then all three at once — this is the multi-cursor beat below
+
+  ```diff
+  -      <section>
+  -        <h2>Locally roasted</h2>
+  -        <p>Beans from the roastery two blocks over, delivered every Tuesday.</p>
+  +      <section class="col-md-4">
+  +        <h2 class="fs-4">Locally roasted</h2>
+  +        <p class="text-muted">Beans from the roastery two blocks over, delivered every Tuesday.</p>
+         </section>
+  ```
   — *multi-cursor trick:* select `<section>`, then **Ctrl+Shift+L** (**Cmd+Shift+L** on Mac) puts a cursor on *every* match — or **Ctrl+D** (**Cmd+D**) grabs them *one at a time* (safer when there might be matches off-screen; **Ctrl+K Ctrl+D** skips one, Esc collapses). Same trick for the `h2`s and `p`s (and the six `<article>`s later). Narrate it; students love this one
 - [ ] **✓ CHECKPOINT: resize slowly** — stacked on phone → thirds on desktop. This *is* the responsive lecture
 
@@ -93,8 +142,19 @@ Each line below is a comment you can `Ctrl+F` for, spelled exactly as it appears
 
 - [ ] 🎞️ **GO TO SLIDE 9** — *Cards in a grid*
 - [ ] 🎯 **Say where this ends up — the typing can never show it:** *"tonight there are six cards and I put all six in the file myself. In week 8 this block gets written once and the database supplies the rest — one card per row. Every list page in the back half of this course is this pattern"*
-- [ ] `<h2 id="menu">` → `class="mt-5 mb-4"`
-- [ ] Wrap the six `<article>`s in `<div class="row g-4">`
+- [ ] `<h2 id="menu">` → `class="mt-5 mb-4"`, then select the six `<article>`s → **Wrap with Abbreviation** → `div.row.g-4`
+
+  ```diff
+  -    <h2 id="menu">Menu</h2>
+  +    <h2 id="menu" class="mt-5 mb-4">Menu</h2>
+  +    <div class="row g-4">
+         <article>
+           <h3>Espresso <span>hot</span></h3>
+           <p>Double shot, house blend. The reason this place exists.</p>
+         </article>
+         …five more articles…
+  +    </div>
+  ```
 - [ ] Transform the **Espresso `<article>` in place** — evolve what's there, don't retype the content:
   1. wrap the whole article — **Wrap with Abbreviation**, `div.col-md-6.col-lg-4`
   2. the article itself → `class="card h-100"`
@@ -102,16 +162,21 @@ Each line below is a comment you can `Ctrl+F` for, spelled exactly as it appears
   4. `h3` → `class="card-title fs-5"` · `p` → `class="card-text"`
   5. the `<span>` already inside the `h3` → `class="badge bg-danger"` — one class, label becomes badge
 
-  Destination:
-  ```html
-  <div class="col-md-6 col-lg-4">
-    <article class="card h-100">
-      <div class="card-body">
-        <h3 class="card-title fs-5">Espresso <span class="badge bg-danger">hot</span></h3>
-        <p class="card-text">Double shot, house blend. The reason this place exists.</p>
-      </div>
-    </article>
-  </div>
+  All five steps as one change:
+
+  ```diff
+  -      <article>
+  -        <h3>Espresso <span>hot</span></h3>
+  -        <p>Double shot, house blend. The reason this place exists.</p>
+  -      </article>
+  +      <div class="col-md-6 col-lg-4">
+  +        <article class="card h-100">
+  +          <div class="card-body">
+  +            <h3 class="card-title fs-5">Espresso <span class="badge bg-danger">hot</span></h3>
+  +            <p class="card-text">Double shot, house blend. The reason this place exists.</p>
+  +          </div>
+  +        </article>
+  +      </div>
   ```
 - [ ] Badge colors as you go: `bg-danger` hot · `bg-info text-dark` cold · `bg-success` food
 - [ ] Paste the other five cards — copy straight from here:
@@ -169,7 +234,16 @@ Each line below is a comment you can `Ctrl+F` for, spelled exactly as it appears
 - [ ] `<h2 id="contact">` → `class="mt-5 mb-4"`
 - [ ] Add above the form: `<div class="alert alert-info">Ordering online comes in week 14 — for now this form is just for looks.</div>`
 - [ ] Select **the alert, the form, and the back-to-top line under it** → **Wrap with Abbreviation** → `div.row>div.col-md-8` (one abbreviation, both divs) — the column is what stops a text input stretching across a 27-inch monitor
-- [ ] First field, by hand: select the label + input → **Wrap with Abbreviation** → `div.mb-3` · label → `form-label` · input → `form-control` (the `for`/`id` wiring is already there — plain-HTML accessibility, not Bootstrap)
+- [ ] First field, by hand: select the label + input → **Wrap with Abbreviation** → `div.mb-3` · then the two classes (the `for`/`id` wiring is already there — plain-HTML accessibility, not Bootstrap)
+
+  ```diff
+  -      <label for="name">Name</label>
+  -      <input type="text" id="name">
+  +      <div class="mb-3">
+  +        <label for="name" class="form-label">Name</label>
+  +        <input type="text" class="form-control" id="name">
+  +      </div>
+  ```
 - [ ] Paste the remaining fields — copy from here (`select` → `form-select`, button → `btn btn-primary`):
 
   <details><summary>📋 Email, dropdown, message, button</summary>
@@ -201,8 +275,21 @@ Each line below is a comment you can `Ctrl+F` for, spelled exactly as it appears
 
 - [ ] 🎞️ **GO TO SLIDE 10** — *Utilities: the classes that replace custom CSS*. Everything in this beat is utilities
 - [ ] 🎯 **Read the last line off the slide — it is a lab rule with points on it:** *"if you are writing custom CSS for spacing or alignment, there is almost certainly a utility for it already. Tonight that is a house rule, not advice — custom CSS beyond the font override costs you a point, and the self-check warns you about it"*
-- [ ] `<footer>` → `class="text-center text-muted py-4 border-top"` · its `p` → `mb-0`
-- [ ] Back-to-top `<p>`s → `class="text-end mt-3"` · links → `text-muted text-decoration-none`
+- [ ] `<footer>` and its `p`
+
+  ```diff
+  -  <footer>
+  -    <p>© 2026 Common Grounds Coffee · campus &amp; main</p>
+  +  <footer class="text-center text-muted py-4 border-top">
+  +    <p class="mb-0">© 2026 Common Grounds Coffee · campus &amp; main</p>
+     </footer>
+  ```
+- [ ] Both back-to-top `<p>`s — one above the form, one below it
+
+  ```diff
+  -    <p><a href="#home">Back to top ↑</a></p>
+  +    <p class="text-end mt-3"><a href="#home" class="text-muted text-decoration-none">Back to top ↑</a></p>
+  ```
 
 ### Icons *(slide 11)*
 
