@@ -70,6 +70,7 @@ Edit-by-edit cue sheet for transforming your **scratch copy** of `index.html` (s
 ### Menu cards
 
 - [ ] 🎞️ **GO TO SLIDE 9** — *Cards in a grid*
+- [ ] 🎯 **Say where this ends up — the typing can never show it:** *"tonight there are six cards and I put all six in the file myself. In week 8 this block gets written once and the database supplies the rest — one card per row. Every list page in the back half of this course is this pattern"*
 - [ ] `<h2 id="menu">` → `class="mt-5 mb-4"`
 - [ ] Wrap the six `<article>`s in `<div class="row g-4">`
 - [ ] Transform the **Espresso `<article>` in place** — evolve what's there, don't retype the content:
@@ -177,6 +178,7 @@ Edit-by-edit cue sheet for transforming your **scratch copy** of `index.html` (s
 ### Footer & polish
 
 - [ ] 🎞️ **GO TO SLIDE 10** — *Utilities: the classes that replace custom CSS*. Everything in this beat is utilities
+- [ ] 🎯 **Read the last line off the slide — it is a lab rule with points on it:** *"if you are writing custom CSS for spacing or alignment, there is almost certainly a utility for it already. Tonight that is a house rule, not advice — custom CSS beyond the font override costs you a point, and the self-check warns you about it"*
 - [ ] `<footer>` → `class="text-center text-muted py-4 border-top"` · its `p` → `mb-0`
 - [ ] Back-to-top `<p>`s → `class="text-end mt-3"` · links → `text-muted text-decoration-none`
 
@@ -214,6 +216,7 @@ Edit-by-edit cue sheet for transforming your **scratch copy** of `index.html` (s
 ## 4 · Google Fonts *(slide 13)*
 
 - [ ] 🎞️ **GO TO SLIDE 13** — *Google Fonts: the finishing move*
+- [ ] 🎯 **The concept before the shopping trip:** *"Bootstrap keeps its font in a CSS variable, so you never fight it — you set the variable and the whole site follows. Two families maximum, and only the weights you use. Those two are rules in this course, not taste"*
 - [ ] On [fonts.google.com](https://fonts.google.com): pick **Lora** (400 + 700), copy the `<link>`, add to `<head>`
   — *(deliberately a serif: Lux's built-in font is Nunito Sans, so a sans swap would be invisible — pick something the room can SEE)*
 - [ ] Then:
