@@ -21,24 +21,26 @@ Edit-by-edit cue sheet for transforming your **scratch copy** of `index.html` (s
 - [ ] **Say it before you start: *"lids down for this part — you'll do it to your own site in the lab."*** You assemble the coffee shop; their lab is their portfolio. Same patterns, fresh retrieval — which only works if they aren't typing along with you
 - [ ] Hosted [before](https://jgrissom.github.io/dotnet-web-dev/week-02/demo/before.html) / [after](https://jgrissom.github.io/dotnet-web-dev/week-02/demo/) open in two tabs for the opening pitch
 - [ ] **Two things that make the live edits comfortable — try both once before class:**
-  - **Never scroll to find an edit — `Ctrl+F` a §-token.** Every place you touch tonight is marked in `scratch.html` with the same label the slide footer shows: `§1 · the feature row`, `§2 · menu cards`. Searching `§2` steps through every place that section touches (`Enter` for the next hit). `finished.html` carries the identical tokens, so the same search shows the destination
+  - **Never scroll to find an edit — `Ctrl+F` for `DEMO`.** Every place you touch tonight is marked in `scratch.html` as `DEMO 1 · the feature row`, `DEMO 2 · menu cards` — the slide footer's beat name, spelled so you can actually type it. Search `DEMO` and `Enter` walks every edit in the file top to bottom; search `DEMO 2` for one section, or just the beat name (`menu cards`) for one spot. `finished.html` carries the identical tokens, so the same search shows the destination
   - **Six edits tonight are "wrap these elements in a div" — let VS Code do it.** Select the elements → `Ctrl+Shift+P` → **Wrap with Abbreviation** → type the abbreviation → `Enter`. It writes both tags and re-indents. Every wrap beat below gives you the abbreviation to type; `div.row.g-4` becomes `<div class="row g-4">`
 
 ### The file at a glance
 
 Where each section lands. `<head>` is the jumpy one — you go back to it four times.
 
+Each line below is a comment you can `Ctrl+F` for, spelled exactly as it appears in the file.
+
 ```
-<head>       §0b two tags · §2 icons link · §3 bootswatch swap · §4 font + <style>
-  <nav>      §2 · navbar
-  <header>   §1 · container and hero
-  <main>     §1 · container and hero  (main gets the container first)
-    section×3  §1 · the feature row
-    article×6  §2 · menu cards
-    <p>        §2 · footer & polish   ← back-to-top, 1 of 2
-    <form>     §2 · form
-    <p>        §2 · footer & polish   ← back-to-top, 2 of 2 (wrapped with the form)
-  <footer>   §2 · footer & polish
+<head>       DEMO 0b two tags · DEMO 2 icons · DEMO 3 bootswatch · DEMO 4 font
+  <nav>      DEMO 2 · navbar
+  <header>   DEMO 1 · container and hero
+  <main>     DEMO 1 · container and hero   (main gets its container first)
+    section×3  DEMO 1 · the feature row
+    article×6  DEMO 2 · menu cards
+    <p>        DEMO 2 · footer & polish    ← back-to-top, 1 of 2
+    <form>     DEMO 2 · form
+    <p>        DEMO 2 · footer & polish    ← back-to-top, 2 of 2 (wrapped with the form)
+  <footer>   DEMO 2 · footer & polish
 ```
 
 ## 0b · The opening pitch *(slides 2–4)*
