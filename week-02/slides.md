@@ -56,8 +56,8 @@ Writing a design system from scratch means solving:
 - Accessible components (keyboard nav, contrast, ARIA)
 - Browser quirks
 
-Bootstrap solves all four for the price of two `<link>`/`<script>` tags.
-**Trade-off:** every default Bootstrap site looks the same — we fix that tonight too.
+Bootstrap solves all four for the price of two tags.
+**Trade-off:** default Bootstrap sites look alike — we fix that tonight.
 
 ---
 
@@ -104,7 +104,7 @@ Bootstrap solves all four for the price of two `<link>`/`<script>` tags.
 
 ## Breakpoints
 
-**Mobile-first:** unprefixed = all sizes; prefixes add behavior at wider screens.
+**Mobile-first:** no prefix = all screens; prefixes add from there.
 
 | Prefix | Min width | Think |
 |--------|-----------|-------|
@@ -173,7 +173,6 @@ The pattern you'll use forever — week 8: each card = a **database row**.
 ## Utilities: the classes that replace custom CSS
 
 ```html
-<h1 class="text-center mt-5">Centered, spaced</h1>
 <div class="d-flex justify-content-between align-items-center p-3">
   <span class="fw-bold">Left</span>
   <span class="badge bg-success">Right</span>
@@ -184,7 +183,7 @@ The pattern you'll use forever — week 8: each card = a **database row**.
 - Text: `text-center`, `fw-bold`, `text-muted`
 - Color: `bg-primary`, `text-danger`, …
 
-If you're writing custom CSS for spacing or alignment, there's probably a utility.
+Writing custom CSS for spacing or alignment? There's a utility.
 
 ---
 
@@ -221,7 +220,7 @@ Swap **one line** — the CSS link:
 ```
 
 - 25+ free themes: bootswatch.com — Flatly, Darkly, Lux, Sketchy…
-- All class names stay **standard Bootstrap** — your skills and the docs still apply
+- Class names stay **standard Bootstrap** — skills and docs transfer
 - **Pin the version** to your Bootstrap version (5.3.x ↔ 5.3.x)
 
 ---
