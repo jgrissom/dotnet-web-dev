@@ -111,18 +111,26 @@ Each line below is a comment you can `Ctrl+F` for, spelled exactly as it appears
   +    </div>
   ```
 - [ ] 🎞️ **GO TO SLIDE 7** — *Reading a column recipe*. Read the slide's `col-12 col-md-6 col-lg-4` left to right, then apply that same reading to the shorter `col-md-4` you're about to type: full width on phones, one third from `md` up
-- [ ] Then all three at once — this is the multi-cursor beat below
+- [ ] **The `<section>`s** — select `<section>`, then **Ctrl+Shift+L** (**Cmd+Shift+L** on Mac) puts a cursor on *every* match; type the class once and all three take it
 
   ```diff
   -      <section>
-  -        <h2>Locally roasted</h2>
-  -        <p>Beans from the roastery two blocks over, delivered every Tuesday.</p>
   +      <section class="col-md-4">
-  +        <h2 class="fs-4">Locally roasted</h2>
-  +        <p class="text-muted">Beans from the roastery two blocks over, delivered every Tuesday.</p>
-         </section>
   ```
-  — *multi-cursor trick:* select `<section>`, then **Ctrl+Shift+L** (**Cmd+Shift+L** on Mac) puts a cursor on *every* match — or **Ctrl+D** (**Cmd+D**) grabs them *one at a time* (safer when there might be matches off-screen; **Ctrl+K Ctrl+D** skips one, Esc collapses). Same trick for the `h2`s and `p`s (and the six `<article>`s later). Narrate it; students love this one
+  — narrate the trick as you do it; students love this one. **Ctrl+D** (**Cmd+D**) grabs matches *one at a time* instead — safer when there might be matches off-screen (**Ctrl+K Ctrl+D** skips one, Esc collapses)
+- [ ] **The `h2`s** — same move, three cursors again
+
+  ```diff
+  -        <h2>Locally roasted</h2>
+  +        <h2 class="fs-4">Locally roasted</h2>
+  ```
+- [ ] **The `p`s** — third time, and by now the room is ahead of you
+
+  ```diff
+  -        <p>Beans from the roastery two blocks over, delivered every Tuesday.</p>
+  +        <p class="text-muted">Beans from the roastery two blocks over, delivered every Tuesday.</p>
+  ```
+  — same trick again on the six `<article>`s in §2
 - [ ] **✓ CHECKPOINT: resize slowly** — stacked on phone → thirds on desktop. This *is* the responsive lecture
 
 ## 2 · Components *(slides 8–11)*
