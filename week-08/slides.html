@@ -398,7 +398,7 @@ section footer { color: #9fb2c1; font-size: 0.6em; opacity: 0.85; }
 <h2 id="task-is-a-promise">Task is a Promise</h2>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-csharp"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">async</span> Task&lt;IActionResult&gt; <span class="hljs-title">Index</span>()</span>
 {
-    <span class="hljs-keyword">return</span> View(<span class="hljs-keyword">await</span> _context.Trucks.ToListAsync());
+    <span class="hljs-keyword">return</span> View(<span class="hljs-keyword">await</span> <span class="hljs-number">_</span>context.Trucks.ToListAsync());
 }
 </code></pre>
 <p><code>Task&lt;T&gt;</code> is <code>Promise&lt;T&gt;</code>. <strong><code>await</code> is <code>await</code>.</strong></p>
@@ -721,8 +721,8 @@ section pre .hljs-selector-class, section pre .hljs-selector-pseudo { color: #7e
 section footer { color: #9fb2c1; font-size: 0.6em; opacity: 0.85; }
 ;" data-marpit-pagination-total="24">
 <h2 id="update-marks-savechanges-writes">Update marks. SaveChanges writes.</h2>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-csharp">_context.Update(truck);              <span class="hljs-comment">// nothing happens</span>
-<span class="hljs-keyword">await</span> _context.SaveChangesAsync();   <span class="hljs-comment">// the UPDATE happens</span>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-csharp"><span class="hljs-number">_</span>context.Update(truck);              <span class="hljs-comment">// nothing happens</span>
+<span class="hljs-keyword">await</span> <span class="hljs-number">_</span>context.SaveChangesAsync();   <span class="hljs-comment">// the UPDATE happens</span>
 </code></pre>
 <br />
 <p>You watched the gap between those lines.</p>
