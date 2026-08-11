@@ -66,20 +66,19 @@ Bootstrap solves all four for the price of two `<link>`/`<script>` tags.
 ## Setup: two tags via CDN
 
 ```html
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-        rel="stylesheet">
-</head>
-<body>
-  <!-- your page -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+<!-- in <head> -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet">
+
+<!-- last thing before </body> -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
 ```
 
-- CSS = the look · JS bundle = behavior (navbar toggler, dropdowns, modals)
+- CSS = the look · JS bundle = behavior (toggler, dropdowns, modals)
 - The viewport `<meta>` is required for responsive behavior
-- Week 5: you'll meet the *locally bundled* copy inside the MVC template
+- Week 5: the *locally bundled* copy inside the MVC template
 
 ---
 
@@ -244,7 +243,7 @@ Swap **one line** — the CSS link:
 
 - Bootstrap reads its fonts from CSS variables — override, don't fight
 - **Rules:** two families max (heading + body), only the weights you use
-- Pro aside: Google-hosted fonts = a third-party request; privacy-minded companies self-host
+- Pro aside: a third-party request — privacy-minded firms self-host
 
 ---
 
