@@ -20,6 +20,26 @@ Edit-by-edit cue sheet for transforming your **scratch copy** of `index.html` (s
   - ⚠️ **Edit the copy, never `index.html` itself.** That file is what CI publishes as tonight's [before](https://jgrissom.github.io/dotnet-web-dev/week-02/demo/before.html) page — a stray edit republishes a half-Bootstrapped "before" picture, and the opening pitch is gone for good
 - [ ] **Say it before you start: *"lids down for this part — you'll do it to your own site in the lab."*** You assemble the coffee shop; their lab is their portfolio. Same patterns, fresh retrieval — which only works if they aren't typing along with you
 - [ ] Hosted [before](https://jgrissom.github.io/dotnet-web-dev/week-02/demo/before.html) / [after](https://jgrissom.github.io/dotnet-web-dev/week-02/demo/) open in two tabs for the opening pitch
+- [ ] **Two things that make the live edits comfortable — try both once before class:**
+  - **Never scroll to find an edit — `Ctrl+F` a §-token.** Every place you touch tonight is marked in `scratch.html` with the same label the slide footer shows: `§1 · the feature row`, `§2 · menu cards`. Searching `§2` steps through every place that section touches (`Enter` for the next hit). `finished.html` carries the identical tokens, so the same search shows the destination
+  - **Six edits tonight are "wrap these elements in a div" — let VS Code do it.** Select the elements → `Ctrl+Shift+P` → **Wrap with Abbreviation** → type the abbreviation → `Enter`. It writes both tags and re-indents. Every wrap beat below gives you the abbreviation to type; `div.row.g-4` becomes `<div class="row g-4">`
+
+### The file at a glance
+
+Where each section lands. `<head>` is the jumpy one — you go back to it four times.
+
+```
+<head>       §0b two tags · §2 icons link · §3 bootswatch swap · §4 font + <style>
+  <nav>      §2 · navbar
+  <header>   §1 · container and hero
+  <main>     §1 · container and hero  (main gets the container first)
+    section×3  §1 · the feature row
+    article×6  §2 · menu cards
+    <p>        §2 · footer & polish   ← back-to-top, 1 of 2
+    <form>     §2 · form
+    <p>        §2 · footer & polish   ← back-to-top, 2 of 2 (wrapped with the form)
+  <footer>   §2 · footer & polish
+```
 
 ## 0b · The opening pitch *(slides 2–4)*
 
@@ -40,7 +60,7 @@ Edit-by-edit cue sheet for transforming your **scratch copy** of `index.html` (s
 - [ ] 🎯 **The one rule the whole grid rests on:** *"every row is twelve units wide. Always twelve. Eight and four on the slide — that is a full row. Add up past twelve and the extra wraps onto the next line, which is the rule working, not a bug"* — the 8/4 split lives only on this slide; the demo builds thirds
 - [ ] `<main>` → `<main class="container py-5">` — margins appear, content stops hugging the edges
 - [ ] The hero is `<header id="home">`, sitting **above** `<main>` — the `h1`, the tagline `<p>`, and the "See the menu" link. Add `class="text-center py-5 bg-light"`
-- [ ] Hero: wrap those three in `<div class="container py-4">` — the header is outside the container you just put on `<main>`, so the tinted band runs edge to edge while the text inside lines up with the rest of the page
+- [ ] Hero: wrap those three — select them, **Wrap with Abbreviation**, `div.container.py-4` — the header is outside the container you just put on `<main>`, so the tinted band runs edge to edge while the text inside lines up with the rest of the page
 - [ ] Hero: `h1` → `display-4` · `p` → `lead text-muted` · link → `btn btn-primary btn-lg mt-2`
 - [ ] **✓ it suddenly looks like a website** — pause and enjoy the reaction
 
@@ -48,7 +68,7 @@ Edit-by-edit cue sheet for transforming your **scratch copy** of `index.html` (s
 
 - [ ] 🎞️ **GO TO SLIDE 6** — *Breakpoints*
 - [ ] 🎯 **Read the table once — it is the only airing these numbers get tonight:** *"mobile-first means no prefix applies everywhere, and a prefix only adds behavior as the screen gets wider. `md` is 768 pixels — and every single column I write tonight has `md` in it"*
-- [ ] Feature row: wrap the three `<section>`s in `<div class="row g-4 text-center">`
+- [ ] Feature row: select the three `<section>`s → **Wrap with Abbreviation** → `div.row.g-4.text-center`
 - [ ] 🎞️ **GO TO SLIDE 7** — *Reading a column recipe*. Read the slide's `col-12 col-md-6 col-lg-4` left to right, then apply that same reading to the shorter `col-md-4` you're about to type: full width on phones, one third from `md` up
 - [ ] Each `<section>` → `class="col-md-4"` · each `h2` → `fs-4` · each `p` → `text-muted`
   — *multi-cursor trick:* select `<section>`, then **Ctrl+Shift+L** (**Cmd+Shift+L** on Mac) puts a cursor on *every* match — or **Ctrl+D** (**Cmd+D**) grabs them *one at a time* (safer when there might be matches off-screen; **Ctrl+K Ctrl+D** skips one, Esc collapses). Same trick for the `h2`s and `p`s (and the six `<article>`s later). Narrate it; students love this one
@@ -74,9 +94,9 @@ Edit-by-edit cue sheet for transforming your **scratch copy** of `index.html` (s
 - [ ] `<h2 id="menu">` → `class="mt-5 mb-4"`
 - [ ] Wrap the six `<article>`s in `<div class="row g-4">`
 - [ ] Transform the **Espresso `<article>` in place** — evolve what's there, don't retype the content:
-  1. wrap the whole article in `<div class="col-md-6 col-lg-4">`
+  1. wrap the whole article — **Wrap with Abbreviation**, `div.col-md-6.col-lg-4`
   2. the article itself → `class="card h-100"`
-  3. wrap the `h3` and the `p` inside it in `<div class="card-body">`
+  3. select the `h3` and the `p` inside it → **Wrap with Abbreviation** → `div.card-body`
   4. `h3` → `class="card-title fs-5"` · `p` → `class="card-text"`
   5. the `<span>` already inside the `h3` → `class="badge bg-danger"` — one class, label becomes badge
 
@@ -146,8 +166,8 @@ Edit-by-edit cue sheet for transforming your **scratch copy** of `index.html` (s
 
 - [ ] `<h2 id="contact">` → `class="mt-5 mb-4"`
 - [ ] Add above the form: `<div class="alert alert-info">Ordering online comes in week 14 — for now this form is just for looks.</div>`
-- [ ] Wrap **the alert, the form, and the back-to-top line under it** in `<div class="row"><div class="col-md-8">…</div></div>` — the column is what stops a text input stretching across a 27-inch monitor
-- [ ] First field, typing: wrap in `<div class="mb-3">` · label → `form-label` · input → `form-control` (the `for`/`id` wiring is already there — plain-HTML accessibility, not Bootstrap)
+- [ ] Select **the alert, the form, and the back-to-top line under it** → **Wrap with Abbreviation** → `div.row>div.col-md-8` (one abbreviation, both divs) — the column is what stops a text input stretching across a 27-inch monitor
+- [ ] First field, by hand: select the label + input → **Wrap with Abbreviation** → `div.mb-3` · label → `form-label` · input → `form-control` (the `for`/`id` wiring is already there — plain-HTML accessibility, not Bootstrap)
 - [ ] Paste the remaining fields — copy from here (`select` → `form-select`, button → `btn btn-primary`):
 
   <details><summary>📋 Email, dropdown, message, button</summary>
