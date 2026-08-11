@@ -49,7 +49,7 @@ Edit-by-edit cue sheet for transforming your **scratch copy** of `index.html` (s
 - [ ] 🎞️ **GO TO SLIDE 6** — *Breakpoints*
 - [ ] 🎯 **Read the table once — it is the only airing these numbers get tonight:** *"mobile-first means no prefix applies everywhere, and a prefix only adds behaviour as the screen gets wider. `md` is 768 pixels — and every single column I write tonight has `md` in it"*
 - [ ] Feature row: wrap the three `<section>`s in `<div class="row g-4 text-center">`
-- [ ] 🎞️ **GO TO SLIDE 7** — *Reading a column recipe*. Decode `col-md-4` off the slide, then type it
+- [ ] 🎞️ **GO TO SLIDE 7** — *Reading a column recipe*. Read the slide's `col-12 col-md-6 col-lg-4` left to right, then apply that same reading to the shorter `col-md-4` you're about to type: full width on phones, one third from `md` up
 - [ ] Each `<section>` → `class="col-md-4"` · each `h2` → `fs-4` · each `p` → `text-muted`
   — *multi-cursor trick:* select `<section>`, then **Ctrl+Shift+L** (**Cmd+Shift+L** on Mac) puts a cursor on *every* match — or **Ctrl+D** (**Cmd+D**) grabs them *one at a time* (safer when there might be matches off-screen; **Ctrl+K Ctrl+D** skips one, Esc collapses). Same trick for the `h2`s and `p`s (and the six `<article>`s later). Narrate it; students love this one
 - [ ] **✓ CHECKPOINT: resize slowly** — stacked on phone → thirds on desktop. This *is* the responsive lecture
