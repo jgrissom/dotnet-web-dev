@@ -164,7 +164,7 @@ Navbar · Cards · Buttons · Forms · Alerts · Badges — all tonight, all cop
 </div>
 ```
 
-The pattern you'll use forever — week 8: each card = a **database row**.
+The same shape in week 8 — each card = a **database row**.
 
 ---
 

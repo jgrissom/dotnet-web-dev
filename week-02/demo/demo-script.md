@@ -232,7 +232,7 @@ Each line below is a comment you can `Ctrl+F` for, spelled exactly as it appears
 ### Form
 
 - [ ] `<h2 id="contact">` → `class="mt-5 mb-4"`
-- [ ] Add above the form: `<div class="alert alert-info">Ordering online comes in week 14 — for now this form is just for looks.</div>`
+- [ ] Add above the form: `<div class="alert alert-info">This form is not wired up yet — forms start working in week 6.</div>`
 - [ ] Select **the alert, the form, and the back-to-top line under it** → **Wrap with Abbreviation** → `div.row>div.col-md-8` (one abbreviation, both divs) — the column is what stops a text input stretching across a 27-inch monitor
 - [ ] First field, by hand: select the label + input → **Wrap with Abbreviation** → `div.mb-3` · then the two classes (the `for`/`id` wiring is already there — plain-HTML accessibility, not Bootstrap)
 
@@ -340,6 +340,10 @@ Each line below is a comment you can `Ctrl+F` for, spelled exactly as it appears
 ## 5 · Hand off to the lab *(slide 14)*
 
 - [ ] 🎞️ **GO TO SLIDE 14** — *Lab: Bootstrap the site*. Leave it up for the whole lab; it's the task list
+- [ ] Show **what done looks like** — the answer key **opened from disk on your own machine**: `week-02/lab/solution` in the answer-keys repo, `index.html` in the browser. Resize once so the navbar collapses, click through all three pages. ~90 seconds, a target not a walkthrough — **don't show the markup**. **Nothing is deployed for this** — GitHub Pages is their homework, not tonight
+- [ ] Setup on screen, said once: **`cd dotnet-web-starters && git pull` → copy the `week-02` folder out, next to the clone → stay in `dotnet-web` and work there**
+- [ ] Say plainly: **the checker is already wired into all three pages.** F12 on any page and it scores that page — *"work one ❌ at a time, and check all three; each page has its own list"*
+- [ ] **In-class target: `index.html` fully green, plus that navbar copied to the other two pages.** The projects grid, the contact form and make-it-yours roll into homework Part 1 **by design** — say so out loud, so nobody reads a half-finished site as falling behind
 
 ## 6 · Wrap-up, after the lab *(slide 15)*
 
