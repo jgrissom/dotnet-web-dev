@@ -39,8 +39,8 @@ Edit-by-edit cue sheet for transforming your **scratch copy** of `index.html` (s
 - [ ] 🎞️ **GO TO SLIDE 5** — *The grid: 12 columns, 6 breakpoints*
 - [ ] 🎯 **The one rule the whole grid rests on:** *"every row is twelve units wide. Always twelve. Eight and four on the slide — that is a full row. Add up past twelve and the extra wraps onto the next line, which is the rule working, not a bug"* — the 8/4 split lives only on this slide; the demo builds thirds
 - [ ] `<main>` → `<main class="container py-5">` — margins appear, content stops hugging the edges
-- [ ] Hero: `<header id="home">` → add `class="text-center py-5 bg-light"`
-- [ ] Hero: wrap its contents in `<div class="container py-4">`
+- [ ] The hero is `<header id="home">`, sitting **above** `<main>` — the `h1`, the tagline `<p>`, and the "See the menu" link. Add `class="text-center py-5 bg-light"`
+- [ ] Hero: wrap those three in `<div class="container py-4">` — the header is outside the container you just put on `<main>`, so the tinted band runs edge to edge while the text inside lines up with the rest of the page
 - [ ] Hero: `h1` → `display-4` · `p` → `lead text-muted` · link → `btn btn-primary btn-lg mt-2`
 - [ ] **✓ it suddenly looks like a website** — pause and enjoy the reaction
 
@@ -76,7 +76,7 @@ Edit-by-edit cue sheet for transforming your **scratch copy** of `index.html` (s
 - [ ] Transform the **Espresso `<article>` in place** — evolve what's there, don't retype the content:
   1. wrap the whole article in `<div class="col-md-6 col-lg-4">`
   2. the article itself → `class="card h-100"`
-  3. wrap its contents in `<div class="card-body">`
+  3. wrap the `h3` and the `p` inside it in `<div class="card-body">`
   4. `h3` → `class="card-title fs-5"` · `p` → `class="card-text"`
   5. the `<span>` already inside the `h3` → `class="badge bg-danger"` — one class, label becomes badge
 
