@@ -26,15 +26,18 @@ Edit-by-edit cue sheet for transforming your **scratch copy** of `index.html` (s
 - [ ] 🎞️ **GO TO SLIDE 2** — *Tonight*
 - [ ] Read the six items, **don't dwell** — and land the last one: *"it ends with the site public on the internet. By the end of tonight you have something styled you would actually show someone"*
 - [ ] 🎞️ **GO TO SLIDE 3** — *Why a CSS framework?*
-- [ ] Flip between the **before** and **after** tabs — same content, transformed almost entirely by classes
+- [ ] 🎯 **Land the two on the list nobody can show you:** *"spacing and responsive you are about to watch me do. Accessible components and browser quirks are the two you never see — already solved, by people who do this full time. That is most of what you are buying"*
+- [ ] Then flip between the **before** and **after** tabs — same content, transformed almost entirely by classes
 - [ ] 🎞️ **GO TO SLIDE 4** — *Setup: two tags via CDN*
-- [ ] Point at the same two tags already sitting in your scratch copy
+- [ ] 🎯 **The two tags do different jobs — say which:** *"the top one is the look. The bottom one is the behaviour, and everything that moves tonight comes from it. Leave it out and your page looks perfect and does nothing"* — this is the #1 lab bug, and it gets said again at the lab launch
+- [ ] Then swipe and point at the same two tags already sitting in your scratch copy
 
 ## 1 · The grid *(slides 5–7)*
 
 ### Container and hero
 
 - [ ] 🎞️ **GO TO SLIDE 5** — *The grid: 12 columns, 6 breakpoints*
+- [ ] 🎯 **The one rule the whole grid rests on:** *"every row is twelve units wide. Always twelve. Eight and four on the slide — that is a full row. Add up past twelve and the extra wraps onto the next line, which is the rule working, not a bug"* — the 8/4 split lives only on this slide; the demo builds thirds
 - [ ] `<main>` → `<main class="container py-5">` — margins appear, content stops hugging the edges
 - [ ] Hero: `<header id="home">` → add `class="text-center py-5 bg-light"`
 - [ ] Hero: wrap its contents in `<div class="container py-4">`
@@ -44,6 +47,7 @@ Edit-by-edit cue sheet for transforming your **scratch copy** of `index.html` (s
 ### The feature row
 
 - [ ] 🎞️ **GO TO SLIDE 6** — *Breakpoints*
+- [ ] 🎯 **Read the table once — it is the only airing these numbers get tonight:** *"mobile-first means no prefix applies everywhere, and a prefix only adds behaviour as the screen gets wider. `md` is 768 pixels — and every single column I write tonight has `md` in it"*
 - [ ] Feature row: wrap the three `<section>`s in `<div class="row g-4 text-center">`
 - [ ] 🎞️ **GO TO SLIDE 7** — *Reading a column recipe*. Decode `col-md-4` off the slide, then type it
 - [ ] Each `<section>` → `class="col-md-4"` · each `h2` → `fs-4` · each `p` → `text-muted`
