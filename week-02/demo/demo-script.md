@@ -317,9 +317,9 @@ Each line below is a comment you can `Ctrl+F` for, spelled exactly as it appears
 
   ```diff
   -  <footer>
-  -    <p>© 2026 Common Grounds Coffee · campus &amp; main</p>
+  -    <p>© 2026 Common Grounds Coffee · campus & main</p>
   +  <footer class="text-center text-muted py-4 border-top">
-  +    <p class="mb-0">© 2026 Common Grounds Coffee · campus &amp; main</p>
+  +    <p class="mb-0">© 2026 Common Grounds Coffee · campus & main</p>
      </footer>
   ```
 - [ ] Both back-to-top `<p>`s — one above the form, one below it
@@ -333,8 +333,23 @@ Each line below is a comment you can `Ctrl+F` for, spelled exactly as it appears
 
 - [ ] 🎞️ **GO TO SLIDE 11** — *Icons: Bootstrap Icons*
 - [ ] *"One more `<link>`, same CDN pattern as the top of the night. Two thousand icons and not a single image file to download"*
-- [ ] Add to `<head>`: `<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">`
-- [ ] `<i class="bi bi-cup-hot"></i>` inside the hero button and the footer text
+- [ ] Add to `<head>`, straight under the Bootstrap CSS link
+
+  ```diff
+  +  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  ```
+- [ ] Now two `<i>`s, in two places you've already been. The hero button first — `Ctrl+F` for `DEMO 1 · container and hero`
+
+  ```diff
+  -      <a href="#menu" class="btn btn-primary btn-lg mt-2">See the menu</a>
+  +      <a href="#menu" class="btn btn-primary btn-lg mt-2"><i class="bi bi-cup-hot"></i> See the menu</a>
+  ```
+- [ ] Then the footer text — `Ctrl+F` for `DEMO 2 · footer & polish`
+
+  ```diff
+  -    <p class="mb-0">© 2026 Common Grounds Coffee · campus & main</p>
+  +    <p class="mb-0"><i class="bi bi-cup-hot"></i> © 2026 Common Grounds Coffee · campus & main</p>
+  ```
 - [ ] The showpiece — one icon `<div>` above each feature heading:
   ```html
   <div class="fs-1 text-danger"><i class="bi bi-fire"></i></div>    <!-- roasted -->
