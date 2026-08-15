@@ -74,7 +74,7 @@ const diffHtml = (lines) =>
 // is always the whole file.
 const MAX_FULL_SIZE = 17;   // lines that fit at 1.35rem
 const MAX_DENSE = 24;       // lines that fit at 0.95rem
-const HEAD = 21;            // lines shown when a step is longer than that
+const HEAD = 12, TAIL = 9;  // shown either side of the marker when longer
 
 const sections = steps
   .map((s) => {
@@ -82,8 +82,16 @@ const sections = steps
     const cls = n <= MAX_FULL_SIZE ? "" : " dense";
     let shown = s.body, note = "";
     if (n > MAX_DENSE) {
+      // HEAD AND TAIL, not just the head. A long step here is usually a
+      // replacement — five cards out, five cards in — and head-only truncation
+      // showed the room every removed line and none of the added ones, which
+      // is the half of the change that does not matter. Top shows what goes,
+      // bottom shows what arrives.
       shown = s.body.slice(0, HEAD);
-      note = `<span class="more">… ${n - HEAD} more lines of the same shape — the Copy button still gives you the whole file</span>`;
+      const tail = s.body.slice(-TAIL);
+      note =
+        `<span class="more">… ${n - HEAD - TAIL} more lines of the same shape — the Copy button still gives you the whole file</span>` +
+        diffHtml(tail);
     }
     return `<section class="step" data-n="${s.n}" hidden>
   <h1><span class="count">${s.n}<span class="of">/${steps.length}</span></span> ${esc(s.subject)}</h1>
