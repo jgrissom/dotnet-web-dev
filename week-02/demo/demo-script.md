@@ -248,9 +248,30 @@ Each line below is a comment you can `Ctrl+F` for, spelled exactly as it appears
 
 ### Form
 
-- [ ] `<h2 id="contact">` → `class="mt-5 mb-4"`
-- [ ] Add above the form: `<div class="alert alert-info">This form is not wired up yet — forms start working in week 6.</div>`
-- [ ] Select **the alert, the form, and the back-to-top line under it** → **Wrap with Abbreviation** → `div.row>div.col-md-8` (one abbreviation, both divs) — the column is what stops a text input stretching across a 27-inch monitor
+- [ ] The `<h2>` — same two classes as the menu heading
+
+  ```diff
+  -    <h2 id="contact">Get in touch</h2>
+  +    <h2 id="contact" class="mt-5 mb-4">Get in touch</h2>
+  ```
+- [ ] Add the alert directly under that `<h2>`, above the `<form>`
+
+  ```diff
+  +    <div class="alert alert-info">This form is not wired up yet — forms start working in week 6.</div>
+  ```
+- [ ] Select **the alert, the whole form, and the back-to-top line under it** → **Wrap with Abbreviation** → `div.row>div.col-md-8` (one abbreviation, both divs) — the column is what stops a text input stretching across a 27-inch monitor
+
+  ```diff
+  +    <div class="row">
+  +      <div class="col-md-8">
+         <div class="alert alert-info">This form is not wired up yet — forms start working in week 6.</div>
+         <form>
+           …the whole form…
+         </form>
+         <p><a href="#home">Back to top ↑</a></p>
+  +      </div>
+  +    </div>
+  ```
 - [ ] First field, by hand: select the label + input → **Wrap with Abbreviation** → `div.mb-3` · then the two classes (the `for`/`id` wiring is already there — plain-HTML accessibility, not Bootstrap)
 
   ```diff
