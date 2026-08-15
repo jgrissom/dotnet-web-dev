@@ -17,6 +17,14 @@ on:
       # friends commits nothing and just redeploys identical content.
       - "scripts/**"
       - ".github/workflows/export-slides.yml"
+  # ⚠️ The step pages are built from the demo/week-NN BRANCHES, and a push to
+  # one of those does not match `branches: [main]` above — so editing a step,
+  # or a step's title, republishes NOTHING and nothing says so. Two ways out,
+  # both already here: the daily cron picks it up within a day, and
+  #   gh workflow run export-slides.yml --repo jgrissom/dotnet-web-dev
+  # rebuilds on demand. Found the hard way: retitled all 22 steps, pushed the
+  # branch, and the published page kept the old titles. An empty commit on main
+  # does NOT help — it touches none of the paths above.
   # Safety net. On 2026-08-02 GitHub recorded a push to main and simply never
   # created a run for it, so the decks and the Pages site sat stale until the
   # workflow was dispatched by hand — and nothing announces that: the symptom
