@@ -317,9 +317,9 @@ Each line below is a comment you can `Ctrl+F` for, spelled exactly as it appears
 
   ```diff
   -  <footer>
-  -    <p>© 2026 Common Grounds Coffee · campus & main</p>
+  -    <p>© 2026 Common Grounds Coffee · campus &amp; main</p>
   +  <footer class="text-center text-muted py-4 border-top">
-  +    <p class="mb-0">© 2026 Common Grounds Coffee · campus & main</p>
+  +    <p class="mb-0">© 2026 Common Grounds Coffee · campus &amp; main</p>
      </footer>
   ```
 - [ ] Both back-to-top `<p>`s — one above the form, one below it
@@ -347,8 +347,8 @@ Each line below is a comment you can `Ctrl+F` for, spelled exactly as it appears
 - [ ] Then the footer text — `Ctrl+F` for `DEMO 2 · footer & polish`
 
   ```diff
-  -    <p class="mb-0">© 2026 Common Grounds Coffee · campus & main</p>
-  +    <p class="mb-0"><i class="bi bi-cup-hot"></i> © 2026 Common Grounds Coffee · campus & main</p>
+  -    <p class="mb-0">© 2026 Common Grounds Coffee · campus &amp; main</p>
+  +    <p class="mb-0"><i class="bi bi-cup-hot"></i> © 2026 Common Grounds Coffee · campus &amp; main</p>
   ```
 - [ ] The showpiece — one icon `<div>` above each feature heading:
   ```html
