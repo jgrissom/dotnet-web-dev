@@ -24,9 +24,23 @@ Edit-by-edit cue sheet for transforming your **scratch copy** of `index.html` (s
   - **Never scroll to find an edit — `Ctrl+F` for `DEMO`.** Every place you touch tonight is marked in `scratch.html` as `DEMO 1 · the feature row`, `DEMO 2 · menu cards` — the slide footer's beat name, spelled so you can actually type it. Search `DEMO` and `Enter` walks every edit in the file top to bottom; search `DEMO 2` for one section, or just the beat name (`menu cards`) for one spot. `finished.html` carries the identical tokens, so the same search shows the destination
   - **Six edits tonight are "wrap these elements in a div" — let VS Code do it.** Select the elements → `Ctrl+Shift+P` → **Wrap with Abbreviation** → type the abbreviation → `Enter`. It writes both tags and re-indents. Every wrap beat below gives you the abbreviation to type; `div.row.g-4` becomes `<div class="row g-4">`
 
-### 🛟 If an edit goes wrong
+### 📽️ The step page is what the room looks at
 
-**You are one command from a known-good page, and it never touches `index.html`.** Every beat below is a commit on the `demo/week-02` branch. From anywhere in `dotnet-web`, on `main`, without switching branches:
+**[jgrissom.github.io/dotnet-web-dev/week-02/demo/steps.html](https://jgrissom.github.io/dotnet-web-dev/week-02/demo/steps.html)** — one screen per beat, that beat's change as a red/green diff in projector type, `←` `→` to move.
+
+The loop for every code beat is the same three moves:
+
+1. **Show the diff** on the step page and talk to it — the talking points are in this sheet, under the matching beat.
+2. **Copy whole file** (the blue button) — it puts that step's *entire* file on the clipboard, not the diff.
+3. **Select all in `scratch.html`, paste, save.** The page updates in the browser beside it.
+
+Nobody hunts for an insertion point, and the room sees the change isolated and labelled instead of buried in a file. Two of the twenty-two steps show only the head of a long diff — the note says so on screen, and the button still copies the whole file.
+
+⚠️ **The page remembers where you were** (per-browser). Before class, press `Home` to get back to step 1.
+
+### 🛟 If it still goes wrong
+
+**One command, and it never touches `index.html`.** Every beat is also a commit on the `demo/week-02` branch. From anywhere in `dotnet-web`, on `main`, without switching branches:
 
 ```bash
 git show w02-step-11:week-02/demo/index.html > week-02/demo/scratch.html

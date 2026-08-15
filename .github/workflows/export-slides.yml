@@ -45,7 +45,14 @@ jobs:
   export:
     runs-on: ubuntu-latest
     steps:
+      # fetch-depth 0 because the step pages are rendered FROM git history —
+      # scripts/render-demo-steps.js reads the per-beat commits off the
+      # demo/week-NN branches and their w<NN>-step-* tags. A shallow checkout
+      # has neither, and the symptom is a silently missing page rather than an
+      # error, so the depth is load-bearing.
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - uses: actions/setup-node@v4
         with:
@@ -193,6 +200,21 @@ jobs:
                 mkdir -p "_site/$wk/demo"
                 checklist "$wk/demo/demo-script.md" "_site/$wk/demo/script.html" "$wk-step" "$wk demo script"
                 extra="$extra · <a href=\"$wk/demo/script.html\">script</a>"
+              fi
+              # Projector page: one screen per beat, that beat's diff, and a
+              # button that copies the whole file for pasting over the scratch
+              # copy. Only weeks with a tagged step branch have one. Rendered to
+              # a temp file first so a failure leaves NO page rather than half a
+              # page — a half-rendered projector page is worse than none.
+              pfx="w$(echo "$wk" | sed 's/week-//')-step-"
+              if [ -n "$(git tag --list "${pfx}*")" ]; then
+                mkdir -p "_site/$wk/demo"
+                if node scripts/render-demo-steps.js "$wk" "$pfx" "$wk/demo/index.html" > /tmp/steps.html; then
+                  mv /tmp/steps.html "_site/$wk/demo/steps.html"
+                  extra="$extra · <a href=\"$wk/demo/steps.html\">steps</a>"
+                else
+                  echo "render-demo-steps failed for $wk — no steps page published"
+                fi
               fi
               # Student self-check: served so students load it with a one-line
               # fetch+eval from their OWN site's console (Pages sends CORS *).
