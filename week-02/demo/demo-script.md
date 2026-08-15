@@ -24,6 +24,30 @@ Edit-by-edit cue sheet for transforming your **scratch copy** of `index.html` (s
   - **Never scroll to find an edit — `Ctrl+F` for `DEMO`.** Every place you touch tonight is marked in `scratch.html` as `DEMO 1 · the feature row`, `DEMO 2 · menu cards` — the slide footer's beat name, spelled so you can actually type it. Search `DEMO` and `Enter` walks every edit in the file top to bottom; search `DEMO 2` for one section, or just the beat name (`menu cards`) for one spot. `finished.html` carries the identical tokens, so the same search shows the destination
   - **Six edits tonight are "wrap these elements in a div" — let VS Code do it.** Select the elements → `Ctrl+Shift+P` → **Wrap with Abbreviation** → type the abbreviation → `Enter`. It writes both tags and re-indents. Every wrap beat below gives you the abbreviation to type; `div.row.g-4` becomes `<div class="row g-4">`
 
+### 🛟 If an edit goes wrong
+
+**You are one command from a known-good page, and it never touches `index.html`.** Every beat below is a commit on the `demo/week-02` branch. From anywhere in `dotnet-web`, on `main`, without switching branches:
+
+```bash
+git show w02-step-11:week-02/demo/index.html > week-02/demo/scratch.html
+```
+
+That overwrites your scratch copy with the state **after** that step. Save, refresh, carry on from the next beat. `scratch.html` is gitignored, so nothing here dirties the tree.
+
+The number is the only thing you change. These are the ones worth memorising — the end of each section, so you can abandon a beat that is fighting you and rejoin at the next one:
+
+| Jump to | You get |
+|---|---|
+| `w02-step-04` | after the hero |
+| `w02-step-08` | after the feature row |
+| `w02-step-09` | after the navbar |
+| `w02-step-12` | after the menu cards |
+| `w02-step-16` | after the form |
+| `w02-step-19` | after the icons |
+| `w02-step-22` | the finished page |
+
+Every individual step is also browsable as a red/green diff at [the commit list](https://github.com/jgrissom/dotnet-web-dev/commits/demo/week-02) — that is the whole demo, one commit per beat, in order.
+
 ### The file at a glance
 
 Where each section lands. `<head>` is the jumpy one — you go back to it four times.
