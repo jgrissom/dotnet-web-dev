@@ -100,6 +100,16 @@ Each line below is a comment you can `Ctrl+F` for, spelled exactly as it appears
 - [ ] 🎞️ **GO TO SLIDE 6** — *Breakpoints*
 - [ ] 🎯 **Read the table once — it is the only airing these numbers get tonight:** *"mobile-first means no prefix applies everywhere, and a prefix only adds behavior as the screen gets wider. `md` is 768 pixels — and every single column I write tonight has `md` in it"*
 - [ ] Feature row: select all three `<section>`s → **Wrap with Abbreviation** → `div.row.g-4.text-center`. Nothing inside them changes yet — the wrapper goes around the lot, and Emmet indents them for you
+
+  ```diff
+  +    <div class="row g-4 text-center">
+         <section>
+           <h2>Locally roasted</h2>
+           <p>Beans from the roastery two blocks over, delivered every Tuesday.</p>
+         </section>
+         …two more sections…
+  +    </div>
+  ```
 - [ ] 🎞️ **GO TO SLIDE 7** — *Reading a column recipe*. Read the slide's `col-12 col-md-6 col-lg-4` left to right, then apply that same reading to the shorter `col-md-4` you're about to type: full width on phones, one third from `md` up
 - [ ] **The `<section>`s** — select `<section>`, then **Ctrl+Shift+L** (**Cmd+Shift+L** on Mac) puts a cursor on *every* match; type the class once and all three take it
 
@@ -152,6 +162,16 @@ Each line below is a comment you can `Ctrl+F` for, spelled exactly as it appears
   +    <h2 id="menu" class="mt-5 mb-4">Menu</h2>
   ```
 - [ ] Then select all six `<article>`s → **Wrap with Abbreviation** → `div.row.g-4`. The wrapper goes around all six; the articles themselves are untouched until the next beat
+
+  ```diff
+  +    <div class="row g-4">
+         <article>
+           <h3>Espresso <span>hot</span></h3>
+           <p>Double shot, house blend. The reason this place exists.</p>
+         </article>
+         …five more articles…
+  +    </div>
+  ```
 - [ ] Transform the **Espresso `<article>` in place** — evolve what's there, don't retype the content:
   1. wrap the whole article — **Wrap with Abbreviation**, `div.col-md-6.col-lg-4`
   2. the article itself → `class="card h-100"`

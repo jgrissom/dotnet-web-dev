@@ -156,7 +156,13 @@ jobs:
             # On a ```diff block it copies the RESULT: - lines dropped, the +/space
             # gutter stripped, so the clipboard holds pasteable markup rather than
             # a patch. Without this a diff is read-only, which cost a rehearsal.
-              echo "<script>document.querySelectorAll('pre').forEach(function(pre){var d=pre.querySelector('code.language-diff');var b=document.createElement('button');b.type='button';b.className='copy';var LBL=d?'Copy result':'Copy';b.textContent=LBL;b.addEventListener('click',function(){var c=pre.querySelector('code');var t=(c||pre).innerText;if(d){var NL=String.fromCharCode(10);t=t.split(NL).filter(function(l){return l.charAt(0)!=='-';}).map(function(l){return l.replace(/^[+ ]/,'');}).join(NL);}navigator.clipboard.writeText(t).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent=LBL;},1200);},function(){var r=document.createRange();r.selectNodeContents(c||pre);var s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='Press Cmd/Ctrl+C';setTimeout(function(){b.textContent=LBL;},2000);});});pre.appendChild(b);});</script>"
+            #
+            # A diff that ELIDES content (an … line: "…five more articles…") gets NO
+            # button at all. Those diffs exist to show where a wrapper lands without
+            # reprinting six articles, and a Copy on one would hand over markup that
+            # silently drops five of them. The ellipsis is the signal, so the rule
+            # enforces itself: elide and you lose the button, no per-week bookkeeping.
+              echo "<script>document.querySelectorAll('pre').forEach(function(pre){var d=pre.querySelector('code.language-diff');if(d&&pre.innerText.indexOf(String.fromCharCode(8230))>=0)return;var b=document.createElement('button');b.type='button';b.className='copy';var LBL=d?'Copy result':'Copy';b.textContent=LBL;b.addEventListener('click',function(){var c=pre.querySelector('code');var t=(c||pre).innerText;if(d){var NL=String.fromCharCode(10);t=t.split(NL).filter(function(l){return l.charAt(0)!=='-';}).map(function(l){return l.replace(/^[+ ]/,'');}).join(NL);}navigator.clipboard.writeText(t).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent=LBL;},1200);},function(){var r=document.createRange();r.selectNodeContents(c||pre);var s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='Press Cmd/Ctrl+C';setTimeout(function(){b.textContent=LBL;},2000);});});pre.appendChild(b);});</script>"
               # Port box: the demo app's port varies by machine, and a wrong port in a
               # pasted curl fails mid-demo. Retype it once here and every localhost URL
               # in the page follows — including what the Copy buttons put on the clipboard.
