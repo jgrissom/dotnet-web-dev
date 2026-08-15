@@ -72,16 +72,22 @@ const diffHtml = (lines) =>
 // the Copy button reads the full file out of its own <textarea>, not out of
 // the diff. What the room sees can be an excerpt; what lands on the clipboard
 // is always the whole file.
-const MAX_FULL_SIZE = 17;   // lines that fit at 1.35rem
-const MAX_DENSE = 24;       // lines that fit at 0.95rem
-const HEAD = 12, TAIL = 9;  // shown either side of the marker when longer
+// Budget in RENDERED ROWS, not source lines. Lines wrap now, so one long line
+// can cost two or three rows — sizing off the line count put five steps over
+// the fold at 1280x720 while the count looked fine. Chars-per-row is measured
+// from the mono font at each size against the usable width.
+const ROWS_FULL = 16, CPR_FULL = 86;    // 1.35rem
+const ROWS_DENSE = 25, CPR_DENSE = 120; // 0.95rem
+const HEAD = 12, TAIL = 9;              // either side of the marker when longer
+const rows = (lines, cpr) =>
+  lines.reduce((n, l) => n + Math.max(1, Math.ceil(l.length / cpr)), 0);
 
 const sections = steps
   .map((s) => {
     const n = s.body.length;
-    const cls = n <= MAX_FULL_SIZE ? "" : " dense";
+    const cls = rows(s.body, CPR_FULL) <= ROWS_FULL ? "" : " dense";
     let shown = s.body, note = "";
-    if (n > MAX_DENSE) {
+    if (rows(s.body, CPR_DENSE) > ROWS_DENSE) {
       // HEAD AND TAIL, not just the head. A long step here is usually a
       // replacement — five cards out, five cards in — and head-only truncation
       // showed the room every removed line and none of the added ones, which
@@ -111,9 +117,14 @@ h1{font-size:1.5rem;margin:0 0 .6rem;font-weight:600;line-height:1.25}
 .count .of{opacity:.65;font-size:.75em}
 main{flex:1;overflow:auto;padding:1.2rem 1.6rem}
 .step{max-width:100%}
-pre.diff{margin:0;background:#151b23;border:1px solid var(--line);border-radius:10px;padding:.9rem 0;overflow-x:auto;
+pre.diff{margin:0;background:#151b23;border:1px solid var(--line);border-radius:10px;padding:.9rem 0;
   font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:1.35rem;line-height:1.45}
-pre.diff span{display:block;padding:0 1rem;white-space:pre}
+/* WRAP, do not scroll. A projector cannot be scrolled sideways by the room,
+   so a long line running off the right edge is a line nobody can read — 8 of
+   22 steps did that at full width and 20 of 22 at half width. Wrapping with a
+   hanging indent keeps every character on screen and keeps the continuation
+   visually attached to its own line. */
+pre.diff span{display:block;padding:.05rem 1rem .05rem 3.2rem;text-indent:-2.2rem;white-space:pre-wrap;overflow-wrap:anywhere}
 pre.diff .add{background:var(--addbg);color:var(--addfg)}
 pre.diff .del{background:var(--delbg);color:var(--delfg)}
 pre.diff .hunk{color:var(--dim);background:#12161d;font-size:.8em;padding-top:.25rem;padding-bottom:.25rem}
