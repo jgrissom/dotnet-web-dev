@@ -35,6 +35,12 @@ Tonight's app does not exist yet — building it in front of the room *is* §2. 
   rm -rf ~/Repos/dotnet-web-dev-course/instructor/week-03/CommonGrounds.Web
   ```
   💡 **Check it took:** `ls ~/Repos/dotnet-web-dev-course/instructor/week-03` prints nothing.
+- [ ] **Have the lab starter ready too — §5 walks the room through it.** A copy of week 3's starter, renamed exactly as students rename theirs:
+  ```bash
+  rm -rf ~/Repos/dotnet-web-dev-course/instructor/week-03/first-flight
+  cp -R ~/Repos/dotnet-web-starters/week-03 ~/Repos/dotnet-web-dev-course/instructor/week-03/first-flight
+  ```
+  💡 **Check it took:** from that folder, `dotnet test FirstFlight.Checks` ends `Failed: 5, Passed: 1` — the state the room will be in. ⚠️ **Re-run those two lines after any rehearsal**, or §5 opens on a starter you already fixed and the first beat has nothing to show
 - [ ] **Have VS Code's Open Folder dialog land somewhere sane** — open `~/Repos/dotnet-web-dev-course/instructor/week-03` once beforehand so the picker starts there in §2 and you aren't navigating your home directory on the projector
 - [ ] **Teaching profile in VS Code** (gear, bottom-left → **Profiles** → *Teaching*): C# and mssql extensions only, **no C# Dev Kit** — so your editor matches theirs pixel for pixel, with no Solution Explorer they don't have. Bump both font sizes **in that profile** so they stick: `terminal.integrated.fontSize` (start around **18** — §2 and §4 are read from the terminal all night) and `editor.fontSize` (around **16**)
 - [ ] **Say it before you start: *"lids down for this part — everything I do to CommonGrounds, you'll do to First Flight in the lab."*** You build *CommonGrounds*; their lab is *First Flight*. **The predict-then-run beats are where they participate**
@@ -201,7 +207,23 @@ Tonight's app does not exist yet — building it in front of the room *is* §2. 
 
 - [ ] 🎞️ **GO TO SLIDE 16** — *Lab: First Flight*. Leave it up for the whole lab; it's the task list
 - [ ] Show **what done looks like** — the answer key **on your own machine**: `week-03/lab/solution`, `dotnet run` from `FirstFlight.Web`, then `dotnet test FirstFlight.Checks` from the folder above it, printing **6 / 6**. ~90 seconds, a target not a walkthrough. **Nothing is deployed for this** — the Azure URL from §4 is mine; theirs is the homework
+- [ ] **Then show how to take the first step — on a copy of *their* starter.** Open `instructor/week-03/first-flight` and say which is which: *"that was the finished one. This is exactly what you're about to copy out — same six checks, none of them done"*
+- [ ] **Terminal 1 — the app.** `cd FirstFlight.Web`, then `dotnet watch`. Browser opens
+- [ ] **Terminal 2 — the checks.** The `+` in the terminal panel. **Stay in `first-flight`; don't `cd` anywhere:**
+  ```bash
+  dotnet test FirstFlight.Checks
+  ```
+- [ ] **`Failed: 5, Passed: 1`.** ⚠️ **This is the moment two terminals makes sense, so say it here rather than as a rule:** *"the first terminal never gave me a prompt back — `dotnet watch` is still running in it. That's not a preference, it's why you need a second one"*
+- [ ] **Read check 2's failure off the screen** — it says what it *wanted*, not just that it broke:
+  ```
+  Assert.Contains() Failure: Sub-string not found
+  Not found: "First Flight"
+  ```
+- [ ] **Fix it in front of them:** the navbar brand in `Views/Shared/_Layout.cshtml` and the `<h1>` in `Views/Home/Index.cshtml`, both to **First Flight**. Save — **the browser updates itself.** Point at that; it's `dotnet watch` earning its keep
+- [ ] **Terminal 2 again:** `dotnet test FirstFlight.Checks` → check 2 goes green. *"One check. That's the whole rhythm — read the red, change one thing, run it again"*
+- [ ] ⚠️ **Name the error they'll hit, before they hit it:** run the checks from inside `FirstFlight.Web` and you get `MSBUILD : error MSB1009: Project file does not exist.` — *"that one means you're in the wrong folder. `cd ..` and run it again"*
 - [ ] **Name tonight's target off the slide:** *"six checks, and the first one is free — it only proves the harness runs. Tonight I want you at four. Five, six and the deploy are the homework, by design"*
+- [ ] 💡 **Nothing in the lab is collected** — worth saying once, because it changes how they use the checks: *"I never run `dotnet test` on your repo. The points come from the deployed site. This is how you get there, not what I grade"*
 
 ## 6 · Wrap-up, after the lab *(slides 17–18)*
 
