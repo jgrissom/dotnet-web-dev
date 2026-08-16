@@ -248,10 +248,10 @@ Swap **one line** — the CSS link:
 
 <!-- _footer: '🖥️ Demo §5' -->
 
-## Lab: Bootstrap the site
+## Lab: The Cryptid Registry
 
-- Starter: an unstyled 3-page site (`lab/README.md` has the checklist)
-- Navbar → hero → card grid → contact form → footer
+- Starter: an unstyled 3-page archive (`lab/README.md` has the checklist)
+- Navbar → hero → card grid → sighting form → footer
 - Then: pick your Bootswatch theme + font pairing
 - **Docs open the whole time — that's the exercise**
 

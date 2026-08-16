@@ -1,6 +1,6 @@
 # Week 2 — Bootstrap: Grid, Components, Themes & Fonts
 
-Students turn an unstyled 3-page site into a personalized, responsive portfolio — grid, components-from-the-docs, utilities, a Bootswatch theme, and a Google Fonts pairing — then deploy it to GitHub Pages. Last all-front-end week before MVC.
+Students turn an unstyled 3-page archive — the Cryptid Registry — into a responsive, themed site: grid, components-from-the-docs, utilities, a Bootswatch theme, and a Google Fonts pairing, then deploy it to GitHub Pages. The same six creatures come back as a real MVC app in week 4. Last all-front-end week before MVC.
 
 ## Use in this order
 

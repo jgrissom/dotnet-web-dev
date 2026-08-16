@@ -442,4 +442,4 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
 - [ ] **The homework, in one sentence each:** the two setup screenshots, the eight roster functions, and it goes **live on GitHub Pages tonight**
 - [ ] 🎯 **The deploy is the part to sell:** *"your code has an address by the end of the week. From week 3 every .NET assignment does too. That is why there are no zip files in this course"*
 - [ ] ⚠️ **Say the setup deadline out loud:** *"if any of your six checks is still red, email me before next class. Week 2 does not work without them, and I would rather fix it Thursday than in the first ten minutes of the session"*
-- [ ] **Preview week 2:** Bootstrap — a real, styled, multi-page site, deployed, and it becomes the portfolio the rest of the course links into
+- [ ] **Preview week 2:** Bootstrap — a real, styled, multi-page site, deployed. *"You'll build the Cryptid Registry — and in week 4 you build it again, for real, in C#"*

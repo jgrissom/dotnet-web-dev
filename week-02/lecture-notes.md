@@ -42,7 +42,7 @@ Why Bootstrap specifically (vs Tailwind, Bulma, etc.): it's the one you'll meet 
 
 ## Part 2: The grid (45 min live-code)
 
-**Live-code the demo coffee-shop page (`demo/index.html` — work on a copy) while teaching.** It's deliberately different content from the lab, so students assemble their portfolio fresh instead of replaying your keystrokes. Keep the browser at half-width and resize constantly.
+**Live-code the demo coffee-shop page (`demo/index.html` — work on a copy) while teaching.** It's deliberately different content from the lab, so students assemble the Registry fresh instead of replaying your keystrokes. Keep the browser at half-width and resize constantly.
 
 ### The three-layer cake
 

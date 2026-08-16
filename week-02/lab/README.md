@@ -1,9 +1,12 @@
-# Week 2 Lab — Bootstrap the Site
+# Week 2 Lab — The Cryptid Registry 👻
 
-The `week-02` folder you copy below — and rename `portfolio` — is a working but completely unstyled 3-page portfolio site: `index.html`, `projects.html`, `contact.html`. Your job is to turn it into something you'd show someone — using Bootstrap classes, not custom CSS.
+The `week-02` folder you copy below is a working but completely unstyled 3-page archive: `index.html`, `registry.html`, `report.html`. Six creatures, six illustrations, and not one line of CSS. Your job is to make it look like an institution that takes itself seriously — using Bootstrap classes, not custom CSS.
 
-**Time:** ~50 minutes in class — which is *not* enough to finish, on purpose. **In-class target: `index.html` fully ✅ (navbar, hero, feature row, icons, footer) and that navbar copied to the other two pages.** The projects grid, contact form, and make-it-yours phase are expected to roll into the homework — that's Part 1 of it.
+**Time:** ~50 minutes in class — which is *not* enough to finish, on purpose. **In-class target: `index.html` fully ✅ (navbar, hero, feature row, icons, footer) and that navbar copied to the other two pages.** The card grid, the sighting form, and the make-it-yours phase are expected to roll into the homework — that's Part 1 of it.
 **Docs open the whole time:** [getbootstrap.com/docs](https://getbootstrap.com/docs/5.3/) — find → copy → adapt is the exercise.
+
+> [!NOTE]
+> **You'll meet these six again.** From week 4 the Registry comes back as a real ASP.NET Core app — same creatures, same archive, built properly. Tonight it's flat HTML. In week 6 the sighting form actually starts saving things.
 
 ## Setup
 
@@ -11,15 +14,15 @@ The `week-02` folder you copy below — and rename `portfolio` — is a working 
    ```bash
    cd dotnet-web-starters && git pull
    ```
-2. **Copy the `week-02` folder into `dotnet-web`, then rename the copy `portfolio`** — next to the clone, never inside it. The new name is the point: this is the one site you keep for the rest of the course, and the homework pushes it to a repo of the same name. It appears in the Explorer straight away; **stay in `dotnet-web`** and work from there, same as last week.
-3. The Bootstrap CSS + JS CDN tags are already in each page (and the viewport meta — don't delete it).
+2. **Copy the `week-02` folder into `dotnet-web`, then rename the copy `cryptid-registry`** — next to the clone, never inside it. That's the name of the repo you push it to in the homework, so folder and repo match. It appears in the Explorer straight away; **stay in `dotnet-web`** and work from there, same as last week.
+3. The Bootstrap CSS + JS CDN tags are already in each page (and the viewport meta — don't delete it). So are the six illustrations, in `img/cryptids/`.
 4. Open `index.html` in the browser; keep the window at half width and resize as you go.
 
 > [!TIP]
 > **Optional — Live Server.** If you installed it in week 1, use it tonight: right-click `index.html` → **Open with Live Server** and the page reloads on every save. You will be changing a class and re-checking constantly, so it saves more clicks here than it did last week. Don't have it? Extensions panel → **Live Server** (Ritwick Dey) → Install takes seconds. Double-clicking the file still works.
 
 > [!TIP]
-> **Each page grades itself.** A checker (`portfolio-checks.js`) is already wired into all three pages — open the console (F12) and it scores *that page's* checklist ✅/❌, plus the "make it yours" items and warnings about custom-CSS deductions. Same rhythm as week 1: work one ❌ at a time, and check **all three pages** — each has its own list.
+> **Each page grades itself.** A checker (`registry-checks.js`) is already wired into all three pages — open the console (F12) and it scores *that page's* checklist ✅/❌, plus warnings about custom-CSS deductions. Same rhythm as week 1: work one ❌ at a time, and check **all three pages** — each has its own list. The homework's extra items stay greyed out until the page's checklist is green, so ignore them tonight.
 
 ## The checklist
 
@@ -31,27 +34,29 @@ Work top to bottom. Each item names the docs page you need.
 - [ ] **Icons** ([icons.getbootstrap.com](https://icons.getbootstrap.com)) — add the Bootstrap Icons `<link>` to every page and use at least one icon per page (the footer is a natural spot; a button or navbar brand also works).
 
 ### index.html
-- [ ] **Hero** — big heading, lead paragraph (`display-4`, `lead`), and a button linking to the projects page. Center it and give it generous vertical space (`text-center`, `py-5`).
+- [ ] **Hero** — big heading, lead paragraph (`display-4`, `lead`), and a button linking to the registry page. Center it and give it generous vertical space (`text-center`, `py-5`).
 - [ ] **Feature row** — the three `<section>` blurbs become a responsive row: full width on phones, thirds on `md` and up.
 
-### projects.html
-- [ ] **Card grid** ([docs: Components → Card](https://getbootstrap.com/docs/5.3/components/card/)) — the six project blurbs become cards in a responsive grid (`row g-4`, `col-md-6 col-lg-4`), each with a title, text, and a button. Use `h-100` so the cards line up.
-- [ ] **Badges** — give each card a topic badge (`badge` + a `bg-*` you choose).
+### registry.html
+- [ ] **Card grid** ([docs: Components → Card](https://getbootstrap.com/docs/5.3/components/card/)) — the six creatures become cards in a responsive grid (`row g-4`, `col-md-6 col-lg-4`), each with its illustration, name, description, and a button. The `<img>` tags are already there — make each one a `card-img-top`. Use `h-100` so the cards line up.
+- [ ] **Badges** — each card's region becomes a badge (`badge` + a `bg-*` you choose).
 
-### contact.html
-- [ ] **Form** ([docs: Forms → Overview](https://getbootstrap.com/docs/5.3/forms/overview/)) — name, email, message fields with `form-label` + `form-control`, a `form-select` for "how did you hear about us", and a submit button. Keep the form ≤ 8 columns wide on `md`+ (grid inside the page!).
-- [ ] **Alert** — an `alert alert-info` above the form saying it isn't wired up yet (that's week 6's problem).
+### report.html
+- [ ] **Form** ([docs: Forms → Overview](https://getbootstrap.com/docs/5.3/forms/overview/)) — name, email, account fields with `form-label` + `form-control`, a `form-select` for "which one did you see", and a submit button. Keep the form ≤ 8 columns wide on `md`+ (grid inside the page!).
+- [ ] **Alert** — an `alert alert-info` above the form saying nothing is saved yet (that's week 6's problem).
 
 ### Make it yours (if time — otherwise it's homework)
 - [ ] **Bootswatch** ([bootswatch.com](https://bootswatch.com) to browse) — swap the Bootstrap CSS link for a theme you like, on all three pages. The site only offers downloads; use the CDN pattern instead, changing just the theme name in the path:
   ```html
   <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/flatly/bootstrap.min.css" rel="stylesheet">
   ```
-- [ ] **Google Fonts** ([fonts.google.com](https://fonts.google.com)) — one heading font, one body font. Override `--bs-body-font-family` as shown in [the lecture notes](../lecture-notes.md#part-5-google-fonts-15-min).
+- [ ] **Google Fonts** ([fonts.google.com](https://fonts.google.com)) — one heading font, one body font. Override `--bs-body-font-family` and add a heading rule, as shown in [the lecture notes](../lecture-notes.md#part-5-google-fonts-15-min).
 
 ## 🆘 Stuck?
 
 The Bootstrap docs are stop one — find → copy → adapt is the exercise. Stop two is this week's [lecture-notes.md](../lecture-notes.md): the same patterns with fuller explanations, plus a **common snags appendix** at the bottom (navbar toggler dead? columns stacking? it's probably in there).
+
+- **`❌ footer: centered, muted, padded`** — three requirements behind one label, and it is nearly always the muted one. The check wants **`text-muted`**, which is what the notes and the demo use. The Bootstrap 5.3 docs will offer you `text-body-secondary` instead — that is the newer spelling of the same idea, and this check does not accept it. Use `text-muted`.
 
 ## Rules
 
@@ -61,7 +66,7 @@ The Bootstrap docs are stop one — find → copy → adapt is the exercise. Sto
 
 ## 🚀 Done early?
 
-- Add a Bootstrap **modal** to a project card ("More details") — [docs: Components → Modal](https://getbootstrap.com/docs/5.3/components/modal/). It needs the JS bundle; now you know why it's there.
+- Add a Bootstrap **modal** to a creature's card ("Field notes") — [docs: Components → Modal](https://getbootstrap.com/docs/5.3/components/modal/). It needs the JS bundle; now you know why it's there. This also counts as your homework component.
 - Try `navbar-expand-sm` vs `navbar-expand-lg` — when does the hamburger appear? Why would you choose each?
 - **Dark mode toggle** — Bootstrap 5.3 [color modes](https://getbootstrap.com/docs/5.3/customize/color-modes/): a button plus three lines of week-1 JS:
   ```html

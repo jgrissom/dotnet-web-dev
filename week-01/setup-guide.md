@@ -118,7 +118,7 @@ dotnet-web/                  ← everything for this course
 ├─ dotnet-web-starters/      ← my repo · git pull each week · never work in here
 ├─ week-01/ … week-08/       ← your copy of each week's lab
 ├─ web-dev-week01/           ← week 1 homework → GitHub Pages
-├─ portfolio/                ← week 2 homework → GitHub Pages
+├─ cryptid-registry/        ← week 2 homework → GitHub Pages
 ├─ first-flight/             ← week 3 homework → Azure
 └─ your-project/             ← weeks 4–16 · the app you present in week 16
 ```
