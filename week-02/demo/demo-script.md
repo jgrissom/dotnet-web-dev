@@ -136,7 +136,7 @@ Every individual step is also browsable as a red/green diff at [the commit list]
 ### Footer & polish
 
 - [ ] 🎞️ **GO TO SLIDE 10** — *Utilities: the classes that replace custom CSS*
-- [ ] 🎯 **Read the last line off the slide — it is a lab rule with points on it:** *"if you are writing custom CSS for spacing or alignment, there is almost certainly a utility for it already. Tonight that is a house rule, not advice — custom CSS beyond the font override costs you a point, and the self-check warns you about it"*
+- [ ] 🎯 **Read the last line off the slide — it is a lab rule with points on it:** *"if you are writing custom CSS for spacing or alignment, there is almost certainly a utility for it already. Use the styling provided by bootstrap."*
 - [ ] **Step 17 — the footer and both back-to-top lines.** Every class in this step is a utility: `text-center`, `text-muted`, `py-4`, `border-top`, `mb-0`, `text-end`, `mt-3`, `text-decoration-none`. *"Eight classes, no CSS file"*
 
 ### Icons *(slide 11)*
@@ -155,16 +155,16 @@ Every individual step is also browsable as a red/green diff at [the commit list]
 - [ ] **Step 20 — Flatly.** The diff is **one line**. Say that before you paste it, then refresh and let the reaction land
 - [ ] **Steps 21, 22, 23 — Darkly, Sketchy, Lux.** Run these fast, back to back — each diff is **one word**. Sketchy gets the laugh; take a request between them if the room shouts one
 - [ ] **✓ say it:** *"nothing else changed. Same classes, same markup, same docs — I only swapped a word in a URL"*
-- [ ] **Step 24 — dark mode, one attribute.** `data-bs-theme="dark"` on `<html>`. Say the toggle button is a lab stretch goal, three lines of week-1 JavaScript
+- [ ] **Step 24 — dark mode, one attribute.** `data-bs-theme="dark"` on `<html>`. Say *"the toggle button is a lab stretch goal, three lines of week-1 JavaScript"*
 - [ ] **✓ let them spot it — don't tell them.** The hero is still a glowing light band. Wait for someone to say it. *"Why is that one bit still bright?"* — `bg-light` means **literally light, in every theme**. It said so all along
-- [ ] **Step 25 — the fix.** `bg-body-tertiary` is *"slightly offset from the page background"*, so it follows the theme. **Semantic names beat literal names, part two** — same argument as `btn-primary` rather than `btn-blue`
+- [ ] **Step 25 — the fix.** *"bg-body-tertiary is slightly offset from the page background"*, so it follows the theme. **Semantic names beat literal names, part two** — same argument as `btn-primary` rather than `btn-blue`
 - [ ] **Step 26 — back to light.** The hero now behaves in both. *"One attribute, and the whole page has two looks"*
 - [ ] Bonus if anyone asks about icon colours: `text-primary` under Lux is **near-black** — a `text-primary` icon would vanish in dark mode. Semantic colours belong to the *theme*; that is the feature working as designed
 
 ## 4 · Google Fonts *(slide 13)*
 
 - [ ] 🎞️ **GO TO SLIDE 13** — *Google Fonts: the finishing move*
-- [ ] 🎯 **The concept before the shopping trip:** *"Bootstrap keeps its font in a CSS variable, so you never fight it — you set the variable and the whole site follows. Two families maximum, and only the weights you use. Those two are rules in this course, not taste"*
+- [ ] 🎯 **The concept before the shopping trip:** *"Bootstrap keeps its font in a CSS variable, so you never fight it — you set the variable and the whole site follows. Two families maximum, and only the weights you use."*
 - [ ] On [fonts.google.com](https://fonts.google.com): pick **Lora** (400 + 700) and show the `<link>` it generates
   — *(deliberately a serif: Lux's own font is Nunito Sans, so a sans swap would be invisible — pick something the room can SEE)*
 - [ ] **Step 27 — the font link and the variable override.** *"One link, one variable. Everything downstream follows"*
