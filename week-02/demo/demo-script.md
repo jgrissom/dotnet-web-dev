@@ -72,10 +72,10 @@ Every individual step is also browsable as a red/green diff at [the commit list]
 - [ ] 🎞️ **GO TO SLIDE 2** — *Tonight*
 - [ ] Read the six items, **don't dwell** — and land the last one: *"it ends with the site public on the internet. By the end of tonight you have something styled you would actually show someone"*
 - [ ] 🎞️ **GO TO SLIDE 3** — *Why a CSS framework?*
-- [ ] 🎯 **Land the two on the list nobody can show you:** *"spacing and responsive you are about to watch me do. Accessible components and browser quirks are the two you never see — already solved, by people who do this full time. That is most of what you are buying"*
+- [ ] 🎯 **Land the two on the list nobody can show you:** *"spacing and responsive you are about to watch me do. Accessible components and browser quirks are the two you never see — already solved, by people who do this full time. This you get for free"*
 - [ ] Then flip between the **before** and **after** tabs — same content, transformed almost entirely by classes
 - [ ] 🎞️ **GO TO SLIDE 4** — *Setup: two tags via CDN*
-- [ ] 🎯 **The two tags do different jobs — say which:** *"the top one is the look. The bottom one is the behavior, and everything that moves tonight comes from it. Leave it out and your page looks perfect and does nothing"* — this is the #1 lab bug, and it gets said again at the lab launch
+- [ ] 🎯 **The two tags do different jobs — say which:** *"the top one is the look. The bottom one is the behavior, and everything that moves tonight comes from it. You need both for bootstrap to work properly"* — this is the #1 lab bug, and it gets said again at the lab launch
 - [ ] Then swipe and point at the same two tags already sitting in your scratch copy
 
 ## 1 · The grid *(slides 5–7)*
@@ -88,7 +88,7 @@ Every individual step is also browsable as a red/green diff at [the commit list]
 - [ ] 🎞️ **GO TO SLIDE 5** — *The grid: 12 columns, 6 breakpoints*
 - [ ] 🎯 **The one rule the whole grid rests on:** *"every row is twelve units wide. Always twelve. Eight and four on the slide — that is a full row. Add up past twelve and the extra wraps onto the next line, which is the rule working, not a bug"* — the 8/4 split lives only on this slide; the demo builds thirds
 - [ ] **Step 1 — `<main>` gets a container.** One class, and the whole page stops hugging the edges. *"That is the first one. One class, and everything has margins"*
-- [ ] **Step 2 — the hero gets its band.** Point out that `<header>` sits *outside* `<main>`, so the tint runs edge to edge
+- [ ] **Step 2 — the hero gets its band.** *"The `<header>` sits *outside* `<main>`, so the tint runs edge to edge"*
 - [ ] **Step 3 — wrap the hero's three children in a container.** *"Same class as `<main>` got. The band stays full width; the words line up with everything below"*
 - [ ] **Step 4 — three classes on the three elements.** `display-4`, `lead text-muted`, `btn btn-primary btn-lg`
 - [ ] **✓ it suddenly looks like a website** — pause and enjoy the reaction. This is the payoff slide of the whole night
