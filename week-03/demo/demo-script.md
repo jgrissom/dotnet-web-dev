@@ -46,7 +46,8 @@ Tonight's app does not exist yet — building it in front of the room *is* §2. 
 ### The exchange, live
 
 - [ ] 🎞️ **GO TO SLIDE 2** — *Tonight: the pivot*
-- [ ] **Land the word *pivot*, and collect the promise from week 1:** *"two weeks on the client. Tonight we build the server. Week 1 had one diagram — the browser on the left, the server on the right — and I said we'd cross over in week 3. This is week 3. Everything from here lives on the right"*
+- [ ] **Land the word *pivot*, and collect the promise from week 1:** *"two weeks on the client. Tonight we add the server. Week 1 had one diagram — the browser on the left, the server on the right — and I said we'd cross over in week 3. This is week 3"*
+- [ ] ⚠️ **Say what *pivot* does not mean, because the word oversells it:** *"we are not leaving the left-hand side behind. From tonight you write both: the C# that answers the request, and the HTML that goes back. That is what the V in MVC is — week 5 you style it, week 6 you put a validation script on it. Adding a side, not swapping one"*
 - [ ] 🎞️ **GO TO SLIDE 3** — *HTTP is just text*
 - [ ] **The slide is the wire; the panel is a picture of it:** *"that is what actually travels — a verb and a path going out, a status and a body coming back. Everything I am about to open in DevTools is a nicer drawing of exactly these two blocks"*
 - [ ] On the hosted coffee page: F12 → **Network** → refresh
