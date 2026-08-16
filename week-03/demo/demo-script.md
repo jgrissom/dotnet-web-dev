@@ -183,7 +183,14 @@ Tonight's app does not exist yet — building it in front of the room *is* §2. 
   az webapp up --name cg-web-XXXX --sku F1 --os-type Linux \
     --runtime DOTNETCORE:10.0 --location northcentralus
   ```
-- [ ] While it churns (~2–3 min), narrate what it's doing: zip → ship → a managed Linux server gets your app. Students start [deploy-guide](../deploy-guide.md) steps 1–2 now
+- [ ] **While it churns (~2–3 min): set the room going first, then narrate.** ⚠️ **The command finishes when it finishes** — these beats are in order and you stop wherever you've got to, mid-sentence if need be
+  - [ ] **Give them the task before you explain anything** — otherwise they watch a progress bar with you: *"open the deploy guide and do steps 1 and 2 — install the CLI, then log in. Stop there. Don't run the deploy command tonight; that one is homework, and I want you watching this one first"* *(the guide is [deploy-guide.md](../deploy-guide.md) — the URL is already on screen from the segment opener)*
+  - [ ] **What it's doing, in three moves:** *"it zips up the folder I'm standing in, ships it, and on the other end Azure is building a small Linux server to run it on. That third one is why this takes minutes instead of seconds"*
+  - [ ] **Why only the first one is slow:** *"most of this wait is the server being created, not my code being copied. Deploy the same app again later and it's much quicker, because the machine already exists"*
+  - [ ] **What the free tier buys, and what it costs:** *"F1 is free, and free means it falls asleep when nobody's using it. The first request after a nap takes about thirty seconds to wake it up. That's not a bug and it isn't your code — you'll all meet it"*
+  - [ ] 🎯 **The contrast worth landing while you have the time:** *"GitHub Pages put files on a server. This is renting a machine that runs a process — every request that arrives calls a C# method and waits for the answer"*
+  - [ ] **Still going?** Name what you're waiting for: *"it ends with a blob of JSON, and the one line I want out of it is the URL"*
+  - [ ] ⚠️ **If it fails on the name** — `--name` has to be globally unique across all of Azure. Change the digits and re-run; say what happened rather than hiding it, because it's the error most likely to hit them tonight
 - [ ] URL prints → open it → **`/Menu/Special?item=victory`** on the projector
 - [ ] **✓ the moment:** phones out — everyone loads *your* URL. C# they watched being written, answering the whole room's requests
 - [ ] Segue to lab: "your turn — First Flight, six checks, same moves"
