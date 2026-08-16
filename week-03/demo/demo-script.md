@@ -63,7 +63,7 @@ Tonight's app does not exist yet — building it in front of the room *is* §2. 
 - [ ] Status says **`304` instead of `200`?** Even better — that's the browser asking "changed since last time?" and the server answering "use your cached copy" (no body sent). Hard-refresh (**Ctrl/Cmd+Shift+R**) to force a full `200` — show both, name the difference
 - [ ] Click a CSS file's request: *"same anatomy, different `Content-Type`"* — *everything* is this exchange
 - [ ] Type a garbage path (`…/demo/nope.html`) → **404** in the list, red. *"Status codes are clue #1"*
-- [ ] **✓ say it:** two weeks of 'the browser asks' — tonight we build the thing that *answers*
+- [ ] **✓ say it:** *"two weeks of 'the browser asks' — tonight we build the thing that answers"*
 
 ## 2 · Create it, run it, tour it *(slides 6–8)*
 
