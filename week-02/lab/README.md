@@ -1,6 +1,6 @@
 # Week 2 Lab — Bootstrap the Site
 
-The `week-02` folder you copy below is a working but completely unstyled 3-page portfolio site: `index.html`, `projects.html`, `contact.html`. Your job is to turn it into something you'd show someone — using Bootstrap classes, not custom CSS.
+The `week-02` folder you copy below — and rename `portfolio` — is a working but completely unstyled 3-page portfolio site: `index.html`, `projects.html`, `contact.html`. Your job is to turn it into something you'd show someone — using Bootstrap classes, not custom CSS.
 
 **Time:** ~50 minutes in class — which is *not* enough to finish, on purpose. **In-class target: `index.html` fully ✅ (navbar, hero, feature row, icons, footer) and that navbar copied to the other two pages.** The projects grid, contact form, and make-it-yours phase are expected to roll into the homework — that's Part 1 of it.
 **Docs open the whole time:** [getbootstrap.com/docs](https://getbootstrap.com/docs/5.3/) — find → copy → adapt is the exercise.
@@ -11,7 +11,7 @@ The `week-02` folder you copy below is a working but completely unstyled 3-page 
    ```bash
    cd dotnet-web-starters && git pull
    ```
-2. **Copy the `week-02` folder into `dotnet-web`** — next to the clone, never inside it. It appears in the Explorer straight away; **stay in `dotnet-web`** and work from there, same as last week.
+2. **Copy the `week-02` folder into `dotnet-web`, then rename the copy `portfolio`** — next to the clone, never inside it. The new name is the point: this is the one site you keep for the rest of the course, and the homework pushes it to a repo of the same name. It appears in the Explorer straight away; **stay in `dotnet-web`** and work from there, same as last week.
 3. The Bootstrap CSS + JS CDN tags are already in each page (and the viewport meta — don't delete it).
 4. Open `index.html` in the browser; keep the window at half width and resize as you go.
 

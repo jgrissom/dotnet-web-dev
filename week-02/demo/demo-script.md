@@ -175,7 +175,7 @@ Every individual step is also browsable as a red/green diff at [the commit list]
 
 - [ ] 🎞️ **GO TO SLIDE 14** — *Lab: Bootstrap the site*. Leave it up for the whole lab; it's the task list
 - [ ] Show **what done looks like** — the answer key **opened from disk on your own machine**: `week-02/lab/solution` in the answer-keys repo, `index.html` in the browser. Resize once so the navbar collapses, click through all three pages. ~90 seconds, a target not a walkthrough — **don't show the markup**. **Nothing is deployed for this** — GitHub Pages is their homework, not tonight
-- [ ] Setup on screen, said once: **`cd dotnet-web-starters && git pull` → copy the `week-02` folder out, next to the clone → stay in `dotnet-web` and work there**
+- [ ] Setup on screen, said once: **`cd dotnet-web-starters && git pull` → copy the `week-02` folder out, next to the clone → rename the copy `portfolio` → stay in `dotnet-web` and work there**. Why the rename: *"this is the one site you keep all semester, and tonight's homework pushes it to a repo called `portfolio`"*
 - [ ] Say plainly: **the checker is already wired into all three pages.** F12 on any page and it scores that page — *"work one ❌ at a time, and check all three; each page has its own list"*
 - [ ] **In-class target: `index.html` fully green, plus that navbar copied to the other two pages.** The projects grid, the contact form and make-it-yours roll into homework Part 1 **by design** — say so out loud, so nobody reads a half-finished site as falling behind
 
