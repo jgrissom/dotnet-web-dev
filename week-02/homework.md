@@ -64,7 +64,8 @@ Open the console on **each of the three pages** — every ❌ green across Requi
 
 | Item | Points |
 |------|--------|
-| Lab checklist complete on all 3 pages (navbar/hero/row/cards/form/footer) | 8 |
+| Lab checklist complete on all 3 pages (navbar/hero/row/cards/form/footer) | 6 |
+| A seventh cryptid of your own, with its own badge | 2 |
 | Responsive mechanics at phone width: no horizontal scroll, navbar collapses, columns stack (I will resize) | 3 |
 | Bootswatch theme + Google Fonts pairing applied on all pages | 3 |
 | The extra docs component, working | 2 |
