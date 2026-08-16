@@ -21,6 +21,7 @@ style: |
   section pre .hljs-built_in { color: #ffa657; }
   section pre .hljs-name { color: #7ee787; }
   section pre .hljs-selector-class, section pre .hljs-selector-pseudo { color: #7ee787; }
+  section footer { color: #9fb2c1; font-size: 0.6em; opacity: 0.85; }
 ---
 
 <!-- _paginate: false -->
