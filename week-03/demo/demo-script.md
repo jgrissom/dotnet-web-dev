@@ -155,6 +155,7 @@ Tonight's app does not exist yet — building it in front of the room *is* §2. 
   <h1>Today's Menu</h1>
   <p>Espresso · Cold brew · Chai — proper data arrives in week 7.</p>
   ```
+- [ ] ⚠️ **A brand-new `.cshtml` is the one edit hot reload can't apply** — `dotnet watch` stops and asks **`Do you want to restart your app? Yes (y) / No (n) / Always (a)`**. **Answer `a`.** Miss it and `/Menu` still shows *"The view 'Index' was not found"* — byte-identical to the beat you just did, so you'd be debugging a file that is already correct, in front of the room. **No prompt? Press `Ctrl+R` in the watch terminal**
 - [ ] `/Menu` works. **✓ say it:** *"URL → method → view, and nobody registered anything anywhere"*
 - [ ] View Source on `/Menu`: no Razor in sight — the server rendered pure HTML
 

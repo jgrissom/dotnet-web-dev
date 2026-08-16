@@ -32,7 +32,7 @@ Your first ASP.NET Core MVC app, built the way you'll work all term: run the che
 | # | Check | What to do |
 |---|-------|------------|
 | 2 | `SiteIsBranded` | Make it yours: the navbar brand in `Views/Shared/_Layout.cshtml` and the home page heading should say **First Flight** (not the project name). |
-| 3 | `AboutPageExists` | Add an `About` [action](../lecture-notes.md#controllers-and-actions) to `HomeController` and a matching [view](../lecture-notes.md#views-and-razor) — `Views/Home/About.cshtml` with an "About" heading and a sentence about you. |
+| 3 | `AboutPageExists` | Add an `About` [action](../lecture-notes.md#controllers-and-actions) to `HomeController` and a matching [view](../lecture-notes.md#views-and-razor) — `Views/Home/About.cshtml` with an "About" heading and a sentence about you. ⚠️ **Creating a new `.cshtml` is the one edit `dotnet watch` can't apply live** — answer **`a`** to its restart prompt, or press **`Ctrl+R`** in terminal 1. Until you do, the page keeps saying the view wasn't found even though it's there. |
 | 4 | `AboutIsInTheNav` | Add About to the navbar in `_Layout.cshtml` — copy the Privacy `<li>` and adapt it. |
 | 5 | `HelloGreetsByName` | A `Hello` action that [reads a query parameter](../lecture-notes.md#passing-data-viewdata-and-parameters): `/Home/Hello?name=Ada` returns `Hello, Ada!` (a `Content(...)` result — no view needed). |
 | 6 | `HelloHasADefault` | No name given → `Hello, stranger!` — a nullable parameter and `??` do it in one line. |
