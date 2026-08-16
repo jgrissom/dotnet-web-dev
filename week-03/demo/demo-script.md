@@ -46,7 +46,7 @@ Tonight's app does not exist yet — building it in front of the room *is* §2. 
 ### The exchange, live
 
 - [ ] 🎞️ **GO TO SLIDE 2** — *Tonight: the pivot*
-- [ ] **Land the word *pivot*:** *"two weeks on the client. Tonight we build the thing that answers it — and everything from here is the right-hand side"*
+- [ ] **Land the word *pivot*, and collect the promise from week 1:** *"two weeks on the client. Tonight we build the server. Week 1 had one diagram — the browser on the left, the server on the right — and I said we'd cross over in week 3. This is week 3. Everything from here lives on the right"*
 - [ ] 🎞️ **GO TO SLIDE 3** — *HTTP is just text*
 - [ ] **The slide is the wire; the panel is a picture of it:** *"that is what actually travels — a verb and a path going out, a status and a body coming back. Everything I am about to open in DevTools is a nicer drawing of exactly these two blocks"*
 - [ ] On the hosted coffee page: F12 → **Network** → refresh
