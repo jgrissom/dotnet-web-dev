@@ -16,14 +16,14 @@ Beat-by-beat cue sheet for building Common Grounds live, in lecture order, keyed
 
 ## 0 · Before class
 
-- [ ] **Make tonight's canvas** — one command, run in the **course repo** `dotnet-web-dev` (not `dotnet-web`, the student folder — the `w02-step-*` tags live in the course repo and nowhere else):
+- [ ] **Make tonight's canvas** — one command. The `git show` half must run in the **course repo** `dotnet-web-dev` (not `dotnet-web`, the student folder — the `w02-step-*` tags live in the course repo and nowhere else); it writes the canvas out to `instructor/week-02/`, where every other week's demo lives:
 
   ```bash
-  cd ~/Repos/dotnet-web-dev && git show w02-step-00:week-02/demo/index.html > week-02/demo/scratch.html
+  cd ~/Repos/dotnet-web-dev && mkdir -p ~/Repos/dotnet-web-dev-course-trial/instructor/week-02 && git show w02-step-00:week-02/demo/index.html > ~/Repos/dotnet-web-dev-course-trial/instructor/week-02/scratch.html
   ```
 
-  Open **`scratch.html`** in VS Code (Teaching profile), browser at half-width. It's gitignored, so it won't clutter `git status` while you teach
-  - ⚠️ **Never open `index.html` itself.** That file is what CI publishes as tonight's [before](https://jgrissom.github.io/dotnet-web-dev/week-02/demo/before.html) page — a stray edit republishes a half-Bootstrapped "before" picture, and the opening pitch is gone for good
+  Open that **`scratch.html`** in VS Code (Teaching profile), browser at half-width
+  - ⚠️ **You never open `index.html`, and now you're never near it.** That file is what CI publishes as tonight's [before](https://jgrissom.github.io/dotnet-web-dev/week-02/demo/before.html) page — a stray edit republishes a half-Bootstrapped "before" picture and the opening pitch is gone for good. Teaching out of `instructor/week-02/` means the file you edit isn't in the same folder as the one you must not touch
 - [ ] **Say it before you start: *"lids down for this part — everything I do to this page, you'll do to the Cryptid Registry in the lab."*** You assemble the coffee shop; their lab is the Registry. Same patterns, fresh retrieval — which only works if they aren't typing along with you
 - [ ] Hosted [before](https://jgrissom.github.io/dotnet-web-dev/week-02/demo/before.html) / [after](https://jgrissom.github.io/dotnet-web-dev/week-02/demo/) open in two tabs for the opening pitch
 - [ ] **Open the step page** (below) and press `Home` — it remembers where you last were
@@ -44,13 +44,13 @@ Nobody hunts for an insertion point, and the room sees the change isolated and l
 
 ### 🛟 If it still goes wrong
 
-**One command, and it never touches `index.html`.** Every beat is also a commit on the `demo/week-02` branch. Run it in the **course repo** `dotnet-web-dev`, on `main`, without switching branches:
+**One command, and it never touches `index.html`.** Every beat is also a commit on the `demo/week-02` branch. The `git show` half runs in the **course repo** `dotnet-web-dev`, on `main`, without switching branches:
 
 ```bash
-cd ~/Repos/dotnet-web-dev && git show w02-step-11:week-02/demo/index.html > week-02/demo/scratch.html
+cd ~/Repos/dotnet-web-dev && git show w02-step-11:week-02/demo/index.html > ~/Repos/dotnet-web-dev-course-trial/instructor/week-02/scratch.html
 ```
 
-That overwrites your scratch copy with the state **after** that step. Save, refresh, carry on from the next beat. `scratch.html` is gitignored, so nothing here dirties the tree.
+That overwrites your canvas with the state **after** that step. Save, refresh, carry on from the next beat. It writes outside the repo, so nothing here dirties the tree.
 
 The number is the only thing you change. These are the ones worth memorising — the end of each section, so you can abandon a beat that is fighting you and rejoin at the next one:
 
