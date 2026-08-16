@@ -26,7 +26,7 @@ dotnet test FirstFlight.Checks
 If class ended at check 4, that means finishing `Hello` (checks 5–6) — the [parameters section](lecture-notes.md#passing-data-viewdata-and-parameters) of the notes has the pattern.
 
 > [!IMPORTANT]
-> **The test suite is your guide, not your grade.** I never run `dotnet test` on your repo — the points come from the *deployed* site in Part 4, and that's the rule for the rest of the course. But every one of those six checks is the local twin of a check I *do* run against your URL. Get to 6/6 first and the graded checks are a formality; skip it and you'll be debugging a live Azure app instead of a local one, which is a much worse place to debug.
+> **The test suite is your guide, not your grade.** I never run `dotnet test` on your repo — the points come from the *deployed* site in Part 4, and that's the rule for the rest of the course. Check 1 is free — it just proves the harness runs. The other five are each the local twin of a check I *do* run against your URL. Get to 6/6 first and the graded checks are a formality; skip it and you'll be debugging a live Azure app instead of a local one, which is a much worse place to debug.
 
 > [!TIP]
 > **Keep [`lecture-notes.md`](lecture-notes.md) open while you work** — it's the same material from class, written out. The sections you'll want tonight: [controllers and actions](lecture-notes.md#controllers-and-actions), [views and Razor](lecture-notes.md#views-and-razor), [reading a query parameter](lecture-notes.md#passing-data-viewdata-and-parameters), and [`az webapp up`](lecture-notes.md#az-webapp-up) when you get to the deploy.

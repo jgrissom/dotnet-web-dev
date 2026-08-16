@@ -78,7 +78,7 @@ Bootstrap solves all four for the price of two tags.
 
 - CSS = the look · JS bundle = behavior (toggler, dropdowns, modals)
 - The viewport `<meta>` is required for responsive behavior
-- Week 5: the *locally bundled* copy inside the MVC template
+- Week 3: the *locally bundled* copy inside the MVC template
 
 ---
 

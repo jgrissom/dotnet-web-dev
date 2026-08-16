@@ -36,7 +36,7 @@ Why Bootstrap specifically (vs Tailwind, Bulma, etc.): it's the one you'll meet 
 > [!IMPORTANT]
 > **The #1 lab bug tonight:** a missing JS-bundle tag — the navbar toggler just silently does nothing. Say it now; say it again at the lab launch.
 - The `viewport` meta is what makes mobile rendering honest; without it, phones pretend to be 980px wide and nothing responsive works.
-- We're using the **CDN** on purpose: zero install, great for static sites and Pages. In week 5 you'll meet the second delivery style — the MVC template ships Bootstrap *bundled locally* in `wwwroot/lib/`. Both are idiomatic; you'll have seen each where it belongs.
+- We're using the **CDN** on purpose: zero install, great for static sites and Pages. In week 3 you'll meet the second delivery style — the MVC template ships Bootstrap *bundled locally* in `wwwroot/lib/`. Both are idiomatic; you'll have seen each where it belongs.
 
 ---
 

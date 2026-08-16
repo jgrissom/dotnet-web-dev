@@ -105,7 +105,11 @@
       const pass = !!res && res.status < 400 && chk.test(res.body);
       const c = {
         pass,
-        blocked: !reachable && chk.path !== "/",
+        // Blocked = this check never got an answer. Keyed off THIS check's
+        // response, not its path: the navbar check also fetches "/", and the
+        // old test excluded it, so a sleeping app reported the navbar as wrong.
+        // The first check is the probe, so it stays a real failure.
+        blocked: !res && checks.length > 0,
         pts: chk.pts,
         label: chk.label,
         hint: pass ? null

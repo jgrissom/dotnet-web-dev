@@ -135,7 +135,13 @@ View (.cshtml) → rendered HTML  ─────►  browser
 
 ### Controllers and actions
 
+This is the whole file — `Controllers/MenuController.cs`:
+
 ```csharp
+using Microsoft.AspNetCore.Mvc;
+
+namespace CommonGrounds.Web.Controllers;
+
 public class MenuController : Controller
 {
     public IActionResult Index()
@@ -150,6 +156,8 @@ public class MenuController : Controller
 
 ### Views and Razor
 
+The whole file — `Views/Menu/Index.cshtml`:
+
 ```html
 @{
     ViewData["Title"] = "Menu";
@@ -162,6 +170,8 @@ public class MenuController : Controller
 - View Source in the browser: **there's no Razor in what the browser gets** — the server rendered pure HTML. That's the difference from weeks 1–2.
 
 ### Passing data: ViewData and parameters
+
+This one is a fragment — it goes *inside* the `MenuController` you already have:
 
 ```csharp
 public IActionResult Special(string? item)

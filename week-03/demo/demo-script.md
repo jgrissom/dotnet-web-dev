@@ -166,7 +166,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 ## 5 · Hand off to the lab *(slide 16)*
 
 - [ ] 🎞️ **GO TO SLIDE 16** — *Lab: First Flight*. Leave it up for the whole lab; it's the task list
-- [ ] Show **what done looks like** — the answer key **on your own machine**: `week-03/lab/solution`, `dotnet run` from `FirstFlight.Web`, then `dotnet test FirstFlight.Checks` from the folder above it, printing **6 / 6**. ~60 seconds, a target not a walkthrough. **Nothing is deployed for this** — the Azure URL from §4 is mine; theirs is the homework
+- [ ] Show **what done looks like** — the answer key **on your own machine**: `week-03/lab/solution`, `dotnet run` from `FirstFlight.Web`, then `dotnet test FirstFlight.Checks` from the folder above it, printing **6 / 6**. ~90 seconds, a target not a walkthrough. **Nothing is deployed for this** — the Azure URL from §4 is mine; theirs is the homework
 - [ ] **Name tonight's target off the slide:** *"six checks, and the first one is free — it only proves the harness runs. Tonight I want you at four. Five, six and the deploy are the homework, by design"*
 
 ## 6 · Wrap-up, after the lab *(slides 17–18)*
@@ -174,4 +174,4 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] 🎞️ **GO TO SLIDE 17** — *Before next week*. The homework and the reading
 - [ ] **Land the last line:** *"the Cryptid Registry you built out of flat HTML in week 2 — next week you build it again in C#, and this time the pages come off a model"*
 - [ ] 🎞️ **GO TO SLIDE 18** — *The semester, from tonight's summit*. Where the next thirteen weeks go
-- [ ] 🎯 **Trace the chain, then land the last line:** *"browser, HTTP, routing, C#, HTML, Azure — every link in that ran on screen tonight, and the last one is your homework. Week 7 adds a database. Everything between here and there is refinement of a pipeline you have already watched work"*
+- [ ] 🎯 **Trace the chain, then land the last line:** *"browser, HTTP, routing, C#, HTML, Azure — every link in that chain ran on screen tonight, and the last one is your homework. Week 7 adds a database. Everything between here and there is refinement of a pipeline you have already watched work"*
