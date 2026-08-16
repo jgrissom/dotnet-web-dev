@@ -153,6 +153,14 @@ Different in one huge way: **this runs on the server.**
 
 <!-- _footer: '🖥️ Demo §3 · blocks and branches' -->
 
+<!-- A 15-line code block plus the payoff line overruns gaia's body box and the
+     last line lands on the footer. Tightening the block margins fits it at
+     full size. -->
+<style scoped>
+  section p { margin: .35em 0; }
+  section pre { margin: .35em 0; }
+</style>
+
 ## Blocks and branches
 
 ```html

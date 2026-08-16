@@ -46,6 +46,14 @@ style: |
 
 <!-- _footer: '🖥️ Demo §1 · the exchange' -->
 
+<!-- Two code blocks plus a payoff line overruns gaia's body box and the last
+     line lands on the footer. Tightening the block margins fits it at full
+     size — nothing here is small enough to cut. -->
+<style scoped>
+  section p { margin: .35em 0; }
+  section pre { margin: .35em 0; }
+</style>
+
 ## HTTP is just text
 
 The browser sends:
