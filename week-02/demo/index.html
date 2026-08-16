@@ -8,10 +8,21 @@
 </head>
 <body>
 
-  <nav>
-    <a href="#home">Common Grounds</a>
-    <a href="#menu">Menu</a>
-    <a href="#contact">Contact</a>
+  <nav class="navbar navbar-expand-md bg-dark" data-bs-theme="dark">
+    <div class="container">
+      <a class="navbar-brand" href="#home">Common Grounds</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+              aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#menu">Menu</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
   </nav>
 
   <header id="home" class="text-center py-5 bg-light">
