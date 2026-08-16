@@ -24,7 +24,7 @@ Beat-by-beat cue sheet for building Common Grounds live, in lecture order, keyed
 
   Open **`scratch.html`** in VS Code (Teaching profile), browser at half-width. It's gitignored, so it won't clutter `git status` while you teach
   - ⚠️ **Never open `index.html` itself.** That file is what CI publishes as tonight's [before](https://jgrissom.github.io/dotnet-web-dev/week-02/demo/before.html) page — a stray edit republishes a half-Bootstrapped "before" picture, and the opening pitch is gone for good
-- [ ] **Say it before you start: *"lids down for this part — you'll do it to your own site in the lab."*** You assemble the coffee shop; their lab is the Cryptid Registry. Same patterns, fresh retrieval — which only works if they aren't typing along with you
+- [ ] **Say it before you start: *"lids down for this part — everything I do to this page, you'll do to the Cryptid Registry in the lab."*** You assemble the coffee shop; their lab is the Registry. Same patterns, fresh retrieval — which only works if they aren't typing along with you
 - [ ] Hosted [before](https://jgrissom.github.io/dotnet-web-dev/week-02/demo/before.html) / [after](https://jgrissom.github.io/dotnet-web-dev/week-02/demo/) open in two tabs for the opening pitch
 - [ ] **Open the step page** (below) and press `Home` — it remembers where you last were
 
