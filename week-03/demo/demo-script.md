@@ -84,7 +84,7 @@ Tonight's app does not exist yet — building it in front of the room *is* §2. 
 ### The anatomy tour
 
 - [ ] 🎞️ **GO TO SLIDE 7** — *Project anatomy* · *"let's take a look at the project anatomy"*. The folder map is on it; now walk the real thing
-- [ ] **Anatomy tour in VS Code** (keep `dotnet watch` running): `Controllers/HomeController.cs` → `Views/Home/` → `Views/Shared/_Layout.cshtml` (point at the navbar markup — "week 2 classes, recognize them?") → `wwwroot/lib/bootstrap` ("the *locally bundled* delivery I promised")
+- [ ] **Anatomy tour in VS Code** (keep `dotnet watch` running): `Controllers/HomeController.cs` → `Views/Home/` → `Views/Shared/_Layout.cshtml` (point at the navbar markup — *"bootstrap classes, recognize them?"*) → `wwwroot/lib/bootstrap` (*"the locally bundled delivery I promised"*)
 - [ ] Prove the loop: in `Views/Home/Index.cshtml` change `Welcome` → `Common Grounds, now with a server` → save → browser refreshes itself (`dotnet watch`!)
 
 ### Program.cs, five acts
