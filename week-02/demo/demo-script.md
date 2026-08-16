@@ -98,7 +98,7 @@ Every individual step is also browsable as a red/green diff at [the commit list]
 - [ ] 🎞️ **GO TO SLIDE 6** — *Breakpoints*
 - [ ] 🎯 **Read the table once — it is the only airing these numbers get tonight:** *"mobile-first means no prefix applies everywhere, and a prefix only adds behavior as the screen gets wider. `md` is 768 pixels — and every single column I write tonight has `md` in it"*
 - [ ] **Step 5 — wrap the three `<section>`s in a row.** Nothing inside them changes yet; the wrapper goes around the lot
-- [ ] 🎞️ **GO TO SLIDE 7** — *Reading a column recipe*. Read the slide's `col-12 col-md-6 col-lg-4` left to right, then apply that same reading to the shorter `col-md-4` in the next step: full width on phones, one third from `md` up
+- [ ] 🎞️ **GO TO SLIDE 7** — *Reading a column recipe*. *"We are defining styles for phones, tablets and laptops with the classes from left to right."* Read the slide's `col-12 col-md-6 col-lg-4` left to right, then apply that same reading to the shorter `col-md-4` in the next step: full width on phones, one third from `md` up
 - [ ] **Step 6 — the sections become columns.** Three identical class additions
   - *(optional, 20 seconds)* If you want to show **multi-cursor** rather than paste it: select `<section>`, **Ctrl+Shift+L** (**Cmd+Shift+L**) puts a cursor on every match, type once. Students love this one, and it is the only place tonight it fits
 - [ ] **Step 7 — the headings.** `fs-4` — *"a heading is only big because of a class, so make it the size you want"*
