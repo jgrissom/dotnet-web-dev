@@ -26,7 +26,7 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
 - [ ] **Size the console text for the back row** — `Cmd/Ctrl +` inside DevTools raises it independently of the page
 - [ ] ⚠️ **Print or queue the school SQL Server address + credentials handout.** §2 stops dead without it, and it is the one thing in this session you cannot improvise
 - [ ] **Every console block below has a Copy button on the hosted sheet — paste, do not type.** Nothing tonight is taught by watching characters appear; the teaching is in the bet before each Enter
-- [ ] *(Offline fallback: `demo/demo-script.js` holds the same blocks in slide order, for a night when Pages is unreachable.)*
+- [ ] *(**If Pages is unreachable, both halves have a local stand-in** — the console blocks are in `demo/demo-script.js` in slide order, and the playground page itself is at `~/Repos/dotnet-web-dev-course/instructor/week-01/playground.html`. Double-click it; the whole of §6 runs from `file://` — including the `fetch`, because the API it calls allows a local file. Only the hosted URL changes.)*
 - [ ] ⚠️ **Clear the console between sections** (the 🚫 button, or `Ctrl+L`). Tonight's scroll is not the story — the current answer is, and a screen of old output is where the back row loses you
 - [ ] Sanity check: the playground loads, and `document.querySelector("#status")` returns the paragraph rather than `null`
 - [ ] **Say it at the top: *"lids down for the lecture parts — you have a setup workshop and a lab tonight where the laptop is the point."*** Nobody codes along with a refresher
