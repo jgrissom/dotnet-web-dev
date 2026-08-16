@@ -31,20 +31,20 @@ Work top to bottom. Each item names the docs page you need.
 
 ### All three pages
 - [ ] **Navbar** ([docs: Components → Navbar](https://getbootstrap.com/docs/5.3/components/navbar/)) — brand + links to all three pages, collapses to a hamburger on small screens. Mark the current page's link `active`. Same navbar on every page.
-- [ ] **Footer** — a `<footer>` with muted, centered text and comfortable vertical padding (utilities only: `text-center`, `text-muted`, `py-4`).
+- [ ] **Footer** ([notes: the utility classes](../lecture-notes.md#utilities--the-classes-that-replace-custom-css)) — a `<footer>` with muted, centered text and comfortable vertical padding. Bootstrap has no footer *component*; you build it from utilities only (`text-center`, `text-muted`, `py-4`).
 - [ ] **Icons** ([icons.getbootstrap.com](https://icons.getbootstrap.com)) — add the Bootstrap Icons `<link>` to every page and use at least one icon per page (the footer is a natural spot; a button or navbar brand also works).
 
 ### index.html
-- [ ] **Hero** *(the oversized opening band at the top of a page — a design word, not an HTML tag; here it happens to sit in the `<header>`)* — big heading, lead paragraph (`display-4`, `lead`), and a button linking to the registry page. Center it and give it generous vertical space (`text-center`, `py-5`).
-- [ ] **Feature row** — the three `<section>` blurbs become a responsive row: full width on phones, thirds on `md` and up.
+- [ ] **Hero** ([docs: Content → Typography](https://getbootstrap.com/docs/5.3/content/typography/)) — the oversized opening band at the top of a page. It's a design word, not an HTML tag; here it sits in the `<header>`. Big heading, lead paragraph (`display-4`, `lead`), and a button linking to the registry page. Center it and give it generous vertical space (`text-center`, `py-5`).
+- [ ] **Feature row** ([docs: Layout → Grid](https://getbootstrap.com/docs/5.3/layout/grid/)) — the three `<section>` blurbs become a responsive row: full width on phones, thirds on `md` and up.
 
 ### registry.html
 - [ ] **Card grid** ([docs: Components → Card](https://getbootstrap.com/docs/5.3/components/card/)) — the six creatures become cards in a responsive grid (`row g-4`, `col-md-6 col-lg-4`), each with its illustration, name, description, and a button. The `<img>` tags are already there — make each one a `card-img-top`. Use `h-100` so the cards line up.
-- [ ] **Badges** — each card's region becomes a badge (`badge` + a `bg-*` you choose).
+- [ ] **Badges** ([docs: Components → Badge](https://getbootstrap.com/docs/5.3/components/badge/)) — each card's region becomes a badge (`badge` + a `bg-*` you choose).
 
 ### report.html
 - [ ] **Form** ([docs: Forms → Overview](https://getbootstrap.com/docs/5.3/forms/overview/)) — name, email, account fields with `form-label` + `form-control`, a `form-select` for "which one did you see", and a submit button. Keep the form ≤ 8 columns wide on `md`+ (grid inside the page!).
-- [ ] **Alert** — an `alert alert-info` above the form saying nothing is saved yet (that's week 6's problem).
+- [ ] **Alert** ([docs: Components → Alerts](https://getbootstrap.com/docs/5.3/components/alerts/)) — an `alert alert-info` above the form saying nothing is saved yet (that's week 6's problem).
 
 ### Make it yours (if time — otherwise it's homework)
 - [ ] **Bootswatch** ([bootswatch.com](https://bootswatch.com) to browse) — swap the Bootstrap CSS link for a theme you like, on all three pages. The site only offers downloads; use the CDN pattern instead, changing just the theme name in the path:
