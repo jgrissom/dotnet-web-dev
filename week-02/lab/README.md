@@ -57,6 +57,8 @@ Work top to bottom. Each item names the docs page you need.
 
 The Bootstrap docs are stop one — find → copy → adapt is the exercise. Stop two is this week's [lecture-notes.md](../lecture-notes.md): the same patterns with fuller explanations, plus a **common snags appendix** at the bottom (navbar toggler dead? columns stacking? it's probably in there).
 
+- **`❌ current page marked .active in nav`** on `registry.html` or `report.html` — `active` **moves**. You copied one navbar onto all three pages, so all three highlight *Home*. Keep the navbar identical everywhere else, but on each page put `active` on that page's own link and take it off the others.
+- **`❌ navbar toggler + collapse (hamburger works)`** — the button's `data-bs-target` has to name the id of the collapsing `<div>`, exactly. Copy the docs example and you get `#navbarSupportedContent` in both places; change one and not the other and the hamburger goes dead with no error anywhere.
 - **`❌ footer: centered, muted, padded`** — three requirements behind one label, and it is nearly always the muted one. The check wants **`text-muted`**, which is what the notes and the demo use. The Bootstrap 5.3 docs will offer you `text-body-secondary` instead — that is the newer spelling of the same idea, and this check does not accept it. Use `text-muted`.
 
 ## Rules
