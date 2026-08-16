@@ -50,7 +50,7 @@ Tonight's app does not exist yet — building it in front of the room *is* §2. 
 - [ ] ⚠️ **Say what *pivot* does not mean, because the word oversells it:** *"From tonight you write both: the C# that answers the request, and the HTML that goes back. That is what the V in MVC is — week 5 you style it, week 6 you put a validation script on it."*
 - [ ] 🎞️ **GO TO SLIDE 3** — *HTTP is just text*
 - [ ] **The slide is the wire; the panel is a picture of it:** *"that is what actually travels — a verb and a path going out, a status and a body coming back. Everything I am about to open in DevTools is a nicer drawing of exactly these two blocks"*
-- [ ] On the **Common Grounds** tab — week 2's coffee shop, already open from §0: F12 → **Network** → refresh
+- [ ] On the **Common Grounds** tab — week 2's coffee shop, already open from §0: F12 → **Network Tab** → refresh browser
 - [ ] 🎯 **Point at the top request and tie it to the slide you just showed:** *"that first line is the slide. Same verb, same path, same host — except this one actually happened, three seconds ago, because I pressed refresh"*
 
 ### Verbs and status codes
@@ -59,7 +59,7 @@ Tonight's app does not exist yet — building it in front of the room *is* §2. 
 - [ ] **The third column is a calendar — say it:** *"every request in that panel tonight is a GET. POST turns up in week 6 when we build forms, and PUT and DELETE not until the Web API in week 14. One verb carries the whole night"*
 - [ ] Click the first request → **Headers**: there's the verb, path, status, `content-type: text/html`
 - [ ] 🎞️ **GO TO SLIDE 5** — *Status codes*
-- [ ] **Read the right-hand column, not the codes:** *"two of these are promises. There will be a 404 tonight and I will cause it on purpose. And a 500 means my C# threw — that one is always mine, never the browser's"*
+- [ ] **Read the right-hand column, not the codes:** *"two of these are promises. There will be a 404 tonight and I will cause it on purpose. And a 500 means my C# threw — that one is always server's error, never the browser's"*
 - [ ] Status says **`304` instead of `200`?** Even better — that's the browser asking "changed since last time?" and the server answering "use your cached copy" (no body sent). Hard-refresh (**Ctrl/Cmd+Shift+R**) to force a full `200` — show both, name the difference
 - [ ] Click a CSS file's request: same anatomy, different `Content-Type` — *everything* is this exchange
 - [ ] Type a garbage path (`…/demo/nope.html`) → **404** in the list, red. "Status codes are clue #1"
