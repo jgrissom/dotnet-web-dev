@@ -114,21 +114,27 @@
         <input type="text" class="form-control" id="name">
       </div>
 
-      <label for="email">Email</label>
-      <input type="email" id="email">
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email">
+      </div>
 
-      <label for="topic">What's this about?</label>
-      <select id="topic">
-        <option>Choose…</option>
-        <option>Catering an event</option>
-        <option>Study group reservation</option>
-        <option>Feedback</option>
-      </select>
+      <div class="mb-3">
+        <label for="topic" class="form-label">What's this about?</label>
+        <select class="form-select" id="topic">
+          <option selected>Choose…</option>
+          <option>Catering an event</option>
+          <option>Study group reservation</option>
+          <option>Feedback</option>
+        </select>
+      </div>
 
-      <label for="message">Message</label>
-      <textarea id="message" rows="3"></textarea>
+      <div class="mb-3">
+        <label for="message" class="form-label">Message</label>
+        <textarea class="form-control" id="message" rows="3"></textarea>
+      </div>
 
-      <button type="submit">Send</button>
+      <button type="submit" class="btn btn-primary">Send</button>
     </form>
 
     <p><a href="#home">Back to top ↑</a></p>
