@@ -12,8 +12,9 @@ The `week-02` folder you copy below is a working but completely unstyled 3-page 
 
 1. **Update the starters clone.** Open `dotnet-web` in VS Code, then `` Ctrl+` `` for a terminal standing in it:
    ```bash
-   cd dotnet-web-starters && git pull
+   git -C dotnet-web-starters pull
    ```
+   `-C` tells git to work *in that folder* without moving your terminal into it — you stay in `dotnet-web`, which is where every other command belongs.
 2. **Copy the `week-02` folder into `dotnet-web`, then rename the copy `cryptid-registry`** — next to the clone, never inside it. That's the name of the repo you push it to in the homework, so folder and repo match. It appears in the Explorer straight away; **stay in `dotnet-web`** and work from there, same as last week.
 3. The Bootstrap CSS + JS CDN tags are already in each page (and the viewport meta — don't delete it). So are the six illustrations, in `img/cryptids/`.
 4. Open `index.html` in the browser; keep the window at half width and resize as you go.

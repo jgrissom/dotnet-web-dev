@@ -14,8 +14,10 @@ Same six creatures, same pages. Tonight you build the **shell** around them: one
 **1. Update the starters clone.** Open `dotnet-web` in VS Code, then `` Ctrl+` `` for a terminal standing in it:
 
 ```bash
-cd dotnet-web-starters && git pull
+git -C dotnet-web-starters pull
 ```
+
+`-C` tells git to work *in that folder* without moving your terminal into it — you stay in `dotnet-web`, which is where every other command belongs.
 
 **2. Copy the `week-05` folder into `dotnet-web`** — next to the clone, never inside it — **and rename the copy.** `CryptidShell` works. (Copy it *out*; never work inside the clone, or next week's `git pull` will fight you.)
 

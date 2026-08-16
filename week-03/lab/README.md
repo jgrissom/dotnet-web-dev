@@ -8,8 +8,9 @@ Your first ASP.NET Core MVC app, built the way you'll work all term: run the che
 
 1. **Update the starters clone.** Open `dotnet-web` in VS Code, then `` Ctrl+` `` for a terminal standing in it:
    ```bash
-   cd dotnet-web-starters && git pull
+   git -C dotnet-web-starters pull
    ```
+   `-C` tells git to work *in that folder* without moving your terminal into it — you stay in `dotnet-web`, which is where every other command belongs.
 2. **Copy the whole `week-03` folder into `dotnet-web`, then rename the copy `first-flight`** — next to the clone, never inside it. It's just two project folders side by side: your app (`FirstFlight.Web`) and the read-only checks (`FirstFlight.Checks`). The new name is the one you push to in the homework.
 3. **This week you do open the copy** — `File → Open Folder` → your `first-flight` folder. It is the first .NET week, and both the C# extension and `dotnet test` want to be standing in the project. From its terminal:
    ```bash

@@ -14,8 +14,10 @@ Six creatures that vanish every time you restart the app. Tonight they move into
 **1. Update the starters clone.** Open `dotnet-web` in VS Code, then `` Ctrl+` `` for a terminal standing in it:
 
 ```bash
-cd dotnet-web-starters && git pull
+git -C dotnet-web-starters pull
 ```
+
+`-C` tells git to work *in that folder* without moving your terminal into it — you stay in `dotnet-web`, which is where every other command belongs.
 
 **2. Copy the `week-07` folder into `dotnet-web`** — next to the clone, never inside it — **and rename the copy.** `CryptidsDb` works. (Copy it *out*; never work inside the clone.)
 

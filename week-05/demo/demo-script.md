@@ -314,7 +314,7 @@ Don't ask the question rhetorically; make them look at both halves. Use the **ho
 
 - [ ] 🎞️ **GO TO SLIDE 19** — *Lab: the Registry gets a shell*. Leave it up for the whole lab; it's the task list
 - [ ] Show **what done looks like** — the answer key **running on localhost** + `dotnet test Cryptids.Checks` printing **6 / 6**. That's `week-05/lab/solution` in the answer-keys repo; `dotnet run` from `Cryptids.Web`, `dotnet test` from the folder above it. ~90 seconds, a target not a walkthrough. **Nothing is deployed for this** — Azure is their homework, not tonight
-- [ ] Setup on screen, said once: **`cd dotnet-web-starters && git pull` → copy `week-05` out and rename it → open the folder holding *both* projects → `dotnet test Cryptids.Checks`**
+- [ ] Setup on screen, said once: **`git -C dotnet-web-starters pull` → copy `week-05` out and rename it → open the folder holding *both* projects → `dotnet test Cryptids.Checks`**
 - [ ] Say plainly: **the app arrives finished.** Nobody is blocked tonight by an unfinished week 4. Check 1 proves it
 - [ ] **In-class target: checks 1–4.** Checks 5–6 roll into homework by design
 - [ ] Name the three exact strings the checks want: `Cryptid Registry`, `Field Reports Since 1893`, `Cryptid file loaded`
