@@ -110,7 +110,7 @@ Every individual step is also browsable as a red/green diff at [the commit list]
 ### Navbar — from the docs, live
 
 - [ ] 🎞️ **GO TO SLIDE 8** — *Components: assembled from the docs*
-- [ ] 🎯 **Land the numbered workflow — it is the actual skill tonight, not the class names:** *"find it in the docs, copy the example, adapt it. That is still what I do. Nobody memorizes Bootstrap"*
+- [ ] 🎯 **Land the numbered workflow — it is the actual skill tonight, not the class names:** *"use the documentation, copy the example, adapt it. That is still what I do. Nobody memorizes Bootstrap"*
 - [ ] **Do this one in the browser first, because the docs visit IS the lesson.** Open [docs → Navbar](https://getbootstrap.com/docs/5.3/components/navbar/), scroll to the example **with a toggler**, and say what you would change: brand, three links, and the breakpoint
 - [ ] Point at the matched pair the docs example ships with — the toggler's `data-bs-target="#..."` and the collapse div's `id="..."`. **Always change both halves together**; a mismatch is a silently dead hamburger
 - [ ] **Step 9 — the adapted navbar.** Say what changed from the docs copy: *"`expand-lg` became `expand-md` so the hamburger shows up sooner, `bg-body-tertiary` became `bg-dark`, and `data-bs-theme` is an attribute rather than a class"*
@@ -120,17 +120,17 @@ Every individual step is also browsable as a red/green diff at [the commit list]
 ### Menu cards
 
 - [ ] 🎞️ **GO TO SLIDE 9** — *Cards in a grid*
-- [ ] 🎯 **Say where this ends up — the file can never show it:** *"tonight there are six cards and I put all six in the file myself. In week 8 this block gets written once and the database supplies the rest — one card per row. Every list page in the back half of this course is this pattern"*
+- [ ] 🎯 **Say where this ends up — the file can never show it:** *"with static content, we are creating 6 individual cards. In week 8 this block gets written once and the database supplies the rest — one card per (database) row. Every list page in the back half of this course follows this pattern"*
 - [ ] **Step 10 — the menu heading, and a row around the six articles.** Same wrapper move as the feature row
-- [ ] **Step 11 — the Espresso card.** This is the one to slow down on. Read the diff outward: *"the article is still the article. It gained `card h-100`, its contents moved inside a `card-body`, and the whole thing sits in a column. The `<span>` that said hot is now a badge — one class"*
+- [ ] **Step 11 — the Espresso card.** This is the one to slow down on. Read the diff outward: *"the article is still the article. It gained `card h-100` (height-100), its contents moved inside a `card-body`, and the whole thing sits in a column. The `<span>` that said hot is now a badge — one class"*
 - [ ] **Step 12 — the other five.** *"Same shape, five more times."* The diff shows the first and last; nobody needs the middle
 - [ ] **✓ resize:** 1 → 2 → 3 columns; `h-100` keeps the heights even
 
 ### Form
 
-- [ ] **Step 13 — the contact heading and the alert.** The alert is the week-6 promise: *"this form does not work tonight. It starts working in week 6"*
+- [ ] **Step 13 — the contact heading and the alert.** The alert is the week-6 promise: *"this form does not do anything tonight. It starts working in week 6"*
 - [ ] **Step 14 — the form goes in a `col-md-8`.** *"The column is what stops a text input stretching across a 27-inch monitor"*
-- [ ] **Step 15 — the first field.** Slow down here too: `form-label` on the label, `form-control` on the input, both inside an `mb-3` spacer. Note the `for`/`id` pair was already there — **that is plain HTML accessibility, not Bootstrap**
+- [ ] **Step 15 — the first field.** *"Here we are applying style to our form fields."* Slow down here too: `form-label` on the label, `form-control` on the input, both inside an `mb-3` spacer. Note the `for`/`id` pair was already there — **that is plain HTML accessibility, not Bootstrap**
 - [ ] **Step 16 — the rest of the fields.** `form-select` on the dropdown, `btn btn-primary` on the button. Same three-part shape each time
 
 ### Footer & polish
