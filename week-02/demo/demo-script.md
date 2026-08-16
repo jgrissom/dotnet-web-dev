@@ -88,6 +88,7 @@ Every individual step is also browsable as a red/green diff at [the commit list]
 - [ ] 🎞️ **GO TO SLIDE 5** — *The grid: 12 columns, 6 breakpoints*
 - [ ] 🎯 **The one rule the whole grid rests on:** *"every row is twelve units wide. Always twelve. Eight and four on the slide — that is a full row. Add up past twelve and the extra wraps onto the next line, which is the rule working, not a bug"* — the 8/4 split lives only on this slide; the demo builds thirds
 - [ ] **Step 1 — `<main>` gets a container.** One class, and the whole page stops hugging the edges. *"That is the first one. One class, and everything has margins"*
+- [ ] **First time you say "hero", define it:** *"hero is the designer's word for the big opening band of a page. It is not an HTML tag — tonight it happens to sit inside the `<header>`"*
 - [ ] **Step 2 — the hero gets its band.** *"The `<header>` sits *outside* `<main>`, so the tint runs edge to edge"*
 - [ ] **Step 3 — wrap the hero's three children in a container.** *"Same class as `<main>` got. The band stays full width; the words line up with everything below"*
 - [ ] **Step 4 — three classes on the three elements.** `display-4`, `lead text-muted`, `btn btn-primary btn-lg`

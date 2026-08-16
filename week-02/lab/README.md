@@ -35,7 +35,7 @@ Work top to bottom. Each item names the docs page you need.
 - [ ] **Icons** ([icons.getbootstrap.com](https://icons.getbootstrap.com)) — add the Bootstrap Icons `<link>` to every page and use at least one icon per page (the footer is a natural spot; a button or navbar brand also works).
 
 ### index.html
-- [ ] **Hero** — big heading, lead paragraph (`display-4`, `lead`), and a button linking to the registry page. Center it and give it generous vertical space (`text-center`, `py-5`).
+- [ ] **Hero** *(the oversized opening band at the top of a page — a design word, not an HTML tag; here it happens to sit in the `<header>`)* — big heading, lead paragraph (`display-4`, `lead`), and a button linking to the registry page. Center it and give it generous vertical space (`text-center`, `py-5`).
 - [ ] **Feature row** — the three `<section>` blurbs become a responsive row: full width on phones, thirds on `md` and up.
 
 ### registry.html
