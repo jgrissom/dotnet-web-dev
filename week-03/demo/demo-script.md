@@ -135,7 +135,7 @@ Tonight's app does not exist yet — building it in front of the room *is* §2. 
       }
   }
   ```
-- [ ] Refresh `/Menu` → **500-ish error: no view.** Read the error out loud — it *tells you* where it looked. Convention, visible
+- [ ] Refresh `/Menu` → **a 500 and a stack trace: no view.** Read the error out loud — it names both places it looked, `/Views/Menu/Index.cshtml` and `/Views/Shared/Index.cshtml`. Convention, visible *"looking for a view called Index"*
 
 ### The view
 
@@ -149,7 +149,7 @@ Tonight's app does not exist yet — building it in front of the room *is* §2. 
   <h1>Today's Menu</h1>
   <p>Espresso · Cold brew · Chai — proper data arrives in week 7.</p>
   ```
-- [ ] `/Menu` works. **✓ say it:** URL → method → view, and nobody registered anything anywhere
+- [ ] `/Menu` works. **✓ say it:** *"URL → method → view, and nobody registered anything anywhere"*
 - [ ] View Source on `/Menu`: no Razor in sight — the server rendered pure HTML
 
 ### A parameter
