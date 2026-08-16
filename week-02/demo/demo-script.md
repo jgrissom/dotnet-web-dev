@@ -38,7 +38,7 @@ The loop for every code beat is the same three moves:
 2. **Copy whole file** (the blue button) — it puts that step's *entire* file on the clipboard, not the diff.
 3. **Select all in `scratch.html`, paste, save.** The page updates in the browser beside it.
 
-Nobody hunts for an insertion point, and the room sees the change isolated and labelled instead of buried in a file. Two of the twenty-two steps show only the head of a long diff — the note says so on screen, and the button still copies the whole file.
+Nobody hunts for an insertion point, and the room sees the change isolated and labelled instead of buried in a file. Two of the twenty-seven steps show only the head of a long diff — the note says so on screen, and the button still copies the whole file.
 
 ⚠️ **The page remembers where you were** (per-browser). Before class, press `Home` to get back to step 1.
 
@@ -62,7 +62,8 @@ The number is the only thing you change. These are the ones worth memorising —
 | `w02-step-12` | after the menu cards |
 | `w02-step-16` | after the form |
 | `w02-step-19` | after the icons |
-| `w02-step-22` | the finished page |
+| `w02-step-23` | themed, on Lux |
+| `w02-step-27` | the finished page |
 
 Every individual step is also browsable as a red/green diff at [the commit list](https://github.com/jgrissom/dotnet-web-dev/commits/demo/week-02) — that is the whole demo, one commit per beat, in order.
 
@@ -151,12 +152,13 @@ Every individual step is also browsable as a red/green diff at [the commit list]
 - [ ] 🎞️ **GO TO SLIDE 12** — *Bootswatch: stop looking like every Bootstrap site*
 - [ ] 🎯 **Point at the one line on the slide — the CSS link:** *"the whole site re-skins onto a different palette, different type, different button shapes, and that link is the only line that changes. That is what a framework buys you"*
 - [ ] Show the gallery at [bootswatch.com](https://bootswatch.com) — this is where "take requests" shops
-- [ ] **Step 20 — the theme swap, landing on Lux.** Before you paste it, say the diff is **one line**. Afterwards, refresh and let the reaction land
-- [ ] *(optional, live)* In the editor, swap `lux` for `darkly`, then `sketchy` (laugh), then back to `lux` — this is one word, and it is worth doing by hand
-- [ ] **✓ say it:** nothing else changed — same classes, same markup, same docs
-- [ ] Dark-mode flip: DevTools → `<html>` → add `data-bs-theme="dark"`. One attribute; the toggle button is a lab stretch goal
-- [ ] **✓ let them spot it:** the hero is still a glowing light band. Why? `bg-light` means *literally light, in every theme* — it said so all along
-- [ ] **Step 21 — the fix.** `bg-body-tertiary` is theme-aware. Flip dark/light again: now the whole page adapts. **Semantic names > literal names, part two**
+- [ ] **Step 20 — Flatly.** The diff is **one line**. Say that before you paste it, then refresh and let the reaction land
+- [ ] **Steps 21, 22, 23 — Darkly, Sketchy, Lux.** Run these fast, back to back — each diff is **one word**. Sketchy gets the laugh; take a request between them if the room shouts one
+- [ ] **✓ say it:** *"nothing else changed. Same classes, same markup, same docs — I only swapped a word in a URL"*
+- [ ] **Step 24 — dark mode, one attribute.** `data-bs-theme="dark"` on `<html>`. Say the toggle button is a lab stretch goal, three lines of week-1 JavaScript
+- [ ] **✓ let them spot it — don't tell them.** The hero is still a glowing light band. Wait for someone to say it. *"Why is that one bit still bright?"* — `bg-light` means **literally light, in every theme**. It said so all along
+- [ ] **Step 25 — the fix.** `bg-body-tertiary` is *"slightly offset from the page background"*, so it follows the theme. **Semantic names beat literal names, part two** — same argument as `btn-primary` rather than `btn-blue`
+- [ ] **Step 26 — back to light.** The hero now behaves in both. *"One attribute, and the whole page has two looks"*
 - [ ] Bonus if anyone asks about icon colours: `text-primary` under Lux is **near-black** — a `text-primary` icon would vanish in dark mode. Semantic colours belong to the *theme*; that is the feature working as designed
 
 ## 4 · Google Fonts *(slide 13)*
@@ -165,10 +167,9 @@ Every individual step is also browsable as a red/green diff at [the commit list]
 - [ ] 🎯 **The concept before the shopping trip:** *"Bootstrap keeps its font in a CSS variable, so you never fight it — you set the variable and the whole site follows. Two families maximum, and only the weights you use. Those two are rules in this course, not taste"*
 - [ ] On [fonts.google.com](https://fonts.google.com): pick **Lora** (400 + 700) and show the `<link>` it generates
   — *(deliberately a serif: Lux's own font is Nunito Sans, so a sans swap would be invisible — pick something the room can SEE)*
-- [ ] **Step 22 — the font link and the variable override.** *"One link, one variable. Everything downstream follows"*
+- [ ] **Step 27 — the font link and the variable override.** *"One link, one variable. Everything downstream follows"*
 - [ ] **✓ prove it applied:** DevTools → select a paragraph → **Computed** → *Rendered Fonts* at the bottom says `Lora`. (Also show the Network tab's `fonts.gstatic.com` request — that is the font arriving.) This is how you check ANY font question forever
 - [ ] **✓ FINAL CHECKPOINT** — your page matches the hosted [after](https://jgrissom.github.io/dotnet-web-dev/week-02/demo/). Leave both on screen going into the lab launch
-
 
 ## 5 · Hand off to the lab *(slide 14)*
 
