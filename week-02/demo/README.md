@@ -7,6 +7,6 @@ The instructor's live-coding page for the lecture segments. **Deliberately diffe
 - `finished.html` — where the session ends up (Lux theme + Lora, hosted as the [**after** page](https://jgrissom.github.io/dotnet-web-dev/week-02/demo/)), for rehearsal and as your own "what done looks like." Opening before and after in two tabs is the fastest "why Bootstrap" pitch there is — same content, transformed almost entirely by *classes*, plus only the structural wrappers Bootstrap genuinely requires (`row`/`col`, `card-body`, the navbar anatomy).
 
 > [!IMPORTANT]
-> **Work on a copy, not this file.** Duplicate `index.html` to your scratch folder before class (or `git checkout -- week-02/demo/` afterward) so the committed starting point stays pristine for next semester.
+> **Work on a copy, not this file.** `demo-script.md`'s §0 makes that copy for you — `git show w02-step-00:… > week-02/demo/scratch.html`, run in this repo — and `scratch.html` is gitignored, so the committed starting point stays pristine for next semester.
 
 Students can read this folder — that's fine. It's a worked example with different content; their lab and homework are still their own build.

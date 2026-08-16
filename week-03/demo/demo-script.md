@@ -16,7 +16,22 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ## 0 · Before class
 
-- [ ] Scratch folder ready; Teaching profile; terminal font sized for the projector
+**The set, at curtain:**
+
+```
+dotnet-web-dev-course-trial/
+└─ instructor/                 ← EMPTY. §2 creates CommonGrounds.Web in it, live
+```
+
+Tonight's app does not exist yet — building it in front of the room *is* §2.
+
+- [ ] ⚠️ **Rehearsed already? Empty the instructor folder**, or §2's `dotnet new mvc` refuses a folder that already holds a project:
+  ```bash
+  rm -rf ~/Repos/dotnet-web-dev-course-trial/instructor/CommonGrounds.Web
+  ```
+  💡 **Check it took:** `ls ~/Repos/dotnet-web-dev-course-trial/instructor` prints nothing.
+- [ ] **Have VS Code's Open Folder dialog land somewhere sane** — open `~/Repos/dotnet-web-dev-course-trial/instructor` once beforehand so the picker starts there in §2 and you aren't navigating your home directory on the projector
+- [ ] **Teaching profile in VS Code** (gear, bottom-left → **Profiles** → *Teaching*): C# and mssql extensions only, **no C# Dev Kit** — so your editor matches theirs pixel for pixel, with no Solution Explorer they don't have. Bump both font sizes **in that profile** so they stick: `terminal.integrated.fontSize` (start around **18** — §2 and §4 are read from the terminal all night) and `editor.fontSize` (around **16**)
 - [ ] **Say it before you start: *"lids down for this part — everything I do to CommonGrounds, you'll do to First Flight in the lab."*** You build *CommonGrounds*; their lab is *First Flight*. **The predict-then-run beats are where they participate**
 - [ ] Azure app name chosen (`cg-web-XXXX`); logged out of `az` if demoing the login
 - [ ] [Coffee page](https://jgrissom.github.io/dotnet-web-dev/week-02/demo/) open in a tab for §1
@@ -49,7 +64,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 - [ ] 🎞️ **GO TO SLIDE 6** — *Two commands to a working site*
 - [ ] **The second command is the one that changes the day:** *"`dotnet new mvc` builds it, `dotnet watch` runs it and restarts on every save. If you used Live Server last week, it is that loop, ported to C#. And read the first bullet — a styled, working site before either of us writes a line"*
-- [ ] VS Code → File → Open Folder → create a new empty **CommonGrounds.Web** (in the scratch area) and open it
+- [ ] VS Code → File → Open Folder → in `~/Repos/dotnet-web-dev-course-trial/instructor`, create a new empty **CommonGrounds.Web** and open it
 - [ ] Integrated terminal:
   ```bash
   dotnet new mvc --no-https

@@ -23,7 +23,7 @@ The night the data stops belonging to the process. For four weeks the list has b
 - **Deployed-app gallery** — 2–3 student Azure URLs picked in advance; 2 minutes each
 - Collect last week's reading — *"what would the columns of your hard-coded list be, and what type is each one?"* — **while an app is on screen**. It's the intuition the whole night is built on
 - ⚠️ **Fill in your own connection string and test it before class**, then **drop the demo database** (`dotnet ef database drop --force`) so the room watches it get created. If your string is wrong at 1:10 you lose two segments and there is no way to fake forward
-- **Copy `week-07/demo-starter/Curbside` out of the private answer-keys repo** to a scratch folder — Curbside exactly as week 6's demo left it. `dotnet watch`, then park tabs on `/Trucks` and `/Trucks/Create`
+- **Copy `week-07/demo-starter/Curbside` out of the private answer-keys repo** into `~/Repos/dotnet-web-dev-course-trial/instructor/` — Curbside exactly as week 6's demo left it. `dotnet watch`, then park tabs on `/Trucks` and `/Trucks/Create`
 - **VS Code `mssql` extension** installed, connected, tested, panel closed — you open it four times tonight
 - **Size the terminal for the back row and leave it up all night.** Unlike week 6 you never clear it: migration output, generated SQL and two error messages are the story
 - Check `dotnet ef --version` matches your runtime — a skew warning on the projector invites a question you don't want

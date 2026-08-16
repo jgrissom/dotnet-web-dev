@@ -19,7 +19,12 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ## 0 · Before class
 
-- [ ] **Copy `week-08/demo-starter/Curbside` out of the answer-keys repo** to a scratch folder. This is Curbside exactly as week 7's demo left it: context, two migrations, seven seeded trucks (`Sconnie Sliders` included), controller reading and writing through the context, `TruckData.cs` gone
+- [ ] **Copy `week-08/demo-starter/Curbside` out of the answer-keys repo** into `instructor/`. This is Curbside exactly as week 7's demo left it: context, two migrations, seven seeded trucks (`Sconnie Sliders` included), controller reading and writing through the context, `TruckData.cs` gone. The `rm` first is what makes a re-run safe — a rehearsal leaves this folder in tonight's **end** state:
+  ```bash
+  rm -rf ~/Repos/dotnet-web-dev-course-trial/instructor/Curbside
+  cp -R ~/Repos/dotnet-web-dev-answer-keys/week-08/demo-starter/Curbside ~/Repos/dotnet-web-dev-course-trial/instructor/
+  ```
+  ⚠️ **The copy resets the files, not the database.** Curbside's data lives on the school SQL Server, and every copy carries the same `<UserSecretsId>` — so the drop-and-rebuild two bullets down is a *separate* reset and you need both.
 - [ ] **Set your connection string in your copy** — the `<UserSecretsId>` ships in the `.csproj`, so `set` alone is enough, no `init`:
   ```bash
   dotnet user-secrets set "ConnectionStrings:DefaultConnection" "Server=...;Database=...;User ID=...;Password=...;TrustServerCertificate=True"
@@ -37,14 +42,17 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   *(Already have it? `dotnet tool update --global dotnet-aspnet-codegenerator` — a 9.x tool against a 10.x SDK fails with a runtime error, same family as last week's `dotnet ef` skew.)*
 - [ ] **Rehearse the whole script once in a separate copy (≈40 min).** Besides finding what's broken, the rehearsal warms your NuGet cache — §2 adds two packages live, and a warm cache makes those commands instant on class wifi
 - [ ] 🚨 **Then run the drop + rebuild above again — the rehearsal used the same database.** A separate *copy* is not a separate database: the `<UserSecretsId>` ships in the `.csproj`, so every copy reads one secret and points at one database. Forty minutes of rehearsal leaves it in tonight's **end** state — `Slogan` column added, Ghost Kitchen gone — and §8 has nothing left to add in front of the room. **Last thing before class, always: drop, update, `/Trucks` shows seven cards**
-- [ ] `cd Curbside && dotnet watch`
+- [ ] Run it from there:
+  ```bash
+  cd ~/Repos/dotnet-web-dev-course-trial/instructor/Curbside && dotnet watch
+  ```
 - [ ] **Open a second terminal in the same folder.** `dotnet watch` owns the first one all night; everything you type tonight goes in the second — §2's two `dotnet add package` commands and the scaffolder, then §8's `dotnet ef migrations add` and `dotnet ef database update`
 - [ ] ⚠️ **Know the one prompt that will bite you, and answer it `a` the first time.** Creating a *new* `.cshtml` (§4's `Edit.cshtml`, §6's `Delete.cshtml`) is a change hot reload can't apply, so watch stops and asks **`Do you want to restart your app? Yes (y) / No (n) / Always (a)`** — **in terminal 1, while you're typing in terminal 2.** Miss it and the page 500s with *"The view 'Edit' was not found"*, naming the exact path the file is sitting at. Answer **`a`** at the first prompt and it never asks again all night
 - [ ] **Park two browser tabs**: `/Trucks` and `/Trucks/Details/2`
 - [ ] **mssql extension** signed in, saved server connection tested, panel closed. It has **one** appearance tonight — §8, confirming the new column and its seven slogans — so it's a supporting actor this week, not the lead it was in week 7
 - [ ] **Rehearse the §5 debugger attach once on this machine.** The first-ever *Attach to a .NET process* can stop to fetch debugger assets, and that download is not something you want between a breakpoint and a room full of people. Once it's cached, the attach is instant all term
-- [ ] **Size the terminal for the back row.** The generated SQL is still the evidence: tonight adds `UPDATE` and `DELETE` to the vocabulary, and §5 watches the gap between `Update()` and `SaveChangesAsync()` through it
-- [ ] Teaching profile; editor font sized for the projector
+- [ ] **Keep the terminal visible** (it's sized in the Teaching profile below). The generated SQL is still the evidence: tonight adds `UPDATE` and `DELETE` to the vocabulary, and §5 watches the gap between `Update()` and `SaveChangesAsync()` through it
+- [ ] **Teaching profile in VS Code** (gear, bottom-left → **Profiles** → *Teaching*): C# and mssql extensions only, **no C# Dev Kit**. Bump both font sizes **in that profile** so they stick: `terminal.integrated.fontSize` (start around **18** — §5 reads the generated SQL from it) and `editor.fontSize` (around **16**)
 - [ ] **Say it before you start: *"lids down — you'll run the scaffolder yourself in the lab."*** Curbside isn't in the public repo, so nobody can follow along, and tonight's paste blocks are big
 - [ ] Sanity check: `/Trucks` shows **seven** cards, filing a truck works, a restart doesn't lose it
 

@@ -19,19 +19,26 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ## 0 · Before class
 
-- [ ] **Copy `week-06/demo-starter/Curbside` out of the answer-keys repo** to a scratch folder. This is Curbside as week 5's demo left it — branded, themed, card partial on two pages, a `@section Scripts` on Details — **plus one thing week 5 didn't have: an `＋ Add a truck` button on `/Trucks` that goes nowhere.** It 404s until §1 builds the action behind it. That's deliberate; it's tonight's job, and from §1 on it's how you get to the form instead of retyping the URL
-- [ ] `cd Curbside && dotnet watch`
+- [ ] **Copy `week-06/demo-starter/Curbside` out of the answer-keys repo** into `instructor/`. This is Curbside as week 5's demo left it — branded, themed, card partial on two pages, a `@section Scripts` on Details — **plus one thing week 5 didn't have: an `＋ Add a truck` button on `/Trucks` that goes nowhere.** It 404s until §1 builds the action behind it. That's deliberate; it's tonight's job, and from §1 on it's how you get to the form instead of retyping the URL. The `rm` first is what makes a re-run safe — a rehearsal leaves this folder in tonight's **end** state:
+  ```bash
+  rm -rf ~/Repos/dotnet-web-dev-course-trial/instructor/Curbside
+  cp -R ~/Repos/dotnet-web-dev-answer-keys/week-06/demo-starter/Curbside ~/Repos/dotnet-web-dev-course-trial/instructor/
+  ```
+- [ ] Run it from there:
+  ```bash
+  cd ~/Repos/dotnet-web-dev-course-trial/instructor/Curbside && dotnet watch
+  ```
 - [ ] **Set the Port box at the top of this page** to whatever `dotnet watch` just printed — `Now listening on: http://localhost:5164`. Every `localhost` URL in this sheet retargets to match, including what the **Copy** buttons put on your clipboard, and it's remembered next time. §2's `curl` is the one that cares
 - [ ] **Park two browser tabs**: `/Trucks` and `/Trucks/Details/2`
 - [ ] **Dev tools open on the `/Trucks` tab, on the Network panel** — you're in it twice tonight and fumbling for it kills the beat
-- [ ] **Size the terminal to be read from the back row.** In §1 it stops being where the app runs and becomes the thing everyone is looking at
+- [ ] **Keep the terminal visible** (it's sized in the Teaching profile below). In §1 it stops being where the app runs and becomes the thing everyone is looking at
 - [ ] **Learn how to clear it before you need it — you can't type `clear`.** `dotnet watch` is running in that terminal, so the shell is *not* at a prompt and your keystrokes go to the watcher, not to a shell. Clear it from the **editor** instead:
   - **Mac:** focus the terminal, press **⌘K**
   - **Windows / Linux:** **right-click the terminal → Clear** *(there's no default shortcut)*
   - **Either:** Command Palette (**⇧⌘P** / **Ctrl+Shift+P**) → *Terminal: Clear*
   
   You need it twice tonight — once in §1 and once in §3 — and a wiped terminal with exactly one object in it reads instantly from the back row
-- [ ] Teaching profile; terminal font sized for the projector
+- [ ] **Teaching profile in VS Code** (gear, bottom-left → **Profiles** → *Teaching*): C# and mssql extensions only, **no C# Dev Kit**. Bump both font sizes **in that profile** so they stick: `terminal.integrated.fontSize` (start around **18** — §1 turns the terminal into the thing everyone is looking at) and `editor.fontSize` (around **16**)
 - [ ] **Say it before you start: *"lids down for this part — you'll build it yourself in the lab."*** Nobody can follow along tonight even if they want to; Curbside isn't in the public repo. And the four breaks below would take fourteen machines down with them. **The predict-then-run moments are where they participate** — those only work if people are looking up
 - [ ] Sanity check: `/Trucks` shows six cards **and the `＋ Add a truck` button**, `/Trucks/Details/1` shows the "Also in Madison" panel. **Don't click the button yet** — a 404 during setup is expected, but you want its first press to be the one in §1 that works
 

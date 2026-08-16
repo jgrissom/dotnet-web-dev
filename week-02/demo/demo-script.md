@@ -16,10 +16,10 @@ Beat-by-beat cue sheet for building Common Grounds live, in lecture order, keyed
 
 ## 0 · Before class
 
-- [ ] **Make tonight's canvas** — one command, from anywhere in `dotnet-web`:
+- [ ] **Make tonight's canvas** — one command, run in the **course repo** `dotnet-web-dev` (not `dotnet-web`, the student folder — the `w02-step-*` tags live in the course repo and nowhere else):
 
   ```bash
-  git show w02-step-00:week-02/demo/index.html > week-02/demo/scratch.html
+  cd ~/Repos/dotnet-web-dev && git show w02-step-00:week-02/demo/index.html > week-02/demo/scratch.html
   ```
 
   Open **`scratch.html`** in VS Code (Teaching profile), browser at half-width. It's gitignored, so it won't clutter `git status` while you teach
@@ -44,10 +44,10 @@ Nobody hunts for an insertion point, and the room sees the change isolated and l
 
 ### 🛟 If it still goes wrong
 
-**One command, and it never touches `index.html`.** Every beat is also a commit on the `demo/week-02` branch. From anywhere in `dotnet-web`, on `main`, without switching branches:
+**One command, and it never touches `index.html`.** Every beat is also a commit on the `demo/week-02` branch. Run it in the **course repo** `dotnet-web-dev`, on `main`, without switching branches:
 
 ```bash
-git show w02-step-11:week-02/demo/index.html > week-02/demo/scratch.html
+cd ~/Repos/dotnet-web-dev && git show w02-step-11:week-02/demo/index.html > week-02/demo/scratch.html
 ```
 
 That overwrites your scratch copy with the state **after** that step. Save, refresh, carry on from the next beat. `scratch.html` is gitignored, so nothing here dirties the tree.

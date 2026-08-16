@@ -19,20 +19,28 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ## 0 · Before class
 
-- [ ] **Copy `week-07/demo-starter/Curbside` out of the answer-keys repo** to a scratch folder. This is Curbside exactly as week 6's demo left it: the form, the annotations, the `ModelState` guard, the redirect, `_ValidationScriptsPartial` in a section. Nothing about it knows what a database is
-- [ ] ⚠️ **Set your own connection string in user secrets before class and test it.** Everything after §2 depends on it, and *"Login failed for user"* in front of the room costs you the segment. From inside `Curbside`:
+- [ ] **Copy `week-07/demo-starter/Curbside` out of the answer-keys repo** into `instructor/`. This is Curbside exactly as week 6's demo left it: the form, the annotations, the `ModelState` guard, the redirect, `_ValidationScriptsPartial` in a section. Nothing about it knows what a database is. The `rm` first is what makes a re-run safe — a rehearsal leaves this folder in tonight's **end** state:
   ```bash
+  rm -rf ~/Repos/dotnet-web-dev-course-trial/instructor/Curbside
+  cp -R ~/Repos/dotnet-web-dev-answer-keys/week-07/demo-starter/Curbside ~/Repos/dotnet-web-dev-course-trial/instructor/
+  ```
+- [ ] ⚠️ **Set your own connection string in user secrets before class and test it.** Everything after §2 depends on it, and *"Login failed for user"* in front of the room costs you the segment. From inside the copy you just made:
+  ```bash
+  cd ~/Repos/dotnet-web-dev-course-trial/instructor/Curbside
   dotnet user-secrets init
   dotnet user-secrets set "ConnectionStrings:DefaultConnection" "Server=...;Database=...;User ID=...;Password=...;TrustServerCertificate=True"
   ```
 - [ ] Confirm it took: `dotnet user-secrets list` prints the connection string. **§2 shows this already done rather than doing it live** — your real password never goes on the projector
 - [ ] **Point Curbside at its own database** — same server, same account, **different `Database=`** from the Cryptids one behind the lab answer key. One database per application. It matters because the demo *drops* Curbside's database and rebuilds it live in §3, and you run the answer key on screen at §8: share one database and you destroy the thing you're about to demo
-- [ ] `cd Curbside && dotnet watch`
+- [ ] Run it from there:
+  ```bash
+  cd ~/Repos/dotnet-web-dev-course-trial/instructor/Curbside && dotnet watch
+  ```
 - [ ] **Open a second terminal in the same folder.** `dotnet watch` owns the first one all night; everything you type tonight goes in the second — §2's two `dotnet add package` commands and its `dotnet user-secrets list`, then §3's `dotnet ef migrations add` and `dotnet ef database update`. **The `dotnet ef` version check below goes there too** — it is the first thing you'll run in it
 - [ ] **Park two browser tabs**: `/Trucks` and `/Trucks/Create`
 - [ ] **Install and sign into the VS Code `mssql` extension**, with a saved, **tested** connection — but the panel closed to start. **It's your main instrument from §3 onward**: you open it in §3 to show there's *nothing there*, and from then on you refresh it rather than reopening. A login prompt at any of those kills the beat
 - [ ] ⚠️ **Save that connection to the *server*, with the database field left blank** — not to Curbside's database, which does not exist yet and won't until §3 creates it. A profile naming a database that isn't there fails to connect, and you'd be debugging it at 1:35 in front of the room. From §3 on you expand the new database underneath that server connection
-- [ ] **Size the terminal for the back row and keep it visible all night.** Unlike week 6 you never need to clear it — the scroll *is* the story
+- [ ] **Keep the terminal visible all night** (it's sized in the Teaching profile below). Unlike week 6 you never need to clear it — the scroll *is* the story
 - [ ] **Check `dotnet ef` isn't a version behind.** Run both and compare the **first number only**:
   ```bash
   dotnet --version
@@ -44,7 +52,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   dotnet tool update --global dotnet-ef
   ```
   *(`Command not found: dotnet ef` instead? It was never installed: `dotnet tool install --global dotnet-ef`.)*
-- [ ] Teaching profile; terminal font sized for the projector
+- [ ] **Teaching profile in VS Code** (gear, bottom-left → **Profiles** → *Teaching*): C# and mssql extensions only, **no C# Dev Kit**. Bump both font sizes **in that profile** so they stick: `terminal.integrated.fontSize` (start around **18** — the terminal scroll *is* the story tonight) and `editor.fontSize` (around **16**)
 - [ ] **Say it before you start: *"lids down — you'll build this yourself in the lab."*** Curbside isn't in the public repo, so nobody can follow along, and tonight's paste blocks are big
 - [ ] Sanity check: `/Trucks` shows **six** cards, `/Trucks/Create` renders the form, filing a truck works and lands it on the list
 

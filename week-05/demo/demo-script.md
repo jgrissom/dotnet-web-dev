@@ -19,10 +19,17 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ## 0 · Before class
 
-- [ ] **Copy `week-05/demo-starter/Curbside` out of the answer-keys repo** to a scratch folder. This is Curbside exactly where week 4 left it — plus the `Trucks` nav link, which week 4's homework asked students to add, so it matches what they have
-- [ ] `cd Curbside && dotnet watch`
+- [ ] **Copy `week-05/demo-starter/Curbside` out of the answer-keys repo** into `instructor/`. This is Curbside exactly where week 4 left it — plus the `Trucks` nav link, which week 4's homework asked students to add, so it matches what they have. The `rm` first is what makes a re-run safe — a rehearsal leaves this folder in tonight's **end** state:
+  ```bash
+  rm -rf ~/Repos/dotnet-web-dev-course-trial/instructor/Curbside
+  cp -R ~/Repos/dotnet-web-dev-answer-keys/week-05/demo-starter/Curbside ~/Repos/dotnet-web-dev-course-trial/instructor/
+  ```
+- [ ] Run it from there:
+  ```bash
+  cd ~/Repos/dotnet-web-dev-course-trial/instructor/Curbside && dotnet watch
+  ```
 - [ ] **Park three browser tabs**: `/`, `/Trucks`, `/Trucks/Details/2`. Nearly every beat tonight changes all three — the tabs *are* the demo
-- [ ] Teaching profile; terminal font sized for the projector
+- [ ] **Teaching profile in VS Code** (gear, bottom-left → **Profiles** → *Teaching*): C# and mssql extensions only, **no C# Dev Kit**. Bump both font sizes **in that profile** so they stick: `terminal.integrated.fontSize` (start around **18**) and `editor.fontSize` (around **16**)
 - [ ] **Say it before you start: *"lids down for this part — you'll build it yourself in the lab."*** Curbside isn't in the public repo, so nobody can follow along even if they want to, and the four breaks below would take fourteen machines with them. **The predict-then-run moments are where they participate**
 - [ ] Sanity check before you start: `/Trucks` shows six trucks in a table, `/Trucks/Details/999` is a 404
 

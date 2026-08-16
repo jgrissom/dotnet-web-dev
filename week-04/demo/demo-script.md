@@ -16,7 +16,22 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ## 0 · Before class
 
-- [ ] Scratch folder ready; Teaching profile; terminal font sized for the projector
+**The set, at curtain:**
+
+```
+dotnet-web-dev-course-trial/
+└─ instructor/                 ← EMPTY. §0b creates Curbside in it, live at 0:05
+```
+
+⚠️ **Week 3's `CommonGrounds.Web` must not still be sitting there.** §1's predict-then-run table assumes a pristine template with no extra controllers, and last week's app has two.
+
+- [ ] ⚠️ **Empty the instructor folder** — clears both a rehearsal and last week's app in one move, and `dotnet new` refuses a folder that already holds a project:
+  ```bash
+  rm -rf ~/Repos/dotnet-web-dev-course-trial/instructor/*
+  ```
+  💡 **Check it took:** `ls ~/Repos/dotnet-web-dev-course-trial/instructor` prints nothing.
+- [ ] **Have VS Code's Open Folder dialog land somewhere sane** — open `~/Repos/dotnet-web-dev-course-trial/instructor` once beforehand so the picker starts there in §0b, which happens live at 0:05 with the room watching
+- [ ] **Teaching profile in VS Code** (gear, bottom-left → **Profiles** → *Teaching*): C# and mssql extensions only, **no C# Dev Kit** — so your editor matches theirs pixel for pixel. Bump both font sizes **in that profile** so they stick: `terminal.integrated.fontSize` (start around **18**) and `editor.fontSize` (around **16**)
 - [ ] **Say it before you start: *"lids down for this part — you'll build your own tonight."*** They watch you build Curbside; their lab is the *Cryptid Registry* and their homework is a third app. **The predict-then-run tables are where they participate** — those only work if people are looking up
 - [ ] Two terminals planned: one for `dotnet watch`, one free
 - [ ] Decide now: you will **restore the route pattern** at the end of §1. Say it out loud when you break it
@@ -27,7 +42,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 > Do this **live at 0:05**, as the first thing after the 5-minute status check — not before class. Tonight's homework asks them to build a new app from an empty folder, so watching you do it is rehearsal, not repetition.
 
 - [ ] 🎞️ **GO TO SLIDE 2** — *Last week vs. tonight*
-- [ ] VS Code → File → Open Folder → create a new empty **Curbside** and open it
+- [ ] VS Code → File → Open Folder → in `~/Repos/dotnet-web-dev-course-trial/instructor`, create a new empty **Curbside** and open it
 - [ ] Integrated terminal:
   ```bash
   dotnet new mvc --no-https
