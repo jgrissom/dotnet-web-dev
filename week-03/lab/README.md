@@ -19,8 +19,13 @@ Your first ASP.NET Core MVC app, built the way you'll work all term: run the che
 
 **1 / 6 passing.** Check 1 is free — it proves the harness works. The other five are the lab.
 
-> [!TIP]
-> Two terminals: in one, `cd FirstFlight.Web` then `dotnet watch` (see your changes live); in the other, stay at the parent folder and re-run `dotnet test FirstFlight.Checks` after each task. Browser for feel, checks for truth.
+4. **Open a second terminal** — the `+` in the terminal panel, or `` Ctrl+Shift+` ``. **You need two from here on, and so does every .NET week after this one:**
+   - **Terminal 1 — the app.** `cd FirstFlight.Web`, then `dotnet watch`. It keeps running and rebuilds on every save, which is why **you can't type anything else in it** — that's the whole reason for a second terminal, not a preference.
+   - **Terminal 2 — the checks.** Stay in `first-flight` (the parent folder) and re-run `dotnet test FirstFlight.Checks` after each task.
+
+   ⚠️ **`MSBUILD : error MSB1009: Project file does not exist.`** means terminal 2 is standing inside `FirstFlight.Web`. `cd ..` and run it again — the checks command only works from the parent.
+
+**Browser for feel, checks for truth.**
 
 ## The tasks
 
