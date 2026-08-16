@@ -24,7 +24,15 @@ Complete every unchecked item in `lab/README.md` on all three pages: navbar, her
 
 Six creatures is what *I* put in the registry. Make it yours:
 
-1. **A seventh cryptid — your own.** Pick a legend from your own state, country, or family, and add it as a seventh card with a name, a description in the Registry's voice, and a region badge. No illustration needed; the other six have one, yours doesn't have to. If you can't find one, invent it and say so on the card — an archive that admits things is the whole bit.
+1. **A seventh cryptid — your own.** Pick a legend from your own state, country, or family, and add it as a seventh card with a name, a description in the Registry's voice, and a region badge. If you can't find one, invent it and say so on the card — an archive that admits things is the whole bit.
+
+   **Don't draw anything.** The six plates were drawn by kids, and yours has no artist — so the starter ships the plate for exactly this, already in your folder:
+
+   ```html
+   <img src="img/cryptids/unillustrated.webp" class="card-img-top" alt="No known illustration">
+   ```
+
+   It's the same aged paper as the others, signed *artist unknown*. Use it as-is.
 2. **Your theme.** Pick a [Bootswatch](https://bootswatch.com) theme — any except Flatly (that's the solution's, and I'll know). Keep the version at 5.3.x, and apply it to **all three pages**.
 3. **Your fonts.** A [Google Fonts](https://fonts.google.com) pairing: one heading font, one body font, only the weights you use, fallback stacks kept. Both family names go in the Google URL; override `--bs-body-font-family` *and* add the heading rule, as shown in [the lecture notes](lecture-notes.md#part-5-google-fonts-15-min). On all three pages.
 4. **One component we didn't cover in class**, found and adapted from the [Bootstrap docs](https://getbootstrap.com/docs/5.3/) — accordion, carousel, list group, tooltip, modal — or the dark-mode toggle from the lab's stretch goals — your call. It only has to appear on one page. This is a docs-reading exercise; expect it on future assignments too.
