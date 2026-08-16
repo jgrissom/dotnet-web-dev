@@ -9,7 +9,7 @@ The pivot night: for two weeks the browser did all the work. Tonight we build th
 HTTP is just text. When the browser asks for the coffee shop page, it literally sends something like:
 
 ```
-GET /week-02/demo/ HTTP/1.1
+GET /dotnet-web-dev/week-02/demo/ HTTP/1.1
 Host: jgrissom.github.io
 Accept: text/html
 ```

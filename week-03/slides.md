@@ -59,7 +59,7 @@ style: |
 The browser sends:
 
 ```
-GET /week-02/demo/ HTTP/1.1
+GET /dotnet-web-dev/week-02/demo/ HTTP/1.1
 Host: jgrissom.github.io
 ```
 

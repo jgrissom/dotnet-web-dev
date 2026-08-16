@@ -39,7 +39,7 @@ Tonight's app does not exist yet — building it in front of the room *is* §2. 
 - [ ] **Teaching profile in VS Code** (gear, bottom-left → **Profiles** → *Teaching*): C# and mssql extensions only, **no C# Dev Kit** — so your editor matches theirs pixel for pixel, with no Solution Explorer they don't have. Bump both font sizes **in that profile** so they stick: `terminal.integrated.fontSize` (start around **18** — §2 and §4 are read from the terminal all night) and `editor.fontSize` (around **16**)
 - [ ] **Say it before you start: *"lids down for this part — everything I do to CommonGrounds, you'll do to First Flight in the lab."*** You build *CommonGrounds*; their lab is *First Flight*. **The predict-then-run beats are where they participate**
 - [ ] Azure app name chosen (`cg-web-XXXX`); logged out of `az` if demoing the login
-- [ ] [Coffee page](https://jgrissom.github.io/dotnet-web-dev/week-02/demo/) open in a tab for §1
+- [ ] **[Common Grounds Coffee](https://jgrissom.github.io/dotnet-web-dev/week-02/demo/) open in a tab for §1** — the finished coffee shop from week 2's demo. ⚠️ **Slide 3's example request is a `GET` for this exact page** (`GET /dotnet-web-dev/week-02/demo/`, `Host: jgrissom.github.io`), so the panel you open in §1 shows the very request the slide just described — say so when you get there
 
 ## 1 · Real HTTP in DevTools *(slides 2–5)*
 
@@ -50,7 +50,8 @@ Tonight's app does not exist yet — building it in front of the room *is* §2. 
 - [ ] ⚠️ **Say what *pivot* does not mean, because the word oversells it:** *"From tonight you write both: the C# that answers the request, and the HTML that goes back. That is what the V in MVC is — week 5 you style it, week 6 you put a validation script on it."*
 - [ ] 🎞️ **GO TO SLIDE 3** — *HTTP is just text*
 - [ ] **The slide is the wire; the panel is a picture of it:** *"that is what actually travels — a verb and a path going out, a status and a body coming back. Everything I am about to open in DevTools is a nicer drawing of exactly these two blocks"*
-- [ ] On the hosted coffee page: F12 → **Network** → refresh
+- [ ] On the **Common Grounds** tab — week 2's coffee shop, already open from §0: F12 → **Network** → refresh
+- [ ] 🎯 **Point at the top request and tie it to the slide you just showed:** *"that first line is the slide. Same verb, same path, same host — except this one actually happened, three seconds ago, because I pressed refresh"*
 
 ### Verbs and status codes
 
