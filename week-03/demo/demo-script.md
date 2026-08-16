@@ -17,7 +17,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 ## 0 · Before class
 
 - [ ] Scratch folder ready; Teaching profile; terminal font sized for the projector
-- [ ] **Say it before you start: *"lids down for this part — you'll build your own in the lab."*** You build *CommonGrounds*; their lab is *First Flight*. **The predict-then-run beats are where they participate**
+- [ ] **Say it before you start: *"lids down for this part — everything I do to CommonGrounds, you'll do to First Flight in the lab."*** You build *CommonGrounds*; their lab is *First Flight*. **The predict-then-run beats are where they participate**
 - [ ] Azure app name chosen (`cg-web-XXXX`); logged out of `az` if demoing the login
 - [ ] [Coffee page](https://jgrissom.github.io/dotnet-web-dev/week-02/demo/) open in a tab for §1
 
