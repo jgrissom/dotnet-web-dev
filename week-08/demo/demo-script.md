@@ -21,9 +21,9 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 - [ ] **Copy `week-08/demo-starter/Curbside` out of the answer-keys repo** into `instructor/`. This is Curbside exactly as week 7's demo left it: context, two migrations, seven seeded trucks (`Sconnie Sliders` included), controller reading and writing through the context, `TruckData.cs` gone. Its own week folder, so nothing here collides with another week's `Curbside` and no previous demo gets deleted. The `rm` only matters if you **re-rehearse this week** — a rehearsal leaves the folder in tonight's **end** state:
   ```bash
-  mkdir -p ~/Repos/dotnet-web-dev-course-trial/instructor/week-08
-  rm -rf ~/Repos/dotnet-web-dev-course-trial/instructor/week-08/Curbside
-  cp -R ~/Repos/dotnet-web-dev-answer-keys/week-08/demo-starter/Curbside ~/Repos/dotnet-web-dev-course-trial/instructor/week-08/
+  mkdir -p ~/Repos/dotnet-web-dev-course/instructor/week-08
+  rm -rf ~/Repos/dotnet-web-dev-course/instructor/week-08/Curbside
+  cp -R ~/Repos/dotnet-web-dev-answer-keys/week-08/demo-starter/Curbside ~/Repos/dotnet-web-dev-course/instructor/week-08/
   ```
   ⚠️ **The copy resets the files, not the database.** Curbside's data lives on the school SQL Server, and every copy carries the same `<UserSecretsId>` — so the drop-and-rebuild two bullets down is a *separate* reset and you need both.
 - [ ] **Set your connection string in your copy** — the `<UserSecretsId>` ships in the `.csproj`, so `set` alone is enough, no `init`:
@@ -45,7 +45,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] 🚨 **Then run the drop + rebuild above again — the rehearsal used the same database.** A separate *copy* is not a separate database: the `<UserSecretsId>` ships in the `.csproj`, so every copy reads one secret and points at one database. Forty minutes of rehearsal leaves it in tonight's **end** state — `Slogan` column added, Ghost Kitchen gone — and §8 has nothing left to add in front of the room. **Last thing before class, always: drop, update, `/Trucks` shows seven cards**
 - [ ] Run it from there:
   ```bash
-  cd ~/Repos/dotnet-web-dev-course-trial/instructor/week-08/Curbside && dotnet watch
+  cd ~/Repos/dotnet-web-dev-course/instructor/week-08/Curbside && dotnet watch
   ```
 - [ ] **Open a second terminal in the same folder.** `dotnet watch` owns the first one all night; everything you type tonight goes in the second — §2's two `dotnet add package` commands and the scaffolder, then §8's `dotnet ef migrations add` and `dotnet ef database update`
 - [ ] ⚠️ **Know the one prompt that will bite you, and answer it `a` the first time.** Creating a *new* `.cshtml` (§4's `Edit.cshtml`, §6's `Delete.cshtml`) is a change hot reload can't apply, so watch stops and asks **`Do you want to restart your app? Yes (y) / No (n) / Always (a)`** — **in terminal 1, while you're typing in terminal 2.** Miss it and the page 500s with *"The view 'Edit' was not found"*, naming the exact path the file is sitting at. Answer **`a`** at the first prompt and it never asks again all night

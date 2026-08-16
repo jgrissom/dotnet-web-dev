@@ -22,7 +22,7 @@ The shell, end to end: **one layout wraps every page, two files they'd never ope
 
 - **The deployed-app gallery starts tonight** — week 4 promised it. Pick 3–4 student Azure URLs in advance; 2 minutes each
 - Collect last week's reading: *"two things in `_Layout.cshtml` you'd change site-wide."* **Write them on the board** — they're the night's agenda
-- **Copy `week-05/demo-starter/Curbside` out of the private answer-keys repo** into `~/Repos/dotnet-web-dev-course-trial/instructor/week-05/` — it's Curbside exactly where week 4 left it. `dotnet watch`, then park three browser tabs on `/`, `/Trucks`, `/Trucks/Details/2`
+- **Copy `week-05/demo-starter/Curbside` out of the private answer-keys repo** into `~/Repos/dotnet-web-dev-course/instructor/week-05/` — it's Curbside exactly where week 4 left it. `dotnet watch`, then park three browser tabs on `/`, `/Trucks`, `/Trucks/Details/2`
 - ⚠️ The demo **breaks the layout four times on purpose**, and each one takes down every page. The script flags all four restores — trust it
 - Your finished Registry running + `dotnet test` at 6/6, for the lab launch
 - Remind students to `git pull` the starters repo for the week-05 folder

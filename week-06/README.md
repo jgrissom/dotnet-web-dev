@@ -22,7 +22,7 @@ The round trip, end to end: **a form posts, binding fills an object by matching 
 
 - **Deployed-app gallery** — 2–3 student Azure URLs picked in advance; 2 minutes each. Week 5's themes make this a better-looking gallery than last week's
 - Collect last week's reading: *"what do you think `_ValidationScriptsPartial.cshtml` is for?"* Take two guesses, **write them on the board**, and settle it at 2:15
-- **Copy `week-06/demo-starter/Curbside` out of the private answer-keys repo** into `~/Repos/dotnet-web-dev-course-trial/instructor/week-06/` — it's Curbside exactly as week 5's demo left it. `dotnet watch`, then park two browser tabs on `/Trucks` and `/Trucks/Details/2`
+- **Copy `week-06/demo-starter/Curbside` out of the private answer-keys repo** into `~/Repos/dotnet-web-dev-course/instructor/week-06/` — it's Curbside exactly as week 5's demo left it. `dotnet watch`, then park two browser tabs on `/Trucks` and `/Trucks/Details/2`
 - **Open dev tools on the Network panel before you start.** You need it in §1 and again in §3
 - ⚠️ The demo **breaks things four times**, and unlike week 5 none of them shows an error page — each produces a *wrong result* that looks fine. The script flags all four restores
 - Your finished Registry with a working form + `dotnet test` at 6/6, for the lab launch

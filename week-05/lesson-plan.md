@@ -21,7 +21,7 @@ By the end of this session, students can:
 - `slides.md` / `slides.html` — the deck (hosted at jgrissom.github.io/dotnet-web-dev)
 - `lecture-notes.md` on your second screen — the script, with all predict-then-run answers and the troubleshooting appendix
 - **Demo cue sheet:** [`demo/demo-script.md`](demo/demo-script.md) — keyed to slides ([clickable version](https://jgrissom.github.io/dotnet-web-dev/week-05/demo/script.html))
-- **Curbside**, copied out of the private answer-keys repo (`week-05/demo-starter/Curbside`) into `~/Repos/dotnet-web-dev-course-trial/instructor/week-05/`, running under `dotnet watch`, with **three browser tabs parked** on `/`, `/Trucks`, `/Trucks/Details/2`
+- **Curbside**, copied out of the private answer-keys repo (`week-05/demo-starter/Curbside`) into `~/Repos/dotnet-web-dev-course/instructor/week-05/`, running under `dotnet watch`, with **three browser tabs parked** on `/`, `/Trucks`, `/Trucks/Details/2`
 - **3–4 student Azure URLs** picked in advance for the gallery — *this is the first week student work goes on the projector*
 - Your finished Registry + `dotnet test` at 6/6, ready to show at lab launch
 

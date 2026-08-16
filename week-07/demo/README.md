@@ -3,7 +3,7 @@
 Week 7's demo picks Curbside up where week 6 left it — form working, annotations on the model, trucks vanishing on every restart — and moves the list into SQL Server. **Deliberately different content from the lab:** you give Curbside a `CurbsideContext`; students give the *Cryptid Registry* a `CryptidContext`.
 
 - `demo-script.md` — the edit-by-edit cue sheet, keyed to slide numbers, with a [clickable hosted version](https://jgrissom.github.io/dotnet-web-dev/week-07/demo/script.html). Every block you type or paste is in it, and every **🎞️ line means stop and switch to the projector** — it names the slide to put up and what to say to it, so the script alone is enough to run the night from. No cue ever means "not yet"; a slide that has to wait has its cue further down. Between two 🎞️ lines the deck stays put.
-- **The starting app is not in this repo.** Curbside's finished week-6 state lives in the private answer-keys repo at `week-07/demo-starter/Curbside` — copy it out into `~/Repos/dotnet-web-dev-course-trial/instructor/week-07/` before class.
+- **The starting app is not in this repo.** Curbside's finished week-6 state lives in the private answer-keys repo at `week-07/demo-starter/Curbside` — copy it out into `~/Repos/dotnet-web-dev-course/instructor/week-07/` before class.
 
 > [!CAUTION]
 > **Fill in your own connection string before class and prove it works**, then drop the database so the class watches it get created:

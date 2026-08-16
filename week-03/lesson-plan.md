@@ -21,7 +21,7 @@ By the end of this session, students can:
 - `lecture-notes.md` on your second screen — the script, with the troubleshooting appendix
 - **Demo cue sheet:** [`demo/demo-script.md`](demo/demo-script.md) — keyed to slides ([clickable version](https://jgrissom.github.io/dotnet-web-dev/week-03/demo/script.html))
 - [`deploy-guide.md`](deploy-guide.md) URL ready to put on screen for the Azure segment
-- Terminal + VS Code (Teaching profile) ready; `~/Repos/dotnet-web-dev-course-trial/instructor/week-03/` ready and empty — the demo app is created in it live
+- Terminal + VS Code (Teaching profile) ready; `~/Repos/dotnet-web-dev-course/instructor/week-03/` ready and empty — the demo app is created in it live
 - Azure logged **out** before class if you want to demo the login flow honestly
 
 ## Timed agenda
@@ -40,7 +40,7 @@ By the end of this session, students can:
 
 ## Instructor notes
 
-- Demo from your **Teaching profile**; terminal font up for the projector. The demo app (`CommonGrounds.Web`) is created live in `~/Repos/dotnet-web-dev-course-trial/instructor/week-03/` — different content from the lab on purpose.
+- Demo from your **Teaching profile**; terminal font up for the projector. The demo app (`CommonGrounds.Web`) is created live in `~/Repos/dotnet-web-dev-course/instructor/week-03/` — different content from the lab on purpose.
 - **The Azure segment is the riskiest 40 minutes** (network, logins, name collisions). Your deploy happens first so the room sees success before attempting theirs; students only *install + login* in class — their own deploy is homework via the guide. If the classroom network fights `az login`, fall back to hotspot for the demo and move on.
 - Free-tier cold starts: the deployed app's first load can take ~30s. Deploy early in the segment, keep talking, refresh when it's warm.
 - The lab starter is two project folders side by side (no solution file — folders all the way down, like everything else). Students open the parent folder and run `dotnet test FirstFlight.Checks` from there; `dotnet watch` runs from inside `FirstFlight.Web`.

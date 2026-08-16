@@ -19,7 +19,7 @@ Beat-by-beat cue sheet for building Common Grounds live, in lecture order, keyed
 - [ ] **Make tonight's canvas** — one command. The `git show` half must run in the **course repo** `dotnet-web-dev` (not `dotnet-web`, the student folder — the `w02-step-*` tags live in the course repo and nowhere else); it writes the canvas out to `instructor/week-02/`, where every other week's demo lives:
 
   ```bash
-  cd ~/Repos/dotnet-web-dev && mkdir -p ~/Repos/dotnet-web-dev-course-trial/instructor/week-02 && git show w02-step-00:week-02/demo/index.html > ~/Repos/dotnet-web-dev-course-trial/instructor/week-02/scratch.html
+  cd ~/Repos/dotnet-web-dev && mkdir -p ~/Repos/dotnet-web-dev-course/instructor/week-02 && git show w02-step-00:week-02/demo/index.html > ~/Repos/dotnet-web-dev-course/instructor/week-02/scratch.html
   ```
 
   Open that **`scratch.html`** in VS Code (Teaching profile), browser at half-width
@@ -47,7 +47,7 @@ Nobody hunts for an insertion point, and the room sees the change isolated and l
 **One command, and it never touches `index.html`.** Every beat is also a commit on the `demo/week-02` branch. The `git show` half runs in the **course repo** `dotnet-web-dev`, on `main`, without switching branches:
 
 ```bash
-cd ~/Repos/dotnet-web-dev && git show w02-step-11:week-02/demo/index.html > ~/Repos/dotnet-web-dev-course-trial/instructor/week-02/scratch.html
+cd ~/Repos/dotnet-web-dev && git show w02-step-11:week-02/demo/index.html > ~/Repos/dotnet-web-dev-course/instructor/week-02/scratch.html
 ```
 
 That overwrites your canvas with the state **after** that step. Save, refresh, carry on from the next beat. It writes outside the repo, so nothing here dirties the tree.

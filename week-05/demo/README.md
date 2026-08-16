@@ -3,7 +3,7 @@
 Week 5's demo picks Curbside up exactly where week 4 dropped it and rebuilds everything *around* the pages: the layout gets read and broken, one card file ends up rendering on two different pages, and a single `<link>` re-skins the site. **Deliberately different content from the lab:** you shell Curbside; students shell the *Cryptid Registry*.
 
 - `demo-script.md` — the edit-by-edit cue sheet, keyed to slide numbers, with a [clickable hosted version](https://jgrissom.github.io/dotnet-web-dev/week-05/demo/script.html). Every block you type or paste is in it.
-- **The starting app is not in this repo.** Curbside's finished week-4 state lives in the private answer-keys repo at `week-05/demo-starter/Curbside` — copy it out into `~/Repos/dotnet-web-dev-course-trial/instructor/week-05/` before class. It's kept out of the public repo because a worked list-and-details app is next year's week-4 lab answer.
+- **The starting app is not in this repo.** Curbside's finished week-4 state lives in the private answer-keys repo at `week-05/demo-starter/Curbside` — copy it out into `~/Repos/dotnet-web-dev-course/instructor/week-05/` before class. It's kept out of the public repo because a worked list-and-details app is next year's week-4 lab answer.
 
 > [!IMPORTANT]
 > **You break the layout four times on purpose** — `@RenderBody()`, the page title, `Layout = null`, and `required: true`. Unlike week 4's route-pattern edits, each of these takes down **every page at once**, so a forgotten restore is instantly obvious *and* instantly derailing. The script flags all four; do the restores when it says to.
