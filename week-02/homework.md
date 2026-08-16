@@ -3,6 +3,8 @@
 **Due:** before the start of Week 3's class.
 **Submit via Canvas:** your GitHub Pages URL + the Azure screenshot from Part 3.
 
+**This is the lab, continued — not a new project.** Keep working in the same `week-02` folder you copied in class: the same three pages, nothing new to download and no new starter. Part 1 finishes the lab checklist, Part 2 makes the site yours, Part 3 puts it online. The self-check came with the folder — `portfolio-checks.js`, already wired into all three pages — so it is the same one you were using in class.
+
 ## Part 1 — Finish the lab checklist
 
 > [!IMPORTANT]
