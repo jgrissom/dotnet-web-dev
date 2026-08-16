@@ -19,14 +19,15 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ## 0 · Before class
 
-- [ ] **Copy `week-07/demo-starter/Curbside` out of the answer-keys repo** into `instructor/`. This is Curbside exactly as week 6's demo left it: the form, the annotations, the `ModelState` guard, the redirect, `_ValidationScriptsPartial` in a section. Nothing about it knows what a database is. The `rm` first is what makes a re-run safe — a rehearsal leaves this folder in tonight's **end** state:
+- [ ] **Copy `week-07/demo-starter/Curbside` out of the answer-keys repo** into `instructor/`. This is Curbside exactly as week 6's demo left it: the form, the annotations, the `ModelState` guard, the redirect, `_ValidationScriptsPartial` in a section. Nothing about it knows what a database is. Its own week folder, so nothing here collides with another week's `Curbside` and no previous demo gets deleted. The `rm` only matters if you **re-rehearse this week** — a rehearsal leaves the folder in tonight's **end** state:
   ```bash
-  rm -rf ~/Repos/dotnet-web-dev-course-trial/instructor/Curbside
-  cp -R ~/Repos/dotnet-web-dev-answer-keys/week-07/demo-starter/Curbside ~/Repos/dotnet-web-dev-course-trial/instructor/
+  mkdir -p ~/Repos/dotnet-web-dev-course-trial/instructor/week-07
+  rm -rf ~/Repos/dotnet-web-dev-course-trial/instructor/week-07/Curbside
+  cp -R ~/Repos/dotnet-web-dev-answer-keys/week-07/demo-starter/Curbside ~/Repos/dotnet-web-dev-course-trial/instructor/week-07/
   ```
 - [ ] ⚠️ **Set your own connection string in user secrets before class and test it.** Everything after §2 depends on it, and *"Login failed for user"* in front of the room costs you the segment. From inside the copy you just made:
   ```bash
-  cd ~/Repos/dotnet-web-dev-course-trial/instructor/Curbside
+  cd ~/Repos/dotnet-web-dev-course-trial/instructor/week-07/Curbside
   dotnet user-secrets init
   dotnet user-secrets set "ConnectionStrings:DefaultConnection" "Server=...;Database=...;User ID=...;Password=...;TrustServerCertificate=True"
   ```
@@ -34,7 +35,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] **Point Curbside at its own database** — same server, same account, **different `Database=`** from the Cryptids one behind the lab answer key. One database per application. It matters because the demo *drops* Curbside's database and rebuilds it live in §3, and you run the answer key on screen at §8: share one database and you destroy the thing you're about to demo
 - [ ] Run it from there:
   ```bash
-  cd ~/Repos/dotnet-web-dev-course-trial/instructor/Curbside && dotnet watch
+  cd ~/Repos/dotnet-web-dev-course-trial/instructor/week-07/Curbside && dotnet watch
   ```
 - [ ] **Open a second terminal in the same folder.** `dotnet watch` owns the first one all night; everything you type tonight goes in the second — §2's two `dotnet add package` commands and its `dotnet user-secrets list`, then §3's `dotnet ef migrations add` and `dotnet ef database update`. **The `dotnet ef` version check below goes there too** — it is the first thing you'll run in it
 - [ ] **Park two browser tabs**: `/Trucks` and `/Trucks/Create`

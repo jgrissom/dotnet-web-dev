@@ -20,17 +20,23 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ```
 dotnet-web-dev-course-trial/
-└─ instructor/                 ← EMPTY. §0b creates Curbside in it, live at 0:05
+└─ instructor/
+   ├─ week-03/CommonGrounds.Web    ← last week's, left alone
+   └─ week-04/                     ← EMPTY. §0b creates Curbside in it, live at 0:05
 ```
 
-⚠️ **Week 3's `CommonGrounds.Web` must not still be sitting there.** §1's predict-then-run table assumes a pristine template with no extra controllers, and last week's app has two.
+⚠️ **Tonight's Curbside is built from scratch, not from week 3's app.** §1's predict-then-run table assumes a pristine template with no extra controllers, and `CommonGrounds.Web` has two. Its own week folder is what keeps them apart — **you don't delete week 3 to get there.**
 
-- [ ] ⚠️ **Empty the instructor folder** — clears both a rehearsal and last week's app in one move, and `dotnet new` refuses a folder that already holds a project:
+- [ ] **Make tonight's folder** (harmless if it's already there):
   ```bash
-  rm -rf ~/Repos/dotnet-web-dev-course-trial/instructor/*
+  mkdir -p ~/Repos/dotnet-web-dev-course-trial/instructor/week-04
   ```
-  💡 **Check it took:** `ls ~/Repos/dotnet-web-dev-course-trial/instructor` prints nothing.
-- [ ] **Have VS Code's Open Folder dialog land somewhere sane** — open `~/Repos/dotnet-web-dev-course-trial/instructor` once beforehand so the picker starts there in §0b, which happens live at 0:05 with the room watching
+- [ ] ⚠️ **Rehearsed already? Clear just this week's app**, or `dotnet new` refuses a folder that already holds a project:
+  ```bash
+  rm -rf ~/Repos/dotnet-web-dev-course-trial/instructor/week-04/Curbside
+  ```
+  💡 **Check it took:** `ls ~/Repos/dotnet-web-dev-course-trial/instructor/week-04` prints nothing.
+- [ ] **Have VS Code's Open Folder dialog land somewhere sane** — open `~/Repos/dotnet-web-dev-course-trial/instructor/week-04` once beforehand so the picker starts there in §0b, which happens live at 0:05 with the room watching
 - [ ] **Teaching profile in VS Code** (gear, bottom-left → **Profiles** → *Teaching*): C# and mssql extensions only, **no C# Dev Kit** — so your editor matches theirs pixel for pixel. Bump both font sizes **in that profile** so they stick: `terminal.integrated.fontSize` (start around **18**) and `editor.fontSize` (around **16**)
 - [ ] **Say it before you start: *"lids down for this part — you'll build your own tonight."*** They watch you build Curbside; their lab is the *Cryptid Registry* and their homework is a third app. **The predict-then-run tables are where they participate** — those only work if people are looking up
 - [ ] Two terminals planned: one for `dotnet watch`, one free
@@ -42,7 +48,7 @@ dotnet-web-dev-course-trial/
 > Do this **live at 0:05**, as the first thing after the 5-minute status check — not before class. Tonight's homework asks them to build a new app from an empty folder, so watching you do it is rehearsal, not repetition.
 
 - [ ] 🎞️ **GO TO SLIDE 2** — *Last week vs. tonight*
-- [ ] VS Code → File → Open Folder → in `~/Repos/dotnet-web-dev-course-trial/instructor`, create a new empty **Curbside** and open it
+- [ ] VS Code → File → Open Folder → in `~/Repos/dotnet-web-dev-course-trial/instructor/week-04`, create a new empty **Curbside** and open it
 - [ ] Integrated terminal:
   ```bash
   dotnet new mvc --no-https

@@ -21,7 +21,7 @@ By the end of this session, students can:
 - `slides.md` / `slides.html` — the deck (hosted at jgrissom.github.io/dotnet-web-dev)
 - `lecture-notes.md` on your second screen — the script, with all predict-then-run answers and the troubleshooting appendix
 - **Demo cue sheet:** [`demo/demo-script.md`](demo/demo-script.md) — keyed to slides ([clickable version](https://jgrissom.github.io/dotnet-web-dev/week-04/demo/script.html))
-- `~/Repos/dotnet-web-dev-course-trial/instructor/` emptied for **Curbside**; terminal font sized for the projector
+- `~/Repos/dotnet-web-dev-course-trial/instructor/week-04/` ready and empty for **Curbside**; terminal font sized for the projector
 - The class **working regions** list from week 3, to update *(no student apps on the projector this week — that starts in week 5)*
 
 ## Timed agenda

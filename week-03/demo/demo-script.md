@@ -20,17 +20,22 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ```
 dotnet-web-dev-course-trial/
-└─ instructor/                 ← EMPTY. §2 creates CommonGrounds.Web in it, live
+└─ instructor/
+   └─ week-03/                 ← EMPTY. §2 creates CommonGrounds.Web in it, live
 ```
 
-Tonight's app does not exist yet — building it in front of the room *is* §2.
+Tonight's app does not exist yet — building it in front of the room *is* §2. **Every week keeps its own folder here**, so nothing is ever deleted to make room for the next one.
 
-- [ ] ⚠️ **Rehearsed already? Empty the instructor folder**, or §2's `dotnet new mvc` refuses a folder that already holds a project:
+- [ ] **Make tonight's folder** (harmless if it's already there):
   ```bash
-  rm -rf ~/Repos/dotnet-web-dev-course-trial/instructor/CommonGrounds.Web
+  mkdir -p ~/Repos/dotnet-web-dev-course-trial/instructor/week-03
   ```
-  💡 **Check it took:** `ls ~/Repos/dotnet-web-dev-course-trial/instructor` prints nothing.
-- [ ] **Have VS Code's Open Folder dialog land somewhere sane** — open `~/Repos/dotnet-web-dev-course-trial/instructor` once beforehand so the picker starts there in §2 and you aren't navigating your home directory on the projector
+- [ ] ⚠️ **Rehearsed already? Clear just this week's app**, or §2's `dotnet new mvc` refuses a folder that already holds a project:
+  ```bash
+  rm -rf ~/Repos/dotnet-web-dev-course-trial/instructor/week-03/CommonGrounds.Web
+  ```
+  💡 **Check it took:** `ls ~/Repos/dotnet-web-dev-course-trial/instructor/week-03` prints nothing.
+- [ ] **Have VS Code's Open Folder dialog land somewhere sane** — open `~/Repos/dotnet-web-dev-course-trial/instructor/week-03` once beforehand so the picker starts there in §2 and you aren't navigating your home directory on the projector
 - [ ] **Teaching profile in VS Code** (gear, bottom-left → **Profiles** → *Teaching*): C# and mssql extensions only, **no C# Dev Kit** — so your editor matches theirs pixel for pixel, with no Solution Explorer they don't have. Bump both font sizes **in that profile** so they stick: `terminal.integrated.fontSize` (start around **18** — §2 and §4 are read from the terminal all night) and `editor.fontSize` (around **16**)
 - [ ] **Say it before you start: *"lids down for this part — everything I do to CommonGrounds, you'll do to First Flight in the lab."*** You build *CommonGrounds*; their lab is *First Flight*. **The predict-then-run beats are where they participate**
 - [ ] Azure app name chosen (`cg-web-XXXX`); logged out of `az` if demoing the login
@@ -64,7 +69,7 @@ Tonight's app does not exist yet — building it in front of the room *is* §2.
 
 - [ ] 🎞️ **GO TO SLIDE 6** — *Two commands to a working site*
 - [ ] **The second command is the one that changes the day:** *"`dotnet new mvc` builds it, `dotnet watch` runs it and restarts on every save. If you used Live Server last week, it is that loop, ported to C#. And read the first bullet — a styled, working site before either of us writes a line"*
-- [ ] VS Code → File → Open Folder → in `~/Repos/dotnet-web-dev-course-trial/instructor`, create a new empty **CommonGrounds.Web** and open it
+- [ ] VS Code → File → Open Folder → in `~/Repos/dotnet-web-dev-course-trial/instructor/week-03`, create a new empty **CommonGrounds.Web** and open it
 - [ ] Integrated terminal:
   ```bash
   dotnet new mvc --no-https

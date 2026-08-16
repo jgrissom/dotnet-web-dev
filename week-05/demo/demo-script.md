@@ -19,14 +19,15 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ## 0 · Before class
 
-- [ ] **Copy `week-05/demo-starter/Curbside` out of the answer-keys repo** into `instructor/`. This is Curbside exactly where week 4 left it — plus the `Trucks` nav link, which week 4's homework asked students to add, so it matches what they have. The `rm` first is what makes a re-run safe — a rehearsal leaves this folder in tonight's **end** state:
+- [ ] **Copy `week-05/demo-starter/Curbside` out of the answer-keys repo** into `instructor/`. This is Curbside exactly where week 4 left it — plus the `Trucks` nav link, which week 4's homework asked students to add, so it matches what they have. Its own week folder, so nothing here collides with another week's `Curbside` and no previous demo gets deleted. The `rm` only matters if you **re-rehearse this week** — a rehearsal leaves the folder in tonight's **end** state:
   ```bash
-  rm -rf ~/Repos/dotnet-web-dev-course-trial/instructor/Curbside
-  cp -R ~/Repos/dotnet-web-dev-answer-keys/week-05/demo-starter/Curbside ~/Repos/dotnet-web-dev-course-trial/instructor/
+  mkdir -p ~/Repos/dotnet-web-dev-course-trial/instructor/week-05
+  rm -rf ~/Repos/dotnet-web-dev-course-trial/instructor/week-05/Curbside
+  cp -R ~/Repos/dotnet-web-dev-answer-keys/week-05/demo-starter/Curbside ~/Repos/dotnet-web-dev-course-trial/instructor/week-05/
   ```
 - [ ] Run it from there:
   ```bash
-  cd ~/Repos/dotnet-web-dev-course-trial/instructor/Curbside && dotnet watch
+  cd ~/Repos/dotnet-web-dev-course-trial/instructor/week-05/Curbside && dotnet watch
   ```
 - [ ] **Park three browser tabs**: `/`, `/Trucks`, `/Trucks/Details/2`. Nearly every beat tonight changes all three — the tabs *are* the demo
 - [ ] **Teaching profile in VS Code** (gear, bottom-left → **Profiles** → *Teaching*): C# and mssql extensions only, **no C# Dev Kit**. Bump both font sizes **in that profile** so they stick: `terminal.integrated.fontSize` (start around **18**) and `editor.fontSize` (around **16**)

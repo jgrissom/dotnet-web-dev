@@ -24,7 +24,7 @@ By the end of this session, students can:
 - `slides.md` / `slides.html` — the deck (hosted at jgrissom.github.io/dotnet-web-dev)
 - `lecture-notes.md` on your second screen — the script, with the two error messages and the troubleshooting appendix
 - **Demo cue sheet:** [`demo/demo-script.md`](demo/demo-script.md) — keyed to slides ([clickable version](https://jgrissom.github.io/dotnet-web-dev/week-07/demo/script.html))
-- **Curbside**, copied out of the private answer-keys repo (`week-07/demo-starter/Curbside`) into `~/Repos/dotnet-web-dev-course-trial/instructor/` — week 6's finished state, form and all — running under `dotnet watch`
+- **Curbside**, copied out of the private answer-keys repo (`week-07/demo-starter/Curbside`) into `~/Repos/dotnet-web-dev-course-trial/instructor/week-07/` — week 6's finished state, form and all — running under `dotnet watch`
 - ⚠️ **Your own connection string set in user secrets and tested before class** (`dotnet user-secrets list` to confirm), and the demo database **dropped** (`dotnet ef database drop --force`) so the room watches it get created. §2 shows the commands already run — your real password never goes on the projector
 - **VS Code `mssql` extension** installed, panel closed, with a saved and tested connection **to the server, database field blank** — Curbside's database doesn't exist until §3 creates it, so a profile naming it would fail. It's the main instrument from §3 on — opened once, refreshed repeatedly — and the first look, in §3, is the one where it has to show nothing
 - **2–3 student Azure URLs** picked in advance for the gallery

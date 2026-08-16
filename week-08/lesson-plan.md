@@ -24,7 +24,7 @@ By the end of this session, students can:
 - `slides.md` / `slides.html` — the deck (hosted at jgrissom.github.io/dotnet-web-dev)
 - `lecture-notes.md` on your second screen — the script, the generated-code walkthrough, and the troubleshooting appendix
 - **Demo cue sheet:** [`demo/demo-script.md`](demo/demo-script.md) — keyed to slides ([clickable version](https://jgrissom.github.io/dotnet-web-dev/week-08/demo/script.html))
-- **Curbside**, copied out of the private answer-keys repo (`week-08/demo-starter/Curbside`) into `~/Repos/dotnet-web-dev-course-trial/instructor/` — week 7's demo end state: context, two migrations, seven seeded trucks, `TruckData.cs` gone — running under `dotnet watch`
+- **Curbside**, copied out of the private answer-keys repo (`week-08/demo-starter/Curbside`) into `~/Repos/dotnet-web-dev-course-trial/instructor/week-08/` — week 7's demo end state: context, two migrations, seven seeded trucks, `TruckData.cs` gone — running under `dotnet watch`
 - ⚠️ **Your connection string set (`set` only — the `<UserSecretsId>` ships), then `dotnet ef database drop --force` and `dotnet ef database update` run before class.** The shipped migrations are new files: a database with week 7's rehearsal history refuses them. Nobody watches the database get created tonight — that was last week's show
 - **`dotnet-aspnet-codegenerator` installed globally before class** (`dotnet tool install --global dotnet-aspnet-codegenerator`) — and one rehearsal run done, which also warms the NuGet cache so §2's live `dotnet add package` commands are instant on class wifi
 - **mssql extension** signed in, tested, panel closed — one appearance this week (§8's new column and its slogans), a supporting actor rather than week 7's lead

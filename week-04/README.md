@@ -21,7 +21,7 @@ The full chain, end to end: **URL → route → action → data → Razor → HT
 ## 📋 Before class, don't forget
 
 - Bring back the class **working regions** list — add any new wins/failures. *(No student apps on screen this week; showing their work starts in week 5, when every topic is different.)*
-- `~/Repos/dotnet-web-dev-course-trial/instructor/` emptied for *Curbside* (week 3's app must not still be in it) — you create it **live** at the top of the routing segment (demo §0b, 60 seconds), since tonight's homework asks students to do the same thing
+- `~/Repos/dotnet-web-dev-course-trial/instructor/week-04/` ready and empty for *Curbside* (week 3's app stays where it is, in `week-03/`) — you create it **live** at the top of the routing segment (demo §0b, 60 seconds), since tonight's homework asks students to do the same thing
 - ⚠️ The demo **breaks the route pattern twice on purpose** — the script flags both restores. Verify `/` still works before §2
 - Remind students to `git pull` the starters repo for the week-04 folder
 
