@@ -30,6 +30,11 @@ The `week-02` folder you copy below is a working but completely unstyled 3-page 
 Work top to bottom. Each item names the docs page you need.
 
 ### All three pages
+- [ ] **Page container** ([docs: Layout → Containers](https://getbootstrap.com/docs/5.3/layout/containers/)) — give each page's `<main>` a container so content stops hugging the edges:
+  ```html
+  <main class="container py-5">
+  ```
+  Do this first: rows live *inside* containers. A `.row` with no container around it bleeds past the screen edge, and you get a horizontal scrollbar on a phone — which costs marks even when every check is green.
 - [ ] **Navbar** ([docs: Components → Navbar](https://getbootstrap.com/docs/5.3/components/navbar/)) — brand + links to all three pages, collapses to a hamburger on small screens. Mark the current page's link `active`. Same navbar on every page.
 - [ ] **Footer** ([notes: the utility classes](../lecture-notes.md#utilities--the-classes-that-replace-custom-css)) — a `<footer>` with muted, centered text and comfortable vertical padding. Bootstrap has no footer *component*; you build it from utilities only (`text-center`, `text-muted`, `py-4`).
 - [ ] **Icons** ([icons.getbootstrap.com](https://icons.getbootstrap.com)) — add the Bootstrap Icons `<link>` to every page and use at least one icon per page (the footer is a natural spot; a button or navbar brand also works).
