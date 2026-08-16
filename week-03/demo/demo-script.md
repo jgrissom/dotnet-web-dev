@@ -28,13 +28,16 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] 🎞️ **GO TO SLIDE 2** — *Tonight: the pivot*
 - [ ] **Land the word *pivot*:** *"two weeks on the client. Tonight we build the thing that answers it — and everything from here is the right-hand side"*
 - [ ] 🎞️ **GO TO SLIDE 3** — *HTTP is just text*
+- [ ] **The slide is the wire; the panel is a picture of it:** *"that is what actually travels — a verb and a path going out, a status and a body coming back. Everything I am about to open in DevTools is a nicer drawing of exactly these two blocks"*
 - [ ] On the hosted coffee page: F12 → **Network** → refresh
 
 ### Verbs and status codes
 
 - [ ] 🎞️ **GO TO SLIDE 4** — *Verbs*, then find the verb live in the panel
+- [ ] **The third column is a calendar — say it:** *"every request in that panel tonight is a GET. POST turns up in week 6 when we build forms, and PUT and DELETE not until the Web API in week 14. One verb carries the whole night"*
 - [ ] Click the first request → **Headers**: there's the verb, path, status, `content-type: text/html`
 - [ ] 🎞️ **GO TO SLIDE 5** — *Status codes*
+- [ ] **Read the right-hand column, not the codes:** *"two of these are promises. There will be a 404 tonight and I will cause it on purpose. And a 500 means my C# threw — that one is always mine, never the browser's"*
 - [ ] Status says **`304` instead of `200`?** Even better — that's the browser asking "changed since last time?" and the server answering "use your cached copy" (no body sent). Hard-refresh (**Ctrl/Cmd+Shift+R**) to force a full `200` — show both, name the difference
 - [ ] Click a CSS file's request: same anatomy, different `Content-Type` — *everything* is this exchange
 - [ ] Type a garbage path (`…/demo/nope.html`) → **404** in the list, red. "Status codes are clue #1"
@@ -45,6 +48,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 ### Two commands
 
 - [ ] 🎞️ **GO TO SLIDE 6** — *Two commands to a working site*
+- [ ] **The second command is the one that changes the day:** *"`dotnet new mvc` builds it, `dotnet watch` runs it and restarts on every save. If you used Live Server last week, it is that loop, ported to C#. And read the first bullet — a styled, working site before either of us writes a line"*
 - [ ] VS Code → File → Open Folder → create a new empty **CommonGrounds.Web** (in the scratch area) and open it
 - [ ] Integrated terminal:
   ```bash
@@ -142,6 +146,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 ### What Azure is
 
 - [ ] 🎞️ **GO TO SLIDE 14** — *Azure App Service*
+- [ ] 🎯 **The one-line difference is the whole reason for tonight:** *"GitHub Pages handed out files. App Service runs the C# — same kind of public URL, but now there is a process on the other end executing a method every time somebody asks"*
 - [ ] (If demoing login) `az login` → school account → subscription table prints
 
 ### az webapp up
@@ -161,9 +166,12 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 ## 5 · Hand off to the lab *(slide 16)*
 
 - [ ] 🎞️ **GO TO SLIDE 16** — *Lab: First Flight*. Leave it up for the whole lab; it's the task list
+- [ ] Show **what done looks like** — the answer key **on your own machine**: `week-03/lab/solution`, `dotnet run` from `FirstFlight.Web`, then `dotnet test FirstFlight.Checks` from the folder above it, printing **6 / 6**. ~60 seconds, a target not a walkthrough. **Nothing is deployed for this** — the Azure URL from §4 is mine; theirs is the homework
+- [ ] **Name tonight's target off the slide:** *"six checks, and the first one is free — it only proves the harness runs. Tonight I want you at four. Five, six and the deploy are the homework, by design"*
 
 ## 6 · Wrap-up, after the lab *(slides 17–18)*
 
 - [ ] 🎞️ **GO TO SLIDE 17** — *Before next week*. The homework and the reading
 - [ ] **Land the last line:** *"the Cryptid Registry you built out of flat HTML in week 2 — next week you build it again in C#, and this time the pages come off a model"*
 - [ ] 🎞️ **GO TO SLIDE 18** — *The semester, from tonight's summit*. Where the next thirteen weeks go
+- [ ] 🎯 **Trace the chain, then land the last line:** *"browser, HTTP, routing, C#, HTML, Azure — every link in that ran on screen tonight, and the last one is your homework. Week 7 adds a database. Everything between here and there is refinement of a pipeline you have already watched work"*
