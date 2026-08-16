@@ -269,7 +269,7 @@ az webapp up --name ff-web-XX1234 --sku F1 --os-type Linux \
 
 ## Lab: First Flight
 
-- Copy `week-03/` out of the starters clone
+- Copy `week-03/` out of the starters clone, rename it `first-flight`
 - `dotnet test FirstFlight.Checks` → **1 / 6 passing** — turn the other five green
 - Brand it · add an About page · put it in the nav · greet by name
 - Same rhythm as always: one ❌ at a time
