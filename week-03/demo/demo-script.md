@@ -93,7 +93,7 @@ Tonight's app does not exist yet — building it in front of the room *is* §2. 
 - [ ] **Point at the five numbers on the slide first**, then open the real file and walk them. *"Five acts. Every ASP.NET app you ever open starts with these"*
 - [ ] Open `Program.cs`, narrate the **five acts** — full script below; point at `builder.Build()` as the dividing line ("above: describing an app · below: configuring a real one")
 
-  <details><summary>🎭 The five-act narration (read-aloud)</summary>
+  <details><summary>🎭 The *"five-act narration"* (read-aloud)</summary>
 
   1. **The shopping list** (`CreateBuilder` → `AddControllersWithViews`) — *"we're starting a list of what this app will need; MVC goes on the list. Nothing is running — this is a recipe."*
   2. **Build the machine** (`builder.Build()`) — *"now a real web server is assembled from that list. Everything below configures a machine that exists."*
@@ -112,7 +112,8 @@ Tonight's app does not exist yet — building it in front of the room *is* §2. 
 
 - [ ] 🎞️ **GO TO SLIDE 9** — *The request's journey*
 - [ ] 🎯 **Trace the arrow with your finger — this is the whole night in one picture:** *"URL comes in, routing picks a method, the method picks a view, HTML goes out. Everything after tonight is detail on top of this"*
-- [ ] 🎞️ **GO TO SLIDE 10** — *Routing: the pattern decoded*. **The slide is the exercise** — ask each URL off it before you type it
+- [ ] 🎞️ **GO TO SLIDE 10** — *Routing: the pattern decoded*. **The slide is the exercise:** it maps four URLs to a class and a method, and its last line says one of them 404s without saying which. **Take the rows in order — read the URL aloud, ask the room whether it loads or 404s, and only then type it in the browser**
+  - 🎯 **`/Menu` is the one you type, and it's worth slowing down for.** *(Row 4 would 404 for the same reason — you don't try it.)* The table is not wrong: routing really does resolve `/Menu` to `MenuController.Index()`. There is just no such class yet — you write it on the next slide. *"Routing worked. It found the address and knocked. There was nobody home"*
 - [ ] Predict-then-run the routing table with URLs in the browser: `/` · `/Home/Privacy` · then `/Menu` → **404!** ("no `MenuController` exists — yet")
 
 ### The controller
