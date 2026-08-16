@@ -70,8 +70,10 @@ Tonight's app does not exist yet — building it in front of the room *is* §2. 
 ### Two commands
 
 - [ ] 🎞️ **GO TO SLIDE 6** — *Two commands to a working site*
-- [ ] **The second command is the one that changes the day:** *"`dotnet new mvc` builds it, `dotnet watch` runs it and restarts on every save. If you used Live Server last week, it is that loop, ported to C#. And read the first bullet — a styled, working site before either of us writes a line"*
-- [ ] VS Code → File → Open Folder → in `~/Repos/dotnet-web-dev-course/instructor/week-03`, create a new empty **CommonGrounds.Web** and open it
+- [ ] **The second command is the one that changes the day:** *"`dotnet new mvc` builds it, `dotnet watch` runs it and restarts on every save. If you used Live Server last week, it is that loop, ported to C#. And read the first bullet — a styled, working site before either of us writes a line of code"*
+- [ ] **VS Code → File → Open Folder** → navigate to `~/Repos/dotnet-web-dev-course/instructor/week-03`, then use the dialog's **New Folder** button to create **`CommonGrounds.Web`** *inside* it — and open **that**, not `week-03` itself
+  - ⚠️ **The folder you open becomes the project name** — that's what slide 6's comment means by *name = folder name*. Open `week-03` by mistake and the next command builds `week-03.csproj`, with `namespace week_03` in `HomeController.cs` and `@using week_03` in `_ViewImports.cshtml`. All three are on the projector during the anatomy tour, and slide 7 says `CommonGrounds.Web/`
+  - 💡 **Done it anyway?** Quickest recovery is to delete what got scaffolded and redo it — renaming a project means the `.csproj`, the namespaces and `_ViewImports.cshtml`, which is not a thing to do in front of the room
 - [ ] Integrated terminal:
   ```bash
   dotnet new mvc --no-https
