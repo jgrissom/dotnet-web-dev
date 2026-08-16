@@ -1,6 +1,6 @@
 # Week 4 — Routing & Razor: Pages Built From Data
 
-The night the app stops being a page and becomes a system. Routing gets read *and edited*, a second controller appears out of pure convention, and Razor grows from `@DateTime.Now` into a full data-driven table. Lab is the *Cryptid Registry* — six legendary creatures with an Index, a Details, and an honest 404.
+The night the app stops being a page and becomes a system. Routing gets read *and edited*, a second controller appears out of pure convention, and Razor grows from `@DateTime.Now` into a full data-driven table. Lab is the *Cryptid Registry* — the six creatures they hand-built in week 2, now with an Index, a Details, and an honest 404.
 
 ## Use in this order
 

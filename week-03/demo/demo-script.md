@@ -165,4 +165,5 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 ## 6 · Wrap-up, after the lab *(slides 17–18)*
 
 - [ ] 🎞️ **GO TO SLIDE 17** — *Before next week*. The homework and the reading
+- [ ] **Land the last line:** *"the Cryptid Registry you built out of flat HTML in week 2 — next week you build it again in C#, and this time the pages come off a model"*
 - [ ] 🎞️ **GO TO SLIDE 18** — *The semester, from tonight's summit*. Where the next thirteen weeks go

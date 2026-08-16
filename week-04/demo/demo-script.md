@@ -392,6 +392,7 @@ Everything here happens in `Views/Trucks/Index.cshtml`.
 ## 6 · Hand off to the lab *(slide 19)*
 
 - [ ] 🎞️ **GO TO SLIDE 19** — *Lab: Cryptid Registry 👻*. Leave it up for the whole lab; it's the task list
+- [ ] **Say what they're rebuilding:** *"you built these six in flat HTML in week 2 — same creatures, same archive. Tonight the page comes off a model instead of being typed out six times"*
 
 ## 7 · Wrap-up, after the lab *(slides 20–21)*
 

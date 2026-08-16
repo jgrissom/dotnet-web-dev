@@ -285,7 +285,7 @@ az webapp up --name ff-web-XX1234 --sku F1 --os-type Linux \
 - ✅ Lab to **6 / 6** (`dotnet test FirstFlight.Checks`)
 - ✅ **Deploy it** — `deploy-guide.md` walks every step; submit your Azure URL
 - ✅ 3+ meaningful commits, pushed
-- **Next week:** Razor for real — loops, conditionals, and pages built from data
+- **Next week:** Razor for real — loops, conditionals, and the Cryptid Registry rebuilt from data
 
 ---
 
