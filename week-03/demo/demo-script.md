@@ -95,11 +95,11 @@ Tonight's app does not exist yet — building it in front of the room *is* §2. 
 
   <details><summary>🎭 The five-act narration (read-aloud)</summary>
 
-  1. **The shopping list** (`CreateBuilder` → `AddControllersWithViews`) — "we're starting a list of what this app will need; MVC goes on the list. Nothing is running — this is a recipe."
-  2. **Build the machine** (`builder.Build()`) — "now a real web server is assembled from that list. Everything below configures a machine that exists."
-  3. **The gauntlet** — "every request walks this pipeline in order. In *production* a crash shows a friendly error page — in dev you *want* the raw stack trace, that's the `if`. `UseRouting` reads the URL and decides where it's headed. `UseAuthorization` is the bouncer — bored until week 11, nobody has badges yet. `MapStaticAssets`: asking for a file in `wwwroot`? Just hand it over — that's how Bootstrap's CSS gets served with zero C#."
-  4. **The map** 🥁 — "`MapControllerRoute` — the headliner. This one `pattern` turns URLs into method calls. The rest of tonight lives inside those braces."
-  5. **Open the doors** (`app.Run()`) — "start listening, forever. Everything above was setup; this line *is* the server."
+  1. **The shopping list** (`CreateBuilder` → `AddControllersWithViews`) — *"we're starting a list of what this app will need; MVC goes on the list. Nothing is running — this is a recipe."*
+  2. **Build the machine** (`builder.Build()`) — *"now a real web server is assembled from that list. Everything below configures a machine that exists."*
+  3. **The gauntlet** — *"every request walks this pipeline in order. In *production* a crash shows a friendly error page — in dev you *want* the raw stack trace, that's the `if`. `UseRouting` reads the URL and decides where it's headed. `UseAuthorization` is the bouncer — bored until week 11, nobody has badges yet. `MapStaticAssets`: asking for a file in `wwwroot`? Just hand it over — that's how Bootstrap's CSS gets served with zero C#."*
+  4. **The map** 🥁 — *"`MapControllerRoute` — the headliner. This one `pattern` turns URLs into method calls. The rest of tonight lives inside those braces."*
+  5. **Open the doors** (`app.Run()`) — *"start listening, forever. Everything above was setup; this line *is* the server."*
 
   *(**Not in this file** — a fresh `dotnet new mvc` has no `public partial class Program { }`. Their **lab starter** does, and the lab README tells them to leave it alone, so expect the question during the lab rather than here: "it lets the checks project see the app.")*
 
