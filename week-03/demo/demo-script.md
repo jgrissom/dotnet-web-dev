@@ -57,7 +57,7 @@ Tonight's app does not exist yet — building it in front of the room *is* §2. 
 
 - [ ] 🎞️ **GO TO SLIDE 4** — *Verbs*, then find the verb live in the panel
 - [ ] **The third column is a calendar — say it:** *"every request in that panel tonight is a GET. POST turns up in week 6 when we build forms, and PUT and DELETE not until the Web API in week 14. One verb carries the whole night"*
-- [ ] Click the first request → **Headers**: there's the verb, path, status, `content-type: text/html`
+- [ ] In your web browser dev tools Network Tab, click the first request → **Headers**: *"there's the verb, the path, and the status"*, `content-type: text/html`
 - [ ] 🎞️ **GO TO SLIDE 5** — *Status codes*
 - [ ] **Read the right-hand column, not the codes:** *"two of these are promises. There will be a 404 tonight and I will cause it on purpose. And a 500 means my C# threw — that one is always server's error, never the browser's"*
 - [ ] Status says **`304` instead of `200`?** Even better — that's the browser asking "changed since last time?" and the server answering "use your cached copy" (no body sent). Hard-refresh (**Ctrl/Cmd+Shift+R**) to force a full `200` — show both, name the difference
