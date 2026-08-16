@@ -72,7 +72,7 @@ Content-Type: text/html
 <!DOCTYPE html> ...
 ```
 
-Verb + path in · status + body out. That's the whole internet.
+(Verb + path) in · (status + body) out. That's the whole internet.
 
 ---
 

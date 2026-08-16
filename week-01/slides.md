@@ -80,7 +80,7 @@ Browser (client)  ── HTTP request ──►  Server (ASP.NET app)
 ```
 
 - Today and next week: the **left** side
-- Week 3 onward: the **right** side
+- Week 3 onward: **both**, starting on the right
 
 ---
 

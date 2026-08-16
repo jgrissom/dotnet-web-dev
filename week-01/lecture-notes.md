@@ -34,7 +34,7 @@ Browser (client)  ── HTTP request ──►  Server (your ASP.NET app)
    runs JavaScript                     runs C#, talks to SQL Server
 ```
 
-Weeks 1–2 live on the left side. Week 3 onward, we build the right side.
+Weeks 1–2 live on the left side. Week 3 onward we add the right side — and keep writing the left, because an MVC app is where both meet: your C# answers the request, and the HTML, CSS and JavaScript it sends back are yours too.
 
 ---
 
