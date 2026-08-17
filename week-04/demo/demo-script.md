@@ -409,7 +409,7 @@ Everything here happens in `Views/Trucks/Index.cshtml`.
   </details>
 
 - [ ] Visit `/Trucks/Details/2` → **Cheese Curd Cartel**. Then `/Trucks/Details/5` → Pierogi Party. *Same method, different URL, different page*
-- [ ] Point at the URL: "where did the `2` come from? The **third route slot** — `{id?}`, from slide 3. That's what it was for"
+- [ ] Point at the URL: *"where did the `2` come from? The **third route slot** — `{id?}`, from slide 3. That's what it was for"*
 
 ### An honest 404
 
