@@ -219,7 +219,7 @@ Everything here happens in `Views/Trucks/Index.cshtml`.
 ### The model class
 
 - [ ] 🎞️ **GO TO SLIDE 13** — *The model is just a class*
-- [ ] 🎯 **Land the four words at the bottom:** *"no base class, no attributes, nothing from ASP.NET. The M in MVC is plain C# — this is the least new thing tonight"*
+- [ ] 🎯 **Land the two lines under the code:** *"no base class, no attributes, nothing from ASP.NET. The M in MVC is plain C# — this is the least new thing tonight"*
 - [ ] Create `Models/Truck.cs` — **type it** (it's a plain C# class; nothing web about it):
   ```csharp
   namespace Curbside.Models;
