@@ -10,7 +10,7 @@ The night the app stops being a page and becomes a system. Routing gets read *an
 | Prep&nbsp;/⁠&nbsp;in-⁠class&nbsp;script | 📖&nbsp;[lecture-⁠notes.md](lecture-notes.md) | Full lecture content, predict-then-run answers, **troubleshooting appendix** |
 | Projected&nbsp;in&nbsp;class | 🎞️&nbsp;[slides.md](slides.md) | The deck (GFM, one slide per `##`) — [**present it live**](https://jgrissom.github.io/dotnet-web-dev/week-04/) (arrow keys, `F` for fullscreen) |
 | In&nbsp;class,&nbsp;live-⁠coding | 🎨&nbsp;[demo/⁠](demo/) | *Curbside* — a food-truck directory built live (different content than the lab); [clickable cue sheet](https://jgrissom.github.io/dotnet-web-dev/week-04/demo/script.html) |
-| In&nbsp;class,&nbsp;last&nbsp;30&nbsp;min | 🧪&nbsp;[lab/⁠](lab/) | *Cryptid Registry* — 6 `dotnet test` checks; 1/6 green out of the box (answer key in the private answer-keys repo) |
+| In&nbsp;class,&nbsp;last&nbsp;40&nbsp;min | 🧪&nbsp;[lab/⁠](lab/) | *Cryptid Registry* — 6 `dotnet test` checks; 1/6 green out of the box (answer key in the private answer-keys repo) |
 | With&nbsp;the&nbsp;homework | ✅&nbsp;[homework-⁠checks.js](homework-checks.js) | Student self-check — included via `<script>` tag like a CDN; the same checks the grader runs (12 of the 20 pts) |
 | Assigned&nbsp;at&nbsp;wrap-⁠up | 📤&nbsp;[homework.md](homework.md) | Your own list-and-details site, deployed to Azure; URL + repo via Canvas |
 

@@ -2,7 +2,7 @@
 
 Six legendary creatures, one archive — **the same six you hand-built in flat HTML back in week 2.** Tonight it stops being three static pages and becomes an app: a list page, a details page, and a 404 that tells the truth. Same rhythm as *First Flight* — run the checks, turn red into green.
 
-**Time:** ~30 minutes in class — **in-class target: checks 1–4 green.** Checks 5–6 (and deploying it) roll into the homework by design.
+**Time:** ~40 minutes in class — **in-class target: checks 1–4 green.** Checks 5–6 (and deploying it) roll into the homework by design.
 
 ## Setup
 
