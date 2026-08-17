@@ -96,7 +96,7 @@ Views/Trucks/Index.cshtml            ← folder named for the controller,
 `return View()` with no arguments means: *"go find the view whose name matches the action I'm in, in the folder named after my controller."* Nobody registers anything. This is **convention over configuration** — the phrase from week 3, now doing real work.
 
 > [!TIP]
-> **Misname a folder on purpose** (demo §2). Rename `Views/Trucks` to `Views/Truck`, refresh, and read the error page out loud — ASP.NET Core lists *every path it searched*. That error message is the single most useful thing a beginner can learn to read this semester: it doesn't just say "broken," it says "I looked here, here, and here." Rename it back.
+> **Misname a folder on purpose** (demo §2). Rename `Views/Trucks` to `Views/Truck`, refresh, and read the error page out loud — ASP.NET Core lists *every path it searched*. That error message is the single most useful thing a beginner can learn to read this semester: it doesn't just say "broken," it says "I looked here, and here" — naming `Views/Trucks/Index.cshtml` and `Views/Shared/Index.cshtml`, the only two places it tried. Rename it back.
 
 ### Content() before View()
 

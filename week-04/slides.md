@@ -100,12 +100,9 @@ Routing is configuration, not magic. So let's edit it.
 ## Three names must agree
 
 ```
-Controllers/TrucksController.cs     ← class TrucksController
-                ▲
-                │  "Trucks" must match
-                ▼
-Views/Trucks/Index.cshtml           ← folder = controller
-                                      file   = action
+1. class    TrucksController     ← this is what makes /Trucks work
+2. folder   Views/Trucks/        ← named for the controller
+3. file     Index.cshtml         ← named for the action
 ```
 
 `return View()` = *"find the view named after the action I'm in."*

@@ -98,9 +98,9 @@ dotnet-web-dev-course/
 
 ### A controller with no view
 
-- [ ] 🎞️ **GO TO SLIDE 6** — *Three names must agree*: `TrucksController` → `/Trucks` → `Views/Trucks/Index.cshtml`
-- [ ] 🎯 **Name the three out loud — they are three places holding one word, not three different names:** *"the class is `TrucksController`, the URL is `/Trucks`, the folder is `Views/Trucks`. The same word, three times — and nothing is registered anywhere. The name is the wiring"*
-- [ ] ⚠️ **The view *file* is a second agreement, and the slide's bottom half is the only place it's stated:** `Index.cshtml` is named after the **action**, not the controller. Worth separating out loud, or `Trucks`/`Index` blur into one rule — rename the file and the error says *the view 'Index' was not found*, never a word about the folder
+- [ ] 🎞️ **GO TO SLIDE 6** — *Three names must agree*: `TrucksController` → `Views/Trucks/` → `Index.cshtml`
+- [ ] 🎯 **Count them off the slide — they're numbered, so say the numbers:** *"one, the class, `TrucksController` — that's what makes `/Trucks` work. Two, the folder, `Views/Trucks`, named for the controller. Three, the file, `Index.cshtml`, named for the action"* — then: *"nobody registers any of this. The names are the wiring"*
+- [ ] ⚠️ **Two of the three are the word `Trucks`, the third is `Index`** — worth separating out loud or they blur into one rule. Rename `Index.cshtml` and the error says *the view 'Index' was not found*, never a word about the folder: the **file** tracks the action, the **folder** tracks the controller
 - [ ] Create `Controllers/TrucksController.cs` — **type it**:
   ```csharp
   using Microsoft.AspNetCore.Mvc;
@@ -119,7 +119,7 @@ dotnet-web-dev-course/
 
 ### Then the view
 
-- [ ] 🎞️ **GO TO SLIDE 7** — *Prove one half at a time*. That's what `Content()` was for; now take the second half
+- [ ] 🎞️ **GO TO SLIDE 7** — *Prove one half at a time*. That's what `Content()` was for; now take the second half. *"Chances are you don't want to return a string (content). Mofe than likely you want to return markup like html, css, js - that's why we return razor views"*
 - [ ] Now swap `Content("trucks!")` for `return View();` → refresh → **error: view not found**
 - [ ] **Read the error out loud.** It names the two paths it searched — `/Views/Trucks/Index.cshtml`, then `/Views/Shared/Index.cshtml`. "This error doesn't say *broken* — it says *I looked here, and here*"
 - [ ] Create `Views/Trucks/Index.cshtml` — **type it**:
