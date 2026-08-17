@@ -97,6 +97,15 @@ public static class CryptidData
 | 5 | `BadIdIsNotFound` | `/Cryptids/Details/999` must return a **404**, not a crash and not a blank page. [`FirstOrDefault` + `NotFound()`](../lecture-notes.md#details-and-the-notfound-guard). |
 | 6 | `IndexLinksToDetails` | Each row links to its own details page — `href="/Cryptids/Details/@cryptid.Id"` inside the loop. |
 
+> [!IMPORTANT]
+> **The first time you create a `.cshtml` file, terminal 1 stops and asks a question.** Hot reload can add code to a running app, but a brand-new view isn't something it can apply, so `dotnet watch` pauses and prints:
+>
+> ```
+> Do you want to restart your app? Yes (y) / No (n) / Always (a) / Never (v)
+> ```
+>
+> **Press `a`** — it restarts, and it never asks again for the rest of the lab. Until you answer, your page keeps failing while the file on screen looks perfectly correct, and there is nothing in the browser to tell you why. It happens on task 2's `Index.cshtml` and again on task 4's `Details.cshtml` if you answered anything other than `a`.
+
 > [!TIP]
 > **Your controller needs `using Cryptids.Web.Models;` at the top** before it can see `CryptidData`. Being in the same project isn't enough — [a namespace has to be imported](../lecture-notes.md#namespaces-and-the-using-they-require).
 >

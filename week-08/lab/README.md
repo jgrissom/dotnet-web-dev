@@ -224,7 +224,7 @@ using Microsoft.EntityFrameworkCore;
 **Then the view.** Make `Views/Cryptids/Edit.cshtml` — the scaffold's `Views/CryptidsScaffold/Edit.cshtml` has the mechanics, your `Create.cshtml` has the style, and this is the two combined. **This is the whole file:**
 
 > [!IMPORTANT]
-> **Creating a new `.cshtml` makes `dotnet watch` stop and ask to restart** — `Do you want to restart your app? Yes (y) / No (n) / Always (a)`, in the terminal watch is running in. Answer **`a`** and it won't ask again for the rest of the lab. Ignore it and the page fails with **`The view 'Edit' was not found`** — listing the exact path your file is sitting at, because the running app was built before the file existed. The file is fine; the app is old.
+> **Creating a new `.cshtml` makes `dotnet watch` stop and ask to restart** — `Do you want to restart your app? Yes (y) / No (n) / Always (a) / Never (v)`, in the terminal watch is running in. Answer **`a`** and it won't ask again for the rest of the lab. Ignore it and the page fails with **`The view 'Edit' was not found`** — listing the exact path your file is sitting at, because the running app was built before the file existed. The file is fine; the app is old.
 
 ```html
 @model Cryptid
@@ -627,7 +627,7 @@ public async Task<IActionResult> Index()
 - **An edit redirects but nothing changed** — `Update` only marks; the write is `await _context.SaveChangesAsync();`.
 - **Editing created a duplicate instead** — the POST calls `Add` somewhere. An edit goes through `Update`.
 - **Saving an edit erased the Latin name / plate** — the `[Bind]` list doesn't include the new names. Task 6's caution block is the fix, and this is *the* silent bug of the week.
-- **`The view 'Edit' was not found`, and the file *is* right there** — **look at your `dotnet watch` terminal.** Creating a new `.cshtml` is a change hot reload can't apply (`ENC0021`), so watch stops and asks **`Do you want to restart your app? Yes (y) / No (n) / Always (a)`** — and until you answer it, the app keeps serving the build from before your file existed. Press **`a`** and it stops asking for the rest of the lab. **Don't move the file; it's in the right place.**
+- **`The view 'Edit' was not found`, and the file *is* right there** — **look at your `dotnet watch` terminal.** Creating a new `.cshtml` is a change hot reload can't apply (`ENC0021`), so watch stops and asks **`Do you want to restart your app? Yes (y) / No (n) / Always (a) / Never (v)`** — and until you answer it, the app keeps serving the build from before your file existed. Press **`a`** and it stops asking for the rest of the lab. **Don't move the file; it's in the right place.**
 - **`The view 'Edit' was not found`, and the file genuinely isn't there** — it belongs at `Views/Cryptids/Edit.cshtml` (same for `Delete.cshtml`). Check the spelling and the folder before you blame the reload.
 - **POSTing the delete returns 405** — the POST half is missing or lost its `[ActionName("Delete")]`. Port `DeleteConfirmed` with both attributes.
 - **"already defines a member called 'Delete'"** — you named the POST `Delete` too. That's why the scaffold's is `DeleteConfirmed`.
