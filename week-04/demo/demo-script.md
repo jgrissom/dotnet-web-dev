@@ -81,6 +81,7 @@ dotnet-web-dev-course/
   | `/Home/Privacy/7` | does it break? | works — `7` matches `{id?}`, nothing catches it |
   | `/Trucks` | ? | **404** — no `TrucksController`… *yet* |
 
+- [ ] ⚠️ **The slide's last line promises that two of the five do something they won't expect — these are the two.** `/Privacy` **404s where they expect it to work**, and `/Home/Privacy/7` **works where they expect it to break**. The other three land where the room puts them, so move briskly through those and spend the minutes here. If you ever add a row, re-count the slide
 - [ ] 🎞️ **GO TO SLIDE 5** — *The URL is not a file path*. Land it on the `/Privacy` answer they just got wrong
 - [ ] `/Privacy` is the money question — most rooms guess it works. Let them be wrong, then explain: **the first slot is always the controller**
 - [ ] **Break it #1** — change the default action, save, visit `/`:
