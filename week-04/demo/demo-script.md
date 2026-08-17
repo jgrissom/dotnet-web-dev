@@ -414,7 +414,7 @@ Everything here happens in `Views/Trucks/Index.cshtml`.
 ### An honest 404
 
 - [ ] 🎞️ **GO TO SLIDE 18** — *Guard the door*
-- [ ] **Now visit `/Trucks/Details/999`** → a clean **404**. "Not a crash. Not a blank page. *That truck doesn't exist*, said properly"
+- [ ] **Now visit `/Trucks/Details/999`** → a clean **404**. *"Not a crash. Not a blank page. That truck doesn't exist, said properly"*
 - [ ] *(Optional, if the room is with you)* comment out the null check, refresh `/999` → a **500** and a `NullReferenceException`. Restore the guard. "500 means my code. 404 means routing. Tonight you've now caused both on purpose"
 - [ ] **Link the list to the details** — in `Index.cshtml`, the last `<td>` of each row currently holds only the badge. Add the link **inside that same cell**, just below the `@if` block, so it reads:
   ```html
