@@ -99,6 +99,8 @@ dotnet-web-dev-course/
 ### A controller with no view
 
 - [ ] 🎞️ **GO TO SLIDE 6** — *Three names must agree*: `TrucksController` → `/Trucks` → `Views/Trucks/Index.cshtml`
+- [ ] 🎯 **Name the three out loud — they are three places holding one word, not three different names:** *"the class is `TrucksController`, the URL is `/Trucks`, the folder is `Views/Trucks`. The same word, three times — and nothing is registered anywhere. The name is the wiring"*
+- [ ] ⚠️ **The view *file* is a second agreement, and the slide's bottom half is the only place it's stated:** `Index.cshtml` is named after the **action**, not the controller. Worth separating out loud, or `Trucks`/`Index` blur into one rule — rename the file and the error says *the view 'Index' was not found*, never a word about the folder
 - [ ] Create `Controllers/TrucksController.cs` — **type it**:
   ```csharp
   using Microsoft.AspNetCore.Mvc;
