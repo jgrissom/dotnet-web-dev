@@ -25,7 +25,7 @@ dotnet-web-dev-course/
    └─ week-04/                     ← EMPTY. §0b creates Curbside in it, live at 0:05
 ```
 
-⚠️ **Tonight's Curbside is built from scratch, not from week 3's app.** §1's predict-then-run table assumes a pristine template with no extra controllers, and `CommonGrounds.Web` has two. Its own week folder is what keeps them apart — **you don't delete week 3 to get there.**
+⚠️ **Tonight's Curbside is built from scratch, not from week 3's app.** §1's predict-then-run table assumes a pristine template — nothing but `HomeController` — and `CommonGrounds.Web` has `MenuController` alongside it, so `/Menu` answers there and 404s here. Its own week folder is what keeps them apart — **you don't delete week 3 to get there.**
 
 - [ ] **Make tonight's folder** (harmless if it's already there):
   ```bash
@@ -57,7 +57,6 @@ dotnet-web-dev-course/
   ```
 - [ ] **✓ say it:** *"Two commands, same as last week — and this is exactly the first thing your homework asks you to do tonight."*
 - [ ] Working site on `localhost`; park a browser tab on `/` — you'll be typing URLs into it in about a minute
-- [ ] **Build it fresh** — don't reuse week 3's CommonGrounds app. §1's predict-then-run table assumes a pristine template (no extra controllers)
 
 ## 1 · Routing: read it, then break it *(slides 3–5)*
 
