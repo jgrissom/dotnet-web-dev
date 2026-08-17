@@ -333,12 +333,9 @@ section pre .hljs-selector-class, section pre .hljs-selector-pseudo { color: #7e
 section footer { color: #9fb2c1; font-size: 0.6em; opacity: 0.85; }
 ;" data-marpit-pagination-total="21">
 <h2 id="three-names-must-agree">Three names must agree</h2>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code>Controllers/TrucksController.cs     ← class TrucksController
-                ▲
-                │  &quot;Trucks&quot; must match
-                ▼
-Views/Trucks/Index.cshtml           ← folder = controller
-                                      file   = action
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code>1. class    TrucksController     ← this is what makes /Trucks work
+2. folder   Views/Trucks/        ← named for the controller
+3. file     Index.cshtml         ← named for the action
 </code></pre>
 <p><code>return View()</code> = <em>&quot;find the view named after the action I'm in.&quot;</em></p>
 <p><strong>Convention over configuration.</strong></p>
