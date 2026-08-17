@@ -238,7 +238,7 @@ Everything here happens in `Views/Trucks/Index.cshtml`.
 ### The seed data
 
 - [ ] 🎞️ **GO TO SLIDE 14** — *Six trucks, no database*
-- [ ] *"A static list standing in for a database. Point at it and remember it — in week 7 this file gets deleted and this exact shape becomes a SQL Server table"*
+- [ ] 🎯 **Land the `static`, which is the half the file itself won't explain:** *"a new controller object is created for every single request. An instance field would be gone before the next visitor arrived — `static` is what makes this behave like a data store"*
 - [ ] Create `Models/TruckData.cs` — **paste**:
 
   <details><summary>📋 paste: the seeded list</summary>
