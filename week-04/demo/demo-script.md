@@ -84,6 +84,8 @@ dotnet-web-dev-course/
 - [ ] ⚠️ **The slide's last line says two of the five may not go where they expect — these are the two.** `/Privacy` **404s where they expect it to work**, and `/Home/Privacy/7` **works where they expect it to break**. The other three land where the room puts them, so move briskly through those and spend the minutes here. If you ever add a row, re-count the slide
 - [ ] 🎞️ **GO TO SLIDE 5** — *The URL is not a file path*. Land it on the `/Privacy` answer they just got wrong
 - [ ] `/Privacy` is the money question — most rooms guess it works. Let them be wrong, then explain: **the first slot is always the controller**
+- [ ] 🎯 **Then widen it to the slide's title, because week 2 made the opposite true:** *"in week 2 a URL and a file were the same thing — the archive list lived in a file called `registry.html`, and opening that file is how you saw the page. There is no folder named Trucks. The URL is an instruction now — run this method — and the pattern is the translation table"*
+- [ ] Its last line is your way into the break, so read it and go straight there: *"routing is configuration, not magic. So let's edit it"*
 - [ ] **Break it #1** — change the default action, save, visit `/`:
   ```csharp
   pattern: "{controller=Home}/{action=Privacy}/{id?}"
