@@ -29,7 +29,14 @@ CryptidRegistry/            ← in `dotnet-web`, the folder you copied and renam
 
 **3. Open `CryptidRegistry` in VS Code** — the folder that *contains* both project folders, not one of the projects themselves. (File → Open Folder → pick `CryptidRegistry`.)
 
-**4. In the VS Code terminal, from that same folder:**
+**4. Open a second terminal** — the `+` in the terminal panel, or `` Ctrl+Shift+` ``. **You need two, and so does every .NET week from here on:** `dotnet watch` keeps running and rebuilds on every save, which is why you can't type in it.
+
+| Terminal | Where it stands | What runs in it |
+|---|---|---|
+| 1 | inside `Cryptids.Web` — `cd Cryptids.Web` | [`dotnet watch`](../../week-03/lecture-notes.md#dotnet-new-mvc) — start it, then leave it alone |
+| 2 | `CryptidRegistry`, the folder holding **both** projects | `dotnet test Cryptids.Checks`, after every task |
+
+**5. In terminal 2:**
 
 ```bash
 dotnet test Cryptids.Checks
@@ -44,7 +51,7 @@ dotnet test Cryptids.Checks
 > **Git fighting you at the worst moment?** Don't lose lab time to it. On the [starters repo page](https://github.com/jgrissom/dotnet-web-starters), click **Code → Download ZIP**, unzip it, and copy `week-04` out of that instead. Same files. Sort the clone out afterwards — cloning is still how you'll get every other week.
 
 > [!TIP]
-> Two terminals: in one, `cd Cryptids.Web` then [`dotnet watch`](../../week-03/lecture-notes.md#dotnet-new-mvc); in the other, stay at the parent folder and re-run `dotnet test Cryptids.Checks` after each task. Browser for feel, checks for truth.
+> **Browser for feel, checks for truth.** Keep the page open while you work — but let `dotnet test` decide when a task is actually done.
 
 ## What you're given
 

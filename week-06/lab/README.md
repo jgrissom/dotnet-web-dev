@@ -31,7 +31,14 @@ CryptidForms/               ← in `dotnet-web`, the folder you copied and renam
 
 **3. Open `CryptidForms` in VS Code** — the folder that *contains* both project folders, not one of the projects themselves.
 
-**4. In the VS Code terminal, from that same folder:**
+**4. Open a second terminal** — the `+` in the terminal panel, or `` Ctrl+Shift+` ``. **You need two:** `dotnet watch` keeps running and rebuilds on every save, which is why you can't type in it.
+
+| Terminal | Where it stands | What runs in it |
+|---|---|---|
+| 1 | inside `Cryptids.Web` — `cd Cryptids.Web` | `dotnet watch` — start it, then leave it alone |
+| 2 | `CryptidForms`, the folder holding **both** projects | `dotnet test Cryptids.Checks`, after every task |
+
+**5. In terminal 2:**
 
 ```bash
 dotnet test Cryptids.Checks
@@ -43,7 +50,7 @@ dotnet test Cryptids.Checks
 > Seeing `error MSB1009: Project file does not exist`? You're one folder too deep — probably inside `Cryptids.Web`. Run `cd ..` and try again; the command goes in the folder that holds *both* projects.
 
 > [!TIP]
-> Two terminals: in one, `cd Cryptids.Web` then `dotnet watch`; in the other, stay at the parent folder and re-run `dotnet test Cryptids.Checks` after each task. Keep `/Cryptids` open in a browser tab — every task tonight ends with you filling a form in and watching what the app does about it.
+> Keep `/Cryptids` open in a browser tab — every task tonight ends with you filling a form in and watching what the app does about it.
 
 ## Where tonight's work happens
 

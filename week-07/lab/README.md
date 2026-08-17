@@ -31,7 +31,15 @@ CryptidsDb/                ← in `dotnet-web`, the folder you copied and rename
 
 **3. Open `CryptidsDb` in VS Code** — the folder that *contains* both project folders.
 
-**4. In the VS Code terminal, from that same folder:**
+**4. Open two more terminals** — the `+` in the terminal panel, or `` Ctrl+Shift+` ``. **You need three tonight**, and the reason is the row below: `dotnet watch` keeps running and you can't type in it, so the `dotnet ef` commands need a terminal of their own *also* inside `Cryptids.Web`.
+
+| Terminal | Where it stands | What runs in it |
+|---|---|---|
+| 1 | inside `Cryptids.Web` — `cd Cryptids.Web` | `dotnet watch` — start it once the database is wired up, then leave it alone |
+| 2 | inside `Cryptids.Web` — `cd Cryptids.Web` | every `dotnet ef` and `dotnet user-secrets` command |
+| 3 | `CryptidsDb`, the folder holding **both** projects | `dotnet test Cryptids.Checks`, after every task |
+
+**5. In terminal 3:**
 
 ```bash
 dotnet test Cryptids.Checks
@@ -46,7 +54,7 @@ dotnet test Cryptids.Checks
 > **`dotnet ef` commands are the opposite: they run from inside `Cryptids.Web`.** Every `dotnet ef` line in this lab needs `cd Cryptids.Web` first. Getting `No project was found in the current working directory` means you're one folder too high. This trips everybody at least once tonight.
 
 > [!TIP]
-> Two terminals: in one, `cd Cryptids.Web` — that's where `dotnet watch` and every `dotnet ef` command go. In the other, stay at the parent folder for `dotnet test Cryptids.Checks`.
+> **Watch the SQL as you go.** EF Core prints every query it generates into terminal 1, so the `dotnet watch` terminal is worth keeping visible tonight — it's the only place you can see what your C# turned into.
 
 ## Where tonight's work happens
 

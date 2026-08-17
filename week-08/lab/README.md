@@ -33,7 +33,15 @@ CryptidsCrud/              ← in `dotnet-web`, the folder you copied and rename
 
 **3. Open `CryptidsCrud` in VS Code** — the folder that *contains* both project folders.
 
-**4. In the VS Code terminal, from that same folder:**
+**4. Open two more terminals** — the `+` in the terminal panel, or `` Ctrl+Shift+` ``. **You need three tonight**, and `dotnet watch` is why: it stays running all lab and you can't type in it.
+
+| Terminal | Where it stands | What runs in it |
+|---|---|---|
+| 1 | inside `Cryptids.Web` | `dotnet watch` — started in task 1, left alone after that |
+| 2 | inside `Cryptids.Web` | everything else: `dotnet user-secrets`, `dotnet ef`, `dotnet aspnet-codegenerator` |
+| 3 | `CryptidsCrud`, the folder holding **both** projects | `dotnet test Cryptids.Checks` |
+
+**5. In terminal 3:**
 
 ```bash
 dotnet test Cryptids.Checks
@@ -42,15 +50,7 @@ dotnet test Cryptids.Checks
 **1 / 6 passing.** Check 1 is the week-7 Registry you were handed, already working. The other five are tonight.
 
 > [!CAUTION]
-> **Same folder split as last week, and it still trips everybody:** `dotnet test Cryptids.Checks` runs from the folder holding *both* projects; `dotnet ef`, `dotnet user-secrets`, `dotnet watch` and tonight's new `dotnet aspnet-codegenerator` all run from **inside `Cryptids.Web`**.
->
-> **So open three terminals now, before you start** — `dotnet watch` stays running all lab and you can't type in it:
->
-> | Terminal | Where | What runs in it |
-> |---|---|---|
-> | 1 | inside `Cryptids.Web` | `dotnet watch` — started in task 1, left alone after that |
-> | 2 | inside `Cryptids.Web` | everything else: `dotnet user-secrets`, `dotnet ef`, `dotnet aspnet-codegenerator` |
-> | 3 | the folder holding **both** projects | `dotnet test Cryptids.Checks` |
+> **Same folder split as last week, and it still trips everybody:** `dotnet test Cryptids.Checks` runs from the folder holding *both* projects; `dotnet ef`, `dotnet user-secrets`, `dotnet watch` and tonight's new `dotnet aspnet-codegenerator` all run from **inside `Cryptids.Web`** — which is what step 4's table above is arranging for you.
 
 ## Where tonight's work happens
 
