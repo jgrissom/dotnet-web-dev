@@ -9,4 +9,4 @@ Week 4's demo is editor theater: you build **Curbside**, a food-truck directory,
 > §1 has you **edit the route pattern twice and restore it**. If you get interrupted mid-segment, the app 404s in ways that will confuse everyone including you. The script flags the restore both times — trust it, and re-read the pattern before moving to §2.
 
 > [!TIP]
-> The two beats worth protecting if you run short: the **`@foreach` → View Source** moment in §3 (one `<li>` in, six out) and the **`/Trucks/Details/999`** 404 in §5. Everything else is scaffolding around those two.
+> The two beats worth protecting if you run short: the **`@foreach` → View Source** moment in §3 (one `<li>` in, four out) and the **`/Trucks/Details/999`** 404 in §5. Everything else is scaffolding around those two.
