@@ -62,6 +62,32 @@ The lab's `Cryptid` won't transfer, but the moves do. A few translations:
 > [!WARNING]
 > **Seed data must not use `DateTime.Now`, `Guid.NewGuid()`, or anything else that changes.** EF Core compares your seed data against the last snapshot every time you add a migration; if the values move, every migration contains pointless updates. Hard-code them.
 
+### Swap the self-check over before you deploy
+
+It has to ship *with* the app — the script grades whatever site it is loaded on, so a week-6 tag on
+your deployed site means a week-6 report, in green, about the wrong week.
+
+**Open `Views/Home/Index.cshtml`.** Find last week's line and **replace it** — same place, same section, one character different:
+
+```html
+<script src="https://jgrissom.github.io/dotnet-web-dev/week-06/homework-checks.js"></script>
+```
+
+becomes
+
+```html
+<script src="https://jgrissom.github.io/dotnet-web-dev/week-07/homework-checks.js"></script>
+```
+
+*(Can't find the old line? Search your project for `week-06` — **Ctrl+Shift+F** / **⇧⌘F**.)*
+
+> [!CAUTION]
+> **Replace it. Don't add a second one.**
+>
+> Week 6's checker still works, and nothing you did this week broke any of its requirements — so it prints a full green report. Worse than last week: it's scored out of **14** and this week's is scored out of **6**, so the stale report looks *better* than the real one.
+>
+> **The tell is the first line.** `🔎 Week 6 self-check` is the wrong one; this week's says **`Week 7`**. If both are installed, this week's prints a red 🚨 above the score.
+
 ## Part 3 — Check your password isn't in your public repo 🔐
 
 There is no work in this part. That's the point of it.
@@ -153,28 +179,7 @@ Then restart your local app and reload. Still there.
 > [!CAUTION]
 > **This one changes your data, and this week the change sticks.** It submits your form twice: once with rubbish, to check you refuse it, and once with a good record. That second one leaves an item called **`SelfCheck entry`** in your list — and unlike last week it will still be there tomorrow, because that's the point. Delete it by hand if you like; you don't need to.
 
-**Open `Views/Home/Index.cshtml`.** Find last week's line and **replace it** — same place, same section, one character different:
-
-```html
-<script src="https://jgrissom.github.io/dotnet-web-dev/week-06/homework-checks.js"></script>
-```
-
-becomes
-
-```html
-<script src="https://jgrissom.github.io/dotnet-web-dev/week-07/homework-checks.js"></script>
-```
-
-*(Can't find the old line? Search your project for `week-06` — **Ctrl+Shift+F** / **⇧⌘F**.)*
-
-> [!CAUTION]
-> **Replace it. Don't add a second one.**
->
-> Week 6's checker still works, and nothing you did this week broke any of its requirements — so it prints a full green report. Worse than last week: it's scored out of **14** and this week's is scored out of **6**, so the stale report looks *better* than the real one.
->
-> **The tell is the first line.** `🔎 Week 6 self-check` is the wrong one; this week's says **`Week 7`**. If both are installed, this week's prints a red 🚨 above the score.
-
-Then load your home page and open the console — **F12 → Console**.
+**You swapped the checker to week 7 in Part 2, so it went up with the deploy.** Load your **Azure URL** and open the console — **F12 → Console**.
 
 ```
 🔎 Week 7 self-check — https://trailguide-ab1234.azurewebsites.net

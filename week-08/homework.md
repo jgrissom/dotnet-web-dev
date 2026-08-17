@@ -57,6 +57,28 @@ The lab's moves transfer one-for-one; only the names change. Translations that c
 > [!WARNING]
 > **Do not delete your `Migrations` folder to "start clean."** Your database's `__EFMigrationsHistory` remembers your old migration files by name; regenerated files can never be applied to it. [Forward only](lecture-notes.md#forward-only) — a wrong migration is fixed by adding another one. (A migration you generated but never applied is the exception: `dotnet ef migrations remove` unwinds it safely.)
 
+### Swap the self-check over before you deploy
+
+It has to ship *with* the app — the script grades whatever site it is loaded on, so a week-7 tag on
+your deployed site means a week-7 report, in green, about the wrong week.
+
+**Open `Views/Home/Index.cshtml`.** Find last week's line and **replace it** — same place, one character different:
+
+```html
+<script src="https://jgrissom.github.io/dotnet-web-dev/week-07/homework-checks.js"></script>
+```
+
+becomes
+
+```html
+<script src="https://jgrissom.github.io/dotnet-web-dev/week-08/homework-checks.js"></script>
+```
+
+*(Can't find it? Search the project for `week-07` — **Ctrl+Shift+F** / **⇧⌘F**.)*
+
+> [!CAUTION]
+> **Replace it. Don't add a second one.** Week 7's checker still passes — nothing this week breaks last week's requirements — so it prints a reassuring green report about the wrong week. The tell is the first line: it should say **`Week 8`**. If both are installed, this week's prints a red 🚨 above the score.
+
 ## Part 3 — Deploy it (graded, and shorter than it has ever been)
 
 **Apply the migration first.** Your laptop and your Azure app share one database, so:
@@ -89,24 +111,7 @@ That's it. **No second command this week.** Last week's `az webapp config appset
 > [!NOTE]
 > **What it does to your data: nothing, if Delete works.** It files a record through your form, edits it into `SelfCheck entry (edited)`, tries a bad edit (which you should refuse), then **deletes it through your own confirmation flow** — leaving your list exactly as it found it. The deletion isn't just cleanup; it's the D being graded. If the delete step fails, the test record stays until your Delete works (run it again) or you remove it by hand.
 
-**Open `Views/Home/Index.cshtml`.** Find last week's line and **replace it** — same place, one character different:
-
-```html
-<script src="https://jgrissom.github.io/dotnet-web-dev/week-07/homework-checks.js"></script>
-```
-
-becomes
-
-```html
-<script src="https://jgrissom.github.io/dotnet-web-dev/week-08/homework-checks.js"></script>
-```
-
-*(Can't find it? Search the project for `week-07` — **Ctrl+Shift+F** / **⇧⌘F**.)*
-
-> [!CAUTION]
-> **Replace it. Don't add a second one.** Week 7's checker still passes — nothing this week breaks last week's requirements — so it prints a reassuring green report about the wrong week. The tell is the first line: it should say **`Week 8`**. If both are installed, this week's prints a red 🚨 above the score.
-
-Then load your home page and open the console — **F12 → Console**:
+**You swapped the checker to week 8 in Part 2, so it went up with the deploy.** Load your **Azure URL** and open the console — **F12 → Console**:
 
 ```
 🔎 Week 8 self-check — https://trailguide-ab1234.azurewebsites.net
