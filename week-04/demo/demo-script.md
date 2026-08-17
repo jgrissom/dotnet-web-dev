@@ -208,7 +208,7 @@ Everything here happens in `Views/Trucks/Index.cshtml`.
 - [ ] 🎞️ **GO TO SLIDE 10** — *The big idea*. It now says the number they just counted, so land its bottom line: *"you no longer write a page. You write a rule for producing a page"*
 - [ ] Add a fifth cuisine to the array → the page grows. **Data changed, markup didn't**
 - [ ] 🎞️ **GO TO SLIDE 11** — *Week 2, revisited*
-- [ ] Callback to week 2: "the coffee shop's six menu cards were six hand-typed blocks. This is that job, done once"
+- [ ] Callback to week 2: *"the coffee shop's six menu cards were six hand-typed blocks. This is that job, done once"*
 
 ### Comments
 
