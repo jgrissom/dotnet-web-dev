@@ -350,7 +350,9 @@ Everything here happens in `Views/Trucks/Index.cshtml`.
 
   </details>
 
-- [ ] Six rows, styled, from six objects. **Let it land.** Point at `@model` (line 1) and `@Model` (the `.Count`) and name the lowercase/capital difference
+- [ ] Six rows, styled, from six objects. **Let it land**
+- [ ] **Point at line 1, then at `@Model.Count`, and name the difference:** *"lowercase `@model` is a declaration. It appears once, at the top, and it prints nothing — all it does is tell this file what type is coming. Capital `@Model` is the object itself, and you use it everywhere below. One letter apart, and they do opposite jobs"*
+- [ ] 💡 *Optional, if you want it to bite — the two typos fail in opposite directions.* Lowercase where the value belongs (`@model.Count`) is **loud**: three Razor errors, the first being *"The 'model' directive may only occur once per document"* — proof that lowercase is **always** the directive, wherever you put it. Capital where the declaration belongs (`@Model List<Truck>`) is **silent**: the page still renders six rows, but the view has quietly lost its type and prints `System.Collections.Generic.List` and friends across the top — the same ugly spelling as the mismatch error a minute ago
 - [ ] **Now make the two halves disagree** — the error you promised a minute ago. In `TrucksController.Index`, hand the view *one* truck instead of the whole list:
   ```csharp
   return View(TruckData.All[0]);
