@@ -358,7 +358,7 @@ Everything here happens in `Views/Trucks/Index.cshtml`.
   return View(TruckData.All[0]);
   ```
 - [ ] Refresh `/Trucks` → **500**. Read the message out loud; it names both types — *"the model item passed into the ViewDataDictionary is of type `Truck`, but this ViewDataDictionary instance requires a model item of type `List<Truck>`"*
-- [ ] Land it: *"the controller and the view disagreed, and nothing caught it until someone asked for the page. Hold that thought"*
+- [ ] Land it: *"the controller and the view disagreed, and nothing caught it until someone asked for the page."*
 - [ ] **Restore it** — back to `return View(TruckData.All);` — and refresh until the six rows are back before you go on
 - [ ] **The IntelliSense moment** — inside the loop, type `@truck.` and let the list pop up. Then break it: change `@truck.Name` to `@truck.Titel`, save → **red squiggle + a build error before the refresh**. "`ViewData` would have failed silently. This didn't." Fix it
 - [ ] **Cash the contrast from a minute ago:** *"the mismatch needed a visitor to find it. The typo never even built. Same week, two different moments for something to go wrong"*
