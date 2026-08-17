@@ -421,6 +421,10 @@ Everything here happens in `Views/Trucks/Index.cshtml`.
 ## 6 · Hand off to the lab *(slide 19)*
 
 - [ ] 🎞️ **GO TO SLIDE 19** — *Lab: Cryptid Registry 👻*. Leave it up for the whole lab; it's the task list
+- [ ] Show **what done looks like** — the answer key **running on localhost** + `dotnet test Cryptids.Checks` printing **6 / 6**. That's `week-04/lab/solution` in the answer-keys repo; `dotnet run` from `Cryptids.Web`, `dotnet test` from the folder above it. ~90 seconds, a target not a walkthrough. **Nothing is deployed for this** — Azure is their homework, not tonight
+- [ ] Setup on screen, said once: **`git -C dotnet-web-starters pull` → copy `week-04` out and rename it → open the folder holding *both* projects → `dotnet test Cryptids.Checks`** → **1 / 6**, and that 1 is the harness proving itself
+- [ ] Say plainly: **nobody creates a project tonight.** The model and the seed data ship in the starter — *"the lab is controllers, views and routing. Nobody types six creatures"*
+- [ ] **In-class target: checks 1–4.** Checks 5–6 and the deploy roll into the homework by design — say so
 - [ ] **Say what they're rebuilding:** *"you built these six in flat HTML in week 2 — same creatures, same archive. Tonight the page comes off a model instead of being typed out six times"*
 
 ## 7 · Wrap-up, after the lab *(slides 20–21)*
