@@ -276,7 +276,8 @@ Everything here happens in `Views/Trucks/Index.cshtml`.
 
 - [ ] 🎞️ **GO TO SLIDE 15** — *Three ways in*
 - [ ] **Read the three rows off the table, and say which way each one moves** — *"one, the URL into the action — `Details(int id)`. That one is the round trip: the view renders the link, someone clicks it, and a brand-new request arrives with the id in it. Two, the controller into the view as a scrap — `ViewData`. Three, the controller into the view as the whole subject of the page — `@model`"*
-- [ ] ⚠️ **Only the last two are controller-to-view** — the first is how data reaches the controller at all, and it's a *new request* every time, not a handoff. That's the same fact as slide 14's `static`: a fresh controller object per request, remembering nothing. **All three happen tonight**, and the starred one is what carries the page
+- [ ] ⚠️ **They don't all move the same way, and only `@model` is a real direction** — the controller hands it over in `View(...)`. `ViewData` is a bag that lasts exactly one request and anyone can reach into it: tonight the **view** sets `ViewData["Title"]` and `_Layout.cshtml` reads it, so that one is view → layout. The URL row goes the other way, into the controller, as a *new request* every time — slide 14's `static` said a second time. **All three happen tonight**, and the starred one carries the page
+- [ ] 💡 *If someone asks how a view can set a title the layout already used:* the view body runs **first**, then the layout wraps it. Don't volunteer it — it's week 5's business — but that's the answer
 - [ ] Update `TrucksController.Index` — **type it**:
   ```csharp
   public IActionResult Index()
