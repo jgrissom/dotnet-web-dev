@@ -6,7 +6,7 @@ The `week-02` folder you copy below is a working but completely unstyled 3-page 
 **Docs open the whole time:** [getbootstrap.com/docs](https://getbootstrap.com/docs/5.3/) — find → copy → adapt is the exercise.
 
 > [!NOTE]
-> **You'll meet these six again.** From week 4 the Registry comes back as a real ASP.NET Core app — same creatures, same archive, built properly. Tonight it's flat HTML. In week 6 the sighting form actually starts saving things.
+> **You'll meet these six again.** From week 4 the Registry comes back as a real ASP.NET Core app — same creatures, same archive, built properly. Tonight it's flat HTML. In week 6 forms start working.
 
 ## Setup
 
