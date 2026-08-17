@@ -267,7 +267,7 @@ Everything here happens in `Views/Trucks/Index.cshtml`.
 ### Into the controller
 
 - [ ] 🎞️ **GO TO SLIDE 15** — *Three ways in*
-- [ ] **Read the three rows off the table** — *"URL, query string, form. Tonight is the first. Week 6 is the third"*
+- [ ] **Read the three rows off the table** — *"a value out of the URL, a scrap in `ViewData`, or the model itself. All three happen tonight — and the starred one is the one that carries the page"*
 - [ ] Update `TrucksController.Index` — **type it**:
   ```csharp
   public IActionResult Index()
