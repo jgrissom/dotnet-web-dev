@@ -341,7 +341,15 @@ Everything here happens in `Views/Trucks/Index.cshtml`.
   </details>
 
 - [ ] Six rows, styled, from six objects. **Let it land.** Point at `@model` (line 1) and `@Model` (the `.Count`) and name the lowercase/capital difference
+- [ ] **Now make the two halves disagree** — the error you promised a minute ago. In `TrucksController.Index`, hand the view *one* truck instead of the whole list:
+  ```csharp
+  return View(TruckData.All[0]);
+  ```
+- [ ] Refresh `/Trucks` → **500**. Read the message out loud; it names both types — *"the model item passed into the ViewDataDictionary is of type `Truck`, but this ViewDataDictionary instance requires a model item of type `List<Truck>`"*
+- [ ] Land it: *"the controller and the view disagreed, and nothing caught it until someone asked for the page. Hold that thought"*
+- [ ] **Restore it** — back to `return View(TruckData.All);` — and refresh until the six rows are back before you go on
 - [ ] **The IntelliSense moment** — inside the loop, type `@truck.` and let the list pop up. Then break it: change `@truck.Name` to `@truck.Titel`, save → **red squiggle + a build error before the refresh**. "`ViewData` would have failed silently. This didn't." Fix it
+- [ ] **Cash the contrast from a minute ago:** *"the mismatch needed a visitor to find it. The typo never even built. Same week, two different moments for something to go wrong"*
 - [ ] **✓ CHECKPOINT:** the room has seen typed data go from C# to a table without a single line of JavaScript
 
 ## 5 · Details, and an honest 404 *(slides 17–18)*

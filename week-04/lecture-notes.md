@@ -332,6 +332,7 @@ View side, **first line of the file**:
 ```
 
 - Lowercase **`@model`** (the declaration, once, at the top) vs. capital **`@Model`** (the value, used everywhere below). This trips everyone; call it out before it bites.
+- **Make the two halves disagree on purpose** (demo §4): have `Index` pass a single `Truck` to a view that still declares `@model List<Truck>`. It **compiles** — the mismatch only surfaces when someone requests the page, as a 500 whose message names both types (`is of type 'Truck', but ... requires ... 'List<Truck>'`). Worth doing live, because it is the same error the troubleshooting appendix lists, and students meet it alone.
 - The payoff: type `@Model.` in VS Code and **IntelliSense lists the real properties**. Typo one — `@truck.Titel` — and you get a red squiggle *before* you refresh. Do this live; it's the most persuasive 15 seconds in the segment.
 - **Why it matters beyond convenience:** in week 8 the scaffolder generates views that all start with `@model`. Tonight is what makes that generated code readable instead of magic.
 
