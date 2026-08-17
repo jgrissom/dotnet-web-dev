@@ -207,7 +207,8 @@ Tonight's app does not exist yet — building it in front of the room *is* §2. 
 ## 5 · Hand off to the lab *(slide 16)*
 
 - [ ] 🎞️ **GO TO SLIDE 16** — *Lab: First Flight*. Leave it up for the whole lab; it's the task list
-- [ ] Show **what done looks like** — the answer key **on your own machine**: `week-03/lab/solution`, `dotnet run` from `FirstFlight.Web`, then `dotnet test FirstFlight.Checks` from the folder above it, printing **6 / 6**. ~90 seconds, a target not a walkthrough. **Nothing is deployed for this** — the Azure URL from §4 is mine; theirs is the homework
+- [ ] Show **what done looks like** — the answer key **on your own machine**, in `~/Repos/dotnet-web-dev-answer-keys/week-03/lab/solution`: `dotnet run` from `FirstFlight.Web`, then `dotnet test FirstFlight.Checks` from the folder above it, printing **6 / 6**. ~90 seconds, a target not a walkthrough. **Nothing is deployed for this** — the Azure URL from §4 is mine; theirs is the homework
+- [ ] 🛑 **`Ctrl+C` the answer key before you go any further.** It and the starter are the same project, so they want the **same port** — leave it running and the next command dies on `Failed to bind to address http://127.0.0.1:5185: address already in use`. Stopping it also means only one First Flight is on screen: two of them, near-identical, is how you edit one and refresh the other's tab and debug a file that was already right
 - [ ] **Then show how to take the first step — on a copy of *their* starter.** Open `instructor/week-03/first-flight` and say which is which: *"that was the finished one. This is exactly what you're about to copy out — same six checks, none of them done"*
 - [ ] **Terminal 1 — the app.** `cd FirstFlight.Web`, then `dotnet watch`. Browser opens
 - [ ] **Terminal 2 — the checks.** The `+` in the terminal panel. **Stay in `first-flight`; don't `cd` anywhere:**
