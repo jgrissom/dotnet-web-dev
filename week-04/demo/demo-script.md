@@ -116,7 +116,7 @@ dotnet-web-dev-course/
 
 - [ ] 🎞️ **GO TO SLIDE 7** — *Prove one half at a time*. That's what `Content()` was for; now take the second half
 - [ ] Now swap `Content("trucks!")` for `return View();` → refresh → **error: view not found**
-- [ ] **Read the error out loud.** It lists every path it searched. "This error doesn't say *broken* — it says *I looked here, here, and here*"
+- [ ] **Read the error out loud.** It names the two paths it searched — `/Views/Trucks/Index.cshtml`, then `/Views/Shared/Index.cshtml`. "This error doesn't say *broken* — it says *I looked here, and here*"
 - [ ] Create `Views/Trucks/Index.cshtml` — **type it**:
   ```html
   <h1>Curbside</h1>
