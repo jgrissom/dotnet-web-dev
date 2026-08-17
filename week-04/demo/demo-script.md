@@ -39,7 +39,7 @@ dotnet-web-dev-course/
 - [ ] **Have VS Code's Open Folder dialog land somewhere sane** — open `~/Repos/dotnet-web-dev-course/instructor/week-04` once beforehand so the picker starts there in §0b, which happens live at 0:05 with the room watching
 - [ ] **Teaching profile in VS Code** (gear, bottom-left → **Profiles** → *Teaching*): C# and mssql extensions only, **no C# Dev Kit** — so your editor matches theirs pixel for pixel. Bump both font sizes **in that profile** so they stick: `terminal.integrated.fontSize` (start around **18**) and `editor.fontSize` (around **16**)
 - [ ] **Say it before you start: *"lids down for this part — you'll build your own tonight."*** They watch you build Curbside; their lab is the *Cryptid Registry* and their homework is a third app. **The predict-then-run tables are where they participate** — those only work if people are looking up
-- [ ] Two terminals planned: one for `dotnet watch`, one free
+- [ ] ⚠️ **Know the one prompt that will bite you, and answer it `a` the first time.** Creating a *new* `.cshtml` — §2's `Index.cshtml`, then §5's `Details.cshtml` — is a change hot reload can't apply, so `dotnet watch` stops and asks **`Do you want to restart your app? Yes (y) / No (n) / Always (a) / Never (v)`** in the terminal. Until you answer, the page keeps failing while the file on screen looks perfectly correct. Answer **`a`** at that first prompt and it never asks again all night
 - [ ] Decide now: you will **restore the route pattern** at the end of §1. Say it out loud when you break it
 
 ## 0b · Spin up Curbside — **live, opening the routing segment** *(60 seconds)*
@@ -122,7 +122,7 @@ dotnet-web-dev-course/
   <h1>Curbside</h1>
   <p>Wisconsin's finest, on four wheels.</p>
   ```
-- [ ] `/Trucks` works
+- [ ] ⚠️ **This is that first restart prompt** — `dotnet watch` is asking in the terminal because the file is new. Answer **`a`**, and `/Trucks` works
 - [ ] **Misname on purpose:** rename the folder `Views/Trucks` → `Views/Truck`, refresh → the error is back. Rename it to `Trucks` again. Three names must agree
 - [ ] **✓ CHECKPOINT:** the room can say what `return View()` looks for, without hedging
 
