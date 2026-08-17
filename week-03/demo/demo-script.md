@@ -21,10 +21,12 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 ```
 dotnet-web-dev-course/
 └─ instructor/
-   └─ week-03/                 ← EMPTY. §2 creates CommonGrounds.Web in it, live
+   └─ week-03/
+      └─ first-flight/         ← the lab starter, untouched, for §5
+                               ← §2 creates CommonGrounds.Web beside it, live
 ```
 
-Tonight's app does not exist yet — building it in front of the room *is* §2. **Every week keeps its own folder here**, so nothing is ever deleted to make room for the next one.
+Tonight's demo app does not exist yet — building it in front of the room *is* §2. The only thing in the folder before you start is the lab starter, which you don't open until §5. **Every week keeps its own folder here**, so nothing is ever deleted to make room for the next one.
 
 - [ ] **Make tonight's folder** (harmless if it's already there):
   ```bash
@@ -34,7 +36,7 @@ Tonight's app does not exist yet — building it in front of the room *is* §2. 
   ```bash
   rm -rf ~/Repos/dotnet-web-dev-course/instructor/week-03/CommonGrounds.Web
   ```
-  💡 **Check it took:** `ls ~/Repos/dotnet-web-dev-course/instructor/week-03` prints nothing.
+  💡 **Check it took:** `ls ~/Repos/dotnet-web-dev-course/instructor/week-03` shows **no `CommonGrounds.Web`**. `first-flight` being there is fine — that's the next step's job.
 - [ ] **Have the lab starter ready too — §5 walks the room through it.** A copy of week 3's starter, renamed exactly as students rename theirs:
   ```bash
   rm -rf ~/Repos/dotnet-web-dev-course/instructor/week-03/first-flight
