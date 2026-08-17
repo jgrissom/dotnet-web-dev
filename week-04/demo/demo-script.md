@@ -48,6 +48,7 @@ dotnet-web-dev-course/
 > Do this **live at 0:05**, as the first thing after the 5-minute status check — not before class. Tonight's homework asks them to build a new app from an empty folder, so watching you do it is rehearsal, not repetition.
 
 - [ ] 🎞️ **GO TO SLIDE 2** — *Last week vs. tonight*
+- [ ] 🎯 **Say the contrast on the slide before you open anything** — it's tonight in two lines: *"last week, one URL found one method. Tonight, an app is a set of URLs over a set of data."* The four bullets under it are the running order, and the last word on the slide — **typed** — is the one §4 comes back to
 - [ ] VS Code → File → Open Folder → in `~/Repos/dotnet-web-dev-course/instructor/week-04`, create a new empty **Curbside** and open it
 - [ ] Integrated terminal:
   ```bash
@@ -138,6 +139,7 @@ Everything here happens in `Views/Trucks/Index.cshtml`.
 ### Expressions
 
 - [ ] 🎞️ **GO TO SLIDE 8** — *Razor: `@` is the door*
+- [ ] 🎯 **Land the slide's bottom line, which is the half the page can't show:** *"if you have written a template literal in JavaScript, the `@` is the same instinct. The difference is where it runs — this one runs on the server, and by the time the browser sees the page the `@` is gone"*
 - [ ] **Expressions** — add and save:
   ```html
   <p>The time is @DateTime.Now</p>
@@ -149,6 +151,7 @@ Everything here happens in `Views/Trucks/Index.cshtml`.
 ### Blocks and branches
 
 - [ ] 🎞️ **GO TO SLIDE 9** — *Blocks and branches*
+- [ ] 🎯 **Name the two shapes off the slide before you paste them:** *"`@{ }` is a block that runs and prints nothing. `@if` is a branch that decides which HTML gets built. Both of those are C# living inside a page"* — the `else` is the next beat's business, don't spend it here
 - [ ] **A code block + a conditional** — paste:
 
   <details><summary>📋 paste: block + if/else</summary>
@@ -178,7 +181,6 @@ Everything here happens in `Views/Trucks/Index.cshtml`.
 
 ### A loop
 
-- [ ] 🎞️ **GO TO SLIDE 10** — *The big idea*
 - [ ] **A loop** — paste:
 
   <details><summary>📋 paste: foreach over a plain array</summary>
@@ -198,7 +200,8 @@ Everything here happens in `Views/Trucks/Index.cshtml`.
 
   </details>
 
-- [ ] View Source: **four `<li>` in the output, one in the source.** Land slide 10's line — *you no longer write a page, you write a rule for producing a page*
+- [ ] **Ask for the number before you scroll to it** — *"one `<li>` is in the file. How many are in what the browser got?"* Then View Source: **four `<li>` in the output, one in the source**
+- [ ] 🎞️ **GO TO SLIDE 10** — *The big idea*. It now says the number they just counted, so land its bottom line: *"you no longer write a page. You write a rule for producing a page"*
 - [ ] Add a fifth cuisine to the array → the page grows. **Data changed, markup didn't**
 - [ ] 🎞️ **GO TO SLIDE 11** — *Week 2, revisited*
 - [ ] Callback to week 2: "the coffee shop's six menu cards were six hand-typed blocks. This is that job, done once"
@@ -206,6 +209,7 @@ Everything here happens in `Views/Trucks/Index.cshtml`.
 ### Comments
 
 - [ ] 🎞️ **GO TO SLIDE 12** — *What does the browser actually get?*
+- [ ] 🎯 **Use the slide to close §3, then let the comments be the last case:** *"everything we wrote in this file — the `@`, the `foreach`, the `if` — is gone from what shipped. The browser got HTML and nothing else"*
 - [ ] **Comments** — paste both, save, View Source:
   ```html
   @* Razor comment — the server strips this *@
@@ -430,4 +434,5 @@ Everything here happens in `Views/Trucks/Index.cshtml`.
 ## 7 · Wrap-up, after the lab *(slides 20–21)*
 
 - [ ] 🎞️ **GO TO SLIDE 20** — *Before next week*. The homework and the reading
+- [ ] 🎯 **Spend the time on the second checkmark — it's the only one that outlives tonight:** *"the topic you pick this week is the app you keep extending for the rest of the semester. In week 9 you add a second related table to it, so pick something that can grow one"* — then land the slide's last line: **pick a topic you can live with**
 - [ ] 🎞️ **GO TO SLIDE 21** — *The chain, complete*. Walk it once: URL → route → controller → model → view
