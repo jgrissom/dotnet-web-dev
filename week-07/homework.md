@@ -88,6 +88,9 @@ becomes
 >
 > **The tell is the first line.** `🔎 Week 6 self-check` is the wrong one; this week's says **`Week 7`**. If both are installed, this week's prints a red 🚨 above the score.
 
+> [!TIP]
+> **Working offline?** Save [`homework-checks.js`](homework-checks.js) into your `wwwroot` folder and point the tag at it locally: `<script src="/homework-checks.js"></script>` — still inside the `@section Scripts` block.
+
 ## Part 3 — Check your password isn't in your public repo 🔐
 
 There is no work in this part. That's the point of it.

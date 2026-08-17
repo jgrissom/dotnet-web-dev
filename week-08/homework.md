@@ -79,6 +79,9 @@ becomes
 > [!CAUTION]
 > **Replace it. Don't add a second one.** Week 7's checker still passes — nothing this week breaks last week's requirements — so it prints a reassuring green report about the wrong week. The tell is the first line: it should say **`Week 8`**. If both are installed, this week's prints a red 🚨 above the score.
 
+> [!TIP]
+> **Working offline?** Save [`homework-checks.js`](homework-checks.js) into your `wwwroot` folder and point the tag at it locally: `<script src="/homework-checks.js"></script>` — still inside the `@section Scripts` block.
+
 ## Part 3 — Deploy it (graded, and shorter than it has ever been)
 
 **Apply the migration first.** Your laptop and your Azure app share one database, so:
