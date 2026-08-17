@@ -52,7 +52,7 @@ Tonight's app does not exist yet — building it in front of the room *is* §2. 
 ### The exchange, live
 
 - [ ] 🎞️ **GO TO SLIDE 2** — *Tonight: the pivot*
-- [ ] **Land the word *pivot*, and collect the promise from week 1:** *"two weeks on the client. Tonight we add the server."*
+- [ ] **Land the word *pivot*:** *"two weeks on the client. Tonight we add the server."*
 - [ ] ⚠️ **Say what *pivot* does not mean, because the word oversells it:** *"From tonight you write both: the C# that answers the request, and the HTML that goes back. That is what the V in MVC is — week 5 you style it, week 6 you put a validation script on it."*
 - [ ] 🎞️ **GO TO SLIDE 3** — *HTTP is just text*
 - [ ] **The slide is the wire; the panel is a picture of it:** *"that is what actually travels — a verb and a path going out, a status and a body coming back. Everything I am about to open in DevTools is a nicer drawing of exactly these two blocks"*
