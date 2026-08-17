@@ -77,7 +77,7 @@ The `=` parts are **defaults** — they're why `/` works.
 | `/Home/Privacy/7` | ? | ? |
 | `/Trucks` | ? | ? |
 
-Two of these do something you won't expect.
+Two of these do something you may not expect.
 
 ---
 
