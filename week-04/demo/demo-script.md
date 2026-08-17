@@ -275,7 +275,8 @@ Everything here happens in `Views/Trucks/Index.cshtml`.
 ### Into the controller
 
 - [ ] 🎞️ **GO TO SLIDE 15** — *Three ways in*
-- [ ] **Read the three rows off the table** — *"a value out of the URL, a scrap in `ViewData`, or the model itself. All three happen tonight — and the starred one is the one that carries the page"*
+- [ ] **Read the three rows off the table, and say which way each one moves** — *"one, the URL into the action — `Details(int id)`. That one is the round trip: the view renders the link, someone clicks it, and a brand-new request arrives with the id in it. Two, the controller into the view as a scrap — `ViewData`. Three, the controller into the view as the whole subject of the page — `@model`"*
+- [ ] ⚠️ **Only the last two are controller-to-view** — the first is how data reaches the controller at all, and it's a *new request* every time, not a handoff. That's the same fact as slide 14's `static`: a fresh controller object per request, remembering nothing. **All three happen tonight**, and the starred one is what carries the page
 - [ ] Update `TrucksController.Index` — **type it**:
   ```csharp
   public IActionResult Index()

@@ -265,13 +265,15 @@ public static class TruckData
 > [!TIP]
 > The lab **hands them both files**, so nobody writes a model during class. The homework asks them to write their own from scratch — this section is the one they'll be reading at home, so don't skip it just because the lab doesn't need it.
 
-### Three ways to get data into a view
+### Three ways data reaches the page
 
 | Way | Looks like | Good for | Trouble |
 |-----|-----------|----------|---------|
 | **Action parameter** | `Details(int id)` | values that come *from the URL* | it's input, not page data |
 | **`ViewData` / `ViewBag`** | `ViewData["Title"] = "Trucks";` | one-off scraps — a title, a flash message | no type safety, no IntelliSense, typos fail silently |
 | **`@model`** ⭐ | `return View(trucks);` | **the actual subject of the page** | none — this is the one you want |
+
+**They don't all move the same direction, and the table's first row is the odd one out.** `ViewData` and `@model` both go *controller → view*. An action parameter goes the other way — *URL → controller* — so it isn't a way of handing data to a view at all; it's how the data reaches the controller in the first place. And it arrives as a brand-new request: the browser asks again, and a fresh controller object is built to answer, remembering nothing from last time.
 
 The honest summary for students: `ViewData` is a shoebox you toss things into; `@model` is a labeled, typed slot the compiler checks. Use `ViewData` for the page title (the template already does) and `@model` for everything that *is* the page.
 
