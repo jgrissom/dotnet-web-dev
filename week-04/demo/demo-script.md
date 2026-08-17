@@ -144,7 +144,7 @@ Everything here happens in `Views/Trucks/Index.cshtml`.
 
 - [ ] 🎞️ **GO TO SLIDE 8** — *Razor: `@` is the door*
 - [ ] 🎯 **Land the slide's bottom line, which is the half the page can't show:** *"if you have written a template literal in JavaScript, the `@` is the same instinct. The difference is where it runs — this one runs on the server, and by the time the browser sees the page the `@` is gone"*
-- [ ] **Expressions** — add and save:
+- [ ] **Expressions** — add at the **bottom of `Views/Trucks/Index.cshtml`**, under the tagline from §2, and save:
   ```html
   <p>The time is @DateTime.Now</p>
   <p>Two plus two is @(2 + 2)</p>
@@ -156,7 +156,7 @@ Everything here happens in `Views/Trucks/Index.cshtml`.
 
 - [ ] 🎞️ **GO TO SLIDE 9** — *Blocks and branches*
 - [ ] 🎯 **Name the two shapes off the slide before you paste them:** *"`@{ }` is a block that runs and prints nothing. `@if` is a branch that decides which HTML gets built. Both of those are C# living inside a page"* — the `else` is the next beat's business, don't spend it here
-- [ ] **A code block + a conditional** — paste:
+- [ ] **A code block + a conditional** — append below the expressions, same file, and paste:
 
   <details><summary>📋 paste: block + if/else</summary>
 
@@ -185,7 +185,7 @@ Everything here happens in `Views/Trucks/Index.cshtml`.
 
 ### A loop
 
-- [ ] **A loop** — paste:
+- [ ] **A loop** — append below the badge, same file, and paste:
 
   <details><summary>📋 paste: foreach over a plain array</summary>
 
@@ -214,7 +214,7 @@ Everything here happens in `Views/Trucks/Index.cshtml`.
 
 - [ ] 🎞️ **GO TO SLIDE 12** — *What does the browser actually get?*
 - [ ] 🎯 **Use the slide to close §3, then let the comments be the last case:** *"everything we wrote in this file — the `@`, the `foreach`, the `if` — is gone from what shipped. The browser got HTML and nothing else"*
-- [ ] **Comments** — paste both, save, View Source:
+- [ ] **Comments** — append below the list, same file, paste both, save, View Source:
   ```html
   @* Razor comment — the server strips this *@
   <!-- HTML comment — this ships to the browser -->
