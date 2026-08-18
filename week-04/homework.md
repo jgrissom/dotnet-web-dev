@@ -46,6 +46,20 @@ It needs:
 > [!TIP]
 > Start from `dotnet new mvc --no-https` in a fresh folder inside `dotnet-web`, named for your topic — it is the app you extend every week to the end of the course. You are not starting from the Registry — building it again from empty is the point, and it takes about 30 minutes once you've done the lab. Week 3's notes cover [creating the app](../week-03/lecture-notes.md#dotnet-new-mvc) and [what every folder is for](../week-03/lecture-notes.md#project-anatomy) if you want the refresher.
 
+> [!IMPORTANT]
+> **Make a `.gitignore` before your first commit.** Last week the starter came with one, so build output stayed out of your repo without you thinking about it. `dotnet new mvc` gives you no such thing — so a plain `git add .` sweeps in **around 100 files** of compiler output from `bin/` and `obj/`, several megabytes of it, into a public repo you're graded on. Create the file in the same folder as your `.csproj`, with exactly these four lines:
+>
+> ```
+> bin/
+> obj/
+> *.user
+> .DS_Store
+> ```
+>
+> Then start the history the way you did in week 3 — `git init`, `git add .`, `git commit`, and a commit at each natural stopping point after that.
+>
+> **Order matters here, and it's the one part that isn't fixable later.** Committing build output and then adding the `.gitignore` afterwards leaves every one of those files in your history permanently; ignoring a file never removes what's already committed. It's the same reason a password committed once is a password you have to change — you'll meet that idea properly in week 7.
+
 ## Part 3 — Check it when you're finished ✅
 
 **[`homework-checks.js`](homework-checks.js) runs the same checks I grade with.** Nothing in it is specific to my topic or yours — it finds your controller by following the link you put in the navbar, exactly like a visitor would.
