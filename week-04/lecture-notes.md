@@ -451,7 +451,7 @@ URL → route pattern → controller action → data → Razor view → HTML →
 - Stray `@` on an `else` or on a closing brace — inside a C# block you're already in C#. Also check for a `@` in an email address or CSS selector in your markup; escape it as `@@`.
 
 **Changes don't show up**
-- `dotnet watch` handles `.cs` and `.cshtml` edits, but a new *file* occasionally needs a restart. Stop it (`Ctrl+C`) and run it again before you debug something that isn't broken.
+- `dotnet watch` handles `.cs` and `.cshtml` edits, but a **brand-new `.cshtml`** — like the views you add this week — stops it every time: it prints `Restart is needed to apply the changes.`, then asks `Do you want to restart your app?` with `Yes (y) / No (n) / Always (a) / Never (v)`. Answer **`a`** in the terminal running it, or press `Ctrl+R` there. Until you answer, nothing rebuilds, so a file that is perfectly correct looks broken — [week 3 met this one first](../week-03/lecture-notes.md#dotnet-new-mvc).
 
 **IntelliSense shows no properties after `@Model.`**
 - The C# extension lost the project. Command Palette → *Developer: Reload Window*. If the `@model` line has a typo in the type name, that'll do it too.

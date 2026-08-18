@@ -453,4 +453,4 @@ _ViewStart  →  _Layout.cshtml  →  @RenderBody()  →  your view
 - A stray `Layout = null;` left behind in that view's `@{ }` block.
 
 **Changes don't show up**
-- `dotnet watch` handles `.cshtml` edits, but a brand-new file occasionally needs a restart. Stop it (`Ctrl+C`) and start it again before debugging something that isn't broken.
+- `dotnet watch` handles edits to an existing `.cshtml`, but a **brand-new** one — like the card partial you create tonight — stops it every time: it prints `Restart is needed to apply the changes.`, then asks `Do you want to restart your app?` with `Yes (y) / No (n) / Always (a) / Never (v)`. Answer **`a`** in the terminal running it, or press `Ctrl+R` there. Until you answer, nothing rebuilds, so a file that is perfectly correct looks broken — [week 3 met this one first](../week-03/lecture-notes.md#dotnet-new-mvc).
