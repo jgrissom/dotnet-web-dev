@@ -181,6 +181,7 @@ Don't ask the question rhetorically; make them look at both halves. Use the **ho
 
   </details>
 
+- [ ] ⚠️ **A brand-new `.cshtml` stops `dotnet watch` and waits for you** — it prints `Restart is needed to apply the changes.`, then `Do you want to restart your app?` with `Yes (y) / No (n) / Always (a) / Never (v)`. **Answer `a`.** Until you answer it rebuilds nothing, so the card grid you paste next never appears — on files that are perfectly correct
 - [ ] **Point at line 1**: `@model Truck` — *one* truck, not a list. A partial is strongly typed exactly like a page
 - [ ] Three things while it's on screen: `name` will be a **file name, not a path** (`Views/Shared/` is searched) · underscore in, `.cshtml` out · **`<partial />` is a tag helper** — callback to `_ViewImports` from four minutes ago
 - [ ] 🎞️ **GO TO SLIDE 11** — *Give it a model*
