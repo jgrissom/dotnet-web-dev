@@ -151,7 +151,7 @@ Use the **same US region** that worked for you before — it's on the class list
 | Public repo with 3+ meaningful commits | 3 | your repo |
 | **Deductions:** dead submitted URL | −2 | |
 
-*Reminder: the explain-it standard applies. Be ready to walk me through any line — especially "what does `@RenderBody()` do?" and "why is your footer in its own file instead of in the layout?"*
+*Reminder: the explain-it standard applies. Be ready to walk me through any line — especially "what does `@RenderBody()` do?" and "why is your card in its own file instead of copy-pasted into both views?"*
 
 ## 📖 Reading for next week (~15 min)
 

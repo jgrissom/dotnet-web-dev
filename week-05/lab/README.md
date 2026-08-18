@@ -1,6 +1,6 @@
 # Week 5 Lab — The Registry Gets a Shell 👻
 
-Same six creatures, same pages. Tonight you build the **shell** around them: one layout you own, a footer that lives in its own file, a script that only loads where it's needed, and a theme that changes everything at once.
+Same six creatures, same pages. Tonight you build the **shell** around them: one layout you own, one card file that renders on two different pages, a script that only loads where it's needed, and a theme that changes everything at once.
 
 **Time:** ~45 minutes in class — **in-class target: checks 1–4 green.** Checks 5–6 roll into the homework by design.
 
