@@ -91,7 +91,7 @@ Every ❌ comes with a hint and a `👉 Next:` line naming the one thing to fix.
 ## 🆘 Stuck?
 
 - **404 on `/Home/About`?** Route → action → view, in that order — [how the URL finds your method](lecture-notes.md#routing-controlleraction). Is the method `public`? Does `Views/Home/About.cshtml` exist, spelled exactly that way?
-- **It says `The view 'About' was not found` and the file is sitting right there** — it is, and you're not going mad. A brand-new `.cshtml` is the one change `dotnet watch` can't apply to a running app, so it stops and asks `Do you want to restart your app? Yes (y) / No (n) / Always (a)` — answer **`a`** and it won't ask again. Missed the prompt? **Press `Ctrl+R` in the terminal running `dotnet watch`.** Nothing is wrong with your code.
+- **It says `The view 'About' was not found` and the file is sitting right there** — it is, and you're not going mad. A brand-new `.cshtml` is the one change `dotnet watch` can't apply to a running app, so it stops and asks `Do you want to restart your app? Yes (y) / No (n) / Always (a) / Never (v)` — answer **`a`** and it won't ask again. Missed the prompt? **Press `Ctrl+R` in the terminal running `dotnet watch`.** Nothing is wrong with your code.
 - **`Hello` returns nothing useful** — the query string binds *by name*, so `?name=Ada` needs a parameter called `name`. [The parameters section](lecture-notes.md#passing-data-viewdata-and-parameters).
 - **A page 500s** — the terminal running `dotnet watch` prints the real error; the browser doesn't.
 - **The deploy fails or the live site 404s** — the [deploy guide's 🆘 section](deploy-guide.md) covers the common ones, and remember `az webapp up` ships the folder you're standing in.

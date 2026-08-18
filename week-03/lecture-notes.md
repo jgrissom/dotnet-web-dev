@@ -67,7 +67,7 @@ Open the printed `http://localhost:5xxx` — a working, styled site in two comma
 
 - `dotnet new` with no `-o` scaffolds into the current folder and **names the project after it** — so name the folder deliberately. (It refuses a non-empty folder; that's a feature.)
 - `dotnet watch` = run + restart on save — the refresh-after-save habit from weeks 1–2, ported to C#.
-- ⚠️ **One edit it can't apply on its own: a brand-new `.cshtml` file.** Adding a *view* that didn't exist before is not a change it can patch into the running app, so it stops and asks `Do you want to restart your app? Yes (y) / No (n) / Always (a)` — answer **`a`** and it stops asking. If you miss the prompt, the page keeps saying *"The view 'X' was not found"* even though the file is sitting right there. **`Ctrl+R` in the watch terminal restarts it by hand.**
+- ⚠️ **One edit it can't apply on its own: a brand-new `.cshtml` file.** Adding a *view* that didn't exist before is not a change it can patch into the running app, so it stops and asks `Do you want to restart your app? Yes (y) / No (n) / Always (a) / Never (v)` — answer **`a`** and it stops asking. If you miss the prompt, the page keeps saying *"The view 'X' was not found"* even though the file is sitting right there. **`Ctrl+R` in the watch terminal restarts it by hand.**
 
 ### Project anatomy
 
