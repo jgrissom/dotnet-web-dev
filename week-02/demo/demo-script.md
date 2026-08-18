@@ -121,7 +121,7 @@ Every individual step is also browsable as a red/green diff at [the commit list]
 ### Menu cards
 
 - [ ] 🎞️ **GO TO SLIDE 9** — *Cards in a grid*
-- [ ] 🎯 **Say where this ends up — the file can never show it:** *"with static content, we are creating 6 individual cards. In week 8 this block gets written once and the database supplies the rest — one card per (database) row. Every list page in the back half of this course follows this pattern"*
+- [ ] 🎯 **Say where this ends up — the file can never show it:** *"with static content, we are creating 6 individual cards. In week 4 this block gets written once — one loop, six cards. In week 7 the six stop being typed at all and come out of a database, one card per row. Every list page in the back half of this course follows this pattern"*
 - [ ] **Step 10 — the menu heading, and a row around the six articles.** Same wrapper move as the feature row
 - [ ] **Step 11 — the Espresso card.** This is the one to slow down on. Read the diff outward: *"the article is still the article. It gained `card h-100` (height-100), its contents moved inside a `card-body`, and the whole thing sits in a column. The `<span>` that said hot is now a badge — one class"*
 - [ ] **Step 12 — the other five.** *"Same shape, five more times."* The diff shows the first and last; nobody needs the middle
