@@ -98,7 +98,7 @@ No `<html>`. No `<head>`. **No navbar.**
 </main>
 ```
 
-Your view renders **first**. The layout renders **second**, and drops your HTML right there.
+Your view's HTML ends up at exactly that spot — the layout **wraps around it**.
 
 <br>
 
