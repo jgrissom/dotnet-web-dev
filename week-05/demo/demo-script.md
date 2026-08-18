@@ -82,8 +82,8 @@ Don't ask the question rhetorically; make them look at both halves. Use the **ho
 ### The title, both halves
 
 - [ ] 🎞️ **GO TO SLIDE 6** — *The title has two halves*
-- [ ] Point at the layout: `<title>@ViewData["Title"] - Curbside</title>`. Then at `Views/Trucks/Details.cshtml`: `ViewData["Title"] = Model.Name;`
-- [ ] *"The view runs first and puts a value in. The layout runs second and reads it. That's the whole mechanism."*
+- [ ] **Both halves are on the slide — point at them there:** *"The view runs first and puts a value in. The layout runs second and reads it. That's the whole mechanism."*
+- [ ] **Now the real files:** the layout's `<title>@ViewData["Title"] - Curbside</title>`, then `Views/Trucks/Details.cshtml`'s `ViewData["Title"] = Model.Name;`
 
 ### Break it #2 — the title
 
@@ -106,13 +106,13 @@ Don't ask the question rhetorically; make them look at both halves. Use the **ho
 ## 2 · The two files nobody opens *(slides 7–8)*
 
 - [ ] 🎞️ **GO TO SLIDE 7** — *`Views/_ViewStart.cshtml`*
-- [ ] Open `Views/_ViewStart.cshtml` — the entire file:
+- [ ] **The whole file is on the slide — say it there:** *"Nothing in your Index view mentions a layout. This is why it gets one — one file, every view below it"*
+- [ ] Now open the real `Views/_ViewStart.cshtml`, so they see where it lives — it really is the entire file:
   ```html
   @{
       Layout = "_Layout";
   }
   ```
-- [ ] *"Nothing in your Index view mentions a layout. This is why it gets one — one file, every view below it"*
 
 ### Break it #3 — opt a page out
 
@@ -130,13 +130,13 @@ Don't ask the question rhetorically; make them look at both halves. Use the **ho
 ### `_ViewImports`
 
 - [ ] 🎞️ **GO TO SLIDE 8** — *`Views/_ViewImports.cshtml`*
-- [ ] Open `Views/_ViewImports.cshtml`:
+- [ ] **Read the slide's two bullets:** the `@using` lines answer week 4's "where do views get their imports?" — **and `@addTagHelper` is why `asp-controller` works.** Flag it forward: *"it's also why the thing we're about to write in ten minutes works at all"*
+- [ ] Now open the real `Views/_ViewImports.cshtml`:
   ```html
   @using Curbside
   @using Curbside.Models
   @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
   ```
-- [ ] The `@using` lines answer week 4's "where do views get their imports?" — **and `@addTagHelper` is why `asp-controller` works.** Flag it forward: *"it's also why the thing we're about to write in ten minutes works at all"*
 - [ ] **✓ CHECKPOINT:** nobody thinks the layout is magic anymore
 
 ## 3 · Partials *(slides 9–13)* — **the load-bearing segment**
