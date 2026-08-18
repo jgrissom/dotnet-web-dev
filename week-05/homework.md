@@ -95,7 +95,7 @@ Then load your home page and open the console — **F12 → Console**. It runs a
 > It checks **whatever site it's loaded on** — so put the section in *your* app, not on this page. `recheck()` re-runs it without reloading.
 
 > [!TIP]
-> **If the report opens with a red `🚨 Week 4's self-check script is STILL installed`** — you added this week's tag but left last week's in place. Both are running. Delete the `week-04` line and refresh.
+> **If a red `🚨 Week 4's self-check script is STILL installed` appears just above the score line** — you added this week's tag but left last week's in place. Both are running. Delete the `week-04` line and refresh. It sits next to the score on purpose: a stale checker makes that number untrustworthy, so read the two together.
 
 > [!TIP]
 > **If it says your footer is "still the template's default line"** — that's requirement 1. The stock footer reads `© 2026 - YourProject - Privacy`; it's identical on every page already, so it can't prove you built anything. Put your own name and the year in it, in `_Layout.cshtml`.
