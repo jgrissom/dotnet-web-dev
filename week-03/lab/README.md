@@ -37,6 +37,16 @@ Your first ASP.NET Core MVC app, built the way you'll work all term: run the che
 | 5 | `HelloGreetsByName` | A `Hello` action that [reads a query parameter](../lecture-notes.md#passing-data-viewdata-and-parameters): `/Home/Hello?name=Ada` returns `Hello, Ada!` (a `Content(...)` result — no view needed). |
 | 6 | `HelloHasADefault` | No name given → `Hello, stranger!` — a nullable parameter and `??` do it in one line. |
 
+> [!IMPORTANT]
+> **Task 3 creates your first `.cshtml` file, and `dotnet watch` will stop and ask you a question about it.** Hot reload can push most edits into a running app, but a brand-new view isn't one of them — so terminal 1 pauses and prints:
+>
+> ```
+> Do you want to restart your app? Yes (y) / No (n) / Always (a) / Never (v)
+> ```
+>
+> **Press `a`.** It restarts, and it won't ask again for the rest of the lab. Until you answer, `/Home/About` keeps failing with the *same* error you were trying to fix, while the file on screen is perfectly correct — and nothing in the browser tells you a terminal is waiting. This is the single most confusing thing that happens tonight, and it happens again in every .NET week from here.
+
+
 ## Rules
 
 > [!IMPORTANT]

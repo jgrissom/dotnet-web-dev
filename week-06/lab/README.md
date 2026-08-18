@@ -137,6 +137,9 @@ public IActionResult Create()
 
 **Then create `Views/Cryptids/Create.cshtml`.** This is the whole file — paste it; tonight's lesson is what the form *does*, not the Bootstrap around it:
 
+> [!NOTE]
+> **It's a new `.cshtml`, so `dotnet watch` stops and asks to restart** — `Yes (y) / No (n) / Always (a) / Never (v)` in terminal 1. Answer `a`. Until you do, `/Cryptids/Create` keeps 500ing on a file that's already correct.
+
 ```html
 @model Cryptid
 @{

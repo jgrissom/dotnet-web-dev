@@ -88,6 +88,9 @@ The [notes on the layout file](../lecture-notes.md#the-layout-file) walk the sam
 
 **Create `Views/Shared/_CryptidCard.cshtml`** — this is the whole file. Paste it; tonight's lesson is the partial, not the Bootstrap:
 
+> [!NOTE]
+> **It's a new `.cshtml`, so `dotnet watch` stops and asks to restart** — `Yes (y) / No (n) / Always (a) / Never (v)` in terminal 1. Answer `a`. Until you do, both pages keep failing on a file that looks fine.
+
 ```html
 @model Cryptid
 
