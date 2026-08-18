@@ -242,6 +242,7 @@ Don't ask the question rhetorically; make them look at both halves. Use the **ho
 - [ ] `/Trucks/Details/1` (Roll Models, Madison) → **"Also in Madison: The Gyro Wheel"**, rendered by the same card file
 - [ ] `TruckData` resolves in the view because of `@using Curbside.Models` in `_ViewImports` — **the payoff lands inside the hour**
 - [ ] `/Trucks/Details/5` (Pierogi Party, alone in Stevens Point) → no panel. The `@if` guard. *"'What if there are none' is a question worth always asking"*
+- [ ] **Put the details tab back on `/Trucks/Details/1`** — it's still on `/Trucks/Details/5`, which has no panel and so no card to watch change
 
 ### One file, two pages
 
