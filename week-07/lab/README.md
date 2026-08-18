@@ -35,7 +35,7 @@ CryptidsDb/                ← in `dotnet-web`, the folder you copied and rename
 
 | Terminal | Where it stands | What runs in it |
 |---|---|---|
-| 1 | inside `Cryptids.Web` — `cd Cryptids.Web` | `dotnet watch` — start it once the database is wired up, then leave it alone |
+| 1 | inside `Cryptids.Web` — `cd Cryptids.Web` | `dotnet watch` — **started in task 5**, then left alone |
 | 2 | inside `Cryptids.Web` — `cd Cryptids.Web` | every `dotnet ef` and `dotnet user-secrets` command |
 | 3 | `CryptidsDb`, the folder holding **both** projects | `dotnet test Cryptids.Checks`, after every task |
 
@@ -230,7 +230,16 @@ dotnet ef database update
 
 **Check:** `Check5_TheRegistryReadsFromTheDatabase`
 
-**First, the constructor.** At the top of `CryptidsController` **(inside the class)**, above the actions:
+**Start the app first — this is the task where the browser starts mattering.** In terminal 1:
+
+```bash
+cd Cryptids.Web
+dotnet watch
+```
+
+Tasks 1–4 were all verified by `dotnet test` and the mssql extension, so this is the first time tonight you actually need the site running. Leave it running for the rest of the lab; every reload below assumes it.
+
+**Then the constructor.** At the top of `CryptidsController` **(inside the class)**, above the actions:
 
 ```csharp
 private readonly CryptidContext _context;
