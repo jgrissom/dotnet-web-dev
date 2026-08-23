@@ -19,14 +19,15 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ## 0 · Before class
 
-- [ ] **Copy `week-08/demo-starter/Curbside` out of the answer-keys repo** into `instructor/`. This is Curbside exactly as week 7's demo left it: context, two migrations, seven seeded trucks (`Sconnie Sliders` included), controller reading and writing through the context, `TruckData.cs` gone. Its own week folder, so nothing here collides with another week's `Curbside` and no previous demo gets deleted. The `rm` only matters if you **re-rehearse this week** — a rehearsal leaves the folder in tonight's **end** state:
+- [ ] ⚠️ **Re-rehearsing this week? Delete `instructor/week-08/Curbside` first** — a rehearsal leaves it in tonight's **end** state, and every beat below starts from week 7's. Deleting the folder in Finder is enough; the next step recreates it
+- [ ] VS Code → File → Open Folder → in `~/Repos/dotnet-web-dev-course/instructor/week-08`, create a new empty **Curbside** and open it *(the dialog's **New Folder** button makes `week-08` too, the first time)*. Its own week folder, so nothing here collides with another week's `Curbside` and no previous demo gets deleted
+- [ ] Integrated terminal (**Ctrl+&#96;**) — fill the empty folder with tonight's starter. This is Curbside exactly as week 7's demo left it: context, two migrations, seven seeded trucks (`Sconnie Sliders` included), controller reading and writing through the context, `TruckData.cs` gone:
   ```bash
-  mkdir -p ~/Repos/dotnet-web-dev-course/instructor/week-08
-  rm -rf ~/Repos/dotnet-web-dev-course/instructor/week-08/Curbside
-  cp -R ~/Repos/dotnet-web-dev-answer-keys/week-08/demo-starter/Curbside ~/Repos/dotnet-web-dev-course/instructor/week-08/
+  cp -R ~/Repos/dotnet-web-dev-answer-keys/week-08/demo-starter/Curbside/. .
   ```
-  ⚠️ **The copy resets the files, not the database.** Curbside's data lives on the school SQL Server, and every copy carries the same `<UserSecretsId>` — so the drop-and-rebuild two bullets down is a *separate* reset and you need both.
-- [ ] **Open that copy in VS Code** — **File → Open Folder** on `~/Repos/dotnet-web-dev-course/instructor/week-08/Curbside`. Everything below lives in this window: both terminals are its **integrated** ones (**Ctrl+&#96;**, then the `+` on the terminal panel for the second), and the `mssql` panel is a sidebar in it. The restart prompt below fires in terminal 1 while you are typing in terminal 2, so you need both on screen at once
+  The trailing `/.` copies the *contents* in, so the project lands at the top of the window you already have open — no folder inside a folder
+
+  ⚠️ **That resets the files, not the database.** Curbside's data lives on the school SQL Server, and every copy carries the same `<UserSecretsId>` — so the drop-and-rebuild below is a *separate* reset and you need both.
 - [ ] **Set your connection string in your copy** — the `<UserSecretsId>` ships in the `.csproj`, so `set` alone is enough, no `init`:
   ```bash
   dotnet user-secrets set "ConnectionStrings:DefaultConnection" "Server=...;Database=...;User ID=...;Password=...;TrustServerCertificate=True"
@@ -44,11 +45,11 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   *(Already have it? `dotnet tool update --global dotnet-aspnet-codegenerator` — a 9.x tool against a 10.x SDK fails with a runtime error, same family as last week's `dotnet ef` skew.)*
 - [ ] **Rehearse the whole script once in a separate copy (≈40 min).** Besides finding what's broken, the rehearsal warms your NuGet cache — §2 adds two packages live, and a warm cache makes those commands instant on class wifi
 - [ ] 🚨 **Then run the drop + rebuild above again — the rehearsal used the same database.** A separate *copy* is not a separate database: the `<UserSecretsId>` ships in the `.csproj`, so every copy reads one secret and points at one database. Forty minutes of rehearsal leaves it in tonight's **end** state — `Slogan` column added, Ghost Kitchen gone — and §8 has nothing left to add in front of the room. **Last thing before class, always: drop, update, `/Trucks` shows seven cards**
-- [ ] Run it from there:
+- [ ] Run it, same terminal:
   ```bash
-  cd ~/Repos/dotnet-web-dev-course/instructor/week-08/Curbside && dotnet watch
+  dotnet watch
   ```
-- [ ] **Open a second terminal in the same folder.** `dotnet watch` owns the first one all night; everything you type tonight goes in the second — §2's two `dotnet add package` commands and the scaffolder, then §8's `dotnet ef migrations add` and `dotnet ef database update`
+- [ ] **Open a second integrated terminal** (the `+` on the terminal panel — it opens in the same folder). `dotnet watch` owns the first one all night; everything you type tonight goes in the second — §2's two `dotnet add package` commands and the scaffolder, then §8's `dotnet ef migrations add` and `dotnet ef database update`
 - [ ] ⚠️ **Know the one prompt that will bite you, and answer it `a` the first time.** Creating a *new* `.cshtml` (§4's `Edit.cshtml`, §6's `Delete.cshtml`) is a change hot reload can't apply, so watch stops and asks **`Do you want to restart your app? Yes (y) / No (n) / Always (a) / Never (v)`** — **in terminal 1, while you're typing in terminal 2.** Miss it and the page 500s with *"The view 'Edit' was not found"*, naming the exact path the file is sitting at. Answer **`a`** at the first prompt and it never asks again all night
 - [ ] **Park two browser tabs**: `/Trucks` and `/Trucks/Details/2`
 - [ ] **mssql extension** signed in, saved server connection tested, panel closed. It has **one** appearance tonight — §8, confirming the new column and its seven slogans — so it's a supporting actor this week, not the lead it was in week 7

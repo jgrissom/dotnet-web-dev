@@ -19,16 +19,16 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ## 0 · Before class
 
-- [ ] **Copy `week-06/demo-starter/Curbside` out of the answer-keys repo** into `instructor/`. This is Curbside as week 5's demo left it — branded, themed, card partial on two pages, a `@section Scripts` on Details — **plus one thing week 5 didn't have: an `＋ Add a truck` button on `/Trucks` that goes nowhere.** It 404s until §1 builds the action behind it. That's deliberate; it's tonight's job, and from §1 on it's how you get to the form instead of retyping the URL. Its own week folder, so nothing here collides with another week's `Curbside` and no previous demo gets deleted. The `rm` only matters if you **re-rehearse this week** — a rehearsal leaves the folder in tonight's **end** state:
+- [ ] ⚠️ **Re-rehearsing this week? Delete `instructor/week-06/Curbside` first** — a rehearsal leaves it in tonight's **end** state, and every beat below starts from week 5's. Deleting the folder in Finder is enough; the next step recreates it
+- [ ] VS Code → File → Open Folder → in `~/Repos/dotnet-web-dev-course/instructor/week-06`, create a new empty **Curbside** and open it *(the dialog's **New Folder** button makes `week-06` too, the first time)*. Its own week folder, so nothing here collides with another week's `Curbside` and no previous demo gets deleted
+- [ ] Integrated terminal (**Ctrl+&#96;**) — fill the empty folder with tonight's starter. This is Curbside as week 5's demo left it — branded, themed, card partial on two pages, a `@section Scripts` on Details — **plus one thing week 5 didn't have: an `＋ Add a truck` button on `/Trucks` that goes nowhere.** It 404s until §1 builds the action behind it. That's deliberate; it's tonight's job, and from §1 on it's how you get to the form instead of retyping the URL:
   ```bash
-  mkdir -p ~/Repos/dotnet-web-dev-course/instructor/week-06
-  rm -rf ~/Repos/dotnet-web-dev-course/instructor/week-06/Curbside
-  cp -R ~/Repos/dotnet-web-dev-answer-keys/week-06/demo-starter/Curbside ~/Repos/dotnet-web-dev-course/instructor/week-06/
+  cp -R ~/Repos/dotnet-web-dev-answer-keys/week-06/demo-starter/Curbside/. .
   ```
-- [ ] **Open that copy in VS Code** — **File → Open Folder** on `~/Repos/dotnet-web-dev-course/instructor/week-06/Curbside`. Run the app below in its **integrated terminal** (**Ctrl+&#96;**): the projector's second state is this one window beside the browser, and the ⌘K clear below only works on a terminal that lives in the editor
-- [ ] Run it from there:
+  The trailing `/.` copies the *contents* in, so the project lands at the top of the window you already have open — no folder inside a folder
+- [ ] Run it, same terminal:
   ```bash
-  cd ~/Repos/dotnet-web-dev-course/instructor/week-06/Curbside && dotnet watch
+  dotnet watch
   ```
 - [ ] **Set the Port box at the top of this page** to whatever `dotnet watch` just printed — `Now listening on: http://localhost:5164`. Every `localhost` URL in this sheet retargets to match, including what the **Copy** buttons put on your clipboard, and it's remembered next time. §2's `curl` is the one that cares
 - [ ] **Park two browser tabs**: `/Trucks` and `/Trucks/Details/2`

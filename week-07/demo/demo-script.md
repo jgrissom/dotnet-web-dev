@@ -19,26 +19,25 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ## 0 · Before class
 
-- [ ] **Copy `week-07/demo-starter/Curbside` out of the answer-keys repo** into `instructor/`. This is Curbside exactly as week 6's demo left it: the form, the annotations, the `ModelState` guard, the redirect, `_ValidationScriptsPartial` in a section. Nothing about it knows what a database is. Its own week folder, so nothing here collides with another week's `Curbside` and no previous demo gets deleted. The `rm` only matters if you **re-rehearse this week** — a rehearsal leaves the folder in tonight's **end** state:
+- [ ] ⚠️ **Re-rehearsing this week? Delete `instructor/week-07/Curbside` first** — a rehearsal leaves it in tonight's **end** state, and every beat below starts from week 6's. Deleting the folder in Finder is enough; the next step recreates it
+- [ ] VS Code → File → Open Folder → in `~/Repos/dotnet-web-dev-course/instructor/week-07`, create a new empty **Curbside** and open it *(the dialog's **New Folder** button makes `week-07` too, the first time)*. Its own week folder, so nothing here collides with another week's `Curbside` and no previous demo gets deleted
+- [ ] Integrated terminal (**Ctrl+&#96;**) — fill the empty folder with tonight's starter. This is Curbside exactly as week 6's demo left it: the form, the annotations, the `ModelState` guard, the redirect, `_ValidationScriptsPartial` in a section. Nothing about it knows what a database is:
   ```bash
-  mkdir -p ~/Repos/dotnet-web-dev-course/instructor/week-07
-  rm -rf ~/Repos/dotnet-web-dev-course/instructor/week-07/Curbside
-  cp -R ~/Repos/dotnet-web-dev-answer-keys/week-07/demo-starter/Curbside ~/Repos/dotnet-web-dev-course/instructor/week-07/
+  cp -R ~/Repos/dotnet-web-dev-answer-keys/week-07/demo-starter/Curbside/. .
   ```
-- [ ] **Open that copy in VS Code** — **File → Open Folder** on `~/Repos/dotnet-web-dev-course/instructor/week-07/Curbside`. Everything below lives in this window: both terminals are its **integrated** ones (**Ctrl+&#96;**, then the `+` on the terminal panel for the second), and the `mssql` connection you set up next is a sidebar in it
-- [ ] ⚠️ **Set your own connection string in user secrets before class and test it.** Everything after §2 depends on it, and *"Login failed for user"* in front of the room costs you the segment. From inside the copy you just made:
+  The trailing `/.` copies the *contents* in, so the project lands at the top of the window you already have open — no folder inside a folder
+- [ ] ⚠️ **Set your own connection string in user secrets before class and test it.** Everything after §2 depends on it, and *"Login failed for user"* in front of the room costs you the segment. Same terminal:
   ```bash
-  cd ~/Repos/dotnet-web-dev-course/instructor/week-07/Curbside
   dotnet user-secrets init
   dotnet user-secrets set "ConnectionStrings:DefaultConnection" "Server=...;Database=...;User ID=...;Password=...;TrustServerCertificate=True"
   ```
 - [ ] Confirm it took: `dotnet user-secrets list` prints the connection string. **§2 shows this already done rather than doing it live** — your real password never goes on the projector
 - [ ] **Point Curbside at its own database** — same server, same account, **different `Database=`** from the Cryptids one behind the lab answer key. One database per application. It matters because the demo *drops* Curbside's database and rebuilds it live in §3, and you run the answer key on screen at §8: share one database and you destroy the thing you're about to demo
-- [ ] Run it from there:
+- [ ] Run it, same terminal:
   ```bash
-  cd ~/Repos/dotnet-web-dev-course/instructor/week-07/Curbside && dotnet watch
+  dotnet watch
   ```
-- [ ] **Open a second terminal in the same folder.** `dotnet watch` owns the first one all night; everything you type tonight goes in the second — §2's two `dotnet add package` commands and its `dotnet user-secrets list`, then §3's `dotnet ef migrations add` and `dotnet ef database update`. **The `dotnet ef` version check below goes there too** — it is the first thing you'll run in it
+- [ ] **Open a second integrated terminal** (the `+` on the terminal panel — it opens in the same folder). `dotnet watch` owns the first one all night; everything you type tonight goes in the second — §2's two `dotnet add package` commands and its `dotnet user-secrets list`, then §3's `dotnet ef migrations add` and `dotnet ef database update`. **The `dotnet ef` version check below goes there too** — it is the first thing you'll run in it
 - [ ] **Park two browser tabs**: `/Trucks` and `/Trucks/Create`
 - [ ] **Install and sign into the VS Code `mssql` extension**, with a saved, **tested** connection — but the panel closed to start. **It's your main instrument from §3 onward**: you open it in §3 to show there's *nothing there*, and from then on you refresh it rather than reopening. A login prompt at any of those kills the beat
 - [ ] ⚠️ **Save that connection to the *server*, with the database field left blank** — not to Curbside's database, which does not exist yet and won't until §3 creates it. A profile naming a database that isn't there fails to connect, and you'd be debugging it at 1:35 in front of the room. From §3 on you expand the new database underneath that server connection
