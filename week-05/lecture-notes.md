@@ -382,7 +382,7 @@ Points to land:
 
 - **`5.3.3` is pinned deliberately.** It's the same Bootstrap version the template put in `wwwroot/lib`, so the local JavaScript bundle and the themed CSS agree. Version numbers in CDN URLs are not decoration.
 - **It replaces, not adds.** If you leave the original `<link>` in, both stylesheets load and fight, and the theme only half applies. This is the single most common way to get a confusing result, and the lab checks for it.
-- **Only the CSS changed.** The `<script>` for `bootstrap.bundle.min.js` stays local and untouched — dropdowns and the mobile navbar keep working.
+- **Only the CSS changed.** The `<script>` for `bootstrap.bundle.min.js` stays local and untouched. Bootswatch ships stylesheets and nothing else, so all of Bootstrap's *behavior* still comes from that file — the collapsing navbar is this app's one example, visible if you narrow the window past the `sm` breakpoint.
 - **Callback to week 2:** you put a CDN link in one HTML file and styled one page. Tonight the same link styles a *site*, because now you know which file every page comes from.
 
 ### The navbar needs a word
