@@ -179,7 +179,7 @@ The partial gets **whatever you hand it**.
 
 <!-- _footer: '🖥️ Demo §4' -->
 
-## The slot that was always there
+## The placeholder that was always there
 
 Last line in the layout's `<body>`:
 

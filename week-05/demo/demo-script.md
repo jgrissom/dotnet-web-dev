@@ -254,12 +254,12 @@ Don't ask the question rhetorically; make them look at both halves. Use the **ho
 
 ## 4 · Sections *(slides 10–11)*
 
-- [ ] 🎞️ **GO TO SLIDE 10** — *The slot that was always there*
-- [ ] Scroll to the last line inside the layout's `<body>` — *"you've scrolled past this for three weeks"*:
+- [ ] 🎞️ **GO TO SLIDE 10** — *The placeholder that was always there*
+- [ ] Scroll to the last line inside the layout's `<body>` — *"we have scrolled past this for three weeks"*:
   ```html
   @await RenderSectionAsync("Scripts", required: false)
   ```
-- [ ] *"`@RenderBody()` is the one required, unnamed hole. This is an optional, named one"*
+- [ ] *"`@RenderBody()` is the one required, unnamed placeholder. This is an optional, named one"*
 - [ ] Add to the bottom of `Views/Trucks/Details.cshtml` — **type it**:
   ```html
   @section Scripts {

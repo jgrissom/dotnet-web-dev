@@ -87,7 +87,7 @@ This is the whole trick:
 </main>
 ```
 
-`@RenderBody()` is the hole in the doughnut. Your view's HTML ends up at exactly that spot — the layout wraps around it.
+`@RenderBody()` is the layout's placeholder — the hole in the doughnut. Your view's HTML ends up at exactly that spot — the layout wraps around it.
 
 > [!TIP]
 > **Predict-then-run (demo §1).** Ask before you do it: *"I'm going to delete `@RenderBody()`. What happens — a blank page, or an error?"* Most rooms say blank page. Let them commit to an answer.
@@ -304,9 +304,9 @@ Three things to say while it's on screen:
 > [!NOTE]
 > **Partial vs. layout, in one line:** a layout wraps *around* a page; a partial drops *inside* one. Same mechanism, opposite direction.
 
-## Part 4: Sections and the Scripts slot (20 min)
+## Part 4: Sections and the Scripts placeholder (20 min)
 
-### The slot that was always there
+### The placeholder that was always there
 
 Last line inside the layout's `<body>`, and you've been scrolling past it for three weeks:
 
@@ -314,7 +314,7 @@ Last line inside the layout's `<body>`, and you've been scrolling past it for th
 @await RenderSectionAsync("Scripts", required: false)
 ```
 
-That's a **named hole** a page can choose to fill. `@RenderBody()` is the one required, unnamed hole; a section is an optional, named one.
+That's a **named placeholder** a page can choose to fill. `@RenderBody()` is the one required, unnamed placeholder; a section is an optional, named one.
 
 Why it exists: scripts go at the bottom of the body, but the *page* is what knows which script it needs. Sections let a view contribute markup to a spot outside itself.
 

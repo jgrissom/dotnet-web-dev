@@ -76,7 +76,7 @@ The [notes on the layout file](../lecture-notes.md#the-layout-file) walk the sam
 | 2 | `ShellIsBranded` | The app is called **`Cryptid Registry`**, not `Cryptids.Web`. Change **three things** in `_Layout.cshtml`: the `navbar-brand` text, the suffix in the `<title>` line, and the footer — add **`Field Reports Since 1893`** to its text, word for word. *(Add, not replace — keep the © and the Privacy link if you like; only that phrase is checked.)* Then look at all three tabs: three edits, one file, nine changed pages' worth of effect — [that's the whole idea](../lecture-notes.md#branding-the-shell). |
 | 3 | `EveryPageHasItsOwnTitle` | Give `Views/Cryptids/Index.cshtml` and `Views/Cryptids/Details.cshtml` their own `ViewData["Title"]`. Index's is your call. **Details' must be the creature's name** — `ViewData["Title"] = Model.Name;` — so `/Cryptids/Details/1` shows *The Hodag* in the tab. [How the view and the layout split the title](../lecture-notes.md#viewdatatitle-and-the-browser-tab). |
 | 4 | `CardIsAPartialUsedTwice` | Create `Views/Shared/_CryptidCard.cshtml`, then render it in **two different views** — a card grid on `/Cryptids`, and one featured creature on the home page. [Passing a model to a partial](../lecture-notes.md#passing-a-model-to-a-partial). **[Task 4 in full ↓](#task-4-in-full)** has every line to paste. |
-| 5 | `DetailsAddsAScript` | Add a `@section Scripts { ... }` block to `Details.cshtml` that logs **`Cryptid file loaded`** plus the creature's name to the console. It must appear on the details page and **not** on the index. [Sections and the Scripts slot](../lecture-notes.md#the-slot-that-was-always-there). **[Task 5 in full ↓](#task-5-in-full)** has the exact block. |
+| 5 | `DetailsAddsAScript` | Add a `@section Scripts { ... }` block to `Details.cshtml` that logs **`Cryptid file loaded`** plus the creature's name to the console. It must appear on the details page and **not** on the index. [Sections and the Scripts slot](../lecture-notes.md#the-placeholder-that-was-always-there). **[Task 5 in full ↓](#task-5-in-full)** has the exact block. |
 | 6 | `ThemeIsNotTheDefault` | Replace the Bootstrap `<link>` in `_Layout.cshtml` with a [Bootswatch](https://bootswatch.com) theme. **Delete the original line** — it's a replacement, not an addition. [One link, whole site](../lecture-notes.md#the-payoff). **[Task 6 in full ↓](#task-6-in-full)** has the tag to paste. |
 
 > [!IMPORTANT]
@@ -174,7 +174,7 @@ Open `Views/Cryptids/Details.cshtml` and add this at the bottom:
 Then open the console (F12) on a details page — the creature's name is in the log. Only the words **`Cryptid file loaded`** are checked; the `@Model.Name` is there to prove a section is still Razor and can read the model.
 
 > [!TIP]
-> **Check 5 looks at *where* your script lands**, not just that it's there. A `<script>` typed into the middle of `Details.cshtml` renders in the middle of the page; the same script inside `@section Scripts` renders at the bottom, below the footer, because [the layout decides where a section goes](../lecture-notes.md#the-slot-that-was-always-there).
+> **Check 5 looks at *where* your script lands**, not just that it's there. A `<script>` typed into the middle of `Details.cshtml` renders in the middle of the page; the same script inside `@section Scripts` renders at the bottom, below the footer, because [the layout decides where a section goes](../lecture-notes.md#the-placeholder-that-was-always-there).
 
 ### Task 6 in full
 
