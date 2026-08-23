@@ -25,7 +25,7 @@ Then point at the *rendered* page rather than the source: a navbar, one centered
 One more tab before you explain anything: View Source on `/Trucks` shows the same 39 lines above the content and the same 15 below. **Two pages, one wrapper.** That's what stops anyone concluding this is a home-page quirk, and it's the setup for `_Layout.cshtml`.
 
 > [!IMPORTANT]
-> Ask the room the question from last week's reading, *after* they've seen both halves: **who wrote the other 90 lines?** They have been in this file twice already — pasting a nav link for requirement 4, and finding `@RenderBody()` for tonight's reading — both times without reading the rest of it. Say that out loud; "you've had this file open twice and never looked at it" lands better than pretending it's new, and after tonight it's the file they'll edit most.
+> Ask the room the question from last week's reading, *after* they've seen both halves: **who wrote the other 54 lines?** They have been in this file twice already — pasting a nav link for requirement 4, and finding `@RenderBody()` for tonight's reading — both times without reading the rest of it. Say that out loud; "you've had this file open twice and never looked at it" lands better than pretending it's new, and after tonight it's the file they'll edit most.
 
 > [!TIP]
 > **View Source, not the Elements panel** — `⌘⌥U` on a Mac (plain `⌘U` isn't bound to it in Chrome), or right-click → *View Page Source*. Same distinction as week 4: Elements shows the live DOM, View Source shows the bytes the server sent. Here you want the bytes.

@@ -39,7 +39,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 ### The gap, shown live *(slides 2–3)* — **do this before saying anything about layouts**
 
 - [ ] 🎞️ **GO TO SLIDE 2** — *Last week vs. tonight*
-- [ ] **Land the contrast — it is the whole reason for tonight:** *"last week you built pages from data. Tonight you build everything around them, once, in one file"*
+- [ ] **Land the contrast — it is the whole reason for tonight:** *"last week you built pages from data. Every one of them arrived wrapped in a shell you didn't write — navbar, head, footer. Tonight you take that shell over, starting with the one file that wraps every page"*
 - [ ] 🎞️ **GO TO SLIDE 3** — *A question*: the whole of `Views/Home/Index.cshtml`, and *"who wrote the other 54 lines?"* Ask it off the slide, then swipe back for the two windows below
 
 Don't ask the question rhetorically; make them look at both halves. Use the **home page** — it's the smallest file in the project, so the gap is the widest and the whole thing fits on screen without scrolling. Two windows, thirty seconds.
