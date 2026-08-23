@@ -2,7 +2,7 @@
 //  Week 4 homework self-check — the SAME checks I grade with.
 //
 //  EASIEST WAY — include it like a CDN, exactly like Bootstrap in week 2.
-//  Add this at the bottom of YOUR index view (e.g. Views/Trails/Index.cshtml):
+//  Add this at the bottom of Views/Home/Index.cshtml — your home page:
 //
 //    <script src="https://jgrissom.github.io/dotnet-web-dev/week-04/homework-checks.js"></script>
 //

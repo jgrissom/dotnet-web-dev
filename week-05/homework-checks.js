@@ -1,9 +1,9 @@
 // ═══════════════════════════════════════════════════════════════════════════
 //  Week 5 homework self-check — the SAME checks I grade with.
 //
-//  EASIEST WAY — include it like a CDN, exactly like Bootstrap in week 2.
-//  This week it goes in a SECTION, at the bottom of YOUR index view
-//  (e.g. Views/Trails/Index.cshtml) — that's requirement 5, worth 2 points:
+//  EASIEST WAY — include it like a CDN, exactly like last week. This week it
+//  goes in a SECTION: open Views/Home/Index.cshtml, find the week-04 line,
+//  and REPLACE it — that's requirement 5, worth 2 points:
 //
 //    @section Scripts {
 //        <script src="https://jgrissom.github.io/dotnet-web-dev/week-05/homework-checks.js"></script>

@@ -33,7 +33,13 @@ It needs:
 2. **[A title on every page](lecture-notes.md#viewdatatitle-and-the-browser-tab)** — `ViewData["Title"]` set in your home view, your index view, and your details view, all three different. **The details page's title must be data-driven** — `ViewData["Title"] = Model.Name;` (or whatever your item's name property is), so each item's page names itself in the browser tab.
 3. **[A partial, rendered from two different views](lecture-notes.md#passing-a-model-to-a-partial)** — a card for one of your items: `Views/Shared/_ThingCard.cshtml` with `@model Thing` on the first line. Render it from your **index**, inside the loop, and from **one other view** — featuring a single item on your home page is the easy second. *Two* views is the requirement, not one: a partial called from a single place is the same markup with an extra step, and it doesn't demonstrate anything.
 4. **[A Bootswatch theme](lecture-notes.md#the-payoff)** replacing the template's Bootstrap `<link>`. **Delete the original line** — leaving both means the two stylesheets fight and the theme only half applies.
-5. **The self-check script, included via [`@section Scripts`](lecture-notes.md#the-placeholder-that-was-always-there)** — replacing week 4's bare `<script>` tag in `Views/Home/Index.cshtml`, **not** added alongside it. See Part 3. This is the one requirement that grades *how* you added something rather than that you added it.
+5. **The self-check script, included via [`@section Scripts`](lecture-notes.md#the-placeholder-that-was-always-there)** — this exact shape, at the bottom of `Views/Home/Index.cshtml`:
+   ```html
+   @section Scripts {
+       <script src="https://jgrissom.github.io/dotnet-web-dev/week-05/homework-checks.js"></script>
+   }
+   ```
+   It **replaces** week 4's bare `<script>` tag — delete that line, don't add a second one — and note the `week-05`, not `week-04`. See Part 3. This is the one requirement that grades *how* you added something rather than that you added it.
 6. **Everything from week 4 still works** — the nav link to your index, the index list, the details page, and the 404 guard on a bad id.
 7. **Deployed to Azure**, and **3+ meaningful commits** in your public GitHub repo.
 
