@@ -19,7 +19,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ## 0 · Before class
 
-**🖥️ On screen, at curtain** — the projector's second state, side by side:
+**🖥️ On screen, at curtain** *(what the checklist below adds up to — none of it exists until you run it)* — the projector's second state, side by side:
 
 - **VS Code**, left half — folder `~/Repos/dotnet-web-dev-course/instructor/week-06/Curbside`, with `dotnet watch` in its integrated terminal and that terminal kept visible
 - **Browser**, right half — two tabs: `/Trucks` (dev tools open, on the Network panel) and `/Trucks/Details/2`

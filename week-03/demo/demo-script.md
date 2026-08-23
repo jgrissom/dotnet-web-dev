@@ -28,7 +28,7 @@ dotnet-web-dev-course/
 
 Tonight's demo app does not exist yet — building it in front of the room *is* §2. The only thing in the folder before you start is the lab starter, which you don't open until §5. **Every week keeps its own folder here**, so nothing is ever deleted to make room for the next one.
 
-**🖥️ On screen, at curtain** — tonight's app does not exist yet:
+**🖥️ On screen, at curtain** *(what the checklist below adds up to — none of it exists until you run it)* — tonight's app does not exist yet:
 
 - **VS Code** — nothing open. §2 creates `CommonGrounds.Web` live, and the Open Folder dialog is pre-landed on `~/Repos/dotnet-web-dev-course/instructor/week-03` so the picker starts there
 - **Browser** — one tab on week 2's finished Common Grounds page, which is the exact request §1 opens the Network panel on

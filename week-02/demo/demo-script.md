@@ -16,7 +16,7 @@ Beat-by-beat cue sheet for building Common Grounds live, in lecture order, keyed
 
 ## 0 · Before class
 
-**🖥️ On screen, at curtain** — the projector's second state, side by side:
+**🖥️ On screen, at curtain** *(what the checklist below adds up to — none of it exists until you run it)* — the projector's second state, side by side:
 
 - **VS Code**, left half — `~/Repos/dotnet-web-dev-course/instructor/week-02/scratch.html`, in the Teaching profile
 - **Browser**, right half — that same `scratch.html` opened from disk, so the page updates beside the editor. Behind it: the hosted *before* / *after* pages for the opening pitch, and the step page the room looks at

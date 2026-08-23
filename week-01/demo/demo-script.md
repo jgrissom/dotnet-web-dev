@@ -19,7 +19,7 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
 
 ## 0 · Before class
 
-**🖥️ On screen, at curtain** — tonight is the browser, not the editor:
+**🖥️ On screen, at curtain** *(what the checklist below adds up to — none of it exists until you run it)* — tonight is the browser, not the editor:
 
 - **Browser**, full width — the hosted playground with the console docked (F12). A second tab holds the setup guide, which goes on screen at 0:20
 - **VS Code** — not on screen during the demo; it belongs to the setup workshop. The Teaching profile below is what it wears when it does appear
