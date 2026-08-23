@@ -257,7 +257,28 @@ C# bridge: no class behind it — a bag of key/values, like `Dictionary<string, 
 
 ---
 
-<!-- _footer: '🖥️ Demo §5 · objects' -->
+<!-- _footer: '🖥️ Demo §5 · copying an object' -->
+## Two names, or two objects?
+
+```js
+const copy  = student;         // a second NAME
+const clone = { ...student };  // a second OBJECT
+
+student.gpa = 2.5;
+```
+
+```
+student ─┐
+copy ────┴──▶ { …, gpa: 2.5 }   ← copy sees 2.5
+
+clone ───────▶ { …, gpa: 3.9 }  ← untouched
+```
+
+C# bridge: a `class` does this too — `=` copies the **arrow**, not the box.
+
+---
+
+<!-- _footer: '🖥️ Demo §5 · destructuring and spread' -->
 ## Destructuring: pulling values *out*
 
 ```js
@@ -275,7 +296,7 @@ Instead of `student.name`, `student.gpa` one at a time — unpack in one line.
 
 ---
 
-<!-- _footer: '🖥️ Demo §5 · objects' -->
+<!-- _footer: '🖥️ Demo §5 · destructuring and spread' -->
 ## Spread: copying everything *in*
 
 ```js
@@ -294,7 +315,7 @@ combined
 
 ---
 
-<!-- _footer: '🖥️ Demo §5 · objects' -->
+<!-- _footer: '🖥️ Demo §5 · arrays of objects' -->
 ## Real data = arrays of objects
 
 ```js

@@ -2,7 +2,7 @@
 
 Week 1's live-coding happens in the browser console, so the "canvas" is two things:
 
-- `finished.html` — the **DOM & fetch playground**: a minimal page with the `#status` / `#go` elements the slide-21 demo selects. Hosted at **https://jgrissom.github.io/dotnet-web-dev/week-01/demo/** — open that in class (console on, page visible), and students can replay the demo from the same URL at home without cloning anything.
+- `finished.html` — the **DOM & fetch playground**: a minimal page with the `#status` / `#go` elements the slide-22 demo selects. Hosted at **https://jgrissom.github.io/dotnet-web-dev/week-01/demo/** — open that in class (console on, page visible), and students can replay the demo from the same URL at home without cloning anything.
 - `demo-script.js` — every console example in slide order, for pasting blocks when live-typing runs slow. **Type the prediction moments** (`typeof null`, `1 == "1"`, `updated`…) — the paste file is a safety net, not the performance.
 
 > [!TIP]

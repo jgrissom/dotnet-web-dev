@@ -54,16 +54,28 @@ student.name
 student.year = 2;    // no class — add on the fly
 student
 
-// ── Destructuring (slide 18) ─────────────────────────────────
+// ── Copying an object (slide 18) ─────────────────────────────
+const copy  = student;         // a second NAME for the same object
+const clone = { ...student };  // a second OBJECT
+student
+copy
+clone
+student.gpa = 2.5;         // predict: which of the three change?
+student
+copy
+clone
+student.gpa = clone.gpa;   // put it back — the next two slides print 3.9
+
+// ── Destructuring (slide 19) ─────────────────────────────────
 const { gpa } = student;
 gpa
 
-// ── Spread (slide 19) ────────────────────────────────────────
+// ── Spread (slide 20) ────────────────────────────────────────
 const updated = { ...student, gpa: 4.0 };
 updated              // which gpa won?
 student              // original untouched?
 
-// ── Arrays of objects (slide 20) ─────────────────────────────
+// ── Arrays of objects (slide 21) ─────────────────────────────
 const students = [
   { name: "Ada", gpa: 3.9 },
   { name: "Linus", gpa: 3.4 },
@@ -71,7 +83,7 @@ const students = [
 ];
 students.filter(s => s.gpa >= 3.5).map(s => s.name)
 
-// ── DOM (slide 21) — on the demo page! ───────────────────────
+// ── DOM (slide 22) — on the demo page! ───────────────────────
 const status = document.querySelector("#status");
 status.textContent = "Ready.";
 document.querySelector("#go").addEventListener("click", () => {
@@ -79,7 +91,7 @@ document.querySelector("#go").addEventListener("click", () => {
 });
 // ...now click the button
 
-// ── fetch (slide 22) — line by line, top-level await ─────────
+// ── fetch (slide 23) — line by line, top-level await ─────────
 const response = await fetch("https://jsonplaceholder.typicode.com/users");
 response
 const users = await response.json();

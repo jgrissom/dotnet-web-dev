@@ -36,7 +36,7 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
 ⚠️ **Three settings, all once per Chrome profile, all of which stick.** Do them now. Each one costs a baffling thirty seconds if you meet it at 1:25 with a slide up, and the first two decide whether the predict-then-run beats work at all.
 
 - [ ] 🛑 **Eager evaluation OFF.** DevTools → **F1** → Preferences → **Console** → untick **Eager evaluation**. Chrome previews the result of any complete expression *before* you press Enter, in grey, right under the line. Every bet in §4 and §5 dies the instant the room can read the answer — and **typing does not save you**, because the preview appears the moment the expression is syntactically complete either way
-- [ ] 🛑 **AI autocomplete OFF — this one argues with the deck.** Same **F1** settings, in the AI section (headed *AI innovations* or *AI assistance*, depending on your Chrome). Untick everything in it. It offers a rewrite of what you paste, as grey ghost text: on §5's spread line it proposes `const updated = Object.assign({}, student, { gpa: 4.0 });` — which is the old-tutorial habit slide 8 says tonight exists to un-learn, on screen while slide 18 teaches the opposite. *(Section missing or greyed out means WCTC manages it: `chrome://policy`, look for `DevToolsGenAiSettings`. You cannot change it, but you will know to expect the ghost text.)*
+- [ ] 🛑 **AI autocomplete OFF — this one argues with the deck.** Same **F1** settings, in the AI section (headed *AI innovations* or *AI assistance*, depending on your Chrome). Untick everything in it. It offers a rewrite of what you paste, as grey ghost text: on §5's spread lines it proposes `const updated = Object.assign({}, student, { gpa: 4.0 });` — which is the old-tutorial habit slide 8 says tonight exists to un-learn, on screen while slide 20 teaches the opposite. *(Section missing or greyed out means WCTC manages it: `chrome://policy`, look for `DevToolsGenAiSettings`. You cannot change it, but you will know to expect the ghost text.)*
 - [ ] 🛑 **`allow pasting`.** Chrome and Edge block the first paste into the console until you type **`allow pasting`** and press Enter — a self-XSS guard, and every Copy button on this sheet hits it
 - [ ] **✓ Verify all three with two pastes, neither of which you send.** No restart needed; the settings apply to the next line. First paste `1 + 1` — Chrome will ask for `allow pasting` here, so type it and paste again — and **stop, do not press Enter**: grey `2` underneath means eager evaluation is still on. Then paste the line below and again **do not press Enter** — grey text trailing it means the AI is still on. Nothing grey either time and you are set. *(Still there? Close and reopen DevTools — F12 twice — not the browser.)*
 
@@ -242,7 +242,7 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
 - [ ] **Point at the top line — the one thing here the console never showed you.** `function add(a, b) { return a + b; }` and the arrow underneath are the same function twice. *"the top one is the spelling most of us learned first. The bottom one is what this course writes — and it is the shape C# uses too"*
 - [ ] **✓ CHECKPOINT:** the room can say why `===` and why `const`, without hedging
 
-## 5 · Arrays and objects *(slides 15–20)*
+## 5 · Arrays and objects *(slides 15–21)*
 
 ### The big three
 
@@ -316,7 +316,71 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
 - [ ] 🎞️ **GO TO SLIDE 17** — *Objects*
 - [ ] **Two ways in — dot and bracket — then the line that matters.** Point at `student.year = 2`: *"a property added to a thing that already exists, and there is no class anywhere on this slide"*
 - [ ] **✓ say it:** *"this is the shape of JSON, and JSON is what every API in week 15 hands you"*
-- [ ] 🎞️ **GO TO SLIDE 18** — _Destructuring: pulling values *out*_
+
+### Copying an object
+
+- [ ] **Back to the console, no slide yet** — *"one more thing about objects before we start taking them apart. I want a copy of Ada"*
+- [ ] Paste both, and read what each line claims to do:
+
+    ```js
+    const copy  = student;
+    ```
+
+    ```js
+    const clone = { ...student };
+    ```
+
+- [ ] *"Three dots. It gets its proper name in a few minutes — for now read `...student` as everything student has, poured into a fresh pair of braces"*
+- [ ] Print all three, one at a time, so the room sees them agree **before** anything changes:
+
+    ```js
+    student
+    ```
+
+    ```js
+    copy
+    ```
+
+    ```js
+    clone
+    ```
+
+- [ ] *"Same three properties, three times. So far there is nothing to choose between them"*
+- [ ] **Ask for hands before you run the next line** — *"I am about to drop Ada's GPA to 2.5 on `student`. Hands up if `copy` still says 3.9 afterward. Hands up if `clone` still says 3.9"*
+
+    ```js
+    student.gpa = 2.5;
+    ```
+
+- [ ] Print all three again, one at a time, and let each one land:
+
+    ```js
+    student
+    ```
+
+    ```js
+    copy
+    ```
+
+    ```js
+    clone
+    ```
+
+- [ ] 🎯 **The reveal:** `copy` says 2.5, `clone` says 3.9. *"`copy` was never a copy. `=` gave `student` a second name, so there was only ever one object to change"*
+- [ ] 🎞️ **GO TO SLIDE 18** — *Two names, or two objects?*
+- [ ] **The picture is the whole reason for the slide — the console could show the result and not the cause.** Trace the arrows out loud: *"`student` and `copy` are two names pointing at one box, so a change made through either name shows up through both. `clone` got a box of its own, which is why it kept 3.9"*
+- [ ] **✓ say it — the C# line at the bottom:** *"a `class` in C# does the same thing. `var copy = student;` copies the arrow, not the box — and week 4 is where that starts mattering"*
+- [ ] **Put Ada's GPA back before moving on** — the next two slides both print `gpa: 3.9`, so the console has to agree with them:
+
+    ```js
+    student.gpa = clone.gpa;
+    ```
+
+- [ ] *"and I take the 3.9 from the clone, because the clone is the one thing on screen that never changed"*
+
+### Destructuring and spread
+
+- [ ] 🎞️ **GO TO SLIDE 19** — _Destructuring: pulling values *out*_
 - [ ] **Both shapes are up there** — braces unpack an object, brackets unpack an array. *"Instead of pulling out `student.name` then `student.gpa` one at a time, one line does both"* — then the question at the bottom
 - [ ] Paste — **short, and the point is the shape**:
 
@@ -328,7 +392,7 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
     gpa
     ```
 
-- [ ] *"I am about to copy an object and change one field on the way in. Two questions first"*
+- [ ] *"Same three dots that made the clone — only this time I change one field on the way in. Two questions first"*
 - [ ] Two questions before you run it: *"which `gpa` wins, and does the original change?"*
 
     ```js
@@ -342,10 +406,13 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
     ```js
     student
     ```
-- [ ] 🎞️ **GO TO SLIDE 19** — _Spread: copying everything *in*_
+- [ ] 🎞️ **GO TO SLIDE 20** — _Spread: copying everything *in*_
 
+- [ ] **The slide finally names the three dots — say the word:** *"spread. It is what cloned Ada a few minutes ago, and it is what copies-with-one-change here"*
 - [ ] *"Rightmost wins, and the original is untouched. Both of those are on your homework — exercise 8 fails on purpose if you mutate"*
-- [ ] 🎞️ **GO TO SLIDE 20** — *Real data = arrays of objects*
+### Arrays of objects
+
+- [ ] 🎞️ **GO TO SLIDE 21** — *Real data = arrays of objects*
 - [ ] **This is the payoff slide — read the line under the code and mean it:** *"every database query result and every API response you touch this semester is this shape"*. Then the question: *"who made the honor roll?"*
 - [ ] Paste, then chain it:
 
@@ -364,7 +431,7 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
 - [ ] 🎯 **The sentence that connects tonight to the whole course:** *"every database query result and every API response you touch this semester is this shape. Learn to read it once"*
 - [ ] **✓ CHECKPOINT:** the room can chain `filter` into `map` without being walked through it
 
-## 6 · The DOM and fetch *(slides 21–22)*
+## 6 · The DOM and fetch *(slides 22–23)*
 
 > [!IMPORTANT]
 > **A tour, not mastery.** They see these again in week 2 and for real in week 15. Do it **on the hosted playground** so the page visibly changes — a console with no page attached teaches nothing here.
@@ -372,7 +439,7 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
 ### The DOM, on a real page
 
 - [ ] **Same tab you have been in since §4 — but now make the page itself visible** alongside the console, because this is the segment where it changes. It has exactly two elements: a `#status` paragraph and a `#go` button
-- [ ] 🎞️ **GO TO SLIDE 21** — *The DOM in three APIs*
+- [ ] 🎞️ **GO TO SLIDE 22** — *The DOM in three APIs*
 - [ ] **Name the three APIs off the slide, in order** — select, write, listen. *"Three calls. That is the whole DOM for tonight"* — then do all three on the page underneath
 - [ ] Back on the page, paste the three moves **one at a time, watching the page after each**:
 
@@ -398,7 +465,7 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
 
 ### fetch, and a look at week 15
 
-- [ ] 🎞️ **GO TO SLIDE 22** — *fetch + async/await — a preview of week 15*
+- [ ] 🎞️ **GO TO SLIDE 23** — *fetch + async/await — a preview of week 15*
 - [ ] **Point at three things on the slide, in order:** the `async` wrapper, the two `await`s, then `.json()`. *"That is the whole shape of talking to an API — go and get it, wait, then turn what came back into objects"*
 - [ ] ⚠️ **Now the console, and warn them it will not look like the slide** — *"no wrapper, because the console lets you `await` without a function."* `loadUsers` never gets called tonight; the slide is there for the shape, not to be run
 - [ ] **Unwrapped, and expand the result each time:** *"the same two steps, one line at a time, so we can see what each one hands back"*
@@ -429,11 +496,11 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
 - [ ] 🎯 **The preview line:** *"`await` means wait here until the answer comes back — the network is not instant. In week 15 that URL is your own API, and the C# on the other end is what you spend twelve weeks learning to write"*
 - [ ] ⚠️ **Do not teach `async`/`await` tonight.** It is a preview and it says so on the slide — the mechanism arrives in week 8, in C#, where it has somewhere to be used
 
-## 7 · Hand off to the lab *(slide 23)*
+## 7 · Hand off to the lab *(slide 24)*
 
 - [ ] **Show what done looks like, ~90 seconds:** your finished copy of the gauntlet open in the browser, console reading **8 / 8 passing**. A target, not a walkthrough
 - [ ] ⚠️ **Nothing is deployed for this** — it is a folder open from your own machine, exactly like theirs will be
-- [ ] 🎞️ **GO TO SLIDE 23** — *Lab: JS Refresher Gauntlet*. Leave it up for the whole lab; it is the task list
+- [ ] 🎞️ **GO TO SLIDE 24** — *Lab: JS Refresher Gauntlet*. Leave it up for the whole lab; it is the task list
 - [ ] **Setup on screen, said once — they cloned the starters in §2, so tonight is only the copy:** in `dotnet-web`, copy the `week-01` folder out of `dotnet-web-starters` and drop it beside the clone. *"Never work inside the clone — every week you pull it again, and it will fight you"*
 - [ ] ⚠️ **Head off the question that always comes next: no second window.** The copy is already in the Explorer under `dotnet-web`. *"Expand `week-01` and open `exercises.js` right there. Then `index.html` in the browser, F12 for the console"*
 - [ ] **The rhythm, said once:** *"one ❌ at a time. Pick the first red one, fix that function, save, refresh. Do not write all eight and debug at the end"*
@@ -441,9 +508,9 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
 - [ ] **Pairs encouraged.** Review the two or three trickiest on screen in the last ten minutes
 - [ ] ⚠️ **Exercises 7 and 8 roll into the homework if time runs out** — say so at the start, so nobody reads the clock as failure
 
-## 8 · Wrap-up *(slide 24)*
+## 8 · Wrap-up *(slide 25)*
 
-- [ ] 🎞️ **GO TO SLIDE 24** — *Before next week*
+- [ ] 🎞️ **GO TO SLIDE 25** — *Before next week*
 - [ ] **The homework, in one sentence each:** the two setup screenshots, the eight roster functions, and it goes **live on GitHub Pages tonight**
 - [ ] 🎯 **The deploy is the part to sell:** *"your code has an address by the end of the week. From week 3 every .NET assignment does too. That is why there are no zip files in this course"*
 - [ ] ⚠️ **Say the setup deadline out loud:** *"if any of your six checks is still red, email me before next class. Week 2 does not work without them, and I would rather fix it Thursday than in the first ten minutes of the session"*

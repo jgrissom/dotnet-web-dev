@@ -241,6 +241,34 @@ student.year = 2;      // add a property on the fly — no class needed!
 
 - **C# bridge:** looks like an object initializer, but there is no class. Objects are bags of key/value pairs, closer to `Dictionary<string, object>`. This is exactly the shape of the JSON your Web API returns in week 14.
 
+### Copying an object
+
+`=` does not copy an object. It copies the *reference* — the arrow pointing at the object — so both names end up on the same one:
+
+```js
+const student = { name: "Ada", gpa: 3.9 };
+
+const copy  = student;         // a second NAME for the same object
+const clone = { ...student };  // a second OBJECT, same contents
+
+student.gpa = 2.5;
+
+copy.gpa;     // 2.5  — changed, because copy IS student
+clone.gpa;    // 3.9  — unchanged, because clone is its own object
+```
+
+```
+student ─┐
+copy ────┴──▶ { name: "Ada", gpa: 2.5 }
+
+clone ───────▶ { name: "Ada", gpa: 3.9 }
+```
+
+- The variable *named* `copy` is the trap: calling it a copy does not make it one. Only `{ ...student }` builds a second object.
+- Arrays work the same way — `const same = scores;` gives one array two names; `const real = [...scores];` gives you a second array.
+- **C# bridge:** a `class` is a *reference type*, so `var copy = student;` does exactly what the JavaScript line does — it copies the arrow, not the box. That starts mattering in week 4, when your data is C# objects.
+- **If someone asks:** `{ ...student }` is a *shallow* copy — it duplicates the top level only, so a property whose value is itself an object stays shared between the original and the clone. Everything you clone in this course's early weeks is flat, so it will not bite you until you are copying nested JSON.
+
 ### Destructuring and spread
 
 Two operations that look similar (both use unusual punctuation on object/array literals) but point in opposite directions — teach them as a pair on purpose:
