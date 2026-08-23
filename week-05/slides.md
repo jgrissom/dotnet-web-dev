@@ -62,7 +62,7 @@ style: |
 
 No `<html>`. No `<head>`. **No navbar.**
 
-### View Source on `/`. Who wrote the other 54 lines?
+### View Source on `/`. Who wrote everything else?
 
 ---
 
