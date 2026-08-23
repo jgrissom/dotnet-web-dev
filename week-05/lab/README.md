@@ -26,16 +26,17 @@ You should end up with exactly this:
 ```
 CryptidShell/               ← in `dotnet-web`, the folder you copied and renamed
 ├─ Cryptids.Web/           ← your app — ALL your work happens in here
-└─ Cryptids.Checks/        ← the checks — read-only, never edit
+├─ Cryptids.Checks/        ← the checks — read-only, never edit
+└─ README.md, .gitignore   ← came with the starter; ignore both
 ```
 
 **3. Open `CryptidShell` in VS Code** — the folder that *contains* both project folders, not one of the projects themselves.
 
-**4. Open a second terminal** — the `+` in the terminal panel, or `` Ctrl+Shift+` ``. **You need two:** `dotnet watch` keeps running and rebuilds on every save, which is why you can't type in it.
+**4. Open two terminals.** `` Ctrl+` `` gives you the first; the `+` in the terminal panel (or `` Ctrl+Shift+` ``) gives you the second. **You need two:** `dotnet watch` keeps running and rebuilds on every save, which is why you can't type in it.
 
 | Terminal | Where it stands | What runs in it |
 |---|---|---|
-| 1 | inside `Cryptids.Web` — `cd Cryptids.Web` | `dotnet watch` — start it, then leave it alone |
+| 1 | inside `Cryptids.Web` — `cd Cryptids.Web` | `dotnet watch` — **start it now**, then leave it alone |
 | 2 | `CryptidShell`, the folder holding **both** projects | `dotnet test Cryptids.Checks`, after every task |
 
 **5. In terminal 2:**
@@ -67,7 +68,7 @@ dotnet test Cryptids.Checks
 The [notes on the layout file](../lecture-notes.md#the-layout-file) walk the same file in more detail.
 
 > [!WARNING]
-> **One broken line in this file breaks every page at once.** That's the deal with a shared shell. If everything 500s, the layout is where you look — and the terminal running `dotnet watch` has the real exception.
+> **One broken line in this file breaks every page at once.** That's the deal with a shared shell, and it fails two different ways. If every page **500s**, the terminal running `dotnet watch` has the real exception. If the pages instead look **unchanged** — your edits stop appearing — the file didn't compile, and `dotnet watch` says nothing at all while it keeps serving the last build that worked. Either way `_Layout.cshtml` is where you look, and a pristine copy of it is still sitting in `dotnet-web-starters/week-05/` if you need to start that one file over.
 
 ## The tasks
 
@@ -203,6 +204,7 @@ Pick your theme on [bootswatch.com](https://bootswatch.com) — the **Preview** 
 ## 🆘 Stuck?
 
 - **Every page is suddenly a 500** — you edited the layout. Read the exception in the `dotnet watch` terminal. If it says `RenderBody has not been called`, you deleted [`@RenderBody()`](../lecture-notes.md#renderbody-where-your-page-lands); put it back inside `<main>`.
+- **Your edit isn't showing up** — the page looks fine, but your change isn't on it. A Razor syntax error means the app keeps serving the **last build that worked**, and `dotnet watch` prints nothing at all. Run `dotnet test Cryptids.Checks` in terminal 2 — it names the file, line and column, like `_Layout.cshtml(6,21): error RZ1027`. (Or press **Ctrl+R** in terminal 1 to force a rebuild and read the error there — it's the one key that terminal takes.)
 - **`The partial view '_CryptidCard' was not found`** — it looks in this controller's view folder, then `Views/Shared/`. Check the file is in `Views/Shared/`, that the name in `<partial name="_CryptidCard" />` has the underscore, and that it does **not** have `.cshtml` on it.
 - **`The model item passed into the ViewDataDictionary is of type List<Cryptid>, but requires Cryptid`** — you rendered the card without handing it one creature. Inside the loop it needs `model="cryptid"`; without it the partial inherits the *page's* model, which is the whole list.
 - **The theme didn't change** — hard-refresh (⌘⇧R / Ctrl+Shift+R). Still stock? View Source and look for the old `bootstrap.min.css` line still sitting there.

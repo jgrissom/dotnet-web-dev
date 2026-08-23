@@ -17,23 +17,24 @@ git -C dotnet-web-starters pull
 
 `-C` tells git to work *in that folder* without moving your terminal into it — you stay in `dotnet-web`, which is where every other command belongs.
 
-**2. Copy the `week-04` folder into `dotnet-web`** — next to the clone, never inside it — **and rename the copy** to something meaningful. `CryptidRegistry` works. (Copy it *out*; never work inside the clone, or next week's `git pull` will fight you.)
+**2. Copy the `week-04` folder out of `dotnet-web-starters` and into `dotnet-web`** — next to the clone, never inside it — **and rename the copy** to something meaningful. `CryptidRegistry` works. (Never work inside the clone, or next week's `git pull` will fight you.)
 
 You should end up with exactly this:
 
 ```
 CryptidRegistry/            ← in `dotnet-web`, the folder you copied and renamed
 ├─ Cryptids.Web/           ← your app — ALL your work happens in here
-└─ Cryptids.Checks/        ← the checks — read-only, never edit
+├─ Cryptids.Checks/        ← the checks — read-only, never edit
+└─ README.md, .gitignore   ← came with the starter; ignore both
 ```
 
 **3. Open `CryptidRegistry` in VS Code** — the folder that *contains* both project folders, not one of the projects themselves. (File → Open Folder → pick `CryptidRegistry`.)
 
-**4. Open a second terminal** — the `+` in the terminal panel, or `` Ctrl+Shift+` ``. **You need two, and so does every .NET week from here on:** `dotnet watch` keeps running and rebuilds on every save, which is why you can't type in it.
+**4. Open two terminals.** `` Ctrl+` `` gives you the first; the `+` in the terminal panel (or `` Ctrl+Shift+` ``) gives you the second. **You need two, and so does every .NET week from here on:** `dotnet watch` keeps running and rebuilds on every save, which is why you can't type in it.
 
 | Terminal | Where it stands | What runs in it |
 |---|---|---|
-| 1 | inside `Cryptids.Web` — `cd Cryptids.Web` | [`dotnet watch`](../../week-03/lecture-notes.md#dotnet-new-mvc) — start it, then leave it alone |
+| 1 | inside `Cryptids.Web` — `cd Cryptids.Web` | [`dotnet watch`](../../week-03/lecture-notes.md#dotnet-new-mvc) — **start it now**, then leave it alone |
 | 2 | `CryptidRegistry`, the folder holding **both** projects | `dotnet test Cryptids.Checks`, after every task |
 
 **5. In terminal 2:**

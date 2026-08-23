@@ -19,7 +19,7 @@ git -C dotnet-web-starters pull
 
 `-C` tells git to work *in that folder* without moving your terminal into it — you stay in `dotnet-web`, which is where every other command belongs.
 
-**2. Copy the `week-07` folder into `dotnet-web`** — next to the clone, never inside it — **and rename the copy.** `CryptidsDb` works. (Copy it *out*; never work inside the clone.)
+**2. Copy the `week-07` folder out of `dotnet-web-starters` and into `dotnet-web`** — next to the clone, never inside it — **and rename the copy.** `CryptidsDb` works. (Never work inside the clone.)
 
 You should end up with exactly this:
 
