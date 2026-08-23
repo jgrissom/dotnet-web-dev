@@ -116,7 +116,7 @@ Don't ask the question rhetorically; make them look at both halves. Use the **ho
       Layout = "_Layout";
   }
   ```
-- [ ] **Say it to the file on screen:** *"Nothing in your Index view mentions a layout. This is why it gets one — one file, every view below it"*
+- [ ] **Say it to the file on screen:** *"Nothing in your Index view (or any other view) mentions a layout. This is how the layout file is assigned by default to all views in the project"*
 
 ### Break it #3 — opt a page out
 
