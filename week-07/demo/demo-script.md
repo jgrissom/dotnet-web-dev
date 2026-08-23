@@ -25,6 +25,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   rm -rf ~/Repos/dotnet-web-dev-course/instructor/week-07/Curbside
   cp -R ~/Repos/dotnet-web-dev-answer-keys/week-07/demo-starter/Curbside ~/Repos/dotnet-web-dev-course/instructor/week-07/
   ```
+- [ ] **Open that copy in VS Code** — **File → Open Folder** on `~/Repos/dotnet-web-dev-course/instructor/week-07/Curbside`. Everything below lives in this window: both terminals are its **integrated** ones (**Ctrl+`**, then the `+` on the terminal panel for the second), and the `mssql` connection you set up next is a sidebar in it
 - [ ] ⚠️ **Set your own connection string in user secrets before class and test it.** Everything after §2 depends on it, and *"Login failed for user"* in front of the room costs you the segment. From inside the copy you just made:
   ```bash
   cd ~/Repos/dotnet-web-dev-course/instructor/week-07/Curbside
