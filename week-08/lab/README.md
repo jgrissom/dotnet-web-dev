@@ -561,7 +561,7 @@ public async Task<IActionResult> Index()
 
 <div class="text-center">
     <h1 class="display-4">Cryptid Registry</h1>
-    <p class="lead">Creatures of uncertain existence, catalogued with unwarranted confidence.</p>
+    <p class="lead">Creatures of uncertain existence, cataloged with unwarranted confidence.</p>
 
     @if (Model != null)
     {

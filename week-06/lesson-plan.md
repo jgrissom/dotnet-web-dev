@@ -3,7 +3,7 @@
 **Topic:** Forms, model binding, data annotations, `ModelState`, POST-Redirect-GET, client-side validation
 **Session length:** 3h 45m
 
-> The night the app stops being a pamphlet. For five weeks data has travelled one way — out of a hard-coded list, through a view, onto a screen — and tonight it comes back the other way for the first time. Three segments carry the week: **§1's plain HTML form** (which makes model binding visibly just name-matching), **§3's two breaks** (a nameless truck rated 9000 getting filed, and a refresh creating a duplicate), and **§4's last two minutes** (defeating client-side validation and watching the server refuse anyway). Everything else exists to earn those.
+> The night the app stops being a pamphlet. For five weeks data has traveled one way — out of a hard-coded list, through a view, onto a screen — and tonight it comes back the other way for the first time. Three segments carry the week: **§1's plain HTML form** (which makes model binding visibly just name-matching), **§3's two breaks** (a nameless truck rated 9000 getting filed, and a refresh creating a duplicate), and **§4's last two minutes** (defeating client-side validation and watching the server refuse anyway). Everything else exists to earn those.
 
 ## Learning objectives
 

@@ -27,7 +27,7 @@ Week 7's demo picks Curbside up where week 6 left it — form working, annotatio
 > **The migration file is the beat that ties the whole course together.** Open `<timestamp>_InitialCreate.cs` and ask where `nvarchar(50)` came from. Nobody typed 50 tonight — it's `[StringLength(50, MinimumLength = 2)]`, written last week as a *form validation rule* to stop someone pasting a paragraph into a text box. It lands far better found than told, so ask and wait.
 
 > [!NOTE]
-> **The terminal is the display surface all night, and you never clear it.** Migration SQL, the `SELECT` on every page load, the `INSERT` when a truck is saved, and two error messages worth recognising on sight. This is the opposite of week 6, where a wiped terminal with one object in it was the point.
+> **The terminal is the display surface all night, and you never clear it.** Migration SQL, the `SELECT` on every page load, the `INSERT` when a truck is saved, and two error messages worth recognizing on sight. This is the opposite of week 6, where a wiped terminal with one object in it was the point.
 
 > [!TIP]
 > **Nothing gets deployed tonight.** §7 is a talk-through of what *students* do for the homework — the only Azure deploy in the course is week 3's. Say so out loud when you get there, or "the deployed app" reads as something about to happen on screen.

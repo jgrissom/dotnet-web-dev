@@ -6,7 +6,7 @@
 
 ### Everything so far has been one-way
 
-Week 3: a URL comes in, HTML goes out. Week 4: the URL decided *which* data. Week 5: a shared shell wrapped it. In all three, the browser asked and the server told. Nothing ever travelled the other way.
+Week 3: a URL comes in, HTML goes out. Week 4: the URL decided *which* data. Week 5: a shared shell wrapped it. In all three, the browser asked and the server told. Nothing ever traveled the other way.
 
 A form reverses the direction, using HTTP's other verb — the one you named in week 3 and have never sent:
 
@@ -102,7 +102,7 @@ Two details in that output are doing work, and both are worth saying out loud:
 > Name=Wurst+Case+Scenario&Cuisine=German&City=Appleton&Rating=4.1
 > ```
 >
-> That's week 3's query-string format — `key=value&key=value` — except it's riding in the body instead of the URL. Nothing exotic is happening. The form serialised itself, and the server took it apart again.
+> That's week 3's query-string format — `key=value&key=value` — except it's riding in the body instead of the URL. Nothing exotic is happening. The form serialized itself, and the server took it apart again.
 
 ### Model binding is name-matching, and nothing else
 
@@ -295,7 +295,7 @@ HTTP/1.1 400 Bad Request
 Content-Length: 0
 ```
 
-and nothing at all appears in the other terminal. That absence is the real result: the action never ran. Note `Content-Length: 0` — an antiforgery rejection has an empty body and writes nothing to the log, so in a browser it looks like a blank white page. Worth recognising once.
+and nothing at all appears in the other terminal. That absence is the real result: the action never ran. Note `Content-Length: 0` — an antiforgery rejection has an empty body and writes nothing to the log, so in a browser it looks like a blank white page. Worth recognizing once.
 
 ## Part 3: Rules that live on the model (40 min)
 

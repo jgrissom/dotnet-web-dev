@@ -49,7 +49,7 @@ Don't ask the question rhetorically; make them look at both halves. Use the **ho
 - [ ] Scroll to the **top**: `<!DOCTYPE html>`, `<head>`, the stylesheet, the navbar. **None of it was in the file you just read**
 - [ ] `⌘F` / `Ctrl+F` for `display-4` — their content is **lines 40–43**, of **58**
 - [ ] **Say the numbers:** *"Four lines of that page are yours. Fifty-four aren't."*
-- [ ] **Point at the rendered page, not just the source** — a navbar, one centred heading, a footer. *"Almost everything you're looking at came from somewhere else."* On the home page the shell **is** the page, which is why we're starting here
+- [ ] **Point at the rendered page, not just the source** — a navbar, one centered heading, a footer. *"Almost everything you're looking at came from somewhere else."* On the home page the shell **is** the page, which is why we're starting here
 - [ ] **Now ask it:** *"So who wrote it?"* — let the room answer before you open anything
 
 ### One more tab, so nobody thinks it's a home-page thing *(15 seconds)*

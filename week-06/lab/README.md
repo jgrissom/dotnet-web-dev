@@ -295,5 +295,5 @@ Submit the empty form now: the errors appear **instantly**, with no page reload.
 
 - **Make the summary earn its place.** Add a rule the annotations can't express — reject a creature whose name is already in the registry — with `ModelState.AddModelError("", "We already have one of those.")` before the `IsValid` check. That's the kind of error `asp-validation-summary="ModelOnly"` exists for, and right now your summary never shows anything.
 - **Add a `Notes` property** and render it with `<textarea asp-for="Notes" class="form-control"></textarea>` instead of an `<input>` — an attribute isn't the only thing that decides what a field looks like, and `asp-for` works on more tags than one. *(Adding `[DataType(DataType.MultilineText)]` on its own doesn't do it: an `<input>` stays an input no matter what the model says.)*
-- **Make `Sightings` optional.** Change it to `int?` and watch the implicit-required behaviour disappear. Then work out what breaks on the details page and fix it.
+- **Make `Sightings` optional.** Change it to `int?` and watch the implicit-required behavior disappear. Then work out what breaks on the details page and fix it.
 - **Send them somewhere better.** `RedirectToAction(nameof(Details), new { id = cryptid.Id })` drops the visitor on the page for the creature they just filed, rather than back at the list.

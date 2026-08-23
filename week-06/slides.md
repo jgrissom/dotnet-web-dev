@@ -53,7 +53,7 @@ The browser asked. You told.
 ## GET vs. POST
 
 <style scoped>
-  /* the "no" and the sentence it causes, in one colour — they are one idea */
+  /* the "no" and the sentence it causes, in one color — they are one idea */
   tbody tr:last-child strong,
   section p strong { color: #ffa657; }
 </style>

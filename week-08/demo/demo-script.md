@@ -74,7 +74,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 ### The shape of the night *(slide 4)*
 
 - [ ] 🎞️ **GO TO SLIDE 4** — *The other two letters*. Read the shape: **a tool writes it · we read what it wrote · we keep the parts that are ours**
-- [ ] Say what doesn't change tonight, because the list is getting long and it's the point of the course: the model, the validation rules, the theme, the seed data, the database. *"Tonight adds neighbours. It rebuilds nothing"*
+- [ ] Say what doesn't change tonight, because the list is getting long and it's the point of the course: the model, the validation rules, the theme, the seed data, the database. *"Tonight adds neighbors. It rebuilds nothing"*
 - [ ] **✓ CHECKPOINT:** the room can name the three things Edit needs that Create didn't
 
 ## 2 · The scaffolder *(slides 5–7)*

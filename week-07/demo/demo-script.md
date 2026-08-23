@@ -98,7 +98,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 ### The DbContext *(slide 6)*
 
 - [ ] 🎞️ **GO TO SLIDE 6** — *The context*. The whole class is on it; read it there, then swipe back and type it
-- [ ] Make a `Data` folder next to `Models` and `Controllers`, and create `Data/CurbsideContext.cs` — **type this one, all of it. It's fifteen lines and it's the centre of the week:**
+- [ ] Make a `Data` folder next to `Models` and `Controllers`, and create `Data/CurbsideContext.cs` — **type this one, all of it. It's fifteen lines and it's the center of the week:**
 
   <details><summary>📋 paste: Data/CurbsideContext.cs</summary>
 
@@ -226,7 +226,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   ```bash
   dotnet ef database update
   ```
-- [ ] **Let the SQL scroll past and don't apologise for it.** *"That's the CREATE TABLE it just ran, and you can read it"*
+- [ ] **Let the SQL scroll past and don't apologize for it.** *"That's the CREATE TABLE it just ran, and you can read it"*
 - [ ] **Refresh the mssql panel you left open in §3** — 🎯 the database that wasn't there **now is**, and expanding it shows **two tables**: `Trucks`, and `__EFMigrationsHistory` with one row. *"Ten minutes ago this server had nothing of mine on it. One command."*
 - [ ] **Open the `Trucks` table. It has no rows.** *"A table, correctly built, completely empty. Nobody has put anything in it"*
 - [ ] ⚠️ **Then point at the browser, still showing six trucks, and name the gap** — it runs all the way to §5: *"and the page hasn't changed at all. Six trucks, same as an hour ago. It is still reading `TruckData.All` out of a file, because nothing has told the controller the database exists. Watch that gap; it closes in about twenty minutes"*

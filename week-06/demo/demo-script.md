@@ -52,7 +52,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 - [ ] 🎞️ **GO TO SLIDE 2** — *Five weeks, one direction*
 - [ ] *"Five weeks, and every single page has been the same shape: the browser asks, we tell. Nothing has ever come the other way. Tonight it does — and three questions show up at once. How does their typing become a C# object, who decides if it's any good, and where does it go."*
-- [ ] 🎞️ **GO TO SLIDE 3** — *GET vs. POST*. **Land the third row** — *"refreshing a POST sends it again"*. **The orange `no` and the orange sentence underneath are deliberately the same colour: point at one, then the other.** *"That word is the entire reason tonight ends the way it does"* — then leave it hanging; you collect it at break #4, an hour and a half later
+- [ ] 🎞️ **GO TO SLIDE 3** — *GET vs. POST*. **Land the third row** — *"refreshing a POST sends it again"*. **The orange `no` and the orange sentence underneath are deliberately the same color: point at one, then the other.** *"That word is the entire reason tonight ends the way it does"* — then leave it hanging; you collect it at break #4, an hour and a half later
 
 ### A form with no help at all *(slide 4)*
 
@@ -124,7 +124,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   ```
   Name=Wurst+Case+Scenario&Cuisine=German&City=Appleton&Rating=4.1
   ```
-- [ ] **Week-3 callback:** *"that's the query-string format from week 3 — `key=value&key=value` — riding in the body instead of the URL. The form serialised itself and the server took it apart"*
+- [ ] **Week-3 callback:** *"that's the query-string format from week 3 — `key=value&key=value` — riding in the body instead of the URL. The form serialized itself and the server took it apart"*
 
 ### Break it #1 — two silent failures *(slide 6)*
 

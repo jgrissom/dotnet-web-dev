@@ -38,7 +38,7 @@ The loop for every code beat is the same three moves:
 2. **Copy whole file** (the blue button) — it puts that step's *entire* file on the clipboard, not the diff.
 3. **Select all in `scratch.html`, paste, save.** The page updates in the browser beside it.
 
-Nobody hunts for an insertion point, and the room sees the change isolated and labelled instead of buried in a file. Two of the twenty-seven steps show only the head of a long diff — the note says so on screen, and the button still copies the whole file.
+Nobody hunts for an insertion point, and the room sees the change isolated and labeled instead of buried in a file. Two of the twenty-seven steps show only the head of a long diff — the note says so on screen, and the button still copies the whole file.
 
 ⚠️ **The page remembers where you were** (per-browser). Before class, press `Home` to get back to step 1.
 
@@ -145,7 +145,7 @@ Every individual step is also browsable as a red/green diff at [the commit list]
 - [ ] 🎞️ **GO TO SLIDE 11** — *Icons: Bootstrap Icons*
 - [ ] *"One more `<link>`, same CDN pattern as the top of the night. Two thousand icons and not a single image file to download"*
 - [ ] **Step 18 — the icons link, plus an `<i>` in the hero button and the footer.** Point out that the icon is *inside* the button, before the text
-- [ ] **Step 19 — the showpiece: one icon above each feature heading.** `fs-1` sizes it and `text-danger` colours it — **the same text utilities from two steps ago**
+- [ ] **Step 19 — the showpiece: one icon above each feature heading.** `fs-1` sizes it and `text-danger` colors it — **the same text utilities from two steps ago**
 - [ ] **✓ say it:** *"two utility classes turn a character into artwork. They are font glyphs, so everything you know about styling text already works on them"*
 
 ## 3 · Bootswatch *(slide 12)*
@@ -160,7 +160,7 @@ Every individual step is also browsable as a red/green diff at [the commit list]
 - [ ] **✓ let them spot it — don't tell them.** The hero is still a glowing light band. Wait for someone to say it. *"Why is that one bit still bright?"* — `bg-light` means **literally light, in every theme**. It said so all along
 - [ ] **Step 25 — the fix.** *"bg-body-tertiary is slightly offset from the page background"*, so it follows the theme. **Semantic names beat literal names, part two** — same argument as `btn-primary` rather than `btn-blue`
 - [ ] **Step 26 — back to light.** The hero now behaves in both. *"One attribute, and the whole page has two looks"*
-- [ ] Bonus if anyone asks about icon colours: `text-primary` under Lux is **near-black** — a `text-primary` icon would vanish in dark mode. Semantic colours belong to the *theme*; that is the feature working as designed
+- [ ] Bonus if anyone asks about icon colors: `text-primary` under Lux is **near-black** — a `text-primary` icon would vanish in dark mode. Semantic colors belong to the *theme*; that is the feature working as designed
 
 ## 4 · Google Fonts *(slide 13)*
 

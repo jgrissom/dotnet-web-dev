@@ -232,7 +232,7 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
     add(2)
     ```
 
-- [ ] **`NaN`.** *"No overloads, no type checking, and no error. The missing argument became `undefined`, `2 + undefined` is NaN — and that value is now travelling through your program looking like a number"*
+- [ ] **`NaN`.** *"No overloads, no type checking, and no error. The missing argument became `undefined`, `2 + undefined` is NaN — and that value is now traveling through your program looking like a number"*
 - [ ] 🎞️ **GO TO SLIDE 14** — *Arrow functions = lambdas*
 - [ ] **Point at the top line — the one thing here the console never showed you.** `function add(a, b) { return a + b; }` and the arrow underneath are the same function twice. *"the top one is the spelling most of us learned first. The bottom one is what this course writes — and it is the shape C# uses too"*
 - [ ] **✓ CHECKPOINT:** the room can say why `===` and why `const`, without hedging

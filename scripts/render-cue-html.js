@@ -7,11 +7,11 @@
 // Why build-time and not a <script> tag: the sheet is read live, at the
 // projector, on classroom wifi. Highlighting here bakes <span class="hljs-…">
 // straight into the published HTML, so the page needs no CDN, no runtime JS
-// and no second origin that can fail on its own. The colours are plain CSS in
+// and no second origin that can fail on its own. The colors are plain CSS in
 // export-slides.yml, matching the deck's.
 //
 // Fences with no language stay untouched on purpose — the sheets use bare
-// fences for EXPECTED OUTPUT (terminal text, commit messages), and colouring
+// fences for EXPECTED OUTPUT (terminal text, commit messages), and coloring
 // those as if they were source would be a lie about what they are.
 //
 // ⚠️ Highlighting splits code into <span>s, which splits TEXT NODES — and the
@@ -24,11 +24,11 @@ const { Marked } = require("marked");
 const { markedHighlight } = require("marked-highlight");
 const hljs = require("highlight.js");
 
-// highlight.js has no `cshtml`/`razor` grammar, and an unrecognised language
+// highlight.js has no `cshtml`/`razor` grammar, and an unrecognized language
 // renders PLAIN — which on these sheets means a Razor block becomes
 // indistinguishable from an expected-output block, the one distinction this
 // file exists to keep. These blocks are HTML with @-expressions in them, so
-// xml's tag/attribute colouring is exactly right and the @-bits stay plain:
+// xml's tag/attribute coloring is exactly right and the @-bits stay plain:
 // parity with fencing them as ```html, which is what the sheets do today.
 // Nothing is mislabelled — langPrefix uses the fence's own tag, so the <code>
 // still reads `language-cshtml` while the spans come from the xml grammar.

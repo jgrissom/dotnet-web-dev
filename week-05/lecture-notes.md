@@ -20,7 +20,7 @@ And yet the page in the browser had all of those. Somebody added them.
 
 **Four lines of that page are yours. Fifty-four aren't.**
 
-Then point at the *rendered* page rather than the source: a navbar, one centred heading, a footer. On the home page the shell **is** the page — which is the whole claim, made visible.
+Then point at the *rendered* page rather than the source: a navbar, one centered heading, a footer. On the home page the shell **is** the page — which is the whole claim, made visible.
 
 One more tab before you explain anything: View Source on `/Trucks` shows the same 39 lines above the content and the same 15 below. **Two pages, one wrapper.** That's what stops anyone concluding this is a home-page quirk, and it's the setup for `_Layout.cshtml`.
 
@@ -130,7 +130,7 @@ The view runs **first** and puts a value in `ViewData`; the layout runs **second
 > [!TIP]
 > **Break it to prove it (demo §1).** Delete the `ViewData["Title"]` line from `Views/Trucks/Details.cshtml`, refresh, and look at the browser tab: `- Curbside`, with a dangling dash and nothing in front of it. The layout still printed its half; the view just stopped supplying the other half. Put it back.
 
-Two flavours worth showing side by side:
+Two flavors worth showing side by side:
 
 - **A fixed title** — `ViewData["Title"] = "Trucks";` at the top of the index view.
 - **A data-driven title** — on the details view, the title *is* the record:

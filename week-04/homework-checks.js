@@ -136,7 +136,7 @@
       links.length >= 5
         ? `index lists all your items — ${links.length} found`
         : `index lists all your items — /${route} loads, but ${links.length} Details link${links.length === 1 ? "" : "s"} found`, {
-        hint: `Your page is there; I just can't count what's on it. I identify your items by the Details link on each row — that's the only thing I can recognise without knowing your topic — and I found ${links.length}. I need 5 or more.`,
+        hint: `Your page is there; I just can't count what's on it. I identify your items by the Details link on each row — that's the only thing I can recognize without knowing your topic — and I found ${links.length}. I need 5 or more.`,
         todo: `Add a link inside your loop: href="/${route}/Details/@item.Id"`,
       });
 

@@ -1,6 +1,6 @@
 # Week 6 — Forms & Validation
 
-The night the app stops being a pamphlet. For five weeks data has only ever travelled one way — out of a list you typed by hand, through a view, onto a screen. Tonight it comes back: a form posts, model binding builds an object out of `name` attributes, annotations on the model say what "valid" means, and one guard decides whether any of it is allowed in. Then you add something, restart the app, and watch it vanish — which is next week's whole reason for existing.
+The night the app stops being a pamphlet. For five weeks data has only ever traveled one way — out of a list you typed by hand, through a view, onto a screen. Tonight it comes back: a form posts, model binding builds an object out of `name` attributes, annotations on the model say what "valid" means, and one guard decides whether any of it is allowed in. Then you add something, restart the app, and watch it vanish — which is next week's whole reason for existing.
 
 ## Use in this order
 

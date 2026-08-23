@@ -15,7 +15,7 @@ Week 6's demo picks Curbside up where week 5 left it and teaches it to *listen*:
 > The beat worth protecting if you run short is **§3's two breaks** — deleting the `ModelState.IsValid` guard, and swapping the redirect for a `View(...)` and hitting refresh. Take the time out of §4's second half if you must; client-side validation still lands in one paste. What can't be recovered from the notes is watching a nameless truck rated 9000 appear in the list.
 
 > [!NOTE]
-> **Trucks you add will vanish whenever `dotnet watch` restarts**, because `TruckData.All` is a `static List<Truck>`. It'll happen mid-demo the first time you edit a `.cs` file after adding one. Don't apologise for it — say "hold that thought" and collect it in §5, which is the beat that hands off to week 7.
+> **Trucks you add will vanish whenever `dotnet watch` restarts**, because `TruckData.All` is a `static List<Truck>`. It'll happen mid-demo the first time you edit a `.cs` file after adding one. Don't apologize for it — say "hold that thought" and collect it in §5, which is the beat that hands off to week 7.
 
 > [!TIP]
 > **Have the Network panel already open** on the `/Trucks` tab. You need it twice — once in §1 to show the POST body, once in §3 to show the 302 and the second GET — and hunting for it both times costs more than it sounds like.

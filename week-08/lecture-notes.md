@@ -170,7 +170,7 @@ Three stops:
 
 ### The hidden Id
 
-Open `Views/TrucksScaffold/Edit.cshtml`. It's your Create form's shape in plain clothes — validation summary, a labelled input per property, validation spans, a Scripts section — plus one line your Create form never had:
+Open `Views/TrucksScaffold/Edit.cshtml`. It's your Create form's shape in plain clothes — validation summary, a labeled input per property, validation spans, a Scripts section — plus one line your Create form never had:
 
 ```html
 <input type="hidden" asp-for="Id" />

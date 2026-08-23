@@ -390,7 +390,7 @@
         hint: `${createUrl} ${createPage && createPage.status < 400
           ? "loaded, but there's no usable <form method=\"post\"> on it"
           : `returned ${createPage ? createPage.status : "nothing"}`} — the form you've had since week 6 has to keep working.`,
-        todo: "Weeks 6 and 7 built this; this week only adds neighbours. If it broke, check the "
+        todo: "Weeks 6 and 7 built this; this week only adds neighbors. If it broke, check the "
             + "Create action and view are still intact.",
       });
       blockRest(1);

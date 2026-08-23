@@ -80,7 +80,7 @@ The [notes on the layout file](../lecture-notes.md#the-layout-file) walk the sam
 | 6 | `ThemeIsNotTheDefault` | Replace the Bootstrap `<link>` in `_Layout.cshtml` with a [Bootswatch](https://bootswatch.com) theme. **Delete the original line** — it's a replacement, not an addition. [One link, whole site](../lecture-notes.md#the-payoff). **[Task 6 in full ↓](#task-6-in-full)** has the tag to paste. |
 
 > [!IMPORTANT]
-> **The exact text matters** for checks 2 and 5 — `Cryptid Registry`, `Field Reports Since 1893`, `Cryptid file loaded`. Everything around it is your call; those strings are how an automated check recognises work it can't see.
+> **The exact text matters** for checks 2 and 5 — `Cryptid Registry`, `Field Reports Since 1893`, `Cryptid file loaded`. Everything around it is your call; those strings are how an automated check recognizes work it can't see.
 
 ### Task 4 in full
 
