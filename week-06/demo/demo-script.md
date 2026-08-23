@@ -25,7 +25,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   rm -rf ~/Repos/dotnet-web-dev-course/instructor/week-06/Curbside
   cp -R ~/Repos/dotnet-web-dev-answer-keys/week-06/demo-starter/Curbside ~/Repos/dotnet-web-dev-course/instructor/week-06/
   ```
-- [ ] **Open that copy in VS Code** — **File → Open Folder** on `~/Repos/dotnet-web-dev-course/instructor/week-06/Curbside`. Run the app below in its **integrated terminal** (**Ctrl+`**): the projector's second state is this one window beside the browser, and the ⌘K clear below only works on a terminal that lives in the editor
+- [ ] **Open that copy in VS Code** — **File → Open Folder** on `~/Repos/dotnet-web-dev-course/instructor/week-06/Curbside`. Run the app below in its **integrated terminal** (**Ctrl+&#96;**): the projector's second state is this one window beside the browser, and the ⌘K clear below only works on a terminal that lives in the editor
 - [ ] Run it from there:
   ```bash
   cd ~/Repos/dotnet-web-dev-course/instructor/week-06/Curbside && dotnet watch

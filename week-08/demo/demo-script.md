@@ -26,7 +26,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   cp -R ~/Repos/dotnet-web-dev-answer-keys/week-08/demo-starter/Curbside ~/Repos/dotnet-web-dev-course/instructor/week-08/
   ```
   ⚠️ **The copy resets the files, not the database.** Curbside's data lives on the school SQL Server, and every copy carries the same `<UserSecretsId>` — so the drop-and-rebuild two bullets down is a *separate* reset and you need both.
-- [ ] **Open that copy in VS Code** — **File → Open Folder** on `~/Repos/dotnet-web-dev-course/instructor/week-08/Curbside`. Everything below lives in this window: both terminals are its **integrated** ones (**Ctrl+`**, then the `+` on the terminal panel for the second), and the `mssql` panel is a sidebar in it. The restart prompt below fires in terminal 1 while you are typing in terminal 2, so you need both on screen at once
+- [ ] **Open that copy in VS Code** — **File → Open Folder** on `~/Repos/dotnet-web-dev-course/instructor/week-08/Curbside`. Everything below lives in this window: both terminals are its **integrated** ones (**Ctrl+&#96;**, then the `+` on the terminal panel for the second), and the `mssql` panel is a sidebar in it. The restart prompt below fires in terminal 1 while you are typing in terminal 2, so you need both on screen at once
 - [ ] **Set your connection string in your copy** — the `<UserSecretsId>` ships in the `.csproj`, so `set` alone is enough, no `init`:
   ```bash
   dotnet user-secrets set "ConnectionStrings:DefaultConnection" "Server=...;Database=...;User ID=...;Password=...;TrustServerCertificate=True"
