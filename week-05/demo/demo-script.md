@@ -216,7 +216,7 @@ Don't ask the question rhetorically; make them look at both halves. Use the **ho
 - [ ] Six cards, three across. **`model="truck"` is the handoff** — the loop variable goes in, the partial's `@Model` is that one truck
 - [ ] 🎞️ **GO TO SLIDE 9** — *The page and the partial disagree*. This is the confusing bit; say it to the slide
 - [ ] Say the mismatch out loud: *"the page's model is `List<Truck>`, the partial's is `Truck`. They don't have to match. This is the part that confuses people"*
-- [ ] Week-2 callback: `row-cols-md-3` is the card grid they already know, finally pointed at real data
+- [ ] Week-2 callback: `row-cols-md-3` is *"the card grid you already know, finally pointed at real data"*
 - [ ] Now the second location — at the **bottom** of `Views/Trucks/Details.cshtml`, below the "Back to all trucks" link — **paste**:
 
   <details><summary>📋 paste: "Also in this city" panel</summary>
