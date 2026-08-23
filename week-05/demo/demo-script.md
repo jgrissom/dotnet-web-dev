@@ -24,16 +24,16 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - **VS Code**, left half — folder `~/Repos/dotnet-web-dev-course/instructor/week-05/Curbside`, with `dotnet watch` running in its integrated terminal
 - **Browser**, right half — three tabs: `/`, `/Trucks`, `/Trucks/Details/2`
 
-- [ ] **Copy `week-05/demo-starter/Curbside` out of the answer-keys repo** into `instructor/`. This is Curbside exactly where week 4 left it — plus the `Trucks` nav link, which week 4's homework asked students to add, so it matches what they have. Its own week folder, so nothing here collides with another week's `Curbside` and no previous demo gets deleted. The `rm` only matters if you **re-rehearse this week** — a rehearsal leaves the folder in tonight's **end** state:
+- [ ] ⚠️ **Re-rehearsing this week? Delete `instructor/week-05/Curbside` first** — a rehearsal leaves it in tonight's **end** state, and every beat below starts from week 4's. Deleting the folder in Finder is enough; the next step recreates it
+- [ ] VS Code → File → Open Folder → in `~/Repos/dotnet-web-dev-course/instructor/week-05`, create a new empty **Curbside** and open it *(the dialog's **New Folder** button makes `week-05` too, the first time)*. Its own week folder, so nothing here collides with another week's `Curbside` and no previous demo gets deleted
+- [ ] Integrated terminal (**Ctrl+`**) — fill the empty folder with tonight's starter. This is Curbside exactly where week 4 left it, **plus the `Trucks` nav link** week 4's homework asked students to add, so it matches what they have:
   ```bash
-  mkdir -p ~/Repos/dotnet-web-dev-course/instructor/week-05
-  rm -rf ~/Repos/dotnet-web-dev-course/instructor/week-05/Curbside
-  cp -R ~/Repos/dotnet-web-dev-answer-keys/week-05/demo-starter/Curbside ~/Repos/dotnet-web-dev-course/instructor/week-05/
+  cp -R ~/Repos/dotnet-web-dev-answer-keys/week-05/demo-starter/Curbside/. .
   ```
-- [ ] **Open that copy in VS Code** — **File → Open Folder** on `~/Repos/dotnet-web-dev-course/instructor/week-05/Curbside`. Everything you edit tonight is inside `Views/`, and this window is half of the projector's second state, so run the app below in its **integrated terminal** (**Ctrl+`**) — that keeps the editor, the page and the terminal visible together with no third window to swipe to
-- [ ] Run it from there:
+  The trailing `/.` copies the *contents* in, so the project lands at the top of the window you already have open — `Views/`, `Controllers/`, `Models/`, no folder inside a folder
+- [ ] Run it, same terminal:
   ```bash
-  cd ~/Repos/dotnet-web-dev-course/instructor/week-05/Curbside && dotnet watch
+  dotnet watch
   ```
 - [ ] **Park three browser tabs**: `/`, `/Trucks`, `/Trucks/Details/2`. Nearly every beat tonight changes all three — the tabs *are* the demo
 - [ ] **Teaching profile in VS Code** (gear, bottom-left → **Profiles** → *Teaching*): C# and mssql extensions only, **no C# Dev Kit**. Bump both font sizes **in that profile** so they stick: `terminal.integrated.fontSize` (start around **18**) and `editor.fontSize` (around **16**)
