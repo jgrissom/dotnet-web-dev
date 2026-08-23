@@ -308,7 +308,7 @@ Don't ask the question rhetorically; make them look at both halves. Use the **ho
 ### Three things about that line
 
 - [ ] 🎞️ **GO TO SLIDE 13** — *Three things about that line*
-- [ ] Land three points: **`5.3.3` is pinned to match the Bootstrap already in `wwwroot/lib`** — version numbers in CDN URLs aren't decoration · **it replaces, it doesn't add** (leave both and they fight — the lab checks this) · **only the CSS moved**, the local `bootstrap.bundle.min.js` is untouched, so dropdowns still work
+- [ ] **The slide has the three; these are the words:** *"the version is pinned on purpose — it has to match the Bootstrap already sitting in wwwroot/lib, so a version number in a CDN URL is not decoration. This link replaces that one, it does not join it — leave both in and they fight, and the lab checks for exactly that. And only the CSS moved: the JavaScript bundle is still local, which is why the dropdowns still work"*
 
 ### The navbar needs a word
 
