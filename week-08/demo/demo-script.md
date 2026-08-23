@@ -19,11 +19,6 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ## 0 · Before class
 
-**🖥️ On screen, at curtain** *(what the checklist below adds up to — none of it exists until you run it)* — the projector's second state, side by side:
-
-- **VS Code**, left half — folder `~/Repos/dotnet-web-dev-course/instructor/week-08/Curbside`, two integrated terminals (`dotnet watch` in the first, everything you type in the second), and the `mssql` panel signed in but closed
-- **Browser**, right half — two tabs: `/Trucks` and `/Trucks/Details/2`
-
 - [ ] **Copy `week-08/demo-starter/Curbside` out of the answer-keys repo** into `instructor/`. This is Curbside exactly as week 7's demo left it: context, two migrations, seven seeded trucks (`Sconnie Sliders` included), controller reading and writing through the context, `TruckData.cs` gone. Its own week folder, so nothing here collides with another week's `Curbside` and no previous demo gets deleted. The `rm` only matters if you **re-rehearse this week** — a rehearsal leaves the folder in tonight's **end** state:
   ```bash
   mkdir -p ~/Repos/dotnet-web-dev-course/instructor/week-08
@@ -62,6 +57,11 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] **Teaching profile in VS Code** (gear, bottom-left → **Profiles** → *Teaching*): C# and mssql extensions only, **no C# Dev Kit**. Bump both font sizes **in that profile** so they stick: `terminal.integrated.fontSize` (start around **18** — §5 reads the generated SQL from it) and `editor.fontSize` (around **16**)
 - [ ] **Say it before you start: *"lids down — you'll run the scaffolder yourself in the lab."*** Curbside isn't in the public repo, so nobody can follow along, and tonight's paste blocks are big
 - [ ] Sanity check: `/Trucks` shows **seven** cards, filing a truck works, a restart doesn't lose it
+
+**🖥️ On screen, at curtain** — checklist above done, this is what the room walks in to; the projector's second state, side by side:
+
+- **VS Code**, left half — folder `~/Repos/dotnet-web-dev-course/instructor/week-08/Curbside`, two integrated terminals (`dotnet watch` in the first, everything you type in the second), and the `mssql` panel signed in but closed
+- **Browser**, right half — two tabs: `/Trucks` and `/Trucks/Details/2`
 
 ## 1 · Where we left off *(slides 2–4)*
 

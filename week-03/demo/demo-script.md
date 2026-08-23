@@ -28,11 +28,6 @@ dotnet-web-dev-course/
 
 Tonight's demo app does not exist yet — building it in front of the room *is* §2. The only thing in the folder before you start is the lab starter, which you don't open until §5. **Every week keeps its own folder here**, so nothing is ever deleted to make room for the next one.
 
-**🖥️ On screen, at curtain** *(what the checklist below adds up to — none of it exists until you run it)* — tonight's app does not exist yet:
-
-- **VS Code** — nothing open. §2 creates `CommonGrounds.Web` live, and the Open Folder dialog is pre-landed on `~/Repos/dotnet-web-dev-course/instructor/week-03` so the picker starts there
-- **Browser** — one tab on week 2's finished Common Grounds page, which is the exact request §1 opens the Network panel on
-
 - [ ] **Make tonight's folder** (harmless if it's already there):
   ```bash
   mkdir -p ~/Repos/dotnet-web-dev-course/instructor/week-03
@@ -53,6 +48,11 @@ Tonight's demo app does not exist yet — building it in front of the room *is* 
 - [ ] **Say it before you start: *"lids down for this part — everything I do to CommonGrounds, you'll do to First Flight in the lab."*** You build *CommonGrounds*; their lab is *First Flight*. **The predict-then-run beats are where they participate**
 - [ ] Azure app name chosen (`cg-web-XXXX`); logged out of `az` if demoing the login
 - [ ] **[Common Grounds Coffee](https://jgrissom.github.io/dotnet-web-dev/week-02/demo/) open in a tab for §1** — the finished coffee shop from week 2's demo. ⚠️ **Slide 3's example request is a `GET` for this exact page** (`GET /dotnet-web-dev/week-02/demo/`, `Host: jgrissom.github.io`), so the panel you open in §1 shows the very request the slide just described — say so when you get there
+
+**🖥️ On screen, at curtain** — checklist above done, this is what the room walks in to; tonight's app does not exist yet:
+
+- **VS Code** — nothing open. §2 creates `CommonGrounds.Web` live, and the Open Folder dialog is pre-landed on `~/Repos/dotnet-web-dev-course/instructor/week-03` so the picker starts there
+- **Browser** — one tab on week 2's finished Common Grounds page, which is the exact request §1 opens the Network panel on
 
 ## 1 · Real HTTP in DevTools *(slides 2–5)*
 

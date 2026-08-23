@@ -19,11 +19,6 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ## 0 · Before class
 
-**🖥️ On screen, at curtain** *(what the checklist below adds up to — none of it exists until you run it)* — the projector's second state, side by side:
-
-- **VS Code**, left half — folder `~/Repos/dotnet-web-dev-course/instructor/week-05/Curbside`, with `dotnet watch` running in its integrated terminal
-- **Browser**, right half — three tabs: `/`, `/Trucks`, `/Trucks/Details/2`
-
 - [ ] ⚠️ **Re-rehearsing this week? Delete `instructor/week-05/Curbside` first** — a rehearsal leaves it in tonight's **end** state, and every beat below starts from week 4's. Deleting the folder in Finder is enough; the next step recreates it
 - [ ] VS Code → File → Open Folder → in `~/Repos/dotnet-web-dev-course/instructor/week-05`, create a new empty **Curbside** and open it *(the dialog's **New Folder** button makes `week-05` too, the first time)*. Its own week folder, so nothing here collides with another week's `Curbside` and no previous demo gets deleted
 - [ ] Integrated terminal (**Ctrl+`**) — fill the empty folder with tonight's starter. This is Curbside exactly where week 4 left it, **plus the `Trucks` nav link** week 4's homework asked students to add, so it matches what they have:
@@ -39,6 +34,11 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] **Teaching profile in VS Code** (gear, bottom-left → **Profiles** → *Teaching*): C# and mssql extensions only, **no C# Dev Kit**. Bump both font sizes **in that profile** so they stick: `terminal.integrated.fontSize` (start around **18**) and `editor.fontSize` (around **16**)
 - [ ] **Say it before you start: *"lids down for this part — you'll build it yourself in the lab."*** Curbside isn't in the public repo, so nobody can follow along even if they want to, and the four breaks below would take fourteen machines with them. **The predict-then-run moments are where they participate**
 - [ ] Sanity check before you start: `/Trucks` shows six trucks in a table, `/Trucks/Details/999` is a 404
+
+**🖥️ On screen, at curtain** — checklist above done, this is what the room walks in to; the projector's second state, side by side:
+
+- **VS Code**, left half — folder `~/Repos/dotnet-web-dev-course/instructor/week-05/Curbside`, with `dotnet watch` running in its integrated terminal
+- **Browser**, right half — three tabs: `/`, `/Trucks`, `/Trucks/Details/2`
 
 ## 1 · The shell you've been ignoring *(slides 2–6)*
 

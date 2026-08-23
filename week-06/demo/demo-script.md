@@ -19,11 +19,6 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ## 0 · Before class
 
-**🖥️ On screen, at curtain** *(what the checklist below adds up to — none of it exists until you run it)* — the projector's second state, side by side:
-
-- **VS Code**, left half — folder `~/Repos/dotnet-web-dev-course/instructor/week-06/Curbside`, with `dotnet watch` in its integrated terminal and that terminal kept visible
-- **Browser**, right half — two tabs: `/Trucks` (dev tools open, on the Network panel) and `/Trucks/Details/2`
-
 - [ ] **Copy `week-06/demo-starter/Curbside` out of the answer-keys repo** into `instructor/`. This is Curbside as week 5's demo left it — branded, themed, card partial on two pages, a `@section Scripts` on Details — **plus one thing week 5 didn't have: an `＋ Add a truck` button on `/Trucks` that goes nowhere.** It 404s until §1 builds the action behind it. That's deliberate; it's tonight's job, and from §1 on it's how you get to the form instead of retyping the URL. Its own week folder, so nothing here collides with another week's `Curbside` and no previous demo gets deleted. The `rm` only matters if you **re-rehearse this week** — a rehearsal leaves the folder in tonight's **end** state:
   ```bash
   mkdir -p ~/Repos/dotnet-web-dev-course/instructor/week-06
@@ -51,6 +46,11 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 > [!NOTE]
 > **You will add trucks to a list that resets on restart.** `dotnet watch` restarts on every C# edit, so trucks you added five minutes ago will vanish mid-demo. That's not a problem — it's §5's punchline arriving early. If it happens, say so and move on.
+
+**🖥️ On screen, at curtain** — checklist above done, this is what the room walks in to; the projector's second state, side by side:
+
+- **VS Code**, left half — folder `~/Repos/dotnet-web-dev-course/instructor/week-06/Curbside`, with `dotnet watch` in its integrated terminal and that terminal kept visible
+- **Browser**, right half — two tabs: `/Trucks` (dev tools open, on the Network panel) and `/Trucks/Details/2`
 
 ## 1 · The round trip *(slides 2–7)*
 

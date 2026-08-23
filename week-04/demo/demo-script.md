@@ -27,11 +27,6 @@ dotnet-web-dev-course/
 
 ⚠️ **Tonight's Curbside is built from scratch, not from week 3's app.** §1's predict-then-run table assumes a pristine template — nothing but `HomeController` — and `CommonGrounds.Web` has `MenuController` alongside it, so `/Menu` answers there and 404s here. Its own week folder is what keeps them apart — **you don't delete week 3 to get there.**
 
-**🖥️ On screen, at curtain** *(what the checklist below adds up to — none of it exists until you run it)* — tonight's app does not exist yet:
-
-- **VS Code** — nothing open. §0b creates Curbside live at 0:05, and the Open Folder dialog is pre-landed on `~/Repos/dotnet-web-dev-course/instructor/week-04` so the picker starts there
-- **Browser** — nothing parked yet. §0b ends by parking a tab on `/`, and you type URLs into it from §1 on
-
 - [ ] **Make tonight's folder** (harmless if it's already there):
   ```bash
   mkdir -p ~/Repos/dotnet-web-dev-course/instructor/week-04
@@ -46,6 +41,11 @@ dotnet-web-dev-course/
 - [ ] **Say it before you start: *"lids down for this part — you'll build your own tonight."*** They watch you build Curbside; their lab is the *Cryptid Registry* and their homework is a third app. **The predict-then-run tables are where they participate** — those only work if people are looking up
 - [ ] ⚠️ **Know the one prompt that will bite you, and answer it `a` the first time.** Creating a *new* `.cshtml` — §2's `Index.cshtml`, then §5's `Details.cshtml` — is a change hot reload can't apply, so `dotnet watch` stops and asks **`Do you want to restart your app? Yes (y) / No (n) / Always (a) / Never (v)`** in the terminal. Until you answer, the page keeps failing while the file on screen looks perfectly correct. Answer **`a`** at that first prompt and it never asks again all night
 - [ ] Decide now: you will **restore the route pattern** at the end of §1. Say it out loud when you break it
+
+**🖥️ On screen, at curtain** — checklist above done, this is what the room walks in to; tonight's app does not exist yet:
+
+- **VS Code** — nothing open. §0b creates Curbside live at 0:05, and the Open Folder dialog is pre-landed on `~/Repos/dotnet-web-dev-course/instructor/week-04` so the picker starts there
+- **Browser** — nothing parked yet. §0b ends by parking a tab on `/`, and you type URLs into it from §1 on
 
 ## 0b · Spin up Curbside — **live, opening the routing segment** *(60 seconds)*
 
