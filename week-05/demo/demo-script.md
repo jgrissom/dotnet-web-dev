@@ -271,6 +271,7 @@ Don't ask the question rhetorically; make them look at both halves. Use the **ho
 - [ ] Refresh `/Trucks/Details/2`, **View Source**, scroll to the bottom: the script is **below the footer and below jQuery** — not where you typed it. *"The layout decided where it goes"*
 - [ ] Open the console: `Truck file loaded: Cheese Curd Cartel`. **The section can see the model** — it's still Razor, still in the view's context
 - [ ] Load `/Trucks` and View Source: nothing extra. Optional means optional. *"That JavaScript block serves a single view. If we wanted to add JavaScript to serve all views, where would it go?"*
+- [ ] **The answer is the line directly above.** Back in `_Layout.cshtml`, `~/js/site.js` sits immediately above the `RenderSectionAsync` line: *"site-wide JavaScript goes in the layout. That one has been loading on every page since week 3, and nobody has looked at it"*
 
 ### Break it #4 — `required`
 
