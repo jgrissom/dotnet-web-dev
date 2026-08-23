@@ -19,6 +19,11 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
 
 ## 0 · Before class
 
+**🖥️ On screen, at curtain** — tonight is the browser, not the editor:
+
+- **Browser**, full width — the hosted playground with the console docked (F12). A second tab holds the setup guide, which goes on screen at 0:20
+- **VS Code** — not on screen during the demo; it belongs to the setup workshop. The Teaching profile below is what it wears when it does appear
+
 - [ ] **Teaching profile** in VS Code (gear → Profiles): C# and mssql extensions only, no C# Dev Kit — your editor matches theirs. Bump the font for the back row
 - [ ] **Park two browser tabs:** the [setup guide](https://github.com/jgrissom/dotnet-web-dev/blob/main/week-01/setup-guide.md) and the [hosted playground](https://jgrissom.github.io/dotnet-web-dev/week-01/demo/). The guide goes on screen at 0:20; the playground is your home for the rest of the night
 - [ ] ⚠️ **The playground tab is where your console lives, all evening — open it there now (F12) and dock it.** §4 and §5 never touch the page, only the console, so any tab would do; using this one means **§6 needs no setup at all**, because the page it manipulates is already under you

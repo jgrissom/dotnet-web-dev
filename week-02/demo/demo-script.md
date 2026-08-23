@@ -16,6 +16,11 @@ Beat-by-beat cue sheet for building Common Grounds live, in lecture order, keyed
 
 ## 0 · Before class
 
+**🖥️ On screen, at curtain** — the projector's second state, side by side:
+
+- **VS Code**, left half — `~/Repos/dotnet-web-dev-course/instructor/week-02/scratch.html`, in the Teaching profile
+- **Browser**, right half — that same `scratch.html` opened from disk, so the page updates beside the editor. Behind it: the hosted *before* / *after* pages for the opening pitch, and the step page the room looks at
+
 - [ ] **Make tonight's canvas** — one command. The `git show` half must run in the **course repo** `dotnet-web-dev` (not `dotnet-web`, the student folder — the `w02-step-*` tags live in the course repo and nowhere else); it writes the canvas out to `instructor/week-02/`, where every other week's demo lives:
 
   ```bash

@@ -27,6 +27,11 @@ dotnet-web-dev-course/
 
 ⚠️ **Tonight's Curbside is built from scratch, not from week 3's app.** §1's predict-then-run table assumes a pristine template — nothing but `HomeController` — and `CommonGrounds.Web` has `MenuController` alongside it, so `/Menu` answers there and 404s here. Its own week folder is what keeps them apart — **you don't delete week 3 to get there.**
 
+**🖥️ On screen, at curtain** — tonight's app does not exist yet:
+
+- **VS Code** — nothing open. §0b creates Curbside live at 0:05, and the Open Folder dialog is pre-landed on `~/Repos/dotnet-web-dev-course/instructor/week-04` so the picker starts there
+- **Browser** — nothing parked yet. §0b ends by parking a tab on `/`, and you type URLs into it from §1 on
+
 - [ ] **Make tonight's folder** (harmless if it's already there):
   ```bash
   mkdir -p ~/Repos/dotnet-web-dev-course/instructor/week-04
