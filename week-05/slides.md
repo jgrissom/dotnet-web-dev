@@ -66,28 +66,6 @@ No `<html>`. No `<head>`. **No navbar.**
 
 ---
 
-<!-- _footer: '🖥️ Demo §1 · the layout file' -->
-
-## `Views/Shared/_Layout.cshtml`
-
-```html
-<head>
-    <title>@ViewData["Title"] - Curbside</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/.../bootstrap.min.css" />
-</head>
-<body>
-    <nav class="navbar">...</nav>
-
-    <main>@RenderBody()</main>
-
-    <footer>...</footer>
-
-    @await RenderSectionAsync("Scripts", required: false)
-</body>
-```
-
----
-
 <!-- _footer: '🖥️ Demo §1 · break #1' -->
 
 ## `@RenderBody()`
@@ -125,24 +103,6 @@ Your view's HTML ends up at exactly that spot — the layout **wraps around it**
 ```
 
 View runs first, layout runs second. That's the whole mechanism.
-
----
-
-<!-- _footer: '🖥️ Demo §2' -->
-
-## `Views/_ViewStart.cshtml`
-
-The entire file:
-
-```html
-@{
-    Layout = "_Layout";
-}
-```
-
-Runs before **every view** in its folder and below.
-
-Nothing in your Index view asks for a layout. This is why it gets one.
 
 ---
 
@@ -203,29 +163,6 @@ A **file name**, not a path · underscore in, `.cshtml` out
 
 <!-- _footer: '🖥️ Demo §3 · the card' -->
 
-## Give it a model
-
-```html
-@model Truck
-
-<div class="card h-100">
-    <h5 class="card-title">@Model.Name</h5>
-</div>
-```
-
-Render it with the loop variable:
-
-```html
-@foreach (var truck in Model)
-{
-    <partial name="_TruckCard" model="truck" />
-}
-```
-
----
-
-<!-- _footer: '🖥️ Demo §3 · the card' -->
-
 ## The page and the partial disagree
 
 **Page:** `@model List<Truck>`
@@ -237,21 +174,6 @@ Render it with the loop variable:
 They don't have to match.
 
 The partial gets **whatever you hand it**.
-
----
-
-<!-- _footer: '🖥️ Demo §3 · one file, two pages' -->
-
-## One file. Two pages.
-
-`_TruckCard.cshtml` renders:
-
-- six times on `/Trucks`
-- again on `/Trucks/Details/1`
-
-<br>
-
-### Edit the card once — watch both pages change.
 
 ---
 

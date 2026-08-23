@@ -40,7 +40,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - **VS Code**, left half — folder `~/Repos/dotnet-web-dev-course/instructor/week-05/Curbside`, with `dotnet watch` running in its integrated terminal
 - **Browser**, right half — three tabs: `/`, `/Trucks`, `/Trucks/Details/2`
 
-## 1 · The shell you've been ignoring *(slides 2–6)*
+## 1 · The shell you've been ignoring *(slides 2–5)*
 
 ### The gap, shown live *(slides 2–3)* — **do this before saying anything about layouts**
 
@@ -68,14 +68,13 @@ Don't ask the question rhetorically; make them look at both halves. Use the **ho
 
 ### The layout file
 
-- [ ] 🎞️ **GO TO SLIDE 4** — *`Views/Shared/_Layout.cshtml`*. The shape is on it; now open the real thing
 - [ ] Open `Views/Shared/_Layout.cshtml`. *"Here it is."* Scroll it top to bottom **once**, slowly, without editing. Name three things: `Views/Shared/` is for what belongs to no single page · the `_` prefix means "a piece, not a page" · it's all just Razor
 - [ ] **Tie it back:** the 39 lines above and 15 below are literally this file, wrapped around their table
 - [ ] Point at `@RenderBody()` inside `<main>`
 
 ### Break it #1 — `@RenderBody()`
 
-- [ ] 🎞️ **GO TO SLIDE 5** — *`@RenderBody()`*. **The slide asks the question** — *"blank page, or error?"* Ask it, take the show of hands, then delete the line
+- [ ] 🎞️ **GO TO SLIDE 4** — *`@RenderBody()`*. **The slide asks the question** — *"blank page, or error?"* Ask it, take the show of hands, then delete the line
 - [ ] **Predict first:** *"I'm about to delete this line. Blank page, or error?"* Take a show of hands — most rooms say blank page
 - [ ] Delete the `@RenderBody()` line, save, refresh any tab:
   ```
@@ -87,7 +86,7 @@ Don't ask the question rhetorically; make them look at both halves. Use the **ho
 
 ### The title, both halves
 
-- [ ] 🎞️ **GO TO SLIDE 6** — *The title has two halves*
+- [ ] 🎞️ **GO TO SLIDE 5** — *The title has two halves*
 - [ ] **Both halves are on the slide — point at them there:** *"The view runs first and puts a value in. The layout runs second and reads it. That's the whole mechanism."*
 - [ ] **Now the real files:** the layout's `<title>@ViewData["Title"] - Curbside</title>`, then `Views/Trucks/Details.cshtml`'s `ViewData["Title"] = Model.Name;`
 
@@ -109,16 +108,15 @@ Don't ask the question rhetorically; make them look at both halves. Use the **ho
 - [ ] Click through all three tabs. **Nothing else changed, and every page is different**
 - [ ] **✓ CHECKPOINT:** the room can point at the file that owns the navbar
 
-## 2 · The two files nobody opens *(slides 7–8)*
+## 2 · The two files nobody opens *(slide 6)*
 
-- [ ] 🎞️ **GO TO SLIDE 7** — *`Views/_ViewStart.cshtml`*
-- [ ] **The whole file is on the slide — say it there:** *"Nothing in your Index view mentions a layout. This is why it gets one — one file, every view below it"*
-- [ ] Now open the real `Views/_ViewStart.cshtml`, so they see where it lives — it really is the entire file:
+- [ ] Open `Views/_ViewStart.cshtml` — it really is the entire file:
   ```html
   @{
       Layout = "_Layout";
   }
   ```
+- [ ] **Say it to the file on screen:** *"Nothing in your Index view mentions a layout. This is why it gets one — one file, every view below it"*
 
 ### Break it #3 — opt a page out
 
@@ -135,7 +133,7 @@ Don't ask the question rhetorically; make them look at both halves. Use the **ho
 
 ### `_ViewImports`
 
-- [ ] 🎞️ **GO TO SLIDE 8** — *`Views/_ViewImports.cshtml`*
+- [ ] 🎞️ **GO TO SLIDE 6** — *`Views/_ViewImports.cshtml`*
 - [ ] **Read the slide's two bullets:** the `@using` lines answer week 4's "where do views get their imports?" — **and `@addTagHelper` is why `asp-controller` works.** Flag it forward: *"it's also why the thing we're about to write in ten minutes works at all"*
 - [ ] Now open the real `Views/_ViewImports.cshtml`:
   ```html
@@ -145,7 +143,7 @@ Don't ask the question rhetorically; make them look at both halves. Use the **ho
   ```
 - [ ] **✓ CHECKPOINT:** nobody thinks the layout is magic anymore
 
-## 3 · Partials *(slides 9–13)* — **the load-bearing segment**
+## 3 · Partials *(slides 7–9)* — **the load-bearing segment**
 
 > [!IMPORTANT]
 > If §1 or §2 ran long, take the time out of §5 (drop the extra theme swaps), **not out of this**. The "one file, two places" moment is the one that can't be recovered by reading the notes later.
@@ -155,12 +153,12 @@ Don't ask the question rhetorically; make them look at both halves. Use the **ho
 
 ### The repetition problem
 
-- [ ] 🎞️ **GO TO SLIDE 9** — *The problem partials solve*. Three places, copy-pasted, that will drift
+- [ ] 🎞️ **GO TO SLIDE 7** — *The problem partials solve*. Three places, copy-pasted, that will drift
 - [ ] Frame the problem: *"you want that truck block on the index page as a card, and again in a 'nearby trucks' panel. The obvious move is copy-paste, and it's wrong for the obvious reason — two copies, two places to fix, and they drift"*
 
 ### The card, with a model
 
-- [ ] 🎞️ **GO TO SLIDE 10** — *Making one — three steps*
+- [ ] 🎞️ **GO TO SLIDE 8** — *Making one — three steps*
 - [ ] **Read the three steps off the slide before doing any of them** — *"create it, declare its model, render it handing one over. Three steps, and step two is the one people forget"*
 - [ ] Create `Views/Shared/_TruckCard.cshtml` — **paste**:
 
@@ -188,10 +186,8 @@ Don't ask the question rhetorically; make them look at both halves. Use the **ho
   </details>
 
 - [ ] ⚠️ **A brand-new `.cshtml` stops `dotnet watch` and waits for you** — it prints `Restart is needed to apply the changes.`, then `Do you want to restart your app?` with `Yes (y) / No (n) / Always (a) / Never (v)`. **Answer `a`.** Until you answer it rebuilds nothing, so the card grid you paste next never appears — on files that are perfectly correct
-- [ ] **Point at line 1**: `@model Truck` — *one* truck, not a list. A partial is strongly typed exactly like a page
+- [ ] **Point at line 1**: `@model Truck` — *one* truck, not a list. A partial is strongly typed exactly like a page, and that one line is what turns `@Model.Name` from a guess into something the editor can check
 - [ ] Three things while it's on screen: `name` will be a **file name, not a path** (`Views/Shared/` is searched) · underscore in, `.cshtml` out · **`<partial />` is a tag helper** — callback to `_ViewImports` from four minutes ago
-- [ ] 🎞️ **GO TO SLIDE 11** — *Give it a model*
-- [ ] **Point at the first line** — *"`@model Truck`. That one line is what turns `@Model.Name` from a guess into something the editor can check"*
 - [ ] Replace **all of** `Views/Trucks/Index.cshtml` — **paste**:
 
   <details><summary>📋 paste: Index.cshtml, table → card grid</summary>
@@ -218,7 +214,7 @@ Don't ask the question rhetorically; make them look at both halves. Use the **ho
   </details>
 
 - [ ] Six cards, three across. **`model="truck"` is the handoff** — the loop variable goes in, the partial's `@Model` is that one truck
-- [ ] 🎞️ **GO TO SLIDE 12** — *The page and the partial disagree*. This is the confusing bit; say it to the slide
+- [ ] 🎞️ **GO TO SLIDE 9** — *The page and the partial disagree*. This is the confusing bit; say it to the slide
 - [ ] Say the mismatch out loud: **the page's model is `List<Truck>`, the partial's is `Truck`.** They don't have to match. This is the part that confuses people
 - [ ] Week-2 callback: `row-cols-md-3` is the card grid they already know, finally pointed at real data
 - [ ] Now the second location — at the **bottom** of `Views/Trucks/Details.cshtml`, below the "Back to all trucks" link — **paste**:
@@ -253,13 +249,12 @@ Don't ask the question rhetorically; make them look at both halves. Use the **ho
 
 ### One file, two pages
 
-- [ ] 🎞️ **GO TO SLIDE 13** — *One file. Two pages.*
 - [ ] 🎯 **THE MOMENT** — open `_TruckCard.cshtml`, change one obvious thing (`text-primary` on the title, or an emoji), save, and refresh **both** `/Trucks` and `/Trucks/Details/1`. **One edit, both pages.** Stop talking for a second and let it land
 - [ ] **✓ CHECKPOINT:** the room can say the difference between a layout and a partial — one wraps around, one drops inside
 
-## 4 · Sections *(slides 14–15)*
+## 4 · Sections *(slides 10–11)*
 
-- [ ] 🎞️ **GO TO SLIDE 14** — *The slot that was always there*
+- [ ] 🎞️ **GO TO SLIDE 10** — *The slot that was always there*
 - [ ] Scroll to the last line inside the layout's `<body>` — *"you've scrolled past this for three weeks"*:
   ```html
   @await RenderSectionAsync("Scripts", required: false)
@@ -279,7 +274,7 @@ Don't ask the question rhetorically; make them look at both halves. Use the **ho
 
 ### Break it #4 — `required`
 
-- [ ] 🎞️ **GO TO SLIDE 15** — *`required: false`*. **The slide asks it** — *"which of the two pages breaks?"* Ask, then change the line
+- [ ] 🎞️ **GO TO SLIDE 11** — *`required: false`*. **The slide asks it** — *"which of the two pages breaks?"* Ask, then change the line
 - [ ] In `_Layout.cshtml`, change `required: false` → `required: true`, save
 - [ ] Visit `/Trucks` (no section) → **500**:
   ```
@@ -291,9 +286,9 @@ Don't ask the question rhetorically; make them look at both halves. Use the **ho
 - [ ] 🔗 **Say the week-6 line now.** Open `Views/Shared/` and point at `_ValidationScriptsPartial.cshtml`, sitting there unused: *"a partial, meant to be rendered inside a Scripts section. Next week you build a form, and tonight's two ideas do a real job together"*
 - [ ] **✓ CHECKPOINT:** everyone can say why scripts belong in a section rather than in the middle of the page
 
-## 5 · Bootswatch — one link, whole site *(slides 16–18)*
+## 5 · Bootswatch — one link, whole site *(slides 12–14)*
 
-- [ ] 🎞️ **GO TO SLIDE 16** — *Bootswatch*
+- [ ] 🎞️ **GO TO SLIDE 12** — *Bootswatch*
 - [ ] ⚠️ **Say both halves before you touch it:** *"delete the old Bootstrap link — do not add a second one — and hard-refresh afterwards, or a cached stylesheet will look exactly like it did not work"*
 - [ ] Open [bootswatch.com](https://bootswatch.com) on the projector and scroll the themes for ten seconds
 - [ ] Frame it: **not a different framework — the same Bootstrap, recompiled with different variables.** Every class from week 2 still works
@@ -311,12 +306,12 @@ Don't ask the question rhetorically; make them look at both halves. Use the **ho
 
 ### Three things about that line
 
-- [ ] 🎞️ **GO TO SLIDE 17** — *Three things about that line*
+- [ ] 🎞️ **GO TO SLIDE 13** — *Three things about that line*
 - [ ] Land three points: **`5.3.3` is pinned to match the Bootstrap already in `wwwroot/lib`** — version numbers in CDN URLs aren't decoration · **it replaces, it doesn't add** (leave both and they fight — the lab checks this) · **only the CSS moved**, the local `bootstrap.bundle.min.js` is untouched, so dropdowns still work
 
 ### The navbar needs a word
 
-- [ ] 🎞️ **GO TO SLIDE 18** — *Your Bootstrap still works*
+- [ ] 🎞️ **GO TO SLIDE 14** — *Your Bootstrap still works*
 - [ ] The navbar looks wrong on a dark theme — because the template hard-coded it. Fix it inside the `<nav>` you already have:
   ```html
   <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-primary mb-3">
@@ -326,9 +321,9 @@ Don't ask the question rhetorically; make them look at both halves. Use the **ho
 - [ ] **Week-2 callback:** *"you put a CDN link in one HTML file and styled one page. Same link tonight, and it styled a whole site — because now you know which file every page comes from"*
 - [ ] **✓ CHECKPOINT:** the payoff has landed. Everyone wants to go pick a theme, which is exactly the right mood for the lab
 
-## 6 · Hand off to the lab *(slide 19)*
+## 6 · Hand off to the lab *(slide 15)*
 
-- [ ] 🎞️ **GO TO SLIDE 19** — *Lab: the Registry gets a shell*. Leave it up for the whole lab; it's the task list
+- [ ] 🎞️ **GO TO SLIDE 15** — *Lab: the Registry gets a shell*. Leave it up for the whole lab; it's the task list
 - [ ] Show **what done looks like** — the answer key **running on localhost** + `dotnet test Cryptids.Checks` printing **6 / 6**. That's `week-05/lab/solution` in the answer-keys repo; `dotnet run` from `Cryptids.Web`, `dotnet test` from the folder above it. ~90 seconds, a target not a walkthrough. **Nothing is deployed for this** — Azure is their homework, not tonight
 - [ ] Setup on screen, said once: **`git -C dotnet-web-starters pull` → copy `week-05` out and rename it → open the folder holding *both* projects → `dotnet test Cryptids.Checks`**
 - [ ] Say plainly: **the app arrives finished.** Nobody is blocked tonight by an unfinished week 4. Check 1 proves it
@@ -336,8 +331,8 @@ Don't ask the question rhetorically; make them look at both halves. Use the **ho
 - [ ] Name the three exact strings the checks want: `Cryptid Registry`, `Field Reports Since 1893`, `Cryptid file loaded`
 - [ ] ⚠️ **Say that their second call site is different from yours.** Curbside's card goes on the index *and* the "Also in this city" panel — that panel works because two trucks share Madison. **No two cryptids share a region**, so it would be empty on every details page. Their second spot is the **home page**, featuring one creature. *"Same move, same partial, different second home — because a partial goes wherever you want it, which is the entire point."* Without this line they'll look for an Also-in panel that can't exist
 
-## 7 · Wrap-up, after the lab *(slide 20)*
+## 7 · Wrap-up, after the lab *(slide 16)*
 
-- [ ] 🎞️ **GO TO SLIDE 20** — *Tonight, in one picture*. Walk the shell diagram once, top to bottom
+- [ ] 🎞️ **GO TO SLIDE 16** — *Tonight, in one picture*. Walk the shell diagram once, top to bottom
 - [ ] Homework: **their own app gets the same five moves**
 - [ ] 🔗 Week 6: *"the shell holds a **form**"* — and `_ValidationScriptsPartial.cshtml` stops being a mystery
