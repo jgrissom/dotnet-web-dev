@@ -463,7 +463,8 @@ You can't stage this attack in the browser — the browser is *on your site*, so
 
 ## 4 · The same rules, in the browser *(slides 17–18)*
 
-- [ ] Frame the cost: submit an empty form and count it out loud — *"click, wait, page reloads, red text. It works and it feels slow"*
+- [ ] Frame the cost — submit the empty form, then say what happened: *"Before we add anything, watch what happens when I submit this empty. The whole page went away and came back — every box, every label, rebuilt. Right now my server is the only thing that knows the name was missing, so it has to be asked. On this laptop that round trip is a couple of milliseconds and you can't see it. Deployed, it's a real trip across the internet."*
+- [ ] ⚠️ **Don't say it feels slow.** Everything here is local, the response is instant, and the room is watching the same screen you are. The cost you can actually show is the **page being thrown away and rebuilt**, not a delay
 
 ### The partial week 5 promised *(slide 17)*
 
