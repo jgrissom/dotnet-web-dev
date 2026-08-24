@@ -94,29 +94,6 @@ public IActionResult Create(Truck truck)
 
 ---
 
-<!-- _footer: '🖥️ Demo §1 · the Network tab' -->
-
-## What arrived — in the terminal
-
-```
-── model binding built a Truck ──
-   Name      Wurst Case Scenario
-   Cuisine   German
-   Rating    4.1   (x2 = 8.2)
-```
-
-**You wrote nothing to build that** — and you can't multiply a string.
-
-<br>
-
-The browser only ever sent text:
-
-```
-Name=Wurst+Case+Scenario&Cuisine=German&City=Appleton
-```
-
----
-
 <!-- _footer: '🖥️ Demo §1 · break #1' -->
 
 ## Two silent failures
@@ -149,28 +126,6 @@ C# calls these overloads. **Routing only sees `/Trucks/Create`.**
 
 Drop `[HttpPost]` and both claim every verb:
 `AmbiguousMatchException`
-
----
-
-<!-- _footer: '🖥️ Demo §2 · asp-for' -->
-
-## `asp-for` — one attribute, four jobs
-
-```html
-<label asp-for="Name" class="form-label"></label>
-<input asp-for="Name" class="form-control" />
-```
-
-becomes
-
-```html
-<label class="form-label" for="Name">Name</label>
-<input class="form-control" type="text" data-val="true"
-       data-val-required="The Name field is required."
-       id="Name" name="Name" />
-```
-
-**name** · **id + for** · **label text** · **input type**
 
 ---
 
@@ -339,27 +294,6 @@ The list appears. The URL still says `/Trucks/Create`.
 ### Now hit refresh.
 
 **POST → Redirect → GET.** It's why every form bounces you.
-
----
-
-<!-- _footer: '🖥️ Demo §4 · the validation partial' -->
-
-## The partial from last week
-
-`Views/Shared/_ValidationScriptsPartial.cshtml`
-
-```html
-<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
-<script src="~/lib/jquery-validation-unobtrusive/..."></script>
-```
-
-```html
-@section Scripts {
-    <partial name="_ValidationScriptsPartial" />
-}
-```
-
-A partial. In a section. Both of last week's ideas, one job.
 
 ---
 
