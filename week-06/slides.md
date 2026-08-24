@@ -34,13 +34,13 @@ style: |
 
 <!-- _footer: '🖥️ Demo §1 · frame it' -->
 
-## Five weeks, one direction
+## The form that went nowhere
 
-The browser asked. You told.
+In week 2 you built a form — name, email, a dropdown, a box for what you saw.
 
-<br>
+You clicked the button. The page blinked. **Nothing was saved.**
 
-**Tonight it comes back the other way** — and three questions arrive with it:
+**Tonight we build the other end** — and three questions arrive with it:
 
 - How does their typing become a C# object?
 - Who decides whether it's any good?

@@ -56,8 +56,8 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ### Frame it *(slides 2–3)*
 
-- [ ] 🎞️ **GO TO SLIDE 2** — *Five weeks, one direction*
-- [ ] *"Five weeks, and every single page has been the same shape: the browser asks, we tell. Nothing has ever come the other way. Tonight it does — and three questions show up at once. How does their typing become a C# object, who decides if it's any good, and where does it go."*
+- [ ] 🎞️ **GO TO SLIDE 2** — *The form that went nowhere*
+- [ ] *"In week 2 you built a form. Boxes for your name and email, a dropdown, and a box for what you saw. You clicked the button, the page blinked, and nothing was saved anywhere — because there was nothing on the other end. Tonight we build the other end — and three questions show up at once. How does their typing become a C# object, who decides if it's any good, and where does it go."*
 - [ ] 🎞️ **GO TO SLIDE 3** — *GET vs. POST*. **Land the third row** — *"refreshing a POST sends it again"*. **The orange `no` and the orange sentence underneath are deliberately the same color: point at one, then the other.** *"That word is the entire reason tonight ends the way it does"* — then leave it hanging; you collect it at break #4, an hour and a half later
 
 ### A form with no help at all *(slide 4)*
