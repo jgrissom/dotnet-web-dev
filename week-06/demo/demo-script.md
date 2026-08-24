@@ -442,7 +442,7 @@ You can't stage this attack in the browser — the browser is *on your site*, so
 - [ ] 🎞️ **GO TO SLIDE 14** — *Delete the guard* · the question slide again — **predict first, then go to the editor:** *"if I comment out the IsValid check, what stops the bad truck?"*
 - [ ] Comment out the whole `if (!ModelState.IsValid)` block. Submit the blank-name, 9000-rated truck again
 - [ ] **It's on `/Trucks`.** A nameless card rated nine thousand
-- [ ] 🎞️ **GO TO SLIDE 15** — *Attributes describe. The guard decides.* · 🎯 leave the nameless truck on screen for a beat, then swipe to the deck and **say the setup; let the slide land the punchline:** *"The annotations did their job. They recorded the problem, and nobody read the record."*
+- [ ] 🎞️ **GO TO SLIDE 15** — *Attributes describe. The guard decides.* · 🎯 leave the nameless truck on screen for a beat, then swipe to the deck and **say the setup; let the slide land the punchline:** *"The annotations did their job. They recorded the problem, and nobody did anything about it."*
 - [ ] **RESTORE the block** ⚠️
 
 ### Break it #4 — the redirect *(slide 16)*
