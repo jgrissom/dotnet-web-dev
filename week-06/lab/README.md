@@ -44,7 +44,7 @@ CryptidForms/               ← in `dotnet-web`, the folder you copied and renam
 dotnet test Cryptids.Checks
 ```
 
-**1 / 6 passing.** Check 1 is the app you were given, already working. The other five are the form.
+**1 / 6 passing.** Check 1 is the app you were given, already working. The other five are the rules and the form.
 
 > [!WARNING]
 > Seeing `error MSB1009: Project file does not exist`? You're one folder too deep — probably inside `Cryptids.Web`. Run `cd ..` and try again; the command goes in the folder that holds *both* projects.
