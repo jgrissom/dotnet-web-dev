@@ -59,7 +59,7 @@ It needs:
 > 1. **When you think you're done locally** — cheap to fix things now
 > 2. **Again on your deployed Azure URL, before you submit** — that's the run that counts
 
-**Installing it *is* requirement 5.** Last week you dropped a bare `<script>` tag at the bottom of a view. This week the same script goes in the layout's Scripts slot instead — which is exactly what that slot is for, and it's worth 2 points.
+**Installing it *is* requirement 5.** Last week you dropped a bare `<script>` tag at the bottom of a view. This week the same script goes in the layout's Scripts placeholder instead — which is exactly what that placeholder is for, and it's worth 2 points.
 
 > [!CAUTION]
 > **This replaces last week's tag. Delete that line — don't add a second one.**

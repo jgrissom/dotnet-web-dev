@@ -328,7 +328,7 @@ Why it exists: scripts go at the bottom of the body, but the *page* is what know
 }
 ```
 
-Refresh `/Trucks/Details/2` and **View Source**. The `console.log` is not where you typed it — it's at the very bottom, *after* the footer and *after* jQuery, exactly where the layout put the slot.
+Refresh `/Trucks/Details/2` and **View Source**. The `console.log` is not where you typed it — it's at the very bottom, *after* the footer and *after* jQuery, exactly where the layout put the placeholder.
 
 - **The section can see the model.** `@Model.Name` interpolates into the script, because a section is still Razor and still runs in the view's context.
 - Load `/Trucks` (which has no section) and View Source: nothing extra. Optional means optional.
