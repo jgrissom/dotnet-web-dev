@@ -32,7 +32,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   ```
 - [ ] **Set the Port box at the top of this page** to whatever `dotnet watch` just printed — `Now listening on: http://localhost:5164`. Every `localhost` URL in this sheet retargets to match, including what the **Copy** buttons put on your clipboard, and it's remembered next time. §2's `curl` is the one that cares
 - [ ] **Park two browser tabs**: `/Trucks` and `/Trucks/Details/2`
-- [ ] **Dev tools open on the `/Trucks` tab, on the Network panel** — you're in it twice tonight and fumbling for it kills the beat. ⚠️ **Rehearsed already? Put the Payload view back to parsed** — Chrome remembers the `view source` toggle per profile, and §1's beat opens by pointing at the parsed table
+- [ ] **Dev tools open on the `/Trucks` tab, on the Network panel** — you're in it four times tonight (§1's payload, §3's 302, and both halves of §4) and fumbling for it kills the beat. ⚠️ **Check once that a submitted POST stays in the log.** Chrome clears the log when the page navigates and normally records the POST as the first entry of the new page — §4's *before* half depends on that entry being visible. If it isn't, tick **Preserve log**. ⚠️ **Rehearsed already? Put the Payload view back to parsed** — Chrome remembers the `view source` toggle per profile, and §1's beat opens by pointing at the parsed table
 - [ ] **Keep the terminal visible** (it's sized in the Teaching profile below). In §1 it stops being where the app runs and becomes the thing everyone is looking at
 - [ ] **Learn how to clear it before you need it — you can't type `clear`.** `dotnet watch` is running in that terminal, so the shell is *not* at a prompt and your keystrokes go to the watcher, not to a shell. Clear it from the **editor** instead:
   - **Mac:** focus the terminal, press **⌘K**
@@ -463,8 +463,9 @@ You can't stage this attack in the browser — the browser is *on your site*, so
 
 ## 4 · The same rules, in the browser *(slides 17–18)*
 
-- [ ] Frame the cost — submit the empty form, then say what happened: *"Before we add anything, watch what happens when I submit this empty. The whole page went away and came back — every box, every label, rebuilt. Right now my server is the only thing that knows the name was missing, so it has to be asked. On this laptop that round trip is a couple of milliseconds and you can't see it. Deployed, it's a real trip across the internet."*
-- [ ] ⚠️ **Don't say it feels slow.** Everything here is local, the response is instant, and the room is watching the same screen you are. The cost you can actually show is the **page being thrown away and rebuilt**, not a delay
+- [ ] **Measure the before.** On `/Trucks/Create`, **Network** panel open — **clear the log** (the ⃠ button), then submit the form **empty**
+- [ ] 🎯 **Point at the entry that appears.** *"One request. My browser had nothing to say about that empty box, so it asked the server — and the whole page was rebuilt to show me the answer. Watch this line; we are doing the exact same thing again in a minute."*
+- [ ] ⚠️ **Don't say it feels slow.** Everything here is local, so the response is instant and the room is watching the same screen you are. **The log is the evidence, not the clock** — what you are showing is that a request had to happen at all
 
 ### The partial week 5 promised *(slide 17)*
 
@@ -480,7 +481,8 @@ You can't stage this attack in the browser — the browser is *on your site*, so
       <partial name="_ValidationScriptsPartial" />
   }
   ```
-- [ ] Refresh, submit the **empty** form: errors appear **instantly**. No reload, no round trip
+- [ ] **Measure the after.** Refresh, **clear the log again**, and submit the **empty** form again. Errors appear immediately, beside the fields
+- [ ] 🎯 **Point at the empty log and stop.** *"Nothing. Not a faster request — no request at all. The browser read the rules out of the page and answered the question itself. My server was never asked, and has no idea this happened."*
 - [ ] 🎞️ **GO TO SLIDE 17** — *One source of truth* · 🎯 leave the two-arrow diagram up and say: *"Nothing in my C# changed. Those two scripts scan the page for the `data-val` attributes we watched appear before the break, and enforce whatever they find. **One source of truth — `Models/Truck.cs` — enforced in two places**."*
 - [ ] Say why the section matters: dropped in the middle of the view it loads **before** jQuery and dies with `$ is not defined`. Week 5's section wasn't a formality
 
