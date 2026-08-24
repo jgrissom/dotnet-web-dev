@@ -134,7 +134,7 @@ Every individual step is also browsable as a red/green diff at [the commit list]
 
 ### Form
 
-- [ ] **Step 13 — the contact heading and the alert.** The alert is the week-6 promise: *"this form does not do anything tonight. It starts working in week 6"*
+- [ ] **Step 13 — the contact heading and the alert.** The alert is the week-6 pointer: *"this form does not do anything tonight — it's markup, and nothing is listening. Week 6 is when forms start working"*
 - [ ] **Step 14 — the form goes in a `col-md-8`.** *"The column is what stops a text input stretching across a 27-inch monitor"*
 - [ ] **Step 15 — the first field.** *"Here we are applying style to our form fields."* Slow down here too: `form-label` on the label, `form-control` on the input, both inside an `mb-3` spacer. Note the `for`/`id` pair was already there — **that is plain HTML accessibility, not Bootstrap**
 - [ ] **Step 16 — the rest of the fields.** `form-select` on the dropdown, `btn btn-primary` on the button. Same three-part shape each time

@@ -121,7 +121,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
      Open late False
   ```
 - [ ] 🎯 **Point at it and stop.** *"A `Truck` object showed up in my method, fully filled in, and I wrote nothing to build it. That's the whole of Part 1 — why."*
-- [ ] Then the second half, and **don't rush it**: *"look at the top line — `built a Truck`. Not a bag of strings, an instance of the class you wrote in week 4. And look at the bottom — **you cannot multiply a string.** The browser sent me the characters four-point-one. What arrived was a number."*
+- [ ] Then the second half, and **don't rush it**: *"look at the top line — `built a Truck`. Not a bag of strings, an instance of the class you wrote in week 4. And look at the times-two — **you cannot multiply a string.** The browser sent me the characters four-point-one. What arrived was a number."*
 
 ### The Network tab *(slide 5)*
 
@@ -270,7 +270,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 ### The hidden field you didn't write *(slide 11)*
 
 - [ ] 🎞️ **GO TO SLIDE 11** — *The field you didn't write*
-- [ ] In View Source, scroll to just inside `</form>` — back where you found the checkbox's shadow. **Two hidden fields sit there, the token first:**
+- [ ] **Back to `/Trucks/Create`** — the last submit left you on the `Content()` page, and there's no form on that one to view the source of. Then **View Source**, scroll to just inside `</form>` — back where you found the checkbox's shadow. **Two hidden fields sit there, the token first:**
   ```html
   <input name="__RequestVerificationToken" type="hidden" value="CfDJ8L5JyJv3Gm..." /><input name="IsOpenLate" type="hidden" value="false" />
   ```
@@ -346,6 +346,7 @@ You can't stage this attack in the browser — the browser is *on your site*, so
      Cuisine   German
      City
      Rating    9000   (x2 = 18000)
+     Open late False
   ```
 - [ ] *"A nameless truck, in no city, rated nine thousand out of five."* **Nothing in the app has an opinion about any of it** *(the action still just prints — nothing is stored yet, and nothing is judged)*
 - [ ] 🎞️ **GO TO SLIDE 12** — *Where do the rules live?* · ask it as a real question: *"somebody has to say what a valid truck is. Where does that live?"* Work through the two wrong answers on the slide out loud — **the view** (rules pasted into markup can't be reused, and a `Truck` gets made in more than one place) and **the controller** (every action grows the same block of ifs) — and land on **the model**
@@ -445,7 +446,7 @@ You can't stage this attack in the browser — the browser is *on your site*, so
 - [ ] **Click `＋ Add a truck`** (the C# edit just restarted the app, so you're back to six trucks) and submit a good one — **it works**, the list appears. Now **point at the address bar**: it still says `/Trucks/Create`
 - [ ] **Hit refresh.** Browser: *"Confirm Form Resubmission?"* → say yes → **two identical trucks in the list**
 - [ ] **RESTORE `return RedirectToAction(nameof(Index));`** ⚠️ The page still shows the *list* at `/Trucks/Create`, so **click `＋ Add a truck`** to get a real form back. Submit another truck, then **refresh: nothing happens**, because the page you're on arrived by GET
-- [ ] Name it: **POST-Redirect-GET**. *"It's why every form you have ever used bounces you to a different URL after you submit"*
+- [ ] Name it: **POST-Redirect-GET**. *"It's why nearly every form on the web bounces you to a different URL after you submit"*
 - [ ] Show it in the **Network** panel: the POST comes back **302** with a `Location` header, then a separate GET. Two requests
 - [ ] `nameof(Index)` over `"Index"` — renaming the action becomes a compile error instead of a 404
 - [ ] **✓ CHECKPOINT:** the room can say what `ModelState.IsValid` is reading, and why a redirect follows a successful POST

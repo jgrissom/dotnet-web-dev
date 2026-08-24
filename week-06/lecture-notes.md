@@ -121,6 +121,7 @@ Here is the entire rule. For each public settable property on the parameter's ty
 >    Cuisine
 >    City      Appleton
 >    Rating    0   (x2 = 0)
+>    Open late False
 > ```
 >
 > **No error. No warning. Two properties quietly wrong, for two different reasons.**
@@ -158,7 +159,7 @@ The plain form works. Now count what's wrong with it: the labels are hand-typed 
 
 ### `asp-for` does four jobs at once
 
-Replace one field and look at what comes out. In the view:
+Replace one field and look at what comes out. In `Views/Trucks/Create.cshtml`, swap the Name field for this — and add `@model Truck` as the first line of the file:
 
 ```html
 <label asp-for="Name" class="form-label"></label>
@@ -311,6 +312,7 @@ Submit the form with no name, no city, and a rating of 9000. The terminal report
    Cuisine   German
    City
    Rating    9000   (x2 = 18000)
+   Open late False
 ```
 
 A nameless truck in no city with a rating of nine thousand, and **nothing in the app has an opinion about any of it.** Somebody has to say what a valid truck is. The question is *where* that lives.
@@ -420,7 +422,7 @@ The last line of the happy path is `RedirectToAction(nameof(Index))`, and it's t
 > [!IMPORTANT]
 > **Break it (demo §3).** Change the last line to `return View("Index", TruckData.All);` — which *works*, and shows the list. Now the URL still reads **`/Trucks/Create`**, and a page that came back from a POST is still a POST as far as the browser is concerned. **Hit refresh.** The browser asks *"Confirm Form Resubmission?"*, you say yes, and there are now **two identical trucks** in the list.
 >
-> Put `RedirectToAction(nameof(Index))` back, submit another truck, and refresh: nothing happens, because the page you're looking at arrived by GET. **That's the whole reason.** The pattern has a name worth knowing — **POST-Redirect-GET** — and it's why every form you've ever used bounces you to a different URL after you submit.
+> Put `RedirectToAction(nameof(Index))` back, submit another truck, and refresh: nothing happens, because the page you're looking at arrived by GET. **That's the whole reason.** The pattern has a name worth knowing — **POST-Redirect-GET** — and it's why nearly every form on the web bounces you to a different URL after you submit.
 
 - `nameof(Index)` over `"Index"`: renaming the action becomes a compile error rather than a 404. Small, free, do it.
 - A redirect is a **302** with a `Location` header — the browser goes and does a fresh GET. Show it in the Network tab: two requests, POST then GET.
