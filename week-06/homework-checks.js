@@ -380,11 +380,23 @@
 
     // ── 5. a bad submission is refused ────────────────────────────────────────
     const before = detailsIds(index.body, route).length;
-    const badPost = await post(root + createUrl,
-      bodyFrom(fields, invalidValue, tokenOf(createPage.body)));
+    const badBody = bodyFrom(fields, invalidValue, tokenOf(createPage.body));
+    const badPost = await post(root + createUrl, badBody);
 
     const badRefused = badPost && !badPost.redirected && badPost.status === 200;
     const badSaidWhy = badRefused && hasErrors(badPost.body);
+
+    // A 200 carrying a blank form has two very different causes, and the giveaway is
+    // whether what I posted came back with it. An action with NO verb attribute answers
+    // POST as happily as GET, so a lone GET Create() serves the empty form straight back —
+    // which looks identical to "you forgot the validation spans" unless you look for your
+    // own input. Only decidable when an invalid value is distinctive enough to search for.
+    const echoable = fields
+      .filter(f => f.type !== "checkbox")
+      .map(f => badBody[f.name])
+      .filter(v => typeof v === "string" && v.length >= 3);
+    const nothingBound = !!badRefused && echoable.length > 0
+      && !echoable.some(v => String(badPost.body).includes(v));
 
     const afterBad = await getWithWakeup(`${root}/${route}`);
     const idsAfterBad = afterBad ? detailsIds(afterBad.body, route) : detailsIds(index.body, route);
@@ -403,14 +415,21 @@
           : countAfterBad > before
             ? "the form came back, but the bad record was added to your list anyway. The guard has to "
               + "return BEFORE the Add."
+          : nothingBound
+            ? "the form came back without a word of what I sent it, so nothing received the post. You "
+              + "almost certainly have only the GET Create(): an action with no verb attribute answers "
+              + "EVERY verb, so it served the empty form again. That's the requirement above this one."
           : !badSaidWhy
             ? "the form came back and nothing was added — good — but there are no error messages on the "
               + "page, so whoever filled it in has no idea what to fix."
             : `the bad submission returned ${badPost.status}, which I wasn't expecting.`,
         todo: badPost && badPost.redirected
           ? "Guard your POST action: if (!ModelState.IsValid) { return View(item); } — before you add anything."
-          : "Add <span asp-validation-for=\"YourField\" class=\"text-danger\"></span> next to each input, "
-            + "and make sure the action returns View(item) rather than View().",
+          : nothingBound
+            ? "Add the second Create action — [HttpPost], taking your model as a parameter. Without it "
+              + "your GET Create() is answering the post and nothing is being bound."
+            : "Add <span asp-validation-for=\"YourField\" class=\"text-danger\"></span> next to each input, "
+              + "and make sure the action returns View(item) rather than View().",
       });
 
     // ── 6. a good submission is accepted ──────────────────────────────────────
@@ -442,6 +461,10 @@
       `a good submission is accepted and lands in your list${goodOk ? ` — ${countAfterBad} → ${countAfterGood}` : ""}`, {
         hint: !goodPost
           ? "the submission didn't get a response at all."
+          : nothingBound
+            ? "nothing received this post either — the form came back with none of the values I sent. "
+              + "An action with no verb attribute answers every verb, so your GET Create() is serving "
+              + "the blank form back. The [HttpPost] overload is what's missing."
           : !goodPost.redirected
             ? `I filled your form in using your own rules — every value inside your [Range] and `
               + `[StringLength] limits — and got a ${goodPost.status} back instead of a redirect. Either it `
@@ -456,8 +479,10 @@
         todo: goodPost && goodPost.redirected
           ? "Give the new item an id BEFORE you add it: item.Id = YourData.All.Max(x => x.Id) + 1; "
             + "— and make sure every item on your index links to /Details/{id}."
-          : "Finish the happy path: assign an id, add it to the list, then "
-            + "return RedirectToAction(nameof(Index));",
+          : nothingBound
+            ? "Add the second Create action — [HttpPost], taking your model as a parameter."
+            : "Finish the happy path: assign an id, add it to the list, then "
+              + "return RedirectToAction(nameof(Index));",
       });
 
     // ── 7. client-side validation ─────────────────────────────────────────────
