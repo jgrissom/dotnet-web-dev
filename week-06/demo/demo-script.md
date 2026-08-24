@@ -58,11 +58,13 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 - [ ] 🎞️ **GO TO SLIDE 2** — *The form that went nowhere*
 - [ ] *"In week 2 you built a form. Boxes for your name and email, a dropdown, and a box for what you saw. You clicked the button, the page blinked, and nothing was saved anywhere — because there was nothing on the other end. Tonight we build the other end — and three questions show up at once. How does their typing become a C# object, who decides if it's any good, and where does it go."*
-- [ ] 🎞️ **GO TO SLIDE 3** — *GET vs. POST*. **Land the third row** — *"refreshing a POST sends it again"*. **The orange `no` and the orange sentence underneath are deliberately the same color: point at one, then the other.** *"That word is the entire reason tonight ends the way it does"* — then leave it hanging; you collect it at break #4, an hour and a half later
+- [ ] 🎞️ **GO TO SLIDE 3** — *GET vs. POST*. **Land the third row** — *"refreshing a POST sends it again"*. **The orange `no` and the orange sentence underneath are deliberately the same color: point at one, then the other.**
 
 ### A form with no help at all *(slide 4)*
 
-- [ ] 🎞️ **GO TO SLIDE 4** — *A form, with no help at all*. **Read it off the slide, then swipe back and type it** — both blocks are on it, so anyone who falls behind can catch up here rather than from your screen
+- [ ] 🎞️ **GO TO SLIDE 4** — *A form, with no help at all*
+- [ ] *"Two files on one screen — and this is the only time tonight you'll see them together. Up top, plain HTML: a box called Name, a box called Cuisine. Underneath, a C# method that asks for a Truck. Now look for the wiring between them. There isn't any — nothing maps that box onto that property, and I've configured nothing. Watch what turns up in my terminal anyway."*
+- [ ] ⚠️ **The slide is abridged** — two fields and two `WriteLine`s against the four and six you're about to type, so don't offer it as a catch-up. Type from this sheet
 - [ ] In `Controllers/TrucksController.cs`, below `Details`, **type** the GET action:
   ```csharp
   // GET /Trucks/Create
@@ -71,7 +73,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
       return View();
   }
   ```
-- [ ] Then the POST action — **type this one too**. Say what it's for: *"no view, no redirect, no cleverness. I just want to print what arrived and look at it"*:
+- [ ] Then the POST action — **type this one too**. Say what it's for: *"no view, no redirect - I just want to print what arrived and look at it"*:
   ```csharp
   [HttpPost]
   public IActionResult Create(Truck truck)
