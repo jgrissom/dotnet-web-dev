@@ -400,7 +400,7 @@ You can't stage this attack in the browser — the browser is *on your site*, so
   </details>
 
 - [ ] Refresh the form. **The checkbox label now reads "Open late?"** — *"I changed the model and the form changed, because the label was reading the model the whole time"*
-- [ ] 🎞️ **GO TO SLIDE 12** — *...and they end up in the HTML* · then **View Source on the Name input** and put it next to the one from §2: `maxlength="50"` and `data-val-length` are new, and `data-val-required` has stopped saying *"The Name field is required."* and started saying **mine**. *"My rules are in the HTML now, in my words. Park that — it pays off after the break"*
+- [ ] 🎞️ **GO TO SLIDE 12** — *...and they end up in the HTML* · then **View Source on the Name input** and put it next to the one from §2: `maxlength="50"` and `data-val-length` are new, and `data-val-required` has stopped saying *"The Name field is required."* and started saying **mine**. *"My rules are in the HTML now, in my words."*
 - [ ] Mention `{1}` and `{2}` in the Range message: the bounds fill themselves in, so the message can't drift from the rule
 - [ ] ⚠️ **Say the implicit-required thing before it bites them:** *"`Rating` has no `[Required]`, but leave it blank and it'll complain anyway — a `double` has nowhere to put 'empty'. If you want a genuinely optional number, the property has to be `double?`"*
 
