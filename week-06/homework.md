@@ -64,10 +64,20 @@ Every requirement above is about *your* properties, and the lab's exact attribut
 > That's supposed to happen — it's the only way to prove from outside that your form actually works. It disappears the next time your app restarts, which is [this week's closing lesson](lecture-notes.md#part-5-where-the-truck-actually-went-10-min) and next week's whole reason for existing. Restart your app if you want it gone sooner; you don't need to.
 
 > [!IMPORTANT]
-> **This is a finish line, not a progress bar.** It has nothing useful to say until there's a form to submit. Build first. **Run it twice:**
+> **Run it as you go.** It reports all six checks every time, and marks the ones it can't reach yet ⬜ instead of failing them — so a half-built app tells you *where you are*, not that you're broken. Every run ends with one `👉 Next:` line naming the single next thing to do.
 >
-> 1. **When you think you're done locally** — cheap to fix things now
-> 2. **Again on your deployed Azure URL, before you submit** — that's the run that counts
+> **Fixing things on localhost is much cheaper than fixing them on Azure**, which is why the tag goes in now rather than after the deploy. Then run it once more on your **deployed URL before you submit** — that's the run that counts.
+
+| Once you've done | This turns green |
+|---|---|
+| requirements 1 **and** 2 — they land together | *your form page is a real form that posts* · *your fields carry your model's rules* |
+| requirement 3 | *a link from your list page to your form* |
+| requirement 4 | *a good submission is accepted and lands in your list* |
+| requirement 5 | *a bad submission is refused, with messages* |
+| requirement 6 | *validation runs in the browser too* |
+
+> [!NOTE]
+> **Requirement 1 on its own moves nothing**, and that's not a bug — your rules only become visible to a checker once there's a form rendering them. Reqs 1 and 2 are one milestone.
 
 **Open `Views/Home/Index.cshtml`.** Find last week's line and **replace it** — same place, same section, one character different:
 
