@@ -55,7 +55,7 @@ dotnet test Cryptids.Checks
 
 ## The one file you'll live in
 
-`Cryptids.Web/Views/Shared/_Layout.cshtml` — every page you have is wrapped in it. Open it and read it top to bottom **before** you start; it's about 50 lines and five of them matter tonight:
+`Cryptids.Web/Views/Shared/_Layout.cshtml` — every page you have is wrapped in it. Open it and read it top to bottom **before** you start; it's about 50 lines and six of them matter tonight:
 
 | Line you'll find | What it does |
 |---|---|
@@ -63,6 +63,7 @@ dotnet test Cryptids.Checks
 | `<link ... bootstrap.min.css />` | the stylesheet for the whole site |
 | `<a class="navbar-brand" ...>Cryptids.Web</a>` | the name in the top-left corner |
 | `@RenderBody()` | **where your page's HTML lands** |
+| `&copy; 2026 - Cryptids.Web - ...` | the footer — task 2 adds a phrase to it |
 | `@await RenderSectionAsync("Scripts", required: false)` | an optional placeholder a page can fill |
 
 The [notes on the layout file](../lecture-notes.md#the-layout-file) walk the same file in more detail.
