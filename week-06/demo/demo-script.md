@@ -182,7 +182,11 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ## 2 · The same form, with tag helpers *(slides 7–9)*
 
-- [ ] Frame it by counting what's wrong with the plain form: labels that will drift from the model, no `id` to click, nothing that knows `Rating` is meant to be a number, **and nowhere for an error to go**
+- [ ] **Frame it in the editor, with the plain form still on screen** — count what's wrong, name the one cause, then say what a tag helper actually is
+- [ ] *"This form works. But look at what's holding it together — every single thing that connects it to my `Truck` class is a string I typed by hand. The word Name in the label. The `name="Name"` in the input. There's no `id`, so clicking the label doesn't put the cursor in the box. Nothing in this markup knows `Rating` is meant to be a number. And when a validation message needs somewhere to land, there is nowhere to put it."*
+- [ ] *"Four problems, one cause. Every one of them is a place where my markup has to agree with my C# by hand, and nothing checks that it does. I rename a property in `Truck.cs` and this file goes on working — and goes on being wrong."*
+- [ ] 🔗 *"So we stop typing them. These are tag helpers, and they look like HTML attributes but they are not: anything starting `asp-` is C# that runs on the server before this page exists, reads my model, and writes the real HTML. They have been on screen all along — that is what the navbar links are, and it is the button I clicked to get to this page. Forms are where they stop being a convenience, because a form is the one place where markup and a C# class have to agree over and over, and every agreement is a chance to drift."*
+- [ ] 💡 Week 4 planted this: its notes say tag helpers *"get their proper introduction in week 6, where forms make them genuinely worth it"*. This is that moment — collect it if the navbar comes up
 
 ### `asp-for`, one field at a time
 
