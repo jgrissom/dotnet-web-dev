@@ -510,6 +510,7 @@ POST /Trucks/Create  →  model binding     →  Truck object      (by name attr
 
 **`AmbiguousMatchException: The request matched multiple endpoints`**
 - Two actions with the same name and no `[HttpPost]` on the second one, so both claim the URL. Add `[HttpPost]` to the one that takes a parameter.
+- **Still throwing on a file that now looks correct? Restart — `Ctrl+R` in the watch terminal.** MVC works out each action's verb at startup, and `dotnet watch` applies an attribute-only edit only *sometimes*, printing `Hot reload succeeded` either way. This is the one that sends people rewriting code that was already right.
 
 **One field always arrives empty / null, and no error anywhere**
 - The `name` attribute and the property name don't match. Check the rendered HTML, not the Razor — and prefer `asp-for`, which can't get this wrong.

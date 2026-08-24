@@ -144,7 +144,7 @@ Use the **same US region** that worked for you before — it's on the class list
 ## 🆘 Stuck?
 
 - **Clicking Submit does nothing — the same blank form comes back** — you have a GET `Create()` and no `[HttpPost]` one, so the POST landed on the GET action. [An action with no verb attribute answers every verb](lecture-notes.md#two-actions-one-name).
-- **`AmbiguousMatchException: The request matched multiple endpoints`** — two actions named `Create` and neither has `[HttpPost]`. Add it to the one with the parameter.
+- **`AmbiguousMatchException: The request matched multiple endpoints`** — two actions named `Create` and neither has `[HttpPost]`. Add it to the one with the parameter. **Still there after you added it? Press `Ctrl+R` in the terminal running `dotnet watch`.** MVC works out each action's verb when the app *starts*, and hot reload applies an attribute-only edit only sometimes — it says `Hot reload succeeded` either way, so a correct fix can look like it did nothing.
 - **A 400, with nothing of yours in the error** — antiforgery. Your action has `[ValidateAntiForgeryToken]` but the form isn't sending a token. Use `<form asp-action="Create" method="post">`.
 - **One field always arrives empty** — [the input's `name` and the property name don't match](lecture-notes.md#model-binding-is-name-matching-and-nothing-else). `asp-for` can't get this wrong; hand-written HTML can.
 - **`ModelState.IsValid` is false and you can't see why** — temporarily switch your summary to `asp-validation-summary="All"`, which lists every error including the per-field ones.
