@@ -448,7 +448,7 @@ You can't stage this attack in the browser — the browser is *on your site*, so
 ### Break it #4 — the redirect *(slide 16)*
 
 - [ ] 🎞️ **GO TO SLIDE 16** — *Redirect, don't render*. 🔗 **This is where slide 3's orange `no` gets collected** — say so
-- [ ] *"Last line of the happy path is a redirect, and it looks like a pointless extra step. Watch."*
+- [ ] *"Last line of a successful add should be a redirect and we are going to see why that is next."*
 - [ ] Change the last line to:
   ```csharp
   return View("Index", TruckData.All);
