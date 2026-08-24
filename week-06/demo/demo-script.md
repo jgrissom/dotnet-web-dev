@@ -32,7 +32,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   ```
 - [ ] **Set the Port box at the top of this page** to whatever `dotnet watch` just printed — `Now listening on: http://localhost:5164`. Every `localhost` URL in this sheet retargets to match, including what the **Copy** buttons put on your clipboard, and it's remembered next time. §2's `curl` is the one that cares
 - [ ] **Park two browser tabs**: `/Trucks` and `/Trucks/Details/2`
-- [ ] **Dev tools open on the `/Trucks` tab, on the Network panel** — you're in it twice tonight and fumbling for it kills the beat
+- [ ] **Dev tools open on the `/Trucks` tab, on the Network panel** — you're in it twice tonight and fumbling for it kills the beat. ⚠️ **Rehearsed already? Put the Payload view back to parsed** — Chrome remembers the `view source` toggle per profile, and §1's beat opens by pointing at the parsed table
 - [ ] **Keep the terminal visible** (it's sized in the Teaching profile below). In §1 it stops being where the app runs and becomes the thing everyone is looking at
 - [ ] **Learn how to clear it before you need it — you can't type `clear`.** `dotnet watch` is running in that terminal, so the shell is *not* at a prompt and your keystrokes go to the watcher, not to a shell. Clear it from the **editor** instead:
   - **Mac:** focus the terminal, press **⌘K**
@@ -127,7 +127,9 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ### The Network tab
 
-- [ ] Back, resubmit with the **Network** panel open. Click the `Create` request → **Payload**:
+- [ ] Back, resubmit with the **Network** panel open. Click the `Create` request → **Payload**
+- [ ] ⚠️ **Chrome shows it parsed by default** — a **Form Data** list of names and values, not the raw body. Use that before you switch it: *"Chrome has already done to this request what the server is about to do — split it into names and values. That's Chrome being helpful. It is not what went over the wire."*
+- [ ] **Click `view source`** on the **Form Data** header. Now the actual body:
   ```
   Name=Wurst+Case+Scenario&Cuisine=German&City=Appleton&Rating=4.1
   ```
