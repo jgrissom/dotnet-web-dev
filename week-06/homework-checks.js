@@ -387,7 +387,8 @@
     const badSaidWhy = badRefused && hasErrors(badPost.body);
 
     const afterBad = await getWithWakeup(`${root}/${route}`);
-    const countAfterBad = afterBad ? detailsIds(afterBad.body, route).length : before;
+    const idsAfterBad = afterBad ? detailsIds(afterBad.body, route) : detailsIds(index.body, route);
+    const countAfterBad = idsAfterBad.length;
 
     add(badRefused && badSaidWhy && countAfterBad === before ? "pass" : "fail", 3,
       "a bad submission is refused, with messages", {
@@ -420,12 +421,25 @@
       : null;
 
     const afterGood = await getWithWakeup(`${root}/${route}`);
-    const countAfterGood = afterGood ? detailsIds(afterGood.body, route).length : countAfterBad;
+    const idsAfterGood = afterGood ? detailsIds(afterGood.body, route) : idsAfterBad;
+    const countAfterGood = idsAfterGood.length;
     const grew = countAfterGood > countAfterBad;
+
+    // A record that lands is not the same as a record that landed properly. An item added
+    // without an Id goes in as 0, and /Details/0 finds it — for exactly one record. The next
+    // one collides and only the first is ever reachable. So check the id it went in with,
+    // not just that the list got longer.
+    const newIds = idsAfterGood.filter(id => !idsAfterBad.includes(id));
+    const idOk = newIds.length > 0 && newIds.every(id => Number(id) > 0);
+
+    // Keyed on `grew`, not on the check passing: an Id-0 record is still a real record
+    // sitting in their list, and the cleanup note at the end has to say so.
     if (grew) addedARecord = true;
 
-    add(goodPost && goodPost.redirected && grew ? "pass" : "fail", 2,
-      `a good submission is accepted and lands in your list${goodPost && goodPost.redirected && grew ? ` — ${countAfterBad} → ${countAfterGood}` : ""}`, {
+    const goodOk = !!(goodPost && goodPost.redirected && grew && idOk);
+
+    add(goodOk ? "pass" : "fail", 2,
+      `a good submission is accepted and lands in your list${goodOk ? ` — ${countAfterBad} → ${countAfterGood}` : ""}`, {
         hint: !goodPost
           ? "the submission didn't get a response at all."
           : !goodPost.redirected
@@ -433,11 +447,15 @@
               + `[StringLength] limits — and got a ${goodPost.status} back instead of a redirect. Either it `
               + "was rejected, or the action renders a view instead of redirecting. "
               + "A rendered POST files the record again every time someone refreshes."
-            : "you redirected, but nothing new turned up on your list page. Either the action never "
-              + "added it, or the new item has no Id and so has no Details link of its own.",
+            : !grew
+              ? "you redirected, but nothing new turned up on your list page. Either the action "
+                + "never added it, or your index doesn't link each item to /Details/{id}."
+              : "you redirected and it landed — but it went in with Id 0, because nothing gave it "
+                + "one. It looks fine right now, because /Details/0 finds it. Add a second record "
+                + "and both answer to that URL, and only the first will ever be found.",
         todo: goodPost && goodPost.redirected
-          ? "In your POST action, give the new item an id (Max(x => x.Id) + 1), Add it to your list, "
-            + "and make sure every item on your index links to /Details/{id}."
+          ? "Give the new item an id BEFORE you add it: item.Id = YourData.All.Max(x => x.Id) + 1; "
+            + "— and make sure every item on your index links to /Details/{id}."
           : "Finish the happy path: assign an id, add it to the list, then "
             + "return RedirectToAction(nameof(Index));",
       });

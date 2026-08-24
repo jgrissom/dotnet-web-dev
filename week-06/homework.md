@@ -112,7 +112,7 @@ Then load your home page and open the console — **F12 → Console**. It runs a
 > **If it says your fields carry no rules** — you probably only have `[Required]`. That one is free: ASP.NET marks every non-nullable property required whether you ask or not, so it can't prove you wrote anything. Add a `[StringLength]` or a `[Range]`.
 
 > [!TIP]
-> **If a good submission "isn't accepted"** — the checker fills every box using your own limits, so it's rarely the data. Two likelier causes: your action returns a `View(...)` instead of redirecting, or the new item never gets an `Id` and so has no Details link for the checker to count.
+> **If a good submission "isn't accepted"** — the checker fills every box using your own limits, so it's rarely the data. Two likelier causes: your action returns a `View(...)` instead of redirecting, or the new item never gets an `Id`, so it goes in as 0 and would collide with the next one.
 
 > [!TIP]
 > **If it can't find your controller**, your nav link from week 4 is missing or points somewhere else. You can tell it where to look — `recheck("Trails")` with *your* controller's name — but fix the link; it's been a requirement for three weeks.
@@ -163,7 +163,7 @@ Use the **same US region** that worked for you before — it's on the class list
 | The Create page is a real form that posts, with more than one field | 2 | `homework-checks.js` |
 | Your fields carry rules from your model, beyond the free `required` | 3 | `homework-checks.js` |
 | A bad submission is refused, with messages, and nothing is added | 3 | `homework-checks.js` |
-| A good submission is accepted, redirects, and lands in your list | 2 | `homework-checks.js` |
+| A good submission is accepted, redirects, and lands in your list with an id of its own | 2 | `homework-checks.js` |
 | Client-side validation loads, through the Scripts section | 2 | `homework-checks.js` |
 | Data annotations on your model: 3+, across 2+ properties, 2+ of them rules | 3 | your repo |
 | Public repo with 3+ meaningful commits | 3 | your repo |
