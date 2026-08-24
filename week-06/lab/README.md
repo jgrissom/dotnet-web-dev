@@ -138,7 +138,7 @@ public IActionResult Create()
 **Then create `Views/Cryptids/Create.cshtml`.** This is the whole file — paste it; tonight's lesson is what the form *does*, not the Bootstrap around it:
 
 > [!NOTE]
-> **It's a new `.cshtml`, so `dotnet watch` stops and asks to restart** — `Yes (y) / No (n) / Always (a) / Never (v)` in terminal 1. Answer `a`. Until you do, `/Cryptids/Create` keeps 500ing on a file that's already correct.
+> **It's a new `.cshtml`, so `dotnet watch` stops and asks to restart** — `Yes (y) / No (n) / Always (a) / Never (v)` in terminal 1. Answer `a`. Until you do, `/Cryptids/Create` keeps 500ing on a file that's already correct. A red `❌ ... error ENC0021: Adding attribute requires restarting the application` appears with the question — that's the restart notice, not a mistake in your paste.
 
 ```html
 @model Cryptid
