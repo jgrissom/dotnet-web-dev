@@ -284,7 +284,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   ```
 - [ ] ⚠️ **Do not say the tag helper added it** — Razor adds it to **every** `<form method="post">`, including the hand-written one from §1. Worth saying explicitly, because it's the obvious wrong conclusion
 - [ ] The one-paragraph why: *"without it, any other site could put a hidden form on their page pointing at your URL, and a logged-in visitor's browser would send it along with their cookies. The token is a value my server planted here and in a cookie; someone else's form can't produce a matching pair"*
-- [ ] **Don't add the attribute yet.** First show that the door is open — **the same request, before and after** [§2 the curl, before and after ↓](#2-the-curl-before-and-after)
+- [ ] **Don't add the attribute yet.** First show that the door is open — **the same request, before and after**. The next section walks it
 - [ ] **✓ CHECKPOINT:** everyone can say what `asp-for` writes into the HTML
 
 ### §2 the curl, before and after
