@@ -159,7 +159,7 @@ The plain form works. Now count what's wrong with it: the labels are hand-typed 
 
 ### `asp-for` does four jobs at once
 
-Replace one field and look at what comes out. In `Views/Trucks/Create.cshtml`, swap the Name field for this — and add `@model Truck` as the first line of the file:
+**Add `@model Truck` as the first line of `Views/Trucks/Create.cshtml` first** — without it the view's model is `dynamic`, `asp-for` has no type to check against, and the project will not build. Then replace one field and look at what comes out:
 
 ```html
 <label asp-for="Name" class="form-label"></label>
@@ -506,6 +506,9 @@ POST /Trucks/Create  →  model binding     →  Truck object      (by name attr
 - **Next week:** the list stops being a variable. `TruckData.All` becomes a table in SQL Server, and almost none of tonight's controller code changes.
 
 ## Appendix: Troubleshooting
+
+**The build fails with `CS1963: An expression tree may not contain a dynamic operation`**
+- The view has no `@model` line, so its model is `dynamic` and `asp-for` has no type to build its expression against. Add `@model YourThing` — your own class — as the **first line** of the file. Two things make this one hard to read: the error points at generated code under `obj/` rather than at your view, and you get one per `asp-for` attribute, so a five-field form reports ten errors with a single cause.
 
 **Clicking Submit does nothing — the same blank form comes back**
 - There's no `[HttpPost]` action to receive it, so the POST matched your GET `Create()`, which returned the empty view. An action with no verb attribute answers every verb. Add the second action.

@@ -186,7 +186,8 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ### `asp-for`, one field at a time
 
-- [ ] Replace **just the Name field** in `Create.cshtml` and add `@model Truck` at the top:
+- [ ] **First line of `Create.cshtml` — type it:** `@model Truck`. ⚠️ **Before the field, not after** — without it the view's model is `dynamic`, `asp-for` has no type to build against, and the build fails with `CS1963: An expression tree may not contain a dynamic operation`, pointing at generated code under `obj/` rather than at your view
+- [ ] Now replace **just the Name field**:
   ```html
   <label asp-for="Name" class="form-label"></label>
   <input asp-for="Name" class="form-control" />
