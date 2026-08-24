@@ -291,6 +291,9 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 You can't stage this attack in the browser — the browser is *on your site*, so Razor keeps putting a valid token in the page. `curl` is the other site: a request from nowhere, no page, no token. Same command twice, one line of C# in between. Budget two minutes.
 
+> [!TIP]
+> **Short on time? Cut this whole section — decide now, before you split the terminal.** It's a recognition item, not a mental model, and §3 needs the minutes more. Type the attribute anyway (it's on slide 9), say the 400 out loud, and move on: nothing later in the demo depends on the filter actually being live, because every submission from here on comes from a real page with a real token.
+
 - [ ] **Split the terminal — don't kill `dotnet watch`.** ⌃⇧5 in VS Code, or the split icon on the terminal pane. You want the watch output still visible in the other pane; **that pane is the evidence**, both times
 - [ ] ⚠️ **The port below is whatever the Port box at the top says** — set it in §0 and the `curl` is already correct. If you're reading this as raw Markdown on GitHub there's no box, so check the command against the watch output before you paste it
 
@@ -337,8 +340,6 @@ You can't stage this attack in the browser — the browser is *on your site*, so
 - [ ] **`Content-Length: 0`** — say it: *"a 400 with an empty body, and nothing in the log either. In a browser that's a blank white page. If you ever submit a form and get a blank page, this is a candidate"*
 - [ ] Now **submit the real form in the browser** — it still works. *"Same server, same action. The difference is that this request came from a page that had the token in it."*
 
-> [!TIP]
-> Short on time? Cut this whole section — it's a recognition item, not a mental model, and §3 needs the minutes more. Type the attribute anyway (it's on slide 11), say the 400 out loud, and move on: nothing later in the demo depends on the filter actually being live, because every submission from here on comes from a real page with a real token.
 
 ## 3 · Rules that live on the model *(slides 10–16)* — **the load-bearing segment**
 
