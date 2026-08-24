@@ -389,7 +389,7 @@ You can't stage this attack in the browser — the browser is *on your site*, so
   </details>
 
 - [ ] Refresh the form. **The checkbox label now reads "Open late?"** — *"I changed the model and the form changed, because the label was reading the model the whole time"*
-- [ ] 🎞️ **GO TO SLIDE 14** — *...and they end up in the HTML* · then **View Source on the Name input** and put it next to the one from §2: `maxlength="50"` and `data-val-length` are new, and `data-val-required` has stopped saying *"The Name field is required."* and started saying **mine**. *"My rules are in the HTML now, in my words. Park that — it pays off in twenty minutes"*
+- [ ] 🎞️ **GO TO SLIDE 14** — *...and they end up in the HTML* · then **View Source on the Name input** and put it next to the one from §2: `maxlength="50"` and `data-val-length` are new, and `data-val-required` has stopped saying *"The Name field is required."* and started saying **mine**. *"My rules are in the HTML now, in my words. Park that — it pays off after the break"*
 - [ ] Mention `{1}` and `{2}` in the Range message: the bounds fill themselves in, so the message can't drift from the rule
 - [ ] ⚠️ **Say the implicit-required thing before it bites them:** *"`Rating` has no `[Required]`, but leave it blank and it'll complain anyway — a `double` has nowhere to put 'empty'. If you want a genuinely optional number, the property has to be `double?`"*
 
@@ -424,7 +424,7 @@ You can't stage this attack in the browser — the browser is *on your site*, so
 - [ ] Read it out: **`IsValid` is a question, not a command** — validation already ran during binding, before your first line · **`View(truck)`** hands back everything they typed · **the guard returns**, so everything below it can assume a good truck
 - [ ] Submit a **good** truck — `Wurst Case Scenario / German / Appleton / 4.1`. It lands on `/Trucks` as a seventh card 🎉
 - [ ] You're on `/Trucks` now — **click `＋ Add a truck`** and submit a **bad** one: blank name, rating 9000. The form comes back, **their input still in it**, red messages beside two fields
-- [ ] Point at where the messages landed: *"the empty spans from twenty minutes ago"*. And at the input itself — it picked up `input-validation-error` and Bootswatch outlined it red, and you wrote no CSS
+- [ ] Point at where the messages landed: *"the empty spans from Part 2"*. And at the input itself — it picked up `input-validation-error` and Bootswatch outlined it red, and you wrote no CSS
 
 ### Break it #3 — delete the guard *(slides 16–17)*
 
@@ -470,7 +470,7 @@ You can't stage this attack in the browser — the browser is *on your site*, so
   }
   ```
 - [ ] Refresh, submit the **empty** form: errors appear **instantly**. No reload, no round trip
-- [ ] 🎞️ **GO TO SLIDE 20** — *One source of truth* · 🎯 leave the two-arrow diagram up and say: *"Nothing in my C# changed. Those two scripts scan the page for the `data-val` attributes we watched appear twenty minutes ago, and enforce whatever they find. **One source of truth — `Models/Truck.cs` — enforced in two places**."*
+- [ ] 🎞️ **GO TO SLIDE 20** — *One source of truth* · 🎯 leave the two-arrow diagram up and say: *"Nothing in my C# changed. Those two scripts scan the page for the `data-val` attributes we watched appear before the break, and enforce whatever they find. **One source of truth — `Models/Truck.cs` — enforced in two places**."*
 - [ ] Say why the section matters: dropped in the middle of the view it loads **before** jQuery and dies with `$ is not defined`. Week 5's section wasn't a formality
 
 ### Why both *(slide 21)*

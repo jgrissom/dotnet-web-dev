@@ -277,7 +277,7 @@ public bool IsOpenLate { get; set; }
 
 **`maxlength` is new. The message used to be the compiler's.**
 
-Nobody is reading any of it yet — they come back in twenty minutes.
+Nobody is reading any of it yet — they come back after the break.
 
 ---
 
@@ -367,7 +367,7 @@ A partial. In a section. Both of last week's ideas, one job.
 
 ## One source of truth
 
-Those scripts read the **`data-val-*` attributes** from twenty minutes ago.
+Those scripts read the **`data-val-*` attributes** from before the break.
 
 <br>
 
