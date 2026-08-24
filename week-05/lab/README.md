@@ -210,7 +210,7 @@ Pick your theme on [bootswatch.com](https://bootswatch.com) — the **Preview** 
 - **`The model item passed into the ViewDataDictionary is of type List<Cryptid>, but requires Cryptid`** — you rendered the card without handing it one creature. Inside the loop it needs `model="cryptid"`; without it the partial inherits the *page's* model, which is the whole list.
 - **The theme didn't change** — hard-refresh (⌘⇧R / Ctrl+Shift+R). Still stock? View Source and look for the old `bootstrap.min.css` line still sitting there.
 - **The navbar looks wrong on a dark theme** — the template hard-coded `navbar-light bg-white`. [Swap the color utilities](../lecture-notes.md#the-navbar-needs-a-word); your week-2 Bootstrap still works exactly as it did.
-- **Check 3 passes for Index but not Details** — the details title has to come from the data: `ViewData["Title"] = Model.Name;`, not a fixed string.
+- **Check 3 says your details page doesn't name the creature** — the details title has to come from the data: `ViewData["Title"] = Model.Name;`, not a fixed string.
 - The [troubleshooting appendix](../lecture-notes.md#appendix-troubleshooting) covers the rest.
 
 ## 🚀 Done early?
