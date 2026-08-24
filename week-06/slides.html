@@ -411,7 +411,9 @@ section footer { color: #9fb2c1; font-size: 0.6em; opacity: 0.85; }
 </code></pre>
 <p>becomes</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;form-label&quot;</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;Name&quot;</span>&gt;</span>Name<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;form-control&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;Name&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;Name&quot;</span> /&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;form-control&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">data-val</span>=<span class="hljs-string">&quot;true&quot;</span>
+       <span class="hljs-attr">data-val-required</span>=<span class="hljs-string">&quot;The Name field is required.&quot;</span>
+       <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;Name&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;Name&quot;</span> /&gt;</span>
 </code></pre>
 <p><strong>name</strong> · <strong>id + for</strong> · <strong>label text</strong> · <strong>input type</strong></p>
 <footer><img class="emoji" draggable="false" alt="🖥️" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f5a5.svg" data-marp-twemoji=""/> Demo §2 · asp-for</footer>
@@ -698,8 +700,8 @@ section footer { color: #9fb2c1; font-size: 0.6em; opacity: 0.85; }
        <span class="hljs-attr">maxlength</span>=<span class="hljs-string">&quot;50&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;Name&quot;</span> /&gt;</span>
 </code></pre>
 <br />
-<p>Nobody is reading those yet.</p>
-<p><strong>Remember them — they come back in twenty minutes.</strong></p>
+<p><strong><code>maxlength</code> is new. The message used to be the compiler's.</strong></p>
+<p>Nobody is reading any of it yet — they come back in twenty minutes.</p>
 <footer><img class="emoji" draggable="false" alt="🖥️" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f5a5.svg" data-marp-twemoji=""/> Demo §3 · annotations</footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="15" data-class="invert" data-paginate="true" data-footer="🖥️ Demo §3 · ModelState" data-theme="gaia" data-style="section pre {
