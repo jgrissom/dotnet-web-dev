@@ -61,7 +61,7 @@ Every requirement above is about *your* properties, and the lab's exact attribut
 > [!CAUTION]
 > **This one changes your data.** It submits your form twice: once with deliberate rubbish, to check you refuse it, and once with a good record, to check you accept it. That second submission leaves a real item called **`SelfCheck entry`** in your list.
 >
-> That's supposed to happen — it's the only way to prove from outside that your form actually works. It disappears the next time your app restarts, which is [this week's closing lesson](lecture-notes.md#part-5-where-the-truck-actually-went-10-min) and next week's whole reason for existing. Delete it by hand if you like; you don't need to.
+> That's supposed to happen — it's the only way to prove from outside that your form actually works. It disappears the next time your app restarts, which is [this week's closing lesson](lecture-notes.md#part-5-where-the-truck-actually-went-10-min) and next week's whole reason for existing. Restart your app if you want it gone sooner; you don't need to.
 
 > [!IMPORTANT]
 > **This is a finish line, not a progress bar.** It has nothing useful to say until there's a form to submit. Build first. **Run it twice:**
@@ -176,5 +176,5 @@ Use the **same US region** that worked for you before — it's on the class list
 Week 7 is **the database** — the week your data stops disappearing.
 
 - Open your own `Models/YourThingData.cs` (or whatever you called it) and look at the hard-coded list. **Write down what the columns of that table would be**, and what type each one is. Bring it to class; that's the first thing we build.
-- Then delete something through your deployed form and restart the app, just to watch it come back. It's a two-minute exercise and it makes next week's first slide land.
+- Then add something through your form, stop the app (`Ctrl+C`) and start it again, and reload your list. **It's gone.** It's a two-minute exercise and it makes next week's first slide land.
 - [Microsoft: Overview of Entity Framework Core](https://learn.microsoft.com/en-us/ef/core/) — read the first page only, as far as "The model". Don't try to follow the code yet.
