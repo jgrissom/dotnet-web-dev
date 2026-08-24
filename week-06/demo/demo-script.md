@@ -205,7 +205,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] Count the four jobs on your fingers: **the `name`** (the binding contract, now generated — it can't drift) · **the `id` and matching `for`** · **the label text, read off the model** · **`type="text"`, from the C# type**
 - [ ] **The two `data-val` attributes are not one of the four — park them out loud, because they're on screen and somebody will ask.** There is no annotation anywhere on the model yet, and that message was written by a compiler. 🔗 *"Nobody is reading those yet. Part 3 is where they start saying what I want them to say"*
 - [ ] *"And the type isn't always text — watch the Open Late field in a minute"*
-- [ ] Say it: **`asp-for="Name"` is a property name, not a string to print.** No `@`, no `Model.`. A typo is a *build* error
+- [ ] Say it: *"`asp-for="Name"` is a property name, not a string to print."* No `@`, no `Model.`. A typo is a *build* error
 
 ### The whole form *(slides 7–8)*
 
