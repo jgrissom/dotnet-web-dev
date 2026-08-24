@@ -502,7 +502,7 @@ You can't stage this attack in the browser — the browser is *on your site*, so
 
 ## 5 · Where the truck actually went *(slide 19)*
 
-- [ ] Show `/Trucks` with your added trucks on it. Seven, eight cards **(stay in the browser — the slide is the answer, and it would give this away)**
+- [ ] Show `/Trucks` with your added trucks on it. *"How many food trucks do we have?"* Seven, eight cards **(stay in the browser — the slide is the answer, and it would give this away)**
 - [ ] In the watch terminal: **`Ctrl+R`** — the same restart key as the attribute beats, and no retyping. **Say what it did:** the process you were running ended and a new one started. Reload `/Trucks`
 - [ ] **Six.** *"Gone."*
 - [ ] 🎞️ **GO TO SLIDE 19** — *Where did the truck go?* Now — straight off the six cards they just watched vanish
