@@ -131,7 +131,7 @@ Here is the entire rule. For each public settable property on the parameter's ty
 > **Put the name attribute back.** This is the single most useful thing to know about forms: when a field mysteriously arrives blank or zero, the two candidates are a name that stopped matching and a value that wouldn't convert.
 
 - **Neither failure threw, but neither went unrecorded.** Both were written down — the conversion failure especially — into a thing you'll meet by name in Part 3. It's called `ModelState`, and it has been keeping notes this whole time.
-- Binding is **case-insensitive**, so `name="cuisine"` would have worked fine. It's the *spelling* that has to match, not the capitalisation.
+- Binding is **case-insensitive**, so `name="cuisine"` would have worked fine. It's the *spelling* that has to match, not the capitalization.
 - Nothing about this is specific to forms. The `int id` in `Details(int id)` arrived by exactly the same mechanism in week 4 — from the route instead of the body. Same binder, different source.
 
 ### Two actions, one name

@@ -52,7 +52,7 @@ cd ~/Repos/dotnet-web-dev && git show w02-step-11:week-02/demo/index.html > ~/Re
 
 That overwrites your canvas with the state **after** that step. Save, refresh, carry on from the next beat. It writes outside the repo, so nothing here dirties the tree.
 
-The number is the only thing you change. These are the ones worth memorising — the end of each section, so you can abandon a beat that is fighting you and rejoin at the next one:
+The number is the only thing you change. These are the ones worth memorizing — the end of each section, so you can abandon a beat that is fighting you and rejoin at the next one:
 
 | Jump to | You get |
 |---|---|

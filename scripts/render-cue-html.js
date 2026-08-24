@@ -30,7 +30,7 @@ const hljs = require("highlight.js");
 // file exists to keep. These blocks are HTML with @-expressions in them, so
 // xml's tag/attribute coloring is exactly right and the @-bits stay plain:
 // parity with fencing them as ```html, which is what the sheets do today.
-// Nothing is mislabelled — langPrefix uses the fence's own tag, so the <code>
+// Nothing is mislabeled — langPrefix uses the fence's own tag, so the <code>
 // still reads `language-cshtml` while the spans come from the xml grammar.
 const ALIAS = { cshtml: "xml", razor: "xml" };
 
