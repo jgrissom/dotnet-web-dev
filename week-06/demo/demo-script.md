@@ -432,10 +432,10 @@ You can't stage this attack in the browser — the browser is *on your site*, so
 
   </details>
 
-- [ ] Read it out: **`IsValid` is a question, not a command** — validation already ran during binding, before your first line · **`View(truck)`** hands back everything they typed · **the guard returns**, so everything below it can assume a good truck
+- [ ] Read it out: *"`IsValid` is a question, not a command"* — validation already ran during binding, before your first line · **`View(truck)`** hands back everything they typed · **the guard returns**, so everything below it can assume a good truck
 - [ ] Submit a **good** truck — `Wurst Case Scenario / German / Appleton / 4.1`. It lands on `/Trucks` as a seventh card 🎉
 - [ ] You're on `/Trucks` now — **click `＋ Add a truck`** and submit a **bad** one: blank name, rating 9000. The form comes back, **their input still in it**, red messages beside two fields
-- [ ] Point at where the messages landed: *"the empty spans from Part 2"*. And at the input itself — it picked up `input-validation-error` and Bootswatch outlined it red, and you wrote no CSS
+- [ ] Point at where the messages landed: *"the empty spans from Part 2 are used to display the error messages"*. And at the input itself — it picked up `input-validation-error` and Bootswatch outlined it red, and you wrote no CSS
 
 ### Break it #3 — delete the guard *(slides 14–15)*
 
