@@ -272,6 +272,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 ### The hidden field you didn't write *(slide 9)*
 
 - [ ] 🎞️ **GO TO SLIDE 9** — *The field you didn't write*
+- [ ] *"There's a field in that form I never typed, and no tag helper typed it either. Razor puts this in every single form with method equals post — including the hand-written one from Part 1, before there was an `asp-for` anywhere near it. It's already in the page. What it isn't doing is anything at all: nothing on the server is looking for it yet. Those two lines at the bottom are what makes the server look."*
 - [ ] **Back to `/Trucks/Create`** — the last submit left you on the `Content()` page, and there's no form on that one to view the source of. Then **View Source**, scroll to just inside `</form>` — back where you found the checkbox's shadow. **Two hidden fields sit there, the token first:**
   ```html
   <input name="__RequestVerificationToken" type="hidden" value="CfDJ8L5JyJv3Gm..." /><input name="IsOpenLate" type="hidden" value="false" />
@@ -355,7 +356,8 @@ You can't stage this attack in the browser — the browser is *on your site*, so
 
 ### Data annotations *(slides 11–12)*
 
-- [ ] 🎞️ **GO TO SLIDE 11** — *Data annotations*. Read the attributes off the slide, then swipe back and type them
+- [ ] 🎞️ **GO TO SLIDE 11** — *Data annotations*
+- [ ] *"These are attributes — square brackets sitting above the thing they describe. They aren't code that runs when the property is read. They're facts attached to the property that other code can go and look up. Nothing here validates anything by itself; it just writes down what a valid Truck is. Let's type them."*
 - [ ] Open `Models/Truck.cs`. **Type the `using` and the first two attributes**, paste the rest:
 
   <details><summary>📋 paste: Truck.cs with annotations</summary>
