@@ -39,9 +39,9 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   - **Windows / Linux:** **right-click the terminal → Clear** *(there's no default shortcut)*
   - **Either:** Command Palette (**⇧⌘P** / **Ctrl+Shift+P**) → *Terminal: Clear*
   
-  You need it twice tonight — once in §1 and once in §3 — and a wiped terminal with exactly one object in it reads instantly from the back row
+  You need it three times tonight — once each in §1, §2 and §3 — and a wiped terminal with exactly one object in it reads instantly from the back row
 - [ ] **Teaching profile in VS Code** (gear, bottom-left → **Profiles** → *Teaching*): C# and mssql extensions only, **no C# Dev Kit**. Bump both font sizes **in that profile** so they stick: `terminal.integrated.fontSize` (start around **18** — §1 turns the terminal into the thing everyone is looking at) and `editor.fontSize` (around **16**)
-- [ ] **Say it before you start: *"lids down for this part — you'll build it yourself in the lab."*** Nobody can follow along tonight even if they want to; Curbside isn't in the public repo. And the four breaks below would take fourteen machines down with them. **The predict-then-run moments are where they participate** — those only work if people are looking up
+- [ ] **Say it before you start: *"lids down for this part — you'll build it yourself in the lab."*** Nobody can follow along tonight even if they want to; Curbside isn't in the public repo. And the four breaks below would take the whole room down with them. **The predict-then-run moments are where they participate** — those only work if people are looking up
 - [ ] Sanity check: `/Trucks` shows six cards **and the `＋ Add a truck` button**, `/Trucks/Details/1` shows the "Also in Madison" panel. **Don't click the button yet** — a 404 during setup is expected, but you want its first press to be the one in §1 that works
 
 > [!NOTE]
