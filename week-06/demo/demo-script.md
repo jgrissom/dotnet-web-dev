@@ -160,11 +160,11 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
      Open late False
   ```
 - [ ] 🎯 **Two fingers, one on each block.** *"No error. No warning. Two properties quietly wrong — and for two completely different reasons."*
-- [ ] **`Cuisine` is empty** — binding went looking for a value called `Cuisine`, found nothing, left the property alone. *"It is name-matching, and nothing else."*
-- [ ] **`Rating` is `0`** — `banana` isn't a number, so it couldn't convert and kept the default. And `x2 = 0` proves *a number* is sitting there, not the word they typed
+- [ ] *"`Cuisine` is empty — binding went looking for a value called `Cuisine`, found nothing, left the property alone. It is name-matching, and nothing else."*
+- [ ] *"`Rating` is `0` — `banana` isn't a number, so it couldn't convert and kept the default. And `x2 = 0` proves a number is sitting there, not the word they typed"*
 - [ ] Say the payoff: *"when a field mysteriously arrives blank or zero, it's one of these two. Every time."*
 - [ ] **RESTORE `name="Cuisine"`** ⚠️
-- [ ] 🔗 **Plant it:** *"neither of those threw — but neither went unrecorded either. Something wrote both down. You meet it after the break."*
+- [ ] 🔗 **Plant it:** *"Neither of those threw. But they weren't treated the same — the banana got written down, the missing field didn't. Something is keeping notes, and you meet it after the break."*
 - [ ] Mention in passing, don't demo: binding is **case-insensitive**, and it's the same mechanism that filled `int id` from the route in week 4
 
 ### Break it #2 — two actions, one name *(slide 6)*
