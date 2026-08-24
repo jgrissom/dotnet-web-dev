@@ -503,7 +503,7 @@ You can't stage this attack in the browser — the browser is *on your site*, so
 ## 5 · Where the truck actually went *(slide 19)*
 
 - [ ] Show `/Trucks` with your added trucks on it. Seven, eight cards **(stay in the browser — the slide is the answer, and it would give this away)**
-- [ ] In the terminal: **`Ctrl+C`**, then `dotnet watch` again. Reload `/Trucks`
+- [ ] In the watch terminal: **`Ctrl+R`** — the same restart key as the attribute beats, and no retyping. **Say what it did:** the process you were running ended and a new one started. Reload `/Trucks`
 - [ ] **Six.** *"Gone."*
 - [ ] 🎞️ **GO TO SLIDE 19** — *Where did the truck go?* Now — straight off the six cards they just watched vanish
 - [ ] Open `Models/TruckData.cs` and point at `static List<Truck>`. *"A variable in a running program. It lives exactly as long as the process does. Everything tonight was real — the form, the binding, the validation, the redirect. The **storage** is a placeholder, and it always has been. You just couldn't tell, because until tonight nothing ever changed"*
