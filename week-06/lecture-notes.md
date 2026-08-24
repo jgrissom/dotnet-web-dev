@@ -169,7 +169,8 @@ Replace one field and look at what comes out. In the view:
 
 ```html
 <label class="form-label" for="Name">Name</label>
-<input class="form-control" type="text" id="Name" name="Name" value="" />
+<input class="form-control" type="text" data-val="true"
+       data-val-required="The Name field is required." id="Name" name="Name" value="" />
 ```
 
 One attribute, four jobs:
@@ -179,10 +180,13 @@ One attribute, four jobs:
 3. **The label's text**, read off the model.
 4. **`type="text"`**, chosen from the property's C# type — and it isn't always text. `IsOpenLate` is a `bool` and comes out a **checkbox**; an `int` comes out `type="number"`.
 
+Two attributes in there are **not** one of the four, and they turn up with no annotation on the model at all: `data-val="true"` and `data-val-required`. A non-nullable `string` has nowhere to put "empty", so ASP.NET treats it as required whether you asked for that or not — and writes the message itself. Part 3 is where that message becomes one of yours.
+
 `Rating` is worth a second look, because it's a `double` and it stays a plain text box — the number input is for integral types. What it gains instead is this:
 
 ```html
-<input ... type="text" data-val="true" data-val-number="The field Rating must be a number." id="Rating" name="Rating" />
+<input ... type="text" data-val="true" data-val-number="The field Rating must be a number."
+       data-val-required="The Rating field is required." id="Rating" name="Rating" />
 ```
 
 That's the conversion rule from Part 1 — the one that quietly turned `banana` into `0` — written into the HTML. Nobody is reading it yet. Part 4 is where something starts to.
@@ -358,7 +362,7 @@ The ones worth knowing tonight:
 
 - **`ErrorMessage` is optional and worth setting.** The default for `Name` is *"The Name field is required."* — accurate, and written by a compiler. `{1}` and `{2}` in a `[Range]` message interpolate the bounds, so the message can't drift from the rule.
 - **`[Display]` changes the label everywhere**, because the label was reading the model in the first place. Change it once, and the form, the errors and any future scaffolded page all say the same thing.
-- Refresh the form after adding these and **View Source one input**: it has sprouted `data-val="true"`, `data-val-required="Every truck needs a name."`, `maxlength="50"`. Your rules are now *in the HTML*. Don't explain them yet — that's Part 4, and it's better as a callback.
+- Refresh the form after adding these and **View Source one input**, next to the same input in Part 2: `maxlength="50"` and `data-val-length` are new, and `data-val-required` has stopped saying *"The Name field is required."* and started saying yours. Your rules are now *in the HTML*, in your words. Don't explain them yet — that's Part 4, and it's better as a callback.
 
 > [!NOTE]
 > **`Rating` has no `[Required]`, but leave the box empty and it complains anyway.** A non-nullable value type like `double` or `int` can't hold "nothing", so the framework treats it as required automatically. This confuses people, so name it before it bites: **if you want a genuinely optional number, the property has to be `double?`.** That's the actionable half; the rest is just how C# types work.

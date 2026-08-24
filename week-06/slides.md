@@ -165,7 +165,9 @@ becomes
 
 ```html
 <label class="form-label" for="Name">Name</label>
-<input class="form-control" type="text" id="Name" name="Name" />
+<input class="form-control" type="text" data-val="true"
+       data-val-required="The Name field is required."
+       id="Name" name="Name" />
 ```
 
 **name** · **id + for** · **label text** · **input type**
@@ -273,9 +275,9 @@ public bool IsOpenLate { get; set; }
 
 <br>
 
-Nobody is reading those yet.
+**`maxlength` is new. The message used to be the compiler's.**
 
-**Remember them — they come back in twenty minutes.**
+Nobody is reading any of it yet — they come back in twenty minutes.
 
 ---
 

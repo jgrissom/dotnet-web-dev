@@ -192,9 +192,11 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] Refresh, **View Source**, find it:
   ```html
   <label class="form-label" for="Name">Name</label>
-  <input class="form-control" type="text" id="Name" name="Name" value="" />
+  <input class="form-control" type="text" data-val="true"
+         data-val-required="The Name field is required." id="Name" name="Name" value="" />
   ```
 - [ ] Count the four jobs on your fingers: **the `name`** (the binding contract, now generated — it can't drift) · **the `id` and matching `for`** · **the label text, read off the model** · **`type="text"`, from the C# type**
+- [ ] **The two `data-val` attributes are not one of the four — park them out loud, because they're on screen and somebody will ask.** There is no annotation anywhere on the model yet, and that message was written by a compiler. 🔗 *"Nobody is reading those yet. Part 3 is where they start saying what I want them to say"*
 - [ ] *"And the type isn't always text — watch the Open Late field in a minute"*
 - [ ] Say it: **`asp-for="Name"` is a property name, not a string to print.** No `@`, no `Model.`. A typo is a *build* error
 
@@ -387,7 +389,7 @@ You can't stage this attack in the browser — the browser is *on your site*, so
   </details>
 
 - [ ] Refresh the form. **The checkbox label now reads "Open late?"** — *"I changed the model and the form changed, because the label was reading the model the whole time"*
-- [ ] 🎞️ **GO TO SLIDE 14** — *...and they end up in the HTML* · then **View Source on the Name input** and find the same attributes live: `data-val="true"`, `data-val-required="Every truck needs a name."`, `maxlength="50"`. *"My rules are in the HTML now. Park that — it pays off in twenty minutes"*
+- [ ] 🎞️ **GO TO SLIDE 14** — *...and they end up in the HTML* · then **View Source on the Name input** and put it next to the one from §2: `maxlength="50"` and `data-val-length` are new, and `data-val-required` has stopped saying *"The Name field is required."* and started saying **mine**. *"My rules are in the HTML now, in my words. Park that — it pays off in twenty minutes"*
 - [ ] Mention `{1}` and `{2}` in the Range message: the bounds fill themselves in, so the message can't drift from the rule
 - [ ] ⚠️ **Say the implicit-required thing before it bites them:** *"`Rating` has no `[Required]`, but leave it blank and it'll complain anyway — a `double` has nowhere to put 'empty'. If you want a genuinely optional number, the property has to be `double?`"*
 
