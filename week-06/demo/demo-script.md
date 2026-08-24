@@ -88,7 +88,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
       return Content("Submitted — look at the terminal 👀");
   }
   ```
-- [ ] Point at two of the things you just typed **before you run it**, so they're primed: `GetType().Name`, and `Rating * 2`. *"Hold onto that times-two"*
+- [ ] Point at two of the things you just typed **before you run it**, so they're primed: `GetType().Name`, and `Rating * 2`. *"Pay attention to GetType().Name and Rating * 2"*
 - [ ] `Open late` will print `False` and there's no such box on the form yet — **leave it alone for now**; the checkbox arrives in §2 and this line is what proves it binds
 - [ ] Create `Views/Trucks/Create.cshtml` — **paste**. Say it out loud: *"this is week 2 HTML. No tag helpers, no `@model`, nothing you haven't written before"*
 
@@ -112,7 +112,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
   </details>
 
-- [ ] **Clear the terminal** (⌘K, or right-click → Clear), then go to `/Trucks` and **click `＋ Add a truck`** — the dead button from setup now goes somewhere. *"One action, one view, and the link that's been 404ing works. That's the whole of last week's routing still doing its job"*. It's ugly. Fill it in — **`Wurst Case Scenario` / `German` / `Appleton` / `4.1`** — and submit
+- [ ] **Clear the terminal** (⌘K, or right-click → Clear), then go to `/Trucks` and **click `＋ Add a truck`** — the dead button from setup now goes somewhere. *"One action, one view, and the link that's been 404ing works. That's the whole of week 4's routing still doing its job"*. It's ugly. Fill it in — **`Wurst Case Scenario` / `German` / `Appleton` / `4.1`** — and submit
 - [ ] Browser says *"look at the terminal 👀"* — and the terminal is right there beside it. **Read it out:**
   ```
   ── model binding built a Truck ──
