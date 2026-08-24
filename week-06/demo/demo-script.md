@@ -458,7 +458,7 @@ You can't stage this attack in the browser — the browser is *on your site*, so
 - [ ] **RESTORE `return RedirectToAction(nameof(Index));`** ⚠️ The page still shows the *list* at `/Trucks/Create`, so **click `＋ Add a truck`** to get a real form back. Submit another truck, then **refresh: nothing happens**, because the page you're on arrived by GET
 - [ ] Name it: **POST-Redirect-GET**. *"It's why nearly every form on the web bounces you to a different URL after you submit"*
 - [ ] Show it in the **Network** panel: the POST comes back **302** with a `Location` header, then a separate GET. Two requests
-- [ ] `nameof(Index)` over `"Index"` — renaming the action becomes a compile error instead of a 404
+- [ ] *"Last thing on this line — `nameof(Index)` rather than the string. `nameof` is a compiler thing: it hands back the name of that method as text, so it compiles to exactly the same word. The difference shows up the day someone renames that action. The string still builds, and sends people to a URL that 404s. `nameof` stops building, and tells you which line."*
 - [ ] **✓ CHECKPOINT:** the room can say what `ModelState.IsValid` is reading, and why a redirect follows a successful POST
 
 ## 4 · The same rules, in the browser *(slides 17–18)*
