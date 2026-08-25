@@ -102,9 +102,13 @@
 
     const tries = forcedRoute ? [forcedRoute] : navCandidates(home.body);
     let route = null, links = [];
+    // A navbar link that points somewhere 404 is a very different problem from no
+    // navbar link at all — the link is right and the controller behind it isn't
+    // built yet. Remember those so the advice can say which.
+    const unreachable = [];
     for (const cand of tries) {
       const page = await getWithWakeup(`${root}/${cand}`);
-      if (!page || page.status >= 400) continue;
+      if (!page || page.status >= 400) { unreachable.push({ cand, status: page ? page.status : 0 }); continue; }
       const found = detailsLinks(page.body, cand);
       if (found.length) { route = cand; links = found; break; }
       if (!route) route = cand;                       // reachable, but no detail links yet
@@ -118,17 +122,26 @@
         todo: "Add the nav link, then run recheck() with no argument to earn these 2 points.",
       });
     } else {
+      const linked = !route && unreachable.length > 0;
+      const first = linked ? unreachable[0] : null;
       add(route ? "pass" : "fail", 2,
         `nav link to your index page${route ? ` — found /${route}` : ""}`, {
-          hint: "I couldn't find a link in your navbar that reaches a controller of yours — so I don't know where your index page is.",
-          todo: "Copy the Privacy <li> in Views/Shared/_Layout.cshtml and point it at your controller. "
+          hint: linked
+            ? `your navbar links to /${first.cand}, and that's exactly right — but the page itself came back `
+              + `${first.status || "nothing"}, so the controller behind the link isn't there yet.`
+            : "I couldn't find a link in your navbar that reaches a controller of yours — so I don't know where your index page is.",
+          todo: linked
+            ? `Your nav link is done. Add the ${first.cand}Controller it points at, with an Index action and a `
+              + `Views/${first.cand}/Index.cshtml to go with it.`
+            : "Copy the Privacy <li> in Views/Shared/_Layout.cshtml and point it at your controller. "
               + "Not there yet? Run  recheck(\"Trails\")  with YOUR controller name to check everything else meanwhile.",
         });
     }
 
     if (!route) {
+      const waiting = unreachable.length ? "waiting on that controller" : "waiting on that nav link";
       ["index lists all your items", "details page shows one item", "a bad id returns 404"]
-        .forEach((l, i) => add("blocked", [4, 4, 2][i], l, { hint: "waiting on that nav link" }));
+        .forEach((l, i) => add("blocked", [4, 4, 2][i], l, { hint: waiting }));
       return { route: null, checks, ...tally(checks) };
     }
 
