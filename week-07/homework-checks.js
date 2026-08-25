@@ -296,18 +296,33 @@
     // ── 1. find their controller, the way a visitor would ─────────────────────
     const tries = forcedRoute ? [forcedRoute] : navCandidates(home.body);
     let route = null, index = null;
+    // A navbar link whose page 404s or throws is not a missing navbar link —
+    // remember those so the advice can tell the two apart.
+    const unreachable = [];
     for (const cand of tries) {
       const page = await getWithWakeup(`${root}/${cand}`);
-      if (!page || page.status >= 400) continue;
+      if (!page || page.status >= 400) { unreachable.push({ cand, status: page ? page.status : 0 }); continue; }
       route = cand; index = page;
       if (detailsIds(page.body, cand).length) break;      // this is the real one
     }
 
     if (!route) {
       add("fail", 1, "your list page still works", {
-        hint: "I couldn't find a link in your navbar that reaches a controller of yours, so I don't "
+        hint: unreachable.length
+          ? (unreachable[0].status >= 500
+              ? `your navbar links to /${unreachable[0].cand}, which is right — but that page came back `
+                + `${unreachable[0].status}. The controller is there and something in it, or in its view, is throwing.`
+              : `your navbar links to /${unreachable[0].cand}, and that's right — but the page came back `
+                + `${unreachable[0].status || "nothing"}, so I can't read anything from it.`)
+          : "I couldn't find a link in your navbar that reaches a controller of yours, so I don't "
             + "know where your list page is.",
-        todo: "That nav link has been a requirement since week 4. Check you still have it. "
+        todo: unreachable.length
+          ? (unreachable[0].status >= 500
+              ? `Your nav link is fine. Load /${unreachable[0].cand} in a browser and read the error, or look `
+                + "at the terminal running your app — the real exception is there."
+              : `Your nav link is fine, but /${unreachable[0].cand} isn't answering. Check that controller still `
+                + "has its Index action and its view.")
+          : "That nav link has been a requirement since week 4. Check you still have it. "
             + "Not there yet? Run  recheck(\"Trails\")  with YOUR controller name.",
       });
       blockRest(0);

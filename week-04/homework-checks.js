@@ -127,19 +127,27 @@
       add(route ? "pass" : "fail", 2,
         `nav link to your index page${route ? ` — found /${route}` : ""}`, {
           hint: linked
-            ? `your navbar links to /${first.cand}, and that's exactly right — but the page itself came back `
-              + `${first.status || "nothing"}, so the controller behind the link isn't there yet.`
+            ? (first.status >= 500
+                ? `your navbar links to /${first.cand}, which is right — but that page came back ${first.status}. `
+                  + "The controller is there and something in it, or in its view, is throwing."
+                : `your navbar links to /${first.cand}, and that's exactly right — but the page itself came back `
+                  + `${first.status || "nothing"}, so the controller behind the link isn't there yet.`)
             : "I couldn't find a link in your navbar that reaches a controller of yours — so I don't know where your index page is.",
           todo: linked
-            ? `Your nav link is done. Add the ${first.cand}Controller it points at, with an Index action and a `
-              + `Views/${first.cand}/Index.cshtml to go with it.`
+            ? (first.status >= 500
+                ? `Your nav link is done. Load /${first.cand} in a browser and read the error, or look at the `
+                  + "terminal running your app — the real exception is there."
+                : `Your nav link is done. Add the ${first.cand}Controller it points at, with an Index action and a `
+                  + `Views/${first.cand}/Index.cshtml to go with it.`)
             : "Copy the Privacy <li> in Views/Shared/_Layout.cshtml and point it at your controller. "
               + "Not there yet? Run  recheck(\"Trails\")  with YOUR controller name to check everything else meanwhile.",
         });
     }
 
     if (!route) {
-      const waiting = unreachable.length ? "waiting on that controller" : "waiting on that nav link";
+      const waiting = unreachable.length
+        ? (unreachable[0].status >= 500 ? "waiting on that page to stop throwing" : "waiting on that controller")
+        : "waiting on that nav link";
       ["index lists all your items", "details page shows one item", "a bad id returns 404"]
         .forEach((l, i) => add("blocked", [4, 4, 2][i], l, { hint: waiting }));
       return { route: null, checks, ...tally(checks) };

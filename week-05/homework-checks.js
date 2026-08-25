@@ -172,9 +172,12 @@
     // ── 1. find their controller, exactly the way a visitor would ─────────────
     const tries = forcedRoute ? [forcedRoute] : navCandidates(home.body);
     let route = null, links = [];
+    // A navbar link whose page 404s or throws is not a missing navbar link —
+    // remember those so the advice can tell the two apart.
+    const unreachable = [];
     for (const cand of tries) {
       const page = await getWithWakeup(`${root}/${cand}`);
-      if (!page || page.status >= 400) continue;
+      if (!page || page.status >= 400) { unreachable.push({ cand, status: page ? page.status : 0 }); continue; }
       const found = detailsLinks(page.body, cand);
       if (found.length) { route = cand; links = found; break; }
       if (!route) route = cand;                       // reachable, but no detail links yet
@@ -188,8 +191,20 @@
     } else {
       add(route ? "pass" : "fail", 2,
         `nav link to your index page${route ? ` — found /${route}` : ""}`, {
-          hint: "I couldn't find a link in your navbar that reaches a controller of yours — so I don't know where your index page is.",
-          todo: "That link was week 4's requirement 4 and it's still worth 2 points. Check you didn't lose it "
+          hint: unreachable.length
+            ? (unreachable[0].status >= 500
+                ? `your navbar links to /${unreachable[0].cand}, which is right — but that page came back `
+                  + `${unreachable[0].status}. The controller is there and something in it, or in its view, is throwing.`
+                : `your navbar links to /${unreachable[0].cand}, and that's right — but the page came back `
+                  + `${unreachable[0].status || "nothing"}, so I can't read anything from it.`)
+            : "I couldn't find a link in your navbar that reaches a controller of yours — so I don't know where your index page is.",
+          todo: unreachable.length
+            ? (unreachable[0].status >= 500
+                ? `Your nav link is fine. Load /${unreachable[0].cand} in a browser and read the error, or look `
+                  + "at the terminal running your app — the real exception is there."
+                : `Your nav link is fine, but /${unreachable[0].cand} isn't answering. Check that controller still `
+                  + "has its Index action and its view.")
+            : "That link was week 4's requirement 4 and it's still worth 2 points. Check you didn't lose it "
               + "while rebuilding the navbar. Not there yet? Run  recheck(\"Trails\")  with YOUR controller name.",
         });
     }
