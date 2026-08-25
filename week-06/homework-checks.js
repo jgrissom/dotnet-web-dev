@@ -419,8 +419,18 @@
       .filter(f => f.type !== "checkbox")
       .map(f => badBody[f.name])
       .filter(v => typeof v === "string" && v.length >= 3);
-    const nothingBound = !!badRefused && echoable.length > 0
-      && !echoable.some(v => String(badPost.body).includes(v));
+    const badText = String((badPost && badPost.body) || "");
+
+    // Did the FORM come back, or something else? A POST that lands on a lone GET
+    // Create() gets the empty form; so does a POST action returning View() with
+    // no argument. Anything else — Content(), a different view — means an action
+    // really did receive it, and saying "you have no [HttpPost]" would be wrong.
+    const cameBackAsTheForm = /<form[^>]*method=["']?post/i.test(badText)
+      && fields.some(f => new RegExp(`name=["']${f.name}["']`, "i").test(badText));
+
+    const mineEchoed = echoable.length > 0 && echoable.some(v => badText.includes(v));
+    const emptyFormBack = !!badRefused && cameBackAsTheForm && echoable.length > 0 && !mineEchoed;
+    const somethingElseBack = !!badRefused && !cameBackAsTheForm;
 
     const afterBad = await getWithWakeup(`${root}/${route}`);
     const idsAfterBad = afterBad ? detailsIds(afterBad.body, route) : detailsIds(index.body, route);
@@ -439,19 +449,29 @@
           : countAfterBad > before
             ? "the form came back, but the bad record was added to your list anyway. The guard has to "
               + "return BEFORE the Add."
-          : nothingBound
-            ? "the form came back without a word of what I sent it, so nothing received the post. You "
-              + "almost certainly have only the GET Create(): an action with no verb attribute answers "
-              + "EVERY verb, so it served the empty form again. That's the requirement above this one."
+          : somethingElseBack
+            ? "something received the post and answered with a page that isn't your form — so I can't "
+              + "see any error messages, and neither can whoever filled it in. A refused submission has "
+              + "to come back as the form itself: return View(item)."
+          : emptyFormBack
+            ? "the form came back without a word of what I sent it. Either nothing received the post — "
+              + "an action with no verb attribute answers EVERY verb, so a lone GET Create() serves the "
+              + "empty form straight back — or your POST action returns View() with no argument, which "
+              + "throws away everything they typed."
           : !badSaidWhy
             ? "the form came back and nothing was added — good — but there are no error messages on the "
               + "page, so whoever filled it in has no idea what to fix."
             : `the bad submission returned ${badPost.status}, which I wasn't expecting.`,
         todo: badPost && badPost.redirected
           ? "Guard your POST action: if (!ModelState.IsValid) { return View(item); } — before you add anything."
-          : nothingBound
-            ? "Add the second Create action — [HttpPost], taking your model as a parameter. Without it "
-              + "your GET Create() is answering the post and nothing is being bound."
+          : somethingElseBack
+            ? "Your POST action needs to hand the form back when the model is invalid: "
+              + "if (!ModelState.IsValid) { return View(item); } — not Content(...) or a different view."
+          : emptyFormBack
+            ? "Add the second Create action — [HttpPost], taking your model as a parameter. Inside it: "
+              + "guard with if (!ModelState.IsValid) { return View(item); }, give the new item an id, "
+              + "add it to your list, then RedirectToAction(nameof(Index)). If you already have that "
+              + "action, check it returns View(item) and not View()."
             : "Add <span asp-validation-for=\"YourField\" class=\"text-danger\"></span> next to each input, "
               + "and make sure the action returns View(item) rather than View().",
       });
@@ -485,10 +505,9 @@
       `a good submission is accepted and lands in your list${goodOk ? ` — ${countAfterBad} → ${countAfterGood}` : ""}`, {
         hint: !goodPost
           ? "the submission didn't get a response at all."
-          : nothingBound
-            ? "nothing received this post either — the form came back with none of the values I sent. "
-              + "An action with no verb attribute answers every verb, so your GET Create() is serving "
-              + "the blank form back. The [HttpPost] overload is what's missing."
+          : emptyFormBack
+            ? "the blank form came back again — either there's no [HttpPost] Create action, or yours "
+              + "returns View() with no argument."
           : !goodPost.redirected
             ? `I filled your form in using your own rules — every value inside your [Range] and `
               + `[StringLength] limits — and got a ${goodPost.status} back instead of a redirect. Either it `
@@ -503,7 +522,7 @@
         todo: goodPost && goodPost.redirected
           ? "Give the new item an id BEFORE you add it: item.Id = YourData.All.Max(x => x.Id) + 1; "
             + "— and make sure every item on your index links to /Details/{id}."
-          : nothingBound
+          : emptyFormBack
             ? "Add the second Create action — [HttpPost], taking your model as a parameter."
             : "Finish the happy path: assign an id, add it to the list, then "
               + "return RedirectToAction(nameof(Index));",
