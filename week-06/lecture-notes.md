@@ -529,6 +529,9 @@ POST /Trucks/Create  →  model binding     →  Truck object      (by name attr
 **`ModelState.IsValid` is false and I can't see why**
 - Temporarily switch your summary to `<div asp-validation-summary="All">`, which lists **every** error including the per-field ones — no tooling, one word changed, and you can put it back after. The usual answer is a non-nullable `int` or `double` that got a blank box. *(If you're comfortable with the debugger, a breakpoint on the guard and a look at `ModelState` shows the same thing.)*
 
+**I changed an annotation and the rendered HTML didn't change**
+- An annotation is an attribute, and `dotnet watch` applies an attribute-only edit only *sometimes* — it prints `Hot reload succeeded` either way. `Ctrl+R` in the watch terminal. The stale page keeps the old `data-val-*` attributes, so anything reading them — the browser-side validator, a self-check — is answering about the previous version of your model.
+
 **A number field says it's required and I never wrote `[Required]`**
 - Non-nullable value types are implicitly required — an `int` has nowhere to put "empty". Make it `int?` if it's genuinely optional.
 

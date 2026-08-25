@@ -281,6 +281,7 @@ Submit the empty form now: the errors appear **instantly**, with no page reload.
 ## 🆘 Stuck?
 
 - **Clicking "File it" does nothing — the same blank form comes back** — there's no `[HttpPost]` action to receive it, so the POST landed on your GET `Create()`. An action with no verb attribute answers *every* verb. That's task 4.
+- **You added or changed an attribute in `Cryptid.cs` and the form looks the same** — `dotnet watch` applies an attribute-only edit only *sometimes*, printing `Hot reload succeeded` either way. Press **`Ctrl+R`** in terminal 1. Until you do, View Source shows the *old* `data-val-*` attributes. (`dotnet test` rebuilds, so check 2 is never fooled by this — only the page in your browser is.)
 - **`AmbiguousMatchException: The request matched multiple endpoints`** — two actions called `Create` and neither says `[HttpPost]`. Add it to the one that takes a `Cryptid`. **Still there on a file that now looks right? Press `Ctrl+R` in terminal 1.** MVC works out each action's verb when the app *starts*, and `dotnet watch` applies an attribute-only edit only sometimes — it prints `Hot reload succeeded` either way, so a correct fix can leave the old exception on screen.
 - **A 400, with nothing of yours in the error** — antiforgery. Your action has `[ValidateAntiForgeryToken]` but the form isn't sending a token; check the `<form>` tag is the one from task 3.
 - **A field always arrives empty** — the input's `name` and the property name don't match. `asp-for` can't get this wrong, so check you're using it.
