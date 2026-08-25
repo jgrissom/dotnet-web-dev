@@ -380,6 +380,14 @@
 
     // ── 5. a bad submission is refused ────────────────────────────────────────
     const before = detailsIds(index.body, route).length;
+    // Only now is it certain there's a form to submit: a missing or unreachable
+    // Create page returned early above. Warn here rather than at the top of the
+    // run, so a student checking their progress before the form exists isn't
+    // told about a record that never gets created.
+    if (typeof window !== "undefined")
+      console.log("%c⚠️  Submitting your form now — twice: once with rubbish, once with good data. "
+        + "The good one adds a real item to your list.", "color: #d29922");
+
     const badBody = bodyFrom(fields, invalidValue, tokenOf(createPage.body));
     const badPost = await post(root + createUrl, badBody);
 
@@ -611,7 +619,6 @@
     const run = (forcedRoute) => {
       console.log(`%c🔎 Week ${WEEK} self-check — ${window.location.origin}`, big);
       console.log("Results appear as each check finishes — a sleeping free-tier app can take ~30s for the first one.");
-      console.log("%c⚠️  This submits your form twice, and one of those adds a real item to your list.", "color: #d29922");
       if (forcedRoute) console.log(`Checking /${forcedRoute} directly (you told me where to look).`);
       return runChecks(window.location.origin, forcedRoute || null, printCheck).then(report);
     };
