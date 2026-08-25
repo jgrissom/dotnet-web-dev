@@ -24,6 +24,9 @@ Same app you've been building since week 4. It can show people your list; this w
 > [!TIP]
 > **Keep [`lecture-notes.md`](lecture-notes.md) open while you work.** Every requirement below links to the section that covers it, and the [troubleshooting appendix](lecture-notes.md#appendix-troubleshooting) names tonight's specific errors — including the two silent ones, where nothing breaks and nothing works.
 
+> [!TIP]
+> **Commit as you go, the way you have since week 3.** Three of tonight's twenty points are the history itself, and they're all-or-nothing: fewer than three commits scores zero. A single "done" commit at 11:58pm is how people lose them. One commit per requirement you finish is the natural rhythm.
+
 ### Swap the self-check over first
 
 It grades whatever site it is loaded on, and you want it reporting on *this* week's work while you are still building — not after you deploy.
