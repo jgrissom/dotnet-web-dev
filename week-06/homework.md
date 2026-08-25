@@ -24,7 +24,34 @@ Same app you've been building since week 4. It can show people your list; this w
 > [!TIP]
 > **Keep [`lecture-notes.md`](lecture-notes.md) open while you work.** Every requirement below links to the section that covers it, and the [troubleshooting appendix](lecture-notes.md#appendix-troubleshooting) names tonight's specific errors — including the two silent ones, where nothing breaks and nothing works.
 
-It needs:
+### Swap the self-check over first
+
+It grades whatever site it is loaded on, and you want it reporting on *this* week's work while you are still building — not after you deploy.
+
+**Open `Views/Home/Index.cshtml`.** Find last week's line and **replace it** — same place, same section, one character different:
+
+```html
+<script src="https://jgrissom.github.io/dotnet-web-dev/week-05/homework-checks.js"></script>
+```
+
+becomes
+
+```html
+<script src="https://jgrissom.github.io/dotnet-web-dev/week-06/homework-checks.js"></script>
+```
+
+It stays inside the `@section Scripts { }` block you added last week. *(Can't find the old line? Search your project for `week-05` — VS Code's **Ctrl+Shift+F** / **⇧⌘F** finds it wherever it landed.)*
+
+> [!CAUTION]
+> **Replace it. Don't add a second one.**
+>
+> Week 5's checker still works, and that's the trap: it checks *week 5's* requirements, and nothing you did this week broke any of them. Leave it in and you'll load a page, see a screen of green ticks, and submit an assignment that was never actually checked.
+>
+> **The tell is the first line of the report.** `🔎 Week 5 self-check` is the wrong one — this week's says **`Week 6`** and scores out of **14 points**. If both are installed, this week's prints a red 🚨 above the score telling you so.
+
+### Then build it
+
+Your app needs:
 
 1. **[Rules on your model](lecture-notes.md#data-annotations)** — data annotations in your `Models/YourThing.cs`: **at least three, across at least two properties**, and at least two of them real rules rather than labels. `[Required]` on the text that matters, `[StringLength]` on your strings, `[Range]` on your numbers. Add `using System.ComponentModel.DataAnnotations;` at the top.
 2. **A Create page at `/YourThing/Create`** — a `Create()` action and a `Views/YourThing/Create.cshtml` [built with tag helpers](lecture-notes.md#the-whole-form-field-by-field): `asp-for` on every label and input, an `asp-validation-for` span beside each one, and an `asp-validation-summary` at the top. **The action has to be called `Create`** — it's the name the framework's own scaffolding uses, week 8 assumes it, and it's where the checker looks.
@@ -79,28 +106,7 @@ Every requirement above is about *your* properties, and the lab's exact attribut
 > [!NOTE]
 > **Requirement 1 on its own moves nothing**, and that's not a bug — your rules only become visible to a checker once there's a form rendering them. Reqs 1 and 2 are one milestone.
 
-**Open `Views/Home/Index.cshtml`.** Find last week's line and **replace it** — same place, same section, one character different:
-
-```html
-<script src="https://jgrissom.github.io/dotnet-web-dev/week-05/homework-checks.js"></script>
-```
-
-becomes
-
-```html
-<script src="https://jgrissom.github.io/dotnet-web-dev/week-06/homework-checks.js"></script>
-```
-
-It stays inside the `@section Scripts { }` block you added last week. *(Can't find the old line? Search your project for `week-05` — VS Code's **Ctrl+Shift+F** / **⇧⌘F** finds it wherever it landed.)*
-
-> [!CAUTION]
-> **Replace it. Don't add a second one.**
->
-> Week 5's checker still works, and that's the trap: it checks *week 5's* requirements, and nothing you did this week broke any of them. Leave it in and you'll load a page, see a screen of green ticks, and submit an assignment that was never actually checked.
->
-> **The tell is the first line of the report.** `🔎 Week 5 self-check` is the wrong one — this week's says **`Week 6`** and scores out of **14 points**. If both are installed, this week's prints a red 🚨 above the score telling you so.
-
-Then load your home page and open the console — **F12 → Console**. It runs automatically.
+**You installed the tag in Part 2, so it is already there.** Load your home page and open the console — **F12 → Console**. It runs automatically.
 
 ```
 🔎 Week 6 self-check — https://trailguide-ab1234.azurewebsites.net
