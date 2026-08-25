@@ -126,6 +126,7 @@ public static class CryptidData
 - **404 on `/Cryptids`?** Route → action → view, in that order. Is the class `public` and named `CryptidsController`? The [routing section](../lecture-notes.md#routing-the-pattern-decoded) explains why the URL finds the class, and week 3 covers [what a 404 versus a 500 is telling you](../../week-03/lecture-notes.md#verbs-and-status-codes).
 - **"The view 'Index' was not found"?** Read the error — it lists every path it searched. Match the folder name to the controller name exactly.
 - **"The model item passed into the ViewDataDictionary is of type…"?** Your controller and your [`@model` line](../lecture-notes.md#strongly-typed-views-with-model) disagree — one is passing a list, the other expects a single item, or the reverse. Make them match.
+- **Your edit isn't showing up, or the app stops responding** — `dotnet watch` keeps serving the **last version that built**, so a page can look completely fine while your newest edit hasn't compiled. Once in a while the app needs restarting outright. Terminal 1 is where the evidence is — a red ❌, an exception, or sometimes nothing at all — so glance at it whenever something doesn't add up, and press **Ctrl+R** there to force a full rebuild.
 - The [troubleshooting appendix](../lecture-notes.md#appendix-troubleshooting) covers the rest — including the `@model` / `@Model` mix-up that gets almost everyone once.
 
 ## 🚀 Done early?

@@ -635,6 +635,7 @@ public async Task<IActionResult> Index()
 - **`The model for context 'CryptidContext' has pending changes`** — you edited the model after generating the migration. Add another: `dotnet ef migrations add WhatYouChanged`. Forward only.
 - **The plates 404 in the browser** — the `src` should start `/img/cryptids/` (leading slash, no `wwwroot`). The files are already in the starter; nothing needs downloading.
 - **Home page throws `Unable to resolve service`** — `HomeController` asks for the context now; that's fine ([the one registration](../../week-07/lecture-notes.md#one-registration) in `Program.cs` covers every controller, and it shipped with the starter), but check the constructor's parameter type is `CryptidContext`.
+- **Your edit isn't showing up, or the app stops responding** — `dotnet watch` keeps serving the **last version that built**, so a page can look completely fine while your newest edit hasn't compiled. Once in a while the app needs restarting outright. Terminal 1 is where the evidence is — a red ❌, an exception, or sometimes nothing at all — so glance at it whenever something doesn't add up, and press **Ctrl+R** there to force a full rebuild.
 - The [troubleshooting appendix](../lecture-notes.md#appendix-troubleshooting) covers the rest.
 
 ## 🚀 Done early?
