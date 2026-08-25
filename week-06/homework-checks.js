@@ -368,14 +368,30 @@
     // ── 4. the rules made it into the HTML ────────────────────────────────────
     const earned = earnedRules(fields);
 
+    // Two very different causes end up here, and they need opposite advice.
+    // asp-for on a non-nullable property emits data-val-required for free, even
+    // with no annotations at all — so if there is no data-val attribute of ANY
+    // kind, the inputs aren't tag helpers and the annotations never had a way to
+    // reach the HTML. Telling that student to add more annotations is a dead end.
+    const anyDataVal = fields.some(f => f.rules.length > 0);
+
     add(earned.length ? "pass" : "fail", 3,
       `your fields carry your model's rules${earned.length ? ` — ${earned.map(r => "data-val-" + r).join(", ")}` : ""}`, {
-        hint: "your inputs only carry data-val-required, and that one is free — ASP.NET marks every "
+        hint: anyDataVal
+          ? "your inputs only carry data-val-required, and that one is free — ASP.NET marks every "
             + "non-nullable property required whether you ask it to or not. So I can't see a single "
-            + "rule you actually wrote.",
-        todo: "Put real data annotations on your model: [StringLength(...)] on your text properties and "
+            + "rule you actually wrote."
+          : "your inputs carry no data-val attributes at all — not even the free data-val-required. "
+            + "That means they aren't tag-helper inputs, so your annotations have no way of reaching "
+            + "the HTML. They can be perfectly written and still never show up here.",
+        todo: anyDataVal
+          ? "Put real data annotations on your model: [StringLength(...)] on your text properties and "
             + "[Range(...)] on your numbers. They show up in the HTML as data-val-length and "
-            + "data-val-range, and that's what I'm looking for.",
+            + "data-val-range, and that's what I'm looking for."
+          : "Build each field with asp-for rather than by hand: <label asp-for=\"X\">, "
+            + "<input asp-for=\"X\"> and <span asp-validation-for=\"X\">. A hand-written "
+            + "<input name=\"X\"> still binds, which is why the rest of the form looks fine — but it "
+            + "carries none of your rules, and the view needs @model YourThing at the top.",
       });
 
     // ── 5. a bad submission is refused ────────────────────────────────────────
