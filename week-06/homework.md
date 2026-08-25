@@ -15,7 +15,7 @@ dotnet test Cryptids.Checks
 If class ended at check 5, that's the browser-side validation — [one `@section Scripts` block](lab/README.md#task-6-in-full).
 
 > [!IMPORTANT]
-> This isn't submitted and it isn't worth points. It's the guided version of the exact moves Part 2 asks you to make on your own app, with the markup handed to you. Doing it first is what turns Part 2 into a 45-minute assignment.
+> This isn't submitted and it isn't worth points. It's the same moves Part 2 asks you to make on your own app, with the markup handed to you — in a slightly different order, because the lab starts from the model and Part 2 starts from the form. Doing it first is what turns Part 2 into a 45-minute assignment.
 
 ## Part 2 — Your semester project takes input (graded)
 
@@ -56,9 +56,9 @@ It stays inside the `@section Scripts { }` block you added last week. *(Can't fi
 
 Your app needs:
 
-1. **[Rules on your model](lecture-notes.md#data-annotations)** — data annotations in your `Models/YourThing.cs`: **at least three, across at least two properties**, and at least two of them real rules rather than labels. `[Required]` on the text that matters, `[StringLength]` on your strings, `[Range]` on your numbers. Add `using System.ComponentModel.DataAnnotations;` at the top.
-2. **A Create page at `/YourThing/Create`** — a `Create()` action and a `Views/YourThing/Create.cshtml` [built with tag helpers](lecture-notes.md#the-whole-form-field-by-field): `asp-for` on every label and input, an `asp-validation-for` span beside each one, and an `asp-validation-summary` at the top. **The action has to be called `Create`** — it's the name the framework's own scaffolding uses, week 8 assumes it, and it's where the checker looks.
-3. **[A link to it from your list page](lecture-notes.md#getting-to-the-form)** — a button at the top of the page your nav link opens (`Views/YourThing/Index.cshtml`), **not** your site's home page. A page nobody can reach is a page nobody uses.
+1. **A Create page at `/YourThing/Create`** — a `Create()` action and a `Views/YourThing/Create.cshtml` [built with tag helpers](lecture-notes.md#the-whole-form-field-by-field): `asp-for` on every label and input, an `asp-validation-for` span beside each one, and an `asp-validation-summary` at the top. **The action has to be called `Create`** — it's the name the framework's own scaffolding uses, week 8 assumes it, and it's where the checker looks.
+2. **[A link to it from your list page](lecture-notes.md#getting-to-the-form)** — a button at the top of the page your nav link opens (`Views/YourThing/Index.cshtml`), **not** your site's home page. A page nobody can reach is a page nobody uses.
+3. **[Rules on your model](lecture-notes.md#data-annotations)** — data annotations in your `Models/YourThing.cs`: **at least three, across at least two properties**, and at least two of them real rules rather than labels. `[Required]` on the text that matters, `[StringLength]` on your strings, `[Range]` on your numbers. Add `using System.ComponentModel.DataAnnotations;` at the top.
 4. **The POST action** — a *second* `Create`, marked `[HttpPost]`, taking your model as a parameter. Give the new item an id (`Max(x => x.Id) + 1`), add it to your static list, and **[redirect](lecture-notes.md#redirect-dont-render)** with `RedirectToAction(nameof(Index))`.
 5. **[The guard](lecture-notes.md#modelstate-the-notes-the-binder-was-already-taking)** — `if (!ModelState.IsValid) { return View(item); }`, above the id assignment. A bad submission must come back as the form, **with the messages showing and their input still in the boxes**.
 6. **[Client-side validation](lecture-notes.md#the-partial-week-5-promised)** — `_ValidationScriptsPartial` rendered inside a `@section Scripts` block at the bottom of your Create view.
@@ -98,16 +98,20 @@ Every requirement above is about *your* properties, and the lab's exact attribut
 >
 > **Fixing things on localhost is much cheaper than fixing them on Azure**, which is why the tag goes in now rather than after the deploy. Then run it once more on your **deployed URL before you submit** — that's the run that counts.
 
-| Once you've done | This turns green |
+The report doesn't print in requirement order — it prints in the order a checker can *reach* things,
+crawling your site from the outside. What turns each line green:
+
+| The report says | Which requirement |
 |---|---|
-| requirements 1 **and** 2 — they land together | *your form page is a real form that posts* · *your fields carry your model's rules* |
-| requirement 3 | *a link from your list page to your form* |
-| requirement 4 | *a good submission is accepted and lands in your list* |
-| requirement 5 | *a bad submission is refused, with messages* |
-| requirement 6 | *validation runs in the browser too* |
+| *a link from your list page to your form* | 2 |
+| *your form page is a real form that posts* | 1 |
+| *your fields carry your model's rules* | 3 |
+| *a bad submission is refused, with messages* | 5 |
+| *a good submission is accepted and lands in your list* | 4 |
+| *validation runs in the browser too* | 6 |
 
 > [!NOTE]
-> **Requirement 1 on its own moves nothing**, and that's not a bug — your rules only become visible to a checker once there's a form rendering them. Reqs 1 and 2 are one milestone.
+> **Requirement 3 needs requirement 1 before it shows up**, and that's not a bug — your rules only become visible to a checker once there's a form rendering them as `data-val-*`. Annotations written before the form exists are still correct; the checker just can't see them yet.
 
 **You installed the tag in Part 2, so it is already there.** Load your home page and open the console — **F12 → Console**. It runs automatically.
 
