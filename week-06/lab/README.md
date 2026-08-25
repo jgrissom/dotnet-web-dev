@@ -248,7 +248,7 @@ if (!ModelState.IsValid)
 Now file a report with **no name and a first sighting of 99999**. The form comes back with your input still in it, and red messages beside the two bad fields — the ones you wrote in task 2.
 
 - **`ModelState.IsValid` is a question, not a command.** Validation already ran, during model binding, before your first line executed. You're reading a verdict.
-- **`return View(cryptid)`**, not `return View()`. One bad field shouldn't cost someone the four good ones they typed.
+- **`return View(cryptid)`**, not `return View()`. Their typed values come back either way — `asp-for` re-reads them from `ModelState` — but with no argument the view's `Model` is `null`, so any page that touches `@Model` throws. Pass it.
 - The messages appear in the empty `<span asp-validation-for="...">` sockets that were already in task 3's markup. [Where the errors come from](../lecture-notes.md#showing-the-errors).
 
 ### Task 6 in full
