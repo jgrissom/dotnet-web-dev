@@ -105,7 +105,7 @@ Then load that page and open the console — **F12 → Console**. It runs automa
 > Leave the `<script>` tag in or take it out, whichever you prefer. It only writes to the console and doesn't affect grading.
 
 > [!TIP]
-> **If it says it can't find your controller**, your nav link (requirement 4) is missing or points somewhere else. You can tell it where to look instead — `recheck("Parks")` with *your* controller's name — but the nav link is worth 2 points on its own, so fix it rather than working around it.
+> **If the nav-link check is red, read which of three things it says.** *"I couldn't find a link in your navbar"* means requirement 4 is missing or points somewhere else. *"your navbar links to /Parks… but the page came back 404"* means the link is right and the controller behind it isn't built yet. A **500** means the controller is there and throwing — load that page in a browser and read the error. You can also point the checker at a controller directly with `recheck("Parks")`, but the nav link is worth 2 points on its own, so fix it rather than working around it.
 
 > [!TIP]
 > **Working offline?** Save [`homework-checks.js`](homework-checks.js) into your `wwwroot` folder and point the tag at it locally instead: `<script src="/homework-checks.js"></script>`. That's the CDN-versus-local-copy trade-off from [week 2](../week-02/lecture-notes.md#setup--two-tags), showing up in real life.

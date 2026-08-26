@@ -130,7 +130,7 @@
             ? (first.status >= 500
                 ? `your navbar links to /${first.cand}, which is right — but that page came back ${first.status}. `
                   + "The controller is there and something in it, or in its view, is throwing."
-                : `your navbar links to /${first.cand}, and that's exactly right — but the page itself came back `
+                : `your navbar links to /${first.cand}, and that's right — but the page came back `
                   + `${first.status || "nothing"}, so the controller behind the link isn't there yet.`)
             : "I couldn't find a link in your navbar that reaches a controller of yours — so I don't know where your index page is.",
           todo: linked
