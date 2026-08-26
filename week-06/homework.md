@@ -94,7 +94,7 @@ Every requirement above is about *your* properties, and the lab's exact attribut
 > That's supposed to happen — it's the only way to prove from outside that your form actually works. It disappears the next time your app restarts, which is [this week's closing lesson](lecture-notes.md#part-5-where-the-truck-actually-went-10-min) and next week's whole reason for existing. Restart your app if you want it gone sooner; you don't need to.
 
 > [!IMPORTANT]
-> **Run it as you go.** It reports all six checks every time, and marks the ones it can't reach yet ⬜ instead of failing them — so a half-built app tells you *where you are*, not that you're broken. Every run ends with one `👉 Next:` line naming the single next thing to do.
+> **Run it as you go.** It reports all six checks every time, and marks the ones it can't reach yet ⬜ instead of failing them — so a half-built app tells you *where you are*, not that you're broken. While anything is still red, the report ends with one `👉 Next:` line naming the single next thing to do.
 >
 > **Fixing things on localhost is much cheaper than fixing them on Azure**, which is why the tag goes in now rather than after the deploy. Then run it once more on your **deployed URL before you submit** — that's the run that counts.
 

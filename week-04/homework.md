@@ -65,10 +65,19 @@ It needs:
 **[`homework-checks.js`](homework-checks.js) runs the same checks I grade with.** Nothing in it is specific to my topic or yours — it finds your controller by following the link you put in the navbar, exactly like a visitor would.
 
 > [!IMPORTANT]
-> **This is a finish line, not a progress bar.** Build the app first, using `dotnet test` on the lab and the [lecture notes](lecture-notes.md) as your guide. The checker identifies your work by things that only exist once you're nearly done — a nav link, a Details link on each row, a working `/Details/1`. Run it half-built and it will honestly report almost nothing, which tells you very little. **Run it twice:**
+> **Run it as you go.** It reports all four checks every time, and marks the ones it can't reach yet ⬜ instead of failing them — so a half-built app tells you *where you are*, not that you're broken. While anything is still red, the report ends with one `👉 Next:` line naming the single next thing to do.
 >
-> 1. **When you think you're done locally** — cheap to fix things now
-> 2. **Again on your deployed Azure URL, before you submit** — that's the run that counts
+> **Fixing things on localhost is much cheaper than fixing them on Azure**, which is why the tag goes in now rather than after the deploy. Then run it once more on your **deployed URL before you submit** — that's the run that counts.
+
+| The report says | Which requirement |
+|---|---|
+| *nav link to your index page* | 4 |
+| *index lists all your items* | 3 |
+| *details page shows one item* | 5 |
+| *a bad id returns 404* | 6 |
+
+> [!NOTE]
+> **Requirements 1 and 2 never turn a check green**, and that's not a bug. A model class and a seeded list aren't visible from outside — a checker can only see the pages they produce. Those two are worth 4 points that I read out of your repo by hand.
 
 **Nothing to install — you include it exactly like the Bootstrap CDN from week 2.**
 
