@@ -35,7 +35,7 @@ CryptidsDb/                ← in `dotnet-web`, the folder you copied and rename
 
 | Terminal | Where it stands | What runs in it |
 |---|---|---|
-| 1 | inside `Cryptids.Web` — `cd Cryptids.Web` | `dotnet watch` — **started in task 5**, then left alone |
+| 1 | `CryptidsDb`, the folder holding **both** projects | `dotnet watch --project Cryptids.Web` — **started in task 5**, then left alone |
 | 2 | inside `Cryptids.Web` — `cd Cryptids.Web` | every `dotnet ef` and `dotnet user-secrets` command |
 | 3 | `CryptidsDb`, the folder holding **both** projects | `dotnet test Cryptids.Checks`, after every task |
 

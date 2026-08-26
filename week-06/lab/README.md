@@ -35,7 +35,7 @@ CryptidForms/               ← in `dotnet-web`, the folder you copied and renam
 
 | Terminal | Where it stands | What runs in it |
 |---|---|---|
-| 1 | inside `Cryptids.Web` — `cd Cryptids.Web` | `dotnet watch` — start it, then leave it alone |
+| 1 | `CryptidForms`, the folder holding **both** projects | `dotnet watch --project Cryptids.Web` — start it, then leave it alone |
 | 2 | `CryptidForms`, the folder holding **both** projects | `dotnet test Cryptids.Checks`, after every task |
 
 **5. In terminal 2:**
