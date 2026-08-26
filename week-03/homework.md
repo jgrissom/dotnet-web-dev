@@ -20,9 +20,12 @@ All six checks green:
 
 ```bash
 dotnet test FirstFlight.Checks
-# Test Run Successful.
-# Total tests: 6
-#      Passed: 6
+```
+
+```
+Test Run Successful.
+Total tests: 6
+     Passed: 6
 ```
 
 If class ended at check 4, that means finishing `Hello` (checks 5–6) — the [parameters section](lecture-notes.md#passing-data-viewdata-and-parameters) of the notes has the pattern.
