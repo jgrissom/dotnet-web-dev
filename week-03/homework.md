@@ -45,7 +45,7 @@ whatever site it is loaded on, so it can only grade your Azure URL if it shipped
 <script src="https://jgrissom.github.io/dotnet-web-dev/week-03/homework-checks.js"></script>
 ```
 
-Then run your app **locally** (`dotnet watch`), open your site, press **F12 → Console**, and read it. It will tell you it's
+Then start the app the same two steps as the lab — `cd FirstFlight.Web`, then `dotnet watch` — open your site, press **F12 → Console**, and read it. It will tell you it's
 localhost — that's expected and correct at this stage. **Fixing things here is much cheaper than
 fixing them on Azure**, which is the whole reason it goes in now rather than after the deploy.
 
