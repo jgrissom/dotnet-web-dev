@@ -92,7 +92,7 @@ Add this one line at the bottom of **`Views/Home/Index.cshtml`** — your home p
 <script src="https://jgrissom.github.io/dotnet-web-dev/week-04/homework-checks.js"></script>
 ```
 
-Then load that page and open the console — **F12 → Console**. It runs automatically.
+Then run your app **locally** (`dotnet watch`), load that page, and open the console — **F12 → Console**. It runs automatically.
 
 ```
 🔎 Week 4 self-check — https://ballparks-ab1234.azurewebsites.net

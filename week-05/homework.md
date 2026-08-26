@@ -89,7 +89,7 @@ And put this at the bottom of that same file in its place — note the `week-05`
 }
 ```
 
-Then load your home page and open the console — **F12 → Console**. It runs automatically, and it checks your *whole site* from there — home, index, and a details page — so this one tag is all you need.
+Then run your app **locally** (`dotnet watch`), load your home page, and open the console — **F12 → Console**. It runs automatically, and it checks your *whole site* from there — home, index, and a details page — so this one tag is all you need.
 
 ```
 🔎 Week 5 self-check — https://trailguide-ab1234.azurewebsites.net

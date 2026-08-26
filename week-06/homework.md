@@ -118,7 +118,7 @@ crawling your site from the outside. What turns each line green:
 > [!NOTE]
 > **Requirement 3 needs requirement 1 before it shows up**, and that's not a bug — your rules only become visible to a checker once there's a form rendering them as `data-val-*`. Annotations written before the form exists are still correct; the checker just can't see them yet.
 
-**You installed the tag in Part 2, so it is already there.** Load your home page and open the console — **F12 → Console**. It runs automatically.
+**You installed the tag in Part 2, so it is already there.** Run your app **locally** (`dotnet watch`), load your home page, and open the console — **F12 → Console**. It runs automatically.
 
 ```
 🔎 Week 6 self-check — https://trailguide-ab1234.azurewebsites.net
