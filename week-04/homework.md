@@ -96,7 +96,7 @@ Then load that page and open the console — **F12 → Console**. It runs automa
 ✅ 4 pts  details page shows one item — /Parks/Details/1
 ✅ 2 pts  a bad id returns 404 — got 404
 
-🎉 4 of 4 checks green · 12 of 12 points
+📋 4 of 4 checks green · 12 of 12 points  (controller: /Parks)
 ```
 
 > [!NOTE]
