@@ -233,8 +233,7 @@ dotnet ef database update
 **Start the app first — this is the task where the browser starts mattering.** In terminal 1:
 
 ```bash
-cd Cryptids.Web
-dotnet watch
+dotnet watch --project Cryptids.Web
 ```
 
 Tasks 1–4 were all verified by `dotnet test` and the mssql extension, so this is the first time tonight you actually need the site running. Leave it running for the rest of the lab; every reload below assumes it.

@@ -37,6 +37,12 @@ CryptidRegistry/            ← in `dotnet-web`, the folder you copied and renam
 | 1 | `CryptidRegistry`, the folder holding **both** projects | [`dotnet watch --project Cryptids.Web`](../../week-03/lecture-notes.md#dotnet-new-mvc) — **start it now**, then leave it alone |
 | 2 | `CryptidRegistry`, the folder holding **both** projects | `dotnet test Cryptids.Checks`, after every task |
 
+**Start terminal 1 now:**
+
+```bash
+dotnet watch --project Cryptids.Web
+```
+
 **5. In terminal 2:**
 
 ```bash

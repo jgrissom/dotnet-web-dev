@@ -21,8 +21,18 @@ Your first ASP.NET Core MVC app, built the way you'll work all term: run the che
 
 4. **Open a second terminal** — the `+` in the terminal panel, or `` Ctrl+Shift+` ``. **You need two from here on, and so does every .NET week after this one:**
    **Both stay in `first-flight`, the folder holding both projects.** Neither command needs you to move around — you name the project instead.
-   - **Terminal 1 — the app.** `dotnet watch --project FirstFlight.Web`. It keeps running and rebuilds on every save, which is why **you can't type anything else in it** — that's the whole reason for a second terminal, not a preference.
-   - **Terminal 2 — the checks.** `dotnet test FirstFlight.Checks`, after each task.
+
+   **Terminal 1 — the app.** It keeps running and rebuilds on every save, which is why **you can't type anything else in it** — that's the whole reason for a second terminal, not a preference.
+
+   ```bash
+   dotnet watch --project FirstFlight.Web
+   ```
+
+   **Terminal 2 — the checks.** Re-run this after each task.
+
+   ```bash
+   dotnet test FirstFlight.Checks
+   ```
 
    ⚠️ **`MSBUILD : error MSB1009: Project file does not exist.`** means that terminal wandered into `FirstFlight.Web`. `cd ..` and try again — both commands belong in the folder above it.
 
