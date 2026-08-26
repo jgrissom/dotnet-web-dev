@@ -9,7 +9,9 @@ All six checks green:
 
 ```bash
 dotnet test Cryptids.Checks
-# Passed! - Failed: 0, Passed: 6 ...
+# Test Run Successful.
+# Total tests: 6
+#      Passed: 6
 ```
 
 If class ended at check 4, that's the `@section Scripts` block and the Bootswatch swap — [sections](lecture-notes.md#the-placeholder-that-was-always-there) and [themes](lecture-notes.md#the-payoff) in the notes.
