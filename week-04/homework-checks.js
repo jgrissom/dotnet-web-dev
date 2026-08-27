@@ -158,7 +158,12 @@
         ? `index lists all your items — ${links.length} found`
         : `index lists all your items — /${route} loads, but ${links.length} Details link${links.length === 1 ? "" : "s"} found`, {
         hint: `Your page is there; I just can't count what's on it. I identify your items by the Details link on each row — that's the only thing I can recognize without knowing your topic — and I found ${links.length}. I need 5 or more.`,
-        todo: `Add a link inside your loop: href="/${route}/Details/@item.Id"`,
+        todo: links.length === 0
+          ? `Nothing on /${route} is a row yet. That's requirements 2, 3 and 4 together: a model `
+            + "class, a seeded list of 5 or more, and an Index view that loops over them — with "
+            + `href="/${route}/Details/@item.Id" on each row, which is the part I count.`
+          : `You have ${links.length}, and I need 5 or more — add rows to your seeded list `
+            + "(requirement 3).",
       });
 
     // No links on the index? Don't block the rest — probe the conventional URL so
