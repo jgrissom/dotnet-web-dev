@@ -38,6 +38,9 @@ Build a **new** [MVC app](../week-03/lecture-notes.md#dotnet-new-mvc) on a topic
 > [!TIP]
 > **Keep [`lecture-notes.md`](lecture-notes.md) open while you work.** It's the same material from class, written out — every requirement below links to the section that covers it, and the [troubleshooting appendix](lecture-notes.md#appendix-troubleshooting) names the errors you're most likely to hit.
 
+> [!TIP]
+> **Commit as you go, the way you have since week 3.** Four of this week's twenty points are the history itself, and they're all-or-nothing: fewer than three commits scores zero. A single "done" commit at 11:58pm is how people lose them. One commit per requirement you finish is the natural rhythm.
+
 ### Create the app first
 
 > [!TIP]
