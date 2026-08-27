@@ -68,6 +68,7 @@ Your first ASP.NET Core MVC app, built the way you'll work all term: run the che
 
 Route → action → view, in that order — the [troubleshooting appendix](../lecture-notes.md#appendix-troubleshooting) walks the diagnosis. The [routing section](../lecture-notes.md#routing-controlleraction) explains *why* `/Home/About` finds `HomeController.About()`. The terminal running `dotnet watch` prints the real error when a page 500s.
 
+- **An exception that couldn't be about your code** — `BadImageFormatException`, `TypeLoadException`, or a 500 where even the error page fails to render. Those come from the framework reflecting over types **hot reload rewrote in memory**, not from anything you typed. Press **`Ctrl+R`** in the terminal running `dotnet watch`; a fresh process reads the types from disk and it goes away.
 - **Your edit isn't showing up, or the app stops responding** — `dotnet watch` keeps serving the **last version that built**, so a page can look completely fine while your newest edit hasn't compiled. Once in a while the app needs restarting outright. Terminal 1 is where the evidence is — a red ❌, an exception, or sometimes nothing at all — so glance at it whenever something doesn't add up, and press **Ctrl+R** there to force a full rebuild.
 
 ## 🚀 Done early?

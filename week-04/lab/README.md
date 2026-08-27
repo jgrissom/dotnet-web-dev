@@ -133,6 +133,7 @@ public static class CryptidData
 - **"The view 'Index' was not found"?** Read the error — it lists every path it searched. Match the folder name to the controller name exactly.
 - **"The model item passed into the ViewDataDictionary is of type…"?** Your controller and your [`@model` line](../lecture-notes.md#strongly-typed-views-with-model) disagree — one is passing a list, the other expects a single item, or the reverse. Make them match.
 - **Your edit isn't showing up, or the app stops responding** — `dotnet watch` keeps serving the **last version that built**, so a page can look completely fine while your newest edit hasn't compiled. Once in a while the app needs restarting outright. Terminal 1 is where the evidence is — a red ❌, an exception, or sometimes nothing at all — so glance at it whenever something doesn't add up, and press **Ctrl+R** there to force a full rebuild.
+- **An exception that couldn't be about your code** — `BadImageFormatException`, `TypeLoadException`, or a 500 where even the error page fails to render. Those come from the framework reflecting over types **hot reload rewrote in memory**, not from anything you typed. Press **`Ctrl+R`** in the terminal running `dotnet watch`; a fresh process reads the types from disk and it goes away.
 - The [troubleshooting appendix](../lecture-notes.md#appendix-troubleshooting) covers the rest — including the `@model` / `@Model` mix-up that gets almost everyone once.
 
 ## 🚀 Done early?
