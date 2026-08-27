@@ -38,15 +38,7 @@ Build a **new** [MVC app](../week-03/lecture-notes.md#dotnet-new-mvc) on a topic
 > [!TIP]
 > **Keep [`lecture-notes.md`](lecture-notes.md) open while you work.** It's the same material from class, written out — every requirement below links to the section that covers it, and the [troubleshooting appendix](lecture-notes.md#appendix-troubleshooting) names the errors you're most likely to hit.
 
-It needs:
-
-1. **A nav link** to your Index page — **first**, because everything else hangs off it. Copy the `Privacy` `<li>` in `Views/Shared/_Layout.cshtml` and adapt it; **[the notes write the whole edit out](lecture-notes.md#the-navbar-and-the-one-nav-link-your-homework-needs)**, including the three things that change. *(That's the only layout change you need — the shell is week 5's business.)* **The self-check finds your controller by following this link.**
-2. **[A model class](lecture-notes.md#the-model-a-plain-c-class)** with at least **4 properties**, including an `int Id` and at least one non-string property (a number, a `bool`, a `DateTime`). Put it in a `namespace`, the way the starter's `Cryptid` is — not graded, but it's what every .NET codebase does, and it's why your controller needs a `using`.
-3. **[A seeded list](lecture-notes.md#the-seeded-list-a-database-that-isnt-one-yet) of at least 5 items** — a `static List<T>` like the starter's `CryptidData`. (It has to be `static`; a new controller is created for every request.)
-4. **An Index page listing all of them, with a link on every row** to that item's details page — [the whole view is written out here](lecture-notes.md#strongly-typed-views-with-model): `@model`, `@foreach`, and `href="/Things/Details/@item.Id"` inside the loop. You'll need a controller class and a matching `Views/<Name>/` folder — three names must agree. *(The links are part of this step, not a later one — the self-check counts your items by them.)*
-5. **A Details page** — `/Things/Details/3` shows that one item. [The Index → Details pair](lecture-notes.md#index-and-details-the-classic-pair) explains where the `3` comes from.
-6. **A 404 guard** — an id nobody has returns `NotFound()`, not a crash. [`FirstOrDefault`, then the null check](lecture-notes.md#details-and-the-notfound-guard).
-7. **Deployed to Azure**, and **3+ meaningful commits** in a public GitHub repo.
+### Create the app first
 
 > [!TIP]
 > Start from `dotnet new mvc --no-https` in a fresh folder inside `dotnet-web`, named for your topic — it is the app you extend every week to the end of the course. You are not starting from the Registry — building it again from empty is the point, and it takes about 30 minutes once you've done the lab. Week 3's notes cover [creating the app](../week-03/lecture-notes.md#dotnet-new-mvc) and [what every folder is for](../week-03/lecture-notes.md#project-anatomy) if you want the refresher.
@@ -65,6 +57,30 @@ It needs:
 >
 > **Order matters here, and it's the one part that isn't fixable later.** Committing build output and then adding the `.gitignore` afterwards leaves every one of those files in your history permanently; ignoring a file never removes what's already committed. It's the same reason a password committed once is a password you have to change — you'll meet that idea properly in week 7.
 
+### Then add the self-check
+
+It grades whatever site it is loaded on, and you want it reporting on *this* week's work while you are still building — not after you deploy.
+
+**Nothing to install — you include it exactly like the Bootstrap CDN from week 2.**
+
+Add this one line at the bottom of **`Views/Home/Index.cshtml`** — your home page. (Any view works; the home page is simplest because it's always at `/`.)
+
+```html
+<script src="https://jgrissom.github.io/dotnet-web-dev/week-04/homework-checks.js"></script>
+```
+
+### Then build it
+
+Your app needs:
+
+1. **A nav link** to your Index page — **first**, because everything else hangs off it. Copy the `Privacy` `<li>` in `Views/Shared/_Layout.cshtml` and adapt it; **[the notes write the whole edit out](lecture-notes.md#the-navbar-and-the-one-nav-link-your-homework-needs)**, including the three things that change. *(That's the only layout change you need — the shell is week 5's business.)* **The self-check finds your controller by following this link.**
+2. **[A model class](lecture-notes.md#the-model-a-plain-c-class)** with at least **4 properties**, including an `int Id` and at least one non-string property (a number, a `bool`, a `DateTime`). Put it in a `namespace`, the way the starter's `Cryptid` is — not graded, but it's what every .NET codebase does, and it's why your controller needs a `using`.
+3. **[A seeded list](lecture-notes.md#the-seeded-list-a-database-that-isnt-one-yet) of at least 5 items** — a `static List<T>` like the starter's `CryptidData`. (It has to be `static`; a new controller is created for every request.)
+4. **An Index page listing all of them, with a link on every row** to that item's details page — [the whole view is written out here](lecture-notes.md#strongly-typed-views-with-model): `@model`, `@foreach`, and `href="/Things/Details/@item.Id"` inside the loop. You'll need a controller class and a matching `Views/<Name>/` folder — three names must agree. *(The links are part of this step, not a later one — the self-check counts your items by them.)*
+5. **A Details page** — `/Things/Details/3` shows that one item. [The Index → Details pair](lecture-notes.md#index-and-details-the-classic-pair) explains where the `3` comes from.
+6. **A 404 guard** — an id nobody has returns `NotFound()`, not a crash. [`FirstOrDefault`, then the null check](lecture-notes.md#details-and-the-notfound-guard).
+7. **Deployed to Azure**, and **3+ meaningful commits** in a public GitHub repo.
+
 ## Part 3 — Check it as you go ✅
 
 **[`homework-checks.js`](homework-checks.js) runs the same checks I grade with.** Nothing in it is specific to my topic or yours — it finds your controller by following the link you put in the navbar, exactly like a visitor would.
@@ -72,7 +88,7 @@ It needs:
 > [!IMPORTANT]
 > **Run it as you go.** It reports all four checks every time, and marks the ones it can't reach yet ⬜ instead of failing them — so a half-built app tells you *where you are*, not that you're broken. While anything is still red, the report ends with one `👉 Next:` line naming the single next thing to do.
 >
-> **Fixing things on localhost is much cheaper than fixing them on Azure**, which is why the tag goes in now rather than after the deploy. Then run it once more on your **deployed URL before you submit** — that's the run that counts.
+> **Fixing things on localhost is much cheaper than fixing them on Azure**, which is why the tag went in back in Part 2 rather than after the deploy. Then run it once more on your **deployed URL before you submit** — that's the run that counts.
 
 | The report says | Which requirement |
 |---|---|
@@ -84,15 +100,7 @@ It needs:
 > [!NOTE]
 > **Requirements 2 and 3 never turn a check green on their own**, and that's not a bug. A model class and a seeded list aren't visible from outside — a checker can only see the pages they produce, so they land together with requirement 4. Those two are worth 4 points that I read out of your repo by hand.
 
-**Nothing to install — you include it exactly like the Bootstrap CDN from week 2.**
-
-Add this one line at the bottom of **`Views/Home/Index.cshtml`** — your home page. (Any view works; the home page is simplest because it's always at `/`.)
-
-```html
-<script src="https://jgrissom.github.io/dotnet-web-dev/week-04/homework-checks.js"></script>
-```
-
-Then run your app **locally** (`dotnet watch`), load that page, and open the console — **F12 → Console**. It runs automatically.
+**You added the tag in Part 2, so it's already there.** Run your app **locally** (`dotnet watch`), load your home page, and open the console — **F12 → Console**. It runs automatically.
 
 ```
 🔎 Week 4 self-check — https://ballparks-ab1234.azurewebsites.net
