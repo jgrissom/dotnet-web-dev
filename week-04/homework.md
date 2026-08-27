@@ -40,10 +40,10 @@ Build a **new** [MVC app](../week-03/lecture-notes.md#dotnet-new-mvc) on a topic
 
 It needs:
 
-1. **[A model class](lecture-notes.md#the-model-a-plain-c-class)** with at least **4 properties**, including an `int Id` and at least one non-string property (a number, a `bool`, a `DateTime`). Put it in a `namespace`, the way the starter's `Cryptid` is — not graded, but it's what every .NET codebase does, and it's why your controller needs a `using`.
-2. **[A seeded list](lecture-notes.md#the-seeded-list-a-database-that-isnt-one-yet) of at least 5 items** — a `static List<T>` like the starter's `CryptidData`. (It has to be `static`; a new controller is created for every request.)
-3. **An Index page listing all of them, with a link on every row** to that item's details page — [the whole view is written out here](lecture-notes.md#strongly-typed-views-with-model): `@model`, `@foreach`, and `href="/Things/Details/@item.Id"` inside the loop. You'll need a controller class and a matching `Views/<Name>/` folder — three names must agree. *(The links are part of this step, not a later one — the self-check counts your items by them.)*
-4. **A nav link** to your Index page — do this one **early**. Copy the `Privacy` `<li>` in `Views/Shared/_Layout.cshtml` and adapt it; **[the notes write the whole edit out](lecture-notes.md#the-navbar-and-the-one-nav-link-your-homework-needs)**, including the three things that change. *(That's the only layout change you need — the shell is week 5's business.)* **The self-check finds your controller by following this link.**
+1. **A nav link** to your Index page — **first**, because everything else hangs off it. Copy the `Privacy` `<li>` in `Views/Shared/_Layout.cshtml` and adapt it; **[the notes write the whole edit out](lecture-notes.md#the-navbar-and-the-one-nav-link-your-homework-needs)**, including the three things that change. *(That's the only layout change you need — the shell is week 5's business.)* **The self-check finds your controller by following this link.**
+2. **[A model class](lecture-notes.md#the-model-a-plain-c-class)** with at least **4 properties**, including an `int Id` and at least one non-string property (a number, a `bool`, a `DateTime`). Put it in a `namespace`, the way the starter's `Cryptid` is — not graded, but it's what every .NET codebase does, and it's why your controller needs a `using`.
+3. **[A seeded list](lecture-notes.md#the-seeded-list-a-database-that-isnt-one-yet) of at least 5 items** — a `static List<T>` like the starter's `CryptidData`. (It has to be `static`; a new controller is created for every request.)
+4. **An Index page listing all of them, with a link on every row** to that item's details page — [the whole view is written out here](lecture-notes.md#strongly-typed-views-with-model): `@model`, `@foreach`, and `href="/Things/Details/@item.Id"` inside the loop. You'll need a controller class and a matching `Views/<Name>/` folder — three names must agree. *(The links are part of this step, not a later one — the self-check counts your items by them.)*
 5. **A Details page** — `/Things/Details/3` shows that one item. [The Index → Details pair](lecture-notes.md#index-and-details-the-classic-pair) explains where the `3` comes from.
 6. **A 404 guard** — an id nobody has returns `NotFound()`, not a crash. [`FirstOrDefault`, then the null check](lecture-notes.md#details-and-the-notfound-guard).
 7. **Deployed to Azure**, and **3+ meaningful commits** in a public GitHub repo.
@@ -76,13 +76,13 @@ It needs:
 
 | The report says | Which requirement |
 |---|---|
-| *nav link to your index page* | 4 |
-| *index lists all your items* | 3 |
+| *nav link to your index page* | 1 |
+| *index lists all your items* | 4 |
 | *details page shows one item* | 5 |
 | *a bad id returns 404* | 6 |
 
 > [!NOTE]
-> **Requirements 1 and 2 never turn a check green**, and that's not a bug. A model class and a seeded list aren't visible from outside — a checker can only see the pages they produce. Those two are worth 4 points that I read out of your repo by hand.
+> **Requirements 2 and 3 never turn a check green on their own**, and that's not a bug. A model class and a seeded list aren't visible from outside — a checker can only see the pages they produce, so they land together with requirement 4. Those two are worth 4 points that I read out of your repo by hand.
 
 **Nothing to install — you include it exactly like the Bootstrap CDN from week 2.**
 
@@ -110,7 +110,7 @@ Then run your app **locally** (`dotnet watch`), load that page, and open the con
 > Leave the `<script>` tag in or take it out, whichever you prefer. It only writes to the console and doesn't affect grading.
 
 > [!TIP]
-> **If the nav-link check is red, read which of three things it says.** *"I couldn't find a link in your navbar"* means requirement 4 is missing or points somewhere else. *"your navbar links to /Parks… but the page came back 404"* means the link is right and the controller behind it isn't built yet. A **500** means the controller is there and throwing — load that page in a browser and read the error. You can also point the checker at a controller directly with `recheck("Parks")`, but the nav link is worth 2 points on its own, so fix it rather than working around it.
+> **If the nav-link check is red, read which of three things it says.** *"I couldn't find a link in your navbar"* means requirement 1 is missing or points somewhere else. *"your navbar links to /Parks… but the page came back 404"* means the link is right and the controller behind it isn't built yet. A **500** means the controller is there and throwing — load that page in a browser and read the error. You can also point the checker at a controller directly with `recheck("Parks")`, but the nav link is worth 2 points on its own, so fix it rather than working around it.
 
 > [!TIP]
 > **Working offline?** Save [`homework-checks.js`](homework-checks.js) into your `wwwroot` folder and point the tag at it locally instead: `<script src="/homework-checks.js"></script>`. That's the CDN-versus-local-copy trade-off from [week 2](../week-02/lecture-notes.md#setup--two-tags), showing up in real life.
