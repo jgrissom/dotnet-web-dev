@@ -89,7 +89,7 @@ Every requirement above is about *your* properties, and the lab's exact attribut
 > [!WARNING]
 > **A non-nullable number is required whether you say so or not.** Leave an `int` or `double` box blank and you'll get *"The X field is required"* with no `[Required]` in sight — there's nowhere for an `int` to put "empty". If a number on your form is genuinely optional, the property has to be `int?`.
 
-## Part 3 — Check it when you're finished ✅
+## Part 3 — Check it as you go ✅
 
 **[`homework-checks.js`](homework-checks.js) runs the same checks I grade with.** It finds your controller from your navbar, finds your form from your list page, and then **fills the form in and submits it** — reading your own validation rules out of the HTML to decide what to type.
 

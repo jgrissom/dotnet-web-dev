@@ -65,7 +65,7 @@ It needs:
 >
 > **Order matters here, and it's the one part that isn't fixable later.** Committing build output and then adding the `.gitignore` afterwards leaves every one of those files in your history permanently; ignoring a file never removes what's already committed. It's the same reason a password committed once is a password you have to change — you'll meet that idea properly in week 7.
 
-## Part 3 — Check it when you're finished ✅
+## Part 3 — Check it as you go ✅
 
 **[`homework-checks.js`](homework-checks.js) runs the same checks I grade with.** Nothing in it is specific to my topic or yours — it finds your controller by following the link you put in the navbar, exactly like a visitor would.
 
