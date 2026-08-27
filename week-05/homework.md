@@ -32,19 +32,24 @@ Same app you built last week — the one you'll still be extending in week 9. Th
 > [!WARNING]
 > **Commit before you start.** [One bad line in the layout breaks every page at once](lecture-notes.md#renderbody-where-your-page-lands) — that's the trade you make for a shared shell. A clean commit to fall back to is worth thirty seconds.
 
-It needs:
+> [!TIP]
+> **Commit as you go, the way you have since week 3.** Three of this week's twenty points are the history itself, and they're all-or-nothing: fewer than three commits scores zero. A single "done" commit at 11:58pm is how people lose them. One commit per requirement you finish is the natural rhythm.
 
-1. **[A branded shell](lecture-notes.md#branding-the-shell)** — three edits, all in `Views/Shared/_Layout.cshtml`: the `navbar-brand` text, the `<title>` suffix, and the **footer**, which should carry your name and the year. Leave the footer where it is — it's already on every page, because the layout is.
-2. **[A title on every page](lecture-notes.md#viewdatatitle-and-the-browser-tab)** — `ViewData["Title"]` set in your home view, your index view, and your details view, all three different. **The details page's title must be data-driven** — `ViewData["Title"] = Model.Name;` (or whatever your item's name property is), so each item's page names itself in the browser tab.
-3. **[A partial, rendered from two different views](lecture-notes.md#passing-a-model-to-a-partial)** — a card for one of your items: `Views/Shared/_ThingCard.cshtml` with `@model Thing` on the first line. Render it from your **index**, inside the loop, and from **one other view** — featuring a single item on your home page is the easy second. *Two* views is the requirement, not one: a partial called from a single place is the same markup with an extra step, and it doesn't demonstrate anything.
-4. **[A Bootswatch theme](lecture-notes.md#the-payoff)** replacing the template's Bootstrap `<link>`. **Delete the original line** — leaving both means the two stylesheets fight and the theme only half applies.
-5. **The self-check script, included via [`@section Scripts`](lecture-notes.md#the-placeholder-that-was-always-there)** — this exact shape, at the bottom of `Views/Home/Index.cshtml`:
+### What it needs
+
+**Requirement 1 is the self-check itself.** Put it in first and every run after that tells you where you are.
+
+1. **The self-check script, included via [`@section Scripts`](lecture-notes.md#the-placeholder-that-was-always-there)** — this exact shape, at the bottom of `Views/Home/Index.cshtml`:
    ```html
    @section Scripts {
        <script src="https://jgrissom.github.io/dotnet-web-dev/week-05/homework-checks.js"></script>
    }
    ```
    It **replaces** week 4's bare `<script>` tag — delete that line, don't add a second one — and note the `week-05`, not `week-04`. See Part 3. This is the one requirement that grades *how* you added something rather than that you added it.
+2. **[A branded shell](lecture-notes.md#branding-the-shell)** — three edits, all in `Views/Shared/_Layout.cshtml`: the `navbar-brand` text, the `<title>` suffix, and the **footer**, which should carry your name and the year. Leave the footer where it is — it's already on every page, because the layout is.
+3. **[A title on every page](lecture-notes.md#viewdatatitle-and-the-browser-tab)** — `ViewData["Title"]` set in your home view, your index view, and your details view, all three different. **The details page's title must be data-driven** — `ViewData["Title"] = Model.Name;` (or whatever your item's name property is), so each item's page names itself in the browser tab.
+4. **[A partial, rendered from two different views](lecture-notes.md#passing-a-model-to-a-partial)** — a card for one of your items: `Views/Shared/_ThingCard.cshtml` with `@model Thing` on the first line. Render it from your **index**, inside the loop, and from **one other view** — featuring a single item on your home page is the easy second. *Two* views is the requirement, not one: a partial called from a single place is the same markup with an extra step, and it doesn't demonstrate anything.
+5. **[A Bootswatch theme](lecture-notes.md#the-payoff)** replacing the template's Bootstrap `<link>`. **Delete the original line** — leaving both means the two stylesheets fight and the theme only half applies.
 6. **Everything from week 4 still works** — the nav link to your index, the index list, the details page, and the 404 guard on a bad id.
 7. **Deployed to Azure**, and **3+ meaningful commits** in your public GitHub repo.
 
@@ -54,17 +59,27 @@ It needs:
 > [!TIP]
 > **Nothing here needs a controller change.** If you find yourself in `Controllers/`, you've probably wandered off the assignment.
 
-## Part 3 — Check it when you're finished ✅
+## Part 3 — Check it as you go ✅
 
 **[`homework-checks.js`](homework-checks.js) runs the same checks I grade with.** It reads your shell off three different pages — your home page, your index, and one details page — and compares them, which is the only way to prove from outside that a shell is really shared.
 
 > [!IMPORTANT]
-> **This is a finish line, not a progress bar.** It has nothing useful to say until the shell exists on all three pages. Build first. **Run it twice:**
+> **Run it as you go.** It reports all five checks every time, and marks the ones it can't reach yet ⬜ instead of failing them — so a half-built app tells you *where you are*, not that you're broken. While anything is still red, the report ends with one `👉 Next:` line naming the single next thing to do.
 >
-> 1. **When you think you're done locally** — cheap to fix things now
-> 2. **Again on your deployed Azure URL, before you submit** — that's the run that counts
+> **Fixing things on localhost is much cheaper than fixing them on Azure**, which is why the tag goes in as requirement 1 rather than after the deploy. Then run it once more on your **deployed URL before you submit** — that's the run that counts.
 
-**Installing it *is* requirement 5.** Last week you dropped a bare `<script>` tag at the bottom of a view. This week the same script goes in the layout's Scripts placeholder instead — which is exactly what that placeholder is for, and it's worth 2 points.
+| The report says | Which requirement |
+|---|---|
+| *nav link to your index page* | carried over from week 4 |
+| *your index and details pages still work* | carried over from week 4 |
+| *the shell is on every page* | 2 |
+| *every page has its own title* | 3 |
+| *a theme, not the default stylesheet* | 5 |
+
+> [!NOTE]
+> **Requirement 4 never turns a check green**, and that's not a bug. A partial lives in your repo, not in the HTML — the rendered page looks identical whether the markup came from a partial or was pasted twice. It's worth 3 points that I read out of your repo by hand.
+
+**Installing it *is* requirement 1.** Last week you dropped a bare `<script>` tag at the bottom of a view. This week the same script goes in the layout's Scripts placeholder instead — which is exactly what that placeholder is for, and it's worth 2 points.
 
 > [!CAUTION]
 > **This replaces last week's tag. Delete that line — don't add a second one.**
@@ -109,7 +124,7 @@ Then run your app **locally** (`dotnet watch`), load your home page, and open th
 > **If a red `🚨 Week 4's self-check script is STILL installed` appears just above the score line** — you added this week's tag but left last week's in place. Both are running. Delete the `week-04` line and refresh. It sits next to the score on purpose: a stale checker makes that number untrustworthy, so read the two together.
 
 > [!TIP]
-> **If it says your footer is "still the template's default line"** — that's requirement 1. The stock footer reads `© 2026 - YourProject - Privacy`; it's identical on every page already, so it can't prove you built anything. Put your own name and the year in it, in `_Layout.cshtml`.
+> **If it says your footer is "still the template's default line"** — that's requirement 2. The stock footer reads `© 2026 - YourProject - Privacy`; it's identical on every page already, so it can't prove you built anything. Put your own name and the year in it, in `_Layout.cshtml`.
 
 > [!TIP]
 > **If it can't find your controller**, your nav link from week 4 is missing or points somewhere else — easy to lose while rebuilding a navbar. You can tell it where to look instead — `recheck("Trails")` with *your* controller's name — but that link is worth 2 points on its own, so fix it rather than working around it.
