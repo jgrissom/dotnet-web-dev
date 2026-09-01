@@ -19,7 +19,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ## 0 · Before class
 
-- [ ] ⚠️ **Re-rehearsing this week? Delete `instructor/week-07/Curbside` first** — a rehearsal leaves it in tonight's **end** state, and every beat below starts from week 6's. Deleting the folder in Finder is enough; the next step recreates it
+- [ ] ⚠️ **Re-rehearsing this week? Two resets, and you need both.** A rehearsal leaves the files in tonight's **end** state *and* the database built — every beat below starts from week 6's, with **no database at all**. **The files:** delete `instructor/week-07/Curbside` in Finder; the next step recreates it. **The database:** with the mssql setup below, once the panel is up
 - [ ] VS Code → File → Open Folder → in `~/Repos/dotnet-web-dev-course/instructor/week-07`, create a new empty **Curbside** and open it *(the dialog's **New Folder** button makes `week-07` too, the first time)*. Its own week folder, so nothing here collides with another week's `Curbside` and no previous demo gets deleted
 - [ ] Integrated terminal (**Ctrl+&#96;**) — fill the empty folder with tonight's starter. This is Curbside exactly as week 6's demo left it: the form, the annotations, the `ModelState` guard, the redirect, `_ValidationScriptsPartial` in a section. Nothing about it knows what a database is:
   ```bash
@@ -32,7 +32,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   dotnet user-secrets set "ConnectionStrings:DefaultConnection" "Server=...;Database=...;User ID=...;Password=...;TrustServerCertificate=True"
   ```
 - [ ] Confirm it took: `dotnet user-secrets list` prints the connection string. **§2 shows this already done rather than doing it live** — your real password never goes on the projector
-- [ ] **Point Curbside at its own database** — same server, same account, **different `Database=`** from the Cryptids one behind the lab answer key. One database per application. It matters because the demo *drops* Curbside's database and rebuilds it live in §3, and you run the answer key on screen at §8: share one database and you destroy the thing you're about to demo
+- [ ] **Point Curbside at its own database** — same server, same account, **different `Database=`** from the Cryptids one behind the lab answer key. One database per application. It matters because **you drop Curbside's database in §0 and §3 creates it live**, and you run the answer key on screen at §8: share one database and you destroy the thing you're about to demo
 - [ ] Run it, same terminal:
   ```bash
   dotnet watch
@@ -40,7 +40,9 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] **Open a second integrated terminal** (the `+` on the terminal panel — it opens in the same folder). `dotnet watch` owns the first one all night; everything you type tonight goes in the second — §2's two `dotnet add package` commands and its `dotnet user-secrets list`, then §3's `dotnet ef migrations add` and `dotnet ef database update`. **The `dotnet ef` version check below goes there too** — it is the first thing you'll run in it
 - [ ] **Park two browser tabs**: `/Trucks` and `/Trucks/Create`
 - [ ] **Install and sign into the VS Code `mssql` extension**, with a saved, **tested** connection — but the panel closed to start. **It's your main instrument from §3 onward**: you open it in §3 to show there's *nothing there*, and from then on you refresh it rather than reopening. A login prompt at any of those kills the beat
-- [ ] ⚠️ **Save that connection to the *server*, with the database field left blank** — not to Curbside's database, which does not exist yet and won't until §3 creates it. A profile naming a database that isn't there fails to connect, and you'd be debugging it at 1:35 in front of the room. From §3 on you expand the new database underneath that server connection
+- [ ] ⚠️ **Save that connection to the *server*, with the database field left blank** — not to Curbside's database, which won't exist until §3 creates it — and if you're re-rehearsing, the next step deletes the one that's still there. A profile naming a database that isn't there fails to connect, and you'd be debugging it at 1:35 in front of the room. From §3 on you expand the new database underneath that server connection
+- [ ] ⚠️ **Re-rehearsing? Drop Curbside's database now, while the panel is open** — expand the server, right-click Curbside's database → **Delete**, then collapse the server again so §3 opens on a clean panel. ⚠️ **Not `dotnet ef database drop`** — tonight's starter has no EF packages until §2, so `dotnet ef` cannot run in the fresh copy at all; it answers *"doesn't reference Microsoft.EntityFrameworkCore.Design"*. The panel needs no project, which is why it is the tool for this
+- [ ] ⚠️ **Nothing to rebuild afterwards — unlike week 8, there is no `database update` to follow.** You want **no database at curtain**: §3 opens on an empty server and §4 is the room watching the rows arrive. Rebuilding it here deletes the show
 - [ ] **Keep the terminal visible all night** (it's sized in the Teaching profile below). Unlike week 6 you never need to clear it — the scroll *is* the story
 - [ ] **Check `dotnet ef` isn't a version behind.** Run both and compare the **first number only**:
   ```bash

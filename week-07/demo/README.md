@@ -6,11 +6,9 @@ Week 7's demo picks Curbside up where week 6 left it — form working, annotatio
 - **The starting app is not in this repo.** Curbside's finished week-6 state lives in the private answer-keys repo at `week-07/demo-starter/Curbside` — copy it out into `~/Repos/dotnet-web-dev-course/instructor/week-07/` before class.
 
 > [!CAUTION]
-> **Fill in your own connection string before class and prove it works**, then drop the database so the class watches it get created:
+> **Fill in your own connection string before class and prove it works**, then drop the database so the class watches it get created — **in the VS Code mssql panel**: expand your server, right-click Curbside's database → **Delete**.
 >
-> ```bash
-> dotnet ef database drop --force
-> ```
+> ⚠️ **Not `dotnet ef database drop --force`.** Tonight's starter has no EF packages until §2, so `dotnet ef` cannot run in the fresh copy at all — it answers *"doesn't reference Microsoft.EntityFrameworkCore.Design"*. The panel needs no project.
 >
 > Everything from §3 onwards needs a live database. If your connection string is wrong in front of the room you lose §3 and §4 both, and unlike week 6's breaks there is no way to keep going without it. Rehearse the whole thing once end to end.
 
