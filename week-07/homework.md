@@ -103,12 +103,16 @@ The lab's `Cryptid` won't transfer, but the moves do. A few translations:
 > **This one changes your data, and this week the change sticks.** It submits your form twice: once with rubbish, to check you refuse it, and once with a good record. That second one leaves an item called **`SelfCheck entry`** in your list — and unlike last week it will still be there tomorrow, because that's the point. **Running it as you go leaves one behind per run.** Delete them by hand whenever you like; they cost you nothing.
 
 > [!IMPORTANT]
-> **Run it as you go.** It reports all five checks every time, and marks the ones it can't reach yet ⬜ instead of failing them — so a half-migrated app tells you *where you are*, not that you're broken. While anything is still red, the report ends with one `👉 Next:` line naming the single next thing to do.
+> **Run it as you go — but know what this week's checker is.** It is an **alarm, not a progress bar**, and the difference matters tonight. Point it at last week's app — no database anywhere in it — and it reports **5 of 5 checks green, 6 of 6 points**. That isn't a bug; it's the paragraph above being true. From outside, your app looks the same before and after.
+>
+> So it can't tell you how far along you are. What it *can* tell you is the thing that actually goes wrong tonight: **this week is a rewrite, and rewrites break what used to work.** Run it after each requirement and it names what stopped working while you still remember what you changed. While anything is red, the report ends with one `👉 Next:` line naming the single next thing to do.
+>
+> ⚠️ **Green means "still working." It does not mean the database work is done** — that part is the 11 points I read out of your repo, and no amount of green here says anything about them.
 >
 > **Fixing things on localhost is much cheaper than fixing them on Azure**, which is why the tag went in back in Part 2 rather than after the deploy. Then run it once more on your **deployed URL before you submit** — that's the run that counts.
 
-The report doesn't print in requirement order — it prints in the order a checker can *reach* things,
-crawling your site from the outside. What turns each line green:
+The report prints in the order a checker can *reach* things, crawling your site from the outside.
+Each line is green before you start; what matters is which requirement turns it **red** if you break it:
 
 | The report says | Which requirement |
 |---|---|
@@ -116,7 +120,7 @@ crawling your site from the outside. What turns each line green:
 | *a details page still works* | 8, `FirstOrDefault` against the `DbSet` |
 | *your form still refuses a bad record* | 10 — week 6's guard has to survive the rewrite |
 | *a good record is accepted and lands in your list* | 8, `Add` **and** `SaveChanges()` |
-| *the new record's id was assigned for you* | 9, the hand-written `Max(x => x.Id) + 1` is gone |
+| *the new record's id was assigned for you* | 9 — but the line above goes red first: a leftover `Max(x => x.Id) + 1` throws `Cannot insert explicit value for identity column` once `Id` is a real identity column |
 
 **You installed the tag in Part 2, so it is already there.** Run your app **locally** (`dotnet watch`), load your home page, and open the console — **F12 → Console**. It runs automatically.
 
