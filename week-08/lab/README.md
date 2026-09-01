@@ -37,7 +37,7 @@ CryptidsCrud/              ← in `dotnet-web`, the folder you copied and rename
 
 | Terminal | Where it stands | What runs in it |
 |---|---|---|
-| 1 | inside `Cryptids.Web` | `dotnet watch` — started in task 1, left alone after that |
+| 1 | `CryptidsCrud`, the folder holding **both** projects | `dotnet watch --project Cryptids.Web` — **started in task 1**, then left alone |
 | 2 | inside `Cryptids.Web` | everything else: `dotnet user-secrets`, `dotnet ef`, `dotnet aspnet-codegenerator` |
 | 3 | `CryptidsCrud`, the folder holding **both** projects | `dotnet test Cryptids.Checks` |
 
@@ -50,7 +50,7 @@ dotnet test Cryptids.Checks
 **1 / 6 passing.** Check 1 is the week-7 Registry you were handed, already working. The other five are tonight.
 
 > [!CAUTION]
-> **Same folder split as last week, and it still trips everybody:** `dotnet test Cryptids.Checks` runs from the folder holding *both* projects; `dotnet ef`, `dotnet user-secrets`, `dotnet watch` and tonight's new `dotnet aspnet-codegenerator` all run from **inside `Cryptids.Web`** — which is what step 4's table above is arranging for you.
+> **Same folder split as last week, and it still trips everybody:** `dotnet test Cryptids.Checks` and `dotnet watch --project Cryptids.Web` both run from the folder holding *both* projects; `dotnet ef`, `dotnet user-secrets` and tonight's new `dotnet aspnet-codegenerator` all run from **inside `Cryptids.Web`** — which is what step 4's table above is arranging for you.
 
 ## Where tonight's work happens
 
@@ -120,7 +120,13 @@ dotnet ef database update
 
 Watch what those two just did: dropped last week's database, then created it again, built the table and inserted the six creatures — schema *and* data, from files that came to you in a git clone. **The fact that that works is what a migration is:** a database you can carry in a repo.
 
-`dotnet watch`, open `/Cryptids`, count six. Then leave it running.
+**Now start the app — in terminal 1:**
+
+```bash
+dotnet watch --project Cryptids.Web
+```
+
+Open `/Cryptids` and count six. Then leave it running for the rest of the lab.
 
 > [!TIP]
 > **On a lab PC that resets when it reboots:** both the tool and your secret are gone next session. Two commands bring them back — the two at the top of this task. Keep your connection string somewhere that isn't this machine.
@@ -374,7 +380,7 @@ public async Task<IActionResult> DeleteConfirmed(int id)
 **Then the scaffold comes down.** Delete **`Controllers/CryptidsScaffoldController.cs`** and the whole **`Views/CryptidsScaffold/`** folder. It was the reference; everything worth keeping has been ported, and what's left is an unthemed second UI nobody maintains.
 
 > [!WARNING]
-> **Restart after deleting it** — `Ctrl+C`, then `dotnet watch`. Deleting a class is a rude edit: `dotnet watch` prints `ENC0033` and keeps serving the old build, exactly like week 7's `CryptidData.cs` deletion.
+> **Restart after deleting it** — `Ctrl+C`, then `dotnet watch --project Cryptids.Web`. Deleting a class is a rude edit: `dotnet watch` prints `ENC0033` and keeps serving the old build, exactly like week 7's `CryptidData.cs` deletion.
 
 **Then the tool goes back in the box.** The generated files are gone; the machinery that wrote them is still in your `.csproj`. From inside `Cryptids.Web`:
 
@@ -602,7 +608,7 @@ public async Task<IActionResult> Index()
 >
 > Skip this and the form *looks* perfect — but [the guest list drops the unbound fields and `Update` writes the resulting nulls](../lecture-notes.md#the-guest-list-bites), so saving an edit **erases** a record's Latin name and plate. Silently. Check 6 catches it by editing The Hodag's Latin name through your form and reading what actually landed.
 >
-> ⚠️ **Then restart — `Ctrl+C`, `dotnet watch`.** You changed *only* an attribute, and MVC reads each action's binding from its attributes at startup, so hot reload can report success and keep the old list. Re-test without restarting and the erase can happen again **with the correct fix already in place** — which sends you hunting a bug you've already fixed.
+> ⚠️ **Then restart — `Ctrl+C`, then `dotnet watch --project Cryptids.Web`.** You changed *only* an attribute, and MVC reads each action's binding from its attributes at startup, so hot reload can report success and keep the old list. Re-test without restarting and the erase can happen again **with the correct fix already in place** — which sends you hunting a bug you've already fixed.
 
 **Try the whole thing:** reload `/Cryptids` — six plates. Home page — a random creature, plate and all. Edit The Hodag, refine its Latin name, save — it sticks. File a fresh report — *artist unknown*.
 
