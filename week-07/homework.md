@@ -27,6 +27,36 @@ Same app you've been building since week 4. Its list has been a `static List<T>`
 > [!TIP]
 > **Keep [`lecture-notes.md`](lecture-notes.md) open while you work.** Every requirement below links to the section that covers it, and the [troubleshooting appendix](lecture-notes.md#appendix-troubleshooting) names tonight's specific errors — including the silent one, where the form works perfectly and saves nothing.
 
+> [!TIP]
+> **Commit as you go, the way you have since week 3.** Three of tonight's twenty points are the history itself, and they're all-or-nothing: fewer than three commits scores zero. A single "done" commit at 11:58pm is how people lose them. One commit per requirement you finish is the natural rhythm.
+
+### Swap the self-check over first
+
+It grades whatever site it is loaded on, and you want it reporting on *this* week's work while you are still building — not after you deploy. It also has to ship *with* the app: a week-6 tag on your deployed site means a week-6 report, in green, about the wrong week.
+
+**Open `Views/Home/Index.cshtml`.** Find last week's line and **replace it** — same place, same section, one character different:
+
+```html
+<script src="https://jgrissom.github.io/dotnet-web-dev/week-06/homework-checks.js"></script>
+```
+
+becomes
+
+```html
+<script src="https://jgrissom.github.io/dotnet-web-dev/week-07/homework-checks.js"></script>
+```
+
+*(Can't find the old line? Search your project for `week-06` — **Ctrl+Shift+F** / **⇧⌘F**.)*
+
+> [!CAUTION]
+> **Replace it. Don't add a second one.**
+>
+> Week 6's checker still works, and nothing you did this week broke any of its requirements — so it prints a full green report. Worse than last week: it's scored out of **14** and this week's is scored out of **6**, so the stale report looks *better* than the real one.
+>
+> **The tell is the first line.** `🔎 Week 6 self-check` is the wrong one; this week's says **`Week 7`**. If both are installed, this week's prints a red 🚨 above the score.
+
+### Then build it
+
 It needs:
 
 1. **[The two packages](lecture-notes.md#two-packages)** — `Microsoft.EntityFrameworkCore.SqlServer` and `Microsoft.EntityFrameworkCore.Design`, added from inside your web project folder. *(The lab handed these to you; here you run them yourself.)*
@@ -62,36 +92,67 @@ The lab's `Cryptid` won't transfer, but the moves do. A few translations:
 > [!WARNING]
 > **Seed data must not use `DateTime.Now`, `Guid.NewGuid()`, or anything else that changes.** EF Core compares your seed data against the last snapshot every time you add a migration; if the values move, every migration contains pointless updates. Hard-code them.
 
-### Swap the self-check over before you deploy
+## Part 3 — Check it as you go ✅
 
-It has to ship *with* the app — the script grades whatever site it is loaded on, so a week-6 tag on
-your deployed site means a week-6 report, in green, about the wrong week.
+**[`homework-checks.js`](homework-checks.js) runs the same checks I grade with.** It finds your controller from your navbar, then crawls your site from the outside — your list, a details page, and the week-6 form that now has to put records in a table instead of a variable.
 
-**Open `Views/Home/Index.cshtml`.** Find last week's line and **replace it** — same place, same section, one character different:
-
-```html
-<script src="https://jgrissom.github.io/dotnet-web-dev/week-06/homework-checks.js"></script>
-```
-
-becomes
-
-```html
-<script src="https://jgrissom.github.io/dotnet-web-dev/week-07/homework-checks.js"></script>
-```
-
-*(Can't find the old line? Search your project for `week-06` — **Ctrl+Shift+F** / **⇧⌘F**.)*
+> [!IMPORTANT]
+> **Only 6 of the 20 points are in that script this week, down from 14.** That isn't because this week is easier. It's because what you built is *invisible from outside*: a page backed by SQL Server and a page backed by a `static List<T>` serve byte-identical HTML, so no amount of fetching can tell them apart. The script checks your app **survived the rewrite**. The database itself is **11 points, read out of your repo** — see the rubric.
 
 > [!CAUTION]
-> **Replace it. Don't add a second one.**
+> **This one changes your data, and this week the change sticks.** It submits your form twice: once with rubbish, to check you refuse it, and once with a good record. That second one leaves an item called **`SelfCheck entry`** in your list — and unlike last week it will still be there tomorrow, because that's the point. **Running it as you go leaves one behind per run.** Delete them by hand whenever you like; they cost you nothing.
+
+> [!IMPORTANT]
+> **Run it as you go.** It reports all five checks every time, and marks the ones it can't reach yet ⬜ instead of failing them — so a half-migrated app tells you *where you are*, not that you're broken. While anything is still red, the report ends with one `👉 Next:` line naming the single next thing to do.
 >
-> Week 6's checker still works, and nothing you did this week broke any of its requirements — so it prints a full green report. Worse than last week: it's scored out of **14** and this week's is scored out of **6**, so the stale report looks *better* than the real one.
->
-> **The tell is the first line.** `🔎 Week 6 self-check` is the wrong one; this week's says **`Week 7`**. If both are installed, this week's prints a red 🚨 above the score.
+> **Fixing things on localhost is much cheaper than fixing them on Azure**, which is why the tag went in back in Part 2 rather than after the deploy. Then run it once more on your **deployed URL before you submit** — that's the run that counts.
+
+The report doesn't print in requirement order — it prints in the order a checker can *reach* things,
+crawling your site from the outside. What turns each line green:
+
+| The report says | Which requirement |
+|---|---|
+| *your list page still works* | 8, the index reading through the context — and 3, your seed data |
+| *a details page still works* | 8, `FirstOrDefault` against the `DbSet` |
+| *your form still refuses a bad record* | 10 — week 6's guard has to survive the rewrite |
+| *a good record is accepted and lands in your list* | 8, `Add` **and** `SaveChanges()` |
+| *the new record's id was assigned for you* | 9, the hand-written `Max(x => x.Id) + 1` is gone |
+
+**You installed the tag in Part 2, so it is already there.** Run your app **locally** (`dotnet watch`), load your home page, and open the console — **F12 → Console**. It runs automatically.
+
+```
+🔎 Week 7 self-check — https://trailguide-ab1234.azurewebsites.net
+
+✅ 1 pts  your list page still works — 6 records
+✅ 1 pts  a details page still works — /Trails/Details/1
+✅ 1 pts  your form still refuses a bad record
+✅ 2 pts  a good record is accepted and lands in your list — 6 → 7
+✅ 1 pts  the new record's id was assigned for you — 7
+
+📋 5 of 5 checks green · 6 of 6 points  (controller: /Trails)
+```
+
+> [!NOTE]
+> It checks **whatever site it's loaded on** — so put the tag in *your* app, not on this page. `recheck()` re-runs it without reloading.
+
+> [!TIP]
+> **If your list page is empty**, the table exists but has no rows. Open your migration file: if there's no `InsertData` in it, you generated it before writing `HasData`. Delete the `Migrations` folder and generate it again.
+
+> [!TIP]
+> **If a good record "isn't accepted"** and you got a redirect anyway — you're missing `SaveChanges()`. `Add` only records an intention; nothing reaches the database until you save. No error is produced, which is what makes this one expensive.
+
+> [!TIP]
+> **If everything works locally and the deployed app 500s** — first, if you set the app setting in the last minute, **wait**: it restarts the app, and one that's still starting looks exactly like a broken one. After that it's the connection string or the region. Read the log with `az webapp log tail --name your-app-XX1234 --resource-group <YOUR-RESOURCE-GROUP>` (or **Log stream** in the portal) for the real exception. `A network-related or instance-specific error` from a deployed app almost always means a non-US region.
 
 > [!TIP]
 > **Working offline?** Save [`homework-checks.js`](homework-checks.js) into your `wwwroot` folder and point the tag at it locally: `<script src="/homework-checks.js"></script>` — still inside the `@section Scripts` block.
 
-## Part 3 — Check your password isn't in your public repo 🔐
+*(If you have Node installed, `node homework-checks.js <url>` does the same from a terminal. You don't need it.)*
+
+> [!IMPORTANT]
+> Run it against your **deployed** URL, not just localhost. "It worked on my machine" is not worth points, and a broken deploy is the single most common way to lose them.
+
+## Part 4 — Check your password isn't in your public repo 🔐
 
 There is no work in this part. That's the point of it.
 
@@ -109,7 +170,7 @@ Nothing about your connection string appears, because there's nothing in the rep
 > [!NOTE]
 > **`appsettings.json` stays in your repo**, same as it's been since week 3. It holds your logging settings and nothing secret. Don't gitignore it.
 
-## Part 4 — Deploy it (graded)
+## Part 5 — Deploy it (graded)
 
 This week it's **two commands, not one** — because your connection string is deliberately not in anything you deploy.
 
@@ -161,7 +222,7 @@ That shows you the actual exception rather than a 500. There's also `az webapp r
 > [!IMPORTANT]
 > **You don't run migrations against a separate production database.** Your laptop and your Azure app point at the *same* database, and you already migrated it. That's not what a real project does — week 15 covers what real projects do — but it's what makes the next part possible.
 
-## Part 5 — The two minutes that are actually the point ⭐
+## Part 6 — The two minutes that are actually the point ⭐
 
 Do this. It takes longer to read than to do, and it's the whole week:
 
@@ -171,41 +232,6 @@ Do this. It takes longer to read than to do, and it's the whole week:
 **It's there.** Two applications, on two different computers, showing the same data — because the data isn't in either of them. Nothing you built in the first six weeks could do that.
 
 Then restart your local app and reload. Still there.
-
-## Part 6 — Check it when you're finished ✅
-
-**[`homework-checks.js`](homework-checks.js) runs the same checks I grade with.**
-
-> [!IMPORTANT]
-> **Only 6 of the 20 points are in that script this week, down from 14.** That isn't because this week is easier. It's because what you built is *invisible from outside*: a page backed by SQL Server and a page backed by a `static List<T>` serve byte-identical HTML, so no amount of fetching can tell them apart. The script checks your app **survived the rewrite**. The database itself is **11 points, read out of your repo** — see the rubric.
-
-> [!CAUTION]
-> **This one changes your data, and this week the change sticks.** It submits your form twice: once with rubbish, to check you refuse it, and once with a good record. That second one leaves an item called **`SelfCheck entry`** in your list — and unlike last week it will still be there tomorrow, because that's the point. Delete it by hand if you like; you don't need to.
-
-**You swapped the checker to week 7 in Part 2, so it went up with the deploy.** Load your **Azure URL** and open the console — **F12 → Console**.
-
-```
-🔎 Week 7 self-check — https://trailguide-ab1234.azurewebsites.net
-
-✅ 1 pts  your list page still works — 6 records
-✅ 1 pts  a details page still works — /Trails/Details/1
-✅ 1 pts  your form still refuses a bad record
-✅ 2 pts  a good record is accepted and lands in your list — 6 → 7
-✅ 1 pts  the new record's id was assigned for you — 7
-
-📋 5 of 5 checks green · 6 of 6 points  (controller: /Trails)
-```
-
-> [!TIP]
-> **If your list page is empty**, the table exists but has no rows. Open your migration file: if there's no `InsertData` in it, you generated it before writing `HasData`. Delete the `Migrations` folder and generate it again.
-
-> [!TIP]
-> **If a good record "isn't accepted"** and you got a redirect anyway — you're missing `SaveChanges()`. `Add` only records an intention; nothing reaches the database until you save. No error is produced, which is what makes this one expensive.
-
-> [!TIP]
-> **If everything works locally and the deployed app 500s** — first, if you set the app setting in the last minute, **wait**: it restarts the app, and one that's still starting looks exactly like a broken one. After that it's the connection string or the region. Read the log with `az webapp log tail --name your-app-XX1234 --resource-group <YOUR-RESOURCE-GROUP>` (or **Log stream** in the portal) for the real exception. `A network-related or instance-specific error` from a deployed app almost always means a non-US region.
-
-*(If you have Node installed, `node homework-checks.js <url>` does the same from a terminal. You don't need it.)*
 
 ## 🆘 Stuck?
 

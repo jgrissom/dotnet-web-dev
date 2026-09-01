@@ -24,6 +24,32 @@ Same app you've been building since week 4. It can create records and show them.
 > [!TIP]
 > **Keep [`lecture-notes.md`](lecture-notes.md) open while you work.** Every requirement links to the section that covers it, and the [troubleshooting appendix](lecture-notes.md#appendix-troubleshooting) names this week's specific errors — including the two silent ones.
 
+> [!TIP]
+> **Commit as you go, the way you have since week 3.** Three of tonight's twenty points are the history itself, and they're all-or-nothing: fewer than three commits scores zero. A single "done" commit at 11:58pm is how people lose them. One commit per requirement you finish is the natural rhythm.
+
+### Swap the self-check over first
+
+It grades whatever site it is loaded on, and you want it reporting on *this* week's work while you are still building — not after you deploy. It also has to ship *with* the app: a week-7 tag on your deployed site means a week-7 report, in green, about the wrong week.
+
+**Open `Views/Home/Index.cshtml`.** Find last week's line and **replace it** — same place, one character different:
+
+```html
+<script src="https://jgrissom.github.io/dotnet-web-dev/week-07/homework-checks.js"></script>
+```
+
+becomes
+
+```html
+<script src="https://jgrissom.github.io/dotnet-web-dev/week-08/homework-checks.js"></script>
+```
+
+*(Can't find it? Search the project for `week-07` — **Ctrl+Shift+F** / **⇧⌘F**.)*
+
+> [!CAUTION]
+> **Replace it. Don't add a second one.** Week 7's checker still passes — nothing this week breaks last week's requirements — so it prints a reassuring green report about the wrong week. The tell is the first line: it should say **`Week 8`**. If both are installed, this week's prints a red 🚨 above the score.
+
+### Then build it
+
 It needs:
 
 1. **[The two packages and the tool](lecture-notes.md#two-packages-and-a-tool)** — `Microsoft.VisualStudio.Web.CodeGeneration.Design` and `Microsoft.EntityFrameworkCore.Tools` added to your web project, and `dotnet-aspnet-codegenerator` installed globally. *(The lab handed you the packages; here you run the commands yourself.)* **Take both back out once you've scaffolded** — [same as the lab](lecture-notes.md#and-the-tool-goes-back-in-the-box); it stops the `NU1901` warnings, and `EntityFrameworkCore.Design` stays behind for `dotnet ef`.
@@ -57,32 +83,67 @@ The lab's moves transfer one-for-one; only the names change. Translations that c
 > [!WARNING]
 > **Do not delete your `Migrations` folder to "start clean."** Your database's `__EFMigrationsHistory` remembers your old migration files by name; regenerated files can never be applied to it. [Forward only](lecture-notes.md#forward-only) — a wrong migration is fixed by adding another one. (A migration you generated but never applied is the exception: `dotnet ef migrations remove` unwinds it safely.)
 
-### Swap the self-check over before you deploy
+## Part 3 — Check it as you go ✅
 
-It has to ship *with* the app — the script grades whatever site it is loaded on, so a week-7 tag on
-your deployed site means a week-7 report, in green, about the wrong week.
+**[`homework-checks.js`](homework-checks.js) runs the same checks I grade with — and this week it exercises your whole CRUD cycle.**
 
-**Open `Views/Home/Index.cshtml`.** Find last week's line and **replace it** — same place, one character different:
+> [!IMPORTANT]
+> **The points moved back: 12 of 20 are in the script this week**, up from 6. Week 7's work was invisible from outside — a database-backed page renders the same HTML as a hard-coded one. Edit and delete are *visible*: a checker can watch a record change and disappear. So it does.
 
-```html
-<script src="https://jgrissom.github.io/dotnet-web-dev/week-07/homework-checks.js"></script>
+> [!NOTE]
+> **What it does to your data: nothing, if Delete works.** It files a record through your form, edits it into `SelfCheck entry (edited)`, tries a bad edit (which you should refuse), then **deletes it through your own confirmation flow** — leaving your list exactly as it found it. The deletion isn't just cleanup; it's the D being graded. If the delete step fails, the test record stays until your Delete works (run it again) or you remove it by hand.
+
+> [!IMPORTANT]
+> **Run it as you go.** It reports all seven checks every time, and marks the ones it can't reach yet ⬜ instead of failing them — so an app with Edit done and Delete still to come tells you *where you are*, not that you're broken. While anything is still red, the report ends with one `👉 Next:` line naming the single next thing to do.
+>
+> **It cleans up after itself** (see above), so running it ten times costs you nothing — which is what makes it worth running after every requirement rather than once at the end.
+>
+> **Fixing things on localhost is much cheaper than fixing them on Azure**, which is why the tag went in back in Part 2 rather than after the deploy. Then run it once more on your **deployed URL before you submit** — that's the run that counts.
+
+The report doesn't print in requirement order — it prints in the order a checker can *reach* things,
+crawling your site from the outside. What turns each line green:
+
+| The report says | Which requirement |
+|---|---|
+| *your list page still works* | 8 — and 6, if your migration actually reached the database |
+| *a new record can still be filed* | 8, week 6's Create surviving everything you added |
+| *the Edit form shows the record, pre-filled* | 3, the GET half and its hidden `Id` |
+| *a correction is saved — as an update, not a copy* | 3, the POST half — **and 7**, because a property missing from `[Bind]` comes back erased |
+| *a bad correction is refused* | 3, the same `ModelState` guard Create already has |
+| *Delete asks before deleting* | 4, the GET that shows and changes nothing |
+| *the record can be deleted* | 4, `DeleteConfirmed` |
+
+**You installed the tag in Part 2, so it is already there.** Run your app **locally** (`dotnet watch`), load your home page, and open the console — **F12 → Console**. It runs automatically.
+
+```
+🔎 Week 8 self-check — https://trailguide-ab1234.azurewebsites.net
+
+✅ 1 pts  your list page still works — 6 records
+✅ 1 pts  a new record can still be filed — id 9
+✅ 2 pts  the Edit form shows the record, pre-filled — /Trails/Edit/9
+✅ 3 pts  a correction is saved — as an update, not a copy
+✅ 1 pts  a bad correction is refused
+✅ 1 pts  Delete asks before deleting — /Trails/Delete/9
+✅ 3 pts  the record can be deleted — and your data is back exactly as I found it
+
+📋 7 of 7 checks green · 12 of 12 points  (controller: /Trails)
 ```
 
-becomes
+> [!NOTE]
+> It checks **whatever site it's loaded on** — so put the tag in *your* app, not on this page. `recheck()` re-runs it without reloading.
 
-```html
-<script src="https://jgrissom.github.io/dotnet-web-dev/week-08/homework-checks.js"></script>
-```
-
-*(Can't find it? Search the project for `week-07` — **Ctrl+Shift+F** / **⇧⌘F**.)*
-
-> [!CAUTION]
-> **Replace it. Don't add a second one.** Week 7's checker still passes — nothing this week breaks last week's requirements — so it prints a reassuring green report about the wrong week. The tell is the first line: it should say **`Week 8`**. If both are installed, this week's prints a red 🚨 above the score.
+> [!TIP]
+> **If the correction "saves" but nothing changed** — missing `SaveChangesAsync`. **If your list *grew*** — either the POST calls `Add` instead of `Update`, or the hidden `Id` is missing and `Update` filed an unset key as new. **If delete returns 405** — the `DeleteConfirmed` + `[ActionName("Delete")]` pair didn't port intact. Each check's ↳ hint says which.
 
 > [!TIP]
 > **Working offline?** Save [`homework-checks.js`](homework-checks.js) into your `wwwroot` folder and point the tag at it locally: `<script src="/homework-checks.js"></script>` — still inside the `@section Scripts` block.
 
-## Part 3 — Deploy it (graded, and shorter than it has ever been)
+*(If you have Node installed, `node homework-checks.js <url>` does the same from a terminal. You don't need it.)*
+
+> [!IMPORTANT]
+> Run it against your **deployed** URL, not just localhost. "It worked on my machine" is not worth points, and a broken deploy is the single most common way to lose them.
+
+## Part 4 — Deploy it (graded, and shorter than it has ever been)
 
 **Apply the migration first.** Your laptop and your Azure app share one database, so:
 
@@ -103,37 +164,6 @@ That's it. **No second command this week.** Last week's `az webapp config appset
 
 > [!TIP]
 > **Deploy order matters a little this week:** migrate, then deploy. Between the two, your *old* deployed code runs against the *new* schema — which is fine, because it never asks for the column it doesn't know about. The reverse gap (new code, old schema) throws `Invalid column name` — and if your deployed site 500s while localhost is fine, that's the first thing to check: did `database update` actually run?
-
-## Part 4 — Check it when you're finished ✅
-
-**[`homework-checks.js`](homework-checks.js) runs the same checks I grade with — and this week it exercises your whole CRUD cycle.**
-
-> [!IMPORTANT]
-> **The points moved back: 12 of 20 are in the script this week**, up from 6. Week 7's work was invisible from outside — a database-backed page renders the same HTML as a hard-coded one. Edit and delete are *visible*: a checker can watch a record change and disappear. So it does.
-
-> [!NOTE]
-> **What it does to your data: nothing, if Delete works.** It files a record through your form, edits it into `SelfCheck entry (edited)`, tries a bad edit (which you should refuse), then **deletes it through your own confirmation flow** — leaving your list exactly as it found it. The deletion isn't just cleanup; it's the D being graded. If the delete step fails, the test record stays until your Delete works (run it again) or you remove it by hand.
-
-**You swapped the checker to week 8 in Part 2, so it went up with the deploy.** Load your **Azure URL** and open the console — **F12 → Console**:
-
-```
-🔎 Week 8 self-check — https://trailguide-ab1234.azurewebsites.net
-
-✅ 1 pts  your list page still works — 6 records
-✅ 1 pts  a new record can still be filed — id 9
-✅ 2 pts  the Edit form shows the record, pre-filled — /Trails/Edit/9
-✅ 3 pts  a correction is saved — as an update, not a copy
-✅ 1 pts  a bad correction is refused
-✅ 1 pts  Delete asks before deleting — /Trails/Delete/9
-✅ 3 pts  the record can be deleted — and your data is back exactly as I found it
-
-📋 7 of 7 checks green · 12 of 12 points  (controller: /Trails)
-```
-
-> [!TIP]
-> **If the correction "saves" but nothing changed** — missing `SaveChangesAsync`. **If your list *grew*** — either the POST calls `Add` instead of `Update`, or the hidden `Id` is missing and `Update` filed an unset key as new. **If delete returns 405** — the `DeleteConfirmed` + `[ActionName("Delete")]` pair didn't port intact. Each check's ↳ hint says which.
-
-*(If you have Node installed, `node homework-checks.js <url>` does the same from a terminal. You don't need it.)*
 
 ## 🆘 Stuck?
 
