@@ -32,13 +32,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   dotnet user-secrets set "ConnectionStrings:DefaultConnection" "Server=...;Database=...;User ID=...;Password=...;TrustServerCertificate=True"
   ```
 - [ ] Confirm it took: `dotnet user-secrets list` prints the connection string. **§2 shows this already done rather than doing it live** — your real password never goes on the projector
-- [ ] **Point Curbside at its own database** — same server, same account, **different `Database=`** from the Cryptids one behind the lab answer key. One database per application. It matters because **you drop Curbside's database in §0 and §3 creates it live**, and you run the answer key on screen at §8: share one database and you destroy the thing you're about to demo
-- [ ] **First time only — set the lab answer key up too, because §8 runs it.** It's a separate application with its own `<UserSecretsId>`, so it needs its own string and its own database — the Cryptids one, not Curbside's. From `week-07/lab/solution/Cryptids.Web` in the answer-keys repo:
-  ```bash
-  dotnet user-secrets set "ConnectionStrings:DefaultConnection" "Server=...;Database=Cryptids_<COURSE>_<INITIALS>;User ID=...;Password=...;TrustServerCertificate=True"
-  dotnet ef database update
-  ```
-  `set` alone — the `<UserSecretsId>` ships in the key's `.csproj`. It survives between runs, and §0's Curbside drop doesn't touch it. ⚠️ **Skip it and §8 falls over:** with no connection string the key won't start at all (`UseSqlServer(null)` throws), and `dotnet test` prints **5 / 6** with check 3 red
+- [ ] **Point Curbside at its own database** — same server, same account, **different `Database=`** from the `Cryptids_` one your lab-walk copy uses. One database per application. It matters because **you drop Curbside's database in §0 and §3 creates it live**, and you run your finished lab copy on screen at §8: share one database and you destroy the thing you're about to demo
 - [ ] Run it, same terminal:
   ```bash
   dotnet watch
@@ -430,7 +424,8 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 ## 8 · Hand off to the lab *(slide 23)*
 
 - [ ] 🎞️ **GO TO SLIDE 23** — *Lab: the Registry gets a filing cabinet*. Leave it up for the whole lab; it's the task list
-- [ ] Show **what done looks like** — the answer key **running on localhost** — its list served out of SQL Server — and `dotnet test Cryptids.Checks` printing **6 / 6**. That's `week-07/lab/solution` in the answer-keys repo — **take terminal 2 over to it** (`dotnet run` from `Cryptids.Web`, `dotnet test` from the folder above it), then `Ctrl+C` and come back. ~90 seconds, a target not a walkthrough. **Nothing is deployed for this** — Azure is their homework, not tonight. ⚠️ **This needs the one-time answer-key setup from §0**
+- [ ] Show **what done looks like** — **the app you finished the lab walk in**, running on localhost, its list served out of SQL Server, and `dotnet test Cryptids.Checks` printing **6 / 6**. It's the same folder they're about to create tonight, and you set its connection string in task 1, so there's nothing to prepare. **Take terminal 2 over to it** (`dotnet run` from `Cryptids.Web`, `dotnet test` from the folder above it), then `Ctrl+C` and come back. ~90 seconds, a target not a walkthrough. **Nothing is deployed for this** — Azure is their homework, not tonight
+  ℹ️ *No longer have the walked copy? The pristine key at `week-07/lab/solution` in the answer-keys repo does the same job, but it needs its own `user-secrets set` and `dotnet ef database update` first — it's a separate application with its own `<UserSecretsId>`, so nothing you set anywhere else reaches it.*
 - [ ] Setup on screen, said once: **`git -C dotnet-web-starters pull` → copy `week-07` out and rename it → open the folder holding *both* projects → `cd Cryptids.Web` and set your connection string in user secrets → `dotnet test Cryptids.Checks`**
 - [ ] ⚠️ **The connection string is task 1 and it is the thing that will eat the lab.** Say it plainly: *"two commands, `init` then `set`, from inside `Cryptids.Web`. You won't find out whether it's right until task 4 — that's the first command that actually connects — so get it typed carefully now and check it with `dotnet user-secrets list`. If task 4 won't connect, come and get me; don't spend twenty minutes on it"*
 - [ ] ⚠️ **For anyone on a lab PC that resets itself:** *"you'll set that secret again next time you sit down here. It lives in your user profile, not your project. Keep the connection string somewhere that isn't this machine"*
