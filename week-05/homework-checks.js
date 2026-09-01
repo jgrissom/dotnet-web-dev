@@ -3,7 +3,7 @@
 //
 //  EASIEST WAY — include it like a CDN, exactly like last week. This week it
 //  goes in a SECTION: open Views/Home/Index.cshtml, find the week-04 line,
-//  and REPLACE it — that's requirement 5, worth 2 points:
+//  and REPLACE it — the install is graded, and it's worth 2 points:
 //
 //    @section Scripts {
 //        <script src="https://jgrissom.github.io/dotnet-web-dev/week-05/homework-checks.js"></script>
@@ -204,7 +204,7 @@
                   + "at the terminal running your app — the real exception is there."
                 : `Your nav link is fine, but /${unreachable[0].cand} isn't answering. Check that controller still `
                   + "has its Index action and its view.")
-            : "That link was week 4's requirement 4 and it's still worth 2 points. Check you didn't lose it "
+            : "That nav link was week 4's work and it's still worth 2 points. Check you didn't lose it "
               + "while rebuilding the navbar. Not there yet? Run  recheck(\"Trails\")  with YOUR controller name.",
         });
     }
@@ -255,7 +255,7 @@
             ? "your three pages show different footers, which means the text is pasted into the views "
               + "instead of living in the layout."
             : stock
-              ? "that's still the template's default footer line. Requirement 1 asks for a footer of "
+              ? "that's still the template's default footer line. The homework asks for a footer of "
                 + "your own — your name and the year — edited in Views/Shared/_Layout.cshtml."
               : "I couldn't find enough footer text to compare.",
         todo: stock
