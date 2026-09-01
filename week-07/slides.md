@@ -257,7 +257,7 @@ Every seeded row needs an explicit `Id`.
 dotnet ef migrations add SeedTrucks
 ```
 
-Open it: no `CreateTable`. Just seven `InsertData` calls.
+Open it: no `CreateTable`. Just `InsertData` — one call, seven rows.
 
 <br>
 
