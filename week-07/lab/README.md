@@ -299,6 +299,15 @@ public IActionResult Details(int id)
 
 *(In your own project next week there may be more, and the home page is the usual suspect. Same treatment: query the context in the controller, pass the result to the view.)*
 
+> [!IMPORTANT]
+> **When part 2 compiles again, restart before you trust the page.** In terminal 1: `Ctrl+C`, then
+>
+> ```bash
+> dotnet watch --project Cryptids.Web
+> ```
+>
+> Deleting a class is more than `dotnet watch` can hot-patch — it prints `ENC0033` — and a build that fails leaves the **previous** version serving. So the page you're looking at can be the one from before you deleted anything, and your rewritten POST action looks broken when it's fine. [The notes say the same](../lecture-notes.md#the-line-you-delete).
+
 ---
 
 ### Part 2 — rewrite the POST action

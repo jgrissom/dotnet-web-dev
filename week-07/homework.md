@@ -252,6 +252,7 @@ Then restart your local app and reload. Still there.
 - **`Cannot insert explicit value for identity column`** — [the old `Max(x => x.Id) + 1` line is still there](lecture-notes.md#the-line-you-delete).
 - **`The model for context has pending changes`** — you changed the model after generating the migration. Add another one.
 - **My home page broke when I deleted the old list class** — a view was reading it directly. Move the query into `HomeController` and pass a model.
+- **You deleted the old list class, fixed everything, and the page still behaves the old way** — `dotnet watch` can't hot-patch a deleted class (`ENC0033`), and a build that fails leaves the *previous* version running, so you may be looking at the app from before the rewrite. Stop it with `Ctrl+C` and start it again before you change anything else — the code is usually already right.
 - The [troubleshooting appendix](lecture-notes.md#appendix-troubleshooting) covers the rest.
 
 ## 📊 Grading (20 pts)
