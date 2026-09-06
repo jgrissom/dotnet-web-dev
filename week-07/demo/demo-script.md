@@ -79,7 +79,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ### What a database actually buys you *(slide 3)*
 
-- [ ] 🎞️ **GO TO SLIDE 3** — *Outside the process*. Walk the table row by row
+- [ ] 🎞️ **GO TO SLIDE 3** — *Outside the process*. Walk the table row by row *"Data stored in memory is not persistent - data stored on disk IS"*
 - [ ] 🎯 **Land the third row and slow down on it:** *"two apps see the same data. Tonight your laptop and your Azure app point at the same database. You'll add a truck on the deployed site and see it on localhost. Nothing you have built in six weeks could do that."*
 - [ ] Say what's *not* happening: **nothing to install.** The school runs the SQL Server, you each have an account, and it's reachable off campus. The only new tool is a VS Code extension for looking at tables
 
