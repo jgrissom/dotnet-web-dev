@@ -228,7 +228,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   </details>
 
 - [ ] ⚠️ **Point at `TruckExists` and say it out loud — this one emails you at 10pm otherwise:** *"We pasted 3 methods, not 2. The catch calls this little helper, and the scaffolder kept it private at the bottom of the file we're about to delete. Take the two actions and leave it behind and your project stops compiling — 'the name TruckExists does not exist'. It's in the paste; don't scroll past it"*
-- [ ] Create `Views/Trucks/Edit.cshtml` — **paste, then point at what's different from the scaffold's version**: our `mb-3` spacing, our button labels, our partial. The mechanics — hidden `Id`, tag helpers, validation spans, Scripts section — are the scaffold's:
+- [ ] Create `Views/Trucks/Edit.cshtml` — **paste, then point at what's different from the scaffold's version**: *"There are cosmetic changes between this and the scaffolded version: our `mb-3` spacing, our button labels, our partial. The mechanics — hidden `Id`, tag helpers, validation spans, Scripts section — are the scaffold's"*:
 
   <details><summary>📋 paste: Views/Trucks/Edit.cshtml</summary>
 
