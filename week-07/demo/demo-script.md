@@ -307,7 +307,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   ```
 - [ ] 🎯 **Say what is deliberately absent:** *"there is no `new CurbsideContext(...)` anywhere in this class, and nothing in here knows the server's name. It states in its constructor that it needs one, and the framework hands it over — because of that single line in `Program.cs`"*
 - [ ] 🔗 **Collect §2:** *"that's the other end of the dependency injection — the `AddDbContext` line back in `Program.cs`. You've been on the receiving end of it since week 3 without writing any"*
-- [ ] Aside, one sentence: you get a **fresh context per request** — it's registered *scoped*, and in a web app a scope is one HTTP request. *"They're cheap and short-lived. It matters more next week"*
+- [ ] Aside, one sentence: *"you get a fresh context per request — it's registered *scoped*, and in a web app a scope is one HTTP request. They're cheap and short-lived. It matters more next week"*
 
 ### Reading *(slide 17)*
 
