@@ -104,7 +104,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ### The DbContext *(slide 6)*
 
-- [ ] 🎞️ **GO TO SLIDE 6** — *The context*. The whole class is on it; read it there, then swipe back and type it
+- [ ] 🎞️ **GO TO SLIDE 6** — *The context*. *"This is the entire database context class."* The whole class is on it; read it there, then swipe back and type it
 - [ ] Make a `Data` folder next to `Models` and `Controllers`, and create `Data/CurbsideContext.cs` — **type this one, all of it. It's fifteen lines and it's the center of the week:**
 
   <details><summary>📋 paste: Data/CurbsideContext.cs</summary>
