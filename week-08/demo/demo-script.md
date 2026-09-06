@@ -127,7 +127,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 - [ ] Open `Controllers/TrucksScaffoldController.cs`. **Skim the shape first:** *"before we read closely — this is your week-7 controller with armor on. Same constructor, same context, same actions, more checks"*
 - [ ] Point at `Index`: `return View(await _context.Trucks.ToListAsync());` — one line, three changes: `async Task<IActionResult>`, `await`, `ToListAsync`
-- [ ] 🎞️ **GO TO SLIDE 8** — *Task is a Promise* · 🎯 lean on what they know: *"if you have written `async`/`await` in JavaScript, you already know this shape. `Task<IActionResult>` is `Promise<result>`. `await` is `await`. The method gets marked `async`, the query methods grow an `Async` suffix, and that is the entire mechanical difference"*
+- [ ] 🎞️ **GO TO SLIDE 8** — *Task is a Promise* · 🎯 lean on what they know: *"if you have written `async`/`await` in JavaScript, you already know this shape."*
 - [ ] The *why*, one sentence, no more: *"while SQL Server is thinking, an `await`ed request lets go of its thread so the server can handle someone else. Under load that's the difference between queueing and keeping up"*
 - [ ] The honest rule: *"your week-7 sync code is not wrong and does not need rewriting tonight. The scaffolder writes async, so what we write from tonight is async. Both run side by side in one controller without complaint"*
 - [ ] 💡 If someone spots `Create()` GET is still sync: give them the point — *"nothing in it waits for anything. `async` isn't a costume; it marks a method that actually awaits"*
