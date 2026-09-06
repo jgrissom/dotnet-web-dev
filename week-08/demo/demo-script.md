@@ -109,7 +109,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   ```bash
   dotnet aspnet-codegenerator controller -name TrucksScaffoldController -m Truck -dc CurbsideContext --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries
   ```
-- [ ] Read the output out loud, all six lines: **one controller, five views.** *"Three seconds"*
+- [ ] Read the output out loud, all six lines: *"one controller, five views. Three seconds"*
 - [ ] Browse to **`/TrucksScaffold`**. A working list — a table, not your cards, but every truck is in it
 - [ ] **Click Edit on Cheese Curd Cartel, change the rating to 4.9, save.** It lands back on the scaffold's list, updated
 - [ ] 🎯 **Now switch to the `/Trucks` tab and reload: 4.9.** *"Two UIs, one table. And notice what just happened — a record was edited and saved, tonight's whole topic, before we've read a single line of code. The framework's generated pages and your hand-built pages are the same kind of thing talking to the same database"*
