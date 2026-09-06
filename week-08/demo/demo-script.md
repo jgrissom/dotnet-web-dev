@@ -297,7 +297,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] Open its Details → **Edit this truck**. 🎯 *"`FindAsync` looked the record up and designated the located truck as our view's model, exactly as we read it in the scaffold"*
 - [ ] Change the rating to **4.7**. **Predict before saving:** *"what SQL is about to appear — and what will its WHERE clause say?"*
 - [ ] Save. **Read the terminal:** an `UPDATE [Trucks] SET ... WHERE [Id] = @p...` 🎯 *"there's the hidden Id, arriving at SQL Server as a WHERE clause. One row touched"*
-- [ ] 🎞️ **GO TO SLIDE 12** — *The UPDATE*
+- [ ] 🎞️ **GO TO SLIDE 12** — *The UPDATE* · 🎯 **the last line is the one to talk to — it's the only thing here the terminal can't show you:** *"so what is that hidden input really buying us? Take it out and the form falls back on the URL — and this form posts to `/Trucks/Edit/8`, so honestly, it would still work. It earns its keep when the URL can't answer. A form whose address carries no id posts `Id = 0`, and `Update` treats an unset key as a brand new record. You don't get an error. You get a second truck"*
 
 ## 5 · The debugger, finally *(slides 13–14)*
 
