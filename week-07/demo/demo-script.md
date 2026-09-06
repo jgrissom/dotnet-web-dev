@@ -85,7 +85,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ### The shape of the night *(slide 4)*
 
-- [ ] 🎞️ **GO TO SLIDE 4** — *Three things to add*. Read the three, then say the fourth thing out loud because it isn't on the slide: *"and then the controller changes — less than you think. I promised you that last week and we're going to find out how honest it was"*
+- [ ] 🎞️ **GO TO SLIDE 4** — *Three things to add*. Read the three off it — **a `DbContext`, a connection string, a migration** — then say the fourth thing out loud because it isn't on the slide: *"and then the controller changes — less than you think."*
 - [ ] **✓ CHECKPOINT:** everyone can say why a restart empties the list
 
 ## 2 · The context *(slides 5–8)*
