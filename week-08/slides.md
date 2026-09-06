@@ -151,24 +151,6 @@ Your sync code still works. New code is async.
 
 ---
 
-<!-- _footer: '🖥️ Demo §3 · the Edit pair' -->
-
-## The Edit pair
-
-```csharp
-// GET — show the form
-public async Task<IActionResult> Edit(int? id)
-
-// POST — save the correction
-public async Task<IActionResult> Edit(int id, Truck truck)
-```
-
-GET: `FindAsync(id)` → `View(truck)`. **The pre-filled form is one line.**
-
-POST's first question: do the URL and the form *agree*?
-
----
-
 <!-- _footer: '🖥️ Demo §3 · the hidden Id' -->
 
 ## The hidden Id
