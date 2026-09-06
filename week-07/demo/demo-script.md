@@ -181,12 +181,6 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   ASPNETCORE_ENVIRONMENT=Production dotnet ef dbcontext info
   ```
 - [ ] 🎯 **`Data source:` is blank.** Sit on it. *"Same code, same machine, same secret on disk. User secrets are a development-only thing — a deployed app doesn't read them at all. That's not a limitation, it's the safety: your password cannot leak into production by accident, because production isn't looking"*
-- [ ] Then the third row, so all three are on screen once:
-  ```bash
-  ConnectionStrings__DefaultConnection="Server=env-wins;Database=Demo;User ID=u;Password=p;TrustServerCertificate=True" dotnet ef dbcontext info
-  ```
-- [ ] **`Data source: env-wins`.** *"Environment variables beat everything. Hold on to that — it's how you'll tell Azure where the database is in §7"*
-- [ ] ⚠️ **Nothing connected to anything.** `dbcontext info` only resolves configuration — say so, or someone thinks you just logged into a server called `env-wins`
 - [ ] **✓ CHECKPOINT:** the room can say what a `DbSet` property means, and why Azure won't see your secret
 
 ## 3 · Migrations *(slides 9–12)*
