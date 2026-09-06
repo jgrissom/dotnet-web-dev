@@ -135,7 +135,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 ### The Edit pair, in the editor
 
 - [ ] Still in `TrucksScaffoldController.cs`, find the two `Edit` methods — **GET half first**
-- [ ] Three stops in the GET: **`int? id`** — *"defensive: `/TrucksScaffold/Edit` with no number at all binds `null`, and null gets an honest 404 instead of a crash"* · **`FindAsync(id)`** — *"fetch one row by key; the async `FirstOrDefault` sibling you'll also see"* · **`return View(truck)`** — *"the whole pre-filled form is this line: look the record up, hand it to the view"*
+- [ ] Read the GET straight down — it answers three questions in order: *"if you don't give it an id at all, we return 404 instead of crashing. That's what the question mark in `int? id` buys us: no number binds to null rather than blowing up. Then `FindAsync` goes after one row by its key — and if no truck has that id, 404 again. Otherwise the view's model is the food truck we just found"*
 - [ ] The POST signature: `Edit(int id, Truck truck)` — *"two arrivals: the id from the URL, the record from the form. First thing it does is check they agree"*
 
 ### The hidden Id *(slide 9)*
