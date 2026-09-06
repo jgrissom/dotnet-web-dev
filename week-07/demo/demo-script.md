@@ -99,7 +99,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   dotnet add package Microsoft.EntityFrameworkCore.Design
   ```
 - [ ] **Open `Curbside.csproj` and point at what appeared.** *"That's all that command does — it edited this file and downloaded a package. There's no install directory, and this file is the part that gets committed"*
-- [ ] Name the split, briefly: **`.SqlServer`** is EF Core plus the bit that speaks T-SQL · **`.Design`** is only used by the `dotnet ef` command-line tool, never by your app. *"Leave it out and the migration command fails with a message about design-time services, which is a rotten way to find out"*
+- [ ] Name the split, briefly: *"`.SqlServer` is EF Core plus the bit that speaks T-SQL"* · *"`.Design`** is only used by the `dotnet ef` command-line tool, never by your app. This is needed in order to run migrations - which we will see soon."*
 - [ ] Mention the tool is per-machine, not per-project — `dotnet tool install --global dotnet-ef` — and that you already have it
 
 ### The DbContext *(slide 6)*
