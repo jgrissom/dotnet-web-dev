@@ -467,13 +467,13 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ### The migration is a diff *(slide 21)*
 
-- [ ] 🎞️ **GO TO SLIDE 21** — *The migration is a diff. Again.* Then generate it:
+- [ ] Generate it:
   ```bash
   dotnet ef migrations add AddSlogan
   ```
 - [ ] ⚠️ **Read EF's warning line out loud** — *"An operation was scaffolded that may result in the loss of data"* — and defuse it: *"it's talking about the `Down` method. Undoing this migration would drop the column and every slogan in it. The `Up` is safe — going forward loses nothing"*
 - [ ] **Open the file:** one `AddColumn`, seven `UpdateData`s. **No `CreateTable`.** 🎯 *"a diff again — and this time the diff includes data. It compared the seed against the snapshot and wrote seven updates"*
-- [ ] 🎯 **The rule change, said in exactly these words:** *"last week I told you: migration wrong? Delete the folder, regenerate. **That reset button died tonight.** Your table has rows you care about, and your database remembers which migrations it has applied. From now on you fix a migration by adding another one. Forward only"*
+- [ ] 🎞️ **GO TO SLIDE 21** — *The migration is a diff. Again.* · 🎯 **the rule change, said in exactly these words:** *"last week I told you: migration wrong? Delete the folder, regenerate. **That reset button died tonight.** Your table has rows you care about, and your database remembers which migrations it has applied. From now on you fix a migration by adding another one. Forward only"*
 - [ ] Apply it:
   ```bash
   dotnet ef database update
