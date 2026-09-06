@@ -137,7 +137,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 - [ ] 🎞️ **GO TO SLIDE 7** — *Where the connection string lives*
 - [ ] 🎯 **Walk the chain top to bottom, then land the last line:** *"each one beats the one above it. Your laptop uses the middle rung, Azure uses the bottom one, and the app never knows the difference. And there is nothing to gitignore — because nothing is in the project"*
-- [ ] **Open `appsettings.json` and put the cursor in it — then don't type anything.** Ask it out loud: *"this is where configuration lives. Who thinks the connection string goes here?"* Let hands go up
+- [ ] **Open `appsettings.json` and put the cursor in it — then don't type anything.** Ask it out loud: *"this is where configuration lives. We are not storing connection strings are API keys etc. in here."*
 - [ ] 🎯 **Then say why not:** *"it would work. And it contains a working password, and your homework repo is public. So no"*
 - [ ] Close `appsettings.json` **without editing it**. It stays in the repo all night — that's the point
 - [ ] **Show the two commands on screen** — these are the ones they'll run in the lab. Say you ran them before class, and why: *"I'm not typing a live password onto a shared screen, and neither should you into a repo"*
