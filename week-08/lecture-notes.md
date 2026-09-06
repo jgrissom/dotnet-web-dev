@@ -676,6 +676,15 @@ D   ask first  →  Remove + SaveChangesAsync DELETE    ← GET asks, POST acts
 **`To scaffold controllers and views using models, install Entity Framework core packages and try again: Microsoft.EntityFrameworkCore.Tools`**
 - Exactly what it says: `dotnet add package Microsoft.EntityFrameworkCore.Tools`. The lab starter ships both scaffolding packages; your own app needs them added by hand.
 
+**`error NU1605: Detected package downgrade: Microsoft.EntityFrameworkCore.Design from 10.0.11 to 10.0.10`**
+- Your app pins Entity Framework at one version, and the scaffolding package you just added depends on a newer one. NuGet refuses to silently downgrade, so the build stops.
+- **Fix it forward — bring your EF packages up to meet it, rather than pinning the new one backward:**
+  ```bash
+  dotnet add package Microsoft.EntityFrameworkCore.Design --version 10.0.11
+  dotnet add package Microsoft.EntityFrameworkCore.SqlServer --version 10.0.11
+  ```
+  Use the version **your** error names, not the one written here — these move between releases. The second line matters: leave `SqlServer` behind and you have traded one downgrade for another. Then `dotnet build` to confirm before you scaffold again.
+
 **`Scaffolding failed: Build failed`**
 - The scaffolder compiles your project first. Fix the build error it printed (or run `dotnet build` to see it plainly), then scaffold again.
 
