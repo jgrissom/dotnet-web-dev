@@ -51,7 +51,7 @@ dotnet test Cryptids.Checks
 > Seeing `error MSB1009: Project file does not exist`? You're one folder too deep. `cd ..` — the test command goes in the folder that holds *both* projects.
 
 > [!CAUTION]
-> **`dotnet ef` commands are the opposite: they run from inside `Cryptids.Web`.** Every `dotnet ef` line in this lab needs `cd Cryptids.Web` first. Getting `No project was found in the current working directory` means you're one folder too high. This trips everybody at least once tonight.
+> **`dotnet ef` commands are the opposite: they run from inside `Cryptids.Web`.** That is what terminal 2 is for — step 4 put it there once, and every `dotnet ef` and `dotnet user-secrets` line tonight goes in it. Getting `No project was found in the current working directory` means you're in the wrong terminal, one folder too high. This trips everybody at least once tonight.
 
 > [!TIP]
 > **Watch the SQL as you go.** EF Core prints every query it generates into terminal 1, so the `dotnet watch` terminal is worth keeping visible tonight — it's the only place you can see what your C# turned into.
@@ -92,7 +92,7 @@ dotnet test Cryptids.Checks
 
 Your connection string has a working password in it, so it does **not** go in a file in this project. It goes in [user secrets](../lecture-notes.md#where-the-connection-string-lives) — a file in your own user profile that git can't see.
 
-**From inside `Cryptids.Web`** (`cd Cryptids.Web` first — same folder as every `dotnet ef` command tonight):
+**In terminal 2** — the one step 4 left standing inside `Cryptids.Web`, and the same one every `dotnet ef` command uses tonight:
 
 ```bash
 dotnet user-secrets init
@@ -206,10 +206,9 @@ using Cryptids.Web.Data;
 
 **Check:** `Check4_AMigrationDescribesTheTable`
 
-⚠️ **From inside `Cryptids.Web`** — the folder with the `.csproj`, not the one above it:
+**In terminal 2**, still inside `Cryptids.Web` from task 1 — the folder with the `.csproj`, not the one above it:
 
 ```bash
-cd Cryptids.Web
 dotnet ef migrations add InitialCreate
 dotnet ef database update
 ```
