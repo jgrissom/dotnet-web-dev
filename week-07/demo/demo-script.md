@@ -158,7 +158,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ### One registration *(slide 8)*
 
-- [ ] 🎞️ **GO TO SLIDE 8** — *One registration*
+- [ ] 🎞️ **GO TO SLIDE 8** — *One registration*. Then say *"One line. Every controller in this app gets its context from it, and you never write another"*
 - [ ] In `Program.cs`, above `var app = builder.Build();` — **type it**:
   ```csharp
   builder.Services.AddDbContext<CurbsideContext>(options =>
@@ -246,7 +246,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ### HasData *(slide 14)*
 
-- [ ] 🎞️ **GO TO SLIDE 14** — *HasData*
+- [ ] 🎞️ **GO TO SLIDE 14** — *HasData*. Then say *"These rows become part of the description — the same way the columns are"*
 - [ ] Back in `Data/CurbsideContext.cs`, **paste** `OnModelCreating` below the `DbSet`:
 
   <details><summary>📋 paste: OnModelCreating with the six trucks — and a seventh</summary>
@@ -276,7 +276,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ### The second migration *(slide 15)*
 
-- [ ] 🎞️ **GO TO SLIDE 15** — *The second migration*
+- [ ] 🎞️ **GO TO SLIDE 15** — *The second migration*. Then say *"The model changed, so the database is behind again. Same two commands as before"*
 - [ ] Generate it — **don't apply it yet**:
   ```bash
   dotnet ef migrations add SeedTrucks
@@ -301,7 +301,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ### Asking for the context *(slide 16)*
 
-- [ ] 🎞️ **GO TO SLIDE 16** — *Asking for the context*
+- [ ] 🎞️ **GO TO SLIDE 16** — *Asking for the context*. Then say *"A field and a constructor — that's the whole of it. The field is `readonly` because nothing should ever reassign it"*
 - [ ] At the top of `TrucksController` (inside the class), **type it**:
   ```csharp
   private readonly CurbsideContext _context;
@@ -317,7 +317,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ### Reading *(slide 17)*
 
-- [ ] 🎞️ **GO TO SLIDE 17** — *Reading*
+- [ ] 🎞️ **GO TO SLIDE 17** — *Reading*. Then say *"This is where last week's promise gets tested"*
 - [ ] Change `Index` and `Details` — **type both, they're small**:
   ```csharp
   public IActionResult Index()
@@ -341,7 +341,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ### Break it #2 — writing *(slide 18)*
 
-- [ ] 🎞️ **GO TO SLIDE 18** — *Writing*
+- [ ] 🎞️ **GO TO SLIDE 18** — *Writing*. Then say *"Last week's POST did the same three things. Only the middle one changes tonight"*
 - [ ] Rewrite the POST action, but **deliberately leave `SaveChanges()` out** — and don't announce that you have:
   ```csharp
   _context.Trucks.Add(truck);
