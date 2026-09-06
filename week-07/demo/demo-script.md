@@ -165,7 +165,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
       options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
   ```
 - [ ] Add the `using Curbside.Data;` and `using Microsoft.EntityFrameworkCore;` at the top when the editor complains — **let it complain first**, so they see which one is missing
-- [ ] 🔗 **Point at `AddControllersWithViews()` two lines up:** *"you've been writing lines like this since week 3 and I never said what that collection was. It's a list of 'if anyone asks for one of these, here's how to build it.' It's called dependency injection, and in fifteen minutes you'll write the other end of it"*
+- [ ] 🔗 **Point at `AddControllersWithViews()` two lines up:** *"you've been writing lines like this since week 3 and I never said what that collection was. It's a list of 'if anyone asks for one of these, here's how to build it.' It's called dependency injection, and we'll write the other end of it later tonight"*
 - [ ] Three things in the one line: **which context** · **which provider** (*"swap that one call and the same code talks to PostgreSQL"*) · **the address read from configuration by name**, not typed here
 - [ ] 🎯 **Land the absence:** *"read that line again. It asks for a connection string by name. It does not say where it came from — and that turns out to be the whole reason this app can run on my laptop and on Azure without a rebuild"*
 
@@ -312,7 +312,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   }
   ```
 - [ ] 🎯 **Say what is deliberately absent:** *"there is no `new CurbsideContext(...)` anywhere in this class, and nothing in here knows the server's name. It states in its constructor that it needs one, and the framework hands it over — because of that single line in `Program.cs`"*
-- [ ] 🔗 **Collect §2:** *"that's the other end of the dependency injection I pointed at twenty minutes ago. You've been on the receiving end of it since week 3 without writing any"*
+- [ ] 🔗 **Collect §2:** *"that's the other end of the dependency injection — the `AddDbContext` line back in `Program.cs`. You've been on the receiving end of it since week 3 without writing any"*
 - [ ] Aside, one sentence: you get a **fresh context per request** — it's registered *scoped*, and in a web app a scope is one HTTP request. *"They're cheap and short-lived. It matters more next week"*
 
 ### Reading *(slide 17)*
