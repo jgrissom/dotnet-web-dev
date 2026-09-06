@@ -405,7 +405,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 ### One database, two apps *(slide 22)*
 
 - [ ] 🎞️ **GO TO SLIDE 22** — *One database, two apps*
-- [ ] 🔗 **Collect slide 3's third row:** *"this is the one I told you to hold onto at the start. Your deployed app and your laptop point at the same database"*
+- [ ] 🔗 **Collect slide 3's third row:** *"Your deployed app and your laptop point at the same database"*
 - [ ] **Give them the exercise out loud, and tell them it's the best two minutes of the homework:** *"add a truck on your deployed site. Then run your app locally and look at your list. It's there. Two programs, two computers, one set of data"*
 - [ ] Then the honest footnote: *"sharing one database between dev and production is not what a real project does — you'd have two. Week 15 covers what real projects do. For a course it's fine, and it makes the point better than two databases would"*
 - [ ] 🎯 **Close the secrets thread, and make it the smallest possible step:** *"and notice what isn't in your homework this week. There's no `.gitignore` line, nothing to untrack, nothing to clean out of your history — because the password was never in the folder. That's the entire reason we did it that way in §2"*
