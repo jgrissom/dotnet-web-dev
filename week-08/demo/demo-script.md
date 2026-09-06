@@ -154,7 +154,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] Back in the controller, POST `Edit`. **Read the generated comment out loud** — *"To protect from overposting attacks, enable the specific properties you want to bind to"* — then define the two words it assumes you know: *"**binding** you met in week 6 — the fields in the request get matched up by name with properties on `Truck`. What nobody mentions is that it matches every property it can find, not just the ones your form drew. And a form is a suggestion, not a fence: what actually arrives is a flat list of name-and-value pairs, and anyone can add a line to that list by hand. **Overposting** is doing exactly that — posting more fields than you ever offered, hoping the binder sets something you never put on the page"*
 - [ ] 🎞️ **GO TO SLIDE 10** — *The guest list* · **`[Bind("Id,Name,Cuisine,City,Rating,IsOpenLate")]`** — *"a guest list for model binding. Only names on the list are read out of the form. Everything else is ignored — no matter what a POST claims"*
 - [ ] The one-sentence why: *"imagine `Truck` had an `IsAdmin` property. No box on your form — but a hand-written POST can send `IsAdmin=true` anyway, and the binder would happily set it. The list is what stops fields you didn't offer from being smuggled in"*
-- [ ] ⚠️ **Plant the seed, don't spoil it:** *"a guest list has a failure mode, and it's silent. Hold onto that — it's the last thing that goes wrong tonight"*
+- [ ] ⚠️ **Flag it for later, but don't say what goes wrong:** *"remember this line is here. We come back to it at the end of the night, and by then it will be causing a problem instead of preventing one"*
 - [ ] Then the body: `_context.Update(truck)` + `await _context.SaveChangesAsync()` — 🔗 *"the same two-step as `Add`: mark it, then write it. Update marks the whole record modified; the UPDATE runs at save"*
 - [ ] And the `catch (DbUpdateConcurrencyException)`: *"the UPDATE went looking for the row and found nothing — the record was deleted while the form was open. The catch asks 'does it still exist?', and if not, 404. You'll watch this fire for real within the hour"*
 - [ ] **✓ CHECKPOINT:** the room can say what travels in the hidden input, and what `[Bind]` does
@@ -506,7 +506,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   ```
   Redirect, list loads…
 - [ ] 🎯 **The slogan is *gone*. Not the old one — none at all.** Sit in it. *"No error. No warning. I typed a new slogan and saving erased the one that existed"*
-- [ ] **Predict/collect:** *"I warned you a guest list has a failure mode. What happened?"* — let someone get close before you point at `[Bind("Id,Name,Cuisine,City,Rating,IsOpenLate")]`
+- [ ] **Predict/collect:** *"I told you we would come back to one line tonight. What just happened?"* — let someone get close before you point at `[Bind("Id,Name,Cuisine,City,Rating,IsOpenLate")]`
 - [ ] 🎞️ **GO TO SLIDE 21** — *The guest list bites* · walk the mechanism: *"Slogan isn't on the list, so the binder never set it — the posted truck arrived with `Slogan = null`. Then `Update` marked the **whole record** modified, and the save faithfully wrote every column, null included. The guest list didn't just ignore my field. It fed the database a blank one"*
 - [ ] **Fix it** — add `Slogan` to the list:
   ```csharp
