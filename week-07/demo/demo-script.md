@@ -387,7 +387,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] **Eight.** 🎯 **Say nothing for a beat and let them get there first**
 - [ ] 🎞️ **GO TO SLIDE 20** — *Restart it.* Now — straight off the eight cards that didn't disappear
 - [ ] 🔗 *"Same three keystrokes as the first two minutes of tonight. Different answer. That's the week — it's the first time anything you've built has outlived the program that built it"*
-- [ ] Open the **mssql** panel one last time with the app **stopped**: *"the app isn't even running and the data is still there. It was never yours to lose"*
+- [ ] Open the **mssql** panel one last time with the app **stopped**: *"the app isn't even running and the data is still there."*
 - [ ] 🎯 **Then the other half, pointing at the editor:** *"and look at what didn't change. The form. Model binding. The annotations. `ModelState.IsValid`. The redirect. The error messages. The layout, the partial, the theme. You changed where the data lives and nothing above it noticed"*
 
 ## 7 · The deployed app *(slides 21–22)*
