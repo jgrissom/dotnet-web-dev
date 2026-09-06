@@ -360,7 +360,8 @@ user secrets          ← your profile, not your project
    ↓  beaten by
 environment variables ← how Azure will do it
 </code></pre>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-bash">dotnet user-secrets <span class="hljs-built_in">set</span> <span class="hljs-string">&quot;ConnectionStrings:DefaultConnection&quot;</span> <span class="hljs-string">&quot;...&quot;</span>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-bash">dotnet user-secrets init
+dotnet user-secrets <span class="hljs-built_in">set</span> <span class="hljs-string">&quot;ConnectionStrings:DefaultConnection&quot;</span> <span class="hljs-string">&quot;...&quot;</span>
 </code></pre>
 <p>Later wins. Nothing to gitignore, because nothing is here.</p>
 <footer><img class="emoji" draggable="false" alt="🖥️" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f5a5.svg" data-marp-twemoji=""/> Demo §2 · where the connection string lives</footer>
