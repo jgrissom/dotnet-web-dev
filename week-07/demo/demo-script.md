@@ -227,7 +227,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] **Open the `Trucks` table. It has no rows.** *"A table, correctly built, completely empty. Nobody has put anything in it"*
 - [ ] ⚠️ **Then point at the browser, still showing six trucks, and name the gap** — it runs all the way to §5: *"and the page hasn't changed at all. Six trucks, same as an hour ago. It is still reading `TruckData.All` out of a file, because nothing has told the controller the database exists. Watch that gap; it closes in about twenty minutes"*
 - [ ] 🎞️ **GO TO SLIDE 12** — *Applying it*
-- [ ] *"That second table is how `database update` knows what it's already done. Run the command again —"* do it — *"and nothing happens, because the history says so. It's not clever. It's a list"*
+- [ ] *"That second table is how `database update` knows what it's already done. Run it again and watch what it actually does —"* do it — *"it asks the history table what has already been applied. That's the SQL going past. Then it applies nothing, because the list says there's nothing left to do. It's not clever. It's a list"*. ⚠️ **You still get SQL on screen — that's the history being read, not work being done.** Point at the summary line at the end, which says so in as many words
 - [ ] 💡 If asked about the two error messages: **`Login failed for user`** = the server answered and said no (username/password) · **`A network-related or instance-specific error`** = nothing answered (server name, or you're on the wrong network), and it takes ~30 seconds to fail so it feels like a hang
 - [ ] **✓ CHECKPOINT:** the room can say what `migrations add` produces versus what `database update` does
 
