@@ -9,7 +9,12 @@ All six checks green:
 
 ```bash
 dotnet test Cryptids.Checks
-# Passed! - Failed: 0, Passed: 6 ...
+```
+
+```
+Test Run Successful.
+Total tests: 6
+     Passed: 6
 ```
 
 If class ended at check 4, that's on schedule — checks 5 and 6 are [the plates](lab/README.md#task-5-in-full), and they're the same two moves Part 2 asks for on your own app: an additive migration, and views that catch up with the model.

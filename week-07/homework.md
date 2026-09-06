@@ -9,7 +9,12 @@ All six checks green:
 
 ```bash
 dotnet test Cryptids.Checks
-# Passed! - Failed: 0, Passed: 6 ...
+```
+
+```
+Test Run Successful.
+Total tests: 6
+     Passed: 6
 ```
 
 If class ended at check 5, that's `Add` and `SaveChanges` — [two lines and one deletion](lab/README.md#task-6-in-full).
