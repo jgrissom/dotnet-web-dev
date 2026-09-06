@@ -75,7 +75,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] In the terminal: **`Ctrl+C`**, then `dotnet watch` again. Reload `/Trucks`
 - [ ] **Six.** Let it sit for a second without narrating it
 - [ ] 🎞️ **GO TO SLIDE 2** — *Six trucks. Again.* · *"You watched this exact thing happen at the end of last week, and I told you it wasn't a bug. It still isn't. `TruckData.All` is a variable in a running program, and programs end."*
-- [ ] 🔗 **Collect the Azure version:** *"some of you have already met the worse form of this — you added test data on Monday, the free-tier app went to sleep, and Wednesday it was gone. Nothing was broken."*
+- [ ] 🔗 **Collect the Azure version:** *"some of you have already met the worse form of this with your Azure deployed application — you added test data on Monday, the free-tier app went to sleep, and Wednesday it was gone. Nothing was broken."*
 
 ### What a database actually buys you *(slide 3)*
 
