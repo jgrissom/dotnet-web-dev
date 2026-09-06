@@ -104,7 +104,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ### One command *(slide 6)*
 
-- [ ] 🎞️ **GO TO SLIDE 6** — *One command* · **predict first, and make it sting a little:** *"since week 4 you've built a controller, five views, a form with validation, and the links between them. That took us four weeks. How much of it do you think this one command writes?"*
+- [ ] 🎞️ **GO TO SLIDE 6** — *One command* · **the slide states the scale; you supply what it cost them:** *"since week 4 you've built a controller, five views, a form with validation, and the links between them. That took us four weeks. This one command writes all of that code for us"*
 - [ ] Swipe back and run it — **paste, it's long**:
   ```bash
   dotnet aspnet-codegenerator controller -name TrucksScaffoldController -m Truck -dc CurbsideContext --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries
