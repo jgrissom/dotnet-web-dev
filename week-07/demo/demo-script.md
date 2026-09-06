@@ -85,14 +85,14 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ### The shape of the night *(slide 4)*
 
-- [ ] 🎞️ **GO TO SLIDE 4** — *Three things to add*. Read the three off it — **a `DbContext`, a connection string, a migration** — then say the fourth thing out loud because it isn't on the slide: *"and then the controller changes — less than you think."*
+- [ ] 🎞️ **GO TO SLIDE 4** — *Three things to add*. Read the three off it — *"we need to add a `DbContext`, a connection string, and a migration"* — then say the fourth thing out loud because it isn't on the slide: *"and then the controller changes — less than you think."*
 - [ ] **✓ CHECKPOINT:** everyone can say why a restart empties the list
 
 ## 2 · The context *(slides 5–8)*
 
 ### Two packages *(slide 5)*
 
-- [ ] 🎞️ **GO TO SLIDE 5** — *Two packages*
+- [ ] 🎞️ **GO TO SLIDE 5** — *Two packages*. Then say *"We need to install 2 packages"*
 - [ ] In a **second terminal** (`dotnet watch` owns the first) — **type the first, paste the second**:
   ```bash
   dotnet add package Microsoft.EntityFrameworkCore.SqlServer
