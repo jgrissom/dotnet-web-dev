@@ -140,12 +140,8 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] **Open `appsettings.json` and put the cursor in it — then don't type anything.** Ask it out loud: *"this is where configuration lives. We are not storing connection strings are API keys etc. in here."*
 - [ ] 🎯 **Then say why not:** *"it would work. And it contains a working password, and your homework repo is public. So no"*
 - [ ] Close `appsettings.json` **without editing it**. It stays in the repo all night — that's the point
-- [ ] **Show the two commands on screen** — these are the ones they'll run in the lab. Say you ran them before class, and why: *"I'm not typing a live password onto a shared screen, and neither should you into a repo"*
-  ```bash
-  dotnet user-secrets init
-  dotnet user-secrets set "ConnectionStrings:DefaultConnection" "Server=...;Database=...;User ID=...;Password=...;TrustServerCertificate=True"
-  ```
-- [ ] ⚠️ **Point at the quotes around the value and say why** — *"that string is full of semicolons, and your shell reads a semicolon as end-of-command. Leave the quotes off and it saves `Server=` and throws the rest away, and still tells you it worked"*. It's the silent one, and it will happen in the lab
+- [ ] **Swipe back to slide 7 — both commands are on it.** These are the ones they'll run in the lab. Take them one at a time: **`init`** makes the store and writes its id into the `.csproj`; **`set`** puts the value in the store, out in your user profile. Then say you ran them before class, and why: *"I'm not typing a live password onto a shared screen, and neither should you into a repo"*
+- [ ] ⚠️ **The quotes on the slide are doing real work — say so** — *"the real value is full of semicolons, and your shell reads a semicolon as end-of-command. Leave the quotes off and it saves `Server=`, throws the rest away, and still tells you it worked"*. It's the silent one, and it will happen in the lab
 - [ ] **Prove it's really there** — in the second terminal, **masked, because this is a projector**:
   ```bash
   dotnet user-secrets list | sed 's/Password=[^;]*/Password=********/'
