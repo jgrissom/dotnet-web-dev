@@ -145,7 +145,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   ```html
   <input type="hidden" asp-for="Id" />
   ```
-- [ ] 🎞️ **GO TO SLIDE 9** — *The hidden Id* · *"There's the answer. The form carries the record's identity in its pocket. The GET put it there; the browser sends it back with everything else; the binder reads it into `truck.Id`. That's the whole mystery — one input with no pixels"*
+- [ ] 🎞️ **GO TO SLIDE 9** — *The hidden Id* · *"There it is — the question I asked you to hold. Your Create form never sends an Id; this one does. The GET put it there, the browser sends it back with everything else, and the binder reads it into `truck.Id`. That's the whole mystery: one input the user never sees"*
 - [ ] Trace the round trip out loud, finger on the screen: **URL id → `FindAsync` → model → hidden input → POST → `truck.Id`**
 - [ ] 🔗 Connect it to the guard: *"and now `if (id != truck.Id) return NotFound();` makes sense — if the URL and the form disagree about which record this is, someone's tampering or something's broken, and either way the answer is no"*
 
