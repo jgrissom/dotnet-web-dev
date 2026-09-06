@@ -311,7 +311,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ### Reading *(slide 17)*
 
-- [ ] 🎞️ **GO TO SLIDE 17** — *Reading*. Then say *"This is where last week's promise gets tested"*
+- [ ] 🎞️ **GO TO SLIDE 17** — *Reading*. Then say *"This is where our data becomes persistent"*
 - [ ] Change `Index` and `Details` — **type both, they're small**:
   ```csharp
   public IActionResult Index()
