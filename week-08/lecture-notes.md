@@ -401,12 +401,13 @@ Since week 1 you've technically had a debugger, and this course has never needed
 
 `dotnet watch` owns the app, so you don't launch a second copy — you **attach** to the one that's running:
 
-1. **⇧⌘P** (Ctrl+Shift+P on Windows) → **"Debug: Attach to a .NET 5+ or .NET Core process"**
-2. Type the app's name — **Curbside** — and pick the process. (Two may match: `dotnet watch` is the watcher; **the one named like your app is the app.**)
-3. Click in the gutter next to the `if (id != truck.Id)` line of the Edit POST — a red dot. That's the breakpoint.
+1. **Restart the app first** — `Ctrl+C` in the terminal, then `dotnet watch` again. Once hot reload has patched a running process, the debugger refuses to attach to it at all.
+2. **⇧⌘P** (Ctrl+Shift+P on Windows) → **"Debug: Attach to a .NET 5+ or .NET Core process"**
+3. Type the app's name — **Curbside** — and pick the process. (Two may match: `dotnet watch` is the watcher; **the one named like your app is the app.**)
+4. Click in the gutter next to the `if (id != truck.Id)` line of the Edit POST — a red dot. That's the breakpoint.
 
 > [!WARNING]
-> **Attach *after* your last code edit.** Every save makes `dotnet watch` rebuild, and a breakpoint set against a build that's been replaced shows as a **hollow circle** and never fires. If that happens: detach (**⇧F5**), let the rebuild finish, re-attach. This is the number-one "the debugger doesn't work" report, and it isn't the debugger.
+> **Restart before attaching, and stop editing once attached.** These are two different failures with the same cause. Before: a process `dotnet watch` has hot-reloaded refuses the attach outright — *"Attaching a .NET debugger to this process is not allowed because code changes have been applied."* After: a breakpoint set against a build that's since been replaced shows as a **hollow circle** and never fires. Both are fixed the same way — `Ctrl+C`, `dotnet watch`, attach, then leave the code alone until you detach with **⇧F5**. Between them they are the number-one "the debugger doesn't work" report, and it isn't the debugger.
 
 ### What to look at
 
@@ -684,6 +685,10 @@ D   ask first  →  Remove + SaveChangesAsync DELETE    ← GET asks, POST acts
   dotnet add package Microsoft.EntityFrameworkCore.SqlServer --version 10.0.11
   ```
   Use the version **your** error names, not the one written here — these move between releases. The second line matters: leave `SqlServer` behind and you have traded one downgrade for another. Then `dotnet build` to confirm before you scaffold again.
+
+**`Attaching a .NET debugger to this process is not allowed because code changes have been applied. The process must be restarted to allow debugging.`**
+- `dotnet watch` has hot-reloaded edits into the running process, and the debugger will not attach to a process that has been patched that way. Nothing is broken.
+- `Ctrl+C` in the terminal, `dotnet watch` again, let it finish starting, then attach. Don't edit code between the restart and the attach, or you are straight back here.
 
 **`Scaffolding failed: Build failed`**
 - The scaffolder compiles your project first. Fix the build error it printed (or run `dotnet build` to see it plainly), then scaffold again.
