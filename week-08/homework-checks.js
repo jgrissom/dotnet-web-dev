@@ -121,6 +121,12 @@
     return out;
   }
 
+  // What a browser would POST to: the form's own action, not a URL we assumed.
+  const formAction = (html) => {
+    const m = /<form[^>]*\saction\s*=\s*["']([^"']*)["']/i.exec(String(html || ""));
+    return m ? m[1].trim() : null;
+  };
+
   const detailsIds = (html, route) => [...new Set(
     [...html.matchAll(new RegExp(`/${route}/Details/(\\d+)`, "gi"))].map(m => Number(m[1]))
   )];
@@ -314,7 +320,8 @@
       [3, "a correction is saved — as an update, not a copy"],
       [1, "a bad correction is refused"],
       [1, "Delete asks before deleting"],
-      [3, "the record can be deleted"],
+      [2, "the record can be deleted"],
+      [1, "the scaffold is gone"],
     ];
     const blockRest = (from) => REST.slice(from).forEach(([pts, label]) =>
       add("blocked", pts, label, { hint: "waiting on an earlier step" }));
@@ -324,8 +331,11 @@
     // A marker from an earlier run (week 7's, or a failed week-8 delete)
     // already on the page = a row that outlived restarts. Grader evidence.
     let markerWasAlreadyThere = false;
+    // Exported for the grader: it knows the new column's NAME from their migration,
+    // and this is the only way to see whether it reached the deployed Edit form.
+    let editFieldNames = [];
     const done = (route) => ({
-      route, checks, stale: [...stale], leftBehind, markerWasAlreadyThere, readOnly: !write, ...tally(checks),
+      route, checks, stale: [...stale], leftBehind, markerWasAlreadyThere, readOnly: !write, editFieldNames, ...tally(checks),
     });
 
     // ── 0. their home page ────────────────────────────────────────────────────
@@ -476,6 +486,7 @@
     const editForm = editPage && editPage.status < 400 ? formHtml(editPage.body) : "";
     const editFields = editForm ? formFields(editForm) : [];
 
+    editFieldNames = editFields.map(f => f.name);
     const idField = editFields.find(f => f.name.toLowerCase() === "id");
     const posted = bodyFrom(createFields, validValue, null);
     const prefilled = editFields.filter(f => !f.hidden && posted[f.name] !== undefined)
@@ -517,7 +528,17 @@
     const editedValue = clip(EDITED, target);
     const overrides = target ? { [target.name]: editedValue } : {};
     const sentBody = bodyFilled(editFields, overrides, tokenOf(editPage.body));
-    const editPost = write ? await post(root + editUrl, sentBody) : null;
+
+    // A form copied from Create.cshtml still says asp-action="Create". Posting where
+    // we assumed would hide that; posting where the form points finds it.
+    const declared = formAction(editForm);
+    const declaredPath = !declared ? null
+      : declared.startsWith("http") ? declared.replace(/^https?:\/\/[^/]+/i, "")
+      : declared.startsWith("/") ? declared
+      : `/${route}/${declared}`;
+    // No action at all is fine — a browser posts back to the page it's on.
+    const actionOk = !declaredPath || new RegExp(`^/${route}/Edit(/|$|\\?)`, "i").test(declaredPath);
+    const editPost = write && actionOk ? await post(root + editUrl, sentBody) : null;
 
     const afterEdit = await getWithWakeup(`${root}/${route}`);
     const idsAfterEdit = afterEdit ? detailsIds(afterEdit.body, route) : [];
@@ -540,7 +561,12 @@
     if (write) add(editPost && editPost.redirected && sameCount && valueSaved && !erased.length
         ? "pass" : "fail", 3,
       "a correction is saved — as an update, not a copy", {
-        hint: !editPost
+        hint: !actionOk
+          ? `your Edit form posts to ${declared} — so Save never reaches your Edit action at all. `
+            + "That's what a Create form's tag looks like: if you built this view by copying "
+            + "Create.cshtml, the <form> still says asp-action=\"Create\", and every save files a "
+            + "second record instead of correcting the first."
+          : !editPost
           ? "the edit submission didn't get a response at all."
           : editPost.status === 404
             ? "posting the edit came back 404. The action compares the URL's id with the posted "
@@ -565,7 +591,9 @@
               + "on it are read out of the form, so the property arrived null — and Update() marks "
               + "the WHOLE record modified, so the save wrote that null over what was there. Not "
               + "ignored. Erased.",
-        todo: erased.length
+        todo: !actionOk
+          ? "Change the form tag on your Edit view: asp-action=\"Edit\"."
+          : erased.length
           ? `Add ${erased.map(f => f.name).join(" and ")} to the [Bind] list on your Edit POST:\n`
             + "[Bind(\"Id,...,YourNewProperty\")]\n"
             + "Then STOP the app and start it again (Ctrl+C, dotnet watch) before you re-test. "
@@ -651,7 +679,7 @@
 
     if (deletePost && deletePost.redirected && gone) leftBehind = false;
 
-    add(deletePost && deletePost.redirected && gone && details404 ? "pass" : "fail", 3,
+    add(deletePost && deletePost.redirected && gone && details404 ? "pass" : "fail", 2,
       "the record can be deleted — and your data is back exactly as I found it", {
         hint: !deletePost
           ? "the delete confirmation didn't get a response at all."
@@ -667,6 +695,21 @@
         todo: "Port the scaffold's DeleteConfirmed as-is: FindAsync, Remove, "
             + "await SaveChangesAsync(), redirect.",
       });
+
+    // ── 8. the scaffold came down ─────────────────────────────────────────────
+    // Read-only, and derivable: the homework names it YourThingsScaffoldController.
+    const scaffoldUrl = `/${route}Scaffold`;
+    const scaffoldPage = await getWithWakeup(root + scaffoldUrl);
+    const scaffoldGone = !scaffoldPage || scaffoldPage.status === 404;
+
+    add(scaffoldGone ? "pass" : "fail", 1, "the scaffold is gone", {
+      hint: `${scaffoldUrl} still answers (${scaffoldPage ? scaffoldPage.status : "?"}). The scaffold `
+          + "was a reference, and it's still standing — a second, unthemed CRUD site on your public "
+          + "URL that nobody maintains and anyone can find.",
+      todo: `Delete Controllers/${route}ScaffoldController.cs and the Views/${route}Scaffold/ folder, `
+          + "then restart (deleting a class is a rude edit, so hot reload keeps serving the old one). "
+          + "Take the two scaffolding packages back out while you're there.",
+    });
 
     return done(route);
   }

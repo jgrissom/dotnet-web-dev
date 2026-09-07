@@ -216,11 +216,15 @@ That's it. **No second command this week.** Last week's `az webapp config appset
 | A correction is saved — as an update, not a copy | 3 | `homework-checks.js` |
 | A bad correction is refused, with messages | 1 | `homework-checks.js` |
 | Delete shows a confirmation and the GET deletes nothing | 1 | `homework-checks.js` |
-| The record can be deleted, details 404s after | 3 | `homework-checks.js` |
+| The record can be deleted, details 404s after | 2 | `homework-checks.js` |
+| The scaffold is gone — `/YourThingsScaffold` 404s | 1 | `homework-checks.js` |
 | Edit + Delete actions are async; `Update`/`Remove` + `SaveChangesAsync` | 2 | your repo |
-| A **new, additive** migration that `AddColumn`s your new property | 3 | your repo |
+| A **new, additive** migration that `AddColumn`s your new property | 2 | your repo |
+| That new column is **on your Edit form**, so it can actually be set | 1 | repo + deployed |
 | Public repo with 3+ meaningful commits | 3 | your repo |
 | **Deductions:** dead submitted URL | −2 | |
+
+*Requirement 5 and the second half of requirement 7 are why the last two lines exist: a scaffold left standing is a second CRUD site on your public URL, and a column you migrated but never put on the form is a column nothing can set.*
 
 *Reminder: the explain-it standard applies. The ones I'll reach for: "how does the POST know which record it's editing?", "what happens to a property that isn't in the `[Bind]` list — and why is it worse than nothing?", "why is Delete two requests?", and "why can't you delete your `Migrations` folder any more?"*
 
