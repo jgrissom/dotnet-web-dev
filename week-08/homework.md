@@ -99,12 +99,12 @@ The lab's moves transfer one-for-one; only the names change. Translations that c
 > **The points moved back: 12 of 20 are in the script this week**, up from 6. Week 7's work was invisible from outside — a database-backed page renders the same HTML as a hard-coded one. Edit and delete are *visible*: a checker can watch a record change and disappear. So it does.
 
 > [!NOTE]
-> **Loading your page never touches your data.** Three checks read your site and run on their own every time the page loads. The four that have to *submit* a form wait until you type `recheck()` — so you can refresh your app all day while you build and nothing is written.
+> **Nothing runs until you ask.** Loading your page just loads the script — it prints one line and stops. Refresh your app as often as you like while you build; it never touches your data. Type **`recheck()`** in the console when you want to be checked.
 >
 > **What `recheck()` does: nothing lasting, if Delete works.** It files a record through your form, edits it into `Week 8 Test (edited)`, tries a bad edit (which you should refuse), then **deletes it through your own confirmation flow** — leaving your list exactly as it found it. The deletion isn't just cleanup; it's the D being graded. Until your Delete works the test record stays, but there's only ever **one**: later runs reuse it instead of filing another.
 
 > [!IMPORTANT]
-> **Run it as you go.** It reports all seven checks every time and marks the ones it can't judge yet ⬜ instead of failing them — the ones waiting on `recheck()`, and the ones waiting on work you haven't done. So an app with Edit done and Delete still to come tells you *where you are*, not that you're broken. While anything is still red, the report ends with one `👉 Next:` line naming the single next thing to do.
+> **Run it as you go.** Every `recheck()` reports all seven checks and marks the ones it can't reach yet ⬜ instead of failing them — so an app with Edit done and Delete still to come tells you *where you are*, not that you're broken. While anything is still red, the report ends with one `👉 Next:` line naming the single next thing to do.
 >
 > **It cleans up after itself** (see above), so running it ten times costs you nothing — which is what makes it worth running after every requirement rather than once at the end.
 >
@@ -137,7 +137,7 @@ crawling your site from the outside. What turns each line green:
 | *Delete asks before deleting* | 4, the GET that shows and changes nothing |
 | *the record can be deleted* | 4, `DeleteConfirmed` |
 
-**You installed the tag in Part 2, so it is already there.** Run your app **locally** (`dotnet watch`), load your home page, and open the console — **F12 → Console**. The reading checks run on their own; type **`recheck()`** when you want the four that submit a form. `recheck()` fetches fresh pages from your app, so you don't need to reload first — change your code, let `dotnet watch` rebuild, then press Up and Enter in the console.
+**You installed the tag in Part 2, so it is already there.** Run your app **locally** (`dotnet watch`), load your home page, and open the console — **F12 → Console**. It prints one line and waits. Type **`recheck()`** to run it. `recheck()` fetches fresh pages from your app, so you never need to reload first — change your code, let `dotnet watch` rebuild, then press Up and Enter in the console.
 
 ```
 🔎 Week 8 self-check — https://trailguide-ab1234.azurewebsites.net

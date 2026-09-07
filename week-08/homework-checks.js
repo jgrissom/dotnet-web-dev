@@ -797,8 +797,14 @@
       return runChecks(window.location.origin, forcedRoute || null, printCheck, { write }).then(report);
     };
 
-    // Typing recheck() is the consent: it's the only path that writes.
+    // Nothing runs on load. Typing recheck() is the consent, and it's the only
+    // path that touches your data.
     window.recheck = (forcedRoute) => run(forcedRoute, true);
-    run(null, false);
+
+    console.log(`%c🔎 Week ${WEEK} self-check is loaded — but it hasn't run.`, big);
+    console.log("%cType  recheck()  to check your work. It submits your form, so nothing happens until you ask.",
+      "color: #79c0ff");
+    console.log("%cWorking on a different controller than I'd guess?  recheck(\"Trails\")  with your own name.",
+      "color: #79c0ff");
   }
 })();
