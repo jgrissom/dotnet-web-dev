@@ -288,7 +288,9 @@
    * `blocked` = couldn't be judged yet because an earlier step isn't done.
    * Shared with the grader so students and I run identical logic.
    */
-  async function runChecks(baseUrl, forcedRoute, onCheck) {
+  async function runChecks(baseUrl, forcedRoute, onCheck, opts = {}) {
+    // Read-only by default on page load: nothing is submitted unless asked.
+    const write = opts.write !== false;
     const root = String(baseUrl).replace(/\/$/, "");
     const checks = [];
     const stale = new Set();
@@ -323,7 +325,7 @@
     // already on the page = a row that outlived restarts. Grader evidence.
     let markerWasAlreadyThere = false;
     const done = (route) => ({
-      route, checks, stale: [...stale], leftBehind, markerWasAlreadyThere, ...tally(checks),
+      route, checks, stale: [...stale], leftBehind, markerWasAlreadyThere, readOnly: !write, ...tally(checks),
     });
 
     // ── 0. their home page ────────────────────────────────────────────────────
@@ -416,6 +418,8 @@
     }
     staleCheckers(createPage.body).forEach(w => stale.add(w));
 
+    const WAIT = "run  recheck()  to include this — it submits your form, so it isn't automatic";
+
     // A leftover from an earlier run — this week's or an older week's — gets adopted
     // rather than added to. Without this every page load files another row, and
     // until Delete works there is nothing to clear them with.
@@ -427,14 +431,18 @@
       }
     }
 
-    const goodPost = adoptedId !== null ? null : await post(root + createUrl,
+    if (!write) {
+      add("blocked", 1, "a new record can still be filed", { hint: WAIT, todo: null });
+    }
+    const goodPost = (!write || adoptedId !== null) ? null : await post(root + createUrl,
       bodyFrom(createFields, validValue, tokenOf(createPage.body)));
-    const afterCreate = adoptedId !== null ? null : await getWithWakeup(`${root}/${route}`);
+    const afterCreate = (!write || adoptedId !== null) ? null : await getWithWakeup(`${root}/${route}`);
     const idsAfterCreate = afterCreate ? detailsIds(afterCreate.body, route) : originalIds;
     const newIds = idsAfterCreate.filter(id => !originalIds.includes(id));
     const created = goodPost && goodPost.redirected && newIds.length === 1;
 
-    if (adoptedId !== null) add("blocked", 1, "a new record can still be filed", {
+    if (!write) { /* already reported above */ }
+    else if (adoptedId !== null) add("blocked", 1, "a new record can still be filed", {
       hint: `there's already a test record (id ${adoptedId}) on your list from an earlier run, so I `
           + "reused it instead of filing another — which is why your list doesn't grow every time you "
           + "reload. I can't re-prove Create while it's sitting there.",
@@ -455,9 +463,12 @@
             + "after this check edits and deletes the record it creates, so it can't proceed.",
       });
 
-    if (adoptedId === null && !created) { blockRest(2); return done(route); }
-    const id = adoptedId !== null ? adoptedId : newIds[0];
-    leftBehind = true;                          // until the delete succeeds
+    if (write && adoptedId === null && !created) { blockRest(2); return done(route); }
+    // Reading mode inspects a record that's already there; writing mode uses the
+    // one it just filed (or adopted).
+    const id = !write ? Math.max(...originalIds)
+             : adoptedId !== null ? adoptedId : newIds[0];
+    if (write) leftBehind = true;               // until the delete succeeds
 
     // ── 3. the Edit form, pre-filled ──────────────────────────────────────────
     const editUrl = `/${route}/Edit/${id}`;
@@ -470,8 +481,9 @@
     const prefilled = editFields.filter(f => !f.hidden && posted[f.name] !== undefined)
                                 .filter(f => String(f.value) === String(posted[f.name]));
 
+    const anyFilled = editFields.filter(f => !f.hidden && String(f.value || "").trim() !== "");
     const editOk = editFields.length >= 2 && idField && String(idField.value) === String(id)
-                   && prefilled.length >= 1;
+                   && (write ? prefilled.length >= 1 : anyFilled.length >= 1);
 
     add(editOk ? "pass" : "fail", 2,
       `the Edit form shows the record, pre-filled — ${editUrl}`, {
@@ -494,12 +506,18 @@
 
     if (!editOk) { blockRest(2); return done(route); }
 
+    // ── 4 + 5 write to the database, so they wait for recheck() ───────────────
+    if (!write) {
+      add("blocked", 3, "a correction is saved — as an update, not a copy", { hint: WAIT, todo: null });
+      add("blocked", 1, "a bad correction is refused", { hint: WAIT, todo: null });
+    }
+
     // ── 4. a correction is saved — and it's an UPDATE ─────────────────────────
     const target = textField(editFields);
     const editedValue = clip(EDITED, target);
     const overrides = target ? { [target.name]: editedValue } : {};
     const sentBody = bodyFilled(editFields, overrides, tokenOf(editPage.body));
-    const editPost = await post(root + editUrl, sentBody);
+    const editPost = write ? await post(root + editUrl, sentBody) : null;
 
     const afterEdit = await getWithWakeup(`${root}/${route}`);
     const idsAfterEdit = afterEdit ? detailsIds(afterEdit.body, route) : [];
@@ -519,7 +537,7 @@
       roundTrips(f) && f.value === "" &&
       sentBody[f.name] !== undefined && String(sentBody[f.name]) !== "");
 
-    add(editPost && editPost.redirected && sameCount && valueSaved && !erased.length
+    if (write) add(editPost && editPost.redirected && sameCount && valueSaved && !erased.length
         ? "pass" : "fail", 3,
       "a correction is saved — as an update, not a copy", {
         hint: !editPost
@@ -561,7 +579,7 @@
     // ── 5. a bad correction is refused ────────────────────────────────────────
     const freshEdit = await getWithWakeup(root + editUrl);
     const freshFields = freshEdit && freshEdit.status < 400 ? formFields(formHtml(freshEdit.body)) : [];
-    const badPost = freshFields.length
+    const badPost = write && freshFields.length
       ? await post(root + editUrl, bodyBadEdit(freshFields, tokenOf(freshEdit.body)))
       : null;
     const badRefused = badPost && !badPost.redirected && badPost.status === 200 && hasErrors(badPost.body);
@@ -570,7 +588,7 @@
     const survived = detailsAfterBad && detailsAfterBad.status < 400 &&
                      detailsAfterBad.body.includes(editedValue);
 
-    add(badRefused && survived ? "pass" : "fail", 1,
+    if (write) add(badRefused && survived ? "pass" : "fail", 1,
       "a bad correction is refused", {
         hint: !badPost
           ? "the bad edit didn't get a response at all."
@@ -588,7 +606,10 @@
     const deleteUrl = `/${route}/Delete/${id}`;
     const confirmPage = await getWithWakeup(root + deleteUrl);
     const confirmOk = confirmPage && confirmPage.status < 400;
-    const showsRecord = confirmOk && confirmPage.body.includes(editedValue);
+    // Writing mode looks for the value it just saved; reading mode looks for the
+    // value the record already has, read off the Edit form.
+    const shownValue = write ? editedValue : String((target && target.value) || "");
+    const showsRecord = confirmOk && !!shownValue && confirmPage.body.includes(shownValue);
     const hasForm = confirmOk && !!formHtml(confirmPage.body);
 
     const afterConfirm = await getWithWakeup(`${root}/${route}`);
@@ -612,6 +633,10 @@
       });
 
     // ── 7. the record can be deleted ──────────────────────────────────────────
+    if (!write) {
+      add("blocked", 3, "the record can be deleted", { hint: WAIT, todo: null });
+      return done(route);
+    }
     const confirmFields = confirmOk ? formFields(formHtml(confirmPage.body)) : [];
     const deletePost = confirmOk
       ? await post(root + deleteUrl, bodyAsRendered(confirmFields, {}, tokenOf(confirmPage.body)))
@@ -744,6 +769,8 @@
       if (next) {
         console.log(`%c👉 Next: ${next.todo}`, `${bold}; color: #79c0ff`);
         console.log("Fix that, refresh this page, and the checks run again.");
+      } else if (res.readOnly) {
+        console.log("%c👉 Next: everything readable passes. Type  recheck()  to run the four that submit a form.", `${bold}; color: #79c0ff`);
       } else if (isLocal(window.location.origin)) {
         console.log("%c⚠️  This is localhost. Run it again on your Azure URL — the deployed one is what I grade.", `${bold}; color: #d29922`);
       } else {
@@ -757,15 +784,21 @@
       console.log("%cType  recheck()  to run again — or  recheck(\"Trails\")  with your controller name.", "color: #79c0ff");
     };
 
-    const run = (forcedRoute) => {
+    const run = (forcedRoute, write) => {
       console.log(`%c🔎 Week ${WEEK} self-check — ${window.location.origin}`, big);
       console.log("Results appear as each check finishes — a sleeping free-tier app can take ~30s for the first one.");
-      console.log("%c⚠️  This files a test record, edits it, and deletes it — a full CRUD cycle through your own forms.", "color: #d29922");
+      if (write) {
+        console.log("%c⚠️  This files a test record, edits it, and deletes it — a full CRUD cycle through your own forms.", "color: #d29922");
+      } else {
+        console.log("%c👀 Reading only — nothing is submitted, so reloading your app never touches your data.", "color: #79c0ff");
+        console.log("%cThe four checks that need to submit a form are waiting. Type  recheck()  to run them.", "color: #79c0ff");
+      }
       if (forcedRoute) console.log(`Checking /${forcedRoute} directly (you told me where to look).`);
-      return runChecks(window.location.origin, forcedRoute || null, printCheck).then(report);
+      return runChecks(window.location.origin, forcedRoute || null, printCheck, { write }).then(report);
     };
 
-    window.recheck = run;
-    run();
+    // Typing recheck() is the consent: it's the only path that writes.
+    window.recheck = (forcedRoute) => run(forcedRoute, true);
+    run(null, false);
   }
 })();
