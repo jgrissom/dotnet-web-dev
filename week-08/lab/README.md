@@ -229,7 +229,7 @@ You'll need one more `using` at the top of the file — let the editor complain 
 using Microsoft.EntityFrameworkCore;
 ```
 
-**Then the view.** Make `Views/Cryptids/Edit.cshtml` — the scaffold's `Views/CryptidsScaffold/Edit.cshtml` has the mechanics, your `Create.cshtml` has the style, and this is the two combined. **This is the whole file:**
+**Then the view.** Make `Views/Cryptids/Edit.cshtml`. The scaffold's `Views/CryptidsScaffold/Edit.cshtml` has the mechanics — the hidden `Id`, the tag helpers, the validation spans, the Scripts section — and your `Create.cshtml` has the style. One thing comes from neither: **Cancel goes back to this record's Details page**, where Create's Cancel goes to the list and the scaffold has no Cancel at all. **This is the whole file:**
 
 > [!IMPORTANT]
 > **Creating a new `.cshtml` makes `dotnet watch` stop and ask to restart** — `Do you want to restart your app? Yes (y) / No (n) / Always (a) / Never (v)`, in the terminal watch is running in. Answer **`a`** and it won't ask again for the rest of the lab. Ignore it and the page fails with **`The view 'Edit' was not found`** — listing the exact path your file is sitting at, because the running app was built before the file existed. The file is fine; the app is old.
