@@ -33,8 +33,11 @@
 // ═══════════════════════════════════════════════════════════════════════════
 (function () {
   const WEEK = 8;
-  const MARKER = "SelfCheck entry";
-  const EDITED = "SelfCheck entry (edited)";
+  const MARKER = `Week ${WEEK} Test`;
+  const EDITED = `Week ${WEEK} Test (edited)`;
+  // Recognises a leftover from ANY week, and survives being clipped to a short
+  // StringLength — the marker is trimmed to fit their own rules before it's sent.
+  const MARKER_RX = /Week\s*\d+/i;
 
   // In Node, fetch doesn't keep cookies, and the antiforgery token needs its
   // cookie to come back with the POST. In a browser, same-origin cookies are
@@ -380,7 +383,7 @@
     staleCheckers(index.body).forEach(w => stale.add(w));
 
     const originalIds = detailsIds(index.body, route);
-    markerWasAlreadyThere = index.body.includes(MARKER);
+    markerWasAlreadyThere = MARKER_RX.test(index.body);
 
     add(originalIds.length >= 3 ? "pass" : "fail", 1,
       `your list page still works — ${originalIds.length} records`, {
@@ -413,14 +416,33 @@
     }
     staleCheckers(createPage.body).forEach(w => stale.add(w));
 
-    const goodPost = await post(root + createUrl,
+    // A leftover from an earlier run — this week's or an older week's — gets adopted
+    // rather than added to. Without this every page load files another row, and
+    // until Delete works there is nothing to clear them with.
+    let adoptedId = null;
+    if (markerWasAlreadyThere) {
+      for (const cand of [...originalIds].sort((a, b) => b - a).slice(0, 12)) {
+        const p = await getWithWakeup(`${root}/${route}/Details/${cand}`);
+        if (p && p.status < 400 && MARKER_RX.test(p.body)) { adoptedId = cand; break; }
+      }
+    }
+
+    const goodPost = adoptedId !== null ? null : await post(root + createUrl,
       bodyFrom(createFields, validValue, tokenOf(createPage.body)));
-    const afterCreate = await getWithWakeup(`${root}/${route}`);
+    const afterCreate = adoptedId !== null ? null : await getWithWakeup(`${root}/${route}`);
     const idsAfterCreate = afterCreate ? detailsIds(afterCreate.body, route) : originalIds;
     const newIds = idsAfterCreate.filter(id => !originalIds.includes(id));
     const created = goodPost && goodPost.redirected && newIds.length === 1;
 
-    add(created ? "pass" : "fail", 1,
+    if (adoptedId !== null) add("blocked", 1, "a new record can still be filed", {
+      hint: `there's already a test record (id ${adoptedId}) on your list from an earlier run, so I `
+          + "reused it instead of filing another — which is why your list doesn't grow every time you "
+          + "reload. I can't re-prove Create while it's sitting there.",
+      todo: "Nothing to fix, and nothing to clean up by hand. Once your Delete works, the next run "
+          + "adopts this row and deletes it — and the run after that files a fresh one, which turns "
+          + "this check green again.",
+    });
+    else add(created ? "pass" : "fail", 1,
       `a new record can still be filed${created ? ` — id ${newIds[0]}` : ""}`, {
         hint: !goodPost
           ? "the submission didn't get a response at all."
@@ -433,8 +455,8 @@
             + "after this check edits and deletes the record it creates, so it can't proceed.",
       });
 
-    if (!created) { blockRest(2); return done(route); }
-    const id = newIds[0];
+    if (adoptedId === null && !created) { blockRest(2); return done(route); }
+    const id = adoptedId !== null ? adoptedId : newIds[0];
     leftBehind = true;                          // until the delete succeeds
 
     // ── 3. the Edit form, pre-filled ──────────────────────────────────────────
@@ -690,11 +712,6 @@
       else if (isLocal(url)) console.log("\n⚠️  That was localhost. Run it again on your Azure URL — the deployed one is what I grade.");
       else console.log("\n🎉 The full CRUD cycle works on your deployed site — created, edited, refused, confirmed, deleted.");
 
-      if (res.markerWasAlreadyThere) {
-        console.log(`\n💾 A "${MARKER}" from an earlier run was already in your list before I touched `
-          + "anything — that row outlived whatever happened to your app in between. (This week's "
-          + "run cleans up after itself; that one is yours to delete, and now you have a button for it.)");
-      }
       if (res.leftBehind) console.log(`\n🧹 ${LEFTOVER}`);
       console.log(`\nℹ️  ${WHERE_THE_POINTS_ARE}`);
       console.log("\nThe other 8 points I check in your repo:");
@@ -733,11 +750,6 @@
         console.log("%c🎉 The full CRUD cycle works on your deployed site — created, edited, refused, confirmed, deleted.", `${bold}; color: green`);
       }
 
-      if (res.markerWasAlreadyThere) {
-        console.log(`%c💾 A "${MARKER}" from an earlier run was already in your list before I touched anything — `
-          + "that row outlived whatever happened in between. This week's run cleans up after itself; "
-          + "that one is yours to delete, and now you have a button for it.", "color: green");
-      }
       if (res.leftBehind) console.log(`%c🧹 ${LEFTOVER}`, "color: #d29922");
       console.log(`%cℹ️  ${WHERE_THE_POINTS_ARE}`, "color: #79c0ff");
       console.log("%cThe other 8 points I check in your repo:", bold);
