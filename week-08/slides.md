@@ -232,7 +232,7 @@ await _context.SaveChangesAsync();   // the UPDATE happens
 
 You watched the gap between those lines.
 
-**It's where week 7's silent bug lived.**
+**Without `SaveChanges`, the database update never happens.**
 
 ---
 
