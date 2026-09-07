@@ -331,7 +331,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 - [ ] **Predict before the slide:** *"Delete could be one link — click it, record's gone. Why doesn't anyone build it that way?"* Take answers
 - [ ] 🎞️ **GO TO SLIDE 14** — *Why Delete asks first* · the rule underneath: **a GET must never change data.** Link previews, browser prefetch, crawlers, a curious extension — *"things you don't control follow links all day. If following a link deletes a truck, your data belongs to whoever renders your page"*
-- [ ] So: **the GET shows a confirmation page — what's about to die, and a button. The POST does the deleting.** Two requests, on purpose
+- [ ] So: *"the GET shows a confirmation page — what's about to die, and a button. The POST does the deleting."* Two requests, on purpose
 
 ### The Delete pair *(slide 15)*
 
