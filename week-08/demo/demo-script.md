@@ -294,6 +294,8 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 ### Watch the UPDATE
 
 - [ ] **On `/Trucks`, click ＋ Add a truck** and add tonight's test subject — **`Ghost Kitchen` / `Fusion` / `Madison` / `4.9`**. *"This truck is going to have a long night"* — on a fresh database it lands as **Id 8**
+
+  💡 **Ghost Kitchen runs the rest of the night** — corrected here, inspected in the debugger in §5, deleted in §6, and its ghost 404s an open edit form. It is *not* seed data, so if a beat goes sideways and it dies early, or you jump back into §5 after a database rebuild, just add it again with the same values. Nothing depends on its id except your narration — check what it actually came back as before you say a number
 - [ ] Open its Details → **Edit this truck**. 🎯 *"`FindAsync` looked the record up and designated the located truck as our view's model, exactly as we read it in the scaffold"*
 - [ ] Change the rating to **4.7**. **Predict before saving:** *"what SQL is about to appear — and what will its WHERE clause say?"*
 - [ ] Save. **Read the terminal:** an `UPDATE [Trucks] SET ... WHERE [Id] = @p...` 🎯 *"there's the hidden Id, arriving at SQL Server as a WHERE clause. One row touched"*
@@ -313,7 +315,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 ### Update marks, SaveChanges writes *(slide 13)*
 
 - [ ] In the browser: Edit **Ghost Kitchen**, change the rating to **4.8**, Save — **VS Code takes the screen mid-request**
-- [ ] 🎯 **Open `truck` in the Variables panel and walk it:** Name `Ghost Kitchen`, Cuisine `Fusion`, City `Madison`, Rating `4.8`, Id `8`. *"That object did not exist a millisecond ago. Model binding built it out of the form — in week 6 you took that on faith, and there it is, live"*
+- [ ] 🎯 **Open `truck` in the Variables panel and walk it:** Name `Ghost Kitchen`, Cuisine `Fusion`, City `Madison`, Rating `4.8`, and its id — **`8` on a fresh database, but read it off the panel rather than saying it from here.** *"That object did not exist a millisecond ago. Model binding built it out of the form — in week 6 you took that on faith, and there it is, live"*
 - [ ] Hover `ModelState` → `IsValid: true`. *"The guard you're paused on is reading this"*
 - [ ] **F10** — step over the guard, the `ModelState` check, down to `_context.Update(truck)`. **F10 past it**, then 🎯 **point at the terminal: no SQL.** *"Update ran. Nothing happened. Marked, not written — last week I could only assert that about `Add`; tonight you're watching the gap"*
 - [ ] **F10 over `SaveChangesAsync`** — 🎯 **the UPDATE appears in the terminal.** *"There. That line is the database call. Everything else was bookkeeping"*
