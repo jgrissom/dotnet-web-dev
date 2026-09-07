@@ -105,7 +105,21 @@ The lab's moves transfer one-for-one; only the names change. Translations that c
 >
 > **Fixing things on localhost is much cheaper than fixing them on Azure**, which is why the tag went in back in Part 2 rather than after the deploy. Then run it once more on your **deployed URL before you submit** — that's the run that counts.
 
-The report doesn't print in requirement order — it prints in the order a checker can *reach* things,
+> [!IMPORTANT]
+> **Requirements 1 and 2 change nothing in the report, and that is expected.** Packages, the global tool and the scaffold are all invisible from outside your app — a visitor sees the same pages before and after. **The first movement comes at requirement 3.** If you run the check after scaffolding and it reads exactly as it did before, nothing is wrong.
+
+Where the report moves as you work:
+
+| After requirement | What changes |
+|---|---|
+| **1–2** — packages, tool, scaffold | **nothing.** None of it is visible from outside |
+| **3** — the Edit pair | **three lines go green:** the form pre-fills, a correction saves, a bad correction is refused |
+| **4** — the Delete pair | **the last two go green — 7 of 7** |
+| **5** — scaffold deleted | nothing moves; the report should stay where it was. If it *drops*, you deleted something you still needed — most likely the `Exists` helper |
+| **6–7** — new column, three files catch up | nothing new goes green, but **requirement 7 can silently un-green *a correction is saved*** — a property missing from `[Bind]` comes back erased, and that check catches it |
+| **8–9** — everything still works, deployed | run it once more on your Azure URL. That is the run I grade |
+
+The report itself doesn't print in requirement order — it prints in the order a checker can *reach* things,
 crawling your site from the outside. What turns each line green:
 
 | The report says | Which requirement |
