@@ -35,7 +35,7 @@
   const WEEK = 8;
   const MARKER = `Week ${WEEK} Test`;
   const EDITED = `Week ${WEEK} Test (edited)`;
-  // Recognises a leftover from ANY week, and survives being clipped to a short
+  // Recognizes a leftover from ANY week, and survives being clipped to a short
   // StringLength — the marker is trimmed to fit their own rules before it's sent.
   const MARKER_RX = /Week\s*\d+/i;
 

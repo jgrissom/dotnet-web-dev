@@ -29,4 +29,4 @@ The night the framework starts writing code — and the skill being taught is re
 - Your finished week-8 Registry with `dotnet test` at 6/6 — **the plates debut at the lab launch, on localhost, nothing deployed**
 - Remind students to `git pull` the starters repo for the week-08 folder
 
-**Prev:** [← Week 7 — EF Core & SQL Server](../week-07/README.md) · **Next:** Week 9 — Related Data *(coming)*
+**Prev:** [← Week 7 — EF Core & SQL Server](../week-07/README.md) · **Next:** [Week 9 — Related Data →](../week-09/README.md)
