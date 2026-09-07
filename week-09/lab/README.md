@@ -431,6 +431,9 @@ public class SightingsController : Controller
 > [!NOTE]
 > **Why `SelectList?` and not `SelectList`.** ASP.NET treats a non-nullable property as a required field. The dropdown's *list of choices* is never posted back — the browser sends only the option you picked — so without the `?` every submission is refused with *"The Cryptids field is required"*, pointing at a dropdown that plainly has a creature in it. It's [week 6's rule in a new place](../lecture-notes.md#two-things-that-will-bite-you-here).
 
+> [!WARNING]
+> **If you ever have to add that `?` to a running app, restart it — `Ctrl+C` in terminal 1, then `dotnet watch` again.** Hot reload prints `🔥 Hot reload succeeded.` and the fix stays **inert**: the required-field rules are worked out once per model type when the app starts, and a reload does not redo them. Submit without restarting and you get the identical error over a file that is already correct.
+
 ✅ **Check 5 goes green.**
 
 ### Task 5 in full
@@ -530,7 +533,7 @@ var witness = _context.Witnesses
 - **Pages still say 0 reports after task 3** — the `Include` went on one action and not the other. [`Include` is per query](../lecture-notes.md#include-is-per-query).
 - **`NullReferenceException` on `Sightings.Count`** — the collection isn't initialized. It needs `= new List<Sighting>();` on the property.
 - **Every view suddenly fails to compile** — `_ViewImports.cshtml` names `Cryptids.Web.ViewModels` and the folder doesn't exist yet. [Task 4 in full ↑](#task-4-in-full)
-- **"The Cryptids field is required" with a creature selected** — the `SelectList` isn't nullable. [Part 7 of the notes](../lecture-notes.md#two-things-that-will-bite-you-here).
+- **"The Cryptids field is required" with a creature selected** — the `SelectList` isn't nullable. [Part 7 of the notes](../lecture-notes.md#two-things-that-will-bite-you-here). **Restart after the fix** — hot reload reports success and leaves this one inert.
 - **The form is refused with no message** — `asp-validation-summary="ModelOnly"` hides property errors. Use `"All"`.
 - **The dropdown is empty after a failed submit** — rebuild the `SelectList` inside the `if (!ModelState.IsValid)` branch.
 - **`dotnet ef` says there's already an object named 'Cryptids'** — you skipped the database drop at the top of task 1.

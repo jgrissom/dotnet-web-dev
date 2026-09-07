@@ -218,6 +218,8 @@ return View(_context.Trucks
     .ToList());
 ```
 
+...and inside the `@foreach` in `Views/Trucks/Index.cshtml`, the count comes off the loaded rows:
+
 ```cshtml
 <p class="small text-muted">@truck.Specials.Count specials</p>
 ```
@@ -353,6 +355,13 @@ One character fixes it:
 public SelectList? Trucks { get; set; }
 ```
 
+> [!WARNING]
+> **Restart the app after this edit — `Ctrl+C`, then `dotnet watch` again.** `dotnet watch` will
+> print **`🔥 Hot reload succeeded.`** and the fix will still do nothing: ASP.NET works out which
+> properties are required **once per model type** and caches it, and a hot reload does not throw
+> that away. If you submit without restarting you get the *same* error over a file that is already
+> correct — and you will start rewriting code that was never wrong.
+
 > [!TIP]
 > When a form silently refuses and you cannot see why, change `asp-validation-summary="ModelOnly"` to `asp-validation-summary="All"`. `ModelOnly` shows model-level errors and hides property-level ones — which is exactly the category this failure lands in. That switch is the fastest debugging move you own, and it needs no tooling.
 
@@ -460,7 +469,9 @@ Either the collection was never initialized (`= new List<Thing>()` on the proper
 You included the specials but not the second hop. That is `ThenInclude`.
 
 **"The Trucks field is required" — but a truck is selected.**
-Your `SelectList` property is not nullable. Part 7. One `?`.
+Your `SelectList` property is not nullable. Part 7. One `?` — **and then restart the app.** Hot
+reload reports success and leaves this particular fix inert, because the required-field rules are
+worked out once at startup and cached.
 
 **The form is refused and no message appears.**
 `asp-validation-summary="ModelOnly"` hides property-level errors. Switch it to `"All"` and the reason appears.

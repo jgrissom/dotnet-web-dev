@@ -193,7 +193,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   ```
 - [ ] **Predict before you reload, and be exact about the number:** *"the mssql panel just showed us Roll Models has two specials, Kimchi Fries and a Bulgogi Bowl. I am about to reload its page. What am I going to see?"*
 - [ ] **Reload `/Trucks/Details/1`.** 🎯 **`Nothing listed.`** Let it sit there. Say nothing for a beat
-- [ ] Then walk the evidence out loud, in this order — the point is that every instrument says fine: *"the page is 200. There is no error. The terminal has no exception in it. And the database has the rows — we read them thirty seconds ago"*
+- [ ] Then walk the evidence out loud, in this order — the point is that every instrument says fine: *"the page is 200. There is no error. The terminal has no exception in it. And the database has the rows — we read them in the mssql panel before the break"*
 - [ ] Ask for the diagnosis before you give it: *"so where did the two specials go?"*
 - [ ] 🎞️ **GO TO SLIDE 6** — *Empty is not missing*
 - [ ] Deliver the rule as the answer to the question they just tried: *"the navigation property is empty until a query asks for it. EF Core does not go and fetch related rows on the off chance you wanted them — it fetched a truck, because a truck is what you asked for"*
@@ -439,7 +439,9 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   ```csharp
   public SelectList? Trucks { get; set; }
   ```
+- [ ] 🚨 **STOP — restart the app before you submit. `Ctrl+C` in terminal 1, then `dotnet watch` again.** Hot reload will print **`🔥 Hot reload succeeded.`** and the fix will still be **inert**: ASP.NET works out which properties are required once per model type and caches it, and a hot reload does not throw that away. Submit without restarting and you get the *identical* error over a file that is now correct — a non-bug, debugged in front of the room. *(Measured 2026-09-07: hot reload → same error; full restart → 302.)*
 - [ ] **Submit again.** 🎯 Redirect to Roll Models, and **Tteokbokki is on the menu, third in the list**
+- [ ] 💡 Say why the restart was needed, because otherwise it reads as superstition: *"that is not me being careful. The rule about which fields are required gets worked out once, when the app starts, and hot reload does not redo it"*
 - [ ] 💡 Close the loop on the fix: *"one question mark. The list is not an answer, so it is allowed to be absent"*
 
 ## 8 · Delete takes the children *(slide 12)*
@@ -543,7 +545,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   ```bash
   dotnet ef migrations add AddDishes
   ```
-- [ ] 🎯 *"An operation was scaffolded that may result in the loss of data.* That is the `DropColumn`. EF is right to say it and we mean it — the names are not lost, they moved"*
+- [ ] 🎯 Read the warning aloud, then answer it: *"an operation was scaffolded that may result in the loss of data. That is the `DropColumn`, and EF is right to say it — but we mean this one. The dish names are not lost, they moved"*
 - [ ] Open the migration and read the order out loud, because the order is what makes it safe: **`DropColumn`**, **`AddColumn DishId`**, **`CreateTable Dishes`**, fourteen **`UpdateData`**, and only *then* the index and the foreign key
 - [ ] 💡 Say why that ordering matters: *"the foreign key constraint goes on last. If it went on first, fourteen rows with a `DishId` of zero would fail it instantly"*
   ```bash
