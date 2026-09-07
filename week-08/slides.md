@@ -203,25 +203,6 @@ it gets deleted before the night is out.
 
 ---
 
-<!-- _footer: '🖥️ Demo §4 · watch the UPDATE' -->
-
-## The UPDATE
-
-```sql
-UPDATE [Trucks] SET [City] = @p0, [Cuisine] = @p1, ...
-WHERE [Id] = @p5;
-```
-
-<br>
-
-The hidden Id, arrived as a **WHERE clause**. One row.
-
-<br>
-
-Without it, the form leans on the URL — and `Update` files a **duplicate** if that can't answer either.
-
----
-
 <!-- _footer: '🖥️ Demo §5 · attach to the process' -->
 
 ## The debugger, finally
