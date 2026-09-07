@@ -293,7 +293,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ### Watch the UPDATE
 
-- [ ] **File tonight's test subject** through the form: **`Ghost Kitchen` / `Fusion` / `Madison` / `4.9`**. *"This truck is going to have a long night"* — on a fresh database it lands as **Id 8**
+- [ ] **On `/Trucks`, click ＋ Add a truck** and add tonight's test subject — **`Ghost Kitchen` / `Fusion` / `Madison` / `4.9`**. *"This truck is going to have a long night"* — on a fresh database it lands as **Id 8**
 - [ ] Open its Details → **Edit this truck**. 🎯 *"`FindAsync` looked the record up and designated the located truck as our view's model, exactly as we read it in the scaffold"*
 - [ ] Change the rating to **4.7**. **Predict before saving:** *"what SQL is about to appear — and what will its WHERE clause say?"*
 - [ ] Save. **Read the terminal:** an `UPDATE [Trucks] SET ... WHERE [Id] = @p...` 🎯 *"there's the hidden Id, arriving at SQL Server as a WHERE clause. One row touched"*
