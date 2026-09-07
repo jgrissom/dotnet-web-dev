@@ -127,7 +127,7 @@ Each line is green before you start; what matters is which requirement turns it 
 | *a good record is accepted and lands in your list* | 8, `Add` **and** `SaveChanges()` |
 | *the new record's id was assigned for you* | 9 — but the line above goes red first: a leftover `Max(x => x.Id) + 1` throws `Cannot insert explicit value for identity column` once `Id` is a real identity column |
 
-**You installed the tag in Part 2, so it is already there.** Run your app **locally** (`dotnet watch`), load your home page, and open the console — **F12 → Console**. It runs automatically.
+**You installed the tag in Part 2, so it is already there.** Run your app **locally** (`dotnet watch`), load your home page, and open the console — **F12 → Console**. The checks that only *read* your site run on their own; the three that have to **submit your form** wait until you type **`recheck()`**, so reloading while you build never adds anything to your list. `recheck()` fetches fresh pages, so you don't need to reload first — change your code, let `dotnet watch` rebuild, then press Up and Enter in the console.
 
 ```
 🔎 Week 7 self-check — https://trailguide-ab1234.azurewebsites.net

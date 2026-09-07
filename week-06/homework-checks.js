@@ -30,7 +30,7 @@
 // ═══════════════════════════════════════════════════════════════════════════
 (function () {
   const WEEK = 6;
-  const MARKER = "SelfCheck entry";
+  const MARKER = `Week ${WEEK} Test`;
 
   // In Node, fetch doesn't keep cookies, and the antiforgery token needs its
   // cookie to come back with the POST. In a browser, same-origin cookies are
@@ -248,7 +248,9 @@
    * `blocked` = couldn't be judged yet because an earlier step isn't done.
    * Shared with the grader so students and I run identical logic.
    */
-  async function runChecks(baseUrl, forcedRoute, onCheck) {
+  async function runChecks(baseUrl, forcedRoute, onCheck, opts = {}) {
+    // Read-only by default on page load: nothing is submitted unless asked.
+    const write = opts.write !== false;
     const root = String(baseUrl).replace(/\/$/, "");
     const checks = [];
     const stale = new Set();
@@ -279,7 +281,7 @@
     // Set only once a record has actually landed, so the "I left something behind"
     // note never appears on a run that never got as far as submitting anything.
     let addedARecord = false;
-    const done = (route) => ({ route, checks, stale: [...stale], addedARecord, ...tally(checks) });
+    const done = (route) => ({ route, checks, stale: [...stale], addedARecord, readOnly: !write, ...tally(checks) });
 
     // ── 0. their home page ────────────────────────────────────────────────────
     const home = await getWithWakeup(root + "/");
@@ -415,12 +417,17 @@
     // Create page returned early above. Warn here rather than at the top of the
     // run, so a student checking their progress before the form exists isn't
     // told about a record that never gets created.
-    if (typeof window !== "undefined")
+    const WAIT = "run  recheck()  to include this — it submits your form, so it isn't automatic";
+    if (!write) {
+      add("blocked", 3, "a bad submission is refused, with messages", { hint: WAIT, todo: null });
+      add("blocked", 2, "a good submission is accepted and lands in your list", { hint: WAIT, todo: null });
+    } else if (typeof window !== "undefined") {
       console.log("%c⚠️  Submitting your form now — twice: once with rubbish, once with good data. "
         + "The good one adds a real item to your list.", "color: #d29922");
+    }
 
     const badBody = bodyFrom(fields, invalidValue, tokenOf(createPage.body));
-    const badPost = await post(root + createUrl, badBody);
+    const badPost = write ? await post(root + createUrl, badBody) : null;
 
     const badRefused = badPost && !badPost.redirected && badPost.status === 200;
     const badSaidWhy = badRefused && hasErrors(badPost.body);
@@ -451,7 +458,7 @@
     const idsAfterBad = afterBad ? detailsIds(afterBad.body, route) : detailsIds(index.body, route);
     const countAfterBad = idsAfterBad.length;
 
-    add(badRefused && badSaidWhy && countAfterBad === before ? "pass" : "fail", 3,
+    if (write) add(badRefused && badSaidWhy && countAfterBad === before ? "pass" : "fail", 3,
       "a bad submission is refused, with messages", {
         hint: !badPost
           ? "the bad submission didn't get a response at all."
@@ -495,7 +502,7 @@
     // This is the one that leaves a record behind. Fresh page for a fresh token.
     const freshForm = await getWithWakeup(root + createUrl);
     const goodPost = freshForm
-      ? await post(root + createUrl, bodyFrom(fields, validValue, tokenOf(freshForm.body)))
+      ? (write ? await post(root + createUrl, bodyFrom(fields, validValue, tokenOf(freshForm.body))) : null)
       : null;
 
     const afterGood = await getWithWakeup(`${root}/${route}`);
@@ -516,7 +523,7 @@
 
     const goodOk = !!(goodPost && goodPost.redirected && grew && idOk);
 
-    add(goodOk ? "pass" : "fail", 2,
+    if (write) add(goodOk ? "pass" : "fail", 2,
       `a good submission is accepted and lands in your list${goodOk ? ` — ${countAfterBad} → ${countAfterGood}` : ""}`, {
         hint: !goodPost
           ? "the submission didn't get a response at all."
@@ -666,14 +673,19 @@
       console.log("%cType  recheck()  to run again — or  recheck(\"Trails\")  with your controller name.", "color: #79c0ff");
     };
 
-    const run = (forcedRoute) => {
+    const run = (forcedRoute, write) => {
       console.log(`%c🔎 Week ${WEEK} self-check — ${window.location.origin}`, big);
       console.log("Results appear as each check finishes — a sleeping free-tier app can take ~30s for the first one.");
+      if (!write) {
+        console.log("%c👀 Reading only — nothing is submitted, so reloading your app never touches your list.", "color: #79c0ff");
+        console.log("%cThe two checks that need to submit your form are waiting. Type  recheck()  to run them.", "color: #79c0ff");
+      }
       if (forcedRoute) console.log(`Checking /${forcedRoute} directly (you told me where to look).`);
-      return runChecks(window.location.origin, forcedRoute || null, printCheck).then(report);
+      return runChecks(window.location.origin, forcedRoute || null, printCheck, { write }).then(report);
     };
 
-    window.recheck = run;
-    run();
+    // Typing recheck() is the consent: it's the only path that writes.
+    window.recheck = (forcedRoute) => run(forcedRoute, true);
+    run(null, false);
   }
 })();

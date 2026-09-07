@@ -33,7 +33,7 @@
 // ═══════════════════════════════════════════════════════════════════════════
 (function () {
   const WEEK = 7;
-  const MARKER = "SelfCheck entry";
+  const MARKER = `Week ${WEEK} Test`;
 
   // In Node, fetch doesn't keep cookies, and the antiforgery token needs its
   // cookie to come back with the POST. In a browser, same-origin cookies are
@@ -237,7 +237,9 @@
    * `blocked` = couldn't be judged yet because an earlier step isn't done.
    * Shared with the grader so students and I run identical logic.
    */
-  async function runChecks(baseUrl, forcedRoute, onCheck) {
+  async function runChecks(baseUrl, forcedRoute, onCheck, opts = {}) {
+    // Read-only by default on page load: nothing is submitted unless asked.
+    const write = opts.write !== false;
     const root = String(baseUrl).replace(/\/$/, "");
     const checks = [];
     const stale = new Set();
@@ -270,7 +272,7 @@
     // anything is a record that outlived whatever restarts happened since.
     let markerWasAlreadyThere = false;
     const done = (route) => ({
-      route, checks, stale: [...stale], addedARecord, markerWasAlreadyThere, ...tally(checks),
+      route, checks, stale: [...stale], addedARecord, markerWasAlreadyThere, readOnly: !write, ...tally(checks),
     });
 
     // ── 0. their home page ────────────────────────────────────────────────────
@@ -364,6 +366,15 @@
         todo: "Your Details action has to look the record up in the table now: "
             + "_context.YourThings.FirstOrDefault(x => x.Id == id);",
       });
+
+    // ── 4-6 all submit your form, so they wait for recheck() ──────────────────
+    const WAIT = "run  recheck()  to include this — it submits your form, so it isn't automatic";
+    if (!write) {
+      add("blocked", 1, "your form still refuses a bad record", { hint: WAIT, todo: null });
+      add("blocked", 2, "a good record is accepted and lands in your list", { hint: WAIT, todo: null });
+      add("blocked", 1, "the new record's id was assigned for you", { hint: WAIT, todo: null });
+      return done(route);
+    }
 
     // ── 4. the form still refuses a bad record ────────────────────────────────
     const createUrl = `/${route}/Create`;
@@ -586,15 +597,21 @@
       console.log("%cType  recheck()  to run again — or  recheck(\"Trails\")  with your controller name.", "color: #79c0ff");
     };
 
-    const run = (forcedRoute) => {
+    const run = (forcedRoute, write) => {
       console.log(`%c🔎 Week ${WEEK} self-check — ${window.location.origin}`, big);
       console.log("Results appear as each check finishes — a sleeping free-tier app can take ~30s for the first one.");
-      console.log("%c⚠️  This submits your form twice, and one of those adds a real item to your list.", "color: #d29922");
+      if (write) {
+        console.log("%c⚠️  This submits your form twice, and one of those adds a real item to your list.", "color: #d29922");
+      } else {
+        console.log("%c👀 Reading only — nothing is submitted, so reloading your app never touches your data.", "color: #79c0ff");
+        console.log("%cThe three checks that need to submit your form are waiting. Type  recheck()  to run them.", "color: #79c0ff");
+      }
       if (forcedRoute) console.log(`Checking /${forcedRoute} directly (you told me where to look).`);
-      return runChecks(window.location.origin, forcedRoute || null, printCheck).then(report);
+      return runChecks(window.location.origin, forcedRoute || null, printCheck, { write }).then(report);
     };
 
-    window.recheck = run;
-    run();
+    // Typing recheck() is the consent: it's the only path that writes.
+    window.recheck = (forcedRoute) => run(forcedRoute, true);
+    run(null, false);
   }
 })();

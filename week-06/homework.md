@@ -118,7 +118,7 @@ crawling your site from the outside. What turns each line green:
 > [!NOTE]
 > **Requirement 3 needs requirement 1 before it shows up**, and that's not a bug — your rules only become visible to a checker once there's a form rendering them as `data-val-*`. Annotations written before the form exists are still correct; the checker just can't see them yet.
 
-**You installed the tag in Part 2, so it is already there.** Run your app **locally** (`dotnet watch`), load your home page, and open the console — **F12 → Console**. It runs automatically.
+**You installed the tag in Part 2, so it is already there.** Run your app **locally** (`dotnet watch`), load your home page, and open the console — **F12 → Console**. The checks that only *read* your site run on their own; the two that have to **submit your form** wait until you type **`recheck()`**, so reloading while you build never adds anything to your list. `recheck()` fetches fresh pages, so you don't need to reload first — change your code, let `dotnet watch` rebuild, then press Up and Enter in the console.
 
 ```
 🔎 Week 6 self-check — https://trailguide-ab1234.azurewebsites.net
