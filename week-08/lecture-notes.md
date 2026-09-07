@@ -393,6 +393,17 @@ A form nobody can reach doesn't exist. In `Views/Trucks/Details.cshtml`, under t
 <p><a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-secondary">✏️ Edit this truck</a></p>
 ```
 
+**`asp-route-id` is new, and it's the only new tag helper this week.** Since week 4 you've written links to a record by typing the URL out: `href="/Trucks/Details/@Model.Id"`. This is the tag-helper spelling of that same link — `asp-action` names the action, and **`asp-route-id` supplies the `id` segment of the route**. Any `asp-route-<name>` fills in the route parameter called `<name>`; `id` is just the one our routes use.
+
+These two produce identical HTML:
+
+```html
+<a href="/Trucks/Edit/@Model.Id">Edit</a>
+<a asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+```
+
+**Either is fine, in the lab and in your homework.** The tag-helper version is what the scaffolder writes, and it keeps working if the route ever changes — the hand-typed one is more obviously *just a URL*, which is why week 4 started there. Use whichever you find easier to read; the Cancel link on the Edit form above uses the same attribute to get back to the record's Details page.
+
 ## Part 5: The debugger, finally (15 min)
 
 ### Attach to the process
