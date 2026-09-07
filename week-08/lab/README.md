@@ -133,7 +133,9 @@ Open `/Cryptids` and count six. Then leave it running for the rest of the lab.
 
 ### Task 2 in full
 
-**No check for this one** — the scaffold is the *reference*, and it'll be deleted in task 4. The point of this task is to watch one command do four weeks of work, and then read it.
+**No check for this one**, and the code you write tonight doesn't come out of it — tasks 3 and 4 hand you the ported versions, already in the Registry's style. The scaffold is a *reference*, and task 4 deletes it.
+
+So why run it? Two reasons, and the second is the one that matters. You get to watch one command do four weeks of work, which is worth seeing once. And **you run this command tonight so that running it on your own app in the homework isn't the first time** — there, the scaffolder reads *your* model and writes *your* property names into a `[Bind]` list no README can hand you. Get the command working here, where you can put your hand up.
 
 **From inside `Cryptids.Web`** (same folder as every `dotnet ef` command):
 
@@ -157,7 +159,7 @@ Six lines of output: **one controller, five views.** Then:
 
 **Checks:** `Check2_TheEditFormShowsTheRecord` and `Check3_ACorrectionIsSaved`
 
-**Port the Edit pair.** Copy the two `Edit` methods out of `CryptidsScaffoldController` into **`CryptidsController`**, below `Create`. Ported into the Registry's house style (early-out guard instead of the scaffold's nested `if`), they look like this:
+**Port the Edit pair** into **`CryptidsController`**, below `Create`. These are the scaffold's two `Edit` methods, already moved into the Registry's house style — an early-out guard instead of its nested `if`. Paste them:
 
 ```csharp
 // GET /Cryptids/Edit/3 — the form, pre-filled with what's on file.
