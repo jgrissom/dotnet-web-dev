@@ -20,7 +20,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 ## 0 · Before class
 
 - [ ] ⚠️ **Re-rehearsing this week? Delete `instructor/week-06/Curbside` first** — a rehearsal leaves it in tonight's **end** state, and every beat below starts from week 5's. Deleting the folder in Finder is enough; the next step recreates it
-- [ ] VS Code → File → Open Folder → in `~/Repos/dotnet-web-dev-course/instructor/week-06`, create a new empty **Curbside** and open it *(the dialog's **New Folder** button makes `week-06` too, the first time)*. Its own week folder, so nothing here collides with another week's `Curbside` and no previous demo gets deleted
+- [ ] VS Code → File → Open Folder → in `~/Repos/dotnet-web-dev-course/instructor/week-06`, create a new empty **folder** named `Curbside` and open it *(the dialog's **New Folder** button makes `week-06` too, the first time)*. **The folder stays empty — there is no `dotnet new` tonight;** the next step fills it with the starter. Its own week folder, so nothing here collides with another week's `Curbside` and no previous demo gets deleted
 - [ ] Integrated terminal (**Ctrl+&#96;**) — fill the empty folder with tonight's starter. This is Curbside as week 5's demo left it — branded, themed, card partial on two pages, a `@section Scripts` on Details — **plus one thing week 5 didn't have: an `＋ Add a truck` button on `/Trucks` that goes nowhere.** It 404s until §1 builds the action behind it. That's deliberate; it's tonight's job, and from §1 on it's how you get to the form instead of retyping the URL:
   ```bash
   cp -R ~/Repos/dotnet-web-dev-answer-keys/week-06/demo-starter/Curbside/. .

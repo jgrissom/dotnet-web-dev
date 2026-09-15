@@ -54,7 +54,7 @@ dotnet-web-dev-course/
 
 - [ ] 🎞️ **GO TO SLIDE 2** — *Last week vs. tonight*
 - [ ] 🎯 **Say the contrast on the slide before you open anything** — it's tonight in two lines: *"last week, one URL found one method. Tonight, an app is a set of URLs over a set of data."* The four bullets under it are the running order, and the last word on the slide — **typed** — is the one §4 comes back to
-- [ ] VS Code → File → Open Folder → in `~/Repos/dotnet-web-dev-course/instructor/week-04`, create a new empty **Curbside** and open it
+- [ ] VS Code → File → Open Folder → in `~/Repos/dotnet-web-dev-course/instructor/week-04`, create a new empty **folder** named `Curbside` and open it
 - [ ] Integrated terminal:
   ```bash
   dotnet new mvc --no-https

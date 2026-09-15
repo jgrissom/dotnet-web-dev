@@ -20,7 +20,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 ## 0 · Before class
 
 - [ ] ⚠️ **Re-rehearsing this week? Delete `instructor/week-09/Curbside` first** — a rehearsal leaves it in tonight's **end** state, and every beat below starts from week 8's. Deleting the folder in Finder is enough; the next step recreates it
-- [ ] VS Code → File → Open Folder → in `~/Repos/dotnet-web-dev-course/instructor/week-09`, create a new empty **Curbside** and open it *(the dialog's **New Folder** button makes `week-09` too, the first time)*. Its own week folder, so nothing here collides with another week's `Curbside`
+- [ ] VS Code → File → Open Folder → in `~/Repos/dotnet-web-dev-course/instructor/week-09`, create a new empty **folder** named `Curbside` and open it *(the dialog's **New Folder** button makes `week-09` too, the first time)*. **The folder stays empty — there is no `dotnet new` tonight;** the next step fills it with the starter. Its own week folder, so nothing here collides with another week's `Curbside`
 - [ ] Integrated terminal (**Ctrl+&#96;**) — fill the empty folder with tonight's starter. This is Curbside exactly as week 8's demo left it: full CRUD, a themed Edit and Delete, three migrations, `Slogan` on the cards, and no scaffold:
   ```bash
   cp -R ~/Repos/dotnet-web-dev-answer-keys/week-09/demo-starter/Curbside/. .

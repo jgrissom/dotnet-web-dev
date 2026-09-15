@@ -20,7 +20,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 ## 0 · Before class
 
 - [ ] ⚠️ **Re-rehearsing this week? Two resets, and you need both.** A rehearsal leaves the files in tonight's **end** state *and* the database built — every beat below starts from week 6's, with **no database at all**. **The files:** delete `instructor/week-07/Curbside` in Finder; the next step recreates it. **The database:** with the mssql setup below, once the panel is up
-- [ ] VS Code → File → Open Folder → in `~/Repos/dotnet-web-dev-course/instructor/week-07`, create a new empty **Curbside** and open it *(the dialog's **New Folder** button makes `week-07` too, the first time)*. Its own week folder, so nothing here collides with another week's `Curbside` and no previous demo gets deleted
+- [ ] VS Code → File → Open Folder → in `~/Repos/dotnet-web-dev-course/instructor/week-07`, create a new empty **folder** named `Curbside` and open it *(the dialog's **New Folder** button makes `week-07` too, the first time)*. **The folder stays empty — there is no `dotnet new` tonight;** the next step fills it with the starter. Its own week folder, so nothing here collides with another week's `Curbside` and no previous demo gets deleted
 - [ ] Integrated terminal (**Ctrl+&#96;**) — fill the empty folder with tonight's starter. This is Curbside exactly as week 6's demo left it: the form, the annotations, the `ModelState` guard, the redirect, `_ValidationScriptsPartial` in a section. Nothing about it knows what a database is:
   ```bash
   cp -R ~/Repos/dotnet-web-dev-answer-keys/week-07/demo-starter/Curbside/. .
