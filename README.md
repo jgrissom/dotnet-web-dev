@@ -17,7 +17,7 @@ Full-stack web development with **ASP.NET Core MVC on .NET 10**, **Entity Framew
 | 6 | Models, forms, model binding, validation (data annotations); POST-Redirect-GET | [`week-⁠06/`](week-06/) | ✅&nbsp;Ready |
 | 7 | EF Core + SQL Server: DbContext, migrations, seeding; pointing deployed apps at the school SQL Server | [`week-⁠07/`](week-07/) | ✅&nbsp;Ready |
 | 8 | EF Core CRUD: scaffolding and reading generated code, async actions, edit & delete, adding a column to a live table | [`week-⁠08/`](week-08/) | ✅&nbsp;Ready |
-| 9 | EF Core relationships (1-many, many-many), LINQ queries, ViewModels | `week-⁠09/` | 🚧&nbsp;Planned |
+| 9 | EF Core relationships (1-many, many-many), LINQ queries, ViewModels | [`week-⁠09/`](week-09/) | ✅&nbsp;Ready |
 | 10 | Midterm project: extend your semester project into a finished build, tying weeks 3–9 together | `week-⁠10/` | 🚧&nbsp;Planned |
 | 11 | ASP.NET Core Identity: registration, login, customizing IdentityUser | `week-⁠11/` | 🚧&nbsp;Planned |
 | 12 | Identity pt. 2: roles, claims, `[Authorize]`, securing the app | `week-⁠12/` | 🚧&nbsp;Planned |
