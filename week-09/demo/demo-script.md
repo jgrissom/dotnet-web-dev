@@ -65,11 +65,12 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] Say what the slide is claiming, and be specific about what is missing: *"you have Create, Read, Update and Delete on trucks. What you do not have is a truck that knows anything about anything else. Seven rows, seven islands"*
 - [ ] Land the second half: *"tonight your records grow relatives — a second table whose rows point back at this one"*
 
-### Collect the reading *(slide 3)*
+### The three words *(slide 3)*
 
 - [ ] 🎞️ **GO TO SLIDE 3** — *What a relationship is*
-- [ ] These three words came off last week's reading, so ask for them rather than reading them out: *"the docs used three words. Which one is the Truck, which one is the Special, and which one is the column?"*
-- [ ] Then fix them in place with the sentence the table cannot say: *"principal and dependent are not about importance. They are about who can exist alone. A truck with no specials is a truck. A special with no truck is a row nobody can explain"*
+- [ ] Name all three against tonight's two classes, so they arrive as things rather than as vocabulary: *"three words, and all three of them show up tonight. The truck is the principal — it stands on its own. The special is the dependent — it does not. And the foreign key is the one column that ties them together, and it lives on the dependent, never on the principal"*
+- [ ] 🎯 Then sharpen the first two, because this is the part the table cannot say: *"principal and dependent are not about importance. They are about who can exist alone. A truck with no specials is a truck. A special with no truck is a row nobody can explain"*
+- [ ] 💡 Close on the two lines at the foot of the slide, pointed forward: *"one truck, many specials. One special, one truck. In a minute you will watch that sentence turn into three properties"*
 
 ## 2 · The second table *(slide 4)*
 

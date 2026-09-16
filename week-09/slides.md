@@ -51,7 +51,7 @@ and you find out why `_context.Trucks` is a **set**, not a list.
 
 ---
 
-<!-- _footer: '🖥️ Demo §1 · collect the reading' -->
+<!-- _footer: '🖥️ Demo §1 · the three words' -->
 
 ## What a relationship is
 

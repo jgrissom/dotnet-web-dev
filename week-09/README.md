@@ -21,7 +21,7 @@ The night one table becomes two — and the week turns on a failure with **no sy
 ## 📋 Before class, don't forget
 
 - **Deployed-app gallery** — 2–3 student Azure URLs picked in advance; 2 minutes each
-- Collect the reading in §1 — principal, dependent, foreign key — by **asking for them**, not reading them off the slide
+- Teach the three words in §1 — principal, dependent, foreign key — naming each against `Truck` and `Special`, so the beat doesn't depend on who did the reading
 - ⚠️ **Copy `week-09/demo-starter/Curbside` out of the private answer-keys repo**, set your secret (`set` only — the id ships), then run `dotnet ef database drop --force` and `dotnet ef database update` — **after your last rehearsal**, as the final prep step. A rehearsal leaves `Specials` and `Dishes` already built and §2 has nothing left to create
 - **Two integrated terminals** — `dotnet watch` in the first, `dotnet ef` in the second — and answer `a` at the first restart prompt
 - **mssql extension** signed in and tested, panel closed — one appearance tonight (§3, reading the fourteen rows the migration inserted)
