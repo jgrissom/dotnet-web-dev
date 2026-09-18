@@ -218,11 +218,16 @@ return View(_context.Trucks
     .ToList());
 ```
 
-...and inside the `@foreach` in `Views/Trucks/Index.cshtml`, the count comes off the loaded rows:
+...and the count comes off the loaded rows. It belongs **inside the card**, so it goes in the card's own partial — this is the `card-footer` block of `Views/Shared/_TruckCard.cshtml`, which takes a single `Truck` as its model:
 
 ```cshtml
-<p class="small text-muted">@truck.Specials.Count specials</p>
+<div class="card-footer d-flex justify-content-between">
+    <a href="/Trucks/Details/@Model.Id">Details</a>
+    <span class="text-muted small">@Model.Specials.Count specials</span>
+</div>
 ```
+
+Put it in `Index.cshtml` after the `<partial>` instead and it renders *outside* the card — the card is `h-100`, so it stretches to fill the column and the count is left stranded underneath it.
 
 Reload and read the terminal again. **One statement:**
 

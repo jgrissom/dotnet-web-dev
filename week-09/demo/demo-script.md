@@ -230,10 +230,14 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
       return View(trucks);
   }
   ```
-- [ ] And in `Views/Trucks/Index.cshtml`, inside the loop, under the partial:
+- [ ] The count belongs **inside the card**, so it goes in the partial, not in `Index.cshtml`. Open `Views/Shared/_TruckCard.cshtml` and **replace the whole `card-footer` block** — the footer gains `d-flex justify-content-between`, which is what puts the count on the right of the Details link:
   ```cshtml
-  <p class="small text-muted">@(((Dictionary<int,int>)ViewData["Counts"]!)[truck.Id]) specials</p>
+  <div class="card-footer d-flex justify-content-between">
+      <a href="/Trucks/Details/@Model.Id">Details</a>
+      <span class="text-muted small">@(((Dictionary<int,int>)ViewData["Counts"]!)[Model.Id]) specials</span>
+  </div>
   ```
+- [ ] 💡 Worth one sentence if anyone asks how the partial can see `Counts`, since nothing was passed to it: *"a partial inherits the parent view's ViewData. Handy, and also exactly the problem — a bag nobody declared, reaching into a file that never asked for it. Hold that thought for twenty minutes"*
 - [ ] 🎞️ **GO TO SLIDE 7** — *How many SELECTs?*
 - [ ] **The slide is the exercise.** Read the loop off it and ask for a show of hands on a number: *"seven trucks. One page load. How many SELECT statements is that terminal about to print? Hands up for one. For seven. For eight"*
 - [ ] Swipe back. **Reload `/Trucks` and scroll the terminal.** 🎯 **Eight.** One for the trucks, then one per truck
@@ -251,9 +255,9 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
           .ToList());
   }
   ```
-- [ ] And the view line becomes what a reader would hope for:
+- [ ] And back in `_TruckCard.cshtml`, the `<span>` becomes what a reader would hope for — the cast, the bag and the `!` all go at once:
   ```cshtml
-  <p class="small text-muted">@truck.Specials.Count specials</p>
+  <span class="text-muted small">@Model.Specials.Count specials</span>
   ```
 - [ ] **Reload and read the terminal.** 🎯 **One statement**, and it is a `LEFT JOIN`
 - [ ] 🎞️ **GO TO SLIDE 8** — *One JOIN*
