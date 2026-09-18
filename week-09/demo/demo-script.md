@@ -502,7 +502,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
       .Include(t => t.Specials)
       .FirstOrDefaultAsync(t => t.Id == id);
   ```
-- [ ] And warn, in `Views/Trucks/Delete.cshtml`, under the card:
+- [ ] And warn, in `Views/Trucks/Delete.cshtml` — **between the `</div>` that closes the card and the `<form>` below it**:
   ```cshtml
   @if (Model.Specials.Count > 0)
   {
