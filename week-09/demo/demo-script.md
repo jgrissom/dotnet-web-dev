@@ -494,7 +494,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] Go to `/Trucks/Details/1` and hover **Remove this truck**, but do not click yet
 - [ ] **Ask, and make them commit before anything happens:** *"Roll Models has three specials now. If I delete this truck, what happens to the three rows in the Specials table?"*
 - [ ] 🎞️ **GO TO SLIDE 12** — *Closing a file takes the children*
-- [ ] Answer it against the slide, and tie it back to a decision they watched get made: *"they are deleted. Not orphaned, not blocked — deleted. And we chose that in section three, by typing `int` instead of `int?`"*
+- [ ] Answer it against the slide, and tie it back to a decision they watched get made: *"they are deleted. Not orphaned, not blocked — deleted. And we chose that back when we wrote the Special class, by typing `int TruckId` with no question mark"*
 - [ ] Then the design point, which is the reason this beat exists at all: *"so a page that asks *are you sure* is lying if it only shows the truck. It has to say what else is going with it"*
 - [ ] Swipe back. Load the specials in the Delete GET in `TrucksController`:
   ```csharp
