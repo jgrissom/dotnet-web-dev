@@ -408,7 +408,6 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
           new SelectList(_context.Trucks.OrderBy(t => t.Name).ToList(), "Id", "Name", selected);
   }
   ```
-- [ ] 🎯 Point at the rebuild inside the guard before anyone asks why it is there: *"if the form is rejected I build the truck list again. A dropdown is not posted back — the browser sends the one option you chose, never the list it came from. Skip this line and the redisplayed form has an empty dropdown"*
 - [ ] Create `Views/Specials/Create.cshtml` *(watch terminal 1 for the restart prompt if you have not answered `a` yet)*:
   ```cshtml
   @model SpecialFormViewModel
@@ -481,6 +480,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] **Submit again.** 🎯 Redirect to Roll Models, and **Tteokbokki is on the menu, third in the list**
 - [ ] 💡 Say why the restart was needed, because otherwise it reads as superstition: *"that is not me being careful. The rule about which fields are required gets worked out once, when the app starts, and hot reload does not redo it"*
 - [ ] 💡 Close the loop on the fix: *"one question mark. The list is not an answer, so it is allowed to be absent"*
+- [ ] 💡 **Now** collect the line nobody asked about — they have watched that form come back twice with a working dropdown, so there is something to point at. Scroll `SpecialsController` to `form.Trucks = TruckChoices(form.Special.TruckId);`, the line inside `if (!ModelState.IsValid)`: *"every time that form came back, the dropdown still had seven trucks in it. That is this line. The browser posts the option you chose and never the list it came from, so if I am handing the form back I have to build the list again. Delete it and the form returns with an empty dropdown"*
 
 ## 8 · Delete takes the children *(slide 12)*
 
