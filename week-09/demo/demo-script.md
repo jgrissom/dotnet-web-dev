@@ -480,7 +480,12 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] **Submit again.** 🎯 Redirect to Roll Models, and **Tteokbokki is on the menu, third in the list**
 - [ ] 💡 **Only if you had to restart** — say why, because otherwise it reads as superstition: *"that was not me being careful. The rule about which fields are required gets worked out once, when the app starts, and a hot reload does not always redo it"*
 - [ ] 💡 Close the loop on the fix: *"one question mark. The list is not an answer, so it is allowed to be absent"*
-- [ ] 💡 **Now** collect the line nobody asked about — they have watched that form come back twice with a working dropdown, so there is something to point at. Scroll `SpecialsController` to `form.Trucks = TruckChoices(form.Special.TruckId);`, the line inside `if (!ModelState.IsValid)`: *"every time that form came back, the dropdown still had seven trucks in it. That is this line. The browser posts the option you chose and never the list it came from, so if I am handing the form back I have to build the list again. Delete it and the form returns with an empty dropdown"*
+- [ ] 💡 **Now** collect the line nobody asked about. Scroll `SpecialsController` to the one sitting inside `if (!ModelState.IsValid)`:
+  ```csharp
+  form.Trucks = TruckChoices(form.Special.TruckId);
+  ```
+- [ ] Walk it in order — the middle step is the one that is easy to miss: *"when this page first loaded, the controller built a list of seven trucks, and the view turned that list into seven options. Then I hit submit. The browser sent back the one option I picked. It does not send the other six, and it does not send the list"*
+- [ ] 🎯 Then the step that makes the line necessary: *"so the form object that arrives in this action has no truck list on it at all — that part was never posted. Hand it straight back to the view and the dropdown comes back empty. This line builds the list again before the form is redisplayed, which is why you have been looking at a full dropdown every time it came back"*
 
 ## 8 · Delete takes the children *(slide 12)*
 
