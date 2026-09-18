@@ -274,7 +274,7 @@ precisely because it carries something.
 
 <br>
 
-**⏱️ 55 minutes · target tonight: 1–5 green.**
+**⏱️ 55 minutes · target tonight: checks 1–5 green.**
 
 ---
 
