@@ -291,10 +291,12 @@ return View(viewModel);
 And the view's first line becomes `@model TruckDetailsViewModel`, after which every `Model.Something` becomes `Model.Truck.Something`. The compiler finds all of those for you.
 
 > [!WARNING]
-> **It will not find the cast, and that is the one that bites.** Deleting `var alsoHere = (List<Truck>)ViewData["AlsoHere"]!;` is only half the job — every use of `alsoHere` has to point at the view model too:
+> **It will not find the cast, and that is the one that bites.** Deleting `var alsoHere = (List<Truck>)ViewData["AlsoHere"]!;` is only half the job — its **two** uses have to point at the view model too, and they are not next to each other. The `@if` that opens the *Also in* block:
 > ```cshtml
 > @if (Model.AlsoHere.Count > 0)
->
+> ```
+> and, a few lines inside it, the `@foreach`:
+> ```cshtml
 > @foreach (var other in Model.AlsoHere)
 > ```
 > Leave the cast where it is and **nothing complains**. `ViewData["AlsoHere"]` is typed `object`, so the cast compiles, and the `!` is silencing the only warning you would have had. But the controller has stopped putting anything in `ViewData`, so the cast now produces `null` and the page throws `NullReferenceException` the moment someone loads it. It compiled clean and waited for a visitor — which is the argument for a ViewModel in one sentence.

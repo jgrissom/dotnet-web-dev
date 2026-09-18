@@ -326,10 +326,12 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   ```
 - [ ] 🎯 Name the three edits that just happened, because pasting a whole method hides them: *"the ViewData line is gone, the two things are now properties on one object, and the last line hands over the view model instead of the truck"*
 - [ ] Change the view's first line to `@model TruckDetailsViewModel`, then let the compiler drive the easy half — every `Model.X` becomes `Model.Truck.X`, including `Also in @Model.Truck.City`
-- [ ] 🚨 **The compiler will NOT drive the other half, and that is the beat.** Delete the `var alsoHere = ...` line, then point both of its uses at the view model — the `@if` and the `@foreach`:
+- [ ] 🚨 **The compiler will NOT drive the other half, and that is the beat.** Delete the `var alsoHere = ...` line, then repoint its **two** uses — they are not next to each other. First the `@if` that opens the *Also in* block:
   ```cshtml
   @if (Model.AlsoHere.Count > 0)
-
+  ```
+- [ ] Then the `@foreach` nested a few lines inside it:
+  ```cshtml
   @foreach (var other in Model.AlsoHere)
   ```
 - [ ] ⚠️ Miss either one and the page throws `NullReferenceException` on `alsoHere.Count`. **Nothing warns you**: `ViewData["AlsoHere"]` is typed `object`, so the cast compiles, and the `!` you are deleting was silencing the only complaint you would have had. The controller stopped filling the bag and the view had no way to find out
