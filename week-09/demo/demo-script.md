@@ -585,17 +585,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
       new Special { Id = 14, TruckId = 7, DishId = 3, Price = 6.50m, ServedOn = "Friday" }
   );
   ```
-- [ ] Terminal 2 — and **read the warning EF prints, do not scroll past it**:
-  ```bash
-  dotnet ef migrations add AddDishes
-  ```
-- [ ] 🎯 Read the warning aloud, then answer it: *"an operation was scaffolded that may result in the loss of data. That is the `DropColumn`, and EF is right to say it — but we mean this one. The dish names are not lost, they moved"*
-- [ ] Open the migration and read the order out loud, because the order is what makes it safe: **`DropColumn`**, **`AddColumn DishId`**, **`CreateTable Dishes`**, fourteen **`UpdateData`**, and only *then* the index and the foreign key
-- [ ] 💡 Say why that ordering matters: *"the foreign key constraint goes on last. If it went on first, fourteen rows with a `DishId` of zero would fail it instantly"*
-  ```bash
-  dotnet ef database update
-  ```
-- [ ] ⚠️ **`Name` is gone, so three things that used it have to catch up — the build will not run until all three are done.** First, `Views/Trucks/Details.cshtml`, where the menu row becomes a link:
+- [ ] 🚨 **The build is broken right now, and that is the next thing to fix.** `Special.Name` is gone and two files still ask for it, so nothing compiles — **including `dotnet ef`, which builds the project before it can look at your model.** No migration is possible until these are done. First, `Views/Trucks/Details.cshtml`, where the menu row becomes a link:
   ```cshtml
   <a asp-controller="Dishes" asp-action="Details" asp-route-id="@special.DishId">@special.Dish!.Name</a>
   ```
@@ -627,6 +617,16 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   </div>
   ```
 - [ ] 🎯 Say what just happened to the form, because it is the normalization landing where they can see it: *"a text box became a dropdown. Nobody can invent a fourth spelling of cheese curds any more — they pick one that exists"*
+- [ ] **Now it compiles, so EF can run.** Terminal 2 — and **read the warning EF prints, do not scroll past it**:
+  ```bash
+  dotnet ef migrations add AddDishes
+  ```
+- [ ] 🎯 Read the warning aloud, then answer it: *"an operation was scaffolded that may result in the loss of data. That is the `DropColumn`, and EF is right to say it — but we mean this one. The dish names are not lost, they moved"*
+- [ ] Open the migration and read the operations out loud, in order, because the order is what makes it safe: **`DropColumn`**, **`AddColumn DishId`**, **`CreateTable Dishes`**, **`InsertData`** with the ten dish names, fourteen **`UpdateData`** repointing every special, and only *then* the index and the foreign key
+- [ ] 💡 Say why that ordering matters: *"the foreign key constraint goes on last. If it went on first, fourteen rows with a `DishId` of zero would fail it instantly"*
+  ```bash
+  dotnet ef database update
+  ```
 - [ ] Now the payoff. Create `Controllers/DishesController.cs`:
   ```csharp
   using Microsoft.EntityFrameworkCore;
