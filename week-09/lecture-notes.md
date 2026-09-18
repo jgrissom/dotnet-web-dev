@@ -229,6 +229,8 @@ return View(_context.Trucks
 
 Put it in `Index.cshtml` after the `<partial>` instead and it renders *outside* the card — the card is `h-100`, so it stretches to fill the column and the count is left stranded underneath it.
 
+`@Model.Specials.Count` is safe here on every page that draws the card, and the reason is the initializer from Part 2: the collection starts as an empty list, never `null`. A page that has not asked for the specials honestly reports zero rather than throwing. **The `ViewData` version is not safe** — a partial inherits whatever `ViewData` the parent view had, and a page that never put anything in it hands the partial an empty bag. Cast that to a `Dictionary` and you get `null`; index into it and you get a `NullReferenceException` pointing at a file you did not edit. That is the argument for the ViewModel in Part 6, in one stack trace.
+
 Reload and read the terminal again. **One statement:**
 
 ```sql

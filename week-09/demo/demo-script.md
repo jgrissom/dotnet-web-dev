@@ -234,10 +234,14 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   ```cshtml
   <div class="card-footer d-flex justify-content-between">
       <a href="/Trucks/Details/@Model.Id">Details</a>
-      <span class="text-muted small">@(((Dictionary<int,int>)ViewData["Counts"]!)[Model.Id]) on the menu</span>
+      @if (ViewData["Counts"] is Dictionary<int, int> counts)
+      {
+          <span class="text-muted small">@counts[Model.Id] on the menu</span>
+      }
   </div>
   ```
-- [ ] 💡 Worth one sentence if anyone asks how the partial can see `Counts`, since nothing was passed to it: *"a partial inherits the parent view's ViewData. Handy, and also exactly the problem — a bag nobody declared, reaching into a file that never asked for it. Hold that thought for twenty minutes"*
+- [ ] 🚨 **The `@if` is not decoration — leave it off and two other pages return 500.** This same card is drawn by `Details` (the *Also in* block) and by `Delete`, and neither of those actions puts `Counts` in `ViewData`. Without the guard the cast hands back `null`, the indexer runs on it, and you get `NullReferenceException` in `_TruckCard.cshtml` — on two pages you never edited
+- [ ] 🎯 Say it out loud, because it is the strongest case you will make all night for §6: *"a partial inherits whatever ViewData the parent had. Three pages draw this card. One of them put the counts in the bag — the other two handed it over empty, and this view has to ask before it reaches in. That is what a bag of object costs you"*
 - [ ] 🎞️ **GO TO SLIDE 7** — *How many SELECTs?*
 - [ ] **The slide is the exercise.** Read the loop off it and ask for a show of hands on a number: *"seven trucks. One page load. How many SELECT statements is that terminal about to print? Hands up for one. For seven. For eight"*
 - [ ] Swipe back. **Reload `/Trucks` and scroll the terminal.** 🎯 **Eight.** One for the trucks, then one per truck
@@ -255,10 +259,14 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
           .ToList());
   }
   ```
-- [ ] And back in `_TruckCard.cshtml`, the `<span>` becomes what a reader would hope for — the cast, the bag and the `!` all go at once:
+- [ ] And back in `_TruckCard.cshtml`, the whole `card-footer` becomes what a reader would hope for — the cast, the bag, the `!` and the guard all leave together:
   ```cshtml
-  <span class="text-muted small">@Model.Specials.Count on the menu</span>
+  <div class="card-footer d-flex justify-content-between">
+      <a href="/Trucks/Details/@Model.Id">Details</a>
+      <span class="text-muted small">@Model.Specials.Count on the menu</span>
+  </div>
   ```
+- [ ] 💡 No guard needed now, and say why — it is the initializer beat from §2 paying off: *"`Specials` starts life as an empty list, never null, so this is safe on every page that draws the card. The two that have not asked for specials yet will honestly say zero"*
 - [ ] **Reload and read the terminal.** 🎯 **One statement**, and it is a `LEFT JOIN`
 - [ ] 🎞️ **GO TO SLIDE 8** — *One JOIN*
 - [ ] Point at the SQL on the slide and say what it proves: *"you did not write that join. You said Include, and EF wrote the join — one trip, seven trucks and all fourteen specials in it"*
