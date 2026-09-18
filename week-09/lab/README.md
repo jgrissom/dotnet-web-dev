@@ -81,13 +81,13 @@ Cryptids.Web/
 
 ## The tasks
 
-| # | Task | Turns green |
+| # | Task | Check it turns green |
 |---|---|---|
-| 1 | **The count stops being a number you typed** — `Sighting`, and the `int Sightings` comes out. [Task 1 in full ↓](#task-1-in-full) | check 2 |
-| 2 | **Seed the accounts and migrate** — fourteen real reports. [Task 2 in full ↓](#task-2-in-full) | check 3 |
-| 3 | **`Include`** — make them actually appear. [Task 3 in full ↓](#task-3-in-full) | check 4 |
-| 4 | **The report form** — anyone can file one, and it says which creature. [Task 4 in full ↓](#task-4-in-full) | check 5 |
-| 5 | **Closing a file says what goes with it.** [Task 5 in full ↓](#task-5-in-full) | check 6 |
+| 1 | **The count stops being a number you typed** — `Sighting`, and the `int Sightings` comes out. [Task 1 in full ↓](#task-1-in-full) | `ReportsOnFileIsNoLongerANumberYouTyped` |
+| 2 | **Seed the accounts and migrate** — fourteen real reports. [Task 2 in full ↓](#task-2-in-full) | `TheTableHasRealAccountsInIt` |
+| 3 | **`Include`** — make them actually appear. [Task 3 in full ↓](#task-3-in-full) | `ThePagesActuallyShowTheAccounts` |
+| 4 | **The report form** — anyone can file one, and it says which creature. [Task 4 in full ↓](#task-4-in-full) | `AnyoneCanFileAReport` |
+| 5 | **Closing a file says what goes with it.** [Task 5 in full ↓](#task-5-in-full) | `ClosingAFileSaysWhatElseGoesWithIt` |
 | ⭐ | **Stretch: `Witness`, and a real many-to-many.** No check, no points. [Stretch in full ↓](#stretch-witness-and-a-real-many-to-many) | — |
 
 Run `dotnet test Cryptids.Checks` from terminal 3 after each one. Check 1 passes from the start.
