@@ -405,7 +405,8 @@ var truck = await _context.Trucks
 {
     <div class="alert alert-warning">
         This truck has <strong>@Model.Specials.Count</strong> special@(Model.Specials.Count == 1 ? "" : "s") on file.
-        Removing the truck removes @(Model.Specials.Count == 1 ? "it" : "them") too.
+        Removing the truck removes @(Model.Specials.Count == 1 ? "it" : "them") too — the foreign key was
+        created with <code>onDelete: Cascade</code>, and nothing is going to ask you twice.
     </div>
 }
 ```
@@ -418,7 +419,7 @@ Note that this is the **third** `Include` in the app. Details had one. Index had
 
 This part is worth reading and is **not** required by the homework. A one-to-many is all you need this week.
 
-Look at the demo's seed and read the dish names. Three different trucks sell `"Cheese Curds"`, and each one has that string typed into its own row. So ask the database a reasonable question — *who sells cheese curds?* — and the only way to answer is to match a string and hope everyone spelled it the same way.
+Look at the demo's seed and read the dish names. Three different trucks sell `"Cheese Curds"`, and each one has that name typed into its own row. As far as the database is concerned those are three unrelated rows that happen to contain the same letters — **nothing in the table says they are the same dish.** You can still ask *who sells cheese curds?*, but the only way to answer is to compare the text and hope all three were typed identically. One stray capital, one missing `s`, and a truck drops off the list. Nothing errors; the answer is just wrong.
 
 The fix is to pull the name into its own table:
 

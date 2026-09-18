@@ -246,7 +246,7 @@ A page that asks *"are you sure"* has to say **what else is about to go**.
 
 ## One more foreign key
 
-Three trucks type `"Cheese Curds"`. Nobody can ask *who serves it*.
+Three trucks type `"Cheese Curds"`. Nothing says it is the same dish.
 
 ```csharp
 public int DishId { get; set; }   // one line

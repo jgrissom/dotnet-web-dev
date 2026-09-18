@@ -521,7 +521,8 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 ### The join was already there *(slide 13)*
 
 - [ ] Back to the seed in `Data/CurbsideContext.cs`. Scroll so several rows are visible and **ask the room to find the problem**: *"read the dish names. What is wrong with this table?"*
-- [ ] Take the answer and sharpen it into a question the database cannot answer: *"three trucks sell Cheese Curds and each one spells it into its own row. So tell me who sells cheese curds — and the only way is to match a string and hope everybody typed it the same"*
+- [ ] Take the answer and sharpen it — the repeated name is the symptom, and the point is what the database does **not** know: *"three trucks sell Cheese Curds, and each one has that name typed into its own row. As far as SQL Server is concerned those are three unrelated rows that happen to contain the same letters. Nothing in this table says they are the same dish"*
+- [ ] 🎯 Then make the cost concrete, because that is what earns the next twenty minutes: *"so suppose I want a page that lists every truck selling cheese curds. The best I can do is compare the text and hope all three were typed identically — one stray capital, one missing s, and a truck quietly drops off that page. Nothing errors. The list is just wrong"*
 - [ ] 🎞️ **GO TO SLIDE 13** — *One more foreign key*
 - [ ] Say what the fix is before you type it, and name what it turns `Special` into: *"pull the name out into its own table. `Special` stops being a detail of a truck and becomes the link between a truck and a dish — and it carries the price and the day while it does it"*
 - [ ] ⚠️ Then the definition, which is the syllabus line landing: *"that is a many-to-many. Many trucks, many dishes. And the join has to be a class of its own precisely because it carries something — the price is not a fact about the truck or about the dish, it is a fact about the pairing"*
