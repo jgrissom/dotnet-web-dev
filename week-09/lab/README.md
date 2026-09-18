@@ -154,9 +154,11 @@ public ICollection<Sighting> Sightings { get; set; } = new List<Sighting>();
 ```
 
 > [!IMPORTANT]
-> **The build breaks now, and stays broken until you finish this task.** Five places referred to the old `int`. That's expected — work through the errors, they're a checklist:
+> **Six errors appear, and every one of them is the same error.** Deleting the `int` breaks the seed — `Sightings = 47` will not go into a collection — so `Data/CryptidContext.cs` lights up once per creature. That is item 1 below.
 >
-> 1. `Data/CryptidContext.cs` — the seed sets `Sightings = 47` on all six creatures. **Delete `, Sightings = <number>` from each line.**
+> ⚠️ **The other four places do not error at all, and this is the part that catches people.** `asp-for="Sightings"` binds to a collection without complaining, `@Model.Sightings` renders it, and a `[Bind]` list is just a string to the compiler. Fix item 1 alone and the build goes green — **and so does check 2**, over a card that reads ``First sighted 1893 · System.Collections.Generic.List`1[Cryptids.Web.Models.Sighting] reports``. **This list is the checklist. The error pane is not.**
+>
+> 1. `Data/CryptidContext.cs` — the seed sets `Sightings = 47` on all six creatures. **Delete `, Sightings = <number>` from each line.** *(the only one the compiler will point at)*
 > 2. `Views/Cryptids/Create.cshtml` — delete the whole `<div class="mb-3">` block for `Sightings`.
 > 3. `Views/Cryptids/Edit.cshtml` — the same block, delete it.
 > 4. `Controllers/CryptidsController.cs` — take `Sightings` out of the `[Bind]` list on the Edit POST.
