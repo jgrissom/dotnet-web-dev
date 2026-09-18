@@ -299,21 +299,35 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   ```cshtml
   @using Curbside.ViewModels
   ```
-- [ ] Rewrite `Details` in `TrucksController` to hand over one object:
+- [ ] **Replace the whole `Details` action** in `TrucksController` — this is the entire method, and the `ViewData["AlsoHere"]` line goes with it:
   ```csharp
-  var viewModel = new TruckDetailsViewModel
+  public IActionResult Details(int id)
   {
-      Truck = truck,
-      AlsoHere = _context.Trucks
+      var truck = _context.Trucks
           .Include(t => t.Specials)
-          .Where(t => t.City == truck.City && t.Id != truck.Id)
-          .ToList()
-  };
+          .FirstOrDefault(t => t.Id == id);
 
-  return View(viewModel);
+      if (truck == null)
+      {
+          return NotFound();
+      }
+
+      var viewModel = new TruckDetailsViewModel
+      {
+          Truck = truck,
+          AlsoHere = _context.Trucks
+              .Include(t => t.Specials)
+              .Where(t => t.City == truck.City && t.Id != truck.Id)
+              .ToList()
+      };
+
+      return View(viewModel);
+  }
   ```
+- [ ] 🎯 Name the three edits that just happened, because pasting a whole method hides them: *"the ViewData line is gone, the two things are now properties on one object, and the last line hands over the view model instead of the truck"*
 - [ ] Change the view's first line to `@model TruckDetailsViewModel`, then let the compiler drive: every `Model.X` becomes `Model.Truck.X`, and the cast line is deleted outright
-- [ ] **Reload `/Trucks/Details/1`.** Same page. 🎯 *"Nothing on screen changed. The cast is gone, the exclamation mark is gone, and the view now says what it wants in its first line"*
+- [ ] **Reload `/Trucks/Details/1`.** 🎯 *"The cast is gone, the exclamation mark is gone, and the view now says what it wants in its first line"*
+- [ ] 🎯 **One thing on screen did change — stop for it.** The *Also in* card's count goes from **0** to **1**: *"that card said zero a minute ago, and nothing about the Gyro Wheel changed. I put an Include on the query that fetches it. That is the same lesson a third time — per query, and this query had never asked"*
 
 ## 7 · The report form *(slides 10–11)*
 
@@ -484,7 +498,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   }
   ```
 - [ ] **Load `/Trucks/Delete/1`.** 🎯 **Three specials on file.** Then click **Keep it** — say out loud that you are not deleting it, because the room will assume you did
-- [ ] 💡 One rider on the `Include`, because it is the same lesson a third time: *"that page needed its own Include. Details had one, Index had one, and Delete still showed zero until I added a third"*
+- [ ] 💡 One rider on the `Include`, because it is the same lesson a third time: *"that page needed its own Include. Details had one, Index had one, the Also in list had one, and Delete still showed zero until I added a fourth"*
 
 ## 9 · One more foreign key *(slide 13)*
 
