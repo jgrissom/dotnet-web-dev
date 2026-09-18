@@ -150,7 +150,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   ```
 - [ ] Open the generated file and read the four operations off the screen in order: **`CreateTable`**, a **`ForeignKey`** constraint inside it, **`InsertData`** with the fourteen rows, and **`CreateIndex`** on `TruckId`
 - [ ] 🎯 Stop on the index, because nobody asks for it: *"EF indexed the foreign key without being asked. Every page from here on filters specials by truck, and that index is why it stays fast"*
-- [ ] Now the line that earns its own slide — read it aloud off the migration:
+- [ ] Now the line that earns its own slide — read it aloud off the migration — **HIGHLIGHT THE LINE** *(line 34, last line of the `table.ForeignKey` block)*:
   ```csharp
   onDelete: ReferentialAction.Cascade
   ```
