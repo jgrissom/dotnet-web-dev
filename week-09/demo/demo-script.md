@@ -144,7 +144,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ### Cascade is chosen for you *(slide 5)*
 
-- [ ] Terminal 2. **Predict the contents before you generate it:** *"three migrations exist. This one is going to contain something none of the others do. What?"*
+- [ ] Terminal 2. **Nothing to guess here — say what you are going looking for, then go get it:** *"three migrations exist already. This one is going to contain something none of the others do. Let's find out what it is"*
   ```bash
   dotnet ef migrations add AddSpecials
   ```
