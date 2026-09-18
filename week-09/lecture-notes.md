@@ -288,7 +288,16 @@ var viewModel = new TruckDetailsViewModel
 return View(viewModel);
 ```
 
-And the view's first line becomes `@model TruckDetailsViewModel`, after which every `Model.Something` becomes `Model.Truck.Something`. The cast is deleted.
+And the view's first line becomes `@model TruckDetailsViewModel`, after which every `Model.Something` becomes `Model.Truck.Something`. The compiler finds all of those for you.
+
+> [!WARNING]
+> **It will not find the cast, and that is the one that bites.** Deleting `var alsoHere = (List<Truck>)ViewData["AlsoHere"]!;` is only half the job — every use of `alsoHere` has to point at the view model too:
+> ```cshtml
+> @if (Model.AlsoHere.Count > 0)
+>
+> @foreach (var other in Model.AlsoHere)
+> ```
+> Leave the cast where it is and **nothing complains**. `ViewData["AlsoHere"]` is typed `object`, so the cast compiles, and the `!` is silencing the only warning you would have had. But the controller has stopped putting anything in `ViewData`, so the cast now produces `null` and the page throws `NullReferenceException` the moment someone loads it. It compiled clean and waited for a visitor — which is the argument for a ViewModel in one sentence.
 
 **A ViewModel is not an entity.** It has no table, it is never in your `DbContext`, and it does not belong in `Models/`. Put it in a `ViewModels/` folder — the separation is the point.
 
