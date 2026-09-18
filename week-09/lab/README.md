@@ -214,7 +214,7 @@ dotnet ef migrations add AddSightings
 dotnet ef database update
 ```
 
-**Open the generated migration and read it before you move on.** It tells the story of the task in two operations:
+**Open the generated migration and read it before you move on.** There are four operations in it, and the first two tell the story:
 
 ```csharp
 migrationBuilder.DropColumn(name: "Sightings", table: "Cryptids");
@@ -223,7 +223,9 @@ migrationBuilder.CreateTable(name: "Sightings", ...);
 
 Same name. The column became a table. EF also warns *"An operation was scaffolded that may result in the loss of data"* — that's the `DropColumn`, and here you mean it.
 
-Look further down for `onDelete: ReferentialAction.Cascade` on the foreign key. **Nobody typed that** — see [the notes](../lecture-notes.md#part-3-the-migration-and-the-cascade-you-did-not-choose). It matters in task 5.
+**Expand that `...`.** Inside `CreateTable`, in its `constraints:` block, is the foreign key — and hanging off it, `onDelete: ReferentialAction.Cascade`. **Nobody typed that** — see [the notes](../lecture-notes.md#part-3-the-migration-and-the-cascade-you-did-not-choose). It matters in task 5.
+
+The other two operations sit below the table. `InsertData` carries your fourteen accounts. `CreateIndex` puts an index on `CryptidId` — **you never asked for that one either.** EF indexes a foreign key on its own, because "which rows belong to this creature" is the only question that column exists to answer, and an index is what keeps it fast.
 
 ✅ **Check 3 goes green.** The pages still say *0 reports* — which is the whole point of task 3.
 
