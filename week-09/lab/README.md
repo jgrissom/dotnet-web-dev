@@ -305,7 +305,10 @@ public class SightingFormViewModel
 {
     public Sighting Sighting { get; set; } = new();
 
-    // The "?" is load-bearing — see the note below.
+    // The "?" is load-bearing: ASP.NET treats a non-nullable property as a
+    // required field, and this list is never posted back — it is the choices,
+    // not the answer. Without it every report is refused with
+    // "The Cryptids field is required", pointing at a full dropdown.
     public SelectList? Cryptids { get; set; }
 }
 ```

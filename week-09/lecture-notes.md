@@ -344,7 +344,10 @@ public class SpecialFormViewModel
 {
     public Special Special { get; set; } = new();
 
-    // The "?" is load-bearing. See below.
+    // The "?" is load-bearing: ASP.NET treats a non-nullable property as a
+    // required field, and this list is never posted back — it is the choices,
+    // not the answer. Without it every submission is refused with
+    // "The Trucks field is required", pointing at a full dropdown.
     public SelectList? Trucks { get; set; }
 }
 ```
