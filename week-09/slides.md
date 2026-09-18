@@ -266,15 +266,15 @@ precisely because it carries something.
 
 ## Lab: the Registry gets a sightings log
 
-1. `Sighting`, and the count stops being a number you typed
-2. Migrate and seed the accounts
-3. `Include` — make them appear
-4. The report form, with its creature dropdown
-5. Closing a file says what goes with it
+2. `Sighting`, and the count stops being a number you typed
+3. Migrate and seed the accounts
+4. `Include` — make them appear
+5. The report form, with its creature dropdown
+6. Closing a file says what goes with it
 
 <br>
 
-**⏱️ 55 minutes · target tonight: 1–5 green.**
+**⏱️ 55 minutes · target tonight: checks 1–5 green.**
 
 ---
 

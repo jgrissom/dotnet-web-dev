@@ -39,7 +39,7 @@ cd Cryptids.Web
 
 | Terminal | Where it stands | What runs in it |
 |---|---|---|
-| 1 | `CryptidsRelated`, the folder holding **both** projects | `dotnet watch --project Cryptids.Web` — **started in task 1**, then left alone |
+| 1 | `CryptidsRelated`, the folder holding **both** projects | `dotnet watch --project Cryptids.Web` — **started in task 2**, then left alone |
 | 2 | `Cryptids.Web` | `dotnet ef` — migrations and database updates |
 | 3 | `CryptidsRelated` | `dotnet test Cryptids.Checks` — run it after every task |
 
@@ -54,7 +54,7 @@ dotnet user-secrets set "ConnectionStrings:DefaultConnection" "Server=<SCHOOL-SQ
 The `<UserSecretsId>` ships in the `.csproj`, so `set` on its own is enough — there is no `init` step.
 
 > [!WARNING]
-> **Task 1 starts by dropping the lab database, and you need to know why.** This starter ships its own migration files with their own ids. The database from last week's lab still has *last week's* `__EFMigrationsHistory` in it, and the two will not reconcile — you'd get *"there is already an object named 'Cryptids'"*.
+> **Task 2 starts by dropping the lab database, and you need to know why.** This starter ships its own migration files with their own ids. The database from last week's lab still has *last week's* `__EFMigrationsHistory` in it, and the two will not reconcile — you'd get *"there is already an object named 'Cryptids'"*.
 >
 > ⚠️ **Never do this on your own project.** Your semester project has data you care about, and `database drop` does not ask twice. This is a throwaway lab database and that is the only reason it's safe here.
 
@@ -65,34 +65,34 @@ Every file you touch is in `Cryptids.Web`:
 ```
 Cryptids.Web/
 ├─ Models/
-│   ├─ Cryptid.cs           ← task 1 (a property comes OUT, another goes in)
-│   └─ Sighting.cs          ← task 1 (new)
+│   ├─ Cryptid.cs           ← task 2 (a property comes OUT, another goes in)
+│   └─ Sighting.cs          ← task 2 (new)
 ├─ Data/CryptidContext.cs   ← tasks 1 and 2
-├─ ViewModels/              ← task 4 (new folder)
+├─ ViewModels/              ← task 5 (new folder)
 ├─ Controllers/
 │   ├─ CryptidsController.cs  ← tasks 1, 3, 5
-│   └─ SightingsController.cs ← task 4 (new)
+│   └─ SightingsController.cs ← task 5 (new)
 └─ Views/
-    ├─ _ViewImports.cshtml     ← task 4
-    ├─ Shared/_CryptidCard.cshtml ← task 1
+    ├─ _ViewImports.cshtml     ← task 5
+    ├─ Shared/_CryptidCard.cshtml ← task 2
     ├─ Cryptids/               ← tasks 1, 3, 4, 5
-    └─ Sightings/Create.cshtml  ← task 4 (new)
+    └─ Sightings/Create.cshtml  ← task 5 (new)
 ```
 
 ## The tasks
 
 | # | Task | Turns green |
 |---|---|---|
-| 1 | **The count stops being a number you typed** — `Sighting`, and the `int Sightings` comes out. [Task 1 in full ↓](#task-1-in-full) | check 2 |
-| 2 | **Seed the accounts and migrate** — fourteen real reports. [Task 2 in full ↓](#task-2-in-full) | check 3 |
-| 3 | **`Include`** — make them actually appear. [Task 3 in full ↓](#task-3-in-full) | check 4 |
-| 4 | **The report form** — anyone can file one, and it says which creature. [Task 4 in full ↓](#task-4-in-full) | check 5 |
-| 5 | **Closing a file says what goes with it.** [Task 5 in full ↓](#task-5-in-full) | check 6 |
+| 2 | **The count stops being a number you typed** — `Sighting`, and the `int Sightings` comes out. [Task 2 in full ↓](#task-2-in-full) | check 2 |
+| 3 | **Seed the accounts and migrate** — fourteen real reports. [Task 3 in full ↓](#task-3-in-full) | check 3 |
+| 4 | **`Include`** — make them actually appear. [Task 4 in full ↓](#task-4-in-full) | check 4 |
+| 5 | **The report form** — anyone can file one, and it says which creature. [Task 5 in full ↓](#task-5-in-full) | check 5 |
+| 6 | **Closing a file says what goes with it.** [Task 6 in full ↓](#task-6-in-full) | check 6 |
 | ⭐ | **Stretch: `Witness`, and a real many-to-many.** No check, no points. [Stretch in full ↓](#stretch-witness-and-a-real-many-to-many) | — |
 
 Run `dotnet test Cryptids.Checks` from terminal 3 after each one. Check 1 passes from the start.
 
-### Task 1 in full
+### Task 2 in full
 
 **Start the app and drop the database first.** Terminal 1, from `CryptidsRelated`:
 
@@ -190,9 +190,9 @@ In `Details.cshtml`:
 public DbSet<Sighting> Sightings => Set<Sighting>();
 ```
 
-✅ **Check 2 goes green.** Every page now says *0 reports* — that's correct. **Task 2 will not change it**: it puts fourteen real rows in the database, and the pages will *still* say 0. Task 3 is what makes them appear.
+✅ **Check 2 goes green.** Every page now says *0 reports* — that's correct. **Task 3 will not change it**: it puts fourteen real rows in the database, and the pages will *still* say 0. Task 4 is what makes them appear.
 
-### Task 2 in full
+### Task 3 in full
 
 **Seed the accounts.** In `Data/CryptidContext.cs`, inside `OnModelCreating`, after the `Cryptid` block. Paste this — it's long and typing it teaches nothing:
 
@@ -231,13 +231,13 @@ migrationBuilder.CreateTable(name: "Sightings", ...);
 
 Same name. The column became a table. EF also warns *"An operation was scaffolded that may result in the loss of data"* — that's the `DropColumn`, and here you mean it.
 
-**Expand that `...`.** Inside `CreateTable`, in its `constraints:` block, is the foreign key — and hanging off it, `onDelete: ReferentialAction.Cascade`. **Nobody typed that** — see [the notes](../lecture-notes.md#part-3-the-migration-and-the-cascade-you-did-not-choose). It matters in task 5.
+**Expand that `...`.** Inside `CreateTable`, in its `constraints:` block, is the foreign key — and hanging off it, `onDelete: ReferentialAction.Cascade`. **Nobody typed that** — see [the notes](../lecture-notes.md#part-3-the-migration-and-the-cascade-you-did-not-choose). It matters in task 6.
 
 The other two operations sit below the table. `InsertData` carries your fourteen accounts. `CreateIndex` puts an index on `CryptidId` — **you never asked for that one either.** EF indexes a foreign key on its own, because "which rows belong to this creature" is the only question that column exists to answer, and an index is what keeps it fast.
 
-✅ **Check 3 goes green.** The pages still say *0 reports* — which is the whole point of task 3.
+✅ **Check 3 goes green.** The pages still say *0 reports* — which is the whole point of task 4.
 
-### Task 3 in full
+### Task 4 in full
 
 The database has fourteen reports. Every page says zero. Nothing is broken.
 
@@ -285,11 +285,11 @@ else
 ```
 
 > [!TIP]
-> **`Include` is per query.** Adding it to `Details` does nothing for `Index`, and you'll need a third one in task 5. Every page that shows related rows asks for them again.
+> **`Include` is per query.** Adding it to `Details` does nothing for `Index`, and you'll need a third one in task 6. Every page that shows related rows asks for them again.
 
 ✅ **Check 4 goes green.** The Hodag has 3 reports, not 47 — the number got smaller and true.
 
-### Task 4 in full
+### Task 5 in full
 
 Anyone can file a report. The archive is curated; the accounts are not.
 
@@ -451,9 +451,9 @@ public class SightingsController : Controller
 
 ✅ **Check 5 goes green.**
 
-### Task 5 in full
+### Task 6 in full
 
-Closing a file deletes its reports too. That was decided in task 2, by the `int` on `CryptidId` — see the migration's `onDelete: Cascade`.
+Closing a file deletes its reports too. That was decided in task 3, by the `int` on `CryptidId` — see the migration's `onDelete: Cascade`.
 
 A page that asks *"are you sure?"* has to say what else is going.
 
@@ -543,16 +543,16 @@ var witness = _context.Witnesses
 
 ## 🆘 Stuck?
 
-- **The build is broken after task 1** — that is the seed, and it is the *only* thing that errors. The other four places do not break the build at all, so a green build does not mean task 1 is done. Work the numbered list, not the error pane. [Task 1 in full ↑](#task-1-in-full)
+- **The build is broken after task 2** — that is the seed, and it is the *only* thing that errors. The other four places do not break the build at all, so a green build does not mean task 2 is done. Work the numbered list, not the error pane. [Task 2 in full ↑](#task-2-in-full)
 - **"Could not find a MSBuild project file"** — you are standing in `CryptidsRelated`, which holds two projects. `dotnet ef` and `dotnet user-secrets` need one: `cd Cryptids.Web` first. `dotnet watch` needs `--project Cryptids.Web`; `dotnet test` needs `Cryptids.Checks`.
-- **Pages say 0 reports after task 2** — expected. That's task 3.
-- **Pages still say 0 reports after task 3** — the `Include` went on one action and not the other. [`Include` is per query](../lecture-notes.md#include-is-per-query).
+- **Pages say 0 reports after task 3** — expected. That's task 4.
+- **Pages still say 0 reports after task 4** — the `Include` went on one action and not the other. [`Include` is per query](../lecture-notes.md#include-is-per-query).
 - **`NullReferenceException` on `Sightings.Count`** — the collection isn't initialized. It needs `= new List<Sighting>();` on the property.
-- **Every view suddenly fails to compile** — `_ViewImports.cshtml` names `Cryptids.Web.ViewModels` and the folder doesn't exist yet. [Task 4 in full ↑](#task-4-in-full)
+- **Every view suddenly fails to compile** — `_ViewImports.cshtml` names `Cryptids.Web.ViewModels` and the folder doesn't exist yet. [Task 5 in full ↑](#task-5-in-full)
 - **"The Cryptids field is required" with a creature selected** — the `SelectList` isn't nullable. [Part 7 of the notes](../lecture-notes.md#two-things-that-will-bite-you-here). **Restart after the fix if the error survives it** — hot reload can report success and still leave this one inert.
 - **The form is refused with no message** — `asp-validation-summary="ModelOnly"` hides property errors. Use `"All"`.
 - **The dropdown is empty after a failed submit** — rebuild the `SelectList` inside the `if (!ModelState.IsValid)` branch.
-- **`dotnet ef` says there's already an object named 'Cryptids'** — you skipped the database drop at the top of task 1.
+- **`dotnet ef` says there's already an object named 'Cryptids'** — you skipped the database drop at the top of task 2.
 
 ## 🚀 Done early?
 
