@@ -336,8 +336,8 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   ```
 - [ ] ⚠️ Miss either one and the page throws `NullReferenceException` on `alsoHere.Count`. **Nothing warns you**: `ViewData["AlsoHere"]` is typed `object`, so the cast compiles, and the `!` you are deleting was silencing the only complaint you would have had. The controller stopped filling the bag and the view had no way to find out
 - [ ] 🎯 Say it, because it is the closing argument for the whole section: *"that is the last thing ViewData does to us tonight. It compiled clean and waited until someone loaded the page. A view model would not have let me get that far"*
-- [ ] **Reload `/Trucks/Details/1`.** 🎯 *"The cast is gone, the exclamation mark is gone, and the view now says what it wants in its first line"*
-- [ ] 🎯 **One thing on screen did change — stop for it.** The *Also in* card's count goes from **0** to **1**: *"that card said zero a minute ago, and nothing about the Gyro Wheel changed. I put an Include on the query that fetches it. That is the same lesson a third time — per query, and this query had never asked"*
+- [ ] **Reload `/Trucks/Details/1`.** 🎯 *"Same page. The cast is gone, the exclamation mark is gone, and the view now says what it wants in its first line"*
+- [ ] 💡 **Not a beat — just so it does not surprise you.** The *Also in* card now carries a count it did not have in §4, because §5 put one on every card. It reads **1 on the menu** and that is correct: this action's `AlsoHere` query asks for specials too. The room last saw this page before §5, so there is no before-and-after here to point at — **don't try to make one**
 
 ## 7 · The report form *(slides 10–11)*
 
