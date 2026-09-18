@@ -109,7 +109,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
       public Truck? Truck { get; set; }
   }
   ```
-- [ ] 💡 One sentence on `decimal`, not a detour: *"money is decimal, not double. `Precision(5, 2)` says how wide the column is, and without it EF picks one for you and says so in the build output"*
+- [ ] 💡 One sentence on `decimal`, not a detour: *"money is decimal, not double. `Precision(5, 2)` says how wide the column is — five digits in total, two of them to the right of the decimal point — and without it EF decides for you"*
 - [ ] Open `Models/Truck.cs` and add the other end, at the bottom of the class:
   ```csharp
   public ICollection<Special> Specials { get; set; } = new List<Special>();

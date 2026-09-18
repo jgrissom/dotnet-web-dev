@@ -76,7 +76,7 @@ Three things about that are worth saying out loud.
 
 **The collection is initialized, not left null.** `= new List<Special>()` means a truck with no specials has an empty list rather than a `null`. Miss it and `Model.Specials.Count` throws `NullReferenceException` on the first truck that has none — which is every truck, right up until you seed.
 
-`decimal` for money, not `double`. `[Precision(5, 2)]` says how wide the column is; leave it off and EF picks `decimal(18, 2)` and tells you so in the build output.
+`decimal` for money, not `double`. `[Precision(5, 2)]` says how wide the column is — five digits in total, two of them to the right of the decimal point, so the largest price it can hold is `999.99`. Leave it off and EF decides for you: the column becomes `decimal(18, 2)`, and `dotnet ef migrations add` warns you that values may be silently truncated.
 
 ### The `DbSet`
 
