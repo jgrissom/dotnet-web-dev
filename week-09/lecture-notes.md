@@ -191,7 +191,7 @@ return View(_context.Trucks
 
 ## Part 5: `Include` and the cost of not using it
 
-There is a second reason for `Include`, and it is the one week 7 promised you would meet.
+There is a second reason for `Include`, and it is about what a page costs to draw.
 
 Say the index page wants a specials count on each card. Here is a way to get it that works — this goes **inside the `Index` action**:
 

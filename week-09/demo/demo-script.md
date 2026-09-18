@@ -678,7 +678,6 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 - [ ] 🎞️ **GO TO SLIDE 15** — *Tonight, in one picture*
 - [ ] Walk the five rows, one sentence each, and give `Include` the emphasis because it is the row that costs points: *"per query. Not per model, not per app. Every page that shows related rows asks for them again"*
-- [ ] 🔗 **Collect the promise from week 7 one more time**, now that they have seen it: *"the terminal told you the truth about a query getting expensive, and it will do it again all term. It is free and it is already running"*
 - [ ] Homework: **a second related table on their own app.** One-to-many is enough — *"sightings for creatures, reviews for trails, showtimes for movies. Week 4 told you to pick a topic that could grow one. That bill is due"*
 - [ ] ⚠️ Say what the self-check leaves behind, because it cannot clean up after itself: *"it files one report through your form and it cannot take it back — nothing this week asks you to build a delete for the second table. It files one, marked Week 9 Test, and reuses that same row every run after"*
 - [ ] 🔗 Week 10: *"the midterm. Nothing new — you extend what you have into something you would show someone"*
