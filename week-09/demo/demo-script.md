@@ -15,7 +15,9 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 > Lost your place? **The nearest 🎞️ above you is the slide that should be showing** — and every slide's footer names the section and beat of this sheet it belongs to, so you can go the other way too.
 
 > [!IMPORTANT]
-> **Tonight has three deliberate failures and none of them gets announced.** §4 renders a truck's specials and the page says **Nothing listed** while the table holds two rows. §5 asks the room to guess a number and the terminal prints **eight**. §7 fills in a perfect form and the app refuses it, blaming a field the user cannot see. All three are silent, all three are the homework's bugs, and all three are met on your machine first.
+> **Tonight has two deliberate failures and one hidden cost, and none of the three gets announced.** **Failure #1** is §4: a truck's page says **Nothing listed** while the table holds two rows. **The hidden cost** is §5, and it is the odd one — the page is entirely **correct**, and it pays **eight queries** to draw. Nothing on screen looks wrong, which is exactly why the terminal is the only place it shows. **Failure #2** is §7: a perfectly filled form is refused, blaming a field the user cannot see. All three are silent and all three are met on your machine first; the two *failures* are the ones waiting in the homework's 🆘 list.
+>
+> ⚠️ **Nothing tonight gets broken and put back.** Every one of the three is the naive version written forward into the right one — there is no beat that damages working code and restores it, so nothing here needs undoing if you lose your place.
 
 ## 0 · Before class
 
@@ -167,7 +169,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   ```
 - [ ] Say what is now true, and set up §4 without announcing it: *"fourteen rows, each one pointing at a truck. The database knows all of this. Let us go put it on a page"*
 
-## 4 · Break #1 — the empty list *(slide 6)*
+## 4 · Failure #1 — the empty list *(slide 6)*
 
 ### Empty is not missing *(slide 6)*
 
@@ -207,7 +209,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   ```
 - [ ] **Reload.** Two specials, with prices. 🎯 *"Same page, same database, same fourteen rows. One line"*
 
-## 5 · Break #2 — how many SELECTs *(slides 7–8)*
+## 5 · The hidden cost — how many SELECTs *(slides 7–8)*
 
 ### Predict the count *(slide 7)*
 
