@@ -128,16 +128,16 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
       new Special { Id = 2, TruckId = 1, Name = "Bulgogi Bowl", Price = 12.00m, ServedOn = "Saturday" },
       new Special { Id = 3, TruckId = 2, Name = "Cheese Curds", Price = 7.00m, ServedOn = "Friday" },
       new Special { Id = 4, TruckId = 2, Name = "Loaded Fries", Price = 8.50m, ServedOn = "Saturday" },
-      new Special { Id = 5, TruckId = 3, Name = "Birria Tacos", Price = 11.00m, ServedOn = "Tuesday" },
-      new Special { Id = 6, TruckId = 3, Name = "Street Corn", Price = 5.00m, ServedOn = "Tuesday" },
-      new Special { Id = 7, TruckId = 4, Name = "Gyro Plate", Price = 13.00m, ServedOn = "Thursday" },
-      new Special { Id = 8, TruckId = 5, Name = "Pierogi Plate", Price = 10.00m, ServedOn = "Sunday" },
-      new Special { Id = 9, TruckId = 5, Name = "Cheese Curds", Price = 7.50m, ServedOn = "Friday" },
-      new Special { Id = 10, TruckId = 6, Name = "Banh Mi", Price = 9.00m, ServedOn = "Wednesday" },
-      new Special { Id = 11, TruckId = 6, Name = "Loaded Fries", Price = 8.00m, ServedOn = "Thursday" },
-      new Special { Id = 12, TruckId = 7, Name = "Slider Trio", Price = 10.50m, ServedOn = "Saturday" },
-      new Special { Id = 13, TruckId = 7, Name = "Cheese Curds", Price = 6.50m, ServedOn = "Friday" },
-      new Special { Id = 14, TruckId = 4, Name = "Loaded Fries", Price = 8.00m, ServedOn = "Friday" }
+      new Special { Id = 5, TruckId = 2, Name = "Slider Trio", Price = 9.00m, ServedOn = "Sunday" },
+      new Special { Id = 6, TruckId = 3, Name = "Birria Tacos", Price = 11.00m, ServedOn = "Tuesday" },
+      new Special { Id = 7, TruckId = 3, Name = "Street Corn", Price = 5.00m, ServedOn = "Tuesday" },
+      new Special { Id = 8, TruckId = 4, Name = "Gyro Plate", Price = 13.00m, ServedOn = "Thursday" },
+      new Special { Id = 9, TruckId = 5, Name = "Pierogi Plate", Price = 10.00m, ServedOn = "Sunday" },
+      new Special { Id = 10, TruckId = 5, Name = "Cheese Curds", Price = 7.50m, ServedOn = "Friday" },
+      new Special { Id = 11, TruckId = 5, Name = "Loaded Fries", Price = 8.25m, ServedOn = "Thursday" },
+      new Special { Id = 12, TruckId = 6, Name = "Banh Mi", Price = 9.00m, ServedOn = "Wednesday" },
+      new Special { Id = 13, TruckId = 7, Name = "Slider Trio", Price = 10.50m, ServedOn = "Saturday" },
+      new Special { Id = 14, TruckId = 7, Name = "Cheese Curds", Price = 6.50m, ServedOn = "Friday" }
   );
   ```
 - [ ] 💡 Do **not** draw attention to the repeated dish names yet — three trucks sell Cheese Curds and that is §9's reveal. If someone spots it early, say *"hold that thought, you have just found the last thing we do tonight"*
@@ -234,7 +234,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   ```cshtml
   <div class="card-footer d-flex justify-content-between">
       <a href="/Trucks/Details/@Model.Id">Details</a>
-      <span class="text-muted small">@(((Dictionary<int,int>)ViewData["Counts"]!)[Model.Id]) specials</span>
+      <span class="text-muted small">@(((Dictionary<int,int>)ViewData["Counts"]!)[Model.Id]) on the menu</span>
   </div>
   ```
 - [ ] 💡 Worth one sentence if anyone asks how the partial can see `Counts`, since nothing was passed to it: *"a partial inherits the parent view's ViewData. Handy, and also exactly the problem — a bag nobody declared, reaching into a file that never asked for it. Hold that thought for twenty minutes"*
@@ -257,7 +257,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   ```
 - [ ] And back in `_TruckCard.cshtml`, the `<span>` becomes what a reader would hope for — the cast, the bag and the `!` all go at once:
   ```cshtml
-  <span class="text-muted small">@Model.Specials.Count specials</span>
+  <span class="text-muted small">@Model.Specials.Count on the menu</span>
   ```
 - [ ] **Reload and read the terminal.** 🎯 **One statement**, and it is a `LEFT JOIN`
 - [ ] 🎞️ **GO TO SLIDE 8** — *One JOIN*
@@ -536,16 +536,16 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
       new Special { Id = 2, TruckId = 1, DishId = 2, Price = 12.00m, ServedOn = "Saturday" },
       new Special { Id = 3, TruckId = 2, DishId = 3, Price = 7.00m, ServedOn = "Friday" },
       new Special { Id = 4, TruckId = 2, DishId = 4, Price = 8.50m, ServedOn = "Saturday" },
-      new Special { Id = 5, TruckId = 3, DishId = 5, Price = 11.00m, ServedOn = "Tuesday" },
-      new Special { Id = 6, TruckId = 3, DishId = 6, Price = 5.00m, ServedOn = "Tuesday" },
-      new Special { Id = 7, TruckId = 4, DishId = 7, Price = 13.00m, ServedOn = "Thursday" },
-      new Special { Id = 8, TruckId = 5, DishId = 8, Price = 10.00m, ServedOn = "Sunday" },
-      new Special { Id = 9, TruckId = 5, DishId = 3, Price = 7.50m, ServedOn = "Friday" },
-      new Special { Id = 10, TruckId = 6, DishId = 9, Price = 9.00m, ServedOn = "Wednesday" },
-      new Special { Id = 11, TruckId = 6, DishId = 4, Price = 8.00m, ServedOn = "Thursday" },
-      new Special { Id = 12, TruckId = 7, DishId = 10, Price = 10.50m, ServedOn = "Saturday" },
-      new Special { Id = 13, TruckId = 7, DishId = 3, Price = 6.50m, ServedOn = "Friday" },
-      new Special { Id = 14, TruckId = 4, DishId = 4, Price = 8.00m, ServedOn = "Friday" }
+      new Special { Id = 5, TruckId = 2, DishId = 10, Price = 9.00m, ServedOn = "Sunday" },
+      new Special { Id = 6, TruckId = 3, DishId = 5, Price = 11.00m, ServedOn = "Tuesday" },
+      new Special { Id = 7, TruckId = 3, DishId = 6, Price = 5.00m, ServedOn = "Tuesday" },
+      new Special { Id = 8, TruckId = 4, DishId = 7, Price = 13.00m, ServedOn = "Thursday" },
+      new Special { Id = 9, TruckId = 5, DishId = 8, Price = 10.00m, ServedOn = "Sunday" },
+      new Special { Id = 10, TruckId = 5, DishId = 3, Price = 7.50m, ServedOn = "Friday" },
+      new Special { Id = 11, TruckId = 5, DishId = 4, Price = 8.25m, ServedOn = "Thursday" },
+      new Special { Id = 12, TruckId = 6, DishId = 9, Price = 9.00m, ServedOn = "Wednesday" },
+      new Special { Id = 13, TruckId = 7, DishId = 10, Price = 10.50m, ServedOn = "Saturday" },
+      new Special { Id = 14, TruckId = 7, DishId = 3, Price = 6.50m, ServedOn = "Friday" }
   );
   ```
 - [ ] Terminal 2 — and **read the warning EF prints, do not scroll past it**:

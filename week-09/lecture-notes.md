@@ -223,7 +223,7 @@ return View(_context.Trucks
 ```cshtml
 <div class="card-footer d-flex justify-content-between">
     <a href="/Trucks/Details/@Model.Id">Details</a>
-    <span class="text-muted small">@Model.Specials.Count specials</span>
+    <span class="text-muted small">@Model.Specials.Count on the menu</span>
 </div>
 ```
 
