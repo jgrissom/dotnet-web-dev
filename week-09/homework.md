@@ -99,7 +99,7 @@ az webapp up
 - **They show on one page and not another** — [`Include` is per query](lecture-notes.md#include-is-per-query). Every page asks again.
 - **`NullReferenceException` on `.Count`** — the collection isn't initialized on the property.
 - **Every view fails to compile at once** — `_ViewImports.cshtml` names a `ViewModels` namespace that doesn't exist yet. [Part 6](lecture-notes.md#part-6-viewmodels--one-view-more-than-one-thing).
-- **"The X field is required" pointing at a full dropdown** — your `SelectList` property needs a `?`. [Two things that will bite you here](lecture-notes.md#two-things-that-will-bite-you-here). ⚠️ **Then restart your app** — hot reload says it succeeded and leaves this fix inert, so the error comes back over a file that is already correct.
+- **"The X field is required" pointing at a full dropdown** — your `SelectList` property needs a `?`. [Two things that will bite you here](lecture-notes.md#two-things-that-will-bite-you-here). ⚠️ **If the error survives the fix, restart your app** — hot reload can say it succeeded and still leave this one inert, so the same error comes back over a file that is already correct.
 - **The form refuses with no message on screen** — `asp-validation-summary="All"`, not `"ModelOnly"`.
 - **The dropdown is empty after a rejected submit** — rebuild the `SelectList` before `return View(form)`.
 - **`Object reference not set` on `child.Parent.Name` in a view** — that's a second hop, and it needs [`ThenInclude`](lecture-notes.md#theninclude).
