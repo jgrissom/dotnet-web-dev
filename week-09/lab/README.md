@@ -31,6 +31,12 @@ CryptidsRelated/           ← in `dotnet-web`, the folder you copied and rename
 
 **4. Open two more terminals** — the `+` in the terminal panel, or `` Ctrl+Shift+` ``. **You need three tonight**, and `dotnet watch` is why: it stays running all lab and you can't type in it.
 
+⚠️ **All three open in `CryptidsRelated`, and terminal 2 has to move.** `dotnet ef` and `dotnet user-secrets` both need a single project, and `CryptidsRelated` holds two — run either one from there and you get *"Could not find a MSBuild project file."* In **terminal 2 only**:
+
+```bash
+cd Cryptids.Web
+```
+
 | Terminal | Where it stands | What runs in it |
 |---|---|---|
 | 1 | `CryptidsRelated`, the folder holding **both** projects | `dotnet watch --project Cryptids.Web` — **started in task 1**, then left alone |
@@ -436,7 +442,7 @@ public class SightingsController : Controller
 > **Why `SelectList?` and not `SelectList`.** ASP.NET treats a non-nullable property as a required field. The dropdown's *list of choices* is never posted back — the browser sends only the option you picked — so without the `?` every submission is refused with *"The Cryptids field is required"*, pointing at a dropdown that plainly has a creature in it. It's [week 6's rule in a new place](../lecture-notes.md#two-things-that-will-bite-you-here).
 
 > [!WARNING]
-> **If you ever have to add that `?` to a running app, restart it — `Ctrl+C` in terminal 1, then `dotnet watch` again.** Hot reload can print `🔥 Hot reload succeeded.` and still leave the fix **inert**: the required-field rules are worked out once per model type when the app starts, and a reload does not reliably redo them. When that happens you get the identical error over a file that is already correct.
+> **If you ever have to add that `?` to a running app, restart it — `Ctrl+C` in terminal 1, then `dotnet watch --project Cryptids.Web` again — terminal 1 stands in `CryptidsRelated`, which holds two projects, so the bare command has nothing to run.** Hot reload can print `🔥 Hot reload succeeded.` and still leave the fix **inert**: the required-field rules are worked out once per model type when the app starts, and a reload does not reliably redo them. When that happens you get the identical error over a file that is already correct.
 
 ✅ **Check 5 goes green.**
 
@@ -532,7 +538,8 @@ var witness = _context.Witnesses
 
 ## 🆘 Stuck?
 
-- **The build is broken after task 1 and won't stop** — five files referred to the old `int Sightings`. The error list is your checklist; work down it. [Task 1 in full ↑](#task-1-in-full)
+- **The build is broken after task 1** — that is the seed, and it is the *only* thing that errors. The other four places do not break the build at all, so a green build does not mean task 1 is done. Work the numbered list, not the error pane. [Task 1 in full ↑](#task-1-in-full)
+- **"Could not find a MSBuild project file"** — you are standing in `CryptidsRelated`, which holds two projects. `dotnet ef` and `dotnet user-secrets` need one: `cd Cryptids.Web` first. `dotnet watch` needs `--project Cryptids.Web`; `dotnet test` needs `Cryptids.Checks`.
 - **Pages say 0 reports after task 2** — expected. That's task 3.
 - **Pages still say 0 reports after task 3** — the `Include` went on one action and not the other. [`Include` is per query](../lecture-notes.md#include-is-per-query).
 - **`NullReferenceException` on `Sightings.Count`** — the collection isn't initialized. It needs `= new List<Sighting>();` on the property.

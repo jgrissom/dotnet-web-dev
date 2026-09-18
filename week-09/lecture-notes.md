@@ -374,7 +374,7 @@ public SelectList? Trucks { get; set; }
 ```
 
 > [!WARNING]
-> **Restart the app after this edit — `Ctrl+C`, then `dotnet watch` again.** `dotnet watch` will
+> **Restart the app after this edit — `Ctrl+C` in the terminal running it, then the same `dotnet watch` command you started it with.** `dotnet watch` will
 > print **`🔥 Hot reload succeeded.`** and the fix can still do nothing: ASP.NET works out which
 > properties are required **once per model type** and caches it, and a hot reload does not reliably
 > throw that away. Sometimes it takes anyway — but when it does not, you get the *same* error over a
