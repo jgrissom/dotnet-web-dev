@@ -625,6 +625,12 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] 🎯 Read the warning aloud, then answer it: *"an operation was scaffolded that may result in the loss of data. That is the `DropColumn`, and EF is right to say it — but we mean this one. The dish names are not lost, they moved"*
 - [ ] Open the migration and read the operations out loud, in order, because the order is what makes it safe: **`DropColumn`**, **`AddColumn DishId`**, **`CreateTable Dishes`**, **`InsertData`** with the ten dish names, fourteen **`UpdateData`** repointing every special, and only *then* the index and the foreign key
 - [ ] 💡 Say why that ordering matters: *"the foreign key constraint goes on last. If it went on first, fourteen rows with a `DishId` of zero would fail it instantly"*
+- [ ] 🚨 **Fourteen is not how many specials you have.** In §7 you filed one through the form, and `UpdateData` only repoints the fourteen the seed knows about. That row keeps `DishId` 0, no dish has id 0, and the foreign key on the last line is refused — `The ALTER TABLE statement conflicted with the FOREIGN KEY constraint`. **Add one line to the migration by hand**, just above `CreateIndex`:
+  ```csharp
+  migrationBuilder.Sql("DELETE FROM Specials WHERE DishId = 0;");
+  ```
+- [ ] 🎯 Say what that line is doing, because deleting a row the room watched you create needs saying out loud: *"every special we seeded got a dish. The one I added through the form did not — I typed its name as free text, and there is no dish row to point it at. So it goes. That is what it costs to normalize a column after the fact, and it is the argument for doing it before real people have put data in"*
+- [ ] 💡 One rider if anyone asks why EF did not write that line: *"it generated this from the model. It has no idea what is sitting in the table"*
   ```bash
   dotnet ef database update
   ```
