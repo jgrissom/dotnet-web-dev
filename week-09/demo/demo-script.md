@@ -245,7 +245,6 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] 🎞️ **GO TO SLIDE 7** — *How many SELECTs?*
 - [ ] **The slide is the exercise.** Read the loop off it and ask for a show of hands on a number: *"seven trucks. One page load. How many SELECT statements is that terminal about to print? Hands up for one. For seven. For eight"*
 - [ ] Swipe back. **Reload `/Trucks` and scroll the terminal.** 🎯 **Eight.** One for the trucks, then one per truck
-- [ ] 🔗 Collect the promise made two weeks ago, in as many words: *"in week 7 I told you that in week 9 a query would get expensive and this terminal is how you would notice. That is the terminal, and that is the query"*
 - [ ] 💡 Make the stakes real without a number you cannot support: *"seven trucks is eight queries. This page grows one query per row, forever"*
 
 ### One JOIN *(slide 8)*
