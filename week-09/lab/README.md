@@ -46,8 +46,10 @@ cd Cryptids.Web
 **5. Set your connection string** (frozen lab PC? this is the one that gets wiped). From terminal 2, standing in `Cryptids.Web`:
 
 ```bash
-dotnet user-secrets set "ConnectionStrings:DefaultConnection" "Server=...;Database=...;User ID=...;Password=...;TrustServerCertificate=True"
+dotnet user-secrets set "ConnectionStrings:DefaultConnection" "Server=<SCHOOL-SQL-SERVER>;Database=Cryptids_<COURSE-NUMBER>_<YOUR-INITIALS>;User ID=<YOUR-USERNAME>;Password=<YOUR-PASSWORD>;TrustServerCertificate=True"
 ```
+
+**Same connection string as last week — same server, same database name.** This is still the Cryptid Registry, and [one application gets one database](../../week-07/lecture-notes.md#naming-your-database). The folder is new so week 8's work stays where it is; the database is not.
 
 The `<UserSecretsId>` ships in the `.csproj`, so `set` on its own is enough — there is no `init` step.
 
