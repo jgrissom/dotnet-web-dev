@@ -508,12 +508,13 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   {
       <div class="alert alert-warning">
           This truck has <strong>@Model.Specials.Count</strong> special@(Model.Specials.Count == 1 ? "" : "s") on file.
-          Removing the truck removes @(Model.Specials.Count == 1 ? "it" : "them") too.
+          Removing the truck removes @(Model.Specials.Count == 1 ? "it" : "them") too — the foreign key was
+          created with <code>onDelete: Cascade</code>, and nothing is going to ask you twice.
       </div>
   }
   ```
 - [ ] **Load `/Trucks/Delete/1`.** 🎯 **Three specials on file.** Then click **Keep it** — say out loud that you are not deleting it, because the room will assume you did
-- [ ] 💡 One rider on the `Include`, because it is the same lesson a third time: *"that page needed its own Include. Details had one, Index had one, the Also in list had one, and Delete still showed zero until I added a fourth"*
+- [ ] 💡 One rider on the `Include`, because it is the same lesson yet again: *"that page needed its own Include. Details had one, Index had one, the Also in list had one, and Delete still showed zero until I added a fourth"*
 
 ## 9 · One more foreign key *(slide 13)*
 
