@@ -697,7 +697,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 ## 10 · Hand off to the lab *(slide 14)*
 
 - [ ] 🎞️ **GO TO SLIDE 14** — *Lab: the Registry gets a sightings log*
-- [ ] Read the five tasks off the slide, then name the one that will eat the time: *"task 4 is one line and it is the line everybody forgets. When your accounts do not show up, it is not the seed and it is not the migration"*
+- [ ] Read the five tasks off the slide, then name the one that will eat the time: *"task 3 is one line and it is the line everybody forgets. When your accounts do not show up, it is not the seed and it is not the migration"*
 - [ ] ~90 seconds of **what done looks like** — the answer key **on localhost**, from `week-09/lab/solution`. Nothing is deployed for this:
   ```bash
   dotnet run
