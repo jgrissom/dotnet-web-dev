@@ -190,7 +190,7 @@ In `Details.cshtml`:
 public DbSet<Sighting> Sightings => Set<Sighting>();
 ```
 
-✅ **Check 2 goes green.** Every page now says *0 reports* — that's correct, and task 2 fixes it.
+✅ **Check 2 goes green.** Every page now says *0 reports* — that's correct. **Task 2 will not change it**: it puts fourteen real rows in the database, and the pages will *still* say 0. Task 3 is what makes them appear.
 
 ### Task 2 in full
 
