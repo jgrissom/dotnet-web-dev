@@ -390,7 +390,7 @@ Week 6's client-side validation comes along for free — the annotations on `Tru
 A form nobody can reach doesn't exist. In `Views/Trucks/Details.cshtml`, under the badge block:
 
 ```html
-<p><a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-secondary">✏️ Edit this truck</a></p>
+<p class="mt-4"><a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-secondary">✏️ Edit this truck</a></p>
 ```
 
 **`asp-route-id` is new, and it's the only new tag helper this week.** Since week 4 you've written links to a record by typing the URL out: `href="/Trucks/Details/@Model.Id"`. This is the tag-helper spelling of that same link — `asp-action` names the action, and **`asp-route-id` supplies the `id` segment of the route**. Any `asp-route-<name>` fills in the route parameter called `<name>`; `id` is just the one our routes use.
