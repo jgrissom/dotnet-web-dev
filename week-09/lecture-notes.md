@@ -245,6 +245,19 @@ You did not write that join. You said `Include`, and EF wrote it — one trip to
 > [!TIP]
 > **This is what the terminal is for.** `appsettings.Development.json` leaves EF Core logging at Information, so every query your app makes prints while you work. A page that suddenly takes a second to load has an answer scrolling past in that window.
 
+
+> [!NOTE]
+> **If you are only showing a count, there is a leaner way — and it is worth knowing it exists.** `Include` fetches the rows and then C# counts them, which is why the SQL above lists every column of every special. You can ask the database to do the counting instead, by selecting into a small class of your own rather than loading the entities:
+>
+> ```csharp
+> _context.Trucks
+>     .Select(t => new TruckCard { Name = t.Name, SpecialCount = t.Specials.Count })
+>     .ToList();
+> ```
+>
+> which comes back as `SELECT t.Name, (SELECT COUNT(*) FROM Specials WHERE ...) FROM Trucks` — seven rows instead of seven trucks and fourteen specials.
+>
+> **Use `Include` for this week and for your homework.** It is the right tool the moment a page shows the related rows themselves, which is what the details page does and what your homework is graded on. The projection only wins on a page that needs the number and nothing else, and the difference does not show up at the size anything this term reaches. File it under *things to remember when a child table gets big*.
 ---
 
 ## Part 6: ViewModels — one view, more than one thing
