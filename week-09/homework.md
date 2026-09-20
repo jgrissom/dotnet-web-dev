@@ -33,6 +33,12 @@ Open `Views/Home/Index.cshtml`, find the **week-08** line, and **replace it**:
 
 Each requirement links to the section of the notes that shows it done.
 
+> [!IMPORTANT]
+> **The self-check can only see requirements 4, 5 and 6.** Everything in 1–3 is your model, your migration and your seed — none of it is visible from outside a running app, so **the report will not move while you build them.** That is expected. It is not a sign you have done something wrong.
+>
+> You will sit at **1 of 6** through requirements 1, 2 and 3. The first thing that moves the number is **requirement 5**, the form — and it moves four checks at once. Requirements 1–3 are still worth **4 of the 20 points**; I grade them by reading your repo.
+
+
 1. **A second model class**, with a **foreign key** and a **navigation property**. One of your existing records has many of these: reviews for a trail, showtimes for a movie, players on a team. Give it three or four columns of its own plus the key, and name the key `<Thing>Id` so it wires up on its own. → [Three properties, two classes](lecture-notes.md#part-2-three-properties-two-classes)
 
 2. **The collection on your first model** — `public ICollection<Child> Children { get; set; } = new List<Child>();` — so a parent can be asked for its children. **Initialize it**, or the first parent with none throws. → [Three properties, two classes](lecture-notes.md#part-2-three-properties-two-classes)
