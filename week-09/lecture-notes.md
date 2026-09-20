@@ -469,6 +469,18 @@ And this is the view it renders — the whole of `Views/Specials/Create.cshtml`.
 
 ⚠️ **Every `asp-for` is `Special.Something`, not `Something`** — and that is the one thing that changes from the forms you built in week 6. The model is no longer the entity; it is the ViewModel that *holds* the entity, so the path has to start there. Forget it and you get `'SpecialFormViewModel' does not contain a definition for 'Name'` at build time — which is a kindness. Of everything that can go wrong this week, this is one of the few the compiler catches for you.
 
+**And it needs a way in.** A form nobody links to is a form nobody finds — including the self-check, which goes looking for yours by following the links on your pages. Put it on the parent's details page, in `Views/Trucks/Details.cshtml`:
+
+```cshtml
+<p>
+    <a asp-controller="Specials" asp-action="Create" asp-route-truckId="@Model.Truck.Id" class="btn btn-primary">
+        ＋ Add a special
+    </a>
+</p>
+```
+
+`asp-route-truckId` is what fills the `int? truckId` parameter on the `Create` action, and it is why the dropdown comes up already sitting on the right truck when you arrive from that truck's page. Leave it off and the form still works — it just opens on *"— pick a truck —"* and asks the visitor to tell you something they already told you by clicking.
+
 ### Two things that will bite you here
 
 **The dropdown is not posted back, so a rejected form has to rebuild it.** The browser sends the one option that was chosen. It never sends the list. So if `ModelState` is invalid and you return the view, the `SelectList` is gone and the redisplayed form has an empty dropdown:
