@@ -329,13 +329,13 @@ And the view's first line becomes `@model TruckDetailsViewModel`, after which ev
 
 A form that files a related record has to say **which** record it belongs to, and the person filling it in picks from a list. That list is a `SelectList`.
 
-It takes three things: the rows, the property that becomes the `value`, and the property a human reads.
+It takes three things: the rows, the property that becomes the `value`, and the property a human reads. **You build it in a controller** — it needs the database, and a view has no business reaching for that:
 
 ```csharp
 new SelectList(_context.Trucks.OrderBy(t => t.Name).ToList(), "Id", "Name")
 ```
 
-In the view:
+In the view — that's `Views/Specials/Create.cshtml`, a new file you'll create in a moment:
 
 ```cshtml
 <select asp-for="Special.TruckId" asp-items="Model.Trucks" class="form-select">
@@ -364,6 +364,64 @@ public class SpecialFormViewModel
     public SelectList? Trucks { get; set; }
 }
 ```
+
+**All of that lives in a new controller of its own.** The child gets its own — the parent's controller is for the parent. This is the whole file, `Controllers/SpecialsController.cs`:
+
+```csharp
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Curbside.Data;
+using Curbside.Models;
+using Curbside.ViewModels;
+
+namespace Curbside.Controllers;
+
+public class SpecialsController : Controller
+{
+    private readonly CurbsideContext _context;
+
+    public SpecialsController(CurbsideContext context)
+    {
+        _context = context;
+    }
+
+    // GET /Specials/Create?truckId=3 — the link from a truck's page passes the id,
+    // so the dropdown can come up already on the right truck.
+    public IActionResult Create(int? truckId)
+    {
+        var form = new SpecialFormViewModel
+        {
+            Special = new Special { TruckId = truckId ?? 0 },
+            Trucks = TruckChoices(truckId)
+        };
+
+        return View(form);
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Create(SpecialFormViewModel form)
+    {
+        if (!ModelState.IsValid)
+        {
+            form.Trucks = TruckChoices(form.Special.TruckId);   // rebuild it
+            return View(form);
+        }
+
+        _context.Specials.Add(form.Special);
+        await _context.SaveChangesAsync();
+
+        return RedirectToAction("Details", "Trucks", new { id = form.Special.TruckId });
+    }
+
+    // One place that knows how to build the list, because two actions need it.
+    private SelectList TruckChoices(int? selected) =>
+        new SelectList(_context.Trucks.OrderBy(t => t.Name).ToList(), "Id", "Name", selected);
+}
+```
+
+The view it renders is a new file too — `Views/Specials/Create.cshtml`, with `@model SpecialFormViewModel` on its first line and the `<select>` from above inside a form.
 
 ### Two things that will bite you here
 
