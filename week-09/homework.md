@@ -34,26 +34,31 @@ Open `Views/Home/Index.cshtml`, find the **week-08** line, and **replace it**:
 Each requirement links to the section of the notes that shows it done.
 
 > [!IMPORTANT]
-> **You will sit at `1 of 6` all the way through requirement 4.** That is expected, and it is not a sign you have done anything wrong — keep going.
->
-> Requirements **1–3** are your model, your migration and your seed. None of that is visible from outside a running app, so nothing in the console can move. They are still worth **4 of the 20 points**; I grade them by reading your repo.
->
-> Requirement **4** — the `Include` — *is* checked, but it is checked **last**, and it cannot be judged until requirement 5 exists. The script has to file a row through your form before it can go looking for that row on a record's page. So finishing requirement 4 changes the number by nothing.
->
-> **Requirement 5, the form, is the first thing that moves it** — and it moves four checks at once, requirement 4's among them.
-
+> **The number will not move until requirement 5.** Requirements 1–4 are real work worth **7 of the 20 points**, but none of them can shift the report on their own — each one says below what to expect. Sitting at `1 of 6` through four requirements is correct, not a sign you have gone wrong.
 
 1. **A second model class**, with a **foreign key** and a **navigation property**. One of your existing records has many of these: reviews for a trail, showtimes for a movie, players on a team. Give it three or four columns of its own plus the key, and name the key `<Thing>Id` so it wires up on its own. → [Three properties, two classes](lecture-notes.md#part-2-three-properties-two-classes)
 
+   📋 **Still `1 of 6`.** Your model lives in the repo, not on the page — nothing out here can see it.
+
 2. **The collection on your first model** — `public ICollection<Child> Children { get; set; } = new List<Child>();` — so a parent can be asked for its children. **Initialize it**, or the first parent with none throws. → [Three properties, two classes](lecture-notes.md#part-2-three-properties-two-classes)
+
+   📋 **Still `1 of 6`.** Same reason.
 
 3. **A `DbSet`, a migration that creates the table, and a few seeded rows.** The migration is additive — it goes on top of the ones you already have, and you do not delete anything. Read it before you apply it; the `onDelete` line is a decision the framework made for you. → [The migration, and the cascade you did not choose](lecture-notes.md#part-3-the-migration-and-the-cascade-you-did-not-choose)
 
+   📋 **Still `1 of 6`.** The rows are in the database now, but nothing reads them onto a page yet.
+
 4. **The related rows appear on a record's own details page.** This is the one that fails silently — the rows are in the database, the page is a clean 200, and nothing shows. → [`Include` — empty is not missing](lecture-notes.md#part-4-include--empty-is-not-missing)
+
+   📋 **Still `1 of 6`** — and this is the one that surprises people. Requirement 4 *is* worth 3 points, but it is scored by the **last** check of the six, and that check can't run until requirement 5 gives it a form to file a row through.
 
 5. **A form that files one**, with a **dropdown of your existing records** so a new row can say which one it belongs to. It needs a ViewModel (the form needs two things at once), a `SelectList` built in the controller, and a link to it from somewhere a visitor can find. → [A dropdown built from your own records](lecture-notes.md#part-7-a-dropdown-built-from-your-own-records)
 
+   📋 **`5 of 6`** — four at once, requirement 4's among them. ⚠️ Type `recheck()` to see it: a plain page load only runs the two checks that don't submit anything, so it will read `2 of 6` until you do.
+
 6. **At least one validation rule you typed** on the second model — a `[StringLength]`, a `[Range]`, something with a number in it. ASP.NET marks every non-nullable property required on its own, so a blank-form rejection proves nothing about your model. → [Choosing your own second table](lecture-notes.md#part-10-choosing-your-own-second-table)
+
+   📋 **`6 of 6`.** The last one is *a bad entry is refused*, and it needs a rule you typed — ASP.NET's automatic required-field marking doesn't count.
 
 ### Your model isn't mine
 
