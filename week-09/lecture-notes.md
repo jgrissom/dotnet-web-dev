@@ -481,7 +481,7 @@ And this is the view it renders — the whole of `Views/Specials/Create.cshtml`.
 
 `asp-route-truckId` is what fills the `int? truckId` parameter on the `Create` action, and it is why the dropdown comes up already sitting on the right truck when you arrive from that truck's page. Leave it off and the form still works — it just opens on *"— pick a truck —"* and asks the visitor to tell you something they already told you by clicking.
 
-### Two things that will bite you here
+### Three things that will bite you here
 
 **The dropdown is not posted back, so a rejected form has to rebuild it.** The browser sends the one option that was chosen. It never sends the list. So if `ModelState` is invalid and you return the view, the `SelectList` is gone and the redisplayed form has an empty dropdown:
 
@@ -516,6 +516,16 @@ public SelectList? Trucks { get; set; }
 > [!TIP]
 > When a form silently refuses and you cannot see why, change `asp-validation-summary="ModelOnly"` to `asp-validation-summary="All"`. `ModelOnly` shows model-level errors and hides property-level ones — which is exactly the category this failure lands in. That switch is the fastest debugging move you own, and it needs no tooling.
 
+
+**A `DateTime` starts at the year 1.** If your second table has a date on it, `new Visit()` — or whatever yours is called — gives it `DateTime.MinValue`, and the form renders it faithfully as **01/01/0001**. Nothing is broken; a `DateTime` is a value type, so it cannot be empty the way a string can.
+
+Give it something sensible when you build the blank form, in the `Create` GET:
+
+```csharp
+Sighting = new Sighting { CryptidId = cryptidId ?? 0, SeenOn = DateTime.Today },
+```
+
+`DateTime.Today` is the usual answer, because most people filing a record are filing it about today. If you would rather the box came up empty, make the property `DateTime?` instead — but then decide what an empty date *means*, because the database will now accept rows without one.
 ---
 
 ## Part 8: Deleting a parent

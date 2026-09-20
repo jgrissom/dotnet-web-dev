@@ -444,7 +444,7 @@ public class SightingsController : Controller
 **File one.** Pick a creature, fill it in, submit — you land back on that creature's page with your account at the bottom.
 
 > [!NOTE]
-> **Why `SelectList?` and not `SelectList`.** ASP.NET treats a non-nullable property as a required field. The dropdown's *list of choices* is never posted back — the browser sends only the option you picked — so without the `?` every submission is refused with *"The Cryptids field is required"*, pointing at a dropdown that plainly has a creature in it. It's [week 6's rule in a new place](../lecture-notes.md#two-things-that-will-bite-you-here).
+> **Why `SelectList?` and not `SelectList`.** ASP.NET treats a non-nullable property as a required field. The dropdown's *list of choices* is never posted back — the browser sends only the option you picked — so without the `?` every submission is refused with *"The Cryptids field is required"*, pointing at a dropdown that plainly has a creature in it. It's [week 6's rule in a new place](../lecture-notes.md#three-things-that-will-bite-you-here).
 
 > [!WARNING]
 > **If you ever have to add that `?` to a running app, restart it — `Ctrl+C` in terminal 1, then `dotnet watch --project Cryptids.Web` again — terminal 1 stands in `CryptidsRelated`, which holds two projects, so the bare command has nothing to run.** Hot reload can print `🔥 Hot reload succeeded.` and still leave the fix **inert**: the required-field rules are worked out once per model type when the app starts, and a reload does not reliably redo them. When that happens you get the identical error over a file that is already correct.
@@ -549,7 +549,7 @@ var witness = _context.Witnesses
 - **Pages still say 0 reports after task 4** — the `Include` went on one action and not the other. [`Include` is per query](../lecture-notes.md#include-is-per-query).
 - **`NullReferenceException` on `Sightings.Count`** — the collection isn't initialized. It needs `= new List<Sighting>();` on the property.
 - **Every view suddenly fails to compile** — `_ViewImports.cshtml` names `Cryptids.Web.ViewModels` and the folder doesn't exist yet. [Task 5 in full ↑](#task-5-in-full)
-- **"The Cryptids field is required" with a creature selected** — the `SelectList` isn't nullable. [Part 7 of the notes](../lecture-notes.md#two-things-that-will-bite-you-here). **Restart after the fix if the error survives it** — hot reload can report success and still leave this one inert.
+- **"The Cryptids field is required" with a creature selected** — the `SelectList` isn't nullable. [Part 7 of the notes](../lecture-notes.md#three-things-that-will-bite-you-here). **Restart after the fix if the error survives it** — hot reload can report success and still leave this one inert.
 - **The form is refused with no message** — `asp-validation-summary="ModelOnly"` hides property errors. Use `"All"`.
 - **The dropdown is empty after a failed submit** — rebuild the `SelectList` inside the `if (!ModelState.IsValid)` branch.
 - **`dotnet ef` says there's already an object named 'Cryptids'** — you skipped the database drop at the top of task 2.
