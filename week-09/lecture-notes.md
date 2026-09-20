@@ -423,7 +423,9 @@ public class SpecialsController : Controller
 
 The view it renders is a new file too — `Views/Specials/Create.cshtml`, with `@model SpecialFormViewModel` on its first line and the `<select>` from above inside a form.
 
-And this is the view it renders — the whole of `Views/Specials/Create.cshtml`. The `<select>` from above is in there, now with a label and a validation span like every other field:
+And this is the view it renders — the whole of `Views/Specials/Create.cshtml`. The `<select>` from above is in there, now with a label and a validation span like every other field.
+
+⚠️ **Its first line only resolves if `Views/_ViewImports.cshtml` has `@using Curbside.ViewModels` in it** — the line you added back in [Part 6](#part-6-viewmodels--one-view-more-than-one-thing) when you created the folder. Skip it and the error is not "unknown type" on this file; it is **every view in the project failing at once**, pointing at files you never opened.
 
 ```cshtml
 @model SpecialFormViewModel
