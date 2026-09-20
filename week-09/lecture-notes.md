@@ -423,6 +423,50 @@ public class SpecialsController : Controller
 
 The view it renders is a new file too — `Views/Specials/Create.cshtml`, with `@model SpecialFormViewModel` on its first line and the `<select>` from above inside a form.
 
+And this is the view it renders — the whole of `Views/Specials/Create.cshtml`. The `<select>` from above is in there, now with a label and a validation span like every other field:
+
+```cshtml
+@model SpecialFormViewModel
+@{
+    ViewData["Title"] = "Add a special";
+}
+
+<h1>Add a special 🍟</h1>
+
+<form asp-action="Create" method="post" class="col-md-6">
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="mb-3">
+        <label asp-for="Special.TruckId" class="form-label"></label>
+        <select asp-for="Special.TruckId" asp-items="Model.Trucks" class="form-select">
+            <option value="">— pick a truck —</option>
+        </select>
+        <span asp-validation-for="Special.TruckId" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Special.Name" class="form-label"></label>
+        <input asp-for="Special.Name" class="form-control" />
+        <span asp-validation-for="Special.Name" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Special.Price" class="form-label"></label>
+        <input asp-for="Special.Price" class="form-control" />
+        <span asp-validation-for="Special.Price" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add it</button>
+    <a asp-controller="Trucks" asp-action="Index" class="btn btn-link">Cancel</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+```
+
+⚠️ **Every `asp-for` is `Special.Something`, not `Something`** — and that is the one thing that changes from the forms you built in week 6. The model is no longer the entity; it is the ViewModel that *holds* the entity, so the path has to start there. Forget it and you get `'SpecialFormViewModel' does not contain a definition for 'Name'` at build time — which is a kindness. Of everything that can go wrong this week, this is one of the few the compiler catches for you.
+
 ### Two things that will bite you here
 
 **The dropdown is not posted back, so a rejected form has to rebuild it.** The browser sends the one option that was chosen. It never sends the list. So if `ModelState` is invalid and you return the view, the `SelectList` is gone and the redisplayed form has an empty dropdown:
