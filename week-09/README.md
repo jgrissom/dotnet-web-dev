@@ -29,4 +29,4 @@ The night one table becomes two — and the week turns on a failure with **no sy
 - Your finished week-9 Registry with `dotnet test` at 6/6 — **on localhost, nothing deployed for it**
 - Remind students to `git pull` the starters repo for the week-09 folder
 
-**Prev:** [← Week 8 — EF Core CRUD](../week-08/README.md) · **Next:** Week 10 — Midterm Project *(coming)*
+**Prev:** [← Week 8 — EF Core CRUD](../week-08/README.md) · **Next:** [Week 10 — The Midterm Project →](../week-10/README.md)
