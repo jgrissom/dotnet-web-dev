@@ -34,9 +34,13 @@ Open `Views/Home/Index.cshtml`, find the **week-08** line, and **replace it**:
 Each requirement links to the section of the notes that shows it done.
 
 > [!IMPORTANT]
-> **The self-check can only see requirements 4, 5 and 6.** Everything in 1–3 is your model, your migration and your seed — none of it is visible from outside a running app, so **the report will not move while you build them.** That is expected. It is not a sign you have done something wrong.
+> **You will sit at `1 of 6` all the way through requirement 4.** That is expected, and it is not a sign you have done anything wrong — keep going.
 >
-> You will sit at **1 of 6** through requirements 1, 2 and 3. The first thing that moves the number is **requirement 5**, the form — and it moves four checks at once. Requirements 1–3 are still worth **4 of the 20 points**; I grade them by reading your repo.
+> Requirements **1–3** are your model, your migration and your seed. None of that is visible from outside a running app, so nothing in the console can move. They are still worth **4 of the 20 points**; I grade them by reading your repo.
+>
+> Requirement **4** — the `Include` — *is* checked, but it is checked **last**, and it cannot be judged until requirement 5 exists. The script has to file a row through your form before it can go looking for that row on a record's page. So finishing requirement 4 changes the number by nothing.
+>
+> **Requirement 5, the form, is the first thing that moves it** — and it moves four checks at once, requirement 4's among them.
 
 
 1. **A second model class**, with a **foreign key** and a **navigation property**. One of your existing records has many of these: reviews for a trail, showtimes for a movie, players on a team. Give it three or four columns of its own plus the key, and name the key `<Thing>Id` so it wires up on its own. → [Three properties, two classes](lecture-notes.md#part-2-three-properties-two-classes)
