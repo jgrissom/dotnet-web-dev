@@ -300,15 +300,14 @@ section pre .hljs-selector-class, section pre .hljs-selector-pseudo { color: #7e
 section footer { color: #9fb2c1; font-size: 0.6em; opacity: 0.85; }
 ;" data-marpit-pagination-total="11">
 <h2 id="three-pieces-one-of-them-a-line">Three pieces, one of them a line</h2>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-csharp"><span class="hljs-comment">// Program.cs, above app.UseRouting()</span>
-app.UseStatusCodePagesWithReExecute(<span class="hljs-string">&quot;/Home/Missing&quot;</span>);
-</code></pre>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-csharp"><span class="hljs-comment">// HomeController — NOT called NotFound(). That name is taken.</span>
+<p><strong>1.</strong> <code>Views/Home/Missing.cshtml</code> — an ordinary view.</p>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-csharp"><span class="hljs-comment">// 2. HomeController — NOT called NotFound(). That name is taken.</span>
 <span class="hljs-function"><span class="hljs-keyword">public</span> IActionResult <span class="hljs-title">Missing</span>()</span> =&gt; View();
 </code></pre>
-<br />
-<p>...and <code>Views/Home/Missing.cshtml</code>, an ordinary view.</p>
-<p><strong>The status stays 404. The page is yours.</strong></p>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-csharp"><span class="hljs-comment">// 3. Program.cs, above app.UseRouting() — the line that wires it up</span>
+app.UseStatusCodePagesWithReExecute(<span class="hljs-string">&quot;/Home/Missing&quot;</span>);
+</code></pre>
+<p><strong>In that order.</strong> Wire it up first and every 404 becomes a 500.</p>
 <footer><img class="emoji" draggable="false" alt="🖥️" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f5a5.svg" data-marp-twemoji=""/> Demo §3 · three pieces</footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="7" data-class="invert" data-paginate="true" data-footer="🖥️ Demo §4 · what does this draw" data-theme="gaia" data-style="section pre {
