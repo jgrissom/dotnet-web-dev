@@ -15,7 +15,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 > Lost your place? **The nearest 🎞️ above you is the slide that should be showing** — and every slide's footer names the section and beat of this sheet it belongs to, so you can go the other way too.
 
 > [!IMPORTANT]
-> **Tonight is the odd one out and it is worth saying so to yourself before you start.** There is no new syntax, no migration, no package, no staged failure to debug. What there is instead is **a list, written on screen in §1, and then worked through**. The teaching is the noticing, not the typing — so the pace is slower than it looks on paper, and the room should be talking. Three of the beats below are questions you ask and wait for.
+> **Tonight is the odd one out and it is worth saying so to yourself before you start.** There is no new syntax, no migration and no package. There is **one** failure to debug, in §2 — and it is not staged. It is a real defect the app has been carrying, which is the most on-message thing that could have happened to this week. What there is instead is **a list, written on screen in §1, and then worked through**. The teaching is the noticing, not the typing — so the pace is slower than it looks on paper, and the room should be talking. Three of the beats below are questions you ask and wait for.
 >
 > ⚠️ **Nothing tonight gets broken and put back.** Every change is forward. If you lose your place, nothing needs undoing.
 
@@ -112,7 +112,30 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   </div>
   ```
 - [ ] Point at what is *not* new in it before reloading: *"Bootstrap classes from week 2, two anchor tag helpers from week 4, and a `ViewData` title from week 4. There is nothing here you have not typed"*
-- [ ] **Reload the `/` tab.** Read the new browser tab out loud — *"Street food in Madison and Milwaukee"* — and say why that line matters: *"that is what a bookmark gets called, and what shows up when somebody pastes this into a chat"*
+
+### The headline nobody can read *(no slide — the browser is the reveal)*
+
+> [!IMPORTANT]
+> **This is the one real failure of the night and it is not staged** — the markup is correct, the page is a clean 200, every check this course owns stays green, and the front page is unreadable. That is the week's whole thesis arriving by accident, so give it the ninety seconds.
+
+- [ ] **Reload the `/` tab.** The headline and the paragraph are **gone** — a pale slab with a blue button floating on it. **Say nothing.** Let them find it
+- [ ] Ask it straight: *"what happened to my front page?"* Take answers. Somebody will say the text is white on white, and they are right
+- [ ] 🎯 Then make the point that earns the beat, before fixing anything: *"and notice what did not happen. No error. No red. The markup is correct — I could show you the HTML and you would sign it off. Every check this course has ever given you is still green. The page just cannot be read. That is the entire reason this week exists"*
+- [ ] **F12 → Elements → click the hero div.** Read the two numbers off the Styles panel: the background is **`#f8f9fa`**, the text is **`#fff`**. *"Near-white on white"*
+- [ ] 🎯 The diagnosis, and it is a callback: *"week 2 taught you this exact class. `bg-light` is literally light in every theme; `bg-body-tertiary` follows the theme. That was true, and it is still true — but it follows **Bootstrap's** light-or-dark switch, and nothing on this page has ever thrown that switch. Week 2's site was on a light Bootswatch theme, so it never came up. In week 5 you picked a theme, and half of you picked a dark one"*
+- [ ] **The fix is one attribute, and week 2 already showed you it.** On the hero div:
+  ```cshtml
+  <div class="p-5 mb-4 bg-body-tertiary rounded-3" data-bs-theme="dark">
+  ```
+- [ ] **Reload.** Readable — the hero is now a shade lighter than the page instead of a slab
+- [ ] ⚠️ **Now point at the second button**, which is still a ghost: *"the outline button did not come back. That one is not the same bug. `secondary` is a **brand** colour, and in this theme it is a dark grey — `data-bs-theme` does not touch brand colours, only the page surfaces"*
+  ```cshtml
+  <a asp-controller="Dishes" asp-action="Index" class="btn btn-outline-light btn-lg">Start from a dish</a>
+  ```
+- [ ] **Reload.** Both buttons read
+- [ ] 💡 Close the beat on the transferable line, not the CSS: *"I am not teaching you Bootstrap here. The rule you learned in week 2 was right. What changed was the app underneath it, and nobody sends you a notice when that happens. That is what walking your own site is for"*
+
+- [ ] Read the new browser tab out loud — *"Street food in Madison and Milwaukee"* — and say why that line matters: *"that is what a bookmark gets called, and what shows up when somebody pastes this into a chat"*
 
 - [ ] Now **Privacy**, and pose it as a choice rather than a fix: *"two honest answers. Make it real — an About page, who built this and why — or delete it. What I will not do is leave a link in my navbar to a page I have never written"*
 - [ ] Delete it in front of them, and count the places out loud as you go — **four**:

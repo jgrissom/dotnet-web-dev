@@ -78,18 +78,39 @@ Here is the whole file, as the demo's version ends up — `Views/Home/Index.csht
     ViewData["Title"] = "Street food in Madison and Milwaukee";
 }
 
-<div class="p-5 mb-4 bg-body-tertiary rounded-3">
+<div class="p-5 mb-4 bg-body-tertiary rounded-3" data-bs-theme="dark">
     <h1 class="display-4">Curbside 🌮</h1>
     <p class="lead">
         Every food truck worth chasing in Madison and Milwaukee — what they cook,
         where they park, and what's on today.
     </p>
     <a asp-controller="Trucks" asp-action="Index" class="btn btn-primary btn-lg">Browse the trucks</a>
-    <a asp-controller="Dishes" asp-action="Index" class="btn btn-outline-secondary btn-lg">Start from a dish</a>
+    <a asp-controller="Dishes" asp-action="Index" class="btn btn-outline-light btn-lg">Start from a dish</a>
 </div>
 ```
 
 Nothing there is new. It is Bootstrap classes from week 2 and two anchor tag helpers from week 4.
+
+> [!WARNING]
+> **If your theme is a dark one, two of those classes will betray you — and the page will not tell you.** This is worth reading even if your site looks fine, because the failure is silent.
+>
+> Week 2 taught you that `bg-light` is *literally* light in every theme, and that `bg-body-tertiary` is the theme-aware replacement. **That was true and it still is.** But it follows **Bootstrap's** light/dark switch — `data-bs-theme` — and a Bootswatch theme does not throw that switch. Week 2's site was on a light theme, so it never came up. In week 5 you picked a theme, and a dark one changes the body colors while leaving those surface tints at their light-mode values.
+>
+> Measured on the demo app, which is on **darkly**:
+>
+> | | background | text | contrast |
+> |---|---|---|---|
+> | the hero, as written above without `data-bs-theme` | `#f8f9fa` | `#fff` | **1.05 : 1** |
+> | the same hero with `data-bs-theme="dark"` | `#292929` | `#fff` | **14.55 : 1** |
+> | the rest of the page | `#222` | `#fff` | 15.91 : 1 |
+>
+> Anything under about **4.5 : 1** is unreadable body text. `1.05` is invisible.
+>
+> **And the second button is a different bug with the same symptom.** `btn-outline-secondary` takes its color from the theme's *brand* palette, and in a dark theme `secondary` is a dark gray. `data-bs-theme` does not touch brand colors, so that one stays a ghost until you change the class itself — `btn-outline-light` reads at 7.01 : 1 there.
+>
+> **The same file on a light theme is fine.** The answer key's other app is on `flatly` and the identical markup measures **14.63 : 1**. Nothing is wrong with the class. What is wrong is assuming it still fits an app you changed two months ago.
+>
+> 🔎 **How to check your own:** F12 → Elements → click the element → read `background-color` and `color` in the Styles panel. If they are close together, nobody can read it.
 
 > [!IMPORTANT]
 > **Your self-check `<script>` tag lives in this file.** If you rewrite `Views/Home/Index.cshtml` from scratch you will delete it, the console will go quiet, and it is very easy to read that as *"no findings"*. Put the block back at the bottom:
