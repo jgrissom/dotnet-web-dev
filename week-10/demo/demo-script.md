@@ -92,7 +92,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] 🎞️ **GO TO SLIDE 4** — *What a front page owes a visitor*
 - [ ] Take the three rows in order, and say the thing the table cannot: *"one sentence in their words, not your model's. A truck is a `Truck` to me and a food truck to everybody else"*
 - [ ] 🎯 The second row is the one worth pressing: *"a button, not a navbar link. The navbar is furniture — people stop seeing it by the second page. A button in the middle of the page is the thing you are asking them to press"*
-- [ ] 💡 Close on the budget line at the foot: *"ten seconds of patience. That is not me being dramatic, that is the whole budget, and it is why this is three lines of work and not a redesign"*
+- [ ] 💡 Close on the budget line at the foot: *"a visitor gives you about ten seconds. That is not me being dramatic — that is the whole budget, and it is why the answer is a sentence and a way in, not a redesign"*
 
 - [ ] **Swipe to the editor.** Open `Views/Home/Index.cshtml` — the whole file, so the room sees how little is there
 - [ ] Paste the replacement:
@@ -140,7 +140,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 ### Three pieces *(slide 6)*
 
 - [ ] 🎞️ **GO TO SLIDE 6** — *Three pieces, one of them a line*
-- [ ] **The code on this slide does not exist yet** — read it as a plan, bottom-up, which is the order you are about to build it in: *"a view, an action to render it, and one line to send every empty 404 there. Two thirds of that is a page you already know how to write"*
+- [ ] **The code on this slide does not exist yet** — read it as a plan, bottom-up, which is the order you are about to build it in: *"a view, an action to render it, and one line to send every empty 404 there. Two of those three you already know how to write — the line is the new thing"*
 - [ ] Say what `UseStatusCodePagesWithReExecute` actually does, because the name does not: *"when a response comes back with an error status and no body, this re-runs the request through that path and uses what comes back as the body. The status code is left alone"*
 - [ ] ⚠️ The middle block is on the slide for one reason — say it: *"do not call the action `NotFound`. `Controller` already has a method by that name, and it is the one returning the blank page we are replacing. Yours would shadow it and the compiler will tell you so"*
 
@@ -254,7 +254,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 - [ ] **Swipe to the browser.** `/Dishes` → **＋ Add a dish** → type `Elote Dog` → **Add it**
 - [ ] You land on `/Dishes/Details/11`. **Let it sit before saying anything.** The page reads: **Elote Dog**, *← All dishes*, **Served by** — and then an empty bordered box
-- [ ] Ask what they are looking at: *"is that broken? It is not. The record saved, the query ran, the page is a clean 200. That grey rectangle is what `<ul class=\"list-group\">` looks like with nothing in it"*
+- [ ] Ask what they are looking at: *"is that broken? It is not. The record saved, the query ran, the page is a clean 200. That grey rectangle is what `<ul class="list-group">` looks like with nothing in it"*
 - [ ] 🎯 *"and this is every new record in your app. The first review of a trail, the first sighting of a creature. Whatever that page does right now is what everybody's first one looks like"*
 
 ### Two things, not one *(slide 8)*
@@ -294,7 +294,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
       <p class="text-muted">No dishes yet. Add the first one.</p>
   }
   ```
-- [ ] Say why you are not demonstrating these two: *"I would have to delete every truck to show you this one working, and I am not doing that at half past eight. But it is the same three lines, and your list page needs it as much as your details page does"*
+- [ ] Say why you are not demonstrating these two: *"I would have to delete every truck to show you this one working, and I am not doing that at half past eight. But it is the same `@if`, and your list page needs it as much as your details page does"*
 
 ## 5 · The pass, again *(slide 9)*
 
