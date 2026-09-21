@@ -62,8 +62,8 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 - [ ] 🎞️ **GO TO SLIDE 2** — *Two questions*
 - [ ] Name what has been true for six weeks, and then the turn: *"every week since week 4, the question has been: does it work. `dotnet test` answered it in the lab and the self-check answered it on your URL. Both of those have a yes or a no, and a script can ask them"*
-- [ ] 🎯 Then the second question, slowly, because it is the whole evening: *"tonight's question is: would you send someone this link. There is no script for that one. That is why this week's self-check scores nothing — it is the first week since week 5 that doesn't"*
-- [ ] 💡 Close on the line at the foot of the slide: *"nothing new gets introduced tonight. No package, no migration, no syntax you have not already used. Everything I am about to do, you already know how to do — the hard part is deciding it is worth doing"*
+- [ ] 🎯 Then the second question, slowly, because it is the whole evening: *"tonight's question is: would you send someone this link. There is no script for that one. That is why this week's self-check scores nothing — every week since week 3 has handed you a script that counted points, and this is the first that doesn't"*
+- [ ] 💡 Close on the line at the foot of the slide: *"nothing new gets introduced tonight. No package, no migration, no new table. There is exactly one line all evening you have not met before, and I will point at it when we get there. Everything else is a view, a controller and an if — the hard part is deciding it is worth doing"*
 
 ### Walk it like you just arrived *(slide 3)*
 
@@ -82,7 +82,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   1. the front page is not mine
   2. there is a page in my navbar I have never written
   3. a wrong id is a blank browser page
-- [ ] 🎯 Say what the list is for before leaving it up: *"three things. Not thirty. I am going to fix these three in the next forty minutes and then the app is done — and the same is true of yours, which is why I asked you for three and not for a plan"*
+- [ ] 🎯 Say what the list is for before leaving it up: *"three things. Not thirty. I am going to fix these three before the break and a bit after it, and then the app is done — and the same is true of yours, which is why I asked you for three and not for a plan"*
 
 ## 2 · The front door *(slide 4)*
 
@@ -110,7 +110,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
       <a asp-controller="Dishes" asp-action="Index" class="btn btn-outline-secondary btn-lg">Start from a dish</a>
   </div>
   ```
-- [ ] Point at what is *not* new in it before reloading: *"Bootstrap classes from week 5, two anchor tag helpers from week 4, and a `ViewData` title from week 4. There is nothing here you have not typed"*
+- [ ] Point at what is *not* new in it before reloading: *"Bootstrap classes from week 2, two anchor tag helpers from week 4, and a `ViewData` title from week 4. There is nothing here you have not typed"*
 - [ ] **Reload the `/` tab.** Read the new browser tab out loud — *"Street food in Madison and Milwaukee"* — and say why that line matters: *"that is what a bookmark gets called, and what shows up when somebody pastes this into a chat"*
 
 - [ ] Now **Privacy**, and pose it as a choice rather than a fix: *"two honest answers. Make it real — an About page, who built this and why — or delete it. What I will not do is leave a link in my navbar to a page I have never written"*
@@ -139,27 +139,14 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 ### Three pieces *(slide 6)*
 
 - [ ] 🎞️ **GO TO SLIDE 6** — *Three pieces, one of them a line*
-- [ ] **The code on this slide does not exist yet** — read it as a plan: *"one line of configuration, one action, one view. That is the entire fix, and two thirds of it is a page you already know how to write"*
+- [ ] **The code on this slide does not exist yet** — read it as a plan, bottom-up, which is the order you are about to build it in: *"a view, an action to render it, and one line to send every empty 404 there. Two thirds of that is a page you already know how to write"*
 - [ ] Say what `UseStatusCodePagesWithReExecute` actually does, because the name does not: *"when a response comes back with an error status and no body, this re-runs the request through that path and uses what comes back as the body. The status code is left alone"*
 - [ ] ⚠️ The middle block is on the slide for one reason — say it: *"do not call the action `NotFound`. `Controller` already has a method by that name, and it is the one returning the blank page we are replacing. Yours would shadow it and the compiler will tell you so"*
 
-- [ ] **Swipe to the editor.** `Program.cs`, above `app.UseRouting()`:
-  ```csharp
-  // A wrong id, or a URL nobody recognizes, used to be a blank browser page.
-  // This re-runs the request through /Home/Missing and keeps the 404 status.
-  app.UseStatusCodePagesWithReExecute("/Home/Missing");
-  ```
-- [ ] Say why the position matters: *"above `UseRouting`. It has to be in the pipeline before the thing that produces the 404, or there is nothing for it to catch"*
-- [ ] `Controllers/HomeController.cs` — the action:
-  ```csharp
-  // Not called NotFound() — Controller already has a method by that name,
-  // and it's the one that returns the blank page we're replacing.
-  public IActionResult Missing()
-  {
-      return View();
-  }
-  ```
-- [ ] New file, `Views/Home/Missing.cshtml`:
+> [!IMPORTANT]
+> **Build it bottom-up: view, then action, then the line that wires them together.** The order is not cosmetic. Go the other way — middleware first — and there is a window where the app is told to render a page that does not exist yet, and **every wrong-id URL answers `500`** instead of the blank page you are trying to replace. Measured. Built in this order, every intermediate state is harmless.
+
+- [ ] **Swipe to the editor.** New file, `Views/Home/Missing.cshtml` — an ordinary view, nothing routes to it yet:
   ```cshtml
   @{
       ViewData["Title"] = "Not found";
@@ -173,7 +160,24 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
       <a asp-controller="Trucks" asp-action="Index" class="btn btn-primary">See every truck</a>
   </div>
   ```
-- [ ] ⚠️ **Look at terminal 1 before you reload.** Both of those edits are ones hot reload cannot apply — a brand-new `.cshtml`, and `Program.cs`, which only runs at startup. `dotnet watch` restarts for them, and if you did not answer `a` in §0 the prompt is sitting there waiting. **Say it to the room while you check**, because they will hit the same thing tonight: *"two of the three things I just typed need the app to restart. Watch will do it — it asks first, in the terminal I am not typing in, and that is the single most common reason a correct fix looks like it did nothing"*
+- [ ] `Controllers/HomeController.cs` — the action that renders it:
+  ```csharp
+  // Not called NotFound() — Controller already has a method by that name,
+  // and it's the one that returns the blank page we're replacing.
+  public IActionResult Missing()
+  {
+      return View();
+  }
+  ```
+- [ ] 💡 **Show it before you wire it up** — browse to `/Home/Missing`. It is a real page already, and nothing is routed to it: *"there is the page. Nothing sends anyone to it yet. That is the last line"*
+- [ ] Now `Program.cs`, above `app.UseRouting()`:
+  ```csharp
+  // A wrong id, or a URL nobody recognizes, used to be a blank browser page.
+  // This re-runs the request through /Home/Missing and keeps the 404 status.
+  app.UseStatusCodePagesWithReExecute("/Home/Missing");
+  ```
+- [ ] Say why the position matters: *"above `UseRouting`. It has to be in the pipeline before the thing that produces the 404, or there is nothing for it to catch"*
+- [ ] ⚠️ **Check the terminal before you reload.** Two of those edits are ones hot reload cannot apply — a brand-new `.cshtml`, and `Program.cs`, which only runs at startup. `dotnet watch` restarts for them, and if you did not answer `a` in §0 the prompt is sitting there waiting. **Say it to the room while you check**, because they will hit the same thing tonight: *"two of the three things I just typed need the app to restart. Watch will do it — but it asks first, over in the terminal, while I am typing in the editor. That is the single most common reason a correct fix looks like it did nothing"*
 - [ ] **Reload `/Trucks/Details/999`.** Your page, your navbar, a way home
 - [ ] 🎯 Then the part that is easy to miss, and worth pointing at: *"and it is still a 404. Check the Network tab if you want — the page apologizes to a person and still tells the truth to a machine. Those are two different audiences and you can serve both"*
 - [ ] Try one more, to show the reach: type `/Vendors` — a controller that has never existed. **Same page.** *"one line covered a wrong id, a misspelled URL, and everything else that ends in a 404 with nothing in it"*
@@ -239,7 +243,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   ```cshtml
   <a asp-action="Create" class="btn btn-primary mb-4">＋ Add a dish</a>
   ```
-- [ ] ⚠️ **Another new `.cshtml` — check terminal 1 for the restart prompt again** if you did not answer `a`
+- [ ] ⚠️ **Another new `.cshtml` — check the terminal for the restart prompt again** if you did not answer `a`
 
 ### What does this draw *(slide 7)*
 
@@ -302,8 +306,8 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] 🎞️ **GO TO SLIDE 9** — *The script scores nothing*
 - [ ] Take the left column first and fast — *"these are the things a stranger can see without knowing what your site is about, which is why a script can find them"*
 - [ ] 🎯 Then the right column slowly, because it is the assignment: *"none of these can be checked by anything. It cannot empty your database, so it has never seen your empty states. It cannot tell a real record from a placeholder. And it has no opinion at all about whether the thing is any good"*
-- [ ] Land the line at the foot: *"zero findings is not full marks. It means nothing is obviously broken. Ten of the twenty points are things this script never looks at"*
-- [ ] 💡 Be straight about the change of instrument: *"this is the first week since week 5 where the script does not count. That is deliberate. What is being graded this week is judgement, and I have not worked out how to write a script with any"*
+- [ ] Land the line at the foot: *"zero findings is not full marks. It means nothing is obviously broken. Nine of the twenty points are things this script never looks at"*
+- [ ] 💡 Be straight about the change of instrument: *"this is the first week since week 3 where the script does not count. That is deliberate. What is being graded this week is judgement, and I have not worked out how to write a script with any"*
 
 ## 6 · Hand off to the studio *(slide 10)*
 
@@ -317,6 +321,6 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 ## 7 · Wrap-up, after the studio *(slide 11)*
 
 - [ ] 🎞️ **GO TO SLIDE 11** — *Tonight, in one picture*
-- [ ] Five rows, one sentence each. **Front door** gets the emphasis — *"it is the only page every single visitor sees"*
+- [ ] Five rows, one sentence each. **Front door** gets the emphasis — *"it is the page you can least afford to get wrong, because it is the one nobody arrives already interested"*
 - [ ] Homework: finish it, deploy it, run the pass on the Azure URL. ⚠️ **Say the two things people lose points on**: the `@section Scripts` block deleted along with the old home page, and a README that never mentions the live URL
 - [ ] 🔗 Week 11: *"Identity. Registration, login, and the thing you noticed tonight and left alone"*

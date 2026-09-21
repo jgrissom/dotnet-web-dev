@@ -87,7 +87,7 @@ Here is the whole file, as the demo's version ends up — `Views/Home/Index.csht
 </div>
 ```
 
-Nothing there is new. It is Bootstrap classes from week 5 and an anchor tag helper from week 4.
+Nothing there is new. It is Bootstrap classes from week 2 and two anchor tag helpers from week 4.
 
 > [!IMPORTANT]
 > **Your self-check `<script>` tag lives in this file.** If you rewrite `Views/Home/Index.cshtml` from scratch you will delete it, the console will go quiet, and it is very easy to read that as *"no findings"*. Put the block back at the bottom:
@@ -206,28 +206,12 @@ So the request comes back **404** — which is the right status, and is honest. 
 
 **This is not a hypothetical.** It is what happens to every saved link, every bookmark and every URL anyone has shared the moment you delete that record. You built Delete in week 8. This is its other end.
 
-The fix is three small pieces.
+The fix is three small pieces. **Build them in this order — view, action, then the line that wires them up.**
 
-**One line in `Program.cs`**, above `app.UseRouting()`:
+> [!WARNING]
+> **The order is not cosmetic.** Add the `Program.cs` line first and there is a window where the app is told to render a page you have not written yet. In that window **every wrong-id URL answers `500`** — worse than the blank page you are fixing, and the error names a view rather than the thing you actually changed. Built bottom-up, every half-finished state is harmless.
 
-```csharp
-// A wrong id, or a URL nobody recognizes, used to be a blank browser page.
-// This re-runs the request through /Home/Missing and keeps the 404 status.
-app.UseStatusCodePagesWithReExecute("/Home/Missing");
-
-app.UseRouting();
-```
-
-**An action on `HomeController`:**
-
-```csharp
-public IActionResult Missing()
-{
-    return View();
-}
-```
-
-**And `Views/Home/Missing.cshtml`**, which is an ordinary view and wears your layout like every other page:
+**First, `Views/Home/Missing.cshtml`** — an ordinary view that wears your layout like every other page. Nothing routes to it yet, so nothing changes:
 
 ```cshtml
 @{
@@ -243,6 +227,27 @@ public IActionResult Missing()
 </div>
 ```
 
+**Then the action on `HomeController` that renders it:**
+
+```csharp
+public IActionResult Missing()
+{
+    return View();
+}
+```
+
+At this point browse to `/Home/Missing` — it is a real page already. Nothing sends anyone there yet.
+
+**Last, one line in `Program.cs`**, above `app.UseRouting()`, which is what sends them:
+
+```csharp
+// A wrong id, or a URL nobody recognizes, used to be a blank browser page.
+// This re-runs the request through /Home/Missing and keeps the 404 status.
+app.UseStatusCodePagesWithReExecute("/Home/Missing");
+
+app.UseRouting();
+```
+
 That is the whole change, and it covers more than the case you tested. It catches a bad id, a misspelled controller, a route that never existed — anything that ends in a 404 with no body of its own. The status stays 404, which matters: the page apologizes to a person *and* still tells a machine the truth.
 
 > [!WARNING]
@@ -255,7 +260,7 @@ That is the whole change, and it covers more than the case you tested. It catche
 > Do you want to restart your app? Yes (y) / No (n) / Always (a) / Never (v)
 > ```
 >
-> That prompt appears in the terminal `dotnet watch` owns, which is not the one you are typing in. **If your wrong-id URL still comes back blank after the edit, go and look at terminal 1 — the prompt is probably sitting there unanswered.** Answer `a` once and it stops asking for the rest of the session.
+> That prompt appears in the terminal `dotnet watch` is running in, while you are typing in the editor. **If your wrong-id URL still comes back blank after the edit, go and look at that terminal — the prompt is probably sitting there unanswered.** Answer `a` once and it stops asking for the rest of the session.
 
 ---
 
@@ -337,7 +342,7 @@ The connection string lives in user secrets, not in this repo:
 
 ## Part 9: What the self-check can and cannot see
 
-This week's script is different from every one since week 5: **it scores nothing.** It walks your deployed site the way a visitor would and prints what it trips over. There is no number in it and no number behind it.
+This week's script is different from every one since week 3: **it scores nothing.** It walks your deployed site the way a visitor would and prints what it trips over. There is no number in it and no number behind it.
 
 What it can see, because these are visible from outside without knowing your topic:
 
@@ -386,7 +391,10 @@ The `@section Scripts` block with the self-check `<script>` tag lived in `Views/
 You named the action `NotFound`. `Controller` already has a method by that name. Rename yours. Part 5.
 
 **I added the `Program.cs` line and a wrong id is still blank.**
-`Program.cs` runs once, at startup, so this edit needs a restart — and creating `Missing.cshtml` needs one too. `dotnet watch` asks before restarting, **in the terminal it owns, not the one you are typing in**. Look at terminal 1 for `Do you want to restart your app?` and answer `a`. Part 5.
+`Program.cs` runs once, at startup, so this edit needs a restart — and creating `Missing.cshtml` needs one too. `dotnet watch` asks before restarting, in the terminal it is running in — while you are typing in the editor. Look there for `Do you want to restart your app?` and answer `a`. Part 5.
+
+**Every wrong id suddenly returns `500`, and the error names a view.**
+You added the `Program.cs` line before the view existed, so the app is re-running the request through a page that isn't there yet. Create `Views/Home/Missing.cshtml` and the action, and it clears. Part 5 — this is why that section builds bottom-up.
 
 **My 404 page renders, but the status is now 200.**
 You returned a view directly from the action instead of letting `UseStatusCodePagesWithReExecute` do it. The middleware preserves the original status code; returning `View("Missing")` from inside a guard does not. Part 5.

@@ -1,7 +1,7 @@
 // ═══════════════════════════════════════════════════════════════════════════
 //  Week 10 — the stranger's pass.
 //
-//  THIS ONE SCORES NOTHING. Every week since 5 has handed you a script that
+//  THIS ONE SCORES NOTHING. Every week since 3 has handed you a script that
 //  counted points. This one doesn't, and that is deliberate: the midterm is
 //  graded on judgement, and no script has any. What this does is walk your
 //  deployed site the way a visitor would and print what it trips over.
@@ -307,11 +307,13 @@
         `it came back ${ghost.status} with an empty body — so the browser draws its own error `
           + "page. No navbar, no way back, nothing that looks like your site. That is what a "
           + "visitor gets after you delete a record they had a link to.",
-        "Give your app a page for it. One line in Program.cs, before app.UseRouting():\n"
-          + "    app.UseStatusCodePagesWithReExecute(\"/Home/Missing\");\n"
-          + "...then a Missing() action on HomeController and a Views/Home/Missing.cshtml with "
-          + "an apology and a link home. ⚠️ Don't name the action NotFound — Controller already "
-          + "has a method by that name."
+        "Give your app a page for it — and build it in this order, or there's a window where "
+          + "every wrong-id URL answers 500 instead:\n"
+          + "    1. Views/Home/Missing.cshtml — an apology and a link home\n"
+          + "    2. a Missing() action on HomeController that returns View()\n"
+          + "    3. in Program.cs, above app.UseRouting():\n"
+          + "         app.UseStatusCodePagesWithReExecute(\"/Home/Missing\");\n"
+          + "⚠️ Don't name the action NotFound — Controller already has a method by that name."
       );
     }
 

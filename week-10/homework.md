@@ -41,7 +41,7 @@ Open `Views/Home/Index.cshtml`, find the **week-09** line, and **replace it**:
 Each requirement links to the section of the notes that shows it done.
 
 > [!IMPORTANT]
-> **This week's script prints findings, not a score.** It starts by telling you how many things it tripped over and your job is to get that to zero — but zero is not full marks, and four of the seven requirements below are things it cannot see at all. Each one says so.
+> **This week's script prints findings, not a score.** It starts by telling you how many things it tripped over and your job is to get that to zero — but zero is not full marks, and three of the seven requirements below are things it cannot see at all. Each one says so.
 
 1. **A front door of your own.** Rewrite `Views/Home/Index.cshtml`: what this site is, who it's for, and a button into your list page. Set `ViewData["Title"]` on it — and on your other views — to something that isn't `"Home Page"`. → [The front door](lecture-notes.md#part-3-the-front-door)
 
@@ -55,7 +55,7 @@ Each requirement links to the section of the notes that shows it done.
 
    📋 **The script cannot see this** — it can't empty your database. I read it in your repo. To see it yourself, create a brand-new record through your form and look at its page.
 
-4. **A wrong id lands somewhere.** Change a details URL to an id that doesn't exist. You get a blank browser page, because `NotFound()` sends no body — which is what every saved link to a record you deleted now does. One line in `Program.cs`, one action, one view. → [The page a wrong id lands on](lecture-notes.md#part-5-the-page-a-wrong-id-lands-on)
+4. **A wrong id lands somewhere.** Change a details URL to an id that doesn't exist. You get a blank browser page, because `NotFound()` sends no body — which is what every saved link to a record you deleted now does. Three pieces: a view, an action, and one line in `Program.cs` — **built in that order**, or there is a window where every wrong-id URL answers `500` instead. → [The page a wrong id lands on](lecture-notes.md#part-5-the-page-a-wrong-id-lands-on)
 
    🔎 **The script sees this one.** ⚠️ Both halves need a **restart** — read the note in that section before you decide it didn't work.
 
@@ -113,7 +113,7 @@ Sample output, from a run against a site with two things left:
 ```
 
 > [!NOTE]
-> **Getting to zero is not the assignment.** Four of the seven requirements are invisible to the script, and they are worth **10 of the 20 points**. A clean report means nothing is obviously broken — it says nothing about whether the thing is any good. That judgement is the midterm.
+> **Getting to zero is not the assignment.** Three of the seven requirements are invisible to the script, and they are worth **9 of the 20 points**. A clean report means nothing is obviously broken — it says nothing about whether the thing is any good. That judgement is the midterm.
 
 **Working offline?** Everything except the deployed run works against `localhost`. The script prints a reminder when it notices.
 
@@ -135,7 +135,8 @@ You are not adding a table this week, so there is probably no migration to apply
 
 - **I rewrote my home page and the console went quiet** — the `@section Scripts` block lived in that file and you replaced it. [Put it back](lecture-notes.md#part-3-the-front-door).
 - **`NotFound` gives a compiler error when I add the action** — `Controller` already has a method by that name. Call yours `Missing`. [Part 5](lecture-notes.md#part-5-the-page-a-wrong-id-lands-on).
-- **I added the `Program.cs` line and a wrong id is still blank** — `Program.cs` only runs at startup, so this needs a restart, and so does the new `.cshtml`. `dotnet watch` asks first, **in the terminal it owns, not the one you're typing in**. Look at terminal 1 for `Do you want to restart your app?` and answer `a`. [Part 5](lecture-notes.md#part-5-the-page-a-wrong-id-lands-on).
+- **I added the `Program.cs` line and a wrong id is still blank** — `Program.cs` only runs at startup, so this needs a restart, and so does the new `.cshtml`. `dotnet watch` asks first, in the terminal it is running in — while you are typing in the editor. Look there for `Do you want to restart your app?` and answer `a`. [Part 5](lecture-notes.md#part-5-the-page-a-wrong-id-lands-on).
+- **Every wrong id suddenly 500s, and the error names a view** — you added the `Program.cs` line before writing `Views/Home/Missing.cshtml`. Build the view and the action first. [Part 5](lecture-notes.md#part-5-the-page-a-wrong-id-lands-on).
 - **My 404 page shows but the status is 200** — you returned the view from inside the guard instead of letting the middleware do it. [Part 5](lecture-notes.md#part-5-the-page-a-wrong-id-lands-on).
 - **The empty state never appears** — a list page and the related list on a details page are two different views. Both need their own `@if`. [Part 4](lecture-notes.md#part-4-when-there-is-nothing-there-yet).
 - **`Model.Any()` throws `NullReferenceException`** — the collection property was never initialized. [Week 9, Part 2](../week-09/lecture-notes.md#part-2-three-properties-two-classes).

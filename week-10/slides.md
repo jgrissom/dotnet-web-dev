@@ -107,21 +107,19 @@ if (trail == null)
 
 ## Three pieces, one of them a line
 
-```csharp
-// Program.cs, above app.UseRouting()
-app.UseStatusCodePagesWithReExecute("/Home/Missing");
-```
+**1.** `Views/Home/Missing.cshtml` — an ordinary view.
 
 ```csharp
-// HomeController — NOT called NotFound(). That name is taken.
+// 2. HomeController — NOT called NotFound(). That name is taken.
 public IActionResult Missing() => View();
 ```
 
-<br>
+```csharp
+// 3. Program.cs, above app.UseRouting() — the line that wires it up
+app.UseStatusCodePagesWithReExecute("/Home/Missing");
+```
 
-...and `Views/Home/Missing.cshtml`, an ordinary view.
-
-**The status stays 404. The page is yours.**
+**In that order.** Wire it up first and every 404 becomes a 500.
 
 ---
 
