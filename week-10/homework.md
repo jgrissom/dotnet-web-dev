@@ -11,7 +11,7 @@ This is the midterm. **Nothing new gets introduced** — there is no new syntax 
 
 Week 9's reading asked you to click through your own app as a stranger would and write down the three things that look worst. **That list is your midterm.** If you have it, get it out. If you don't, do it now — it takes ten minutes and the rest of the evening depends on it.
 
-**Open your deployed URL in a private window**, and walk it: the front page, every navbar link, one record's page, your form, the browser tab, and a details URL with the id changed to something that doesn't exist. Write down what you see, not what you meant. → [The stranger's pass](lecture-notes.md#part-2-the-strangers-pass)
+**Open your deployed URL — then open it again on your phone** — and walk it both times: the front page, every navbar link, one record's page, your form, the browser tab, and a details URL with the id changed to something that doesn't exist. Write down what you see, not what you meant. → [The stranger's pass](lecture-notes.md#part-2-the-strangers-pass)
 
 **This is worth zero points and it is the best ten minutes you can spend.** Everything in Part 2 is easier once you have looked.
 

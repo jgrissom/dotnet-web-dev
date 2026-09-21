@@ -45,8 +45,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   dotnet watch
   ```
 - [ ] ⚠️ **Know the one prompt that will bite you, and answer it `a` the first time.** Tonight makes **two** edits hot reload cannot apply — a brand-new `.cshtml` in §3, and `Program.cs` in the same section, which only ever runs at startup. `watch` handles both by restarting, and it **asks first**: **`Do you want to restart your app? Yes (y) / No (n) / Always (a) / Never (v)`**. Answer **`a`** at the first prompt and it never asks again all night. Miss it and §3's payoff silently doesn't happen
-- [ ] ⚠️ **Open a private/incognito window and use it for the whole night — there is no second browser window tonight.** §1 is walked in it, and doing that in front of the room is half of what §1 teaches; keeping everything in it afterwards means one browser state and no "which window was that in?" mid-demo
-- [ ] **Park three tabs in that private window**: `/`, `/Trucks/Details/1` and `/Dishes`
+- [ ] **One browser window all night, three tabs parked**: `/`, `/Trucks/Details/1` and `/Dishes`. One window means no *"which one was that in?"* mid-demo
 - [ ] **Say the no-typing line out loud in the first minute.** Tonight is watched, not typed along with: *"nothing tonight is yours to type. Curbside is my app and yours is yours — and tonight your app is the whole assignment, so your keyboard time is the studio block, which is most of the evening"*
 - [ ] Teaching profile on, notifications off, editor font sized for the back of the room and for a small laptop screen
 
@@ -54,7 +53,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 > **🖥️ On screen, at curtain**
 >
 > - **VS Code** — left half, `instructor/week-10/Curbside` open, one integrated terminal running `dotnet watch`
-> - **Browser** — right half, a **private/incognito window** with three tabs: `/` (the stock template home page — that is the point), `/Trucks/Details/1` and `/Dishes`. No other browser window is used tonight
+> - **Browser** — right half, one window, three tabs: `/` (the stock template home page — that is the point), `/Trucks/Details/1` and `/Dishes`
 
 ## 1 · The stranger's pass *(slides 2–3)*
 
@@ -68,7 +67,8 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 ### Walk it like you just arrived *(slide 3)*
 
 - [ ] 🎞️ **GO TO SLIDE 3** — *Walk it like you just arrived*
-- [ ] **The slide is the exercise.** Say why the private window is on it and not a detail: *"a private window has no history, no autofill and nothing cached. It is the cheapest way there is to forget what you know about your own site, and you cannot do this pass honestly without it"*
+- [ ] **The slide is the exercise.** Say why both halves of that first line are on it: *"the deployed URL, not your localhost — that is the one I open and the one a stranger gets. And then your phone, which is the half that does the real work. You built this on a laptop at a width you picked. You have probably never once looked at it on the thing half your visitors are holding"*
+- [ ] 🎯 Be honest about why the phone and not some ritual: *"there is no trick for un-knowing your own app. You cannot clear your memory of where the nav link goes. What you can do is change the screen underneath it, and a phone is the cheapest way to do that"*
 - [ ] Land the last line as an instruction rather than advice: *"write it down before you fix anything. The moment you fix the first thing you noticed, you are in the editor and the pass is over. The list is what you are making right now"*
 - [ ] 🔗 Connect it back: *"week 9's reading asked you to do exactly this and bring three things. If you brought them, that list is your midterm and you already started"*
 
@@ -78,6 +78,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   - Read the browser tab out loud: **Home Page - Curbside 🌮**
   - Click **Trucks**, then a truck, and be fair about it: *"this part is good. This is the part we built"*
   - In the address bar, change the id to `999` → **a blank browser page.** Ask: *"what happened to my site?"*
+  - 💡 **Then drag the window narrow**, down to phone width, and let them watch it reflow. This is the phone half of slide 3, done on screen — you cannot reach localhost from a phone, so this is the demonstrable version: *"this is week 2's move, and it is the one thing tonight you can do to your own app in ten seconds"*
 - [ ] Write the list on screen, in the room's words. It should come out close to:
   1. the front page is not mine
   2. there is a page in my navbar I have never written

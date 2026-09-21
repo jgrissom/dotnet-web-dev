@@ -54,7 +54,7 @@ Tonight is the second one — and **nothing new gets introduced.**
 
 ## Walk it like you just arrived
 
-In a **private window**, on your **deployed** URL:
+On your **deployed** URL — then again on your **phone**:
 
 1. The front page — what is this, and what can I do?
 2. Every link in the navbar. All of them.

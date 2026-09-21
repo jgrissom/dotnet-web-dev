@@ -1,6 +1,6 @@
 # Week 10 — The Midterm Project
 
-The one night with nothing new in it. No package, no migration, no syntax — instead, the application everyone has been extending since week 4 gets looked at honestly for the first time and then finished. The demo does on Curbside exactly what the homework asks: open it in a private window, walk it like a stranger, write down what is wrong, and fix it. Three things come out of that walk and all three are universal — a front page that still belongs to Microsoft, a page in the navbar nobody ever wrote, and a wrong id that lands on a blank browser page because `NotFound()` sends no body at all. Along the way a table turns out to be read-only from the outside, a brand-new record turns out to render as an empty bordered box, and the self-check — for the first time since week 3 — **scores nothing**, because what is being graded this week is judgement and no script has any.
+The one night with nothing new in it. No package, no migration, no syntax — instead, the application everyone has been extending since week 4 gets looked at honestly for the first time and then finished. The demo does on Curbside exactly what the homework asks: walk it like a stranger, write down what is wrong, and fix it. Three things come out of that walk and all three are universal — a front page that still belongs to Microsoft, a page in the navbar nobody ever wrote, and a wrong id that lands on a blank browser page because `NotFound()` sends no body at all. Along the way a table turns out to be read-only from the outside, a brand-new record turns out to render as an empty bordered box, and the self-check — for the first time since week 3 — **scores nothing**, because what is being graded this week is judgement and no script has any.
 
 ## Use in this order
 
@@ -19,13 +19,13 @@ The one night with nothing new in it. No package, no migration, no syntax — in
 
 ## What students walk out with
 
-**The habit of looking at their own work from outside it.** They can walk a deployed application as a stranger and say why a private window is not an optional detail; name the difference between *working* and *finished*; say what a front page owes a first-time visitor and write one; say what `NotFound()` sends as a body and what a browser does with nothing; give an app a 404 page of its own while leaving the status code alone; say what a `@foreach` over an empty collection renders and why they have never seen it; write an empty state that offers a way out instead of a dead end; look at a table and ask how a new row gets into it from outside; and read a report that carries no score without mistaking a clean one for a finished one.
+**The habit of looking at their own work from outside it.** They can walk a deployed application as a stranger and say why looking at it on a phone finds what a laptop hides; name the difference between *working* and *finished*; say what a front page owes a first-time visitor and write one; say what `NotFound()` sends as a body and what a browser does with nothing; give an app a 404 page of its own while leaving the status code alone; say what a `@foreach` over an empty collection renders and why they have never seen it; write an empty state that offers a way out instead of a dead end; look at a table and ask how a new row gets into it from outside; and read a report that carries no score without mistaking a clean one for a finished one.
 
 ## 📋 Before class, don't forget
 
 - **Deployed-app gallery** — 2–3 student Azure URLs picked in advance; 2 minutes each. Tonight it doubles as the warm-up for §1 — look at them the way §1 is about to look at Curbside, and say so
 - ⚠️ **Copy `week-10/demo-starter/Curbside` out of the private answer-keys repo**, set your secret (`set` only — the id ships), then `dotnet ef database drop --force` and `dotnet ef database update` — **after your last rehearsal**. Your rehearsal adds a dish called **Elote Dog** in §4 and it will still be there
-- ⚠️ **One browser window, private/incognito, three tabs** (`/`, `/Trucks/Details/1`, `/Dishes`) — used all night. §1 is walked in it, and doing that in front of the room is half of what §1 teaches
+- **One browser window, three tabs** (`/`, `/Trucks/Details/1`, `/Dishes`) — used all night
 - **One terminal is enough** — `dotnet watch`. There is no `dotnet ef` tonight
 - ⚠️ **Answer `a` at the first restart prompt.** §3 makes both edits hot reload cannot apply — a new `.cshtml`, and `Program.cs`, which only runs at startup. ⚠️ **§3 builds view → action → middleware, and that order matters** — wiring it up first makes every wrong-id URL a `500`
 - ⚠️ **Protect the blank page in §3.** Go to `/Trucks/Details/999` and stop talking; the room needs a second to register that the site has vanished

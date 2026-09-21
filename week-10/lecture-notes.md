@@ -27,7 +27,9 @@ The gap between the two is usually not big. It is a handful of small things, eac
 
 Here is the method, and it is worth doing deliberately rather than from memory.
 
-**Open your deployed URL in a private window.** Not localhost, not the tab you have had open since September — a window with no history, no autofill and no cached anything. That single step removes most of what you know.
+**Open your deployed URL.** Not localhost — the deployed one, because that is the one a stranger gets and the one I open. And not the tab you have had open since September; load it fresh, so you are looking at what is actually deployed rather than what was deployed in October.
+
+**Then open it on your phone.** This is the part that does the real work. You have built this thing on a laptop, at a width you chose, with the code in the next window — and you have almost certainly never once looked at it on the device half your visitors would use. Different width, bigger tap targets, no developer tools to explain anything away. Week 2 asked you to do this to your static Registry and graded it; nothing since has made it less true.
 
 Then walk it, and write down what you see. Not what you meant:
 
@@ -378,7 +380,7 @@ The homework asks you to name three things you fixed. Not five, not everything �
 **A fix you can explain is worth more than a fix you copied.** The explain-it standard applies to the midterm the same as every week: I will ask what you changed and why that was the right thing to change.
 
 > [!NOTE]
-> **If your three things are genuinely small, say so and pick bigger ones.** "I changed the navbar color" is not a midterm. If you walk your app and honestly cannot find three things worth doing, walk it with someone else's eyes — that is what the private window and the stranger's pass are for, and if it still comes up empty, come and talk to me.
+> **If your three things are genuinely small, say so and pick bigger ones.** "I changed the navbar color" is not a midterm. If you walk your app and honestly cannot find three things worth doing, walk it with someone else's eyes — that is what the stranger's pass is for, and if it still comes up empty, come and talk to me.
 
 ---
 

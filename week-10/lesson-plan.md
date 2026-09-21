@@ -9,7 +9,7 @@
 
 By the end of this session, students can:
 
-1. Walk their own deployed application as a stranger would, and say why a private window is not an optional detail.
+1. Walk their own deployed application as a stranger would, and say why looking at it on a phone finds what a laptop hides.
 2. Name the difference between *working* and *finished*, and say why only one of them can be checked by a script.
 3. Say what a front page owes a first-time visitor, and write one.
 4. Say what `NotFound()` sends as a response body, and what the browser does with that.
@@ -27,7 +27,7 @@ By the end of this session, students can:
 - **Curbside**, copied out of the private answer-keys repo (`week-10/demo-starter/Curbside`) into `~/Repos/dotnet-web-dev-course/instructor/week-10/` — week 9's demo end state **plus the browsable dish list week 9 never typed** — running under `dotnet watch`
 - ⚠️ **Your connection string set (`set` only — the `<UserSecretsId>` ships), then `dotnet ef database drop --force` and `dotnet ef database update` run before class *and again after your rehearsal*.** Your rehearsal adds a dish called **Elote Dog** in §4 and it will still be there
 - **One integrated terminal** — `dotnet watch`. There is no `dotnet ef` tonight, so the second terminal weeks 7–9 needed is not required
-- ⚠️ **One browser window, private/incognito, three tabs** (`/`, `/Trucks/Details/1`, `/Dishes`) — used for the whole night. §1 is walked in it, and doing that in front of the room is half of what §1 teaches
+- **One browser window, three tabs** (`/`, `/Trucks/Details/1`, `/Dishes`) — used for the whole night
 - **2–3 student Azure URLs** picked in advance for the gallery
 - Your finished week-10 Curbside ready for the studio launch — **on localhost. Nothing is deployed for it**
 
@@ -36,7 +36,7 @@ By the end of this session, students can:
 | Time | Duration | Segment |
 |------|----------|---------|
 | 0:00 | 10 min | **Deployed-app gallery** *(deck on title slide)*. 2–3 student apps, **2 minutes each, hard stop**. Tonight this doubles as the warm-up for §1 — look at them the way §1 is about to look at Curbside, and say so. |
-| 0:10 | 20 min | **The stranger's pass** *(slides 2–3, demo §1)*. **The slide is the exercise.** Then walk Curbside live in a **private window** and build the list on screen: the front page is Microsoft's, Privacy is a page nobody wrote, a wrong id is a blank browser page. ⚠️ **Let the blank page sit** — the room should name it, not you. Ends with three items written down. |
+| 0:10 | 20 min | **The stranger's pass** *(slides 2–3, demo §1)*. **The slide is the exercise.** Then walk Curbside live and build the list on screen: the front page is Microsoft's, Privacy is a page nobody wrote, a wrong id is a blank browser page. ⚠️ **Let the blank page sit** — the room should name it, not you. Ends with three items written down. |
 | 0:30 | 15 min | **The front door** *(slide 4, demo §2)*. Rewrite `Views/Home/Index.cshtml`; point out that every piece of it is week 4 or week 5. Then Privacy, deleted in **four** places, counted out loud. 🎯 *"a page you have not written is worse than no page."* |
 | 0:45 | 15 min | **The blank page** *(slides 5–6, demo §3)*. Predict off slide 5 — *what does a browser draw when there is no body?* — then show it. ⚠️ **The delete connection is what earns this section**: every saved link to a record you deleted in week 8 lands here. A view, an action, then one line — ⚠️ **in that order, or every 404 becomes a 500 mid-demo.** Two of the edits need a restart; check the terminal and say why. |
 | 1:00 | 10 min | **☕ Break** |
@@ -60,4 +60,4 @@ By the end of this session, students can:
 - **The report carrying no score will be queried.** Expect *"so how do I know if I'm done?"* The answer is on slide 9's right-hand column and in the homework's rubric — and it is worth saying plainly that this is what every job after this one is like.
 - ⚠️ **Do not let anyone start on authentication.** It will come up, because the stranger's pass surfaces it immediately. It is week 11's entire subject, it cannot be half-done, and an evening spent on it is an evening of the midterm lost. The homework says this too.
 - **Circulating question, every desk, same one:** *"what are your three, and which one is the worst?"* It gets a student off their editor and back onto the assignment faster than looking at their code does.
-- 📋 **Three students will not have brought a list.** Week 9's reading asked for it; some will have skipped it. Don't make it a thing — send them to a private window for ten minutes and they will catch up.
+- 📋 **Three students will not have brought a list.** Week 9's reading asked for it; some will have skipped it. Don't make it a thing — send them to their own deployed URL for ten minutes, phone included, and they will catch up.
