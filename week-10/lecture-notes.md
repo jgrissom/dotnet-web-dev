@@ -112,7 +112,7 @@ Nothing there is new. It is Bootstrap classes from week 2 and two anchor tag hel
 >
 > 🔎 **How to check your own — you do not need DevTools for this.** Open your deployed front page and read it. If you are squinting, that is the finding. DevTools is for explaining *why*, not for noticing.
 >
-> When you do want the why: right-click the text you cannot read → **Inspect**. In the **Styles** pane you will see the background written as `rgba(var(--bs-tertiary-bg-rgb), …)` and, further down under **Inherited from body**, `color: var(--bs-body-color)`. **Both are variables, and your theme filled in one of them and not the other.** For the resolved numbers, the **Computed** tab with `color` in its filter box shows them — but note they sit on two different elements, the background on the panel and the text colour inherited onto the heading, which is part of why nothing flags this.
+> When you do want the why: right-click the text you cannot read → **Inspect**. In the **Styles** pane you will see the background written as `rgba(var(--bs-tertiary-bg-rgb), …)` and, further down under **Inherited from body**, `color: var(--bs-body-color)`. **Both are variables, and your theme filled in one of them and not the other.** For the resolved numbers, the **Computed** tab with `color` in its filter box shows them — but note they sit on two different elements, the background on the panel and the text color inherited onto the heading, which is part of why nothing flags this.
 
 > [!IMPORTANT]
 > **Your self-check `<script>` tag lives in this file.** If you rewrite `Views/Home/Index.cshtml` from scratch you will delete it, the console will go quiet, and it is very easy to read that as *"no findings"*. Put the block back at the bottom:

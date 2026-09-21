@@ -122,20 +122,20 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] Ask it straight: *"what happened to my front page?"* Take answers. Somebody will say the text is white on white, and they are right
 - [ ] 🎯 Then make the point that earns the beat, before fixing anything: *"and notice what did not happen. No error. No red. The markup is correct — I could show you the HTML and you would sign it off. Every check this course has ever given you is still green. The page just cannot be read. That is the entire reason this week exists"*
 - [ ] **Right-click the headline → Inspect.** You land on the `<h1>`; the hero `<div>` is the line directly above it in the Elements tree. **Click the div**
-- [ ] In **Styles**, read the background rule out loud *as it is written* — it is not a colour:
+- [ ] In **Styles**, read the background rule out loud *as it is written* — it is not a color:
   ```css
   background-color: rgba(var(--bs-tertiary-bg-rgb), var(--bs-bg-opacity)) !important
   ```
-  🎯 *"That is not a colour. That is a variable, and somebody has to fill it in"*
+  🎯 *"That is not a color. That is a variable, and somebody has to fill it in"*
 - [ ] Now scroll the Styles pane down to **Inherited from body** and read the other one: `color: var(--bs-body-color)`. **Both of them are variables** — and that is the whole bug in one screen: *"the theme filled in one of these and not the other"*
 - [ ] 💡 **If you want the actual numbers**, the **Computed** tab with `color` typed in its filter box shows them resolved — `#f8f9fa` against `#fff`. ⚠️ **They are on two different elements**, which is worth saying: *"no single element has both of these on it. That is part of why nothing catches it"*
-- [ ] 🎯 The diagnosis, and it is a callback: *"week 2 taught you this exact class. `bg-light` is literally light in every theme; `bg-body-tertiary` follows the theme. That was true, and it is still true — but it follows **Bootstrap's** light-or-dark switch, and nothing on this page has ever thrown that switch. Darkly filled in the body colour and left the surface tint at the value it ships with, which is a light-mode value. Week 2's site was on a light theme, so it never came up. In week 5 you picked a theme, and some of us picked a dark one"*
+- [ ] 🎯 The diagnosis, and it is a callback: *"week 2 taught you this exact class. `bg-light` is literally light in every theme; `bg-body-tertiary` follows the theme. That was true, and it is still true — but it follows **Bootstrap's** light-or-dark switch, and nothing on this page has ever thrown that switch. Darkly filled in the body color and left the surface tint at the value it ships with, which is a light-mode value. Week 2's site was on a light theme, so it never came up. In week 5 you picked a theme, and some of us picked a dark one"*
 - [ ] **The fix is one attribute, and week 2 already showed you it.** On the hero div:
   ```cshtml
   <div class="p-5 mb-4 bg-body-tertiary rounded-3" data-bs-theme="dark">
   ```
 - [ ] **Reload.** Readable — the hero is now a shade lighter than the page instead of a slab
-- [ ] ⚠️ **Now point at the second button**, which is still a ghost: *"the outline button did not come back. That one is not the same bug. `secondary` is a **brand** colour, and in this theme it is a dark grey — `data-bs-theme` does not touch brand colours, only the page surfaces"*
+- [ ] ⚠️ **Now point at the second button**, which is still a ghost: *"the outline button did not come back. That one is not the same bug. `secondary` is a **brand** color, and in this theme it is a dark grey — `data-bs-theme` does not touch brand colors, only the page surfaces"*
   ```cshtml
   <a asp-controller="Dishes" asp-action="Index" class="btn btn-outline-light btn-lg">Start from a dish</a>
   ```
