@@ -133,7 +133,7 @@ You are not adding a table this week, so there is probably no migration to apply
 
 ## 🆘 Stuck?
 
-- **My new front page is blank / the headline vanished** — near-white text on a near-white panel, which a dark Bootswatch theme causes and nothing reports. F12 → Elements → click the element → compare `background-color` and `color`. [Part 3](lecture-notes.md#part-3-the-front-door).
+- **My new front page is blank / the headline vanished** — near-white text on a near-white panel, which a dark Bootswatch theme causes and nothing reports. Add `data-bs-theme="dark"` to the panel. [Part 3](lecture-notes.md#part-3-the-front-door) has the why, and how to read it in DevTools if you want it.
 - **I rewrote my home page and the console went quiet** — the `@section Scripts` block lived in that file and you replaced it. [Put it back](lecture-notes.md#part-3-the-front-door).
 - **`NotFound` gives a compiler error when I add the action** — `Controller` already has a method by that name. Call yours `Missing`. [Part 5](lecture-notes.md#part-5-the-page-a-wrong-id-lands-on).
 - **I added the `Program.cs` line and a wrong id is still blank** — `Program.cs` only runs at startup, so this needs a restart, and so does the new `.cshtml`. `dotnet watch` asks first, in the terminal it is running in — while you are typing in the editor. Look there for `Do you want to restart your app?` and answer `a`. [Part 5](lecture-notes.md#part-5-the-page-a-wrong-id-lands-on).
