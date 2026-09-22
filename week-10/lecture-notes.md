@@ -351,7 +351,7 @@ Your seed data is content. On a deployed site it is the only content, and a visi
 
 ## Part 8: The README a stranger reads
 
-Your submission is two links: a deployed URL and a repo URL. **I open both, and so would anyone else you sent them to.** Right now your repo's front page is a file listing, because week 1 told you not to add a README when you created the repo — that was about avoiding a push conflict on an empty repo, not a judgment about READMEs.
+Your submission is two links: a deployed URL and a repo URL. **I open both, and so would anyone else you sent them to.** Right now your repo's front page is a file listing, because week 1 told you not to add a README when you created the repo — that was about avoiding a push conflict on an empty repo, not a judgement about READMEs.
 
 This is where it gets written. Create `README.md` at the root of your project repo. It needs four things and it fits on one screen:
 

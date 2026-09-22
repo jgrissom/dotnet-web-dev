@@ -351,7 +351,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] Take the left column first and fast — *"these are the things a stranger can see without knowing what your site is about, which is why a script can find them"*
 - [ ] 🎯 Then the right column slowly, because it is the assignment: *"none of these can be checked by anything. It cannot empty your database, so it has never seen your empty states. It cannot tell a real record from a placeholder. And it has no opinion at all about whether the thing is any good"*
 - [ ] Land the line at the foot: *"zero findings is not full marks. It means nothing is obviously broken. Nine of the twenty points are things this script never looks at"*
-- [ ] 💡 Be straight about the change of instrument: *"this is the first week since week 3 where the script does not count. That is deliberate. What is being graded this week is judgment — you use your judgment when completing the studio, then I'll use mine when grading"*
+- [ ] 💡 Be straight about the change of instrument: *"this is the first week since week 3 where the script does not count. That is deliberate. What is being graded this week is judgement — you use your judgement when completing the studio, then I'll use mine when grading"*
 
 ## 6 · Hand off to the studio *(slide 10)*
 

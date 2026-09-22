@@ -3,7 +3,7 @@
 //
 //  THIS ONE SCORES NOTHING. Every week since 3 has handed you a script that
 //  counted points. This one doesn't, and that is deliberate: the midterm is
-//  graded on judgment, and no script has any. What this does is walk your
+//  graded on judgement, and no script has any. What this does is walk your
 //  deployed site the way a visitor would and print what it trips over.
 //
 //  INSTALL IT THE USUAL WAY — open Views/Home/Index.cshtml, find the week-09
