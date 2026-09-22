@@ -113,7 +113,7 @@ Sample output, from a run against a site with two things left:
 ```
 
 > [!NOTE]
-> **Getting to zero is not the assignment.** Three of the seven requirements are invisible to the script, and they are worth **9 of the 20 points**. A clean report means nothing is obviously broken — it says nothing about whether the thing is any good. That judgement is the midterm.
+> **Getting to zero is not the assignment.** Three of the seven requirements are invisible to the script, and they are worth **9 of the 20 points**. A clean report means nothing is obviously broken — it says nothing about whether the thing is any good. That judgment is the midterm.
 
 **Working offline?** Everything except the deployed run works against `localhost`. The script prints a reminder when it notices.
 
