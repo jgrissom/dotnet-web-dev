@@ -343,7 +343,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] **Swipe to the `/` tab.** F12 → Console → type `recheck()`
 - [ ] ⚠️ **Before the report there is a block of red, and you should get in front of it rather than let the room read it as a crash.** Seven or so lines of stack trace, starting `GET /Trucks/Details/1007 404 (Not Found)`. **It is the script doing its job** — and it is a callback worth making: *"that is the wrong-id check running. It asked for a truck that does not exist, and it got a 404 — which is exactly what we built twenty minutes ago. The red is the browser noting the status, not an error in the page"*
 - [ ] Then read the top line out loud: **`Nothing here a stranger would trip over`**
-- [ ] ⚠️ Then immediately undercut it, because this is the point of the section: *"and that is worth almost nothing. Watch"*
+- [ ] ⚠️ **Do not undercut it here — the undercut is on the slide, four lines from now.** Ask the question and let it sit instead: *"zero findings. So is it finished?"*
 
 ### What it can and cannot see *(slide 9)*
 
