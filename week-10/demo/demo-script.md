@@ -98,14 +98,14 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] Paste the replacement:
   ```cshtml
   @{
-      ViewData["Title"] = "Street food in Madison and Milwaukee";
+      ViewData["Title"] = "Street food across Wisconsin";
   }
 
   <div class="p-5 mb-4 bg-body-tertiary rounded-3">
       <h1 class="display-4">Curbside 🌮</h1>
       <p class="lead">
-          Every food truck worth chasing in Madison and Milwaukee — what they cook,
-          where they park, and what's on today.
+          Every food truck worth chasing in Wisconsin — what they cook, where they
+          park, and what's on today.
       </p>
       <a asp-controller="Trucks" asp-action="Index" class="btn btn-primary btn-lg">Browse the trucks</a>
       <a asp-controller="Dishes" asp-action="Index" class="btn btn-outline-secondary btn-lg">Start from a dish</a>
@@ -141,7 +141,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] **Reload.** Both buttons read
 - [ ] 💡 Close the beat on the transferable line, not the CSS: *"I am not teaching you Bootstrap here. The rule you learned in week 2 was right. What changed was the app underneath it, and nobody sends you a notice when that happens. That is what walking your own site is for"*
 
-- [ ] Read the new browser tab out loud — *"Street food in Madison and Milwaukee"* — and say why that line matters: *"that is what a bookmark gets called, and what shows up when somebody pastes this into a chat"*
+- [ ] Read the new browser tab out loud — *"Street food across Wisconsin"* — and say why that line matters: *"that is what a bookmark gets called, and what shows up when somebody pastes this into a chat"*
 
 - [ ] Now **Privacy**, and pose it as a choice rather than a fix: *"two honest answers. Make it real — an About page, who built this and why — or delete it. What I will not do is leave a link in my navbar to a page I have never written"*
 - [ ] Delete it in front of them, and count the places out loud as you go — **four**:

@@ -75,14 +75,14 @@ Here is the whole file, as the demo's version ends up — `Views/Home/Index.csht
 
 ```cshtml
 @{
-    ViewData["Title"] = "Street food in Madison and Milwaukee";
+    ViewData["Title"] = "Street food across Wisconsin";
 }
 
 <div class="p-5 mb-4 bg-body-tertiary rounded-3" data-bs-theme="dark">
     <h1 class="display-4">Curbside 🌮</h1>
     <p class="lead">
-        Every food truck worth chasing in Madison and Milwaukee — what they cook,
-        where they park, and what's on today.
+        Every food truck worth chasing in Wisconsin — what they cook, where they
+        park, and what's on today.
     </p>
     <a asp-controller="Trucks" asp-action="Index" class="btn btn-primary btn-lg">Browse the trucks</a>
     <a asp-controller="Dishes" asp-action="Index" class="btn btn-outline-light btn-lg">Start from a dish</a>
