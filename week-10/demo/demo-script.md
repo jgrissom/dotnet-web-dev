@@ -110,7 +110,13 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
       <a asp-controller="Trucks" asp-action="Index" class="btn btn-primary btn-lg">Browse the trucks</a>
       <a asp-controller="Dishes" asp-action="Index" class="btn btn-outline-secondary btn-lg">Start from a dish</a>
   </div>
+
+  @section Scripts {
+      <script src="https://jgrissom.github.io/dotnet-web-dev/week-10/homework-checks.js"></script>
+  }
   ```
+- [ ] ⚠️ **Stop on that `@section Scripts` block for ten seconds.** It is the only part of the paste that is not about the front page, and it is a graded trap in tonight's homework: *"this is where your self-check lives. Requirement one has you rewrite this exact file — and if you rewrite it without putting this block back, your console goes quiet, and the silence reads exactly like a clean report"*
+  - 💡 Curbside has never had one, so this is a fresh install. **Theirs is a replacement** — their week-9 line is sitting in that file right now
 - [ ] Point at what is *not* new in it before reloading: *"Bootstrap classes from week 2, two anchor tag helpers from week 4, and a `ViewData` title from week 4. There is nothing here you have not typed"*
 
 ### The headline nobody can read *(no slide — the browser is the reveal)*
@@ -336,6 +342,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 - [ ] **Swipe to the `/` tab.** F12 → Console → type `recheck()`
 - [ ] Read the top line out loud: **`Nothing here a stranger would trip over`**
+- [ ] 💡 **There will be a red 404 in the console underneath it, and it is not a problem** — that is the script asking for `/Trucks/Details/1007` on purpose, to check what a wrong id does. Say so if anyone spots it; it is the wrong-id page being tested in front of them
 - [ ] ⚠️ Then immediately undercut it, because this is the point of the section: *"and that is worth almost nothing. Watch"*
 
 ### What it can and cannot see *(slide 9)*

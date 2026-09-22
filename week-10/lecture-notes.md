@@ -87,6 +87,10 @@ Here is the whole file, as the demo's version ends up — `Views/Home/Index.csht
     <a asp-controller="Trucks" asp-action="Index" class="btn btn-primary btn-lg">Browse the trucks</a>
     <a asp-controller="Dishes" asp-action="Index" class="btn btn-outline-light btn-lg">Start from a dish</a>
 </div>
+
+@section Scripts {
+    <script src="https://jgrissom.github.io/dotnet-web-dev/week-10/homework-checks.js"></script>
+}
 ```
 
 Nothing there is new. It is Bootstrap classes from week 2 and two anchor tag helpers from week 4.
