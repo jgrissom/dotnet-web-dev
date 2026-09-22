@@ -170,7 +170,8 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 - [ ] 🎞️ **GO TO SLIDE 6** — *Three pieces, one of them a line*
 - [ ] **The code on this slide does not exist yet** — read it as a plan, bottom-up, which is the order you are about to build it in: *"a view, an action to render it, and one line to send every empty 404 there. Two of those three you already know how to write — the line is the new thing"*
-- [ ] Say what `UseStatusCodePagesWithReExecute` actually does, because the name does not: *"when a response comes back with an error status and no body, this re-runs the request through that path and uses what comes back as the body. The status code is left alone"*
+- [ ] Say what `UseStatusCodePagesWithReExecute` actually does, because the name does not: *"when a response comes back in the four hundreds or the five hundreds **with nothing in the body**, this re-runs the request through that path and uses what comes back as the body. The status code is left alone"*
+- [ ] ⚠️ **Both halves of that matter, and somebody will ask about one of them.** It is not only 404s — anything from 400 to 599 with an empty body lands here. And it is *only* the empty ones: a response that already wrote a body keeps it, which is why your real exceptions still get `/Home/Error` rather than this page
 - [ ] ⚠️ The middle block is on the slide for one reason — say it: *"do not call the action `NotFound`. `Controller` already has a method by that name, and it is the one returning the blank page we are replacing. Yours would shadow it and the compiler will tell you so"*
 
 > [!IMPORTANT]

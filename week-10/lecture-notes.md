@@ -286,7 +286,22 @@ app.UseStatusCodePagesWithReExecute("/Home/Missing");
 app.UseRouting();
 ```
 
-That is the whole change, and it covers more than the case you tested. It catches a bad id, a misspelled controller, a route that never existed — anything that ends in a 404 with no body of its own. The status stays 404, which matters: the page apologizes to a person *and* still tells a machine the truth.
+That is the whole change, and it covers more than the case you tested. It catches a bad id, a misspelled controller, a route that never existed. The status stays whatever it was, which matters: the page apologizes to a person *and* still tells a machine the truth.
+
+**Two conditions, and it is worth knowing both:**
+
+- **The status is anywhere from 400 to 599.** Not just 404 — measured, every 4xx *and* every 5xx re-executes through your page. A 200 or a 301 passes straight through, as it should.
+- **The body has to be empty.** If something already wrote a response body, the middleware leaves it completely alone.
+
+That second condition is what keeps this from colliding with the `app.UseExceptionHandler("/Home/Error")` line that has been in your `Program.cs` since week 3. An exception that reaches the top writes the Error page's body, so status-code pages never touches it. Measured on the demo app:
+
+| what happened | which one handles it | what the visitor gets |
+|---|---|---|
+| a thrown exception | `UseExceptionHandler` | the Error page, 500 |
+| `NotFound()` with no body | `UseStatusCodePagesWithReExecute` | your Missing page, 404 |
+
+> [!NOTE]
+> One consequence worth noticing rather than fixing: a bare `return StatusCode(500)` with no body *would* land on your Missing page, which says the page does not exist — the wrong sentence for a server error. Nothing in this course returns one, so it is a curiosity rather than a bug. If you ever do write one, give it its own body.
 
 > [!WARNING]
 > **Do not call the action `NotFound()`.** `Controller` already has a method by that name — it is the one returning the blank page you are replacing — and yours would shadow it. Name it `Missing`, `Gone`, `PageNotFound`, anything else.
