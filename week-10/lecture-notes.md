@@ -187,7 +187,7 @@ The fix is a Razor `@if`, which you have had since week 4:
 ```cshtml
 @if (!Model.Any())
 {
-    <p class="text-muted">No dishes yet. Add the first one.</p>
+    <p class="text-muted">No dishes yet. <a asp-action="Create">Add the first one</a>.</p>
 }
 else
 {

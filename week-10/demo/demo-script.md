@@ -326,9 +326,10 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   ```cshtml
   @if (!Model.Any())
   {
-      <p class="text-muted">No dishes yet. Add the first one.</p>
+      <p class="text-muted">No dishes yet. <a asp-action="Create">Add the first one</a>.</p>
   }
   ```
+- [ ] ⚠️ **Somebody will point out that the ＋ button is already right above it.** Answer it, because the answer is the rule from the slide: *"it is — on this page. The empty state still gets its own link, because when it fires it is the only thing on the page, and on your app there may be no button above it at all. A sentence and a way out. Both, every time"*
 - [ ] Say why you are not demonstrating these two: *"I would have to delete every truck to show you this one working, and I am not wrecking my own demo to prove a point. But it is the same `@if`, and your list page needs it as much as your details page does"*
 
 ## 5 · The pass, again *(slide 9)*
