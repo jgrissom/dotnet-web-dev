@@ -7,6 +7,11 @@ This is the midterm. **Nothing new gets introduced** — there is no new syntax 
 
 **Keep [the lecture notes](lecture-notes.md) open while you work.** Every requirement below links to the section that shows it done.
 
+> [!IMPORTANT]
+> **The studio block in class was this assignment, not practice for it.** Every week since week 4 has had a lab on one app and homework on another, and the lab was never collected — **tonight is not that.** There is no separate lab this week. What you worked on with me in the room is the same work graded below, on the same app, and whatever you finished in class is finished. This document is the rest of it.
+>
+> Missed the session? Nothing is lost — everything you need is here and in [the notes](lecture-notes.md).
+
 ## Part 1 — The stranger's pass (nobody collects this, and it decides everything else)
 
 Week 9's reading asked you to click through your own app as a stranger would and write down the three things that look worst. **That list is your midterm.** If you have it, get it out. If you don't, do it now — it takes ten minutes and the rest of the evening depends on it.

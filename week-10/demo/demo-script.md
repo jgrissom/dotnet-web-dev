@@ -360,6 +360,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] Walk the three bullets as the evening's shape: *"your three things first — they are worth more than anything on my list. Then the front door, the empty states and the wrong-id page, which everybody needs. Then real data and a README with the live URL on it"*
 - [ ] 🎯 Say the line at the foot and mean it: *"bring me your list, not your bugs. I would rather spend four minutes arguing about whether your front page says the right thing than four minutes on a missing semicolon"*
 - [ ] ⚠️ Name the one thing not to do tonight, before anyone starts: *"you are going to notice that anybody with your URL can delete your records. Leave it. That is week 11, it is the whole week, and a midterm evening spent half-building a login is an evening wasted"*
+- [ ] ⚠️ **Say plainly that this IS the homework, because nine weeks have trained them otherwise** — the lab has always been a different app and never collected: *"one thing before you start. This is not practice for the assignment. This is the assignment. What you finish in this room is finished, and whatever you do not get to, you finish at home. The only part that cannot happen here is the deploy"*
 - [ ] **Circulate.** The useful question at each desk is the same one every time: *"what are your three, and which one is the worst?"*
 
 ## 7 · Wrap-up, after the studio *(slide 11)*

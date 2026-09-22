@@ -10,7 +10,7 @@ The one night with nothing new in it. No package, no migration, no syntax — in
 | Prep&nbsp;/⁠&nbsp;in-⁠class&nbsp;script | 📖&nbsp;[lecture-⁠notes.md](lecture-notes.md) | Full lecture content, choosing your own three things, **troubleshooting appendix** |
 | Projected&nbsp;in&nbsp;class | 🎞️&nbsp;[slides.md](slides.md) | The deck (GFM, one slide per `##`) — [**present it live**](https://jgrissom.github.io/dotnet-web-dev/week-10/) (arrow keys, `F` for fullscreen) |
 | In&nbsp;class,&nbsp;live-⁠coding | 🎨&nbsp;[demo/⁠](demo/) | *Curbside gets finished* — picks up where week 9 left it; [clickable cue sheet](https://jgrissom.github.io/dotnet-web-dev/week-10/demo/script.html) |
-| In&nbsp;class,&nbsp;last&nbsp;100&nbsp;min | 🛠️&nbsp;**Studio** | **No lab this week.** Students work on their own app, in two 50-minute blocks with a break — see the timing table |
+| In&nbsp;class,&nbsp;last&nbsp;100&nbsp;min | 🛠️&nbsp;**Studio** | **No lab this week — the studio IS the homework.** Students work on their own app, in two 50-minute blocks with a break, on the same work graded in `homework.md` — see the timing table |
 | With&nbsp;the&nbsp;homework | ✅&nbsp;[homework-⁠checks.js](homework-checks.js) | *The stranger's pass* — **scores nothing**, prints findings; **read-only**, submits nothing and writes no rows |
 | Assigned&nbsp;at&nbsp;wrap-⁠up | 📤&nbsp;[homework.md](homework.md) | The midterm: their own app becomes something worth showing; URL + repo via Canvas |
 
