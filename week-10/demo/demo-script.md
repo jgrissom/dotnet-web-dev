@@ -153,7 +153,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   ```cshtml
   &copy; 2026 Curbside 🌮 — a WCTC .NET Web Development project
   ```
-- [ ] **Reload.** Navbar is Home · Trucks · Dishes. 🎯 *"a page you have not written is worse than no page, because the link makes a promise"*
+- [ ] **Reload.** Navbar is Home · Trucks · Dishes. 🎯 *"a page you have not written is worse than no page"*
 
 ## 3 · The blank page *(slides 5–6)*
 
