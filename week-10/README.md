@@ -27,7 +27,7 @@ The one night with nothing new in it. No package, no migration, no syntax — in
 - ⚠️ **Copy `week-10/demo-starter/Curbside` out of the private answer-keys repo**, set your secret (`set` only — the id ships), then `dotnet ef database drop --force` and `dotnet ef database update` — **after your last rehearsal**. Your rehearsal adds a dish called **Elote Dog** in §4 and it will still be there
 - **One browser window, three tabs** (`/`, `/Trucks/Details/1`, `/Dishes`) — used all night
 - **One terminal is enough** — `dotnet watch`. There is no `dotnet ef` tonight
-- ⚠️ **Answer `a` at the first restart prompt.** §3 makes both edits hot reload cannot apply — a new `.cshtml`, and `Program.cs`, which only runs at startup. ⚠️ **§3 builds view → action → middleware, and that order matters** — wiring it up first makes every wrong-id URL a `500`
+- ⚠️ **Answer `a` at the first restart prompt.** Three edits tonight force a restart — a new `.cshtml` in §3 and another in §4, plus `Program.cs`, which only runs at startup. ⚠️ **§3 builds view → action → middleware, and that order matters** — wiring it up first makes every wrong-id URL a `500`
 - ⚠️ **Protect the blank page in §3.** Go to `/Trucks/Details/999` and stop talking; the room needs a second to register that the site has vanished
 - 🎯 **Budget the full twenty minutes for §1.** It contains no code and feels like preamble. It is the lesson
 - ⚠️ **Nobody starts on authentication tonight.** The stranger's pass surfaces it immediately; it is week 11's whole subject and cannot be half-done

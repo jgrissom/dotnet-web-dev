@@ -44,7 +44,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   ```bash
   dotnet watch
   ```
-- [ ] ⚠️ **Know the one prompt that will bite you, and answer it `a` the first time.** Tonight makes **two** edits hot reload cannot apply — a brand-new `.cshtml` in §3, and `Program.cs` in the same section, which only ever runs at startup. `watch` handles both by restarting, and it **asks first**: **`Do you want to restart your app? Yes (y) / No (n) / Always (a) / Never (v)`**. Answer **`a`** at the first prompt and it never asks again all night. Miss it and §3's payoff silently doesn't happen
+- [ ] ⚠️ **Know the one prompt that will bite you, and answer it `a` the first time.** Tonight makes **three** edits hot reload cannot apply — two brand-new `.cshtml` files (§3 and §4) and `Program.cs` in §3, which only ever runs at startup. `watch` handles both by restarting, and it **asks first**: **`Do you want to restart your app? Yes (y) / No (n) / Always (a) / Never (v)`**. Answer **`a`** at the first prompt and it never asks again all night. Miss it and §3's payoff silently doesn't happen
 - [ ] **One browser window all night, three tabs parked**: `/`, `/Trucks/Details/1` and `/Dishes`. One window means no *"which one was that in?"* mid-demo
 - [ ] **Say the no-typing line out loud in the first minute.** Tonight is watched, not typed along with: *"nothing tonight is yours to type. Curbside is my app and yours is yours — and tonight your app is the whole assignment, so your keyboard time is the studio block, which is most of the evening"*
 - [ ] Teaching profile on, notifications off, editor font sized for the back of the room and for a small laptop screen
@@ -275,10 +275,11 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   <a asp-action="Create" class="btn btn-primary mb-4">＋ Add a dish</a>
   ```
 - [ ] ⚠️ **That is the second new `.cshtml` tonight, so the app has to restart again.** Answered `a` in §0? `watch` is doing it now — give it a few seconds. Did not? The prompt is sitting in the terminal waiting for you
-- [ ] 🚨 **Prove it works before you put the slide up.** Reload `/Dishes` — the **＋ Add a dish** button is there — and click it. The form renders. That is the restart having landed
+- [ ] 🚨 **Prove it works before you put the slide up.** Reload `/Dishes`, click **＋ Add a dish**, and check that the form renders. ⚠️ **Do not fill it in and do not submit it** — landing on a brand-new dish's page is the payoff after slide 7, and you only get it once. Look at the form, then leave
+  - ⚠️ **Clicking through is the check; seeing the button is not.** Adding that button edited an *existing* view, which hot reload applies happily. The thing that needed the restart is the **new** `Create.cshtml`, and the only way to know it is there is to ask for it
   - ⚠️ **A 500 saying *"The view 'Create' was not found"* means the restart has not happened.** The file is fine and it is in the right place — **do not go looking for it.** Answer the prompt in the terminal, or press **Ctrl+R** there, then reload
-  - 💡 This costs fifteen seconds and it is the one check worth making in this section: without it, a missing restart surfaces **after** slide 7 has asked the room a question, and you are debugging in the middle of your own setup
-- [ ] **Then go back to `/Dishes`.** That is where slide 7 wants the room looking
+  - 💡 Fifteen seconds, and it is the one check worth making in this section: skip it and a missing restart surfaces **after** slide 7 has asked the room a question, with you debugging in the middle of your own setup
+- [ ] **Back to `/Dishes`** — still ten dishes, nothing added. That is where slide 7 wants the room looking
 
 ### What does this draw *(slide 7)*
 
