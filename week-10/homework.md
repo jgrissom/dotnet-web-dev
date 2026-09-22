@@ -51,7 +51,7 @@ Each requirement links to the section of the notes that shows it done.
 
    🔎 **The script sees both halves** — the stock Privacy text, and any link on your front page that comes back 404 or throws.
 
-3. **Empty lists say something.** Every list you render will be empty for somebody, and right now it draws an empty bordered box under a heading. Put an `@if (!Model.Any())` on your list page **and** on the related list on your details page, each with a sentence and a way to change it. → [When there is nothing there yet](lecture-notes.md#part-4-when-there-is-nothing-there-yet)
+3. **Empty lists say something.** Every list you render will be empty for somebody, and right now it draws a heading with nothing under it. Put an `@if (!Model.Any())` on your list page **and** on the related list on your details page, each with a sentence and a way to change it. → [When there is nothing there yet](lecture-notes.md#part-4-when-there-is-nothing-there-yet)
 
    📋 **The script cannot see this** — it can't empty your database. I read it in your repo. To see it yourself, create a brand-new record through your form and look at its page.
 

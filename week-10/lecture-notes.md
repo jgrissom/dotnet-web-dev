@@ -178,7 +178,7 @@ Every list page you have built renders like this:
 </ul>
 ```
 
-Ask what that draws when `Model` is empty. Not an error — a `@foreach` over an empty list is perfectly happy. It draws **`<ul class="list-group"></ul>`**: an empty bordered rectangle, under a heading, with no explanation.
+Ask what that draws when `Model` is empty. Not an error — a `@foreach` over an empty list is perfectly happy. It draws **`<ul class="list-group"></ul>`** — and Bootstrap puts its border on `.list-group-item`, not on the list, so with no items there is no border, no background and **no height at all**. What a visitor gets is your heading, and then empty space.
 
 You have almost certainly never seen this, and that is exactly why it is worth a section. **You seeded your data in week 7 and it has been there ever since.** Your app has never been empty on your machine. It will be empty for the first person who uses it.
 

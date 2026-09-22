@@ -288,8 +288,8 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] 🎯 Then the line at the foot of the slide, which is the reason the room has never thought about this: *"you have never seen your own app empty. You seeded it in week 7 and it has had data in it every single time you have looked. It will be empty for the first person who uses it"*
 
 - [ ] **Swipe to the browser.** `/Dishes` → **＋ Add a dish** → type `Elote Dog` → **Add it**
-- [ ] You land on `/Dishes/Details/11`. **Let it sit before saying anything.** The page reads: **Elote Dog**, *← All dishes*, **Served by** — and then an empty bordered box
-- [ ] Ask what they are looking at: *"is that broken? It is not. The record saved, the query ran, the page is a clean 200. That grey rectangle is what `<ul class="list-group">` looks like with nothing in it"*
+- [ ] You land on `/Dishes/Details/11`. **Let it sit before saying anything.** The page reads: **Elote Dog**, *← All dishes*, **Served by** — and then **nothing at all.** A heading with empty space under it
+- [ ] Ask what they are looking at: *"is that broken? It is not. The record saved, the query ran, the page is a clean 200. There is a heading that says Served by, and underneath it there is nothing — because a `foreach` over an empty list draws exactly nothing"*
 - [ ] 🎯 *"and this is every new record in your app. The first review of a trail, the first sighting of a creature. Whatever that page does right now is what everybody's first one looks like"*
 
 ### Two things, not one *(slide 8)*
