@@ -443,7 +443,13 @@
       return runChecks(window.location.origin, forcedRoute || null, printFinding).then(report);
     };
 
-    window.recheck = (forcedRoute) => run(forcedRoute);
+    // Returns a short string rather than the promise: at a projector, a bare
+    // `Promise {<pending>}` echoed under the command reads like something went
+    // wrong. The report arrives in the console either way.
+    window.recheck = (forcedRoute) => {
+      run(forcedRoute);
+      return "walking your site…";
+    };
 
     console.log(`%c🔎 Week ${WEEK} — the stranger's pass — loaded, but it hasn't run.`, big);
     console.log("%cType  recheck()  to walk your site. It reads only — no forms submitted, no rows written.",
