@@ -329,7 +329,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
       <p class="text-muted">No dishes yet. Add the first one.</p>
   }
   ```
-- [ ] Say why you are not demonstrating these two: *"I would have to delete every truck to show you this one working, and I am not doing that at half past eight. But it is the same `@if`, and your list page needs it as much as your details page does"*
+- [ ] Say why you are not demonstrating these two: *"I would have to delete every truck to show you this one working, and I am not wrecking my own demo to prove a point. But it is the same `@if`, and your list page needs it as much as your details page does"*
 
 ## 5 · The pass, again *(slide 9)*
 
