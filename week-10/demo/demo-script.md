@@ -216,7 +216,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 ## 4 · A table nobody can add to *(slides 7–8)*
 
 - [ ] **Swipe to the `/Dishes` tab.** Ten dishes, each with a truck count. Ask: *"this page is fine. What can I do on it?"*
-- [ ] Wait, then name it: *"I can read. There is no way to add a dish — not here, not anywhere. The dropdown on the specials form only offers dishes that already exist. This table is read-only from the outside, and I never decided that"*
+- [ ] Wait, then name it: *"I can read. There is no way to add a dish — not here, not anywhere. The dropdown on the specials form only offers dishes that already exist. This table is read-only from the outside"*
 - [ ] 🎯 Generalize it before fixing it, because this is the part that transfers: *"go through your own tables tonight and ask how a new row gets in. If the honest answer is 'I seed it' or 'I open the mssql panel', that part of your app is read-only to everybody else. That might be the right call — but it should be a call"*
 
 - [ ] **Swipe to the editor.** `Controllers/DishesController.cs` — the Create pair, same shape as week 8's:
@@ -274,7 +274,11 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   ```cshtml
   <a asp-action="Create" class="btn btn-primary mb-4">＋ Add a dish</a>
   ```
-- [ ] ⚠️ **Another new `.cshtml` — check the terminal for the restart prompt again** if you did not answer `a`
+- [ ] ⚠️ **That is the second new `.cshtml` tonight, so the app has to restart again.** Answered `a` in §0? `watch` is doing it now — give it a few seconds. Did not? The prompt is sitting in the terminal waiting for you
+- [ ] 🚨 **Prove it works before you put the slide up.** Reload `/Dishes` — the **＋ Add a dish** button is there — and click it. The form renders. That is the restart having landed
+  - ⚠️ **A 500 saying *"The view 'Create' was not found"* means the restart has not happened.** The file is fine and it is in the right place — **do not go looking for it.** Answer the prompt in the terminal, or press **Ctrl+R** there, then reload
+  - 💡 This costs fifteen seconds and it is the one check worth making in this section: without it, a missing restart surfaces **after** slide 7 has asked the room a question, and you are debugging in the middle of your own setup
+- [ ] **Then go back to `/Dishes`.** That is where slide 7 wants the room looking
 
 ### What does this draw *(slide 7)*
 
