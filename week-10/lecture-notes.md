@@ -257,7 +257,7 @@ The fix is three small pieces. **Build them in this order — view, action, then
 }
 
 <div class="text-center py-5">
-    <h1 class="display-5">No truck here 🌮</h1>
+    <h1 class="display-5">Keep on Truckin' 🌮</h1>
     <p class="lead text-muted">
         That page doesn't exist — or it did, and the truck moved on.
     </p>
