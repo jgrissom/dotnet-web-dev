@@ -112,7 +112,20 @@ Nothing there is new. It is Bootstrap classes from week 2 and two anchor tag hel
 >
 > 🔎 **How to check your own — you do not need DevTools for this.** Open your deployed front page and read it. If you are squinting, that is the finding. DevTools is for explaining *why*, not for noticing.
 >
-> When you do want the why: right-click the text you cannot read → **Inspect**. In the **Styles** pane you will see the background written as `rgba(var(--bs-tertiary-bg-rgb), …)` and, further down under **Inherited from body**, `color: var(--bs-body-color)`. **Both are variables, and your theme filled in one of them and not the other.** For the resolved numbers, the **Computed** tab with `color` in its filter box shows them — but note they sit on two different elements, the background on the panel and the text color inherited onto the heading, which is part of why nothing flags this.
+> **To see the numbers:** right-click the panel → **Inspect** → **Computed** tab → type `color` in its filter box. Both values are there together, because a computed style includes what an element inherits:
+>
+> ```
+> background-color    rgb(248, 249, 250)
+> color               rgb(255, 255, 255)
+> ```
+>
+> **To see the cause**, stay on that element and look at the **Styles** pane instead. The background is not written as a color at all:
+>
+> ```css
+> background-color: rgba(var(--bs-tertiary-bg-rgb), var(--bs-bg-opacity)) !important
+> ```
+>
+> and further down, under **Inherited from body**, `color: var(--bs-body-color)`. **Both are variables, and your theme filled in one of them and not the other** — that is the whole bug on one screen. `data-bs-theme="dark"` is what fills in the first one.
 
 > [!IMPORTANT]
 > **Your self-check `<script>` tag lives in this file.** If you rewrite `Views/Home/Index.cshtml` from scratch you will delete it, the console will go quiet, and it is very easy to read that as *"no findings"*. Put the block back at the bottom:
