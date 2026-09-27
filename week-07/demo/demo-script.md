@@ -142,7 +142,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] Point at the three parts in order:
   - **`: DbContext`** — *"this class is the database, as far as your code is concerned"*
   - **`DbSet<Truck> Trucks`** — 🎯 *"this property **is** the table. Not a description of one — having it here is what makes EF Core believe there should be a Trucks table at all. Querying this is querying SQL Server"*
-  - **the constructor** — *"it's handed its options rather than deciding them. Look at what's missing: this class does not know where the database is, and never will"*
+  - **the constructor** — *"the constructor is handed its options rather than deciding them. Look at what's missing: this class does not know where the database is"*
 - [ ] Note in passing, don't dwell: `=> Set<Truck>()` versus `{ get; set; }` — both work, pick one, don't mix
 
 ### Where the connection string lives *(slide 6)*
