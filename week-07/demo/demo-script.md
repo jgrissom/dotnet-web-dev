@@ -165,7 +165,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] Walk the four parts of the string: which machine · which database · who you are · **and `TrustServerCertificate=True`**
 - [ ] *"We will talk about the naming convention for your databases during the lab. One database per application."*
 - [ ] Say the part that sounds wrong: *"that database does not exist yet. I'm naming one that isn't there — `database update` in §3 creates it. You never make one by hand"*
-- [ ] Give the certificate line its sentence, because someone always asks: *"SQL Server encrypts by default and then checks the server's certificate, the way your browser checks an https certificate. Ours is self-signed, so that check fails and the connection is refused. This says encrypt anyway, skip the identity check. On a school network that's the pragmatic answer. It is not what you'd write for a bank"*
+- [ ] Give the certificate line its sentence, because someone always asks: *"`TrustServerCertificate=True` tells the app to trust the school server's certificate without checking it. Without it, the connection is refused. That's fine on a school network. It is not what you'd write for a real production app."*
 - [ ] 🎯 **The sentence that does the work:** *"the file with my password in it is not in this folder. It's in my user profile. There is no `.gitignore` line to forget, because there is nothing here to ignore"*
 
 ### One registration *(slide 7)*
