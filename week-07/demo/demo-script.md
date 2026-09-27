@@ -166,7 +166,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] *"We will talk about the naming convention for your databases during the lab. One database per application."*
 - [ ] Say the part that sounds wrong: *"that database does not exist yet. I'm naming one that isn't there — `database update` in §3 creates it. You never make one by hand"*
 - [ ] Give the certificate line its sentence, because someone always asks: *"`TrustServerCertificate=True` tells the app to trust the school server's certificate without checking it. Without it, the connection is refused. That's fine on a school network. It is not what you'd write for a real production app."*
-- [ ] 🎯 **The sentence that does the work:** *"the file with my password in it is not in this folder. It's in my user profile. There is no `.gitignore` line to forget, because there is nothing here to ignore"*
+- [ ] 🎯 **The sentence that does the work:** *"There is no `.gitignore` line to forget, because there is nothing in my project folder to ignore."*
 
 ### One registration *(slide 7)*
 
