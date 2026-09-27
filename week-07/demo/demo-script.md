@@ -35,7 +35,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   dotnet user-secrets set "ConnectionStrings:DefaultConnection" "Server=...;Database=...;User ID=...;Password=...;TrustServerCertificate=True"
   ```
 - [ ] Confirm it took: `dotnet user-secrets list` prints the connection string. **§2 shows this already done rather than doing it live** — your real password never goes on the projector
-- [ ] **Point Curbside at its own database** — same server, same account, **different `Database=`** from the `Cryptids_` one your lab-walk copy uses. One database per application. It matters because **you drop Curbside's database in §0 and §3 creates it live**, and you run your finished lab copy on screen at Lab A: share one database and you destroy the thing you're about to demo
+- [ ] **Point Curbside at its own database** — same server, same account, **different `Database=`** from the `Cryptids_` one your own lab copy uses. One database per application. It matters because **you drop Curbside's database in §0 and §3 creates it live**: share one database with your lab copy and the drop wipes that too
 - [ ] Run it, same terminal:
   ```bash
   dotnet watch
@@ -93,8 +93,6 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ## Lab A · Setup — 8 minutes
 
-- [ ] **Show what done looks like first** — **the app you finished the lab walk in**, running on **localhost**, its list served out of SQL Server, and `dotnet test Cryptids.Checks` printing **6 / 6**. Take terminal 2 over to it (`dotnet run` from `Cryptids.Web`, `dotnet test` from the folder above it), then `Ctrl+C` and come back to Curbside. ~90 seconds, a target not a walkthrough. **Nothing is deployed for this** — Azure is their homework, not tonight
-  ℹ️ *No longer have the walked copy? The pristine key at `week-07/lab/solution` in the answer-keys repo does the same job, but it needs its own `user-secrets set` and `dotnet ef database update` first — it's a separate application with its own `<UserSecretsId>`, so nothing you set anywhere else reaches it. Give it a database name the old key never used: the key's migrations were regenerated on 2026-09-26, so a database built from the old ones doesn't match their history.*
 - [ ] Put the **lab README** on screen — the tab you parked in §0 — scrolled to **Setup**
 - [ ] *"Tonight the lab comes in six short blocks. After each part of the demo, you do the same thing to the Registry. Each block ends at a note that says In class, stop here."*
 - [ ] *"This block is setup. There are six steps. Step 6 connects the mssql extension to the school's server, with the database field left blank."*
