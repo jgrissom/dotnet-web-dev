@@ -79,23 +79,6 @@ Writing the model creates nothing. **A migration does.**
 
 ---
 
-<!-- _footer: '🖥️ Demo §2 · two packages' -->
-
-## Two packages
-
-```bash
-dotnet add package Microsoft.EntityFrameworkCore.SqlServer
-dotnet add package Microsoft.EntityFrameworkCore.Design
-```
-
-<br>
-
-**`.SqlServer`** — EF Core, and the part that speaks T-SQL
-
-**`.Design`** — only for the `dotnet ef` tool. Your app never calls it
-
----
-
 <!-- _footer: '🖥️ Demo §2 · the DbContext' -->
 
 ## The context
@@ -167,22 +150,6 @@ Table described. Server named. Context registered.
 
 ---
 
-<!-- _footer: '🖥️ Demo §3 · generating the migration' -->
-
-## The migration, generated
-
-```bash
-dotnet ef migrations add InitialCreate
-```
-
-<br>
-
-A generated C# file that says *"create a table called Trucks"*.
-
-**Still nothing has happened to any database.**
-
----
-
 <!-- _footer: '🖥️ Demo §3 · the rules become columns' -->
 
 ## Last week's rules, as columns
@@ -197,22 +164,6 @@ Id   = table.Column<int>(type: "int", nullable: false)
 <br>
 
 Where did **50** come from? Nobody typed it tonight.
-
----
-
-<!-- _footer: '🖥️ Demo §3 · applying it' -->
-
-## Applying it
-
-```bash
-dotnet ef database update
-```
-
-<br>
-
-Two tables appear: **`Trucks`**, and **`__EFMigrationsHistory`**.
-
-That second one is how it knows what it has already done.
 
 ---
 
@@ -247,22 +198,6 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 Not *"insert these now"* — **part of what the database is**.
 
 Every seeded row needs an explicit `Id`.
-
----
-
-<!-- _footer: '🖥️ Demo §4 · the second migration' -->
-
-## The second migration
-
-```bash
-dotnet ef migrations add SeedTrucks
-```
-
-Open it: no `CreateTable`. Just `InsertData` — one call, seven rows.
-
-<br>
-
-**You describe what you want. It works out the difference.**
 
 ---
 
@@ -341,22 +276,6 @@ Then delete `TruckData.cs` — **and let the compiler find the rest**.
 
 ---
 
-<!-- _footer: '🖥️ Demo §6 · the payoff' -->
-
-## Restart it.
-
-`Ctrl+C`. Start again. Reload.
-
-<br>
-
-**Eight trucks.**
-
-<br>
-
-The first thing you've built that outlived the program that built it.
-
----
-
 <!-- _footer: '🖥️ Demo §7' -->
 
 ## Lab: the Registry gets a filing cabinet
@@ -387,7 +306,7 @@ az webapp config appsettings set --name your-app-XX1234 \
   --settings ConnectionStrings__DefaultConnection="..."
 ```
 
-`__` is `:` — the bottom of the stack from slide 7.
+`__` is `:` — the bottom of the stack from slide 6.
 
 ⚠️ **US region.** Canadian regions can't reach the school server.
 

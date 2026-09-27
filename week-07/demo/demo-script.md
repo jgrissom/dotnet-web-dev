@@ -100,11 +100,11 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] 👀 **Watch for:** `MSB1009` — one folder too deep, `cd ..`. And **step 6 failing**, which is the one thing tonight that reading can't unblock, so go to it now. `Login failed for user` is the username or password. `A network-related or instance-specific error` is the server name or the network, and it takes ~30 seconds to fail
 - [ ] **Stop:** the README's first **In class, stop here** note, at the end of Setup. Where they should be: `dotnet test` prints **`Passed: 1`**, and the mssql extension is connected to the server
 
-## 2 · The context *(slides 5–8)*
+## 2 · The context *(slides 5–7)*
 
-### Two packages *(slide 5)*
+### Two packages
 
-- [ ] 🎞️ **GO TO SLIDE 5** — *Two packages*. Then say *"We need to install 2 packages"*
+- [ ] *"The first job is two packages."*
 - [ ] In a **second terminal** (`dotnet watch` owns the first) — **type the first, paste the second**:
   ```bash
   dotnet add package Microsoft.EntityFrameworkCore.SqlServer
@@ -114,9 +114,9 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] Name the split, briefly: *"`.SqlServer` is EF Core plus the bit that speaks T-SQL"* · *"`.Design` is only used by the `dotnet ef` command-line tool, never by your app. This is needed in order to run migrations - which we will see soon."*
 - [ ] Mention the tool is per-machine, not per-project — `dotnet tool install --global dotnet-ef` — and that you already have it
 
-### The DbContext *(slide 6)*
+### The DbContext *(slide 5)*
 
-- [ ] 🎞️ **GO TO SLIDE 6** — *The context*. *"This is the entire database context class."* The whole class is on it; read it there, then swipe back and type it
+- [ ] 🎞️ **GO TO SLIDE 5** — *The context*. *"This is the entire database context class."* The whole class is on it; read it there, then swipe back and type it
 - [ ] Make a `Data` folder next to `Models` and `Controllers`, and create `Data/CurbsideContext.cs` — **type this one, all of it. It's thirteen lines and it's the center of the week:**
 
   <details><summary>📋 paste: Data/CurbsideContext.cs</summary>
@@ -145,14 +145,14 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   - **the constructor** — *"it's handed its options rather than deciding them. Look at what's missing: this class does not know where the database is, and never will"*
 - [ ] Note in passing, don't dwell: `=> Set<Truck>()` versus `{ get; set; }` — both work, pick one, don't mix
 
-### Where the connection string lives *(slide 7)*
+### Where the connection string lives *(slide 6)*
 
-- [ ] 🎞️ **GO TO SLIDE 7** — *Where the connection string lives*
+- [ ] 🎞️ **GO TO SLIDE 6** — *Where the connection string lives*
 - [ ] 🎯 **Walk the chain top to bottom, then land the last line:** *"each one beats the one above it. Your laptop uses the middle rung, Azure uses the bottom one, and the app never knows the difference. And there is nothing to gitignore — because nothing is in the project"*
 - [ ] **Open `appsettings.json` and put the cursor in it — then don't type anything.** Ask it out loud: *"this is where configuration lives. We are not storing connection strings are API keys etc. in here."*
 - [ ] 🎯 **Then say why not:** *"it would work. And it contains a working password, and your homework repo is public. So no"*
 - [ ] Close `appsettings.json` **without editing it**. It stays in the repo all night — that's the point
-- [ ] **Swipe back to slide 7 — both commands are on it.** These are the ones they'll run in the lab. Take them one at a time: **`init`** makes the store and writes its id into the `.csproj`; **`set`** puts the value in the store, out in your user profile. Then say you ran them before class, and why: *"I'm not typing a live password onto a shared screen, and neither should you into a repo"*
+- [ ] **Swipe back to slide 6 — both commands are on it.** These are the ones they'll run in the lab. Take them one at a time: **`init`** makes the store and writes its id into the `.csproj`; **`set`** puts the value in the store, out in your user profile. Then say you ran them before class, and why: *"I'm not typing a live password onto a shared screen, and neither should you into a repo"*
 - [ ] Explain the commands - *"The 1st command initializes user secrets and the 2nd command saves your connection string in user secrets. You will see thsi again in the lab."*
 - [ ] **Prove it's really there** — in the second terminal, **masked, because this is a projector**:
   ```bash
@@ -168,9 +168,9 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] Give the certificate line its sentence, because someone always asks: *"SQL Server encrypts by default and then checks the server's certificate, the way your browser checks an https certificate. Ours is self-signed, so that check fails and the connection is refused. This says encrypt anyway, skip the identity check. On a school network that's the pragmatic answer. It is not what you'd write for a bank"*
 - [ ] 🎯 **The sentence that does the work:** *"the file with my password in it is not in this folder. It's in my user profile. There is no `.gitignore` line to forget, because there is nothing here to ignore"*
 
-### One registration *(slide 8)*
+### One registration *(slide 7)*
 
-- [ ] 🎞️ **GO TO SLIDE 8** — *One registration*. Then say *"One line. Every controller in this app gets its context from it, and you never write another"*
+- [ ] 🎞️ **GO TO SLIDE 7** — *One registration*. Then say *"One line. Every controller in this app gets its context from it, and you never write another"*
 - [ ] In `Program.cs`, above `var app = builder.Build();` — **type it**:
   ```csharp
   builder.Services.AddDbContext<CurbsideContext>(options =>
@@ -207,21 +207,20 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ## ☕ Break
 
-## 3 · Migrations *(slides 9–12)*
+## 3 · Migrations *(slides 8–9)*
 
-### A model is not a database *(slide 9)*
+### A model is not a database *(slide 8)*
 
-- [ ] 🎞️ **GO TO SLIDE 9** — *A model is not a database* · **predict first, show of hands:** *"I've described the table. I've said where the server is. I've registered the whole thing. So how much of my database exists right now?"*
+- [ ] 🎞️ **GO TO SLIDE 8** — *A model is not a database* · **predict first, show of hands:** *"I've described the table. I've said where the server is. I've registered the whole thing. So how much of my database exists right now?"*
 - [ ] **Open the mssql panel and expand the server.** Let them look at it for a second before you say anything
 - [ ] 🎯 **There is no database there at all.** *"Not an empty table. Not a table with no rows. Nothing. Describing a table in C# does not create one — **nothing has happened to any server yet**. Everything I've written so far is a description sitting in my project"*
 - [ ] ⚠️ **Name the error they'll meet in the lab, even though you can't show it here** — *"when you wire your controller up to the context and forget the command we're about to run, you get `Invalid object name 'Trucks'`. It means exactly what it says: the table isn't there. It's the most common error of tonight's lab, and now you know what causes it"*
 - [ ] **Leave the panel open** — you refresh it right after `database update` and the difference is the payoff
 - [ ] ℹ️ *Why not just load `/Trucks` and show it failing? Because it doesn't. `TrucksController` still reads `TruckData.All` until §5a, and `AddDbContext` only registers a factory — nothing connects until something asks for a context and uses it. The page renders six trucks quite happily with a connection string pointing at a server that doesn't exist.*
 
-### Generating the migration *(slide 10)*
+### Generating the migration
 
-- [ ] 🎞️ **GO TO SLIDE 10** — *The migration, generated*
-- [ ] *"A generated C# file. Not SQL, not magic — a file you can open and read, which is exactly what we are about to do"*
+- [ ] *"The next command writes a C# file. Not SQL, not magic — a file you can open and read, which is exactly what we are about to do"*
 - [ ] In the second terminal, **from the folder with the `.csproj` in it** — say that out loud, it's the opposite of `dotnet test`:
   ```bash
   dotnet ef migrations add InitialCreate
@@ -229,9 +228,9 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] *"`InitialCreate` is just a name — it ends up in the filename. You'll add more of these in weeks 8 and 9"*
 - [ ] Show the `Migrations/` folder: three files. Open **`<timestamp>_InitialCreate.cs`** and put it on screen
 
-### The rules become columns *(slide 11)*
+### The rules become columns *(slide 9)*
 
-- [ ] 🎞️ **GO TO SLIDE 11** — *Last week's rules, as columns* · **predict before you point:** *"`Name` is `nvarchar(50)`. Where did the fifty come from? Nobody typed fifty tonight"*
+- [ ] 🎞️ **GO TO SLIDE 9** — *Last week's rules, as columns* · **predict before you point:** *"`Name` is `nvarchar(50)`. Where did the fifty come from? Nobody typed fifty tonight"*
 - [ ] Let them find it. It's **`[StringLength(50, MinimumLength = 2)]`**, written last week as a *form validation rule*
 - [ ] 🎯 **The sentence:** *"you wrote that to stop someone typing a paragraph into a text box. It just became the width of a database column. One description of a truck — the browser reads it, the server reads it, and now the table is built from it"*
 - [ ] Walk three more, in the migration on screen:
@@ -240,7 +239,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   - **`Id` gets `SqlServer:Identity`** — *"EF Core assumed a property called `Id` is the primary key, by convention, and made **SQL Server** responsible for numbering it. Hold onto that. Later tonight it deletes a line of your code"*
 - [ ] ⚠️ **Say the snapshot rule now, because it's the other big lab failure:** *"a migration is a photograph of your model at the moment you generate it. Change the model afterwards and this file does not follow — you add another one. That matters as soon as we seed the table"*
 
-### Applying it *(slide 12)*
+### Applying it
 
 - [ ] **Predict:** *"the migration is a description. Has anything happened to the database yet?"* — then:
   ```bash
@@ -250,8 +249,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] **Refresh the mssql panel you left open in §3** — 🎯 the database that wasn't there **now is**, and expanding it shows **two tables**: `Trucks`, and `__EFMigrationsHistory` with one row. *"Before that command, this server had nothing of mine on it. One command."*
 - [ ] **Open the `Trucks` table. It has no rows.** *"A table, correctly built, completely empty. Nobody has put anything in it"*
 - [ ] ⚠️ **Then point at the browser, still showing six trucks, and name the gap** — it runs all the way to §5a: *"and the page hasn't changed at all. Six trucks, same as at the start of tonight. It is still reading `TruckData.All` out of a file, because nothing has told the controller the database exists. Watch that gap; it closes when I change the controller"*
-- [ ] 🎞️ **GO TO SLIDE 12** — *Applying it*
-- [ ] *"That second table is how `database update` knows what it's already done. Run it again and watch what it actually does —"* do it — *"it asks the history table what has already been applied. That's the SQL going past. Then it applies nothing, because the list says there's nothing left to do. It's not clever. It's a list"*. ⚠️ **You still get SQL on screen — that's the history being read, not work being done.** Point at the summary line at the end, which says so in as many words
+- [ ] *"The `__EFMigrationsHistory` table is how `database update` knows what it's already done. Run it again and watch what it actually does —"* do it — *"it asks the history table what has already been applied. That's the SQL going past. Then it applies nothing, because the list says there's nothing left to do. It's not clever. It's a list"*. ⚠️ **You still get SQL on screen — that's the history being read, not work being done.** Point at the summary line at the end, which says so in as many words
 - [ ] 💡 If asked about the two error messages: **`Login failed for user`** = the server answered and said no (username/password) · **`A network-related or instance-specific error`** = nothing answered (server name, or you're on the wrong network), and it takes ~30 seconds to fail so it feels like a hang
 - [ ] **✓ CHECKPOINT:** the room can say what `migrations add` produces versus what `database update` does
 
@@ -262,16 +260,16 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] ⚠️ **This is the first command tonight that connects to the server, so sweep the room now, not earlier.** A connection string that was stored fine in task 1 fails here. Have anyone stuck run `dotnet user-secrets list` before anything else. `No project was found in the current working directory` means the wrong terminal — terminal 2 is the one standing in `Cryptids.Web`
 - [ ] **Stop:** the note just above **Task 4, part 2**. Where they should be: still **`Passed: 2`**, and a `Cryptids` table with no rows. *"Your table is empty and check 4 is red. Both are correct. The next part of the demo fills the table."*
 
-## 4 · Seeding *(slides 13–15)*
+## 4 · Seeding *(slides 10–11)*
 
-### An empty table *(slide 13)*
+### An empty table *(slide 10)*
 
-- [ ] 🎞️ **GO TO SLIDE 13** — *An empty table*
+- [ ] 🎞️ **GO TO SLIDE 10** — *An empty table*
 - [ ] Put the **mssql panel** and `Models/TruckData.cs` on screen together. 🎯 *"An empty table on one side. Six trucks in a file on the other, and I'm going to delete that file before the night is out. They need somewhere to live"*
 
-### HasData *(slide 14)*
+### HasData *(slide 11)*
 
-- [ ] 🎞️ **GO TO SLIDE 14** — *HasData*. Then say *"These rows become part of the description — the same way the columns are"*
+- [ ] 🎞️ **GO TO SLIDE 11** — *HasData*. Then say *"These rows become part of the description — the same way the columns are"*
 - [ ] Back in `Data/CurbsideContext.cs`, **paste** `OnModelCreating` below the `DbSet`:
 
   <details><summary>📋 paste: OnModelCreating with the six trucks — and a seventh</summary>
@@ -299,9 +297,9 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] Say what seed data is *for*: reference data, categories, a starting set. **Not test records**
 - [ ] **Refresh the `Trucks` table in the mssql panel.** 🎯 **Still no rows** — *"I changed the model. Why isn't it in the table?"* Let them answer with the snapshot rule from §3
 
-### The second migration *(slide 15)*
+### The second migration
 
-- [ ] 🎞️ **GO TO SLIDE 15** — *The second migration*. Then say *"The model changed, so the database is behind again. Same two commands as before"*
+- [ ] *"The model changed, so the database is behind again. Same two commands as before."*
 - [ ] Generate it — **don't apply it yet**:
   ```bash
   dotnet ef migrations add SeedTrucks
@@ -330,14 +328,14 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ## ☕ Break
 
-## 5a · The controller barely changes *(slides 16–17)*
+## 5a · The controller barely changes *(slides 12–13)*
 
 > [!IMPORTANT]
 > **This is the segment that pays off last week's promise, and §5b's break is the one that matters most.** If §3 ran long, take it out of §8, not out of here.
 
-### Asking for the context *(slide 16)*
+### Asking for the context *(slide 12)*
 
-- [ ] 🎞️ **GO TO SLIDE 16** — *Asking for the context*. Then say *"A field and a constructor — that's the whole of it. The field is `readonly` because nothing should ever reassign it"*
+- [ ] 🎞️ **GO TO SLIDE 12** — *Asking for the context*. Then say *"A field and a constructor — that's the whole of it. The field is `readonly` because nothing should ever reassign it"*
 - [ ] At the top of `TrucksController` (inside the class), **type it**:
   ```csharp
   private readonly CurbsideContext _context;
@@ -351,9 +349,9 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] 🔗 **Collect §2:** *"that's the other end of the dependency injection — the `AddDbContext` line back in `Program.cs`. You've been on the receiving end of it since week 3 without writing any"*
 - [ ] Aside, one sentence: *"you get a fresh context per request — it's registered *scoped*, and in a web app a scope is one HTTP request. They're cheap and short-lived. It matters more next week"*
 
-### Reading *(slide 17)*
+### Reading *(slide 13)*
 
-- [ ] 🎞️ **GO TO SLIDE 17** — *Reading*. Then say *"This is where our data becomes persistent"*
+- [ ] 🎞️ **GO TO SLIDE 13** — *Reading*. Then say *"This is where our data becomes persistent"*
 - [ ] Change `Index` and `Details` — **type both, they're small**:
   ```csharp
   public IActionResult Index()
@@ -383,11 +381,11 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] 👀 **Watch for:** `Unable to resolve service for type ... CryptidContext` — task 3's line is missing or below `builder.Build()`. `Invalid object name 'Cryptids'` — the error you named in §3; they never ran `database update`. And a missing `using Cryptids.Web.Data;`
 - [ ] **Stop:** the note after **Task 5 in full**. Where they should be: **`Passed: 5`** — tonight's in-class target
 
-## 5b · Writing, and the line you delete *(slides 18–19)*
+## 5b · Writing, and the line you delete *(slides 14–15)*
 
-### Break it #2 — writing *(slide 18)*
+### Break it #2 — writing *(slide 14)*
 
-- [ ] 🎞️ **GO TO SLIDE 18** — *Writing*. Then say *"Last week's POST did the same three things. Only the middle one changes tonight"*
+- [ ] 🎞️ **GO TO SLIDE 14** — *Writing*. Then say *"Last week's POST did the same three things. Only the middle one changes tonight"*
 - [ ] Rewrite the POST action, but **deliberately leave `SaveChanges()` out** — and don't announce that you have:
   ```csharp
   _context.Trucks.Add(truck);
@@ -406,9 +404,9 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] File the same truck again. **Eight cards** 🎉 — and the terminal shows the `INSERT`
 - [ ] ⚠️ **Name it as the bug of the week:** *"forgetting `SaveChanges` is the single most common thing that goes wrong tonight, and it is completely silent. If your form works and the record isn't there, this is it. Every time"*
 
-### The line you delete *(slide 19)*
+### The line you delete *(slide 15)*
 
-- [ ] 🎞️ **GO TO SLIDE 19** — *The line you delete* · 🔗 **collect §3:** *"remember `SqlServer:Identity` in the migration"*
+- [ ] 🎞️ **GO TO SLIDE 15** — *The line you delete* · 🔗 **collect §3:** *"remember `SqlServer:Identity` in the migration"*
 - [ ] Point at the deleted `Max(t => t.Id) + 1` line. *"SQL Server picks the number now. And EF Core reads the real value back onto your object during `SaveChanges` — so `truck.Id` is correct on the line **after** the save, which is exactly when you'd want to redirect to it"*
 - [ ] Show it in the **mssql** panel: the new truck's `Id` is **8** — the seed filled 1 through 7, so SQL Server carried on from there, and nothing in your code chose it
 - [ ] Now delete **`Models/TruckData.cs`** 🎯 — *"and if the project stops compiling, the compiler is about to tell me every place that was still reading the old list. That's a much nicer way to find them than clicking around"*
@@ -432,19 +430,18 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] After the restart it compiles, and `/Trucks` still shows **eight**. 🎯 **Land the general lesson:** *"two places in an app this small. In yours it might be three. You don't have to find them — delete the file and let the compiler walk you through it"*
 - [ ] **✓ CHECKPOINT:** the room can say what `Add` does and what `SaveChanges` does
 
-## 6 · The payoff *(slide 20)*
+## 6 · The payoff
 
 - [ ] **Stay in the browser.** `/Trucks` with eight cards on it, the eighth one yours
 - [ ] In the terminal: **`Ctrl+C`**. Then `dotnet watch` again. Reload
 - [ ] **Eight.** 🎯 **Say nothing for a beat and let them get there first**
-- [ ] 🎞️ **GO TO SLIDE 20** — *Restart it.* Now — straight off the eight cards that didn't disappear
 - [ ] 🔗 *"Same three keystrokes as the start of tonight. Different answer. That's the week — it's the first time anything you've built has outlived the program that built it"*
 - [ ] Open the **mssql** panel one last time with the app **stopped**: *"the app isn't even running and the data is still there."*
 - [ ] 🎯 **Then the other half, pointing at the editor:** *"and look at what didn't change. The form. Model binding. The annotations. `ModelState.IsValid`. The redirect. The error messages. The layout, the partial, the theme. You changed where the data lives and nothing above it noticed"*
 
-## 7 · Hand off to the last lab block *(slide 21)*
+## 7 · Hand off to the last lab block *(slide 16)*
 
-- [ ] 🎞️ **GO TO SLIDE 21** — *Lab: the Registry gets a filing cabinet*. Leave it up for the whole block; its timer is how long they have before §8
+- [ ] 🎞️ **GO TO SLIDE 16** — *Lab: the Registry gets a filing cabinet*. Leave it up for the whole block; its timer is how long they have before §8
 - [ ] *"This is the last block, and it has no stop. Task 6 starts by deleting CryptidData.cs, the way I deleted TruckData.cs. The project stops compiling, and the compiler takes you to the POST action. When it compiles again, restart the app before you trust the page."*
 - [ ] **The in-class target is still checks 1–5.** Check 6 rolls into the homework if time goes
 
@@ -454,10 +451,10 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] 👀 **Watch for:** a page that looks right but is the old build — terminal 1 shows `ENC0033`, and the fix is `Ctrl+C` and `dotnet watch --project Cryptids.Web`. `Cannot insert explicit value for identity column`, or a new creature with Id 0 — the `Max(c => c.Id) + 1` line is still there. A form that redirects and adds nothing — no `SaveChanges()`
 - [ ] **No stop.** This block takes whatever time is left before §8. Anyone finished: **🚀 Done early?** at the bottom of the README, or help a classmate
 
-## 8 · The deployed app *(slides 22–23)*
+## 8 · The deployed app *(slides 17–18)*
 
 - [ ] **Call them back from the lab:** *"Stop where you are. If task 6 isn't finished, it finishes at home."*
-- [ ] 🎞️ **GO TO SLIDE 22** — *The deployed app*
+- [ ] 🎞️ **GO TO SLIDE 17** — *The deployed app*
 - [ ] ⚠️ **Nothing is deployed tonight — this is a talk-through, not a demo.** Say so: *"I'm not deploying this; the only Azure deploy I do all term was week 3. This is what **you** do for the homework"*
 - [ ] Walk the three things a deployed app needs: the packages (they ship with the build) · the code (it's in your repo) · **the connection string**, which is the interesting one
 - [ ] 🔗 **Collect §2's blank `Data source:` — this is what it was for.** *"Your secret is on your laptop, in your user profile. It is not in your repo, so it isn't in the deploy. And you watched a production app refuse to read it. So Azure has to be told separately"*
@@ -467,18 +464,18 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] ⚠️ **Say the resource-group thing before anyone hits it.** They've never typed one — `az webapp up` made it silently in week 3. *"It's a folder in your Azure account. `az webapp list -o table` tells you yours, and the notes have the command"*
 - [ ] ⚠️ **US region.** Apps in Canadian regions have never been able to reach the school's server. *"Use the one that worked for you before"*
 
-### One database, two apps *(slide 23)*
+### One database, two apps *(slide 18)*
 
-- [ ] 🎞️ **GO TO SLIDE 23** — *One database, two apps*
+- [ ] 🎞️ **GO TO SLIDE 18** — *One database, two apps*
 - [ ] 🔗 **Collect slide 3's third row:** *"Your deployed app and your laptop point at the same database"*
 - [ ] **Give them the exercise out loud, and tell them it's the best two minutes of the homework:** *"add a truck on your deployed site. Then run your app locally and look at your list. It's there. Two programs, two computers, one set of data"*
 - [ ] Then the honest footnote: *"sharing one database between dev and production is not what a real project does — you'd have two. Week 15 covers what real projects do. For a course it's fine, and it makes the point better than two databases would"*
 - [ ] 🎯 **Close the secrets thread, and make it the smallest possible step:** *"and notice what isn't in your homework this week. There's no `.gitignore` line, nothing to untrack, nothing to clean out of your history — because the password was never in the folder. That's the entire reason we did it that way in §2"*
 - [ ] Say the one that matters for anyone who gets it wrong: *"if you do put it in `appsettings.json` and commit it, deleting it later doesn't help — it's in every commit you already pushed. Come and tell me and we'll change your password. Much better to make that mistake here than at work"*
 
-## 9 · Wrap-up, after the lab *(slide 24)*
+## 9 · Wrap-up, after the lab *(slide 19)*
 
-- [ ] 🎞️ **GO TO SLIDE 24** — *Tonight, in one picture*. Walk it once, top to bottom — model, context, migration, database, and the two arrows back up
+- [ ] 🎞️ **GO TO SLIDE 19** — *Tonight, in one picture*. Walk it once, top to bottom — model, context, migration, database, and the two arrows back up
 - [ ] 🔗 **Answer last week's promise honestly:** *"I said one line would change. It was a constructor, two lines in the reads and a `SaveChanges`. But the **shape** held: every decision about validating, redirecting and rendering survived untouched, because none of them ever cared where the list came from"*
 - [ ] Homework: **their own app's list moves into SQL Server** — same six steps, their model. And the deployed-plus-local exercise
 - [ ] 🔗 Week 8: *"you've done the R in CRUD, and half the C. Next week is the other two letters — and the framework writes most of it for you"*
