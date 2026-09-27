@@ -183,7 +183,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 #### Watch the stack resolve
 
-- [ ] **Predict-then-run.** Ask first: *"the string is in my user profile. What does the app see?"* Then, in the second terminal:
+- [ ] Say what the command shows first: *"This command prints the server and the database the app will connect to."* Then, in the second terminal:
   ```bash
   dotnet ef dbcontext info
   ```
