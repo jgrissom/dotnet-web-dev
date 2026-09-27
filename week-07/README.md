@@ -10,7 +10,7 @@ The night the data stops belonging to the process. For four weeks the list has b
 | Prep&nbsp;/⁠&nbsp;in-⁠class&nbsp;script | 📖&nbsp;[lecture-⁠notes.md](lecture-notes.md) | Full lecture content, the two connection errors, **troubleshooting appendix** |
 | Projected&nbsp;in&nbsp;class | 🎞️&nbsp;[slides.md](slides.md) | The deck (GFM, one slide per `##`) — [**present it live**](https://jgrissom.github.io/dotnet-web-dev/week-07/) (arrow keys, `F` for fullscreen) |
 | In&nbsp;class,&nbsp;live-⁠coding | 🎨&nbsp;[demo/⁠](demo/) | *Curbside gets a database* — picks up where week 6 left it; [clickable cue sheet](https://jgrissom.github.io/dotnet-web-dev/week-07/demo/script.html) |
-| In&nbsp;class,&nbsp;last&nbsp;50&nbsp;min | 🧪&nbsp;[lab/⁠](lab/) | *The Registry gets a filing cabinet* — 6 `dotnet test` checks; 1/6 green out of the box (answer key in the private answer-keys repo) |
+| In&nbsp;class,&nbsp;50&nbsp;min&nbsp;in&nbsp;six&nbsp;blocks | 🧪&nbsp;[lab/⁠](lab/) | *The Registry gets a filing cabinet* — 6 `dotnet test` checks; 1/6 green out of the box; each block follows the part of the demo it practices and ends at an *In class, stop here* note (answer key in the private answer-keys repo) |
 | With&nbsp;the&nbsp;homework | ✅&nbsp;[homework-⁠checks.js](homework-checks.js) | Student self-check — the same checks the grader runs (6 of the 20 pts; **the other 14 come from the repo this week**) |
 | Assigned&nbsp;at&nbsp;wrap-⁠up | 📤&nbsp;[homework.md](homework.md) | Their own app's list moves into SQL Server, deployed to Azure; URL + repo via Canvas |
 
@@ -22,12 +22,12 @@ The night the data stops belonging to the process. For four weeks the list has b
 
 - **Deployed-app gallery** — 2–3 student Azure URLs picked in advance; 2 minutes each
 - Collect last week's reading — *"what would the columns of your hard-coded list be, and what type is each one?"* — **while an app is on screen**. It's the intuition the whole night is built on
-- ⚠️ **Fill in your own connection string and test it before class**, then **drop the demo database in the mssql panel** (right-click → Delete — `dotnet ef` cannot run in the fresh copy, which has no EF packages until §2) so the room watches it get created. If your string is wrong at 1:10 you lose two segments and there is no way to fake forward
+- ⚠️ **Fill in your own connection string and test it before class**, then **drop the demo database in the mssql panel** (right-click → Delete — `dotnet ef` cannot run in the fresh copy, which has no EF packages until §2) so the room watches it get created. If your string is wrong at §3 you lose two segments and there is no way to fake forward
 - **Copy `week-07/demo-starter/Curbside` out of the private answer-keys repo** into `~/Repos/dotnet-web-dev-course/instructor/week-07/` — Curbside exactly as week 6's demo left it. `dotnet watch`, then park tabs on `/Trucks` and `/Trucks/Create`
 - **VS Code `mssql` extension** installed, connected, tested, panel closed — you open it four times tonight
 - **Size the terminal for the back row and leave it up all night.** Unlike week 6 you never clear it: migration output, generated SQL and two error messages are the story
 - Check `dotnet ef --version` matches your runtime — a skew warning on the projector invites a question you don't want
-- Your finished Registry with `dotnet test` at 6/6, for the lab launch
+- Your finished Registry with `dotnet test` at 6/6, to show at Lab A — *what done looks like*
 - Remind students to `git pull` the starters repo for the week-07 folder
 
 **Prev:** [← Week 6 — Forms & Validation](../week-06/README.md) · **Next:** [Week 8 — EF Core CRUD →](../week-08/README.md)

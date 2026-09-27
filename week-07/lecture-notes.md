@@ -418,7 +418,7 @@ Open the new migration: it's nothing but `InsertData` calls. EF Core compared yo
 **That comparison is the whole idea of migrations.** You describe what you want; EF Core works out the difference from what it last saw and writes the steps.
 
 > [!TIP]
-> **You could have written `HasData` before the first migration** and got one migration doing both jobs — which is what the lab has you do, because it's fewer moving parts. Doing it in two steps here is deliberate: watching a *second* migration contain only the difference is the clearest demonstration of what these things are.
+> **You could have written `HasData` before the first migration** and got one migration doing both jobs. Doing it in two steps is deliberate: watching a *second* migration contain only the difference is the clearest demonstration of what these things are. The lab does it in the same two steps — task 4, then task 4's part 2.
 
 ## Part 5: The controller barely changes (25 min)
 

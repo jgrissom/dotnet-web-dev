@@ -2,7 +2,7 @@
 
 Six creatures that vanish every time you restart the app. Tonight they move into SQL Server and stop doing that — a `DbContext` to describe the table, a connection string to find the server, a migration to build it, and a controller that reads from a database instead of a variable.
 
-**Time:** ~50 minutes in class — **in-class target: checks 1–5 green.** Check 6 is two lines; do it if you get there, otherwise it rolls into the homework.
+**Time:** ~50 minutes in class, in six short blocks — each one follows the part of the demo it practices, and ends at an **In class, stop here** note. **In-class target: checks 1–5 green.** Check 6 is two lines; do it if you get there, otherwise it rolls into the homework.
 
 ## Setup
 
@@ -56,12 +56,26 @@ dotnet test Cryptids.Checks
 > [!TIP]
 > **Watch the SQL as you go.** EF Core prints every query it generates into terminal 1, so the `dotnet watch` terminal is worth keeping visible tonight — it's the only place you can see what your C# turned into.
 
+**6. Connect the mssql extension to the school's server.** This proves your server name, username and password before anything else depends on them. Use the server, username and password from the class handout.
+
+**Connect to the *server* — leave the database field blank.** **Don't** name a database: yours doesn't exist yet, and a connection that names a database that isn't there just fails, which tells you nothing about whether your credentials are right.
+
+If that connects, your server name and login are good. Your database shows up underneath it after task 4 creates it. If it *doesn't* connect, ask now — nothing later works until it does, and it's the one problem tonight that reading can't solve. The two failure messages send you to different halves of the login:
+
+| Message | What it means |
+|---|---|
+| `Login failed for user '...'` | The server answered and said no — **username or password**. Server name is fine. |
+| `A network-related or instance-specific error occurred` | Nothing answered — **server name**, or you're not on a network that can reach it. Takes ~30s to fail, so it feels like a hang. |
+
+> [!NOTE]
+> **In class, stop here.** Your connection string comes after the next part of the demo. Finished early? Open `Models/Cryptid.cs` and guess what SQL Server will call each property's type — task 4 shows you. Or help a classmate get to 1 / 6. Working at home? Carry straight on.
+
 ## Where tonight's work happens
 
 | File | What you do to it |
 |---|---|
 | *(user secrets — not a file in this project)* | your connection string — task 1 |
-| `Cryptids.Web/Data/CryptidContext.cs` | **new file** — the context and the seed data — task 2 |
+| `Cryptids.Web/Data/CryptidContext.cs` | **new file** — the context in task 2, the seed data in task 4's part 2 |
 | `Cryptids.Web/Program.cs` | one registration — task 3 |
 | `Cryptids.Web/Migrations/` | **generated** — don't hand-write these — task 4 |
 | `Cryptids.Web/Controllers/CryptidsController.cs` | reads and writes go through the context — tasks 5 and 6 |
@@ -77,14 +91,11 @@ dotnet test Cryptids.Checks
 | # | Check | What to do |
 |---|-------|------------|
 | 1 | *(no check)* | Put your connection string in [user secrets](../lecture-notes.md#where-the-connection-string-lives) — two commands, from inside `Cryptids.Web`. Nothing later works until this is right, and task 4 is where you find out. **[Task 1 in full ↓](#task-1-in-full)** |
-| 2 | `TheContextDescribesTheDatabase` | A new `Data/CryptidContext.cs`: a [`DbContext`](../lecture-notes.md#the-dbcontext) with a `DbSet<Cryptid>`, and the six creatures [seeded](../lecture-notes.md#the-table-is-empty) in `OnModelCreating`. **[Task 2 in full ↓](#task-2-in-full)** |
+| 2 | `TheContextDescribesTheDatabase` | A new `Data/CryptidContext.cs`: a [`DbContext`](../lecture-notes.md#the-dbcontext) with a `DbSet<Cryptid>`. The six creatures are seeded into it later, in task 4's second part — that's when check 2 goes green. **[Task 2 in full ↓](#task-2-in-full)** |
 | 3 | `TheAppIsWiredToSqlServer` | [One `AddDbContext` line](../lecture-notes.md#one-registration) in `Program.cs`, reading the connection string from configuration. **[Task 3 in full ↓](#task-3-in-full)** |
-| 4 | `AMigrationDescribesTheTable` | [`dotnet ef migrations add InitialCreate`](../lecture-notes.md#writing-a-model-doesnt-create-a-table), then `dotnet ef database update`. **[Task 4 in full ↓](#task-4-in-full)** |
+| 4 | `AMigrationDescribesTheTable` | [`dotnet ef migrations add InitialCreate`](../lecture-notes.md#writing-a-model-doesnt-create-a-table), then `dotnet ef database update` — an empty table. Then the six creatures in `HasData`, and a second migration that carries them. Turns checks **2 and 4** green. **[Task 4 in full ↓](#task-4-in-full)** |
 | 5 | `TheRegistryReadsFromTheDatabase` | [Inject the context](../lecture-notes.md#asking-for-the-context) into `CryptidsController` and rewrite `Index` and `Details` [against the table](../lecture-notes.md#reading). **[Task 5 in full ↓](#task-5-in-full)** |
 | 6 | `AFiledReportIsSaved` | Delete `Models/CryptidData.cs` **first** — then let the compiler walk you to the POST action, where [`Add` and `SaveChanges`](../lecture-notes.md#writing) replace it and [the id line goes](../lecture-notes.md#the-line-you-delete). **[Task 6 in full ↓](#task-6-in-full)** |
-
-> [!IMPORTANT]
-> **Do tasks 2 and 3 before task 4.** A migration is a photograph of your model at the moment you generate it — run `migrations add` before the seed data exists and you get a migration with no creatures in it, an empty registry, and no error message explaining why.
 
 ### Task 1 in full
 
@@ -122,27 +133,16 @@ dotnet user-secrets list
 
 You want **one** line, starting exactly `ConnectionStrings:DefaultConnection`, with the whole string after it. [If it's wrong, here's how to fix it](../lecture-notes.md#when-you-type-it-wrong) — a bad value just needs another `set`; a misspelled key needs `dotnet user-secrets remove`.
 
-You can't fully test it yet (there's no context for it to use), so the real test is task 4. But you can rule out a bad server name or password now, in the **mssql** extension:
-
-**Connect to the *server* — leave the database field blank.** Use the server, username and password from the handout. **Don't** name your database: it doesn't exist yet, and a connection that names a database that isn't there just fails, which tells you nothing about whether your credentials are right.
-
-If that connects, your server name and login are good. Your database shows up underneath it after task 4 creates it. If it *doesn't* connect, the connection string is wrong and nothing later will save you — the two failure messages are in the table below.
+You can't fully test it yet (there's no context for it to use), so the real test is task 4. Setup step 6 already proved your server name, username and password in the mssql extension; this string uses the same three, so a typo here is the thing to look for if task 4 won't connect.
 
 > [!TIP]
 > **On a lab PC that resets when it reboots, do this again next session.** Your secret lives in your user profile, not in your project, so it doesn't come back with your files. Keep the connection string somewhere that isn't this machine — one `dotnet user-secrets set` restores it.
 
-The two errors, and they send you to different halves of the same line:
-
-| Message | What it means |
-|---|---|
-| `Login failed for user '...'` | The server answered and said no — **username or password**. Server name is fine. |
-| `A network-related or instance-specific error occurred` | Nothing answered — **server name**, or you're not on a network that can reach it. Takes ~30s to fail, so it feels like a hang. |
-
 ### Task 2 in full
 
-**Check:** `Check2_TheContextDescribesTheDatabase`
+**Check:** `Check2_TheContextDescribesTheDatabase` — it stays red until task 4's second part adds the seed data.
 
-Make a **`Data`** folder inside `Cryptids.Web`, next to `Models` and `Controllers`. **This is the whole of `Data/CryptidContext.cs`:**
+Make a **`Data`** folder inside `Cryptids.Web`, next to `Models` and `Controllers`. **This is the whole of `Data/CryptidContext.cs`, for now:**
 
 ```csharp
 using Microsoft.EntityFrameworkCore;
@@ -157,29 +157,13 @@ public class CryptidContext : DbContext
     }
 
     public DbSet<Cryptid> Cryptids => Set<Cryptid>();
-
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        modelBuilder.Entity<Cryptid>().HasData(
-            new Cryptid { Id = 1, Name = "The Hodag", Region = "Rhinelander, Wisconsin", FirstSighting = 1893, Sightings = 47, IsDebunked = true },
-            new Cryptid { Id = 2, Name = "Bigfoot", Region = "Pacific Northwest", FirstSighting = 1958, Sightings = 1204, IsDebunked = false },
-            new Cryptid { Id = 3, Name = "Mothman", Region = "Point Pleasant, WV", FirstSighting = 1966, Sightings = 102, IsDebunked = false },
-            new Cryptid { Id = 4, Name = "The Loch Ness Monster", Region = "Loch Ness, Scotland", FirstSighting = 565, Sightings = 1131, IsDebunked = false },
-            new Cryptid { Id = 5, Name = "The Jersey Devil", Region = "Pine Barrens, NJ", FirstSighting = 1735, Sightings = 287, IsDebunked = false },
-            new Cryptid { Id = 6, Name = "Chupacabra", Region = "Puerto Rico", FirstSighting = 1995, Sightings = 214, IsDebunked = true }
-        );
-    }
 }
 ```
 
-Three things worth reading rather than pasting past:
+Two things worth reading rather than pasting past:
 
 - **`DbSet<Cryptid> Cryptids`** — that property *is* the table. Its presence is what makes EF Core believe there should be a `Cryptids` table at all.
 - **The constructor** is handed its options rather than deciding them. This class does not know where the database is, and never will.
-- **Every seeded row has an explicit `Id`.** Normally the database picks ids; seed rows are the exception, because EF Core has to be able to tell next time whether row 3 changed, vanished, or is new.
-
-> [!TIP]
-> **The six creatures are the same six, with the same Ids**, copied straight out of `Models/CryptidData.cs`. Details pages people already bookmarked are `/Cryptids/Details/1` through `6`, and check 2 looks for exactly that.
 
 ### Task 3 in full
 
@@ -202,9 +186,12 @@ using Cryptids.Web.Data;
 - **Above `builder.Build()`**, not below. Services have to be registered before the app is built, and the error if you get it backwards doesn't say so.
 - **`GetConnectionString("DefaultConnection")`** has to match the key you set in task 1 exactly — `ConnectionStrings:DefaultConnection`. Misspell either end and it returns `null`, `UseSqlServer(null)` throws, and your app won't start at all.
 
+> [!NOTE]
+> **In class, stop here.** Task 4 comes after the next part of the demo. Check 2 is still red, and that's expected — its seed data comes later. Finished early? In terminal 2, run `dotnet ef dbcontext info` and find your server and database on the `Data source:` and `Database name:` lines — that's your user secret, read by your `AddDbContext` line. Or help a classmate. Working at home? Carry straight on.
+
 ### Task 4 in full
 
-**Check:** `Check4_AMigrationDescribesTheTable`
+**Check:** `Check4_AMigrationDescribesTheTable` — it goes green in part 2, together with check 2.
 
 **In terminal 2**, still inside `Cryptids.Web` from task 1 — the folder with the `.csproj`, not the one above it:
 
@@ -218,12 +205,54 @@ dotnet ef database update
 - `Name` is `nvarchar(60)`. **You never typed 60 tonight** — that's `[StringLength(60, MinimumLength = 2)]`, which you wrote last week as a *form* rule.
 - `nullable: false` is `[Required]`.
 - `Id` gets `.Annotation("SqlServer:Identity", "1, 1")` — the column numbers itself. **That deletes a line of your code in task 6.**
-- Below `CreateTable` there should be an **`InsertData`** with six rows in it. **If there isn't, your seed data wasn't there when you generated this** — delete the whole `Migrations` folder, check task 2, and run both commands again.
+- There's a `CreateTable` and nothing else. **No rows** — your context has no seed data yet.
 
-**Check this in the mssql extension, not the browser.** Expand your database → Tables. There are **two**: `Cryptids` with six rows in it, and `__EFMigrationsHistory` with one. That second table is how `database update` knows what it has already done — run the command again and nothing happens.
+**Check this in the mssql extension, not the browser.** Refresh the server, then expand your database → Tables. There are **two**: `Cryptids`, with **no rows** in it, and `__EFMigrationsHistory` with one. That second table is how `database update` knows what it has already done.
 
 > [!NOTE]
-> **`/Cryptids` looks exactly the same as it did an hour ago, and that's correct.** It's still showing six creatures out of `CryptidData.cs`, because nothing has told your controller the database exists — that's task 5. Right now you have the same six creatures in two places at once. Task 5 is where the page starts reading the one that survives a restart.
+> **`/Cryptids` looks exactly the same as it did at setup, and that's correct.** It's still showing six creatures out of `CryptidData.cs`, because nothing has told your controller the database exists — that's task 5.
+
+> [!NOTE]
+> **In class, stop here.** Your table is empty and check 4 is still red — both are correct. The seed data comes after the next part of the demo. Finished early? Find the line in the migration that makes `Region` `nvarchar(80)`, then find the annotation in `Models/Cryptid.cs` it came from. Or help a classmate. Working at home? Carry straight on.
+
+#### Task 4, part 2 — the seed data and a second migration
+
+The table is built and empty. The six creatures go into the **model**, and a second migration carries them into the table. This part finishes task 2 as well: **checks 2 and 4 go green together.**
+
+**In `Data/CryptidContext.cs`, paste this below the `DbSet`**, inside the class:
+
+```csharp
+protected override void OnModelCreating(ModelBuilder modelBuilder)
+{
+    modelBuilder.Entity<Cryptid>().HasData(
+        new Cryptid { Id = 1, Name = "The Hodag", Region = "Rhinelander, Wisconsin", FirstSighting = 1893, Sightings = 47, IsDebunked = true },
+        new Cryptid { Id = 2, Name = "Bigfoot", Region = "Pacific Northwest", FirstSighting = 1958, Sightings = 1204, IsDebunked = false },
+        new Cryptid { Id = 3, Name = "Mothman", Region = "Point Pleasant, WV", FirstSighting = 1966, Sightings = 102, IsDebunked = false },
+        new Cryptid { Id = 4, Name = "The Loch Ness Monster", Region = "Loch Ness, Scotland", FirstSighting = 565, Sightings = 1131, IsDebunked = false },
+        new Cryptid { Id = 5, Name = "The Jersey Devil", Region = "Pine Barrens, NJ", FirstSighting = 1735, Sightings = 287, IsDebunked = false },
+        new Cryptid { Id = 6, Name = "Chupacabra", Region = "Puerto Rico", FirstSighting = 1995, Sightings = 214, IsDebunked = true }
+    );
+}
+```
+
+**Every seeded row has an explicit `Id`.** Normally the database picks ids. Seed rows are the exception, because EF Core has to be able to tell next time whether row 3 changed, vanished, or is new.
+
+> [!TIP]
+> **The six creatures are the same six, with the same Ids**, copied straight out of `Models/CryptidData.cs`. Details pages people already bookmarked are `/Cryptids/Details/1` through `6`, and check 2 looks for exactly that.
+
+**Refresh the `Cryptids` table in the mssql extension.** Still no rows. A migration is a photograph of your model at the moment you generated it, and `InitialCreate` was taken before the seed data existed. The model changed, so you add another migration. In terminal 2:
+
+```bash
+dotnet ef migrations add SeedCryptids
+dotnet ef database update
+```
+
+**Open `Migrations/<timestamp>_SeedCryptids.cs`.** No `CreateTable` this time — one `InsertData`, with the six rows in it. EF Core compared your model against the snapshot from last time and wrote only the difference.
+
+Refresh the mssql extension again. **Six rows** in `Cryptids`, and a second row in `__EFMigrationsHistory`.
+
+> [!NOTE]
+> **In class, stop here.** Task 5 comes after the next part of the demo. Finished early? Put `InitialCreate` and `SeedCryptids` side by side and read their `Down` methods — each one undoes its own `Up`. Or help a classmate. Working at home? Carry straight on.
 
 ### Task 5 in full
 
@@ -281,6 +310,9 @@ public IActionResult Details(int id)
 > **Watch the SQL.** Look at the terminal running `dotnet watch` — EF Core prints the `SELECT` it generated. Load `/Cryptids/Details/2` and read that one too: `FirstOrDefault(c => c.Id == id)` didn't fetch six creatures and pick one, it became a `WHERE` clause.
 
 **Leave `Models/CryptidData.cs` alone for now.** Your POST action still uses it, so deleting it here would stop the project compiling — and a project that doesn't compile can't run any checks at all. **Task 6 opens by deleting it**, once you're ready to fix what that breaks.
+
+> [!NOTE]
+> **In class, stop here.** Task 6 comes after the next part of the demo. Finished early? Try **Read the SQL** or **Order the registry** from [🚀 Done early?](#-done-early) — neither one touches task 6. Or help a classmate. Working at home? Carry straight on.
 
 ### Task 6 in full
 
@@ -356,7 +388,7 @@ public IActionResult Create(Cryptid cryptid)
 - **`Value cannot be null. (Parameter 'connectionString')`, and the app won't start** — `GetConnectionString("DefaultConnection")` returned nothing. Run `dotnet user-secrets list` from inside `Cryptids.Web`: if it says *"No secrets configured for this application"*, task 1 didn't take **for this project** — secrets are per application, so one you set for a different app doesn't count. If secrets *are* listed, look at them closely: the key has to be exactly `ConnectionStrings:DefaultConnection` (`ConnectionString` singular is the usual typo — `dotnet user-secrets remove` the wrong one), and the value has to be the *whole* string, not just `Server=...` chopped at the first `;` by missing quotes. [Fixing both](../lecture-notes.md#when-you-type-it-wrong).
 - **`Invalid object name 'Cryptids'`** — the table isn't there. You generated the migration but never ran `dotnet ef database update`.
 - **`Unable to resolve service for type ... CryptidContext`** — task 3's line is missing, or it's *below* `builder.Build()`.
-- **The registry is empty and there's no error** — the table exists but has no rows. Open your migration: if there's no `InsertData` in it, you generated it before writing `HasData`. Delete the `Migrations` folder and do task 4 again.
+- **The registry is empty and there's no error** — the table exists but has no rows. Open your migrations: if none of them has an `InsertData`, the seed data was written after the last one. Add a migration that carries it — `dotnet ef migrations add SeedCryptids`, then `dotnet ef database update` — which is exactly task 4's part 2.
 - **`The seed entity for entity type 'Cryptid' cannot be added because no value was provided for the required property 'Id'`** — a seeded row is missing its `Id =`.
 - **`The model for context 'CryptidContext' has pending changes`** — you edited the context after generating the migration. Add another one: `dotnet ef migrations add WhateverYouChanged`.
 - **The form redirects, no error, and the creature isn't in the list** — no `SaveChanges()`. `Add` only records an intention.

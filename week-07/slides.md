@@ -266,7 +266,7 @@ Open it: no `CreateTable`. Just `InsertData` — one call, seven rows.
 
 ---
 
-<!-- _footer: '🖥️ Demo §5 · asking for the context' -->
+<!-- _footer: '🖥️ Demo §5a · asking for the context' -->
 
 ## Asking for the context
 
@@ -287,7 +287,7 @@ No `new`. Nothing here knows the server's name.
 
 ---
 
-<!-- _footer: '🖥️ Demo §5 · reading' -->
+<!-- _footer: '🖥️ Demo §5a · reading' -->
 
 ## Reading
 
@@ -305,7 +305,7 @@ var truck = _context.Trucks.FirstOrDefault(t => t.Id == id);
 
 ---
 
-<!-- _footer: '🖥️ Demo §5 · break it #2' -->
+<!-- _footer: '🖥️ Demo §5b · break it #2' -->
 
 ## Writing
 
@@ -323,7 +323,7 @@ Guard intact. Added. Redirected.
 
 ---
 
-<!-- _footer: '🖥️ Demo §5 · the line you delete' -->
+<!-- _footer: '🖥️ Demo §5b · the line you delete' -->
 
 ## The line you delete
 
@@ -357,7 +357,22 @@ The first thing you've built that outlived the program that built it.
 
 ---
 
-<!-- _footer: '🖥️ Demo §7 · the deployed app' -->
+<!-- _footer: '🖥️ Demo §7' -->
+
+## Lab: the Registry gets a filing cabinet
+
+- **1** — your connection string, in user secrets
+- **2** — `CryptidContext` and its `DbSet`
+- **3** — register it in `Program.cs`
+- **4** — `InitialCreate`, then the seed and `SeedCryptids`
+- **5** — the controller reads from the table
+- **6** — `Add` + `SaveChanges`
+
+**⏱️ 8 minutes · target tonight: 1–5 green.**
+
+---
+
+<!-- _footer: '🖥️ Demo §8 · the deployed app' -->
 
 ## The deployed app
 
@@ -378,7 +393,7 @@ az webapp config appsettings set --name your-app-XX1234 \
 
 ---
 
-<!-- _footer: '🖥️ Demo §7 · one database two apps' -->
+<!-- _footer: '🖥️ Demo §8 · one database two apps' -->
 
 ## One database, two apps
 
@@ -391,21 +406,6 @@ Then run your app **locally** and look.
 ### It's there.
 
 Two programs, two computers, one set of data.
-
----
-
-<!-- _footer: '🖥️ Demo §8' -->
-
-## Lab: the Registry gets a filing cabinet
-
-- **1** — your connection string, and one successful `database update`
-- **2** — `CryptidContext`: the `DbSet`, and the seed data
-- **3** — register it in `Program.cs`
-- **4** — `migrations add` → `database update`
-- **5** — the controller reads from the table
-- **6** — `Add` + `SaveChanges`
-
-**⏱️ 50 minutes · target tonight: 1–5 green.**
 
 ---
 

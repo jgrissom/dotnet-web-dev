@@ -145,7 +145,7 @@ Each line is green before you start; what matters is which requirement turns it 
 > It checks **whatever site it's loaded on** — so put the tag in *your* app, not on this page. `recheck()` re-runs it without reloading.
 
 > [!TIP]
-> **If your list page is empty**, the table exists but has no rows. Open your migration file: if there's no `InsertData` in it, you generated it before writing `HasData`. Delete the `Migrations` folder and generate it again.
+> **If your list page is empty**, the table exists but has no rows. Open your migration files: if none of them has an `InsertData`, you generated them before writing `HasData`. Add a migration that carries it — `dotnet ef migrations add SeedData`, then `dotnet ef database update` — the same fix as the lab's task 4, part 2.
 
 > [!TIP]
 > **If a good record "isn't accepted"** and you got a redirect anyway — you're missing `SaveChanges()`. `Add` only records an intention; nothing reaches the database until you save. No error is produced, which is what makes this one expensive.
@@ -252,7 +252,7 @@ Then restart your local app and reload. Still there.
 - **Localhost is fine, the deployed app 500s** — Azure doesn't read your user secrets. Check the app setting: `az webapp config appsettings list --name your-app-XX1234 --resource-group <YOUR-RESOURCE-GROUP>` should show `ConnectionStrings__DefaultConnection`, with **two underscores**.
 - **`Invalid object name 'YourThings'`** — [you never ran `dotnet ef database update`](lecture-notes.md#applying-it).
 - **`Unable to resolve service for type ... YourContext`** — the `AddDbContext` line is missing, or it's below `builder.Build()`.
-- **The list is empty, no errors** — your seed data was written after the migration was generated. Check the migration for `InsertData`.
+- **The list is empty, no errors** — your seed data was written after the migration was generated. Check your migrations for `InsertData`; if none has it, add another migration.
 - **The form redirects and nothing is saved** — [no `SaveChanges()`](lecture-notes.md#writing). Silent, and the most common bug of the week.
 - **`Cannot insert explicit value for identity column`** — [the old `Max(x => x.Id) + 1` line is still there](lecture-notes.md#the-line-you-delete).
 - **`The model for context has pending changes`** — you changed the model after generating the migration. Add another one.
