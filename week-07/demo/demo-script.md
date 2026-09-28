@@ -265,7 +265,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ### An empty table *(slide 10)*
 
-- [ ] 🎞️ **GO TO SLIDE 10** — *An empty table*
+- [ ] 🎞️ **GO TO SLIDE 10** — *An empty table* · *"Your table is empty too. You just saw it in the lab. That isn't a mistake. We built the table, and nobody has put anything in it yet. And the page still shows six trucks, because it isn't reading the table yet."*
 - [ ] Put the **mssql panel** and `Models/TruckData.cs` on screen together. 🎯 *"An empty table on one side. Six trucks in a file on the other, and I'm going to delete that file before the night is out. They need somewhere to live"*
 
 ### HasData *(slide 11)*
