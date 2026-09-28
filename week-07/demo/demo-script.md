@@ -387,7 +387,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ### Break it #2 — writing *(slide 14)*
 
-- [ ] 🎞️ **GO TO SLIDE 14** — *Writing*. Then say *"Last week's POST did the same three things. Only the middle one changes tonight"*
+- [ ] 🎞️ **GO TO SLIDE 14** — *Writing*. Then say *"Last week's POST did three things. It checked the form, added the truck to the list, and redirected. Tonight it still checks the form, and it still redirects. The only line that changes is the one in the middle: the truck goes into the context instead of the list."*
 - [ ] Rewrite the POST action, but **deliberately leave `SaveChanges()` out** — and don't announce that you have:
   ```csharp
   _context.Trucks.Add(truck);
