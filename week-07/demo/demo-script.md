@@ -378,8 +378,9 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 - [ ] Lab README on screen, scrolled to **Task 5 in full**
 - [ ] *"Start the app first, in terminal 1. This is the first task tonight where the browser matters. Then the constructor, then the two reads — the same three edits I just made."*
+- [ ] *"Task 5 ends with two lines of SQL. You add a creature straight into the database and reload, and you see seven. That creature was never in a C# file, so the page has to be reading the database. Then you delete it."*
 - [ ] ⚠️ **Warn them the checks never touch SQL Server:** *"The checks run your app against an in-memory database, so they work with no network. That means a green check does not prove your connection string works. Your browser does. Load /Cryptids and see six creatures."*
-- [ ] 👀 **Watch for:** `Unable to resolve service for type ... CryptidContext` — task 3's line is missing or below `builder.Build()`. `Invalid object name 'Cryptids'` — the error you named in §3; they never ran `database update`. And a missing `using Cryptids.Web.Data;`
+- [ ] 👀 **Watch for:** `Unable to resolve service for type ... CryptidContext` — task 3's line is missing or below `builder.Build()`. `Invalid object name 'Cryptids'` — the error you named in §3; they never ran `database update`. And a missing `using Cryptids.Web.Data;`. In the SQL step: a `DELETE` with no `WHERE` empties the table — the README's 🆘 entry has the recovery — and SQL strings take single quotes, not double
 - [ ] **Stop:** the note after **Task 5 in full**. Where they should be: **`Passed: 5`** — tonight's in-class target
 
 ## 5b · Writing, and the line you delete *(slides 14–15)*
@@ -449,7 +450,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 ## Lab F · Task 6 — 8 minutes
 
 - [ ] Lab README on screen, scrolled to **Task 6 in full**
-- [ ] 👀 **Watch for:** a page that looks right but is the old build — terminal 1 shows `ENC0033`, and the fix is `Ctrl+C` and `dotnet watch --project Cryptids.Web`. `Cannot insert explicit value for identity column`, or a new creature with Id 0 — the `Max(c => c.Id) + 1` line is still there. A form that redirects and adds nothing — no `SaveChanges()`
+- [ ] 👀 **Watch for:** a page that looks right but is the old build — terminal 1 shows `ENC0033`, and the fix is `Ctrl+C` and `dotnet watch --project Cryptids.Web`. `Cannot insert explicit value for identity column`, or a new creature with Id 0 — the `Max(c => c.Id) + 1` line is still there. A form that redirects and adds nothing — no `SaveChanges()`. 💡 If someone asks why their first report is Id **8**: the Wampus Cat had 7, and SQL Server doesn't reuse a deleted number
 - [ ] **No stop.** This block takes whatever time is left before §8. Anyone finished: **🚀 Done early?** at the bottom of the README, or help a classmate
 
 ## 8 · The deployed app *(slides 17–18)*

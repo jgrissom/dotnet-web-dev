@@ -328,7 +328,27 @@ public IActionResult Details(int id)
 
 `CryptidData.All` became `_context.Cryptids`, and `Index` gained a `.ToList()`. The null check, the `NotFound()`, the `View(cryptid)` — untouched.
 
-**Reload `/Cryptids`.** Same six creatures — but this time they came out of SQL Server, and you can prove it.
+**Reload `/Cryptids`.** Same six creatures. So how do you know they came out of SQL Server and not out of the old file? Put a creature in the database that has never been in any file.
+
+In the mssql extension, right-click your database → **New Query**, and run:
+
+```sql
+INSERT INTO Cryptids (Name, Region, FirstSighting, Sightings, IsDebunked)
+VALUES ('The Wampus Cat', 'Appalachia', 1917, 31, 0);
+```
+
+**Reload `/Cryptids`. Seven.** The Wampus Cat has never been in `CryptidData.cs` or in any other C# file. The only place the page could have found it is the database.
+
+Now take it out again, in the same query window:
+
+```sql
+DELETE FROM Cryptids WHERE Name = 'The Wampus Cat';
+```
+
+> [!WARNING]
+> **Keep the `WHERE`.** `DELETE FROM Cryptids` on its own deletes every creature in the table, and running `database update` again won't bring them back. If it happens, the fix is in [🆘 Stuck?](#-stuck).
+
+**Reload. Six.** Nothing in your app changed. The page shows whatever is in the table, whichever direction the table changes. One thing to remember for task 6: SQL Server gave the Wampus Cat Id 7, and it never hands out a deleted number again. **The first report you file in task 6 gets Id 8.**
 
 > [!TIP]
 > **Watch the SQL.** Look at the terminal running `dotnet watch` — EF Core prints the `SELECT` it generated. Load `/Cryptids/Details/2` and read that one too: `FirstOrDefault(c => c.Id == id)` didn't fetch six creatures and pick one, it became a `WHERE` clause.
@@ -418,6 +438,7 @@ public IActionResult Create(Cryptid cryptid)
 - **`Login failed for user '...'`** — the server answered and rejected you: username or password. The server name is right.
 - **`A network-related or instance-specific error occurred`** — nothing answered: server name is wrong, or this network can't reach it. Takes ~30s to fail.
 - **`Value cannot be null. (Parameter 'connectionString')`, and the app won't start** — `GetConnectionString("DefaultConnection")` returned nothing. Run `dotnet user-secrets list` from inside `Cryptids.Web`: if it says *"No secrets configured for this application"*, task 1 didn't take **for this project** — secrets are per application, so one you set for a different app doesn't count. If secrets *are* listed, look at them closely: the key has to be exactly `ConnectionStrings:DefaultConnection` (`ConnectionString` singular is the usual typo — `dotnet user-secrets remove` the wrong one), and the value has to be the *whole* string, not just `Server=...` chopped at the first `;` by missing quotes. [Fixing both](../lecture-notes.md#when-you-type-it-wrong).
+- **Every creature is gone after a `DELETE`** — the `WHERE` was missing. In the mssql extension, right-click your database → **Delete**. Then, in terminal 2, run `dotnet ef database update`: it builds the database again from your migrations, six creatures included.
 - **`Invalid object name 'Cryptids'`** — the table isn't there. You generated the migration but never ran `dotnet ef database update`.
 - **`Unable to resolve service for type ... CryptidContext`** — task 3's line is missing, or it's *below* `builder.Build()`.
 - **The registry is empty and there's no error** — the table exists but has no rows. Open your migrations: if none of them has an `InsertData`, the seed data was written after the last one. Add a migration that carries it — `dotnet ef migrations add SeedCryptids`, then `dotnet ef database update` — which is exactly task 4's part 2.
