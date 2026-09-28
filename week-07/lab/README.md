@@ -212,6 +212,14 @@ dotnet ef database update
 > [!NOTE]
 > **`/Cryptids` looks exactly the same as it did at setup, and that's correct.** It's still showing six creatures out of `CryptidData.cs`, because nothing has told your controller the database exists — that's task 5.
 
+**Run the checks, in terminal 3:**
+
+```bash
+dotnet test Cryptids.Checks
+```
+
+**`Passed: 2`** — checks 1 and 3, the same as before. Check 4's message says your migrations insert **0** rows of seed data. That's correct: your context has no seed data yet, and adding it is part 2.
+
 > [!NOTE]
 > **In class, stop here.** Your table is empty and check 4 is still red — both are correct. The seed data comes after the next part of the demo. Finished early? Find the line in the migration that makes `Region` `nvarchar(80)`, then find the annotation in `Models/Cryptid.cs` it came from. Or help a classmate. Working at home? Carry straight on.
 
