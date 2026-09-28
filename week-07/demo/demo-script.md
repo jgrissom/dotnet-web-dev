@@ -247,7 +247,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   dotnet ef database update
   ```
 - [ ] **Let the SQL scroll past and don't apologize for it.** *"That's the CREATE TABLE it just ran, and you can read it"*
-- [ ] **Refresh the mssql panel you left open in §3** — 🎯 the database that wasn't there **now is**, and expanding it shows **two tables**: `Trucks`, and `__EFMigrationsHistory` with one row. *"Before that command, this server had nothing of mine on it. One command."*
+- [ ] **Refresh the mssql panel you left open in §3** — 🎯 the database that wasn't there **now is**, and expanding it shows **two tables**: `Trucks`, and `__EFMigrationsHistory` with one row. *"Two commands ago, this server had nothing of mine on it."*
 - [ ] **Open the `Trucks` table. It has no rows.** *"A table, correctly built, completely empty. Nobody has put anything in it"*
 - [ ] ⚠️ **Then point at the browser, still showing six trucks, and name the gap** — it runs all the way to §5a: *"and the page hasn't changed at all. Six trucks, same as at the start of tonight. It is still reading `TruckData.All` out of a file, because nothing has told the controller the database exists. Watch that gap; it closes when I change the controller"*
 - [ ] *"The `__EFMigrationsHistory` table is how `database update` knows what it's already done. Run it again and watch what it actually does —"* do it — *"it asks the history table what has already been applied. That's the SQL going past. Then it applies nothing, because the list says there's nothing left to do. It's not clever. It's a list"*. ⚠️ **You still get SQL on screen — that's the history being read, not work being done.** Point at the summary line at the end, which says so in as many words
