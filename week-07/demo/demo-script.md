@@ -295,7 +295,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] 🎯 **Stop on truck 7 and set the experiment up out loud.** It is the whole reason §5a's reload proves anything: *"`Sconnie Sliders` has never existed. It is not in `TruckData.cs`, it has never been on that page. It exists only in the database. So if this page ever shows seven trucks, there is exactly one place they could have come from"*
 - [ ] *"`HasData` says: these rows are part of what this database **is**. Not 'insert them now' — part of the description, the same way the columns are"*
 - [ ] ⚠️ **Point at the explicit `Id`s and say why**, because the error message for getting this wrong is long: *"normally the database picks ids. Seed rows are different — EF Core has to be able to tell next time whether row 3 changed, vanished or is new, and it can't do that without a stable identity"*
-- [ ] Say what seed data is *for*: reference data, categories, a starting set. **Not test records**
+- [ ] Say what seed data is *for*: *"Seed data is for rows every copy of this app needs from the start: a list of categories, or a starting set like these trucks. It's not for test records you plan to delete later."*
 - [ ] **Refresh the `Trucks` table in the mssql panel.** 🎯 **Still no rows** — *"I changed the model. Why isn't it in the table?"* Let them answer with the snapshot rule from §3
 
 ### The second migration
