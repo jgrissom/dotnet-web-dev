@@ -186,6 +186,14 @@ using Cryptids.Web.Data;
 - **Above `builder.Build()`**, not below. Services have to be registered before the app is built, and the error if you get it backwards doesn't say so.
 - **`GetConnectionString("DefaultConnection")`** has to match the key you set in task 1 exactly — `ConnectionStrings:DefaultConnection`. Misspell either end and it returns `null`, `UseSqlServer(null)` throws, and your app won't start at all.
 
+**Run the checks, in terminal 3:**
+
+```bash
+dotnet test Cryptids.Checks
+```
+
+**`Passed: 2`** — checks 1 and 3. Check 2's message says your model seeds **0** creatures. That's correct: the seed data comes in task 4's part 2.
+
 > [!NOTE]
 > **In class, stop here.** Task 4 comes after the next part of the demo. Check 2 is still red, and that's expected — its seed data comes later. Finished early? In terminal 2, run `dotnet ef dbcontext info` and find your server and database on the `Data source:` and `Database name:` lines — that's your user secret, read by your `AddDbContext` line. Or help a classmate. Working at home? Carry straight on.
 
@@ -259,6 +267,14 @@ dotnet ef database update
 
 Refresh the mssql extension again. **Six rows** in `Cryptids`, and a second row in `__EFMigrationsHistory`.
 
+**Run the checks, in terminal 3:**
+
+```bash
+dotnet test Cryptids.Checks
+```
+
+**`Passed: 4`** — checks 1 to 4. Checks 2 and 4 went green together, because the seed data finished both.
+
 > [!NOTE]
 > **In class, stop here.** Task 5 comes after the next part of the demo. Finished early? Put `InitialCreate` and `SeedCryptids` side by side and read their `Down` methods — each one undoes its own `Up`. Or help a classmate. Working at home? Carry straight on.
 
@@ -318,6 +334,14 @@ public IActionResult Details(int id)
 > **Watch the SQL.** Look at the terminal running `dotnet watch` — EF Core prints the `SELECT` it generated. Load `/Cryptids/Details/2` and read that one too: `FirstOrDefault(c => c.Id == id)` didn't fetch six creatures and pick one, it became a `WHERE` clause.
 
 **Leave `Models/CryptidData.cs` alone for now.** Your POST action still uses it, so deleting it here would stop the project compiling — and a project that doesn't compile can't run any checks at all. **Task 6 opens by deleting it**, once you're ready to fix what that breaks.
+
+**Run the checks, in terminal 3:**
+
+```bash
+dotnet test Cryptids.Checks
+```
+
+**`Passed: 5`** — tonight's in-class target. Check 6's message says `Models/CryptidData.cs` is still in your project. That's correct: deleting it is how task 6 starts.
 
 > [!NOTE]
 > **In class, stop here.** Task 6 comes after the next part of the demo. Finished early? Try **Read the SQL** or **Order the registry** from [🚀 Done early?](#-done-early) — neither one touches task 6. Or help a classmate. Working at home? Carry straight on.
