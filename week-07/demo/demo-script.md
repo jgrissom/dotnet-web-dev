@@ -395,7 +395,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   return RedirectToAction(nameof(Index));
   ```
 - [ ] Delete the old `truck.Id = TruckData.All.Max(...) + 1;` line while you're in there — you come back to it on the next slide
-- [ ] **Predict, show of hands:** *"guard's intact, I've added it to the context, I redirect. Does the truck turn up?"*
+- [ ] *"Let's file a truck and see if it turns up."*
 - [ ] File a truck — **`Ghost Kitchen` / `Fusion` / `Madison` / `4.9`**. The form submits. The redirect happens. **`/Trucks` still shows seven** — the same seven as before, with no `Ghost Kitchen` among them
 - [ ] 🎯 **Sit in it.** *"No error. No warning. The form worked perfectly and nothing was saved. Check the terminal — there's no INSERT. Check the table —"* open the **mssql** panel and refresh — *"still seven rows"*
 - [ ] Now say why: **`Add` does not write anything.** *"It tells the context 'I intend to insert this.' Nothing has left the process"*
