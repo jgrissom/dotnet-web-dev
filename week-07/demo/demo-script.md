@@ -84,7 +84,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 - [ ] 🎞️ **GO TO SLIDE 3** — *Outside the process*. Walk the table row by row *"Data stored in memory is not persistent - data stored on disk IS"*
 - [ ] 🎯 **Land the third row and slow down on it:** *"two apps see the same data. Tonight your laptop and your Azure app point at the same database. You'll add a truck on the deployed site and see it on localhost. Nothing you have built in six weeks could do that."*
-- [ ] Say what's *not* happening: **nothing to install.** The school runs the SQL Server, you each have an account, and it's reachable off campus. The only new tool is a VS Code extension for looking at tables
+- [ ] Say what's *not* happening: *"There's nothing to install tonight. The school runs the SQL Server. You each have an account on it, and you can reach it off campus. The only new tool is a VS Code extension for looking at tables."*
 
 ### The shape of the night *(slide 4)*
 
@@ -112,7 +112,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   ```
 - [ ] **Open `Curbside.csproj` and point at what appeared.** *"That's all that command does — it edited this file and downloaded a package. There's no install directory, and this file is the part that gets committed"*
 - [ ] Name the split, briefly: *"`.SqlServer` is EF Core plus the bit that speaks T-SQL"* · *"`.Design` is only used by the `dotnet ef` command-line tool, never by your app. This is needed in order to run migrations - which we will see soon."*
-- [ ] Mention the tool is per-machine, not per-project — `dotnet tool install --global dotnet-ef` — and that you already have it
+- [ ] Mention the tool: *"The `dotnet ef` command is a separate tool. You install it once per computer, not once per project — `dotnet tool install --global dotnet-ef`. I already have it."*
 
 ### The DbContext *(slide 5)*
 
@@ -162,7 +162,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] Point at what's still visible — the server, the database, the `User ID`, and above all **the key name**: *"`set` prints `Successfully saved` no matter what you hand it. This is the command that tells you what actually landed. It does NOT mean that the connection is valid!"*
 - [ ] **Show what `init` did:** open `Curbside.csproj` and point at the `<UserSecretsId>` line. *"That's a folder name, not a secret. It gets committed — it's how the tooling finds the file next time"*
 - [ ] *"It gets saved in a json file outside of my project directory. Not in the project. Not in the repo. In my user profile"*
-- [ ] Walk the four parts of the string: which machine · which database · who you are · **and `TrustServerCertificate=True`**
+- [ ] Walk the four parts of the string: *"A connection string has four parts. `Server` is which machine. `Database` is which database on that machine. `User ID` and `Password` are who you are. And `TrustServerCertificate` — I'll come back to that one."*
 - [ ] *"We will talk about the naming convention for your databases during the lab. One database per application."*
 - [ ] Say the part that sounds wrong: *"that database does not exist yet. I'm naming one that isn't there — `database update` in §3 creates it. You never make one by hand"*
 - [ ] Give the certificate line its sentence, because someone always asks: *"`TrustServerCertificate=True` tells the app to trust the school server's certificate without checking it. Without it, the connection is refused. That's fine on a school network. It is not what you'd write for a real production app."*
@@ -222,7 +222,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 ### Generating the migration
 
 - [ ] *"The next command writes a C# file. Not SQL, not magic — a file you can open and read, which is exactly what we are about to do"*
-- [ ] In the second terminal, **from the folder with the `.csproj` in it** — say that out loud, it's the opposite of `dotnet test`:
+- [ ] In the second terminal, **from the folder with the `.csproj` in it**: *"`dotnet ef` runs from the folder with the `.csproj` in it. That's the opposite of `dotnet test` in the lab, which runs from the folder above."*
   ```bash
   dotnet ef migrations add InitialCreate
   ```
@@ -398,7 +398,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] File a truck — **`Ghost Kitchen` / `Fusion` / `Madison` / `4.9`**. The form submits. The redirect happens. **`/Trucks` still shows seven** — the same seven as before, with no `Ghost Kitchen` among them
 - [ ] 🎯 **Sit in it.** *"No error. No warning. The form worked perfectly and nothing was saved. Check the terminal — there's no INSERT. Check the table —"* open the **mssql** panel and refresh — *"still seven rows"*
 - [ ] Now say why: **`Add` does not write anything.** *"It tells the context 'I intend to insert this.' Nothing has left the process"*
-- [ ] **Add the line** — ⚠️ **and say it's a C# edit so `dotnet watch` will restart**:
+- [ ] **Add the line**: *"That's a C# change. Watch the first terminal — `dotnet watch` picks it up before I file the truck again."*
   ```csharp
   _context.SaveChanges();
   ```
@@ -457,7 +457,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] **Call them back from the lab:** *"Stop where you are. If task 6 isn't finished, it finishes at home."*
 - [ ] 🎞️ **GO TO SLIDE 17** — *The deployed app*
 - [ ] ⚠️ **Nothing is deployed tonight — this is a talk-through, not a demo.** Say so: *"I'm not deploying this; the only Azure deploy I do all term was week 3. This is what **you** do for the homework"*
-- [ ] Walk the three things a deployed app needs: the packages (they ship with the build) · the code (it's in your repo) · **the connection string**, which is the interesting one
+- [ ] Walk the three things a deployed app needs: *"A deployed app needs three things. The packages ship with the build. The code is in your repo. The connection string is the interesting one, because it isn't in your repo."*
 - [ ] 🔗 **Collect §2's blank `Data source:` — this is what it was for.** *"Your secret is on your laptop, in your user profile. It is not in your repo, so it isn't in the deploy. And you watched a production app refuse to read it. So Azure has to be told separately"*
 - [ ] Show **both** commands on the slide. The first is the one they've run for four weeks; the second is new and runs **once per app, ever**
 - [ ] 🎯 **Point at the double underscore and say why:** *"`ConnectionStrings__DefaultConnection`. Two underscores, because an environment variable can't have a colon in it on every platform. .NET translates it straight back to the name your code already asks for. Nothing in your code changes"*
@@ -476,7 +476,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ## 9 · Wrap-up, after the lab *(slide 19)*
 
-- [ ] 🎞️ **GO TO SLIDE 19** — *Tonight, in one picture*. Walk it once, top to bottom — model, context, migration, database, and the two arrows back up
+- [ ] 🎞️ **GO TO SLIDE 19** — *Tonight, in one picture*. Walk it once, top to bottom: *"Start at the top. The model's annotations became columns. The context says which class is a table. `migrations add` writes the change down as C#. `database update` makes the change on the server. Then back up: `ToList()` turns into a SELECT, and `SaveChanges()` turns into an INSERT, and the new Id comes back."*
 - [ ] 🔗 **Answer last week's promise honestly:** *"I said one line would change. It was a constructor, two lines in the reads and a `SaveChanges`. But the **shape** held: every decision about validating, redirecting and rendering survived untouched, because none of them ever cared where the list came from"*
 - [ ] Homework: **their own app's list moves into SQL Server** — same six steps, their model. And the deployed-plus-local exercise
 - [ ] 🔗 Week 8: *"you've done the R in CRUD, and half the C. Next week is the other two letters — and the framework writes most of it for you"*
