@@ -237,7 +237,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] Walk three more, in the migration on screen:
   - **`nullable: false`** on `Name`, `Cuisine`, `City` — that's `[Required]`, now a database constraint
   - **`City` is `nvarchar(max)`** — it has `[Required]` but no `[StringLength]`, so nothing said how long it could be. *"An annotation you didn't write shows up too"*
-  - **`Id` gets `SqlServer:Identity`** — *"EF Core assumed a property called `Id` is the primary key, by convention, and made **SQL Server** responsible for numbering it. Hold onto that. Later tonight it deletes a line of your code"*
+  - **`Id` gets `SqlServer:Identity`** — *"EF Core assumed a property called `Id` is the primary key, by convention, and made **SQL Server** responsible for numbering it."*
 - [ ] ⚠️ **Say the snapshot rule now, because it's the other big lab failure:** *"a migration is a photograph of your model at the moment you generate it. Change the model afterwards and this file does not follow — you add another one. That matters as soon as we seed the table"*
 
 ### Applying it
