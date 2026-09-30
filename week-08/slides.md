@@ -32,24 +32,6 @@ style: |
 
 ---
 
-<!-- _footer: '🖥️ Demo §1 · the payoff, retold' -->
-
-## Seven trucks. Still there.
-
-`Ctrl+C` → `dotnet watch` → reload.
-
-<br>
-
-**Seven.** That's what a foundation is.
-
-<br>
-
-You have **C**reate and **R**ead. Tonight: **U** and **D** —
-
-and most of it gets written *for* you.
-
----
-
 <!-- _footer: '🖥️ Demo §1 · collect the reading' -->
 
 ## What Edit needs
@@ -291,22 +273,6 @@ The scaffold shipped the answer to a question you hadn't asked yet.
 
 ---
 
-<!-- _footer: '🖥️ Demo §7' -->
-
-## The scaffold comes down
-
-Everything worth keeping has been ported.
-
-What's left is an unthemed admin UI nobody maintains.
-
-<br>
-
-Delete the controller. Delete the views. **Restart** — deleting
-
-a class is a rude edit (`ENC0033`), same as last week.
-
----
-
 <!-- _footer: '🖥️ Demo §8 · a column on a live table' -->
 
 ## A column on a live table
@@ -373,7 +339,7 @@ the view · the form · **the `[Bind]` list**
 - **5** — two new columns, one additive migration
 - **6** — the plates go on display
 
-**⏱️ 50 minutes · target tonight: 1–4 green.**
+**⏱️ 16 minutes · target tonight: 1–4 green.**
 
 ---
 

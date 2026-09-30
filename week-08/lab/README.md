@@ -2,7 +2,7 @@
 
 The Registry can take reports and show them. It cannot fix a typo in one, and it cannot get rid of one that turned out to be a hoax about a neighbor's dog. Tonight: a scaffolded reference controller, an Edit you port from it, a Delete that asks first — and then the archive's six **field-guide plates** go on display, which takes two new columns on a table that already has rows in it.
 
-**Time:** ~50 minutes in class — **in-class target: checks 1–4 green.** Checks 5–6 (the plates) are the same moves your homework needs, and they roll into it if the clock wins.
+**Time:** ~55 minutes in class, in five short blocks — each one follows the part of the demo it practices, and every block but the last ends at an **In class, stop here** note. **In-class target: checks 1–4 green.** Checks 5–6 (the plates) are the same moves your homework needs, and they roll into it if the clock wins.
 
 ## Setup
 
@@ -131,6 +131,17 @@ Open `/Cryptids` and count six. Then leave it running for the rest of the lab.
 > [!TIP]
 > **On a lab PC that resets when it reboots:** both the tool and your secret are gone next session. Two commands bring them back — the two at the top of this task. Keep your connection string somewhere that isn't this machine.
 
+**Run the checks, in terminal 3:**
+
+```bash
+dotnet test Cryptids.Checks
+```
+
+**`Passed: 1`** — the same as when you started. Task 1 changed your database, and the checks never look at it. Check 2's message says `CryptidsController` has no Edit action. That's correct: task 3 ports one.
+
+> [!NOTE]
+> **In class, stop here.** Task 2 comes after the next part of the demo. Checks 2 to 6 are still red, and that's expected — the rest of tonight turns them green. Finished early? Open the `Migrations` folder and find the `InsertData` call in the `InitialCreate` migration — that's what put your six creatures back after the drop. Or help a classmate get to six creatures on `/Cryptids`. Working at home? Carry straight on.
+
 ### Task 2 in full
 
 **No check for this one**, and the code you write tonight doesn't come out of it — tasks 3 and 4 hand you the ported versions, already in the Registry's style. The scaffold is a *reference*, and task 4 deletes it.
@@ -154,6 +165,17 @@ Six lines of output: **one controller, five views.** Then:
 | `Could not execute because the specified command or file was not found` | the tool isn't installed on this machine — top of task 1 |
 | `...install Entity Framework core packages... Microsoft.EntityFrameworkCore.Tools` | you're in a project without the packages — the starter has them, so check you're inside `Cryptids.Web` |
 | `Scaffolding failed: Build failed` | your project doesn't compile; fix that first — the scaffolder builds before it writes |
+
+**Run the checks, in terminal 3:**
+
+```bash
+dotnet test Cryptids.Checks
+```
+
+**`Passed: 1`** — still one. No check looks at the scaffold; it's the reference you port from. Check 2's message still says `CryptidsController` has no Edit action, and the Edit pair it's asking for is sitting in `CryptidsScaffoldController`.
+
+> [!NOTE]
+> **In class, stop here.** Task 3 comes after the next part of the demo. Checks 2 to 6 are still red, and that's expected. Finished early? Put the scaffold's `Views/CryptidsScaffold/Create.cshtml` next to your own `Views/Cryptids/Create.cshtml` and find what the generator did differently. Or help a classmate get the scaffolder to run. Working at home? Carry straight on.
 
 ### Task 3 in full
 
@@ -297,10 +319,21 @@ using Microsoft.EntityFrameworkCore;
 </div>
 ```
 
-Correct a record in the browser — change Mothman's **Reports on file** box, watch the `UPDATE ... WHERE` in the terminal — then `dotnet test Cryptids.Checks`: **3 / 6.**
+Correct a record in the browser — change Mothman's **Reports on file** box, watch the `UPDATE ... WHERE` in the terminal.
 
 > [!NOTE]
 > **Looking for a "Sightings" field? There isn't one on screen.** The property is `Sightings`, but it carries `[Display(Name = "Reports on file")]`, and that's what the label renders — same `[Display]` you met in week 6. The C# name is what you write in `asp-for`; the display name is what the page shows.
+
+**Run the checks, in terminal 3:**
+
+```bash
+dotnet test Cryptids.Checks
+```
+
+**`Passed: 3`** — checks 1 to 3. Check 4's message says `CryptidsController` has no Delete action. That's correct: task 4 ports it.
+
+> [!NOTE]
+> **In class, stop here.** Task 4 comes after the next part of the demo. Checks 4 to 6 are still red, and that's expected. Finished early? Try **Redirect a correction somewhere smarter** from [🚀 Done early?](#-done-early) — it only changes the Edit you just ported. Or help a classmate. Working at home? Carry straight on.
 
 ### Task 4 in full
 
@@ -396,7 +429,16 @@ dotnet remove package Microsoft.EntityFrameworkCore.Tools
 > [!IMPORTANT]
 > **Remove those two and nothing else. `Microsoft.EntityFrameworkCore.Design` stays** — that's what `dotnet ef` runs on, and task 5's `migrations add` needs it. It came with week 7's database, not with the scaffolder.
 
-`dotnet test Cryptids.Checks`: **4 / 6** — and that's tonight's in-class target. 🎉 The rest is the plates.
+**Run the checks, in terminal 3:**
+
+```bash
+dotnet test Cryptids.Checks
+```
+
+**`Passed: 4`** — tonight's in-class target. 🎉 Check 5's message says `Cryptid` has no `LatinName` property yet. That's correct: task 5 adds it, and the rest is the plates.
+
+> [!NOTE]
+> **In class, stop here.** Tasks 5 and 6 come after the next part of the demo. Finished early? Try **Produce the deleted-under-you 404 on purpose** or **Read the UPDATE closely** from [🚀 Done early?](#-done-early) — neither one touches task 5. Or help a classmate. Working at home? Carry straight on.
 
 ### Task 5 in full
 

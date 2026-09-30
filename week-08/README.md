@@ -10,7 +10,7 @@ The night the framework starts writing code — and the skill being taught is re
 | Prep&nbsp;/⁠&nbsp;in-⁠class&nbsp;script | 📖&nbsp;[lecture-⁠notes.md](lecture-notes.md) | Full lecture content, the generated-code walkthrough, **troubleshooting appendix** |
 | Projected&nbsp;in&nbsp;class | 🎞️&nbsp;[slides.md](slides.md) | The deck (GFM, one slide per `##`) — [**present it live**](https://jgrissom.github.io/dotnet-web-dev/week-08/) (arrow keys, `F` for fullscreen) |
 | In&nbsp;class,&nbsp;live-⁠coding | 🎨&nbsp;[demo/⁠](demo/) | *Curbside gets the rest of CRUD* — picks up where week 7 left it; [clickable cue sheet](https://jgrissom.github.io/dotnet-web-dev/week-08/demo/script.html) |
-| In&nbsp;class,&nbsp;last&nbsp;50&nbsp;min | 🧪&nbsp;[lab/⁠](lab/) | *The Registry gets a corrections desk* — 6 `dotnet test` checks; 1/6 green out of the box (answer key in the private answer-keys repo) |
+| In&nbsp;class,&nbsp;55&nbsp;min&nbsp;in&nbsp;five&nbsp;blocks | 🧪&nbsp;[lab/⁠](lab/) | *The Registry gets a corrections desk* — 6 `dotnet test` checks; 1/6 green out of the box; each block follows the part of the demo it practices, and all but the last end at an *In class, stop here* note (answer key in the private answer-keys repo) |
 | With&nbsp;the&nbsp;homework | ✅&nbsp;[homework-⁠checks.js](homework-checks.js) | Student self-check — the same checks the grader runs (**12 of the 20 pts are back in the script**; it runs the full CRUD cycle and cleans up after itself) |
 | Assigned&nbsp;at&nbsp;wrap-⁠up | 📤&nbsp;[homework.md](homework.md) | Their own app gets Edit + Delete + one new column, added forward; redeploy is one command; URL + repo via Canvas |
 
@@ -21,12 +21,11 @@ The night the framework starts writing code — and the skill being taught is re
 ## 📋 Before class, don't forget
 
 - **Deployed-app gallery** — 2–3 student Azure URLs picked in advance; 2 minutes each. Their data survives the free-tier sleep now; worth noticing out loud
-- Collect the reading in §1 — *"what would have to change to turn your Create form into an Edit form?"* — and hold its second question (*where does the Id come from?*) unanswered until slide 9
+- Collect the reading in §1 — *"what would have to change to turn your Create form into an Edit form?"* — and hold its second question (*where does the Id come from?*) unanswered until slide 8
 - ⚠️ **Copy `week-08/demo-starter/Curbside` out of the private answer-keys repo**, set your secret (`set` only — the id ships), then run `dotnet ef database drop --force` and `dotnet ef database update` — **after your last rehearsal**, as the final prep step. The shipped migrations refuse a database that remembers week 7's rehearsal, and every copy shares one `<UserSecretsId>`, so rehearsing dirties the same database you teach from
 - **`dotnet tool install --global dotnet-aspnet-codegenerator`** before class — and one rehearsal pass, which also warms the NuGet cache for §2's live `dotnet add package`
 - **mssql extension** signed in and tested, panel closed — two appearances tonight (§8's new column, the wrap-up)
 - Terminal sized for the back row; the SQL log gains `UPDATE` and `DELETE` tonight
-- Your finished week-8 Registry with `dotnet test` at 6/6 — **the plates debut at the lab launch, on localhost, nothing deployed**
 - Remind students to `git pull` the starters repo for the week-08 folder
 
 **Prev:** [← Week 7 — EF Core & SQL Server](../week-07/README.md) · **Next:** [Week 9 — Related Data →](../week-09/README.md)
