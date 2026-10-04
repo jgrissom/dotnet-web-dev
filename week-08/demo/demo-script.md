@@ -78,7 +78,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 ### Collect the reading *(slide 2)*
 
 - [ ] **Collect the reading before any slide goes up** — the slide lists the answers: *"Suppose we want to implement the UPDATE part of CRUD. How is it different from CREATE? We need a form? We need an http post? What is different?"* Take three or four answers out loud
-- [ ] 🎞️ **GO TO SLIDE 2** — *What Edit needs* · walk the slide's three, crediting the room for each one they found: *"The big difference is that the form arrives pre-filled with the record's existing field values. The app has to know which record. And the save is an UPDATE, not an INSERT."*
+- [ ] 🎞️ **GO TO SLIDE 2** — *What Edit needs* · walk the slide's three, crediting the room for each one they found: *"The big difference is that the form arrives pre-filled with the record's existing field values. In order to do that, the app has to know which record. And the save is an UPDATE, not an INSERT."*
 - [ ] 🎯 **Then the reading's second question — it's the slide's bottom line — and don't answer it:** *"when you hit Save on an edit, how does the app know which record you meant? Your Create form never sends an Id."* Take guesses. *"You will be able to answer that shortly."*
 
 ### The shape of the night *(slide 3)*
