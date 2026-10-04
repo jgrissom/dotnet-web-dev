@@ -43,6 +43,14 @@ CryptidsCrud/              ← in `dotnet-web`, the folder you copied and rename
 | 2 | inside `Cryptids.Web` — `cd Cryptids.Web` | everything else: `dotnet user-secrets`, `dotnet ef`, `dotnet aspnet-codegenerator` |
 | 3 | `CryptidsCrud`, the folder holding **both** projects | `dotnet test Cryptids.Checks` |
 
+**All three open in `CryptidsCrud`. Move terminal 2, and only terminal 2:**
+
+```bash
+cd Cryptids.Web
+```
+
+Terminals 1 and 3 stay in `CryptidsCrud`. That's why terminal 1's command later is `dotnet watch --project Cryptids.Web` — it starts the app from one folder up.
+
 **5. In terminal 3:**
 
 ```bash
@@ -122,7 +130,7 @@ dotnet ef database update
 
 Watch what those two just did: dropped last week's database, then created it again, built the table and inserted the six creatures — schema *and* data, from files that came to you in a git clone. **The fact that that works is what a migration is:** a database you can carry in a repo.
 
-**Now start the app — in terminal 1:**
+**Now start the app — in terminal 1**, which is still in `CryptidsCrud`, the folder holding both projects:
 
 ```bash
 dotnet watch --project Cryptids.Web
@@ -674,6 +682,7 @@ In terminal 3, `dotnet test Cryptids.Checks`: **6 / 6.** The Registry has a corr
 - **`...install Entity Framework core packages and try again: Microsoft.EntityFrameworkCore.Tools`** — you're not inside `Cryptids.Web` (the starter has the packages), or in the homework, your own app doesn't have them yet.
 - **`Scaffolding failed: Build failed`** — the scaffolder compiles first. `dotnet build` in terminal 2 shows the real error; fix it, scaffold again.
 - **`msbuild: [Failure] Msbuild failed when processing the file`** in terminal 1, where `dotnet watch` runs — not a failed build. Read the end of the line: it's the `NU1901` advisory from Setup, printed a second way. If `Now listening on:` is above it, the app is running. It stops when task 4 removes the two scaffolding packages.
+- **`The project file '…/Cryptids.Web/Cryptids.Web' does not exist`** starting `dotnet watch --project Cryptids.Web` — look at the path: `Cryptids.Web` is in it twice. Terminal 1 is already inside `Cryptids.Web`, so there is no `Cryptids.Web` below it. Run `cd ..` in terminal 1, then the command again. Only terminal 2 belongs inside `Cryptids.Web`.
 - **`There is already an object named 'Cryptids'`** on `database update` — you skipped task 1's `dotnet ef database drop --force`, so your **week-7 tables and migration history are still there**. Run the drop in terminal 2, then `database update` again. (Only ever in this lab — never on your own project's database.)
 - **Saving an edit returns 404** — the posted `Id` and the URL's id genuinely disagree (a hand-edited hidden input, or a stale form), or the record was deleted while your form was open — that second one is the concurrency catch working. A *missing* hidden `Id` doesn't cause this; the binder falls back to the URL.
 - **Saving an edit added a second creature instead of correcting the first** — no hidden `Id` **and** no id in the form's action, so the POST arrived with `Id = 0`; `Update()` treats an unset key as new and inserts. One line: `<input type="hidden" asp-for="Id" />`. Check 3 catches this by counting records.
