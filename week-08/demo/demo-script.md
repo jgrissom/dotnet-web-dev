@@ -152,7 +152,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 ### Task is a Promise *(slide 7)*
 
 - [ ] Open `Controllers/TrucksScaffoldController.cs`. **Skim the shape first:** *"before we read closely — this is my week-7 controller with more checks added. Same constructor, same context, same actions"*
-- [ ] Point at `Index`: `return View(await _context.Trucks.ToListAsync());` — one line, three changes: `async Task<IActionResult>`, `await`, `ToListAsync`
+- [ ] Point at `Index`: `return View(await _context.Trucks.ToListAsync());` *"slightly different from the way we wrote it - the scaffolded code is using asynchronous methods"* — one line, three changes: `async Task<IActionResult>`, `await`, `ToListAsync`
 - [ ] 🎞️ **GO TO SLIDE 7** — *Task is a Promise* · 🎯 lean on what they know: *"if you have written `async`/`await` in JavaScript, you already know this shape."*
 - [ ] The *why*, one sentence, no more: *"while SQL Server is thinking, an `await`ed request lets go of its thread so the server can handle someone else. Under load that's the difference between queueing and keeping up"*
 - [ ] The honest rule: *"your week-7 sync code is not wrong and does not need rewriting tonight. The scaffolder writes async, so what we write from tonight is async. Both run side by side in one controller without complaint"*
