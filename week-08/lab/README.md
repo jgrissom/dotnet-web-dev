@@ -13,7 +13,7 @@ The Registry can take reports and show them. It cannot fix a typo in one, and it
 >
 > **Because they're already in, your first build prints yellow `NU1901` warnings — expected, and temporary.** They're low-severity advisories against `NuGet.Packaging` / `NuGet.Protocol`, which arrive six levels beneath the scaffolder. Read the line above: `Build succeeded`. Warnings, not errors — and **task 4 removes the packages, which stops them.**
 >
-> **`dotnet watch` then repeats them in a line that looks worse than it is:** `msbuild: [Failure] Msbuild failed when processing the file … Cryptids.Web.csproj`. Read to the end of that line — its message is the same advisory. Nothing failed: the `Now listening on:` line above it means your app is running, and your edits still reload. Those lines stop at task 4 too.
+> **When you start `dotnet watch` in terminal 1, it repeats them in a line that looks worse than it is:** `msbuild: [Failure] Msbuild failed when processing the file … Cryptids.Web.csproj`. Read to the end of that line — its message is the same advisory. Nothing failed: the `Now listening on:` line above it means your app is running, and your edits still reload. Those lines stop at task 4 too.
 >
 > **The seven plate images are already in `wwwroot/img/cryptids/`.** Task 6 puts them on screen; nothing has to be downloaded.
 
@@ -35,7 +35,7 @@ CryptidsCrud/              ← in `dotnet-web`, the folder you copied and rename
 
 **3. Open `CryptidsCrud` in VS Code** — the folder that *contains* both project folders.
 
-**4. Open two more terminals** — the `+` in the terminal panel, or `` Ctrl+Shift+` ``. **You need three tonight**, and `dotnet watch` is why: it stays running all lab and you can't type in it.
+**4. Open three terminals** — `` Ctrl+` `` opens the first, then the `+` in the terminal panel (or `` Ctrl+Shift+` ``) twice more. They are terminals 1, 2 and 3 for the rest of the lab, and every command below names the one it runs in. **You need three tonight**, and `dotnet watch` is why: it stays running all lab and you can't type in it.
 
 | Terminal | Where it stands | What runs in it |
 |---|---|---|
@@ -91,7 +91,7 @@ dotnet test Cryptids.Checks
 dotnet tool install --global dotnet-aspnet-codegenerator
 ```
 
-*(Already have it from watching the demo too closely? `dotnet tool update --global dotnet-aspnet-codegenerator` is safe to run regardless.)*
+*(Already have it from watching the demo too closely? `dotnet tool update --global dotnet-aspnet-codegenerator`, also in terminal 2, is safe to run regardless.)*
 
 **Then the connection string. Still in terminal 2** — the one step 4 left standing inside `Cryptids.Web`:
 
@@ -100,7 +100,7 @@ dotnet user-secrets init
 dotnet user-secrets set "ConnectionStrings:DefaultConnection" "Server=<SCHOOL-SQL-SERVER>;Database=Cryptids_<COURSE-NUMBER>_<YOUR-INITIALS>;User ID=<YOUR-USERNAME>;Password=<YOUR-PASSWORD>;TrustServerCertificate=True"
 ```
 
-Same drill as last week — server, username and password from the handout, quotes around the value, `dotnet user-secrets list` to see what actually landed. **This is a fresh copy of the project, so it needs its own `init` and `set`** — secrets are keyed to the project, not to you.
+Same drill as last week — server, username and password from the handout, quotes around the value, and `dotnet user-secrets list` in terminal 2 to see what actually landed. **This is a fresh copy of the project, so it needs its own `init` and `set`** — secrets are keyed to the project, not to you.
 
 **The database name is the same one you used last week**, though. The folder is new so you don't overwrite week 7's work, but this is the same application — the Cryptid Registry — and [one application gets one database](../../week-07/lecture-notes.md#naming-your-database).
 
@@ -256,7 +256,7 @@ using Microsoft.EntityFrameworkCore;
 **Then the view.** Make `Views/Cryptids/Edit.cshtml`. The scaffold's `Views/CryptidsScaffold/Edit.cshtml` has the mechanics — the hidden `Id`, the tag helpers, the validation spans, the Scripts section — and your `Create.cshtml` has the style. One thing comes from neither: **Cancel goes back to this record's Details page**, where Create's Cancel goes to the list and the scaffold has no Cancel at all. **This is the whole file:**
 
 > [!IMPORTANT]
-> **Creating a new `.cshtml` makes `dotnet watch` stop and ask to restart** — `Do you want to restart your app? Yes (y) / No (n) / Always (a) / Never (v)`, in the terminal watch is running in. Answer **`a`** and it won't ask again for the rest of the lab. Ignore it and the page fails with **`The view 'Edit' was not found`** — listing the exact path your file is sitting at, because the running app was built before the file existed. The file is fine; the app is old.
+> **Creating a new `.cshtml` makes `dotnet watch` stop and ask to restart** — `Do you want to restart your app? Yes (y) / No (n) / Always (a) / Never (v)`, in terminal 1, where watch is running. Answer **`a`** and it won't ask again for the rest of the lab. Ignore it and the page fails with **`The view 'Edit' was not found`** — listing the exact path your file is sitting at, because the running app was built before the file existed. The file is fine; the app is old.
 
 ```html
 @model Cryptid
@@ -321,7 +321,7 @@ using Microsoft.EntityFrameworkCore;
 </div>
 ```
 
-Correct a record in the browser — change Mothman's **Reports on file** box, watch the `UPDATE ... WHERE` in the terminal.
+Correct a record in the browser — change Mothman's **Reports on file** box, watch the `UPDATE ... WHERE` in terminal 1.
 
 > [!NOTE]
 > **Looking for a "Sightings" field? There isn't one on screen.** The property is `Sightings`, but it carries `[Display(Name = "Reports on file")]`, and that's what the label renders — same `[Display]` you met in week 6. The C# name is what you write in `asp-for`; the display name is what the page shows.
@@ -410,14 +410,14 @@ public async Task<IActionResult> DeleteConfirmed(int id)
 
 *(Both buttons in the same `mt-4` div reads nicely.)*
 
-**Try it:** file a fake report through your Create form, then close its file. Watch the `DELETE ... WHERE` in the terminal. Your six seeded creatures aren't precious — this database rebuilds from migrations — but deleting the fake keeps the next checks' counts obvious.
+**Try it:** file a fake report through your Create form, then close its file. Watch the `DELETE ... WHERE` in terminal 1. Your six seeded creatures aren't precious — this database rebuilds from migrations — but deleting the fake keeps the next checks' counts obvious.
 
 ---
 
 **Then the scaffold comes down.** Delete **`Controllers/CryptidsScaffoldController.cs`** and the whole **`Views/CryptidsScaffold/`** folder. It was the reference; everything worth keeping has been ported, and what's left is an unthemed second UI nobody maintains.
 
 > [!WARNING]
-> **Restart after deleting it** — `Ctrl+C`, then `dotnet watch --project Cryptids.Web`. Deleting a class is a rude edit: `dotnet watch` prints `ENC0033` and keeps serving the old build, exactly like week 7's `CryptidData.cs` deletion.
+> **Restart after deleting it** — in terminal 1, `Ctrl+C`, then `dotnet watch --project Cryptids.Web`. Deleting a class is a rude edit: `dotnet watch` prints `ENC0033` and keeps serving the old build, exactly like week 7's `CryptidData.cs` deletion.
 
 **Then the tool goes back in the box.** The generated files are gone; the machinery that wrote them is still in your `.csproj`. In terminal 2:
 
@@ -492,7 +492,7 @@ Two things worth reading before you move on:
 > [!CAUTION]
 > **The week-7 reset button is gone.** Last week a broken migration meant "delete the `Migrations` folder and regenerate." **Not any more:** your table has rows, and your database's `__EFMigrationsHistory` remembers the old files by name. [Migrations are forward-only now](../lecture-notes.md#forward-only) — you fix a migration by adding another one. Check 5 enforces the additive shape.
 
-`dotnet test Cryptids.Checks`: **5 / 6.** *(Your browser still shows no plates — nothing renders `ImageUrl` yet. That's task 6, and it's exactly the gap week 7 taught you to expect: the database is ahead of the pages.)*
+In terminal 3, `dotnet test Cryptids.Checks`: **5 / 6.** *(Your browser still shows no plates — nothing renders `ImageUrl` yet. That's task 6, and it's exactly the gap week 7 taught you to expect: the database is ahead of the pages.)*
 
 ### Task 6 in full
 
@@ -654,11 +654,11 @@ public async Task<IActionResult> Index()
 >
 > Skip this and the form *looks* perfect — but [the guest list drops the unbound fields and `Update` writes the resulting nulls](../lecture-notes.md#the-guest-list-bites), so saving an edit **erases** a record's Latin name and plate. Silently. Check 6 catches it by editing The Hodag's Latin name through your form and reading what actually landed.
 >
-> ⚠️ **Then restart — `Ctrl+C`, then `dotnet watch --project Cryptids.Web`.** You changed *only* an attribute, and MVC reads each action's binding from its attributes at startup, so hot reload can report success and keep the old list. Re-test without restarting and the erase can happen again **with the correct fix already in place** — which sends you hunting a bug you've already fixed.
+> ⚠️ **Then restart — in terminal 1, `Ctrl+C`, then `dotnet watch --project Cryptids.Web`.** You changed *only* an attribute, and MVC reads each action's binding from its attributes at startup, so hot reload can report success and keep the old list. Re-test without restarting and the erase can happen again **with the correct fix already in place** — which sends you hunting a bug you've already fixed.
 
 **Try the whole thing:** reload `/Cryptids` — six plates. Home page — a random creature, plate and all. Edit The Hodag, refine its Latin name, save — it sticks. File a fresh report — *artist unknown*.
 
-`dotnet test Cryptids.Checks`: **6 / 6.** The Registry has a corrections desk and an illustrated archive. 🎉
+In terminal 3, `dotnet test Cryptids.Checks`: **6 / 6.** The Registry has a corrections desk and an illustrated archive. 🎉
 
 ## Rules
 
@@ -670,26 +670,26 @@ public async Task<IActionResult> Index()
 
 ## 🆘 Stuck?
 
-- **`Could not execute because the specified command or file was not found`** running the scaffolder — the tool isn't on this machine: `dotnet tool install --global dotnet-aspnet-codegenerator`. Frozen lab PCs lose it on reboot.
+- **`Could not execute because the specified command or file was not found`** running the scaffolder — the tool isn't on this machine. In terminal 2: `dotnet tool install --global dotnet-aspnet-codegenerator`. Frozen lab PCs lose it on reboot.
 - **`...install Entity Framework core packages and try again: Microsoft.EntityFrameworkCore.Tools`** — you're not inside `Cryptids.Web` (the starter has the packages), or in the homework, your own app doesn't have them yet.
-- **`Scaffolding failed: Build failed`** — the scaffolder compiles first. `dotnet build` shows the real error; fix it, scaffold again.
-- **`msbuild: [Failure] Msbuild failed when processing the file`** in the `dotnet watch` terminal — not a failed build. Read the end of the line: it's the `NU1901` advisory from Setup, printed a second way. If `Now listening on:` is above it, the app is running. It stops when task 4 removes the two scaffolding packages.
-- **`There is already an object named 'Cryptids'`** on `database update` — you skipped task 1's `dotnet ef database drop --force`, so your **week-7 tables and migration history are still there**. Run the drop, then `database update` again. (Only ever in this lab — never on your own project's database.)
+- **`Scaffolding failed: Build failed`** — the scaffolder compiles first. `dotnet build` in terminal 2 shows the real error; fix it, scaffold again.
+- **`msbuild: [Failure] Msbuild failed when processing the file`** in terminal 1, where `dotnet watch` runs — not a failed build. Read the end of the line: it's the `NU1901` advisory from Setup, printed a second way. If `Now listening on:` is above it, the app is running. It stops when task 4 removes the two scaffolding packages.
+- **`There is already an object named 'Cryptids'`** on `database update` — you skipped task 1's `dotnet ef database drop --force`, so your **week-7 tables and migration history are still there**. Run the drop in terminal 2, then `database update` again. (Only ever in this lab — never on your own project's database.)
 - **Saving an edit returns 404** — the posted `Id` and the URL's id genuinely disagree (a hand-edited hidden input, or a stale form), or the record was deleted while your form was open — that second one is the concurrency catch working. A *missing* hidden `Id` doesn't cause this; the binder falls back to the URL.
 - **Saving an edit added a second creature instead of correcting the first** — no hidden `Id` **and** no id in the form's action, so the POST arrived with `Id = 0`; `Update()` treats an unset key as new and inserts. One line: `<input type="hidden" asp-for="Id" />`. Check 3 catches this by counting records.
 - **An edit redirects but nothing changed** — `Update` only marks; the write is `await _context.SaveChangesAsync();`.
 - **Editing created a duplicate instead** — the POST calls `Add` somewhere. An edit goes through `Update`.
 - **Saving an edit erased the Latin name / plate** — the `[Bind]` list doesn't include the new names. Task 6's caution block is the fix, and this is *the* silent bug of the week.
-- **`The view 'Edit' was not found`, and the file *is* right there** — **look at your `dotnet watch` terminal.** Creating a new `.cshtml` is a change hot reload can't apply (`ENC0021`), so watch stops and asks **`Do you want to restart your app? Yes (y) / No (n) / Always (a) / Never (v)`** — and until you answer it, the app keeps serving the build from before your file existed. Press **`a`** and it stops asking for the rest of the lab. **Don't move the file; it's in the right place.**
+- **`The view 'Edit' was not found`, and the file *is* right there** — **look at terminal 1, where `dotnet watch` runs.** Creating a new `.cshtml` is a change hot reload can't apply (`ENC0021`), so watch stops and asks **`Do you want to restart your app? Yes (y) / No (n) / Always (a) / Never (v)`** — and until you answer it, the app keeps serving the build from before your file existed. Press **`a`** and it stops asking for the rest of the lab. **Don't move the file; it's in the right place.**
 - **`The view 'Edit' was not found`, and the file genuinely isn't there** — it belongs at `Views/Cryptids/Edit.cshtml` (same for `Delete.cshtml`). Check the spelling and the folder before you blame the reload.
 - **POSTing the delete returns 405** — the POST half is missing or lost its `[ActionName("Delete")]`. Port `DeleteConfirmed` with both attributes.
 - **"already defines a member called 'Delete'"** — you named the POST `Delete` too. That's why the scaffold's is `DeleteConfirmed`.
 - **Check 4 is red but delete works in the browser** — read the message: the scaffold controller is still in the project. Task 4 ends by deleting it (and restarting).
-- **`The model for context 'CryptidContext' has pending changes`** — you edited the model after generating the migration. Add another: `dotnet ef migrations add WhatYouChanged`. Forward only.
+- **`The model for context 'CryptidContext' has pending changes`** — you edited the model after generating the migration. Add another, in terminal 2: `dotnet ef migrations add WhatYouChanged`. Forward only.
 - **The plates 404 in the browser** — the `src` should start `/img/cryptids/` (leading slash, no `wwwroot`). The files are already in the starter; nothing needs downloading.
 - **Home page throws `Unable to resolve service`** — `HomeController` asks for the context now; that's fine ([the one registration](../../week-07/lecture-notes.md#one-registration) in `Program.cs` covers every controller, and it shipped with the starter), but check the constructor's parameter type is `CryptidContext`.
 - **Your edit isn't showing up, or the app stops responding** — `dotnet watch` keeps serving the **last version that built**, so a page can look completely fine while your newest edit hasn't compiled. Once in a while the app needs restarting outright. Terminal 1 is where the evidence is — a red ❌, an exception, or sometimes nothing at all — so glance at it whenever something doesn't add up, and press **Ctrl+R** there to force a full rebuild.
-- ⚠️ **`Further changes won't be applied to this process.`** — if the `dotnet watch` terminal prints that, **press `Ctrl+R` straight away**. It comes after `The assembly update failed`, and it means exactly what it says: nothing you save from that point lands, and the app may start throwing `BadImageFormatException` or `TypeLoadException` — even *"the format of the file `Cryptids.Web.dll` is invalid"* — sometimes failing to render its own error page, so the browser just gives up. **None of that is your code.** Hot reload garbled the running app; a fresh process reads it from disk and it all goes away.
+- ⚠️ **`Further changes won't be applied to this process.`** — if terminal 1 prints that, **press `Ctrl+R` straight away**. It comes after `The assembly update failed`, and it means exactly what it says: nothing you save from that point lands, and the app may start throwing `BadImageFormatException` or `TypeLoadException` — even *"the format of the file `Cryptids.Web.dll` is invalid"* — sometimes failing to render its own error page, so the browser just gives up. **None of that is your code.** Hot reload garbled the running app; a fresh process reads it from disk and it all goes away.
 - The [troubleshooting appendix](../lecture-notes.md#appendix-troubleshooting) covers the rest.
 
 ## 🚀 Done early?
@@ -698,4 +698,4 @@ public async Task<IActionResult> Index()
 - **Produce the deleted-under-you 404 on purpose.** Edit form open in one tab, close the file in another, then save the edit. That's the `DbUpdateConcurrencyException` catch you ported, earning its keep.
 - **Read the UPDATE closely.** Edit a record and look at the SQL: every column is in the SET clause, not just the one you changed. That's `Update()` marking the whole record — and it's why the `[Bind]` bite writes nulls instead of keeping old values.
 - **Make the reads async too.** `Index` and `Details` still run week 7's sync code, which is fine — but converting them (`ToListAsync`, `FirstOrDefaultAsync`, `async Task<IActionResult>`) is good practice for the homework.
-- **[Attach the debugger to the Registry](../lecture-notes.md#attach-to-the-process).** Breakpoint on the Edit guard, correct a record, and walk the Variables panel — same moves as the demo, your app. ⚠️ **Restart the app first** — `Ctrl+C`, then `dotnet watch --project Cryptids.Web` again. You've been editing code all lab, and the debugger refuses to attach to a process `dotnet watch` has hot-reloaded: *"Attaching a .NET debugger to this process is not allowed because code changes have been applied."* Restart, attach, then leave the code alone until you detach.
+- **[Attach the debugger to the Registry](../lecture-notes.md#attach-to-the-process).** Breakpoint on the Edit guard, correct a record, and walk the Variables panel — same moves as the demo, your app. ⚠️ **Restart the app first** — in terminal 1, `Ctrl+C`, then `dotnet watch --project Cryptids.Web` again. You've been editing code all lab, and the debugger refuses to attach to a process `dotnet watch` has hot-reloaded: *"Attaching a .NET debugger to this process is not allowed because code changes have been applied."* Restart, attach, then leave the code alone until you detach.
