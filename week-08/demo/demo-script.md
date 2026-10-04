@@ -134,7 +134,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 ### What it didn't write *(slide 6)*
 
 - [ ] Ask the uncomfortable question yourself before someone else does: *"so why did we spend four weeks?"*
-- [ ] 🎞️ **GO TO SLIDE 6** — *What it didn't write*. Walk the list: your **model and its rules** (week 6) · your **theme, layout, cards** (week 5) · your **seed data and migrations** (week 7) · **which app this even is** (week 4)
+- [ ] 🎞️ **GO TO SLIDE 6** — *What it didn't write* · *"Here is why. These four things are yours, and the scaffolder wrote none of them. It read your model, your validation rules and your context to do its work. It could not have written them, because they are your decisions about your app."* Give the room a moment to read the four rows — don't read them out
 - [ ] 🎯 **The sentence:** *"It wrote the code every CRUD app needs. It made none of your decisions. Every line it generated is a line you could now write yourself, and that is why it is fine to let a tool write it. In week 4 you could not have read this code. Tonight you can, and we read it together after your lab block"*
 - [ ] **✓ CHECKPOINT:** someone can say what the scaffolder read to do its work — the model, the context, and the annotations on them
 
