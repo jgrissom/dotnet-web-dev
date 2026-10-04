@@ -46,13 +46,13 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   dotnet tool install --global dotnet-aspnet-codegenerator
   ```
   *(Already have it? `dotnet tool update --global dotnet-aspnet-codegenerator` — a 9.x tool against a 10.x SDK fails with a runtime error, same family as last week's `dotnet ef` skew.)*
-- [ ] **Rehearse the whole script once in a separate copy (≈40 min).** Besides finding what's broken, the rehearsal warms your NuGet cache — §2 adds two packages live, and a warm cache makes those commands instant on class wifi
+- [ ] **Rehearse the whole script once in a separate copy (≈40 min).** Besides finding what's broken, the rehearsal warms your NuGet cache — §1 adds two packages live, and a warm cache makes those commands instant on class wifi
 - [ ] 🚨 **Then run the drop + rebuild above again — the rehearsal used the same database.** A separate *copy* is not a separate database: the `<UserSecretsId>` ships in the `.csproj`, so every copy reads one secret and points at one database. Forty minutes of rehearsal leaves it in tonight's **end** state — `Slogan` column added, Ghost Kitchen gone — and §8 has nothing left to add in front of the room. **Last thing before class, always: drop, update, `/Trucks` shows seven cards**
 - [ ] Run it, same terminal:
   ```bash
   dotnet watch
   ```
-- [ ] **Open a second integrated terminal** (the `+` on the terminal panel — it opens in the same folder). `dotnet watch` owns the first one all night; everything you type tonight goes in the second — §2's two `dotnet add package` commands and the scaffolder, then §8's `dotnet ef migrations add` and `dotnet ef database update`
+- [ ] **Open a second integrated terminal** (the `+` on the terminal panel — it opens in the same folder). `dotnet watch` owns the first one all night; everything you type tonight goes in the second — §1's two `dotnet add package` commands, §2's scaffolder, then §8's `dotnet ef migrations add` and `dotnet ef database update`
 - [ ] ⚠️ **Know the one prompt that will bite you, and answer it `a` the first time.** Creating a *new* `.cshtml` (§4's `Edit.cshtml`, §6's `Delete.cshtml`) is a change hot reload can't apply, so watch stops and asks **`Do you want to restart your app? Yes (y) / No (n) / Always (a) / Never (v)`** — **in terminal 1, while you're typing in terminal 2.** Miss it and the page 500s with *"The view 'Edit' was not found"*, naming the exact path the file is sitting at. Answer **`a`** at the first prompt and it never asks again all night
 - [ ] **Park three browser tabs**: `/Trucks`, `/Trucks/Details/2`, and **week 8's lab README** on github.com — it goes on screen for every lab block tonight
 - [ ] **mssql extension** signed in, saved server connection tested, panel closed. It has **one** appearance tonight — §8, confirming the new column and its seven slogans — so it's a supporting actor this week, not the lead it was in week 7
@@ -67,7 +67,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - **VS Code**, left half — folder `~/Repos/dotnet-web-dev-course/instructor/week-08/Curbside`, two integrated terminals (`dotnet watch` in the first, everything you type in the second), and the `mssql` panel signed in but closed
 - **Browser**, right half — three tabs: `/Trucks`, `/Trucks/Details/2`, and the week 8 lab README
 
-## 1 · Where we left off *(slides 2–3)*
+## 1 · Where we left off *(slides 2–4)*
 
 ### The payoff, retold
 
@@ -87,6 +87,23 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] Still on slide 3, the bottom line: *"Look at what does not change tonight. Your model, your validation rules, your theme, your seed data and your database all stay exactly as they are. Tonight adds Edit and Delete beside the code you already have. Nothing you have already built gets rewritten."*
 - [ ] **✓ CHECKPOINT:** the room can name the three things Edit needs that Create didn't
 
+### Two packages and a tool *(slide 4)*
+
+- [ ] 🎞️ **GO TO SLIDE 4** — *Two packages and a tool*
+- [ ] **Two packages and one global tool** — *"We add these to generate code. Before we commit, we remove the two packages from the project again"*
+- [ ] In the second terminal — **type the first, paste the second**:
+  ```bash
+  dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design --version 10.0.2
+  dotnet add package Microsoft.EntityFrameworkCore.Tools --version 10.0.10
+  ```
+
+  ⚠️ **The versions are pinned here on purpose, and nowhere else.** Tonight's starter is frozen at EF `10.0.10`. An unpinned `dotnet add package` takes whatever shipped most recently, and a newer `Tools` demands a newer `Design` than the starter pins — that's `NU1605`, *"Detected package downgrade"*, and the build fails in front of the room. A pinned version stays on nuget.org forever, so this command keeps working no matter what ships between now and class. **Slide 4 shows the commands without versions, and that is correct for the students** — their app is live rather than frozen, so they add these unpinned. If anyone asks about the flag, that's the answer
+- [ ] Name the split: *"`CodeGeneration.Design` is the scaffolder's templates · `EntityFrameworkCore.Tools` is the part that reads your `DbContext`."*
+- [ ] Mention the tool itself is already installed (per-machine, like `dotnet ef`): `dotnet-aspnet-codegenerator`. *"You install it in the lab block that comes next. A lab computer that resets itself forgets it, and you install it again"*
+- [ ] Point at the `.csproj` — two more `<PackageReference>` lines, same as every package since week 7. *"All those two commands did was add two lines to this file"*
+- [ ] ⚠️ **`dotnet watch` now prints yellow `NU1901` warnings — name them, don't skip past them:** *"NuGet audits every package you depend on, including the ones your packages depend on. `NuGet.Packaging` and `NuGet.Protocol` come in six levels under the scaffolder, and they've got a **low**-severity advisory against them. Read the line above it — **build succeeded**. Warnings, not errors"* — then plant the payoff: *"remember these. They go away tonight, and you'll see exactly why"* (§7 removes the packages). ⚠️ **A few seconds after the app starts, watch also prints two lines reading `msbuild: [Failure] Msbuild failed when processing the file …`** — the same two advisories, and nothing has failed. If anyone asks: *"That line ends with the same advisory. The app is running, and the build succeeded."*
+- [ ] 🎯 **Then say where they meet these next:** *"The lab starter already has these two packages. So when you start your app in the lab block that comes next, you will see these same yellow warnings in your own terminal. You will also see two lines that say Msbuild failed. Those lines end with the same advisory, and nothing has failed. All of them are temporary. They stop when you remove the two packages in task 4."*
+
 ## Lab A · Setup and task 1 — 12 minutes
 
 - [ ] Put the **lab README** on screen — the tab you parked in §0 — scrolled to **Setup**
@@ -100,23 +117,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] 👀 **Watch for:** `There is already an object named 'Cryptids'` — they skipped the drop. `msbuild: [Failure] Msbuild failed…` in terminal 1 after `dotnet watch` starts — the `NU1901` advisory again, not a failure; the README's Setup note covers it. `MSB1009` — one folder too deep. A 9.x scaffolder tool — `dotnet tool update --global dotnet-aspnet-codegenerator`. And `Login failed` or a ~30-second network error on `database update` — the username or password, or the server name
 - [ ] **Stop:** the note after **Task 1 in full**. Where they should be: `dotnet test` prints **`Passed: 1`**, the app is running in terminal 1, and `/Cryptids` shows six creatures
 
-## 2 · The scaffolder *(slides 4–6)*
-
-### Two packages and a tool *(slide 4)*
-
-- [ ] 🎞️ **GO TO SLIDE 4** — *Two packages and a tool*
-- [ ] **Two packages and one global tool** — *"We add these to generate code. Before we commit, we remove the two packages from the project again"*
-- [ ] In the second terminal — **type the first, paste the second**:
-  ```bash
-  dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design --version 10.0.2
-  dotnet add package Microsoft.EntityFrameworkCore.Tools --version 10.0.10
-  ```
-
-  ⚠️ **The versions are pinned here on purpose, and nowhere else.** Tonight's starter is frozen at EF `10.0.10`. An unpinned `dotnet add package` takes whatever shipped most recently, and a newer `Tools` demands a newer `Design` than the starter pins — that's `NU1605`, *"Detected package downgrade"*, and the build fails in front of the room. A pinned version stays on nuget.org forever, so this command keeps working no matter what ships between now and class. **Slide 4 shows the commands without versions, and that is correct for the students** — their app is live rather than frozen, so they add these unpinned. If anyone asks about the flag, that's the answer
-- [ ] Name the split: *"`CodeGeneration.Design` is the scaffolder's templates · `EntityFrameworkCore.Tools` is the part that reads your `DbContext`."*
-- [ ] Mention the tool itself is already installed (per-machine, like `dotnet ef`): `dotnet-aspnet-codegenerator`. *"You installed it in the first lab block. A lab computer that resets itself forgets it, and you install it again"*
-- [ ] Point at the `.csproj` — two more `<PackageReference>` lines, same as every package since week 7. *"All those two commands did was add two lines to this file"*
-- [ ] ⚠️ **`dotnet watch` now prints yellow `NU1901` warnings — name them, don't skip past them:** *"NuGet audits every package you depend on, including the ones your packages depend on. `NuGet.Packaging` and `NuGet.Protocol` come in six levels under the scaffolder, and they've got a **low**-severity advisory against them. Read the line above it — **build succeeded**. Warnings, not errors"* — then plant the payoff: *"remember these. They go away tonight, and you'll see exactly why"* (§7 removes the packages). ⚠️ **A few seconds after the app starts, watch also prints two lines reading `msbuild: [Failure] Msbuild failed when processing the file …`** — the same two advisories, and nothing has failed. If anyone asks: *"That line ends with the same advisory. The app is running, and the build succeeded."*
+## 2 · The scaffolder *(slides 5–6)*
 
 ### One command *(slide 5)*
 

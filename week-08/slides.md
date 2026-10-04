@@ -60,7 +60,7 @@ Unchanged tonight: your model · your rules · your theme · your seed data · y
 
 ---
 
-<!-- _footer: '🖥️ Demo §2 · two packages and a tool' -->
+<!-- _footer: '🖥️ Demo §1 · two packages and a tool' -->
 
 ## Two packages and a tool
 
