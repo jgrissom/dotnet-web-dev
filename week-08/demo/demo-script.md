@@ -91,10 +91,10 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 - [ ] Put the **lab README** on screen — the tab you parked in §0 — scrolled to **Setup**
 - [ ] *"Tonight the lab comes in five short blocks. After each part of the demo, you do the same thing to the Registry. Each block ends at a note that says In class, stop here."*
-- [ ] *"This block is setup and task 1. Task 1 installs the scaffolder tool, sets your connection string, and rebuilds your database. Use the same database name as last week."*
-- [ ] ⚠️ **The drop is not optional, and say why:** *"your week-7 database's migration history is yours — your timestamps, your files. The starter ships mine. They can't mix: point the starter at that database and it fails with 'there is already an object named Cryptids'. Drop it, and one `database update` rebuilds the whole thing, creatures included. The fact that that works is what a migration IS"*
+- [ ] *"The first block is setup and task 1. Task 1 installs the scaffolder tool, sets your connection string, and rebuilds your database. Use the same database name as last week."*
+- [ ] ⚠️ **The drop is not optional, and say why:** *"In task 1 you will drop your database and recreate it, and this is why. Your week-7 database's migration history is yours — your timestamps, your files. The starter ships mine. They can't mix: point the starter at that database and it fails with 'there is already an object named Cryptids'. Drop it, and one `database update` rebuilds the whole thing, creatures included. The fact that that works is what a migration IS"*
 - [ ] ⚠️ **Then fence it, in the same breath** — *"you only ever drop a database you could rebuild from scratch — and tonight's is exactly that, a throwaway I can hand you again from a git clone. Your own project's database has records in it that nothing can hand back. There, a bad migration is fixed by adding another one"*
-- [ ] ⚠️ **And separate it from the folder, because tonight is also the night the folder becomes sacred** — *"that drops the database. The `Migrations` folder stays — those files are what rebuild it. Drop the database, keep the files. Deleting the folder is the thing that stops working tonight"*
+- [ ] ⚠️ **And separate it from the folder, because tonight is also the night they stop deleting the `Migrations` folder** — *"that drops the database. The `Migrations` folder stays — those files are what rebuild it. Drop the database, keep the files. Deleting the folder is the thing that stops working tonight"*
 - [ ] ⚠️ *"If you're on a lab computer that resets itself, the scaffolder tool is gone next time you sit down, the same as your secret. Both come back in under a minute."*
 - [ ] *"Same warning as last week: the checks never touch SQL Server. Six out of six does not prove your connection string works. Your browser proves that."* Then the target: *"Tonight's in-class target is checks 1 to 4."*
 - [ ] 👀 **Watch for:** `There is already an object named 'Cryptids'` — they skipped the drop. `MSB1009` — one folder too deep. A 9.x scaffolder tool — `dotnet tool update --global dotnet-aspnet-codegenerator`. And `Login failed` or a ~30-second network error on `database update` — the username or password, or the server name
@@ -105,7 +105,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 ### Two packages and a tool *(slide 4)*
 
 - [ ] 🎞️ **GO TO SLIDE 4** — *Two packages and a tool*
-- [ ] **Two packages and one global tool** — *"and the tool is the one that goes back in the box before you commit. It is scaffolding in the builder's sense: up while you work, gone before anyone sees the house"*
+- [ ] **Two packages and one global tool** — *"We add these to generate code. Before we commit, we remove the two packages from the project again"*
 - [ ] In the second terminal — **type the first, paste the second**:
   ```bash
   dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design --version 10.0.2
@@ -115,7 +115,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   ⚠️ **The versions are pinned here on purpose, and nowhere else.** Tonight's starter is frozen at EF `10.0.10`. An unpinned `dotnet add package` takes whatever shipped most recently, and a newer `Tools` demands a newer `Design` than the starter pins — that's `NU1605`, *"Detected package downgrade"*, and the build fails in front of the room. A pinned version stays on nuget.org forever, so this command keeps working no matter what ships between now and class. **Slide 4 shows the commands without versions, and that is correct for the students** — their app is live rather than frozen, so they add these unpinned. If anyone asks about the flag, that's the answer
 - [ ] Name the split: *"`CodeGeneration.Design` is the scaffolder's templates · `EntityFrameworkCore.Tools` is the part that reads your `DbContext`."*
 - [ ] Mention the tool itself is already installed (per-machine, like `dotnet ef`): `dotnet-aspnet-codegenerator`. *"You installed it in the first lab block. A lab computer that resets itself forgets it, and you install it again"*
-- [ ] Point at the `.csproj` — two more `<PackageReference>` lines, same as every package since week 7. *"Nothing magical arrived. A file changed"*
+- [ ] Point at the `.csproj` — two more `<PackageReference>` lines, same as every package since week 7. *"All those two commands did was add two lines to this file"*
 - [ ] ⚠️ **`dotnet watch` now prints yellow `NU1901` warnings — name them, don't skip past them:** *"NuGet audits every package you depend on, including the ones your packages depend on. `NuGet.Packaging` and `NuGet.Protocol` come in six levels under the scaffolder, and they've got a **low**-severity advisory against them. Read the line above it — **build succeeded**. Warnings, not errors"* — then plant the payoff: *"remember these. They go away tonight, and you'll see exactly why"* (§7 removes the packages)
 
 ### One command *(slide 5)*
@@ -128,13 +128,13 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] Read the output out loud, all six lines: *"one controller, five views. Three seconds"*
 - [ ] Browse to **`/TrucksScaffold`**. A working list — a table, not your cards, but every truck is in it
 - [ ] **Click Edit on Cheese Curd Cartel, change the rating to 4.9, save.** It lands back on the scaffold's list, updated
-- [ ] 🎯 **Now switch to the `/Trucks` tab and reload: 4.9.** *"Two UIs, one table. And notice what just happened — a record was edited and saved, tonight's whole topic, before we've read a single line of code. The framework's generated pages and your hand-built pages are the same kind of thing talking to the same database"*
+- [ ] 🎯 **Now switch to the `/Trucks` tab and reload: 4.9.** *"Two UIs, one table. And notice what just happened — a record was edited and saved, tonight's whole topic, before we've read a single line of code. The framework's generated pages and your hand-built pages are the same kind of code, and they read and write the same database"*
 
 ### What it didn't write *(slide 6)*
 
 - [ ] Ask the uncomfortable question yourself before someone else does: *"so why did we spend four weeks?"*
 - [ ] 🎞️ **GO TO SLIDE 6** — *What it didn't write*. Walk the list: your **model and its rules** (week 6) · your **theme, layout, cards** (week 5) · your **seed data and migrations** (week 7) · **which app this even is** (week 4)
-- [ ] 🎯 **The sentence:** *"it wrote the plumbing around your decisions. Every line it generated is a line you could now write yourself — which is exactly why you're allowed to let it. Week-4 you couldn't have read this code. Tonight-you can, and that's the next hour"*
+- [ ] 🎯 **The sentence:** *"It wrote the code every CRUD app needs. It made none of your decisions. Every line it generated is a line you could now write yourself, and that is why it is fine to let a tool write it. In week 4 you could not have read this code. Tonight you can, and we read it together after your lab block"*
 - [ ] **✓ CHECKPOINT:** someone can say what the scaffolder read to do its work — the model, the context, and the annotations on them
 
 ## Lab B · Task 2 — 7 minutes
@@ -150,38 +150,38 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ### Task is a Promise *(slide 7)*
 
-- [ ] Open `Controllers/TrucksScaffoldController.cs`. **Skim the shape first:** *"before we read closely — this is your week-7 controller with armor on. Same constructor, same context, same actions, more checks"*
+- [ ] Open `Controllers/TrucksScaffoldController.cs`. **Skim the shape first:** *"before we read closely — this is your week-7 controller with more checks added. Same constructor, same context, same actions"*
 - [ ] Point at `Index`: `return View(await _context.Trucks.ToListAsync());` — one line, three changes: `async Task<IActionResult>`, `await`, `ToListAsync`
 - [ ] 🎞️ **GO TO SLIDE 7** — *Task is a Promise* · 🎯 lean on what they know: *"if you have written `async`/`await` in JavaScript, you already know this shape."*
 - [ ] The *why*, one sentence, no more: *"while SQL Server is thinking, an `await`ed request lets go of its thread so the server can handle someone else. Under load that's the difference between queueing and keeping up"*
 - [ ] The honest rule: *"your week-7 sync code is not wrong and does not need rewriting tonight. The scaffolder writes async, so what we write from tonight is async. Both run side by side in one controller without complaint"*
-- [ ] 💡 If someone spots `Create()` GET is still sync: give them the point — *"nothing in it waits for anything. `async` isn't a costume; it marks a method that actually awaits"*
+- [ ] 💡 If someone spots `Create()` GET is still sync: give them the point — *"nothing in it waits for anything. `async` only goes on a method that actually awaits something"*
 
 ### The Edit pair, in the editor
 
 - [ ] Still in `TrucksScaffoldController.cs`, find the two `Edit` methods — **GET half first**
-- [ ] Read the GET straight down — it answers three questions in order: *"if you don't give it an id at all, we return 404 instead of crashing. That's what the question mark in `int? id` buys us: no number binds to null rather than blowing up. Then `FindAsync` goes after one row by its key — and if no truck has that id, 404 again. Otherwise the view's model is the food truck we just found"*
-- [ ] The POST signature: `Edit(int id, Truck truck)` — *"two arrivals: the id from the URL, the record from the form. First thing it does is check they agree"*
+- [ ] Read the GET straight down — it answers three questions in order: *"if you don't give it an id at all, we return 404 instead of crashing. That's what the question mark in `int? id` does: a missing number binds to null instead of causing an error. Then `FindAsync` looks up one row by its key — and if no truck has that id, 404 again. Otherwise the view's model is the food truck we just found"*
+- [ ] The POST signature: `Edit(int id, Truck truck)` — *"two parameters: the id from the URL, and the record from the form. The first thing the method does is check that they agree"*
 
 ### The hidden Id *(slide 8)*
 
-- [ ] Open `Views/TrucksScaffold/Edit.cshtml`. Let them look for a second — it's their Create form's shape in different clothes
+- [ ] Open `Views/TrucksScaffold/Edit.cshtml`. Let them look for a second — it's their Create form with different markup
 - [ ] 🎯 **Point at line 15 and collect the reading question:**
   ```html
   <input type="hidden" asp-for="Id" />
   ```
-- [ ] 🎞️ **GO TO SLIDE 8** — *The hidden Id* · *"There it is — the question I asked you to hold. Your Create form never sends an Id; this one does. The GET put it there, the browser sends it back with everything else, and the binder reads it into `truck.Id`. That's the whole mystery: one input the user never sees"*
+- [ ] 🎞️ **GO TO SLIDE 8** — *The hidden Id* · *"There it is — the question I asked you to hold. Your Create form never sends an Id; this one does. The GET put it there, the browser sends it back with everything else, and the binder reads it into `truck.Id`. That's the whole answer: one input the user never sees"*
 - [ ] Trace the round trip out loud, finger on the screen: **URL id → `FindAsync` → model → hidden input → POST → `truck.Id`**
 - [ ] 🔗 Connect it to the guard: *"and now `if (id != truck.Id) return NotFound();` makes sense — if the URL and the form disagree about which record this is, someone's tampering or something's broken, and either way the answer is no"*
 
 ### The guest list *(slide 9)*
 
-- [ ] Back in the controller, POST `Edit`. **Read the generated comment out loud** — *"To protect from overposting attacks, enable the specific properties you want to bind to"* — then define the two words it assumes you know: *"**binding** you met in week 6 — the fields in the request get matched up by name with properties on `Truck`. What nobody mentions is that it matches every property it can find, not just the ones your form drew. And a form is a suggestion, not a fence: what actually arrives is a flat list of name-and-value pairs, and anyone can add a line to that list by hand. **Overposting** is doing exactly that — posting more fields than you ever offered, hoping the binder sets something you never put on the page"*
+- [ ] Back in the controller, POST `Edit`. **Read the generated comment out loud** — *"To protect from overposting attacks, enable the specific properties you want to bind to"* — then define the two words it assumes you know: *"**binding** you met in week 6 — the fields in the request get matched up by name with properties on `Truck`. What nobody mentions is that it matches every property it can find, not just the ones your form has inputs for. And a form does not limit what can be sent: what actually arrives is a flat list of name-and-value pairs, and anyone can add a line to that list by hand. **Overposting** is doing exactly that — posting more fields than you ever offered, hoping the binder sets something you never put on the page"*
 - [ ] 🎞️ **GO TO SLIDE 9** — *The guest list* · **`[Bind("Id,Name,Cuisine,City,Rating,IsOpenLate")]`** — *"a guest list for model binding. Only names on the list are read out of the form. Everything else is ignored — no matter what a POST claims"*
-- [ ] The one-sentence why: *"imagine `Truck` had an `IsAdmin` property. No box on your form — but a hand-written POST can send `IsAdmin=true` anyway, and the binder would happily set it. The list is what stops fields you didn't offer from being smuggled in"*
+- [ ] The one-sentence why: *"imagine `Truck` had an `IsAdmin` property. No box on your form — but a hand-written POST can send `IsAdmin=true` anyway, and the binder would set it. The list stops the binder from setting a field you never offered"*
 - [ ] ⚠️ **Flag it for later, but don't say what goes wrong:** *"remember the guest list — this `[Bind]` line, right here. We come back to it in the last part of the demo, and by then it will be causing a problem instead of preventing one"*
 - [ ] Then the body: `_context.Update(truck)` + `await _context.SaveChangesAsync()` — 🔗 *"the same two-step as `Add`: mark it, then write it. Update marks the whole record modified; the UPDATE runs at save"*
-- [ ] And the `catch (DbUpdateConcurrencyException)`: *"the UPDATE went looking for the row and found nothing — the record was deleted while the form was open. The catch asks 'does it still exist?', and if not, 404. You'll watch this fire for real when we get to Delete"*
+- [ ] And the `catch (DbUpdateConcurrencyException)`: *"the UPDATE matched no row — the record was deleted while the form was open. The catch checks whether the record still exists, and if it does not, returns 404. You'll see this catch run when we get to Delete"*
 - [ ] **✓ CHECKPOINT:** the room can say what travels in the hidden input, and what `[Bind]` does
 
 ## ☕ Break
@@ -190,7 +190,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ### Keep what's yours *(slide 10)*
 
-- [ ] 🎞️ **GO TO SLIDE 10** — *Porting: keep what's yours* · *"The scaffold is a reference, not a foundation. We take the two Edit actions and the mechanics of the view, and we keep our theme, our markup, our names. Once it's ported, the scaffold gets deleted"*
+- [ ] 🎞️ **GO TO SLIDE 10** — *Porting: keep what's yours* · *"The scaffold is code we copy from. It is not code we keep. We take the two Edit actions and the mechanics of the view, and we keep our theme, our markup, our names. Once it's ported, the scaffold gets deleted"*
 - [ ] In `Controllers/TrucksController.cs`, paste the pair below `Create` — and add `using Microsoft.EntityFrameworkCore;` up top when the editor complains about `DbUpdateConcurrencyException`:
 
   <details><summary>📋 paste: the Edit pair, into TrucksController</summary>
@@ -320,12 +320,12 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ### Watch the UPDATE
 
-- [ ] **On `/Trucks`, click ＋ Add a truck** and add tonight's test subject — **`Ghost Kitchen` / `Fusion` / `Madison` / `4.9`**. *"This truck is going to have a long night"* — on a fresh database it lands as **Id 8**
+- [ ] **On `/Trucks`, click ＋ Add a truck** and add tonight's test subject — **`Ghost Kitchen` / `Fusion` / `Madison` / `4.9`**. *"We use this truck for the rest of the demo"* — on a fresh database it lands as **Id 8**
 
   💡 **Ghost Kitchen runs the rest of the night** — corrected here, inspected in the debugger in §5, deleted in §6, and its ghost 404s an open edit form. It is *not* seed data, so if a beat goes sideways and it dies early, or you jump back into §5 after a database rebuild, just add it again with the same values. Nothing depends on its id except your narration — check what it actually came back as before you say a number
 - [ ] Open its Details → **Edit this truck**. 🎯 *"`FindAsync` looked the record up and designated the located truck as our view's model, exactly as we read it in the scaffold"*
 - [ ] Change the rating to **4.7**. **Predict before saving:** *"what SQL is about to appear — and what will its WHERE clause say?"*
-- [ ] Save. **Read the terminal:** an `UPDATE [Trucks] SET ... WHERE [Id] = @p...` 🎯 *"there's the hidden Id, arriving at SQL Server as a WHERE clause. One row touched"*
+- [ ] Save. **Read the terminal:** an `UPDATE [Trucks] SET ... WHERE [Id] = @p...` 🎯 *"There is the hidden Id, in the WHERE clause. One row was updated"*
 
 ## Lab C · Task 3 — 10 minutes
 
@@ -341,7 +341,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 ### Attach to the process *(slide 11)*
 
 - [ ] 🎞️ **GO TO SLIDE 11** — *The debugger, finally* · *"Since week 1 you've had a debugger and we've never needed it — `Console.WriteLine` and the SQL log answered everything. Tonight there's a question they can't answer: what does the object look like in the moment between the form and the database? Time to attach"*
-- [ ] Say why it's *attach* and not F5: *"`dotnet watch` owns the app, so we don't launch a second copy — we attach to the one that's running"*
+- [ ] Say why it's *attach* and not F5: *"`dotnet watch` is already running the app, so we don't launch a second copy — we attach to the one that's running"*
 - [ ] ⚠️ **Restart the app before you attach — `Ctrl+C`, then `dotnet watch` again, and let it come all the way up.** You cannot attach to a process that hot reload has patched, and §4 edited the controller, so this is always the state you are in by now. The refusal is explicit and it names the fix: *"Attaching a .NET debugger to this process is not allowed because code changes have been applied. The process must be restarted to allow debugging."* This is not optional and it is not intermittent — skip it and the segment cannot start
 - [ ] **⇧⌘P → "Debug: Attach to a .NET 5+ or .NET Core process" → type `Curbside` → pick the process.** ⚠️ Two appear on some machines — `dotnet watch` and `Curbside`; you want **Curbside**, the app itself
 - [ ] 🗣️ **Say the Windows shortcut, not the one you just pressed** — *"Ctrl+Shift+P for most of you"*. The slide shows both; almost everyone in the room is on Windows and you are not
@@ -351,14 +351,14 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 ### Update marks, SaveChanges writes *(slide 12)*
 
 - [ ] In the browser: Edit **Ghost Kitchen**, change the rating to **4.8**, Save — **VS Code takes the screen mid-request**
-- [ ] 🎯 **Open `truck` in the Variables panel and walk it:** Name `Ghost Kitchen`, Cuisine `Fusion`, City `Madison`, Rating `4.8`, and its id — **`8` on a fresh database, but read it off the panel rather than saying it from here.** *"That object did not exist a millisecond ago. Model binding built it out of the form — in week 6 you took that on faith, and there it is, live"*
+- [ ] 🎯 **Open `truck` in the Variables panel and walk it:** Name `Ghost Kitchen`, Cuisine `Fusion`, City `Madison`, Rating `4.8`, and its id — **`8` on a fresh database, but read it off the panel rather than saying it from here.** *"That object did not exist a millisecond ago. Model binding built it out of the form. In week 6 I told you that happens. Now you can see the object it built"*
 - [ ] Hover `ModelState` → `IsValid: true`. *"The guard you're paused on is reading this"*
-- [ ] **F10** — step over the guard, the `ModelState` check, down to `_context.Update(truck)`. **F10 past it**, then 🎯 **point at the terminal: no SQL.** *"Update ran. Nothing happened. Marked, not written — last week I could only assert that about `Add`; tonight you're watching the gap"*
-- [ ] **F10 over `SaveChangesAsync`** — 🎯 **the UPDATE appears in the terminal.** *"There. That line is the database call. Everything else was bookkeeping"*
+- [ ] **F10** — step over the guard, the `ModelState` check, down to `_context.Update(truck)`. **F10 past it**, then 🎯 **point at the terminal: no SQL.** *"Update ran, and no SQL appeared. It marked the record as modified. It did not write it. Last week I could only tell you that about `Add`. Tonight you can see it"*
+- [ ] **F10 over `SaveChangesAsync`** — 🎯 **the UPDATE appears in the terminal.** *"There. That line is the database call. The lines before it only prepared the change"*
 - [ ] **F5** to let the request finish; the browser gets its redirect
 - [ ] ⚠️ **`Shift+F5` to detach — before §6, not optional.** Your breakpoint is on `if (id != truck.Id)`, the first line of the Edit POST, and **§6 submits an edit** to fire the concurrency 404. Stay attached and VS Code grabs the screen at the breakpoint instead — the beat dies for a reason that looks like nothing. Detaching is enough; the red dot can stay, it can't fire with nothing attached
-- [ ] 🎞️ **GO TO SLIDE 12** — *Update marks. SaveChanges writes.* · recap on the slide what they just watched, because it stays true with no debugger attached: *"bind, guard, mark, write — you stepped through all four. And that gap between mark and write is exactly where last week's bug lived: leave `SaveChanges` out and the form still submits, the guard still passes, the redirect still happens, and nothing ever reaches the database. Now you've seen why. `Update` only marks it"*
-- [ ] 💡 If asked "when would I use this myself?": *"any time the question is 'what is this object right now?' — a form that binds zeros, a guard that fails when you're sure it shouldn't. Attach, breakpoint, look. It's faster than ten `Console.WriteLine`s and it can't lie to you"*
+- [ ] 🎞️ **GO TO SLIDE 12** — *Update marks. SaveChanges writes.* · recap on the slide what they just watched, because it stays true with no debugger attached: *"bind, guard, mark, write — you stepped through all four. Last week's bug was a missing `SaveChanges`: leave `SaveChanges` out and the form still submits, the guard still passes, the redirect still happens, and nothing ever reaches the database. Now you've seen why. `Update` only marks it"*
+- [ ] 💡 If asked "when would I use this myself?": *"any time the question is 'what is this object right now?' — a form that binds zeros, a guard that fails when you're sure it shouldn't. Attach, breakpoint, look. It's faster than ten `Console.WriteLine`s, and it shows you the real values"*
 - [ ] **✓ CHECKPOINT:** the room can say what `Update()` did and what `SaveChangesAsync()` did — having seen the gap between them
 
 ## ☕ Break
@@ -368,13 +368,13 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 ### Why Delete asks first *(slide 13)*
 
 - [ ] **Predict before the slide:** *"Delete could be one link — click it, record's gone. Why doesn't anyone build it that way?"* Take answers
-- [ ] 🎞️ **GO TO SLIDE 13** — *Why Delete asks first* · the rule underneath: **a GET must never change data.** Link previews, browser prefetch, crawlers, a curious extension — *"things you don't control follow links all day. If following a link deletes a truck, your data belongs to whoever renders your page"*
-- [ ] So: *"the GET shows a confirmation page — what's about to die, and a button. The POST does the deleting."* Two requests, on purpose
+- [ ] 🎞️ **GO TO SLIDE 13** — *Why Delete asks first* · the rule underneath: **a GET must never change data.** Link previews, browser prefetch, crawlers, a curious extension — *"things you don't control follow links all day. If following a link deletes a truck, then anything that follows your links can delete your data"*
+- [ ] So: *"the GET shows a confirmation page — the record that is about to be deleted, and a button. The POST does the deleting."* Two requests, on purpose
 
 ### The Delete pair *(slide 14)*
 
 - [ ] 🎞️ **GO TO SLIDE 14** — *The Delete pair*. Read the scaffold's version in `TrucksScaffoldController.cs` first — one wrinkle worth a beat: **the POST is called `DeleteConfirmed`**
-- [ ] 🎯 Say why: *"two methods named `Delete` taking the same `int` won't compile — same name, same signature. So the POST gets a new name, and `[ActionName("Delete")]` pins its URL back to `/Trucks/Delete`. The browser never learns the method's real name"*
+- [ ] 🎯 Say why: *"two methods named `Delete` taking the same `int` won't compile — same name, same signature. So the POST gets a new name, and `[ActionName("Delete")]` keeps its URL as `/Trucks/Delete`. The method's real name never appears in a URL"*
 - [ ] Port the pair into `TrucksController`:
 
   <details><summary>📋 paste: the Delete pair, into TrucksController</summary>
@@ -450,11 +450,11 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 ### Deleted under you *(slide 15)*
 
 - [ ] **Set up the two tabs, narrating as a story:** *"two people are looking at Ghost Kitchen at the same time. One of them starts fixing its rating—"* — **tab A: open its Edit form, change the rating, don't save**
-- [ ] *"—and the other decides the whole truck is a mistake."* **Tab B: Details → Remove this truck** — the confirmation page renders for the first time; give it its beat: 🎯 *"this page is a GET, and it has deleted nothing. It shows you the victim and asks. Only the form's POST deletes"*
+- [ ] *"—and the other decides the whole truck is a mistake."* **Tab B: Details → Remove this truck** — the confirmation page renders for the first time; give it its beat: 🎯 *"this page is a GET, and it has deleted nothing. It shows you the record and asks. Only the form's POST deletes"*
 - [ ] **Remove it.** Seven trucks again; the terminal shows the `DELETE ... WHERE [Id] = @p0`
 - [ ] **Predict, hands:** *"tab A's form is still open, still full of Ghost Kitchen. What happens when that person hits Save?"*
 - [ ] **Tab A: Save.** → **404**
-- [ ] 🎞️ **GO TO SLIDE 15** — *Deleted under you* · 🎯 *"that's the `catch` you read in §3, firing for real. The UPDATE went looking for row 8 and found nothing; EF threw; the catch asked 'does this truck still exist?'; no; NotFound. The scaffold shipped with the answer to a question you didn't know to ask yet"*
+- [ ] 🎞️ **GO TO SLIDE 15** — *Deleted under you* · 🎯 *"That is the `catch` you read in the scaffold's Edit, and it just ran. The UPDATE matched no row, because the truck was deleted. EF threw. The catch checked whether the truck still exists. It does not, so the action returned NotFound. The scaffold already handled a case we had not thought about"*
 - [ ] **✓ CHECKPOINT:** someone can say why Delete is two requests, and what the GET half is allowed to do
 
 ## 7 · The scaffold comes down
@@ -462,19 +462,19 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] *"The reference did its job. Everything worth keeping has been ported. Leaving it up means a second, unthemed admin UI at `/TrucksScaffold` that nobody maintains and everybody forgets"*
 - [ ] Delete **`Controllers/TrucksScaffoldController.cs`** and the **`Views/TrucksScaffold/`** folder
 - [ ] ⚠️ **Restart, don't trust the reload** — deleting a class is a rude edit, same as week 7: `dotnet watch` prints `ENC0033` and keeps serving the old build. `Ctrl+C`, `dotnet watch`
-- [ ] `/Trucks` works, Edit works, `/TrucksScaffold` is an honest 404. *"In your next lab block, check 4 refuses to go green while your scaffold is still standing"*
+- [ ] `/Trucks` works, Edit works, `/TrucksScaffold` is an honest 404. *"In your next lab block, check 4 stays red while your scaffold is still in the project"*
 - [ ] **Now take the tool out too** — in the second terminal:
   ```bash
   dotnet remove package Microsoft.VisualStudio.Web.CodeGeneration.Design
   dotnet remove package Microsoft.EntityFrameworkCore.Tools
   ```
-- [ ] 🎯 **Watch the yellow `NU1901` warnings stop.** *"Those have been on screen since §2 — they came from packages the scaffolder dragged in. The scaffolder wrote our code, we kept what was worth keeping, and now the machinery goes back in the box. A build-time tool you've finished with is not a dependency; it's litter"*
+- [ ] 🎯 **Watch the yellow `NU1901` warnings stop.** *"Those have been on screen since I added the two packages. They came from packages the scaffolder depends on. The scaffolder wrote our code and we kept the parts we wanted, so now we remove the packages. A build tool you have finished with should not stay in the project"*
 - [ ] ⚠️ **Say what's still there and why:** *"`EntityFrameworkCore.Design` stays — that's what `dotnet ef` runs on, and the new column after your next lab block needs it. It came with week 7, not with the scaffolder"*
 
 ## Lab D · Task 4 — 10 minutes
 
 - [ ] Lab README on screen, scrolled to **Task 4 in full**
-- [ ] *"The Delete pair, the confirmation view, and the link. Then the scaffold comes down and the two packages come out — the same order you just watched."*
+- [ ] *"The Delete pair, the confirmation view, and the link. Then delete the scaffold and remove the two packages — the same order you just watched."*
 - [ ] *"Check 4 stays red while the scaffold is still in your project. Its message says so. After you delete it, restart the app."*
 - [ ] *"Remove those two packages and nothing else. EntityFrameworkCore.Design stays — dotnet ef runs on it, and task 5 needs it."*
 - [ ] 👀 **Watch for:** *"already defines a member called 'Delete'"* — the POST got named `Delete` too. A **405** on posting the confirmation — `DeleteConfirmed` lost its `[ActionName("Delete")]`. Check 4 red with Delete working in the browser — read the message, it's the scaffold still standing. A page that still serves `/CryptidsScaffold` — `ENC0033`, no restart. And `dotnet ef` failing in the next block because `EntityFrameworkCore.Design` went out with the other two
@@ -484,13 +484,13 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ### A column on a live table *(slide 16)*
 
-- [ ] 🎞️ **GO TO SLIDE 16** — *A column on a live table* · *"one more move tonight, and it's the one your own app needs this week: the model grows. Trucks are getting slogans"*
+- [ ] 🎞️ **GO TO SLIDE 16** — *A column on a live table* · *"One more change tonight, and your own app needs it this week: the model gets a new property. Each truck gets a slogan"*
 - [ ] In `Models/Truck.cs`, below `IsOpenLate` — **type it, it's two lines**:
   ```csharp
   [StringLength(80)]
   public string? Slogan { get; set; }
   ```
-- [ ] 🎯 **Stop on the `?` and give it its beat:** *"the table already has seven rows, and none of them has a slogan. A non-nullable column demands an answer for rows that already exist. `string?` says what's true: some trucks have no slogan, and that's not an error"*
+- [ ] 🎯 **Stop on the `?` and give it its beat:** *"the table already has seven rows, and none of them has a slogan. A non-nullable column needs a value for rows that already exist, and we have none. `string?` says what's true: some trucks have no slogan, and that's not an error"*
 - [ ] Update the seed data — **paste** over `HasData`:
 
   <details><summary>📋 paste: OnModelCreating with slogans</summary>
@@ -522,7 +522,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   ```
 - [ ] ⚠️ **Read EF's warning line out loud** — *"An operation was scaffolded that may result in the loss of data"* — and defuse it: *"it's talking about the `Down` method. Undoing this migration would drop the column and every slogan in it. The `Up` is safe — going forward loses nothing"*
 - [ ] **Open the file:** one `AddColumn`, seven `UpdateData`s. **No `CreateTable`.** 🎯 *"a diff again — and this time the diff includes data. It compared the seed against the snapshot and wrote seven updates"*
-- [ ] 🎞️ **GO TO SLIDE 17** — *The migration is a diff. Again.* · 🎯 **the rule change, said in exactly these words:** *"last week I told you: migration wrong? Delete the folder, regenerate. **That reset button died tonight.** Your table has rows you care about, and your database remembers which migrations it has applied. From now on you fix a migration by adding another one. Forward only"*
+- [ ] 🎞️ **GO TO SLIDE 17** — *The migration is a diff. Again.* · 🎯 **the rule change, said in exactly these words:** *"last week I told you: migration wrong? Delete the folder, regenerate. **You can't do that any more.** Your table has rows you care about, and your database records which migrations it has applied. From now on you fix a migration by adding another one. Forward only"*
 - [ ] Apply it:
   ```bash
   dotnet ef database update
@@ -554,7 +554,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   Redirect, list loads…
 - [ ] 🎯 **The slogan is *gone*. Not the old one — none at all.** Sit in it. *"No error. No warning. I typed a new slogan and saving erased the one that existed"*
 - [ ] **Predict/collect:** *"I told you the guest list would come back tonight. What just happened?"* — let someone get close before you point at `[Bind("Id,Name,Cuisine,City,Rating,IsOpenLate")]`
-- [ ] 🎞️ **GO TO SLIDE 18** — *The guest list bites* · walk the mechanism: *"Slogan isn't on the list, so the binder never set it — the posted truck arrived with `Slogan = null`. Then `Update` marked the **whole record** modified, and the save faithfully wrote every column, null included. The guest list didn't just ignore my field. It fed the database a blank one"*
+- [ ] 🎞️ **GO TO SLIDE 18** — *The guest list bites* · walk the mechanism: *"Slogan isn't on the list, so the binder never set it — the posted truck arrived with `Slogan = null`. Then `Update` marked the **whole record** modified, and the save faithfully wrote every column, null included. The guest list didn't just ignore my field. The save wrote null over the old value"*
 - [ ] **Fix it** — add `Slogan` to the list:
   ```csharp
   [Bind("Id,Name,Cuisine,City,Rating,IsOpenLate,Slogan")]
@@ -565,13 +565,13 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   Kimchi at midnight
   ```
   🎯 **It sticks** — and it shows on the card
-- [ ] 🎯 **The takeaway, for the lab and the homework:** *"when your model grows a property, three files care: the view that shows it, the form that edits it, and the `[Bind]` list that lets it through. Miss the third and the failure is silent — and destructive"*
+- [ ] 🎯 **The takeaway, for the lab and the homework:** *"when your model grows a property, three places need it: the view that shows it, the form that edits it, and the `[Bind]` list that allows it to bind. Miss the third and the failure is silent — and destructive"*
 - [ ] **✓ CHECKPOINT:** the room can say why the slogan vanished instead of just not saving
 
 ## 9 · Hand off to the last lab block *(slide 19)*
 
 - [ ] 🎞️ **GO TO SLIDE 19** — *Lab: the Registry gets a corrections desk*. Leave it up for the whole block; its timer is how long they have before the wrap-up
-- [ ] *"This is the last block, and it has no stop. Tasks 5 and 6 are the move you just watched, on the Registry. Two nullable columns and one migration that adds them. Then the plates go on screen, and the new fields go on the Edit form."*
+- [ ] *"This is the last block, and it has no stop. Tasks 5 and 6 are the same change you just watched, on the Registry. Two nullable columns and one migration that adds them. Then the plates go on screen, and the new fields go on the Edit form."*
 - [ ] *"When you add those two fields to the form, add their names to the Bind list too. Then restart the app before you test it. That's the slogan I just lost, and it will happen to your Latin names the same way."*
 - [ ] **The in-class target is still checks 1–4.** Checks 5 and 6 roll into the homework if time goes
 
@@ -584,7 +584,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 ## 10 · Wrap-up, after the lab *(slide 20)*
 
 - [ ] 🎞️ **GO TO SLIDE 20** — *Tonight, in one picture*. Walk the four verbs, each with its two-step: Create (`Add`+save) · Read (`ToListAsync`/`FindAsync`) · Update (mark+save, hidden Id) · Delete (ask, then `Remove`+save)
-- [ ] 🔗 **Collect week 7's promise:** *"I told you the Azure app setting was once per app, not once per deploy. This week you redeploy with one command — `az webapp up` — and the connection string is still there. That's the promise landing"*
+- [ ] 🔗 **Collect week 7's promise:** *"I told you the Azure app setting was once per app, not once per deploy. This week you redeploy with one command — `az webapp up` — and the connection string is still there. That is what I said would happen"*
 - [ ] Homework: **same moves on your own app.** Scaffold a reference against your model, port Edit and Delete, delete the scaffold — and **your model grows one column of your choosing, additively.** The self-check runs your whole CRUD cycle and cleans up after itself
 - [ ] ⚠️ Repeat the one that protects their data: *"when the model grows: view, form, **and the `[Bind]` list.** The third one is silent when you miss it"*
-- [ ] 🔗 Week 9: *"your registry is one table, and every interesting app is at least two. Next week the records grow relatives — a second table that points back at this one — and you'll finally see why `_context.Cryptids` is called a *set* and not a list"*
+- [ ] 🔗 Week 9: *"your registry is one table, and every interesting app is at least two. Next week you add a second table whose rows refer to rows in this one — and you'll finally see why `_context.Cryptids` is called a *set* and not a list"*

@@ -110,7 +110,7 @@ All it asked for: which model, which context.
 | Your seed data, your migrations | week 7 |
 | What this app even is | week 4 |
 
-**It wrote the plumbing around your decisions.**
+**It wrote the code every CRUD app needs. The decisions were yours.**
 
 ---
 
@@ -147,7 +147,7 @@ URL → `FindAsync` → model → **hidden input** → POST → `truck.Id`
 
 <br>
 
-**The form carries the record's identity in its pocket.**
+**The form sends the record's Id back with every save.**
 
 ---
 
@@ -161,7 +161,7 @@ URL → `FindAsync` → model → **hidden input** → POST → `truck.Id`
 
 Only names on the list are read out of the form.
 
-A POST can't smuggle in a field you never offered.
+A POST can't set a field you never offered.
 
 <br>
 
@@ -179,9 +179,9 @@ A POST can't smuggle in a field you never offered.
 
 <br>
 
-The scaffold is a **reference, not a foundation** —
+The scaffold is **code to copy from, not code to keep** —
 
-it gets deleted before the night is out.
+it gets deleted once the porting is done.
 
 ---
 
@@ -191,7 +191,7 @@ it gets deleted before the night is out.
 
 **Ctrl+Shift+P** / **⇧⌘P** → “Attach to a .NET process” → **Curbside**
 
-Breakpoint. Submit the form. **Time stops mid-request.**
+Breakpoint. Submit the form. **The request pauses mid-way.**
 
 <br>
 
@@ -230,7 +230,7 @@ follow links all day.
 
 <br>
 
-**GET:** show what's about to die, and a button. **POST:** delete.
+**GET:** show the record about to be deleted, and a button. **POST:** delete.
 
 ---
 
@@ -263,13 +263,13 @@ catch (DbUpdateConcurrencyException)
 
 <br>
 
-The UPDATE went looking and found **no row** —
+The UPDATE matched **no row** —
 
-the record died while the form was open.
+the record was deleted while the form was open.
 
 <br>
 
-The scaffold shipped the answer to a question you hadn't asked yet.
+The scaffold already handled a case we hadn't thought about.
 
 ---
 
@@ -286,9 +286,9 @@ public string? Slogan { get; set; }
 
 The table already has rows. A required column
 
-demands answers that don't exist.
+needs values that don't exist.
 
-**`string?` is the honest type: some trucks have no slogan.**
+**`string?` is the accurate type: some trucks have no slogan.**
 
 ---
 
@@ -306,7 +306,7 @@ No `CreateTable`. The difference — **including the data.**
 
 <br>
 
-⚠️ **Delete-and-regenerate died tonight. Forward only.**
+⚠️ **No more delete-and-regenerate. Forward only.**
 
 ---
 
