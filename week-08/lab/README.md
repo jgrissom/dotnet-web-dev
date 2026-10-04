@@ -195,6 +195,8 @@ dotnet test Cryptids.Checks
 
 **1. The two `Edit` methods.** In `CryptidsScaffoldController.cs`, find the comment `// GET: CryptidsScaffold/Edit/5`. Select from that comment down to the closing `}` of the POST `Edit` — the GET and the POST sit together, so one selection takes both. Paste it into `CryptidsController.cs`, below `Create`.
 
+**Check what you pasted: `CryptidsController` now has two methods named `Edit`.** One takes `int? id` and has no attribute above it — that's the GET, which shows the form. The other has `[HttpPost]` above it. If you only have the `[HttpPost]` one, your selection started too low; go back for the GET.
+
 The editor now underlines two names, `CryptidExists` and `DbUpdateConcurrencyException`. That's expected; steps 2 and 3 fix one each.
 
 **2. The helper.** Back in `CryptidsScaffoldController.cs`, find the `CryptidExists` method at the bottom of the class, copy it, and paste it below the Edit pair.
@@ -717,6 +719,7 @@ In terminal 3, `dotnet test Cryptids.Checks`: **6 / 6.** The Registry has a corr
 - **`msbuild: [Failure] Msbuild failed when processing the file`** in terminal 1, where `dotnet watch` runs — not a failed build. Read the end of the line: it's the `NU1901` advisory from Setup, printed a second way. If `Now listening on:` is above it, the app is running. It stops when task 4 removes the two scaffolding packages.
 - **`Could not find a MSBuild project file`** starting `dotnet watch` — terminal 1 is still in the folder holding both projects. Run `cd Cryptids.Web` in terminal 1, then `dotnet watch` again.
 - **`There is already an object named 'Cryptids'`** on `database update` — you skipped task 1's `dotnet ef database drop --force`, so your **week-7 tables and migration history are still there**. Run the drop in terminal 2, then `database update` again. (Only ever in this lab — never on your own project's database.)
+- **`/Cryptids/Edit/3` gives a 404 as soon as you open it** — `CryptidsController` has no GET `Edit`. The POST alone compiles, so the editor doesn't warn you — but check 2 does: it says *"CryptidsController has no Edit action"*, and it means the GET. Copy the first `Edit` method from the scaffold too: the one that takes `int? id`, under `// GET: CryptidsScaffold/Edit/5`.
 - **Saving an edit returns 404** — the posted `Id` and the URL's id genuinely disagree (a hand-edited hidden input, or a stale form), or the record was deleted while your form was open — that second one is the concurrency catch working. A *missing* hidden `Id` doesn't cause this; the binder falls back to the URL.
 - **Saving an edit added a second creature instead of correcting the first** — no hidden `Id` **and** no id in the form's action, so the POST arrived with `Id = 0`; `Update()` treats an unset key as new and inserts. One line: `<input type="hidden" asp-for="Id" />`. Check 3 catches this by counting records.
 - **Saving a correction fails with `Cannot insert explicit value for identity column`** — `Edit.cshtml` still says `asp-action="Create"`, so the form posts the record, `Id` and all, to the Create action. Change it to `asp-action="Edit"`. The checks pass either way; only the browser shows this one.
