@@ -362,7 +362,7 @@ Changes 1, 2, 5 and 6 are wording and where Cancel goes. **Changes 3 and 4 are w
 </div>
 ```
 
-Correct a record in the browser — change Mothman's **Reports on file** box, watch the `UPDATE ... WHERE` in terminal 1. **Do this in the browser, not only with the checks:** if saving fails with `Cannot insert explicit value for identity column`, or adds a second record, the form is still posting to Create — that's change 3, and the checks don't catch it.
+Correct a record in the browser — open any creature's Details page, click **Correct the record**, change its **Reports on file** box, save, and watch the `UPDATE ... WHERE` in terminal 1. **Do this in the browser, not only with the checks:** if saving fails with `Cannot insert explicit value for identity column`, or adds a second record, the form is still posting to Create — that's change 3, and the checks don't catch it.
 
 > [!NOTE]
 > **Looking for a "Sightings" field? There isn't one on screen.** The property is `Sightings`, but it carries `[Display(Name = "Reports on file")]`, and that's what the label renders — same `[Display]` you met in week 6. The C# name is what you write in `asp-for`; the display name is what the page shows.
