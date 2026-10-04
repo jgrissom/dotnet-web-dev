@@ -90,7 +90,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 ### Two packages and a tool *(slide 4)*
 
 - [ ] 🎞️ **GO TO SLIDE 4** — *Two packages and a tool*
-- [ ] **Two packages and one global tool** — *"We add these to generate code. Before we commit, we remove the two packages from the project again"*
+- [ ] **Two packages and one global tool** — *"Scaffolding means a tool writes code for you. You give the tool a model class and a DbContext. It writes a controller with the Create, Read, Update and Delete actions, and the views that go with them. These two packages are what the tool needs in the project to do that. Once the code is written we no longer need them, so we remove them again before we commit"*
 - [ ] In the second terminal — **type the first, paste the second**:
   ```bash
   dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design --version 10.0.2
