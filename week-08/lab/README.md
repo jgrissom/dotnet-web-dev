@@ -84,7 +84,7 @@ dotnet test Cryptids.Checks
 |---|-------|------------|
 | 1 | *(check 1 is already green)* | Install the scaffolder tool, put your connection string in user secrets, then **drop last week's database** and let one `dotnet ef database update` rebuild the whole thing. **[Task 1 in full ↓](#task-1-in-full)** |
 | 2 | *(no check — it's the reference)* | [Scaffold](../lecture-notes.md#the-command-piece-by-piece) `CryptidsScaffoldController` and browse what one command wrote. **[Task 2 in full ↓](#task-2-in-full)** |
-| 3 | `TheEditFormShowsTheRecord`, `ACorrectionIsSaved` | Copy [the Edit pair](../lecture-notes.md#the-edit-pair) out of the scaffold into `CryptidsController`, with a `Views/Cryptids/Edit.cshtml` in the Registry's own style. **[Task 3 in full ↓](#task-3-in-full)** |
+| 3 | `TheEditFormShowsTheRecord`, `ACorrectionIsSaved` | Copy [the Edit pair](../lecture-notes.md#the-edit-pair) out of the scaffold into `CryptidsController`, and make `Views/Cryptids/Edit.cshtml` from your Create view. **[Task 3 in full ↓](#task-3-in-full)** |
 | 4 | `AFileCanBeClosed` | Port [the Delete pair](../lecture-notes.md#the-delete-pair), then **delete the scaffold** — the check refuses to pass while it's still standing — and remove the two scaffolding packages. **[Task 4 in full ↓](#task-4-in-full)** |
 | 5 | `TheRegistryGrowsTwoColumns` | Two [nullable properties](../lecture-notes.md#nullable-and-why), Latin names and plates in the seed data, and one [additive migration](../lecture-notes.md#the-additive-migration). **[Task 5 in full ↓](#task-5-in-full)** |
 | 6 | `ThePlatesAreOnDisplay` | Plates on the cards and details, a featured record on the home page, the new fields on the Edit form — and [the `[Bind]` list](../lecture-notes.md#the-guest-list-bites) lets them through. **[Task 6 in full ↓](#task-6-in-full)** |
@@ -275,10 +275,27 @@ private bool CryptidExists(int id)
 
 </details>
 
-**Then the view.** Make `Views/Cryptids/Edit.cshtml`. The scaffold's `Views/CryptidsScaffold/Edit.cshtml` has the mechanics — the hidden `Id`, the tag helpers, the validation spans, the Scripts section — and your `Create.cshtml` has the style. One thing comes from neither: **Cancel goes back to this record's Details page**, where Create's Cancel goes to the list and the scaffold has no Cancel at all. **This is the whole file:**
+**Then the view — make it from your Create view.** An Edit form is your Create form with six changes, and one of them comes from the scaffold.
+
+**1. Copy the file.** In the VS Code Explorer, copy `Views/Cryptids/Create.cshtml`, paste it into the same `Views/Cryptids` folder, and rename the copy `Edit.cshtml`.
 
 > [!IMPORTANT]
 > **Creating a new `.cshtml` makes `dotnet watch` stop and ask to restart** — `Do you want to restart your app? Yes (y) / No (n) / Always (a) / Never (v)`, in terminal 1, where watch is running. Answer **`a`** and it won't ask again for the rest of the lab. Ignore it and the page fails with **`The view 'Edit' was not found`** — listing the exact path your file is sitting at, because the running app was built before the file existed. The file is fine; the app is old.
+
+**2. Make six changes in `Edit.cshtml`**, top to bottom:
+
+| # | Find this | Change it to |
+|---|---|---|
+| 1 | `ViewData["Title"] = "File a report";` | `ViewData["Title"] = $"Correct: {Model.Name}";` |
+| 2 | the `<h1>` and the `<p>` under it | `<h1>Correct the record ✏️</h1>` and `<p class="text-muted">Field reports get facts wrong. Fix them here.</p>` |
+| 3 | `asp-action="Create"` on the `<form>` | `asp-action="Edit"` |
+| 4 | the validation summary `<div>` near the top of the form | **add a line below it:** the hidden `Id` input. Find it in the scaffold's `Views/CryptidsScaffold/Edit.cshtml` and copy it across |
+| 5 | `File it` on the button | `Save the correction` |
+| 6 | `asp-action="Index"` on the Cancel link | `asp-action="Details" asp-route-id="@Model.Id"` — Cancel goes back to this record's Details page |
+
+Changes 1, 2, 5 and 6 are wording and where Cancel goes. **Changes 3 and 4 are what make it an Edit form:** it posts to `Edit`, and it carries the record's `Id`.
+
+<details><summary>Want to compare? Views/Cryptids/Edit.cshtml, the whole file</summary>
 
 ```html
 @model Cryptid
@@ -332,6 +349,8 @@ private bool CryptidExists(int id)
 }
 ```
 
+</details>
+
 - **The hidden `Id` is the one line your Create form never had** — [it's how the POST carries its own identity](../lecture-notes.md#the-hidden-id), instead of depending on the URL's shape. Check 2 looks for it by name; leave it out and check 3 catches the duplicate record you get instead.
 - The `[Bind]` list is [the guest list from the notes](../lecture-notes.md#the-guest-list) — six names now. **Task 6 comes back for it.**
 
@@ -343,7 +362,7 @@ private bool CryptidExists(int id)
 </div>
 ```
 
-Correct a record in the browser — change Mothman's **Reports on file** box, watch the `UPDATE ... WHERE` in terminal 1.
+Correct a record in the browser — change Mothman's **Reports on file** box, watch the `UPDATE ... WHERE` in terminal 1. **Do this in the browser, not only with the checks:** if saving fails with `Cannot insert explicit value for identity column`, or adds a second record, the form is still posting to Create — that's change 3, and the checks don't catch it.
 
 > [!NOTE]
 > **Looking for a "Sightings" field? There isn't one on screen.** The property is `Sightings`, but it carries `[Display(Name = "Reports on file")]`, and that's what the label renders — same `[Display]` you met in week 6. The C# name is what you write in `asp-for`; the display name is what the page shows.
@@ -700,6 +719,7 @@ In terminal 3, `dotnet test Cryptids.Checks`: **6 / 6.** The Registry has a corr
 - **`There is already an object named 'Cryptids'`** on `database update` — you skipped task 1's `dotnet ef database drop --force`, so your **week-7 tables and migration history are still there**. Run the drop in terminal 2, then `database update` again. (Only ever in this lab — never on your own project's database.)
 - **Saving an edit returns 404** — the posted `Id` and the URL's id genuinely disagree (a hand-edited hidden input, or a stale form), or the record was deleted while your form was open — that second one is the concurrency catch working. A *missing* hidden `Id` doesn't cause this; the binder falls back to the URL.
 - **Saving an edit added a second creature instead of correcting the first** — no hidden `Id` **and** no id in the form's action, so the POST arrived with `Id = 0`; `Update()` treats an unset key as new and inserts. One line: `<input type="hidden" asp-for="Id" />`. Check 3 catches this by counting records.
+- **Saving a correction fails with `Cannot insert explicit value for identity column`** — `Edit.cshtml` still says `asp-action="Create"`, so the form posts the record, `Id` and all, to the Create action. Change it to `asp-action="Edit"`. The checks pass either way; only the browser shows this one.
 - **An edit redirects but nothing changed** — `Update` only marks; the write is `await _context.SaveChangesAsync();`.
 - **Editing created a duplicate instead** — the POST calls `Add` somewhere. An edit goes through `Update`.
 - **Saving an edit erased the Latin name / plate** — the `[Bind]` list doesn't include the new names. Task 6's caution block is the fix, and this is *the* silent bug of the week.

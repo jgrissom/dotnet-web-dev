@@ -262,9 +262,27 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
   </details>
 
-- [ ] Create `Views/Trucks/Edit.cshtml` — **paste, then point at what's different from the scaffold's version**: *"There are cosmetic changes between this and the scaffolded version: our `mb-3` spacing, our button labels, our partial. The mechanics — hidden `Id`, tag helpers, validation spans, Scripts section — are the scaffold's"*:
+- [ ] **Make the Edit view from the Create view.** In the Explorer, copy `Views/Trucks/Create.cshtml`, paste it into the same folder, and rename the copy `Edit.cshtml`. *"An Edit form is a Create form with a few changes. I copy the Create view, and then I change the copy."*
+- [ ] ⚠️ **First new `.cshtml` of the night — terminal 1 is asking to restart.** Answer **`a`** (Always) and you won't see the prompt again tonight; §6 adds another view. Skip it and the Edit page 500s with *"The view 'Edit' was not found"*, listing the very path the file is at
+- [ ] Change 1, the page title:
+  ```csharp
+  ViewData["Title"] = $"Edit: {Model.Name}";
+  ```
+- [ ] Change 2, the heading:
+  ```html
+  <h1>Edit this truck ✏️</h1>
+  ```
+- [ ] Change 3, on the `<form>` tag: `asp-action="Create"` becomes `asp-action="Edit"`. *"The form has to post to the Edit action. If I leave this as Create, the save goes to the wrong action."*
+- [ ] 🎯 Change 4, the hidden `Id`. Open `Views/TrucksScaffold/Edit.cshtml`, copy line 15, and paste it into `Views/Trucks/Edit.cshtml` below the validation summary `<div>`. *"This is the one line I take from the scaffold's view. It is the hidden Id I pointed at when we read the scaffold."*
+- [ ] Change 5, the button text: `Add it` becomes `Save changes`
+- [ ] Change 6, the Cancel link goes to this truck's Details page:
+  ```html
+  <a asp-action="Details" asp-route-id="@Model.Id" class="btn btn-link">Cancel</a>
+  ```
+- [ ] *"Six changes. Four of them are wording and where Cancel goes. Two of them make this an Edit form: it posts to Edit, and it carries the truck's Id."*
+- [ ] 💡 **Fallback only — skip this if the six changes worked.** The finished file:
 
-  <details><summary>📋 paste: Views/Trucks/Edit.cshtml</summary>
+  <details><summary>📋 fallback paste: Views/Trucks/Edit.cshtml</summary>
 
   ```html
   @model Truck
@@ -319,7 +337,6 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
   </details>
 
-- [ ] ⚠️ **First new `.cshtml` of the night — terminal 1 is asking to restart.** Answer **`a`** (Always) and you won't see the prompt again tonight; §6 adds another view. Skip it and the Edit page 500s with *"The view 'Edit' was not found"*, listing the very path the file is at
 - [ ] Add the link in `Views/Trucks/Details.cshtml`, under the badge block, above the **Back to all trucks** link:
   ```html
   <p class="mt-4"><a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-secondary">✏️ Edit this truck</a></p>
@@ -337,10 +354,10 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 ## Lab C · Task 3 — 10 minutes
 
 - [ ] Lab README on screen, scrolled to **Task 3 in full**
-- [ ] *"Copy the two Edit methods out of your CryptidsScaffoldController, the same way I just did. Paste them into CryptidsController, below Create. Then make the view and add the link."*
+- [ ] *"Copy the two Edit methods out of your CryptidsScaffoldController, the same way I just did. Paste them into CryptidsController, below Create. Then make the Edit view from your Create view, the way I did, and add the link."*
 - [ ] *"It's three methods, not two. Copy the CryptidExists helper from the bottom of the scaffold controller too, or the project stops compiling."*
 - [ ] *"Edit.cshtml is your first new view tonight. The terminal running dotnet watch will ask to restart. Answer a, and it won't ask again."*
-- [ ] 👀 **Watch for:** *"the name 'CryptidExists' does not exist"* — they left the helper behind. `DbUpdateConcurrencyException` unresolved — the `using Microsoft.EntityFrameworkCore;` line. `The view 'Edit' was not found` with the file right there — the restart prompt is waiting in terminal 1; **don't let them move the file**. And a second creature appearing after a save instead of a corrected one — no hidden `Id` **and** no id in the form's action, which check 3 catches by counting. **Sweep the room when the first Edit ports land** — that last one doesn't show up as an error
+- [ ] 👀 **Watch for:** *"the name 'CryptidExists' does not exist"* — they left the helper behind. `DbUpdateConcurrencyException` unresolved — the `using Microsoft.EntityFrameworkCore;` line. `The view 'Edit' was not found` with the file right there — the restart prompt is waiting in terminal 1; **don't let them move the file**. And a second creature appearing after a save instead of a corrected one — no hidden `Id` **and** no id in the form's action, which check 3 catches by counting. And a correction that fails with `Cannot insert explicit value for identity column` — `Edit.cshtml` still says `asp-action="Create"`; **the checks pass either way**, so only the browser shows it. **Sweep the room when the first Edit ports land** — those last two don't show up as errors
 - [ ] **Stop:** the note after **Task 3 in full**. Where they should be: **`Passed: 3`** — checks 1 to 3
 
 ## 5 · The debugger, finally *(slides 11–12)*
