@@ -337,8 +337,8 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 ## Lab C · Task 3 — 10 minutes
 
 - [ ] Lab README on screen, scrolled to **Task 3 in full**
-- [ ] *"The Edit pair you just watched me port is in the README, already in the Registry's names. Paste it into CryptidsController, below Create. Then make the view and add the link."*
-- [ ] *"It's three things, not two. The CryptidExists helper at the bottom of the paste comes across too, or the project stops compiling."*
+- [ ] *"Copy the two Edit methods out of your CryptidsScaffoldController, the same way I just did. Paste them into CryptidsController, below Create. Then make the view and add the link."*
+- [ ] *"It's three methods, not two. Copy the CryptidExists helper from the bottom of the scaffold controller too, or the project stops compiling."*
 - [ ] *"Edit.cshtml is your first new view tonight. The terminal running dotnet watch will ask to restart. Answer a, and it won't ask again."*
 - [ ] 👀 **Watch for:** *"the name 'CryptidExists' does not exist"* — they left the helper behind. `DbUpdateConcurrencyException` unresolved — the `using Microsoft.EntityFrameworkCore;` line. `The view 'Edit' was not found` with the file right there — the restart prompt is waiting in terminal 1; **don't let them move the file**. And a second creature appearing after a save instead of a corrected one — no hidden `Id` **and** no id in the form's action, which check 3 catches by counting. **Sweep the room when the first Edit ports land** — that last one doesn't show up as an error
 - [ ] **Stop:** the note after **Task 3 in full**. Where they should be: **`Passed: 3`** — checks 1 to 3

@@ -84,7 +84,7 @@ dotnet test Cryptids.Checks
 |---|-------|------------|
 | 1 | *(check 1 is already green)* | Install the scaffolder tool, put your connection string in user secrets, then **drop last week's database** and let one `dotnet ef database update` rebuild the whole thing. **[Task 1 in full ↓](#task-1-in-full)** |
 | 2 | *(no check — it's the reference)* | [Scaffold](../lecture-notes.md#the-command-piece-by-piece) `CryptidsScaffoldController` and browse what one command wrote. **[Task 2 in full ↓](#task-2-in-full)** |
-| 3 | `TheEditFormShowsTheRecord`, `ACorrectionIsSaved` | Port [the Edit pair](../lecture-notes.md#the-edit-pair) into `CryptidsController`, with a `Views/Cryptids/Edit.cshtml` in the Registry's own style. **[Task 3 in full ↓](#task-3-in-full)** |
+| 3 | `TheEditFormShowsTheRecord`, `ACorrectionIsSaved` | Copy [the Edit pair](../lecture-notes.md#the-edit-pair) out of the scaffold into `CryptidsController`, with a `Views/Cryptids/Edit.cshtml` in the Registry's own style. **[Task 3 in full ↓](#task-3-in-full)** |
 | 4 | `AFileCanBeClosed` | Port [the Delete pair](../lecture-notes.md#the-delete-pair), then **delete the scaffold** — the check refuses to pass while it's still standing — and remove the two scaffolding packages. **[Task 4 in full ↓](#task-4-in-full)** |
 | 5 | `TheRegistryGrowsTwoColumns` | Two [nullable properties](../lecture-notes.md#nullable-and-why), Latin names and plates in the seed data, and one [additive migration](../lecture-notes.md#the-additive-migration). **[Task 5 in full ↓](#task-5-in-full)** |
 | 6 | `ThePlatesAreOnDisplay` | Plates on the cards and details, a featured record on the home page, the new fields on the Edit form — and [the `[Bind]` list](../lecture-notes.md#the-guest-list-bites) lets them through. **[Task 6 in full ↓](#task-6-in-full)** |
@@ -154,9 +154,9 @@ dotnet test Cryptids.Checks
 
 ### Task 2 in full
 
-**No check for this one**, and the code you write tonight doesn't come out of it — tasks 3 and 4 hand you the ported versions, already in the Registry's style. The scaffold is a *reference*, and task 4 deletes it.
+**No check for this one.** The scaffold is code you copy from: task 3 copies its two `Edit` methods into your own controller, and task 4 deletes the scaffold once you have what you need.
 
-So why run it? Two reasons, and the second is the one that matters. You get to watch one command do four weeks of work, which is worth seeing once. And **you run this command tonight so that running it on your own app in the homework isn't the first time** — there, the scaffolder reads *your* model and writes *your* property names into a `[Bind]` list no README can hand you. Get the command working here, where you can put your hand up.
+There's a second reason to run it, and it matters more. **You run this command tonight so that running it on your own app in the homework isn't the first time** — there, the scaffolder reads *your* model and writes *your* property names into a `[Bind]` list no README can hand you. Get the command working here, where you can ask for help.
 
 **In terminal 2**, inside `Cryptids.Web` (the same folder as every `dotnet ef` command):
 
@@ -191,7 +191,35 @@ dotnet test Cryptids.Checks
 
 **Checks:** `Check2_TheEditFormShowsTheRecord` and `Check3_ACorrectionIsSaved`
 
-**Port the Edit pair** into **`CryptidsController`**, below `Create`. These are the scaffold's two `Edit` methods, already moved into the Registry's house style — an early-out guard instead of its nested `if`. Paste them:
+**Copy the Edit pair** out of `Controllers/CryptidsScaffoldController.cs` and into **`CryptidsController`**, below `Create` — the same move you watched in the demo. Four steps:
+
+**1. The two `Edit` methods.** In `CryptidsScaffoldController.cs`, find the comment `// GET: CryptidsScaffold/Edit/5`. Select from that comment down to the closing `}` of the POST `Edit` — the GET and the POST sit together, so one selection takes both. Paste it into `CryptidsController.cs`, below `Create`.
+
+The editor now underlines two names, `CryptidExists` and `DbUpdateConcurrencyException`. That's expected; steps 2 and 3 fix one each.
+
+**2. The helper.** Back in `CryptidsScaffoldController.cs`, copy the `CryptidExists` method from the bottom of the class, and paste it below the Edit pair:
+
+```csharp
+private bool CryptidExists(int id)
+{
+    return _context.Cryptids.Any(e => e.Id == id);
+}
+```
+
+> [!NOTE]
+> **That's three methods, not two — the `CryptidExists` helper comes across too.** The scaffold's catch calls it, and the scaffolder kept it `private` at the bottom of the controller you delete in task 4. Copy the two actions without it and the build stops with *"the name 'CryptidExists' does not exist in the current context."* [Same on your own app in the homework](../lecture-notes.md#what-porting-means).
+
+**3. One `using`**, at the top of `CryptidsController.cs`, for `DbUpdateConcurrencyException`:
+
+```csharp
+using Microsoft.EntityFrameworkCore;
+```
+
+**4. The two comments** you copied still say `CryptidsScaffold/Edit/5`. Change both to `Cryptids/Edit/5`.
+
+<details><summary>Want to compare? The Edit pair and its helper, as the lecture notes show them</summary>
+
+One difference from what you copied: this version writes the `ModelState` check as an early return, where the scaffold wraps the save in `if (ModelState.IsValid)`. Both do the same thing, and both pass the checks.
 
 ```csharp
 // GET /Cryptids/Edit/3 — the form, pre-filled with what's on file.
@@ -252,14 +280,7 @@ private bool CryptidExists(int id)
 }
 ```
 
-> [!NOTE]
-> **That's three things, not two — the `CryptidExists` helper comes across too.** The scaffold's catch calls it, and the scaffolder kept it `private` at the bottom of the controller you delete in task 4. Port the two actions without it and the build stops with *"the name 'CryptidExists' does not exist in the current context."* [Same on your own app in the homework](../lecture-notes.md#what-porting-means).
-
-You'll need one more `using` at the top of the file — let the editor complain about `DbUpdateConcurrencyException` first, then add:
-
-```csharp
-using Microsoft.EntityFrameworkCore;
-```
+</details>
 
 **Then the view.** Make `Views/Cryptids/Edit.cshtml`. The scaffold's `Views/CryptidsScaffold/Edit.cshtml` has the mechanics — the hidden `Id`, the tag helpers, the validation spans, the Scripts section — and your `Create.cshtml` has the style. One thing comes from neither: **Cancel goes back to this record's Details page**, where Create's Cancel goes to the list and the scaffold has no Cancel at all. **This is the whole file:**
 
