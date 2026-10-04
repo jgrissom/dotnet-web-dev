@@ -72,8 +72,8 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 ### The payoff, retold
 
 - [ ] **Before any slide:** on `/Trucks`, add nothing, change nothing — just `Ctrl+C` in the terminal, `dotnet watch` again, reload
-- [ ] **Seven trucks.** *"Last week that reload was the whole show. This week it's just true — and that's what a foundation is."*
-- [ ] *"You can read a table, show one row of it, and add to it. In CRUD terms you have C and R. Tonight is U and D — and most of it gets written for you."*
+- [ ] **Seven trucks.** *"Last week that reload was the whole show. This week it's just true."*
+- [ ] *"You can read a table, show one row of it, and add to it. In CRUD terms you have C and R (Create and Read). Tonight is U and D (Update and Delete) — and most of it gets written for you."*
 
 ### Collect the reading *(slide 2)*
 
