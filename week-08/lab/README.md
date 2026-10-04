@@ -40,7 +40,7 @@ CryptidsCrud/              ← in `dotnet-web`, the folder you copied and rename
 | Terminal | Where it stands | What runs in it |
 |---|---|---|
 | 1 | `CryptidsCrud`, the folder holding **both** projects | `dotnet watch --project Cryptids.Web` — **started in task 1**, then left alone |
-| 2 | inside `Cryptids.Web` | everything else: `dotnet user-secrets`, `dotnet ef`, `dotnet aspnet-codegenerator` |
+| 2 | inside `Cryptids.Web` — `cd Cryptids.Web` | everything else: `dotnet user-secrets`, `dotnet ef`, `dotnet aspnet-codegenerator` |
 | 3 | `CryptidsCrud`, the folder holding **both** projects | `dotnet test Cryptids.Checks` |
 
 **5. In terminal 3:**
@@ -85,7 +85,7 @@ dotnet test Cryptids.Checks
 
 **Check 1 is already green** — this task is about your database, which the checks can't see but your browser needs.
 
-**First, the scaffolder tool** — once per machine, like `dotnet-ef`:
+**First, the scaffolder tool** — once per machine, like `dotnet-ef`. **In terminal 2:**
 
 ```bash
 dotnet tool install --global dotnet-aspnet-codegenerator
@@ -93,7 +93,7 @@ dotnet tool install --global dotnet-aspnet-codegenerator
 
 *(Already have it from watching the demo too closely? `dotnet tool update --global dotnet-aspnet-codegenerator` is safe to run regardless.)*
 
-**Then the connection string. From inside `Cryptids.Web`:**
+**Then the connection string. Still in terminal 2** — the one step 4 left standing inside `Cryptids.Web`:
 
 ```bash
 dotnet user-secrets init
@@ -104,7 +104,7 @@ Same drill as last week — server, username and password from the handout, quot
 
 **The database name is the same one you used last week**, though. The folder is new so you don't overwrite week 7's work, but this is the same application — the Cryptid Registry — and [one application gets one database](../../week-07/lecture-notes.md#naming-your-database).
 
-**Now reset it and rebuild it — two commands:**
+**Now reset it and rebuild it — two commands, still in terminal 2:**
 
 ```bash
 dotnet ef database drop --force
@@ -150,7 +150,7 @@ dotnet test Cryptids.Checks
 
 So why run it? Two reasons, and the second is the one that matters. You get to watch one command do four weeks of work, which is worth seeing once. And **you run this command tonight so that running it on your own app in the homework isn't the first time** — there, the scaffolder reads *your* model and writes *your* property names into a `[Bind]` list no README can hand you. Get the command working here, where you can put your hand up.
 
-**From inside `Cryptids.Web`** (same folder as every `dotnet ef` command):
+**In terminal 2**, inside `Cryptids.Web` (the same folder as every `dotnet ef` command):
 
 ```bash
 dotnet aspnet-codegenerator controller -name CryptidsScaffoldController -m Cryptid -dc CryptidContext --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries
@@ -419,7 +419,7 @@ public async Task<IActionResult> DeleteConfirmed(int id)
 > [!WARNING]
 > **Restart after deleting it** — `Ctrl+C`, then `dotnet watch --project Cryptids.Web`. Deleting a class is a rude edit: `dotnet watch` prints `ENC0033` and keeps serving the old build, exactly like week 7's `CryptidData.cs` deletion.
 
-**Then the tool goes back in the box.** The generated files are gone; the machinery that wrote them is still in your `.csproj`. From inside `Cryptids.Web`:
+**Then the tool goes back in the box.** The generated files are gone; the machinery that wrote them is still in your `.csproj`. In terminal 2:
 
 ```bash
 dotnet remove package Microsoft.VisualStudio.Web.CodeGeneration.Design
@@ -477,7 +477,7 @@ modelBuilder.Entity<Cryptid>().HasData(
 
 *(Two of those Latin names are real. Worth a search sometime — one of them is an anagram.)*
 
-**Then the migration — additive, from inside `Cryptids.Web`:**
+**Then the migration — additive, in terminal 2:**
 
 ```bash
 dotnet ef migrations add AddFieldGuidePlates
