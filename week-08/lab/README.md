@@ -354,7 +354,7 @@ Changes 1, 2, 5 and 6 are wording and where Cancel goes. **Changes 3 and 4 are w
 - **The hidden `Id` is the one line your Create form never had** — [it's how the POST carries its own identity](../lecture-notes.md#the-hidden-id), instead of depending on the URL's shape. Check 2 looks for it by name; leave it out and check 3 catches the duplicate record you get instead.
 - The `[Bind]` list is [the guest list from the notes](../lecture-notes.md#the-guest-list) — six names now. **Task 6 comes back for it.**
 
-**Last, the way in.** In `Views/Cryptids/Details.cshtml`, below the badge, add:
+**Last, the way in.** In `Views/Cryptids/Details.cshtml`, below the badge, above the **Back to the registry** link, add:
 
 ```html
 <div class="mt-4">
