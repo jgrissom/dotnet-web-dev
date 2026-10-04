@@ -83,7 +83,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ### The shape of the night *(slide 3)*
 
-- [ ] 🎞️ **GO TO SLIDE 3** — *The other two letters*. Read the shape: **a tool writes it · we read what it wrote · we keep the parts that are ours**
+- [ ] 🎞️ **GO TO SLIDE 3** — *The other two letters* · *"Tonight has three steps. First, a tool called the scaffolder writes a controller with Edit and Delete in it. Second, we read the code the scaffolder wrote, line by line. Third, we copy Edit and Delete into our own controller, and we delete everything else the scaffolder wrote."*
 - [ ] Say what doesn't change tonight, because the list is getting long and it's the point of the course: the model, the validation rules, the theme, the seed data, the database. *"Tonight adds neighbors. It rebuilds nothing"*
 - [ ] **✓ CHECKPOINT:** the room can name the three things Edit needs that Create didn't
 
