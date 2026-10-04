@@ -84,7 +84,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 ### The shape of the night *(slide 3)*
 
 - [ ] 🎞️ **GO TO SLIDE 3** — *The other two letters* · *"Tonight has three steps. First, a tool called the scaffolder writes a controller with Edit and Delete in it. Second, we read the code the scaffolder wrote, line by line. Third, we copy Edit and Delete into our own controller, and we delete everything else the scaffolder wrote."*
-- [ ] Say what doesn't change tonight, because the list is getting long and it's the point of the course: the model, the validation rules, the theme, the seed data, the database. *"Tonight adds neighbors. It rebuilds nothing"*
+- [ ] Still on slide 3, the bottom line: *"Look at what does not change tonight. Your model, your validation rules, your theme, your seed data and your database all stay exactly as they are. Tonight adds Edit and Delete beside the code you already have. Nothing you have already built gets rewritten."*
 - [ ] **✓ CHECKPOINT:** the room can name the three things Edit needs that Create didn't
 
 ## Lab A · Setup and task 1 — 12 minutes
