@@ -167,7 +167,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 ### The hidden Id *(slide 8)*
 
 - [ ] Open `Views/TrucksScaffold/Edit.cshtml`. Let them look for a second — it's their Create form with different markup
-- [ ] 🎯 **Point at line 15 and collect the reading question:**
+- [ ] 🎯 **Point at line 15** and say *"What is this id doing here?"* Let them come up with the answer. *"It's used to identify the record we are editing."*
   ```html
   <input type="hidden" asp-for="Id" />
   ```
