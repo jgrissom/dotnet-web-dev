@@ -181,7 +181,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] Still on slide 9, the one-sentence why: *"imagine `Truck` had an `IsAdmin` property. No box on your form — but a hand-written POST can send `IsAdmin=true` anyway, and the binder would set it. The list stops the binder from setting a field you never offered"*
 - [ ] ⚠️ **Still on slide 9 — flag it for later, but don't say what goes wrong:** *"remember the guest list — this `[Bind]` line, right here. We come back to it in the last part of the demo, and by then it will be causing a problem instead of preventing one"*
 - [ ] **Swipe back to the editor** — the POST `Edit` in `TrucksScaffoldController.cs`. Point at the two lines in its body, `_context.Update(truck)` and `await _context.SaveChangesAsync()` — 🔗 *"the same two-step as `Add`: mark it, then write it. Update marks the whole record modified; the UPDATE runs at save"*
-- [ ] Still in the editor, point at the `catch (DbUpdateConcurrencyException)` below them: *"the UPDATE matched no row — the record was deleted while the form was open. The catch checks whether the record still exists, and if it does not, returns 404. You'll see this catch run when we get to Delete"*
+- [ ] Still in the editor, point at the `catch (DbUpdateConcurrencyException)` below them: *"notice the catch block - if the UPDATE matched no row — the record was deleted while the form was open. The catch checks whether the record still exists, and if it does not, returns 404. You'll see this catch run when we get to Delete"*
 - [ ] **✓ CHECKPOINT:** the room can say what travels in the hidden input, and what `[Bind]` does
 
 ## ☕ Break
