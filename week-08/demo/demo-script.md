@@ -320,7 +320,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   </details>
 
 - [ ] ⚠️ **First new `.cshtml` of the night — terminal 1 is asking to restart.** Answer **`a`** (Always) and you won't see the prompt again tonight; §6 adds another view. Skip it and the Edit page 500s with *"The view 'Edit' was not found"*, listing the very path the file is at
-- [ ] Add the link in `Views/Trucks/Details.cshtml`, under the badge block:
+- [ ] Add the link in `Views/Trucks/Details.cshtml`, under the badge block, above the **Back to all trucks** link:
   ```html
   <p class="mt-4"><a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-secondary">✏️ Edit this truck</a></p>
   ```
