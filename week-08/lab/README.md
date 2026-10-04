@@ -197,14 +197,7 @@ dotnet test Cryptids.Checks
 
 The editor now underlines two names, `CryptidExists` and `DbUpdateConcurrencyException`. That's expected; steps 2 and 3 fix one each.
 
-**2. The helper.** Back in `CryptidsScaffoldController.cs`, copy the `CryptidExists` method from the bottom of the class, and paste it below the Edit pair:
-
-```csharp
-private bool CryptidExists(int id)
-{
-    return _context.Cryptids.Any(e => e.Id == id);
-}
-```
+**2. The helper.** Back in `CryptidsScaffoldController.cs`, find the `CryptidExists` method at the bottom of the class, copy it, and paste it below the Edit pair.
 
 > [!NOTE]
 > **That's three methods, not two — the `CryptidExists` helper comes across too.** The scaffold's catch calls it, and the scaffolder kept it `private` at the bottom of the controller you delete in task 4. Copy the two actions without it and the build stops with *"the name 'CryptidExists' does not exist in the current context."* [Same on your own app in the homework](../lecture-notes.md#what-porting-means).
