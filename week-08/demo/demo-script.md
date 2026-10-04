@@ -191,9 +191,17 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 ### Keep what's yours *(slide 10)*
 
 - [ ] 🎞️ **GO TO SLIDE 10** — *Porting: keep what's yours* · *"The scaffold is code we copy from. It is not code we keep. We take the two Edit actions and the mechanics of the view, and we keep our theme, our markup, our names. Once it's ported, the scaffold gets deleted"*
-- [ ] In `Controllers/TrucksController.cs`, paste the pair below `Create` — and add `using Microsoft.EntityFrameworkCore;` up top when the editor complains about `DbUpdateConcurrencyException`:
+- [ ] **Copy the two `Edit` methods out of `Controllers/TrucksScaffoldController.cs`** — the GET and the POST sit together, so one selection takes both, with the comment lines above each. Paste them into `Controllers/TrucksController.cs`, below `Create`
+- [ ] The editor now underlines two names: `TruckExists` and `DbUpdateConcurrencyException`. Take `TruckExists` first — go back to `TrucksScaffoldController.cs`, copy the `TruckExists` method from the bottom of the class, and paste it below the Edit pair
+- [ ] ⚠️ **Say it while you paste it:** *"We copied three methods, not two. The catch calls this helper, and the scaffolder kept it private at the bottom of the file we are about to delete. If you take the two actions and leave the helper behind, your project stops compiling with 'the name TruckExists does not exist'."*
+- [ ] One name is still underlined. Add this at the top of `TrucksController.cs`, and the file compiles:
+  ```csharp
+  using Microsoft.EntityFrameworkCore;
+  ```
+- [ ] The two comments you copied still say `TrucksScaffold/Edit/5`. Change both to `Trucks/Edit/5`
+- [ ] 💡 **Fallback only — skip this if the copy worked.** The same pair, with the `ModelState` check written as an early return, which is how the lecture notes and the lab show it. Both shapes do the same thing; say so if someone asks why the notes look different:
 
-  <details><summary>📋 paste: the Edit pair, into TrucksController</summary>
+  <details><summary>📋 fallback paste: the Edit pair, into TrucksController</summary>
 
   ```csharp
   // GET /Trucks/Edit/3 — the form, pre-filled with what's on file.
@@ -254,7 +262,6 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
   </details>
 
-- [ ] ⚠️ **Point at `TruckExists` and say it out loud — this one emails you at 10pm otherwise:** *"We pasted 3 methods, not 2. The catch calls this little helper, and the scaffolder kept it private at the bottom of the file we're about to delete. Take the two actions and leave it behind and your project stops compiling — 'the name TruckExists does not exist'. It's in the paste; don't scroll past it"*
 - [ ] Create `Views/Trucks/Edit.cshtml` — **paste, then point at what's different from the scaffold's version**: *"There are cosmetic changes between this and the scaffolded version: our `mb-3` spacing, our button labels, our partial. The mechanics — hidden `Id`, tag helpers, validation spans, Scripts section — are the scaffold's"*:
 
   <details><summary>📋 paste: Views/Trucks/Edit.cshtml</summary>
