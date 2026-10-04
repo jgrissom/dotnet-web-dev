@@ -360,7 +360,7 @@ Changes 1, 2, 3, 6 and 7 are wording and where Cancel goes. **Changes 4 and 5 ar
 **Last, the way in.** In `Views/Cryptids/Details.cshtml`, below the badge, above the **Back to the registry** link, add:
 
 ```html
-<div class="mt-4">
+<div class="my-4">
     <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-secondary">✏️ Correct the record</a>
 </div>
 ```
@@ -452,7 +452,7 @@ public async Task<IActionResult> DeleteConfirmed(int id)
 <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-outline-danger">🗑️ Close the file</a>
 ```
 
-*(Both buttons in the same `mt-4` div reads nicely.)*
+*(Both buttons in the same `my-4` div reads nicely.)*
 
 **Try it:** file a fake report through your Create form, then close its file. Watch the `DELETE ... WHERE` in terminal 1. Your six seeded creatures aren't precious — this database rebuilds from migrations — but deleting the fake keeps the next checks' counts obvious.
 
