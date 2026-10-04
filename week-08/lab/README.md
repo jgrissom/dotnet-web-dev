@@ -277,25 +277,26 @@ private bool CryptidExists(int id)
 
 </details>
 
-**Then the view — make it from your Create view.** An Edit form is your Create form with six changes, and one of them comes from the scaffold.
+**Then the view — make it from your Create view.** An Edit form is your Create form with seven changes, and one of them comes from the scaffold.
 
 **1. Copy the file.** In the VS Code Explorer, copy `Views/Cryptids/Create.cshtml`, paste it into the same `Views/Cryptids` folder, and rename the copy `Edit.cshtml`.
 
 > [!IMPORTANT]
 > **Creating a new `.cshtml` makes `dotnet watch` stop and ask to restart** — `Do you want to restart your app? Yes (y) / No (n) / Always (a) / Never (v)`, in terminal 1, where watch is running. Answer **`a`** and it won't ask again for the rest of the lab. Ignore it and the page fails with **`The view 'Edit' was not found`** — listing the exact path your file is sitting at, because the running app was built before the file existed. The file is fine; the app is old.
 
-**2. Make six changes in `Edit.cshtml`**, top to bottom:
+**2. Make seven changes in `Edit.cshtml`**, top to bottom:
 
 | # | Find this | Change it to |
 |---|---|---|
 | 1 | `ViewData["Title"] = "File a report";` | `ViewData["Title"] = $"Correct: {Model.Name}";` |
-| 2 | the `<h1>` and the `<p>` under it | `<h1>Correct the record ✏️</h1>` and `<p class="text-muted">Field reports get facts wrong. Fix them here.</p>` |
-| 3 | `asp-action="Create"` on the `<form>` | `asp-action="Edit"` |
-| 4 | the validation summary `<div>` near the top of the form | **add a line below it:** the hidden `Id` input. Find it in the scaffold's `Views/CryptidsScaffold/Edit.cshtml` and copy it across |
-| 5 | `File it` on the button | `Save the correction` |
-| 6 | `asp-action="Index"` on the Cancel link | `asp-action="Details" asp-route-id="@Model.Id"` — Cancel goes back to this record's Details page |
+| 2 | the `<h1>` line | `<h1>Correct the record ✏️</h1>` |
+| 3 | the `<p>` line under it | `<p class="text-muted">Field reports get facts wrong. Fix them here.</p>` |
+| 4 | `asp-action="Create"` on the `<form>` | `asp-action="Edit"` |
+| 5 | the validation summary `<div>` near the top of the form | **add a line below it:** the hidden `Id` input. Find it in the scaffold's `Views/CryptidsScaffold/Edit.cshtml` and copy it across |
+| 6 | `File it` on the button | `Save the correction` |
+| 7 | `asp-action="Index"` on the Cancel link | `asp-action="Details" asp-route-id="@Model.Id"` — Cancel goes back to this record's Details page |
 
-Changes 1, 2, 5 and 6 are wording and where Cancel goes. **Changes 3 and 4 are what make it an Edit form:** it posts to `Edit`, and it carries the record's `Id`.
+Changes 1, 2, 3, 6 and 7 are wording and where Cancel goes. **Changes 4 and 5 are what make it an Edit form:** it posts to `Edit`, and it carries the record's `Id`.
 
 <details><summary>Want to compare? Views/Cryptids/Edit.cshtml, the whole file</summary>
 
@@ -364,7 +365,7 @@ Changes 1, 2, 5 and 6 are wording and where Cancel goes. **Changes 3 and 4 are w
 </div>
 ```
 
-Correct a record in the browser — open any creature's Details page, click **Correct the record**, change its **Reports on file** box, save, and watch the `UPDATE ... WHERE` in terminal 1. **Do this in the browser, not only with the checks:** if saving fails with `Cannot insert explicit value for identity column`, or adds a second record, the form is still posting to Create — that's change 3, and the checks don't catch it.
+Correct a record in the browser — open any creature's Details page, click **Correct the record**, change its **Reports on file** box, save, and watch the `UPDATE ... WHERE` in terminal 1. **Do this in the browser, not only with the checks:** if saving fails with `Cannot insert explicit value for identity column`, or adds a second record, the form is still posting to Create — that's change 4, and the checks don't catch it.
 
 > [!NOTE]
 > **Looking for a "Sightings" field? There isn't one on screen.** The property is `Sightings`, but it carries `[Display(Name = "Reports on file")]`, and that's what the label renders — same `[Display]` you met in week 6. The C# name is what you write in `asp-for`; the display name is what the page shows.
