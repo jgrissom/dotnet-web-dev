@@ -13,6 +13,8 @@ The Registry can take reports and show them. It cannot fix a typo in one, and it
 >
 > **Because they're already in, your first build prints yellow `NU1901` warnings — expected, and temporary.** They're low-severity advisories against `NuGet.Packaging` / `NuGet.Protocol`, which arrive six levels beneath the scaffolder. Read the line above: `Build succeeded`. Warnings, not errors — and **task 4 removes the packages, which stops them.**
 >
+> **`dotnet watch` then repeats them in a line that looks worse than it is:** `msbuild: [Failure] Msbuild failed when processing the file … Cryptids.Web.csproj`. Read to the end of that line — its message is the same advisory. Nothing failed: the `Now listening on:` line above it means your app is running, and your edits still reload. Those lines stop at task 4 too.
+>
 > **The seven plate images are already in `wwwroot/img/cryptids/`.** Task 6 puts them on screen; nothing has to be downloaded.
 
 **1. Update the starters clone.** Open `dotnet-web` in VS Code, then `` Ctrl+` `` for a terminal standing in it:
@@ -671,6 +673,7 @@ public async Task<IActionResult> Index()
 - **`Could not execute because the specified command or file was not found`** running the scaffolder — the tool isn't on this machine: `dotnet tool install --global dotnet-aspnet-codegenerator`. Frozen lab PCs lose it on reboot.
 - **`...install Entity Framework core packages and try again: Microsoft.EntityFrameworkCore.Tools`** — you're not inside `Cryptids.Web` (the starter has the packages), or in the homework, your own app doesn't have them yet.
 - **`Scaffolding failed: Build failed`** — the scaffolder compiles first. `dotnet build` shows the real error; fix it, scaffold again.
+- **`msbuild: [Failure] Msbuild failed when processing the file`** in the `dotnet watch` terminal — not a failed build. Read the end of the line: it's the `NU1901` advisory from Setup, printed a second way. If `Now listening on:` is above it, the app is running. It stops when task 4 removes the two scaffolding packages.
 - **`There is already an object named 'Cryptids'`** on `database update` — you skipped task 1's `dotnet ef database drop --force`, so your **week-7 tables and migration history are still there**. Run the drop, then `database update` again. (Only ever in this lab — never on your own project's database.)
 - **Saving an edit returns 404** — the posted `Id` and the URL's id genuinely disagree (a hand-edited hidden input, or a stale form), or the record was deleted while your form was open — that second one is the concurrency catch working. A *missing* hidden `Id` doesn't cause this; the binder falls back to the URL.
 - **Saving an edit added a second creature instead of correcting the first** — no hidden `Id` **and** no id in the form's action, so the POST arrived with `Id = 0`; `Update()` treats an unset key as new and inserts. One line: `<input type="hidden" asp-for="Id" />`. Check 3 catches this by counting records.
