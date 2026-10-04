@@ -82,7 +82,7 @@ Long, but every piece is a question you can answer:
 | `--useDefaultLayout` | views use `_Layout` — so they land inside your theme's shell |
 | `--referenceScriptLibraries` | forms get the `_ValidationScriptsPartial` section, like your Create |
 
-Three seconds later:
+A few seconds later:
 
 ```
 Added Controller : '/Controllers/TrucksScaffoldController.cs'.

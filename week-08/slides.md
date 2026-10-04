@@ -93,7 +93,7 @@ dotnet aspnet-codegenerator controller \
 
 <br>
 
-**One controller. Five views. Three seconds.**
+**One controller. Five views. A few seconds.**
 
 All it asked for: which model, which context.
 

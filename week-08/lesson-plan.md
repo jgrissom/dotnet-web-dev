@@ -3,7 +3,7 @@
 **Topic:** EF Core CRUD — the scaffolder, reading generated code, async, edit and delete, and a column added to a live table
 **Session length:** 3h 45m
 
-> The night the framework starts writing code for them — and the real skill being taught is *reading it*. Three moments carry the week: **§2's one command** (four weeks of their work, generated in three seconds, followed immediately by what it *didn't* write), **§5's debugger gap** (stepping over `Update()` and seeing no SQL, then over `SaveChangesAsync()` and seeing the UPDATE), and **§8's guest-list bite** (a typed slogan that saving silently *erases*). Tonight also collects two promises: the reading's "where does the Id come from?", answered by one hidden input, and week 7's "the app setting survives redeploys," collected in the wrap-up.
+> The night the framework starts writing code for them — and the real skill being taught is *reading it*. Three moments carry the week: **§2's one command** (four weeks of their work, generated in a few seconds, followed immediately by what it *didn't* write), **§5's debugger gap** (stepping over `Update()` and seeing no SQL, then over `SaveChangesAsync()` and seeing the UPDATE), and **§8's guest-list bite** (a typed slogan that saving silently *erases*). Tonight also collects two promises: the reading's "where does the Id come from?", answered by one hidden input, and week 7's "the app setting survives redeploys," collected in the wrap-up.
 
 ## Learning objectives
 
