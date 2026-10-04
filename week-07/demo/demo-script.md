@@ -450,7 +450,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 ## Lab F · Task 6 — 8 minutes
 
 - [ ] Lab README on screen, scrolled to **Task 6 in full**
-- [ ] 👀 **Watch for:** a page that looks right but is the old build — terminal 1 shows `ENC0033`, and the fix is `Ctrl+C` and `dotnet watch --project Cryptids.Web`. `Cannot insert explicit value for identity column`, or a new creature with Id 0 — the `Max(c => c.Id) + 1` line is still there. A form that redirects and adds nothing — no `SaveChanges()`. 💡 If someone asks why their first report is Id **8**: the Wampus Cat had 7, and SQL Server doesn't reuse a deleted number
+- [ ] 👀 **Watch for:** a page that looks right but is the old build — terminal 1 shows `ENC0033`, and the fix is `Ctrl+C` and `dotnet watch`. `Cannot insert explicit value for identity column`, or a new creature with Id 0 — the `Max(c => c.Id) + 1` line is still there. A form that redirects and adds nothing — no `SaveChanges()`. 💡 If someone asks why their first report is Id **8**: the Wampus Cat had 7, and SQL Server doesn't reuse a deleted number
 - [ ] **No stop.** This block takes whatever time is left before §8. Anyone finished: **🚀 Done early?** at the bottom of the README, or help a classmate
 
 ## 8 · The deployed app *(slides 17–18)*

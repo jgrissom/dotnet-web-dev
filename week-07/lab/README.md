@@ -35,9 +35,17 @@ CryptidsDb/                ← in `dotnet-web`, the folder you copied and rename
 
 | Terminal | Where it stands | What runs in it |
 |---|---|---|
-| 1 | `CryptidsDb`, the folder holding **both** projects | `dotnet watch --project Cryptids.Web` — **started in task 5**, then left alone |
+| 1 | inside `Cryptids.Web` — `cd Cryptids.Web` | `dotnet watch` — **started in task 5**, then left alone |
 | 2 | inside `Cryptids.Web` — `cd Cryptids.Web` | every `dotnet ef` and `dotnet user-secrets` command |
 | 3 | `CryptidsDb`, the folder holding **both** projects | `dotnet test Cryptids.Checks`, after every task |
+
+**All three open in `CryptidsDb`. Move terminals 1 and 2 — run this in each of them:**
+
+```bash
+cd Cryptids.Web
+```
+
+Terminal 3 stays in `CryptidsDb`, because `dotnet test Cryptids.Checks` runs from the folder holding both projects.
 
 **5. In terminal 3:**
 
@@ -285,7 +293,7 @@ dotnet test Cryptids.Checks
 **Start the app first — this is the task where the browser starts mattering.** In terminal 1:
 
 ```bash
-dotnet watch --project Cryptids.Web
+dotnet watch
 ```
 
 Tasks 1–4 were all verified by `dotnet test` and the mssql extension, so this is the first time tonight you actually need the site running. Leave it running for the rest of the lab; every reload below assumes it.
@@ -386,7 +394,7 @@ dotnet test Cryptids.Checks
 > **When part 2 compiles again, restart before you trust the page.** In terminal 1: `Ctrl+C`, then
 >
 > ```bash
-> dotnet watch --project Cryptids.Web
+> dotnet watch
 > ```
 >
 > Deleting a class is more than `dotnet watch` can hot-patch — it prints `ENC0033` — and a build that fails leaves the **previous** version serving. So the page you're looking at can be the one from before you deleted anything, and your rewritten POST action looks broken when it's fine. [The notes say the same](../lecture-notes.md#the-line-you-delete).
@@ -446,6 +454,7 @@ public IActionResult Create(Cryptid cryptid)
 - **`The model for context 'CryptidContext' has pending changes`** — you edited the context after generating the migration. Add another one: `dotnet ef migrations add WhateverYouChanged`.
 - **The form redirects, no error, and the creature isn't in the list** — no `SaveChanges()`. `Add` only records an intention.
 - **The new creature has Id 0, or `Cannot insert explicit value for identity column`** — last week's `Max(c => c.Id) + 1` line is still there. Delete it.
+- **`Could not find a MSBuild project file`** starting `dotnet watch` — terminal 1 is still in the folder holding both projects. Run `cd Cryptids.Web` in terminal 1, then `dotnet watch` again.
 - **Your edit isn't showing up, or the app stops responding** — `dotnet watch` keeps serving the **last version that built**, so a page can look completely fine while your newest edit hasn't compiled. Once in a while the app needs restarting outright. Terminal 1 is where the evidence is — a red ❌, an exception, or sometimes nothing at all — so glance at it whenever something doesn't add up, and press **Ctrl+R** there to force a full rebuild.
 - ⚠️ **`Further changes won't be applied to this process.`** — if the `dotnet watch` terminal prints that, **press `Ctrl+R` straight away**. It comes after `The assembly update failed`, and it means exactly what it says: nothing you save from that point lands, and the app may start throwing `BadImageFormatException` or `TypeLoadException` — even *"the format of the file `Cryptids.Web.dll` is invalid"* — sometimes failing to render its own error page, so the browser just gives up. **None of that is your code.** Hot reload garbled the running app; a fresh process reads it from disk and it all goes away.
 - The [troubleshooting appendix](../lecture-notes.md#appendix-troubleshooting) covers the rest.
