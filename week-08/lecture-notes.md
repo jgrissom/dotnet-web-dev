@@ -425,9 +425,9 @@ Since week 1 you've technically had a debugger, and this course has never needed
 Submit an edit in the browser. VS Code takes the screen mid-request, paused on your breakpoint. Worth the trip:
 
 - **`truck` in the Variables panel, under Locals.** Name, Cuisine, City, Rating, Id — that object didn't exist a millisecond ago; model binding built it out of the form. In week 6 you took that on faith. There it is.
-- **Hover `ModelState`** → `IsValid: true`. The guard you're paused on reads this.
-- **F10** (step over) down to `_context.Update(truck)`, and past it — then look at the terminal: **no SQL.** Marked, not written.
-- **F10** over `await _context.SaveChangesAsync()` — **the UPDATE appears.** That line is the database call; everything else was bookkeeping.
+- **Hover `ModelState`** on the next `if` → `IsValid: true`. The line you're paused on compares the two ids; the check below it reads this.
+- **F10** (step over) down to `_context.Update(truck)`, and past it — then look at the **Debug Console**, the tab VS Code switched to when you attached: **no SQL.** Marked, not written.
+- **F10** over `await _context.SaveChangesAsync()` — **the UPDATE appears in the Debug Console.** That line is the database call; everything else was bookkeeping.
 - **F5** to let the request finish, **⇧F5** to detach.
 
 You just watched the gap where week 7's silent bug lived — the redirect-but-nothing-saved failure was code that never crossed that gap.
