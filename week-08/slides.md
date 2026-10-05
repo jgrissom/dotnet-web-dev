@@ -201,23 +201,6 @@ The question `Console.WriteLine` can't answer:
 
 ---
 
-<!-- _footer: '🖥️ Demo §5 · update marks, SaveChanges writes' -->
-
-## Update marks. SaveChanges writes.
-
-```csharp
-_context.Update(truck);              // nothing happens
-await _context.SaveChangesAsync();   // the UPDATE happens
-```
-
-<br>
-
-You watched the gap between those lines.
-
-**Without `SaveChanges`, the database update never happens.**
-
----
-
 <!-- _footer: '🖥️ Demo §6 · why Delete asks first' -->
 
 ## Why Delete asks first

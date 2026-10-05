@@ -360,7 +360,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] 👀 **Watch for:** *"the name 'CryptidExists' does not exist"* — they left the helper behind. `DbUpdateConcurrencyException` unresolved — the `using Microsoft.EntityFrameworkCore;` line. A **404 on `/Cryptids/Edit/3`** before any form shows — they copied only the POST `Edit`; the GET is the method above it in the scaffold. `The view 'Edit' was not found` with the file right there — the restart prompt is waiting in terminal 1; **don't let them move the file**. And a second creature appearing after a save instead of a corrected one — no hidden `Id` **and** no id in the form's action, which check 3 catches by counting. And a correction that fails with `Cannot insert explicit value for identity column` — `Edit.cshtml` still says `asp-action="Create"`; **the checks pass either way**, so only the browser shows it. **Sweep the room when the first Edit ports land** — those last two don't show up as errors
 - [ ] **Stop:** the note after **Task 3 in full**. Where they should be: **`Passed: 3`** — checks 1 to 3
 
-## 5 · The debugger, finally *(slides 11–12)*
+## 5 · The debugger, finally *(slide 11)*
 
 ### Attach to the process *(slide 11)*
 
@@ -372,7 +372,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] Set a breakpoint on the **`if (id != truck.Id)`** line of the ported Edit POST — click in the gutter, red dot
 - [ ] ⚠️ **Now stop editing code until you detach.** Any save sends the watcher rebuilding, and a breakpoint set against a build that has been replaced shows as a **hollow circle** and never fires. If that happens: detach (**Disconnect** on the debug toolbar), `Ctrl+C`, `dotnet watch`, re-attach
 
-### Update marks, SaveChanges writes *(slide 12)*
+### Update marks, SaveChanges writes
 
 - [ ] In the browser: Edit **Ghost Kitchen**, change the rating to **4.8**, Save — **VS Code takes the screen mid-request**
 - [ ] 🎯 **Open `truck` in the Variables panel, under Locals, and walk it:** Name `Ghost Kitchen`, Cuisine `Fusion`, City `Madison`, Rating `4.8`, and its id — **`8` on a fresh database, but read it off the panel rather than saying it from here.** *"That object did not exist a millisecond ago. Model binding built it out of the form. Now you can see the object it built"*
@@ -381,23 +381,21 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] **Step Over `SaveChangesAsync`** — 🎯 **the UPDATE appears in the Debug Console.** *"There. That line is the database call. The lines before it only prepared the change"*
 - [ ] **Continue** on the debug toolbar (F5) to let the request finish; the browser gets its redirect
 - [ ] ⚠️ **Disconnect on the debug toolbar (the plug icon, Shift+F5) to detach — before §6, not optional.** Your breakpoint is on `if (id != truck.Id)`, the first line of the Edit POST, and **§6 submits an edit** to fire the concurrency 404. Stay attached and VS Code grabs the screen at the breakpoint instead — the beat dies for a reason that looks like nothing. Detaching is enough; the red dot can stay, it can't fire with nothing attached. **Then click the Terminal tab** — the panel is still showing the Debug Console, and §6 reads its `DELETE` in the terminal
-- [ ] 🎞️ **GO TO SLIDE 12** — *Update marks. SaveChanges writes.* · recap on the slide what they just watched, because it stays true with no debugger attached: *"bind, guard, mark, write — you stepped through all four. Last week's bug was a missing `SaveChanges`: leave `SaveChanges` out and the form still submits, the guard still passes, the redirect still happens, and nothing ever reaches the database. Now you've seen why. `Update` only marks it"*
-- [ ] 💡 If asked "when would I use this myself?": *"any time the question is 'what is this object right now?' — a form that binds zeros, a guard that fails when you're sure it shouldn't. Attach, breakpoint, look. It's faster than ten `Console.WriteLine`s, and it shows you the real values"*
 - [ ] **✓ CHECKPOINT:** the room can say what `Update()` did and what `SaveChangesAsync()` did — having seen the gap between them
 
 ## ☕ Break
 
-## 6 · Delete asks first *(slides 13–15)*
+## 6 · Delete asks first *(slides 12–14)*
 
-### Why Delete asks first *(slide 13)*
+### Why Delete asks first *(slide 12)*
 
 - [ ] **Predict before the slide:** *"Delete could be one link — click it, record's gone. Why doesn't anyone build it that way?"* Take answers
-- [ ] 🎞️ **GO TO SLIDE 13** — *Why Delete asks first* · the rule underneath: **a GET must never change data.** Link previews, browser prefetch, crawlers, a curious extension — *"things you don't control follow links all day. If following a link deletes a truck, then anything that follows your links can delete your data"*
+- [ ] 🎞️ **GO TO SLIDE 12** — *Why Delete asks first* · the rule underneath: **a GET must never change data.** Link previews, browser prefetch, crawlers, a curious extension — *"things you don't control follow links all day. If following a link deletes a truck, then anything that follows your links can delete your data"*
 - [ ] So: *"the GET shows a confirmation page — the record that is about to be deleted, and a button. The POST does the deleting."* Two requests, on purpose
 
-### The Delete pair *(slide 14)*
+### The Delete pair *(slide 13)*
 
-- [ ] 🎞️ **GO TO SLIDE 14** — *The Delete pair*. Read the scaffold's version in `TrucksScaffoldController.cs` first — one wrinkle worth a beat: **the POST is called `DeleteConfirmed`**
+- [ ] 🎞️ **GO TO SLIDE 13** — *The Delete pair*. Read the scaffold's version in `TrucksScaffoldController.cs` first — one wrinkle worth a beat: **the POST is called `DeleteConfirmed`**
 - [ ] 🎯 Say why: *"two methods named `Delete` taking the same `int` won't compile — same name, same signature. So the POST gets a new name, and `[ActionName("Delete")]` keeps its URL as `/Trucks/Delete`. The method's real name never appears in a URL"*
 - [ ] Port the pair into `TrucksController`:
 
@@ -471,14 +469,14 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   <p><a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-outline-danger">🗑️ Remove this truck</a></p>
   ```
 
-### Deleted under you *(slide 15)*
+### Deleted under you *(slide 14)*
 
 - [ ] **Set up the two tabs, narrating as a story:** *"two people are looking at Ghost Kitchen at the same time. One of them starts fixing its rating—"* — **tab A: open its Edit form, change the rating, don't save**
 - [ ] *"—and the other decides the whole truck is a mistake."* **Tab B: Details → Remove this truck** — the confirmation page renders for the first time; give it its beat: 🎯 *"this page is a GET, and it has deleted nothing. It shows you the record and asks. Only the form's POST deletes"*
 - [ ] **Remove it.** Seven trucks again; the terminal shows the `DELETE ... WHERE [Id] = @p0`
 - [ ] **Predict, hands:** *"tab A's form is still open, still full of Ghost Kitchen. What happens when that person hits Save?"*
 - [ ] **Tab A: Save.** → **404**
-- [ ] 🎞️ **GO TO SLIDE 15** — *Deleted under you* · 🎯 *"That is the `catch` you read in the scaffold's Edit, and it just ran. The UPDATE matched no row, because the truck was deleted. EF threw. The catch checked whether the truck still exists. It does not, so the action returned NotFound. The scaffold already handled a case we had not thought about"*
+- [ ] 🎞️ **GO TO SLIDE 14** — *Deleted under you* · 🎯 *"That is the `catch` you read in the scaffold's Edit, and it just ran. The UPDATE matched no row, because the truck was deleted. EF threw. The catch checked whether the truck still exists. It does not, so the action returned NotFound. The scaffold already handled a case we had not thought about"*
 - [ ] **✓ CHECKPOINT:** someone can say why Delete is two requests, and what the GET half is allowed to do
 
 ## 7 · The scaffold comes down
@@ -504,11 +502,11 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] 👀 **Watch for:** *"already defines a member called 'Delete'"* — the POST got named `Delete` too. A **405** on posting the confirmation — `DeleteConfirmed` lost its `[ActionName("Delete")]`. Check 4 red with Delete working in the browser — read the message, it's the scaffold still standing. A page that still serves `/CryptidsScaffold` — `ENC0033`, no restart. And `dotnet ef` failing in the next block because `EntityFrameworkCore.Design` went out with the other two
 - [ ] **Stop:** the note after **Task 4 in full**. Where they should be: **`Passed: 4`** — checks 1 to 4, tonight's in-class target
 
-## 8 · A column on a live table *(slides 16–18)*
+## 8 · A column on a live table *(slides 15–17)*
 
-### A column on a live table *(slide 16)*
+### A column on a live table *(slide 15)*
 
-- [ ] 🎞️ **GO TO SLIDE 16** — *A column on a live table* · *"One more change tonight, and your own app needs it this week: the model gets a new property. Each truck gets a slogan"*
+- [ ] 🎞️ **GO TO SLIDE 15** — *A column on a live table* · *"One more change tonight, and your own app needs it this week: the model gets a new property. Each truck gets a slogan"*
 - [ ] In `Models/Truck.cs`, below `IsOpenLate` — **type it, it's two lines**:
   ```csharp
   [StringLength(80)]
@@ -538,7 +536,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 - [ ] **Predict:** *"the model changed. What will the next migration contain — and just as important, what won't it?"*
 
-### The migration is a diff *(slide 17)*
+### The migration is a diff *(slide 16)*
 
 - [ ] Generate it:
   ```bash
@@ -546,14 +544,14 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   ```
 - [ ] ⚠️ **Read EF's warning line out loud** — *"An operation was scaffolded that may result in the loss of data"* — and defuse it: *"it's talking about the `Down` method. Undoing this migration would drop the column and every slogan in it. The `Up` is safe — going forward loses nothing"*
 - [ ] **Open the file:** one `AddColumn`, seven `UpdateData`s. **No `CreateTable`.** 🎯 *"a diff again — and this time the diff includes data. It compared the seed against the snapshot and wrote seven updates"*
-- [ ] 🎞️ **GO TO SLIDE 17** — *The migration is a diff. Again.* · 🎯 **the rule change, said in exactly these words:** *"last week I told you: migration wrong? Delete the folder, regenerate. **You can't do that any more.** Your table has rows you care about, and your database records which migrations it has applied. From now on you fix a migration by adding another one. Forward only"*
+- [ ] 🎞️ **GO TO SLIDE 16** — *The migration is a diff. Again.* · 🎯 **the rule change, said in exactly these words:** *"last week I told you: migration wrong? Delete the folder, regenerate. **You can't do that any more.** Your table has rows you care about, and your database records which migrations it has applied. From now on you fix a migration by adding another one. Forward only"*
 - [ ] Apply it:
   ```bash
   dotnet ef database update
   ```
 - [ ] **Refresh the mssql panel** → the `Slogan` column exists, seven slogans in it. One `ALTER TABLE`, seven `UPDATE`s in the terminal
 
-### The guest list bites *(slide 18)*
+### The guest list bites *(slide 17)*
 
 - [ ] Add the field to `Views/Trucks/Edit.cshtml`, below Rating — **paste**:
   ```html
@@ -578,7 +576,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   Redirect, list loads…
 - [ ] 🎯 **The slogan is *gone*. Not the old one — none at all.** Sit in it. *"No error. No warning. I typed a new slogan and saving erased the one that existed"*
 - [ ] **Predict/collect:** *"I told you the guest list would come back tonight. What just happened?"* — let someone get close before you point at `[Bind("Id,Name,Cuisine,City,Rating,IsOpenLate")]`
-- [ ] 🎞️ **GO TO SLIDE 18** — *The guest list bites* · walk the mechanism: *"Slogan isn't on the list, so the binder never set it — the posted truck arrived with `Slogan = null`. Then `Update` marked the **whole record** modified, and the save faithfully wrote every column, null included. The guest list didn't just ignore my field. The save wrote null over the old value"*
+- [ ] 🎞️ **GO TO SLIDE 17** — *The guest list bites* · walk the mechanism: *"Slogan isn't on the list, so the binder never set it — the posted truck arrived with `Slogan = null`. Then `Update` marked the **whole record** modified, and the save faithfully wrote every column, null included. The guest list didn't just ignore my field. The save wrote null over the old value"*
 - [ ] **Fix it** — add `Slogan` to the list:
   ```csharp
   [Bind("Id,Name,Cuisine,City,Rating,IsOpenLate,Slogan")]
@@ -592,9 +590,9 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] 🎯 **The takeaway, for the lab and the homework:** *"when your model grows a property, three places need it: the view that shows it, the form that edits it, and the `[Bind]` list that allows it to bind. Miss the third and the failure is silent — and destructive"*
 - [ ] **✓ CHECKPOINT:** the room can say why the slogan vanished instead of just not saving
 
-## 9 · Hand off to the last lab block *(slide 19)*
+## 9 · Hand off to the last lab block *(slide 18)*
 
-- [ ] 🎞️ **GO TO SLIDE 19** — *Lab: the Registry gets a corrections desk*. Leave it up for the whole block; its timer is how long they have before the wrap-up
+- [ ] 🎞️ **GO TO SLIDE 18** — *Lab: the Registry gets a corrections desk*. Leave it up for the whole block; its timer is how long they have before the wrap-up
 - [ ] *"This is the last block, and it has no stop. Tasks 5 and 6 are the same change you just watched, on the Registry. Two nullable columns and one migration that adds them. Then the plates go on screen, and the new fields go on the Edit form."*
 - [ ] *"When you add those two fields to the form, add their names to the Bind list too. Then restart the app before you test it. That's the slogan I just lost, and it will happen to your Latin names the same way."*
 - [ ] **The in-class target is still checks 1–4.** Checks 5 and 6 roll into the homework if time goes
@@ -605,9 +603,9 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] 👀 **Watch for:** `The model for context 'CryptidContext' has pending changes` — the model changed after the migration; add another one, forward only. Anyone reaching to delete the `Migrations` folder — stop them; that's the move that's gone this week. Plates that 404 — the `src` starts `/img/cryptids/`, no `wwwroot`. A Latin name that vanishes on save — the `[Bind]` list, then a restart. `Unable to resolve service` on the home page — check the `HomeController` constructor asks for `CryptidContext`
 - [ ] **No stop.** This block takes whatever time is left before the wrap-up. Anyone finished: **🚀 Done early?** at the bottom of the README, or help a classmate
 
-## 10 · Wrap-up, after the lab *(slide 20)*
+## 10 · Wrap-up, after the lab *(slide 19)*
 
-- [ ] 🎞️ **GO TO SLIDE 20** — *Tonight, in one picture*. Walk the four verbs, each with its two-step: Create (`Add`+save) · Read (`ToListAsync`/`FindAsync`) · Update (mark+save, hidden Id) · Delete (ask, then `Remove`+save)
+- [ ] 🎞️ **GO TO SLIDE 19** — *Tonight, in one picture*. Walk the four verbs, each with its two-step: Create (`Add`+save) · Read (`ToListAsync`/`FindAsync`) · Update (mark+save, hidden Id) · Delete (ask, then `Remove`+save)
 - [ ] 🔗 **Collect week 7's promise:** *"I told you the Azure app setting was once per app, not once per deploy. This week you redeploy with one command — `az webapp up` — and the connection string is still there. That is what I said would happen"*
 - [ ] Homework: **same moves on your own app.** Scaffold a reference against your model, port Edit and Delete, delete the scaffold — and **your model grows one column of your choosing, additively.** The self-check runs your whole CRUD cycle and cleans up after itself
 - [ ] ⚠️ Repeat the one that protects their data: *"when the model grows: view, form, **and the `[Bind]` list.** The third one is silent when you miss it"*
