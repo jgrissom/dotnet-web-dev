@@ -555,7 +555,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
   </details>
 
-- [ ] **Predict:** *"the model changed. What will the next migration contain — and just as important, what won't it?"*
+- [ ] **Predict:** *"The model changed, and so did the seed data. What will the next migration contain? And will it create the Trucks table again?"* Take answers
 
 ### The migration is a diff *(slide 16)*
 
