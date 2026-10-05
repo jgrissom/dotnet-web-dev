@@ -376,7 +376,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 - [ ] In the browser: Edit **Ghost Kitchen**, change the rating to **4.8**, Save — **VS Code takes the screen mid-request**
 - [ ] 🎯 **Open `truck` in the Variables panel, under Locals, and walk it:** Name `Ghost Kitchen`, Cuisine `Fusion`, City `Madison`, Rating `4.8`, and its id — **`8` on a fresh database, but read it off the panel rather than saying it from here.** *"That object did not exist a millisecond ago. Model binding built it out of the form. Now you can see the object it built"*
-- [ ] Hover `ModelState` → `IsValid: true`. *"The guard you're paused on is reading this"*
+- [ ] Hover `ModelState` on the next `if`, below the line you're paused on → `IsValid: true`. *"The line I am paused on compares the id in the URL with the id in the form. The check below it reads this value. It is true, so the save goes ahead."*
 - [ ] **F10** — step over the guard, the `ModelState` check, down to `_context.Update(truck)`. **F10 past it**, then 🎯 **point at the terminal: no SQL.** *"Update ran, and no SQL appeared. It marked the record as modified. It did not write it. Last week I could only tell you that about `Add`. Tonight you can see it"*
 - [ ] **F10 over `SaveChangesAsync`** — 🎯 **the UPDATE appears in the terminal.** *"There. That line is the database call. The lines before it only prepared the change"*
 - [ ] **F5** to let the request finish; the browser gets its redirect
