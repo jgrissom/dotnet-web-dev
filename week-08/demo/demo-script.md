@@ -174,12 +174,12 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] 🎞️ **GO TO SLIDE 8** — *The hidden Id* · *"There it is — the difference between create and edit. Your Create form never sends an Id; this one does. The GET put it there, the browser sends it back with everything else, and the binder reads it into `truck.Id`. That's the whole answer: one input the user never sees"*
 - [ ] 🔗 Connect it to the guard: *"and now `if (id != truck.Id) return NotFound();` makes sense — if the URL and the form disagree about which record this is, someone's tampering or something's broken, and either way the answer is no"*
 
-### The guest list *(slide 9)*
+### The Bind list *(slide 9)*
 
 - [ ] Back in the controller, POST `Edit`. **Read the generated comment out loud** — *"To protect from overposting attacks, enable the specific properties you want to bind to"* — then define the two words it assumes you know: *"**binding** you met in week 6 — the fields in the request get matched up by name with properties on `Truck`. What nobody mentions is that it matches every property it can find, not just the ones your form has inputs for. And a form does not limit what can be sent: what actually arrives is a flat list of name-and-value pairs, and anyone can add a line to that list by hand. **Overposting** is doing exactly that — posting more fields than you ever offered, hoping the binder sets something you never put on the page"*
-- [ ] 🎞️ **GO TO SLIDE 9** — *The guest list* · **`[Bind("Id,Name,Cuisine,City,Rating,IsOpenLate")]`** — *"a guest list for model binding. Only names on the list are read out of the form. Everything else is ignored — no matter what a POST claims"*
+- [ ] 🎞️ **GO TO SLIDE 9** — *The Bind list* · **`[Bind("Id,Name,Cuisine,City,Rating,IsOpenLate")]`** — *"This is a list of property names. Only names on the list are read out of the form. Everything else is ignored — no matter what a POST claims"*
 - [ ] Still on slide 9, the one-sentence why: *"imagine `Truck` had an `IsAdmin` property. No box on your form — but a hand-written POST can send `IsAdmin=true` anyway, and the binder would set it. The list stops the binder from setting a field you never offered"*
-- [ ] ⚠️ **Still on slide 9 — flag it for later, but don't say what goes wrong:** *"remember the guest list — this `[Bind]` line, right here. We come back to it in the last part of the demo, and by then it will be causing a problem instead of preventing one"*
+- [ ] ⚠️ **Still on slide 9 — flag it for later, but don't say what goes wrong:** *"remember this `[Bind]` list, right here. We come back to it in the last part of the demo, and by then it will be causing a problem instead of preventing one"*
 - [ ] **Swipe back to the editor** — the POST `Edit` in `TrucksScaffoldController.cs`. Point at the two lines in its body, `_context.Update(truck)` and `await _context.SaveChangesAsync()` — 🔗 *"the same two-step as `Add`: mark it, then write it. Update marks the whole record modified; the UPDATE runs at save"*
 - [ ] Still in the editor, point at the `catch (DbUpdateConcurrencyException)` below them: *"notice the catch block - if the UPDATE matched no row — the record was deleted while the form was open. The catch checks whether the record still exists, and if it does not, returns 404. You'll see this catch run when we get to Delete"*
 - [ ] **✓ CHECKPOINT:** the room can say what travels in the hidden input, and what `[Bind]` does
@@ -572,7 +572,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   ```
 - [ ] **Refresh the mssql panel** → the `Slogan` column exists, seven slogans in it. One `ALTER TABLE`, seven `UPDATE`s in the terminal
 
-### The guest list bites *(slide 17)*
+### The Bind list erases a field *(slide 17)*
 
 - [ ] Add the field to `Views/Trucks/Edit.cshtml`, below Rating — **paste**:
   ```html
@@ -597,12 +597,12 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   Redirect, list loads…
 - [ ] 🎯 **The slogan is *gone*. Not the old one — none at all.** Sit in it. *"No error. No warning. I typed a new slogan and saving erased the one that existed"*
 - [ ] **Predict/collect:** *"What happened? Remember the model binding in the edit controller that handles post requests?"* — let someone get close before you point at `[Bind("Id,Name,Cuisine,City,Rating,IsOpenLate")]`
-- [ ] 🎞️ **GO TO SLIDE 17** — *The guest list bites* · walk the mechanism: *"Slogan isn't on the list, so the binder never set it — the posted truck arrived with `Slogan = null`. Then `Update` marked the **whole record** modified, and the save faithfully wrote every column, null included. The guest list didn't just ignore my field. The save wrote null over the old value"*
+- [ ] 🎞️ **GO TO SLIDE 17** — *The Bind list erases a field* · walk the mechanism: *"Slogan isn't on the list, so the binder never set it — the posted truck arrived with `Slogan = null`. Then `Update` marked the **whole record** modified, and the save faithfully wrote every column, null included. The `[Bind]` list didn't just ignore my field. The save wrote null over the old value"*
 - [ ] **Fix it** — add `Slogan` to the list:
   ```csharp
   [Bind("Id,Name,Cuisine,City,Rating,IsOpenLate,Slogan")]
   ```
-- [ ] ⚠️ **Restart before re-testing — `Ctrl+C`, `dotnet watch`.** That edit changed *only* an attribute, and MVC works out each action's binding from its attributes at startup: hot reload prints success and keeps the old guest list on some runs. Skip the restart and the slogan can vanish a second time with nothing on screen to explain it — which destroys the beat you just built. Same family as week 7's rude edits
+- [ ] ⚠️ **Restart before re-testing — `Ctrl+C`, `dotnet watch`.** That edit changed *only* an attribute, and MVC works out each action's binding from its attributes at startup: hot reload prints success and keeps the old `[Bind]` list on some runs. Skip the restart and the slogan can vanish a second time with nothing on screen to explain it — which destroys the beat you just built. Same family as week 7's rude edits
 - [ ] Edit Roll Models again, put the same slogan back in, then Save:
   ```text
   Kimchi at midnight

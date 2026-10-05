@@ -86,7 +86,7 @@ The lab's moves transfer one-for-one; only the names change. Translations that c
 > **The two silent failures, one more time, because they will both visit somebody this week:**
 >
 > - **An edit files a second record instead of correcting the first** → the hidden `Id` input is missing from your Edit form.
-> - **Saving an edit *erases* your new column's value** → the property isn't in the `[Bind]` list, so the binder left it `null` and `Update` wrote the null. [The mechanism](lecture-notes.md#the-guest-list-bites) is worth being able to explain, not just fix.
+> - **Saving an edit *erases* your new column's value** → the property isn't in the `[Bind]` list, so the binder left it `null` and `Update` wrote the null. [The mechanism](lecture-notes.md#the-bind-list-erases-a-field) is worth being able to explain, not just fix.
 
 > [!WARNING]
 > **Do not delete your `Migrations` folder to "start clean."** Your database's `__EFMigrationsHistory` remembers your old migration files by name; regenerated files can never be applied to it. [Forward only](lecture-notes.md#forward-only) — a wrong migration is fixed by adding another one. (A migration you generated but never applied is the exception: `dotnet ef migrations remove` unwinds it safely.)
@@ -199,7 +199,7 @@ That's it. **No second command this week.** Last week's `az webapp config appset
 - **`The name 'SomethingExists' does not exist in the current context`** — [port three things, not two](lecture-notes.md#what-porting-means). The catch calls a helper the scaffolder kept `private` at the bottom of the scaffold controller; copy that little method across as well and it compiles.
 - **An edit redirects but changes nothing** — no `await SaveChangesAsync()`. Marked, never written.
 - **An edit *added* a record** — `Add` where `Update` belongs.
-- **Saving an edit erased a field** — [the `[Bind]` list](lecture-notes.md#the-guest-list-bites). Your new property's name has to be on it. **Then restart before re-testing** (`Ctrl+C`, `dotnet watch`): that's an attribute-only edit, hot reload can keep the old list, and the erase happening *again* after a correct fix is how people end up rewriting code that was already right.
+- **Saving an edit erased a field** — [the `[Bind]` list](lecture-notes.md#the-bind-list-erases-a-field). Your new property's name has to be on it. **Then restart before re-testing** (`Ctrl+C`, `dotnet watch`): that's an attribute-only edit, hot reload can keep the old list, and the erase happening *again* after a correct fix is how people end up rewriting code that was already right.
 - **Delete POST → 405** — the POST half needs `[HttpPost, ActionName("Delete")]` on `DeleteConfirmed`.
 - **"already defines a member called 'Delete'"** — that's *why* it's `DeleteConfirmed`. [The one-attribute fix](lecture-notes.md#deleteconfirmed-and-why-its-named-that).
 - **`There is already an object named '...'`** — you regenerated migrations against a database that remembers the old ones. [Forward only](lecture-notes.md#forward-only) — and if you already deleted the folder, come talk to me; it's recoverable but fiddly.

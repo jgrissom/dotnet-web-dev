@@ -587,7 +587,7 @@
               + "record modified — nothing reaches the database until SaveChangesAsync()."
             : `I typed a value into every box on your Edit form and saved. `
               + `${erased.map(f => f.name).join(" and ")} came back EMPTY — the value posted, and `
-              + "your app threw it away. That's the [Bind] list: it's a guest list, only the names "
+              + "your app threw it away. That's the [Bind] list: only the names "
               + "on it are read out of the form, so the property arrived null — and Update() marks "
               + "the WHOLE record modified, so the save wrote that null over what was there. Not "
               + "ignored. Erased.",

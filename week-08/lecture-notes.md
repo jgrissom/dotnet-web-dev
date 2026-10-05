@@ -202,7 +202,7 @@ Two ids arrive — one in the URL, one in the form — and the first thing the a
 
 The line earns its keep when the URL *can't* answer. A form whose action carries no id posts `Id = 0`, and `_context.Update()` treats an **unset key as a new record** — so instead of correcting record 8 you quietly gain a second one. No error, no 404; just a duplicate in the list. Keep the hidden input and the form never depends on the URL's shape.
 
-### The guest list
+### The Bind list
 
 The POST's signature carries an attribute you haven't seen:
 
@@ -210,12 +210,12 @@ The POST's signature carries an attribute you haven't seen:
 [Bind("Id,Name,Cuisine,City,Rating,IsOpenLate")]
 ```
 
-The scaffolder documents it in a comment right above — *"To protect from overposting attacks, enable the specific properties you want to bind to"* — and the mental model is a **guest list**: the model binder reads *only* the listed names out of the form. Anything else in the POST is ignored, no matter what a hand-written request claims.
+The scaffolder documents it in a comment right above — *"To protect from overposting attacks, enable the specific properties you want to bind to"* — and what it does is simple: the model binder reads *only* the listed names out of the form. Anything else in the POST is ignored, no matter what a hand-written request claims.
 
-Why that matters, in one hypothetical: imagine `Truck` had an `IsAdmin` property. You'd never put a box for it on the form — but a crafted POST can send `IsAdmin=true` anyway, and without a list the binder would obligingly set it. The guest list stops fields you didn't offer from being smuggled in.
+Why that matters, in one hypothetical: imagine `Truck` had an `IsAdmin` property. You'd never put a box for it on the form — but a crafted POST can send `IsAdmin=true` anyway, and without a list the binder would obligingly set it. The `[Bind]` list stops the binder from setting a field you never offered.
 
 > [!WARNING]
-> **A guest list has a failure mode, and it's silent.** When your model grows a property, the new name is not on the list — and what happens then is worse than "the field doesn't save." Part 8 stages it. For now, just remember the list exists.
+> **The `[Bind]` list has a failure mode, and it's silent.** When your model grows a property, the new name is not on the list — and what happens then is worse than "the field doesn't save." Part 8 stages it. For now, just remember the list exists.
 
 ### Update marks, SaveChanges writes
 
@@ -635,7 +635,7 @@ From tonight, migrations are **forward only**: you fix a migration by adding ano
 > [!NOTE]
 > **The one exception:** a migration you've generated but **not yet applied anywhere** can still be unwound safely with `dotnet ef migrations remove`. It's the applied ones that are forever.
 
-### The guest list bites
+### The Bind list erases a field
 
 Finish the feature: the field goes on the Edit form (a `mb-3` block like the others), the slogan shows on the card. Reload — slogans everywhere, the Edit box pre-filled. Looks done.
 
@@ -649,14 +649,14 @@ No error, no warning, no validation message. Here's the mechanism, and it's wort
 2. `_context.Update(truck)` marks the **whole record** as modified — every property, including the null one.
 3. `SaveChangesAsync()` faithfully writes every column. `Slogan = NULL` included.
 
-**The guest list didn't just ignore your field — it fed the database a blank one.** The fix is one word:
+**The `[Bind]` list didn't just ignore your field — the save wrote null over the old value.** The fix is one word:
 
 ```csharp
 [Bind("Id,Name,Cuisine,City,Rating,IsOpenLate,Slogan")]
 ```
 
 > [!WARNING]
-> **Restart before you re-test it — `Ctrl+C`, then `dotnet watch` again.** That edit changed *only* an attribute, and MVC works out each action's binding from its attributes at startup: hot reload prints success and can keep the old guest list. Re-test without restarting and your slogan may vanish a second time — with a correct fix on screen and nothing to explain it. Same family as week 7's rude edits, and it is the reason to suspect your *process* rather than your code when a fix seems not to take.
+> **Restart before you re-test it — `Ctrl+C`, then `dotnet watch` again.** That edit changed *only* an attribute, and MVC works out each action's binding from its attributes at startup: hot reload prints success and can keep the old `[Bind]` list. Re-test without restarting and your slogan may vanish a second time — with a correct fix on screen and nothing to explain it. Same family as week 7's rude edits, and it is the reason to suspect your *process* rather than your code when a fix seems not to take.
 
 ### Three files care
 

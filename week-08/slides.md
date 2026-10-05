@@ -151,9 +151,9 @@ URL → `FindAsync` → model → **hidden input** → POST → `truck.Id`
 
 ---
 
-<!-- _footer: '🖥️ Demo §3 · the guest list' -->
+<!-- _footer: '🖥️ Demo §3 · the Bind list' -->
 
-## The guest list
+## The Bind list
 
 ```csharp
 [Bind("Id,Name,Cuisine,City,Rating,IsOpenLate")]
@@ -293,9 +293,9 @@ No `CreateTable`. The difference — **including the data.**
 
 ---
 
-<!-- _footer: '🖥️ Demo §8 · the guest list bites' -->
+<!-- _footer: '🖥️ Demo §8 · the Bind list erases a field' -->
 
-## The guest list bites
+## The Bind list erases a field
 
 New box on the form. New value typed. Saved. **Gone.**
 

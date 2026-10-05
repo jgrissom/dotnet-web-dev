@@ -88,7 +88,7 @@ dotnet test Cryptids.Checks
 | — | *(no check — the debugger)* | Attach the debugger to your running app, pause inside the Edit you just made, and step over `Update` and `SaveChangesAsync`. **[The debugger, on your own app ↓](#the-debugger-on-your-own-app)** |
 | 4 | `AFileCanBeClosed` | Copy [the Delete pair](../lecture-notes.md#the-delete-pair) out of the scaffold, then **delete the scaffold** — the check refuses to pass while it's still standing — and remove the two scaffolding packages. **[Task 4 in full ↓](#task-4-in-full)** |
 | 5 | `TheRegistryGrowsTwoColumns` | Two [nullable properties](../lecture-notes.md#nullable-and-why), Latin names and plates in the seed data, and one [additive migration](../lecture-notes.md#the-additive-migration). **[Task 5 in full ↓](#task-5-in-full)** |
-| 6 | `ThePlatesAreOnDisplay` | Plates on the cards and details, a featured record on the home page, the new fields on the Edit form — and [the `[Bind]` list](../lecture-notes.md#the-guest-list-bites) lets them through. **[Task 6 in full ↓](#task-6-in-full)** |
+| 6 | `ThePlatesAreOnDisplay` | Plates on the cards and details, a featured record on the home page, the new fields on the Edit form — and [the `[Bind]` list](../lecture-notes.md#the-bind-list-erases-a-field) lets them through. **[Task 6 in full ↓](#task-6-in-full)** |
 
 ### Task 1 in full
 
@@ -356,7 +356,7 @@ Changes 1, 2, 3, 6 and 7 are wording and where Cancel goes. **Changes 4 and 5 ar
 </details>
 
 - **The hidden `Id` is the one line your Create form never had** — [it's how the POST carries its own identity](../lecture-notes.md#the-hidden-id), instead of depending on the URL's shape. Check 2 looks for it by name; leave it out and check 3 catches the duplicate record you get instead.
-- The `[Bind]` list is [the guest list from the notes](../lecture-notes.md#the-guest-list) — six names now. **Task 6 comes back for it.**
+- The `[Bind]` list is [explained in the notes](../lecture-notes.md#the-bind-list) — six names now. **Task 6 comes back for it.**
 
 **Last, the way in.** In `Views/Cryptids/Details.cshtml`, below the badge, above the **Back to the registry** link, add:
 
@@ -748,7 +748,7 @@ public async Task<IActionResult> Index()
 > [Bind("Id,Name,Region,FirstSighting,Sightings,IsDebunked,LatinName,ImageUrl")]
 > ```
 >
-> Skip this and the form *looks* perfect — but [the guest list drops the unbound fields and `Update` writes the resulting nulls](../lecture-notes.md#the-guest-list-bites), so saving an edit **erases** a record's Latin name and plate. Silently. Check 6 catches it by editing The Hodag's Latin name through your form and reading what actually landed.
+> Skip this and the form *looks* perfect — but [the `[Bind]` list drops the unbound fields and `Update` writes the resulting nulls](../lecture-notes.md#the-bind-list-erases-a-field), so saving an edit **erases** a record's Latin name and plate. Silently. Check 6 catches it by editing The Hodag's Latin name through your form and reading what actually landed.
 >
 > ⚠️ **Then restart — in terminal 1, `Ctrl+C`, then `dotnet watch`.** You changed *only* an attribute, and MVC reads each action's binding from its attributes at startup, so hot reload can report success and keep the old list. Re-test without restarting and the erase can happen again **with the correct fix already in place** — which sends you hunting a bug you've already fixed.
 
