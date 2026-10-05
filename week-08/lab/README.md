@@ -2,7 +2,7 @@
 
 The Registry can take reports and show them. It cannot fix a typo in one, and it cannot get rid of one that turned out to be a hoax about a neighbor's dog. Tonight: a scaffolded reference controller, an Edit you port from it, a Delete that asks first — and then the archive's six **field-guide plates** go on display, which takes two new columns on a table that already has rows in it.
 
-**Time:** ~55 minutes in class, in five short blocks — each one follows the part of the demo it practices, and every block but the last ends at an **In class, stop here** note. **In-class target: checks 1–4 green.** Checks 5–6 (the plates) are the same moves your homework needs, and they roll into it if the clock wins.
+**Time:** ~55 minutes in class, in six short blocks — each one follows the part of the demo it practices, and every block but the last ends at an **In class, stop here** note. **In-class target: checks 1–4 green.** Checks 5–6 (the plates) are the same moves your homework needs, and they roll into it if the clock wins.
 
 ## Setup
 
@@ -85,6 +85,7 @@ dotnet test Cryptids.Checks
 | 1 | *(check 1 is already green)* | Install the scaffolder tool, put your connection string in user secrets, then **drop last week's database** and let one `dotnet ef database update` rebuild the whole thing. **[Task 1 in full ↓](#task-1-in-full)** |
 | 2 | *(no check — it's the reference)* | [Scaffold](../lecture-notes.md#the-command-piece-by-piece) `CryptidsScaffoldController` and browse what one command wrote. **[Task 2 in full ↓](#task-2-in-full)** |
 | 3 | `TheEditFormShowsTheRecord`, `ACorrectionIsSaved` | Copy [the Edit pair](../lecture-notes.md#the-edit-pair) out of the scaffold into `CryptidsController`, and make `Views/Cryptids/Edit.cshtml` from your Create view. **[Task 3 in full ↓](#task-3-in-full)** |
+| — | *(no check — the debugger)* | Attach the debugger to your running app, pause inside the Edit you just made, and step over `Update` and `SaveChangesAsync`. **[The debugger, on your own app ↓](#the-debugger-on-your-own-app)** |
 | 4 | `AFileCanBeClosed` | Port [the Delete pair](../lecture-notes.md#the-delete-pair), then **delete the scaffold** — the check refuses to pass while it's still standing — and remove the two scaffolding packages. **[Task 4 in full ↓](#task-4-in-full)** |
 | 5 | `TheRegistryGrowsTwoColumns` | Two [nullable properties](../lecture-notes.md#nullable-and-why), Latin names and plates in the seed data, and one [additive migration](../lecture-notes.md#the-additive-migration). **[Task 5 in full ↓](#task-5-in-full)** |
 | 6 | `ThePlatesAreOnDisplay` | Plates on the cards and details, a featured record on the home page, the new fields on the Edit form — and [the `[Bind]` list](../lecture-notes.md#the-guest-list-bites) lets them through. **[Task 6 in full ↓](#task-6-in-full)** |
@@ -379,7 +380,37 @@ dotnet test Cryptids.Checks
 **`Passed: 3`** — checks 1 to 3. Check 4's message says `CryptidsController` has no Delete action. That's correct: task 4 ports it.
 
 > [!NOTE]
-> **In class, stop here.** Task 4 comes after the next part of the demo. Checks 4 to 6 are still red, and that's expected. Finished early? Try **Redirect a correction somewhere smarter** from [🚀 Done early?](#-done-early) — it only changes the Edit you just ported. Or help a classmate. Working at home? Carry straight on.
+> **In class, stop here.** The debugger comes after the next part of the demo, and task 4 after that. Checks 4 to 6 are still red, and that's expected. Finished early? Try **Redirect a correction somewhere smarter** from [🚀 Done early?](#-done-early) — it only changes the Edit you just ported. Or help a classmate. Working at home? Carry straight on.
+
+### The debugger, on your own app
+
+**No check for this one, and no task number** — `dotnet test` can't see a debugger. You watched these steps in the demo; here you do them on the Registry, using the Edit you finished in task 3. [The notes walk the same steps](../lecture-notes.md#attach-to-the-process).
+
+**1. Restart the app.** In terminal 1, `Ctrl+C`, then:
+
+```bash
+dotnet watch
+```
+
+You've been editing code, and the debugger refuses to attach to an app `dotnet watch` has hot-reloaded: *"Attaching a .NET debugger to this process is not allowed because code changes have been applied."* A fresh start clears that.
+
+**2. Attach.** `Ctrl+Shift+P` (`⇧⌘P` on a Mac), type **Attach to a .NET**, and choose **Debug: Attach to a .NET 5+ or .NET Core process**. In the list that opens, type `Cryptids` and pick **`Cryptids.Web`** — the app itself, not `dotnet watch`.
+
+**3. Set a breakpoint.** In `Controllers/CryptidsController.cs`, find the `Edit` method with `[HttpPost]` above it. Click in the margin to the left of the line number on `if (id != cryptid.Id)`. A red dot appears.
+
+> [!IMPORTANT]
+> **Don't edit any code until you disconnect.** A save makes `dotnet watch` rebuild, and your breakpoint turns into a hollow circle that never stops anything.
+
+**4. Trigger it.** In the browser, open any creature, click **Correct the record**, change its **Reports on file** box, and save. VS Code comes to the front with the breakpoint line highlighted. The request is paused there.
+
+**5. Look at what arrived.** In the **Variables** panel, under **Locals**, open `cryptid`. Those are the values from your form, the changed one included. Model binding built that object from the request.
+
+**6. Step.** The bottom panel has switched to the **Debug Console**; that's where the SQL shows while you're attached. On the debug toolbar, click **Step Over** until the highlight has passed `_context.Update(cryptid);` — no `UPDATE` appears. Click **Step Over** once more to pass `await _context.SaveChangesAsync();` — now the `UPDATE` appears. `Update` marks the record; `SaveChangesAsync` writes it.
+
+**7. Finish.** Click **Continue** on the debug toolbar, and the browser gets its redirect. Then click **Disconnect** — the plug icon — and click the **Terminal** tab to get your terminals back.
+
+> [!NOTE]
+> **In class, stop here.** Task 4 comes after the next part of the demo. Your check count hasn't moved — it's still `Passed: 3`. Finished early? Attach again, put the breakpoint on the first line of the other `Edit` method — the one that takes `int? id` — open a correction form, and look at `id` under Locals. Or help a classmate attach. Working at home? Carry straight on.
 
 ### Task 4 in full
 
@@ -745,4 +776,3 @@ In terminal 3, `dotnet test Cryptids.Checks`: **6 / 6.** The Registry has a corr
 - **Produce the deleted-under-you 404 on purpose.** Edit form open in one tab, close the file in another, then save the edit. That's the `DbUpdateConcurrencyException` catch you ported, earning its keep.
 - **Read the UPDATE closely.** Edit a record and look at the SQL: every column is in the SET clause, not just the one you changed. That's `Update()` marking the whole record — and it's why the `[Bind]` bite writes nulls instead of keeping old values.
 - **Make the reads async too.** `Index` and `Details` still run week 7's sync code, which is fine — but converting them (`ToListAsync`, `FirstOrDefaultAsync`, `async Task<IActionResult>`) is good practice for the homework.
-- **[Attach the debugger to the Registry](../lecture-notes.md#attach-to-the-process).** Breakpoint on the Edit guard, correct a record, and walk the Variables panel, under Locals — same moves as the demo, your app. ⚠️ **Restart the app first** — in terminal 1, `Ctrl+C`, then `dotnet watch` again. You've been editing code all lab, and the debugger refuses to attach to a process `dotnet watch` has hot-reloaded: *"Attaching a .NET debugger to this process is not allowed because code changes have been applied."* Restart, attach, then leave the code alone until you detach.
