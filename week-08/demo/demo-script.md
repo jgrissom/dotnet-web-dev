@@ -409,9 +409,12 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 - [ ] 🎞️ **GO TO SLIDE 13** — *The Delete pair*. Read the scaffold's version in `TrucksScaffoldController.cs` first — one wrinkle worth a beat: **the POST is called `DeleteConfirmed`**
 - [ ] 🎯 Say why: *"two methods named `Delete` taking the same `int` won't compile — same name, same signature. So the POST gets a new name, and `[ActionName("Delete")]` keeps its URL as `/Trucks/Delete`. The method's real name never appears in a URL"*
-- [ ] Port the pair into `TrucksController`:
+- [ ] **Copy the two Delete methods out of `Controllers/TrucksScaffoldController.cs`** — from the comment `// GET: TrucksScaffold/Delete/5` down to the closing `}` of `DeleteConfirmed`. Paste them into `Controllers/TrucksController.cs`, below `TruckExists`, at the end of the class
+- [ ] Nothing is underlined this time. *"The using line is already there from Edit, and these two methods call no helper. So this copy is the two methods and nothing else."*
+- [ ] The two comments you copied still say `TrucksScaffold/Delete/5`. Change both to `Trucks/Delete/5`
+- [ ] 💡 **Fallback only — skip this if the copy worked.** The same pair:
 
-  <details><summary>📋 paste: the Delete pair, into TrucksController</summary>
+  <details><summary>📋 fallback paste: the Delete pair, into TrucksController</summary>
 
   ```csharp
   // GET /Trucks/Delete/5 — show what's about to go, and ask first.
@@ -508,10 +511,10 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 ## Lab E · Task 4 — 10 minutes
 
 - [ ] Lab README on screen, scrolled to **Task 4 in full**
-- [ ] *"The Delete pair, the confirmation view, and the link. Then delete the scaffold and remove the two packages — the same order you just watched."*
+- [ ] *"Copy the two Delete methods out of your scaffold controller, the same way I did. Then the confirmation view and the link. After that, delete the scaffold and remove the two packages. Copy first, because once the scaffold is deleted there is nothing to copy from."*
 - [ ] *"Check 4 stays red while the scaffold is still in your project. Its message says so. After you delete it, restart the app."*
 - [ ] *"Remove those two packages and nothing else. EntityFrameworkCore.Design stays — dotnet ef runs on it, and task 5 needs it."*
-- [ ] 👀 **Watch for:** *"already defines a member called 'Delete'"* — the POST got named `Delete` too. A **405** on posting the confirmation — `DeleteConfirmed` lost its `[ActionName("Delete")]`. Check 4 red with Delete working in the browser — read the message, it's the scaffold still standing. A page that still serves `/CryptidsScaffold` — `ENC0033`, no restart. And `dotnet ef` failing in the next block because `EntityFrameworkCore.Design` went out with the other two
+- [ ] 👀 **Watch for:** a scaffold deleted before the Delete pair was copied — have them run task 2's scaffolder command again. *"already defines a member called 'Delete'"* — the POST got named `Delete` too. A **405** on posting the confirmation — `DeleteConfirmed` lost its `[ActionName("Delete")]`. Check 4 red with Delete working in the browser — read the message, it's the scaffold still standing. A page that still serves `/CryptidsScaffold` — `ENC0033`, no restart. And `dotnet ef` failing in the next block because `EntityFrameworkCore.Design` went out with the other two
 - [ ] **Stop:** the note after **Task 4 in full**. Where they should be: **`Passed: 4`** — checks 1 to 4, tonight's in-class target
 
 ## 8 · A column on a live table *(slides 15–17)*

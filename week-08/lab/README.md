@@ -86,7 +86,7 @@ dotnet test Cryptids.Checks
 | 2 | *(no check — it's the reference)* | [Scaffold](../lecture-notes.md#the-command-piece-by-piece) `CryptidsScaffoldController` and browse what one command wrote. **[Task 2 in full ↓](#task-2-in-full)** |
 | 3 | `TheEditFormShowsTheRecord`, `ACorrectionIsSaved` | Copy [the Edit pair](../lecture-notes.md#the-edit-pair) out of the scaffold into `CryptidsController`, and make `Views/Cryptids/Edit.cshtml` from your Create view. **[Task 3 in full ↓](#task-3-in-full)** |
 | — | *(no check — the debugger)* | Attach the debugger to your running app, pause inside the Edit you just made, and step over `Update` and `SaveChangesAsync`. **[The debugger, on your own app ↓](#the-debugger-on-your-own-app)** |
-| 4 | `AFileCanBeClosed` | Port [the Delete pair](../lecture-notes.md#the-delete-pair), then **delete the scaffold** — the check refuses to pass while it's still standing — and remove the two scaffolding packages. **[Task 4 in full ↓](#task-4-in-full)** |
+| 4 | `AFileCanBeClosed` | Copy [the Delete pair](../lecture-notes.md#the-delete-pair) out of the scaffold, then **delete the scaffold** — the check refuses to pass while it's still standing — and remove the two scaffolding packages. **[Task 4 in full ↓](#task-4-in-full)** |
 | 5 | `TheRegistryGrowsTwoColumns` | Two [nullable properties](../lecture-notes.md#nullable-and-why), Latin names and plates in the seed data, and one [additive migration](../lecture-notes.md#the-additive-migration). **[Task 5 in full ↓](#task-5-in-full)** |
 | 6 | `ThePlatesAreOnDisplay` | Plates on the cards and details, a featured record on the home page, the new fields on the Edit form — and [the `[Bind]` list](../lecture-notes.md#the-guest-list-bites) lets them through. **[Task 6 in full ↓](#task-6-in-full)** |
 
@@ -416,7 +416,15 @@ You've been editing code, and the debugger refuses to attach to an app `dotnet w
 
 **Check:** `Check4_AFileCanBeClosed`
 
-**Port the Delete pair** into `CryptidsController`, below Edit:
+**Copy the Delete pair** out of `Controllers/CryptidsScaffoldController.cs`, the same way you copied Edit in task 3. **Do this before the scaffold comes down** — once it's deleted there is nothing to copy from.
+
+**1. The two methods.** In `CryptidsScaffoldController.cs`, find the comment `// GET: CryptidsScaffold/Delete/5`. Select from that comment down to the closing `}` of `DeleteConfirmed`, and paste it into `CryptidsController.cs`, below `CryptidExists`, at the end of the class.
+
+Nothing is underlined this time: the `using` is already there from task 3, and these two methods call no helper.
+
+**2. The two comments** you copied still say `CryptidsScaffold/Delete/5`. Change both to `Cryptids/Delete/5`.
+
+<details><summary>Want to compare? The Delete pair, as the lecture notes show it</summary>
 
 ```csharp
 // GET /Cryptids/Delete/5 — show what's about to go, and ask first.
@@ -452,8 +460,10 @@ public async Task<IActionResult> DeleteConfirmed(int id)
 }
 ```
 
+</details>
+
 - **Why two actions:** [a GET must never change data](../lecture-notes.md#why-delete-asks-first) — the GET shows a confirmation page; only the POST deletes. Check 4 tests this literally: it loads your confirmation page and then verifies the record is *still there*.
-- **Why `DeleteConfirmed`:** [two methods can't share a name and a signature](../lecture-notes.md#deleteconfirmed-and-why-its-named-that) — `[ActionName("Delete")]` keeps its URL honest. Port both attributes.
+- **Why `DeleteConfirmed`:** [two methods can't share a name and a signature](../lecture-notes.md#deleteconfirmed-and-why-its-named-that) — `[ActionName("Delete")]` keeps its URL as `/Cryptids/Delete`. Make sure both attributes came across.
 
 **The confirmation view** — `Views/Cryptids/Delete.cshtml`, the whole file. Ours shows the creature's own card:
 
@@ -760,7 +770,8 @@ In terminal 3, `dotnet test Cryptids.Checks`: **6 / 6.** The Registry has a corr
 - **Saving an edit erased the Latin name / plate** — the `[Bind]` list doesn't include the new names. Task 6's caution block is the fix, and this is *the* silent bug of the week.
 - **`The view 'Edit' was not found`, and the file *is* right there** — **look at terminal 1, where `dotnet watch` runs.** Creating a new `.cshtml` is a change hot reload can't apply (`ENC0021`), so watch stops and asks **`Do you want to restart your app? Yes (y) / No (n) / Always (a) / Never (v)`** — and until you answer it, the app keeps serving the build from before your file existed. Press **`a`** and it stops asking for the rest of the lab. **Don't move the file; it's in the right place.**
 - **`The view 'Edit' was not found`, and the file genuinely isn't there** — it belongs at `Views/Cryptids/Edit.cshtml` (same for `Delete.cshtml`). Check the spelling and the folder before you blame the reload.
-- **POSTing the delete returns 405** — the POST half is missing or lost its `[ActionName("Delete")]`. Port `DeleteConfirmed` with both attributes.
+- **POSTing the delete returns 405** — the POST half is missing or lost its `[ActionName("Delete")]`. Copy `DeleteConfirmed` with both attributes.
+- **You deleted the scaffold before copying the Delete pair** — run task 2's scaffolder command again in terminal 2, copy the two Delete methods, then delete the scaffold again.
 - **"already defines a member called 'Delete'"** — you named the POST `Delete` too. That's why the scaffold's is `DeleteConfirmed`.
 - **Check 4 is red but delete works in the browser** — read the message: the scaffold controller is still in the project. Task 4 ends by deleting it (and restarting).
 - **`The model for context 'CryptidContext' has pending changes`** — you edited the model after generating the migration. Add another, in terminal 2: `dotnet ef migrations add WhatYouChanged`. Forward only.
