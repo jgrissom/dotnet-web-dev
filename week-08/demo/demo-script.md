@@ -582,7 +582,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
       <span asp-validation-for="Slogan" class="text-danger"></span>
   </div>
   ```
-- [ ] And show it on the card — in `Views/Shared/_TruckCard.cshtml`, under the title line:
+- [ ] And show it on the card — in `Views/Shared/_TruckCard.cshtml`, between the `<h5>` that shows the truck's name and the `<h6>` that shows its cuisine and city:
   ```html
   @if (Model.Slogan != null)
   {
