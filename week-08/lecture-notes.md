@@ -424,7 +424,7 @@ Since week 1 you've technically had a debugger, and this course has never needed
 
 Submit an edit in the browser. VS Code takes the screen mid-request, paused on your breakpoint. Worth the trip:
 
-- **`truck` in the Variables panel.** Name, Cuisine, City, Rating, Id — that object didn't exist a millisecond ago; model binding built it out of the form. In week 6 you took that on faith. There it is.
+- **`truck` in the Variables panel, under Locals.** Name, Cuisine, City, Rating, Id — that object didn't exist a millisecond ago; model binding built it out of the form. In week 6 you took that on faith. There it is.
 - **Hover `ModelState`** → `IsValid: true`. The guard you're paused on reads this.
 - **F10** (step over) down to `_context.Update(truck)`, and past it — then look at the terminal: **no SQL.** Marked, not written.
 - **F10** over `await _context.SaveChangesAsync()` — **the UPDATE appears.** That line is the database call; everything else was bookkeeping.
