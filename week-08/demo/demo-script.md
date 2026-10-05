@@ -596,7 +596,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   ```
   Redirect, list loads…
 - [ ] 🎯 **The slogan is *gone*. Not the old one — none at all.** Sit in it. *"No error. No warning. I typed a new slogan and saving erased the one that existed"*
-- [ ] **Predict/collect:** *"I told you the guest list would come back tonight. What just happened?"* — let someone get close before you point at `[Bind("Id,Name,Cuisine,City,Rating,IsOpenLate")]`
+- [ ] **Predict/collect:** *"What happened? Remember the model binding in the edit controller that handles post requests?"* — let someone get close before you point at `[Bind("Id,Name,Cuisine,City,Rating,IsOpenLate")]`
 - [ ] 🎞️ **GO TO SLIDE 17** — *The guest list bites* · walk the mechanism: *"Slogan isn't on the list, so the binder never set it — the posted truck arrived with `Slogan = null`. Then `Update` marked the **whole record** modified, and the save faithfully wrote every column, null included. The guest list didn't just ignore my field. The save wrote null over the old value"*
 - [ ] **Fix it** — add `Slogan` to the list:
   ```csharp
