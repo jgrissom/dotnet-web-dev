@@ -513,8 +513,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   dotnet remove package Microsoft.VisualStudio.Web.CodeGeneration.Design
   dotnet remove package Microsoft.EntityFrameworkCore.Tools
   ```
-- [ ] 🎯 **Watch the yellow `NU1901` warnings stop.** *"Those have been on screen since I added the two packages. They came from packages the scaffolder depends on. The scaffolder wrote our code and we kept the parts we wanted, so now we remove the packages. A build tool you have finished with should not stay in the project"*
-- [ ] ⚠️ **Say what's still there and why:** *"`EntityFrameworkCore.Design` stays — that's what `dotnet ef` runs on, and the new column after your next lab block needs it. It came with week 7, not with the scaffolder"*
+- [ ] 🎯 **Watch the yellow `NU1901` warnings stop.** *"Notice all of the Nuget warnings are gone"*
 
 ## Lab F · Task 4, part 2 — 4 minutes
 
