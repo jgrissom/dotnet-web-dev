@@ -311,21 +311,6 @@ the view · the form · **the `[Bind]` list**
 
 ---
 
-<!-- _footer: '🖥️ Demo §9' -->
-
-## Lab: the Registry gets a corrections desk
-
-- **1** — drop last week's database, one `database update`
-- **2** — scaffold the reference controller
-- **3** — port Edit
-- **4** — port Delete · the scaffold comes down
-- **5** — two new columns, one additive migration
-- **6** — the plates go on display
-
-**⏱️ 7 minutes · target tonight: 1–4 green.**
-
----
-
 <!-- _footer: '🖥️ Demo §10' -->
 
 ## Tonight, in one picture

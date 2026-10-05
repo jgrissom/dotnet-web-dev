@@ -15,7 +15,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 > Lost your place? **The nearest 🎞️ above you is the slide that should be showing** — and every slide's footer names the section and beat of this sheet it belongs to, so you can go the other way too.
 
 > [!IMPORTANT]
-> **Tonight the lab comes in seven short blocks, one after each part of the demo that it practices.** Each block has its own `## Lab` section below — what to say, what to watch for, and the README note it stops at. The lab README goes on screen for every block; the lab slide goes up only for the last one, in §9. §3 has no lab task of its own, so it runs straight into a ☕ break instead.
+> **Tonight the lab comes in seven short blocks, one after each part of the demo that it practices.** Each block has its own `## Lab` section below — what to say, what to watch for, and the README note it stops at. The lab README goes on screen for every block. There is no lab slide. §3 has no lab task of its own, so it runs straight into a ☕ break instead.
 
 > [!IMPORTANT]
 > **Tonight has two deliberate failures, and neither gets announced.** §6 saves an edit to a record that was deleted under it; §8 types a slogan into a form whose `[Bind]` list doesn't include it — and the save quietly **erases** the old value. That last one is the nastiest bug of the homework, met on your machine first. The terminal shares the stage with a new instrument tonight: **the debugger**, attached to a live process in §5.
@@ -611,9 +611,8 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] 🎯 **The takeaway, for the lab and the homework:** *"when your model grows a property, three places need it: the view that shows it, the form that edits it, and the `[Bind]` list that allows it to bind. Miss the third and the failure is silent — and destructive"*
 - [ ] **✓ CHECKPOINT:** the room can say why the slogan vanished instead of just not saving
 
-## 9 · Hand off to the last lab block *(slide 18)*
+## 9 · Hand off to the last lab block
 
-- [ ] 🎞️ **GO TO SLIDE 18** — *Lab: the Registry gets a corrections desk*. Leave it up for the whole block; its timer is how long they have before the wrap-up
 - [ ] *"This is the last block, and it has no stop. Tasks 5 and 6 are the same change you just watched, on the Registry. Two nullable columns and one migration that adds them. Then the plates go on screen, and the new fields go on the Edit form."*
 - [ ] *"When you add those two fields to the form, add their names to the Bind list too. Then restart the app before you test it. That's the slogan I just lost, and it will happen to your Latin names the same way."*
 - [ ] **The in-class target is still checks 1–4.** Checks 5 and 6 roll into the homework if time goes
@@ -624,9 +623,9 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] 👀 **Watch for:** `The model for context 'CryptidContext' has pending changes` — the model changed after the migration; add another one, forward only. Anyone reaching to delete the `Migrations` folder — stop them; that's the move that's gone this week. Plates that 404 — the `src` starts `/img/cryptids/`, no `wwwroot`. A Latin name that vanishes on save — the `[Bind]` list, then a restart. `Unable to resolve service` on the home page — check the `HomeController` constructor asks for `CryptidContext`
 - [ ] **No stop.** This block takes whatever time is left before the wrap-up. Anyone finished: **🚀 Done early?** at the bottom of the README, or help a classmate
 
-## 10 · Wrap-up, after the lab *(slide 19)*
+## 10 · Wrap-up, after the lab *(slide 18)*
 
-- [ ] 🎞️ **GO TO SLIDE 19** — *Tonight, in one picture*. Walk the four verbs, each with its two-step: Create (`Add`+save) · Read (`ToListAsync`/`FindAsync`) · Update (mark+save, hidden Id) · Delete (ask, then `Remove`+save)
+- [ ] 🎞️ **GO TO SLIDE 18** — *Tonight, in one picture*. Walk the four verbs, each with its two-step: Create (`Add`+save) · Read (`ToListAsync`/`FindAsync`) · Update (mark+save, hidden Id) · Delete (ask, then `Remove`+save)
 - [ ] 🔗 **Collect week 7's promise:** *"I told you the Azure app setting was once per app, not once per deploy. This week you redeploy with one command — `az webapp up` — and the connection string is still there. That is what I said would happen"*
 - [ ] Homework: **same moves on your own app.** Scaffold a reference against your model, port Edit and Delete, delete the scaffold — and **your model grows one column of your choosing, additively.** The self-check runs your whole CRUD cycle and cleans up after itself
 - [ ] ⚠️ Repeat the one that protects their data: *"when the model grows: view, form, **and the `[Bind]` list.** The third one is silent when you miss it"*
