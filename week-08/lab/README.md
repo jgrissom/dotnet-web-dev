@@ -490,10 +490,10 @@ public async Task<IActionResult> DeleteConfirmed(int id)
 **The way in**, next to Edit on the Details page:
 
 ```html
-<a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-outline-danger">🗑️ Close the file</a>
+<a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-outline-danger ms-2">🗑️ Close the file</a>
 ```
 
-*(Both buttons in the same `my-4` div reads nicely.)*
+Put it inside the same `my-4` div as the **Correct the record** button, on the line after it. The `ms-2` class adds the space between the two buttons.
 
 **Try it:** file a fake report through your Create form, then close its file. Watch the `DELETE ... WHERE` in terminal 1. Your six seeded creatures aren't precious — this database rebuilds from migrations — but deleting the fake keeps the next checks' counts obvious.
 
@@ -662,7 +662,7 @@ Four small view jobs, and one attribute that will try to sabotage you.
 
         <div class="mt-4">
             <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-secondary">✏️ Correct the record</a>
-            <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-outline-danger">🗑️ Close the file</a>
+            <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-outline-danger ms-2">🗑️ Close the file</a>
         </div>
 
         <p class="mt-4"><a href="/Cryptids">← Back to the registry</a></p>
