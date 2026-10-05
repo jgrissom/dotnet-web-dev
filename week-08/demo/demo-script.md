@@ -15,7 +15,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 > Lost your place? **The nearest 🎞️ above you is the slide that should be showing** — and every slide's footer names the section and beat of this sheet it belongs to, so you can go the other way too.
 
 > [!IMPORTANT]
-> **Tonight the lab comes in six short blocks, one after each part of the demo that it practices.** Each block has its own `## Lab` section below — what to say, what to watch for, and the README note it stops at. The lab README goes on screen for every block; the lab slide goes up only for the last one, in §9. §3 has no lab task of its own, so it runs straight into a ☕ break instead.
+> **Tonight the lab comes in seven short blocks, one after each part of the demo that it practices.** Each block has its own `## Lab` section below — what to say, what to watch for, and the README note it stops at. The lab README goes on screen for every block; the lab slide goes up only for the last one, in §9. §3 has no lab task of its own, so it runs straight into a ☕ break instead.
 
 > [!IMPORTANT]
 > **Tonight has two deliberate failures, and neither gets announced.** §6 saves an edit to a record that was deleted under it; §8 types a slogan into a form whose `[Bind]` list doesn't include it — and the save quietly **erases** the old value. That last one is the nastiest bug of the homework, met on your machine first. The terminal shares the stage with a new instrument tonight: **the debugger**, attached to a live process in §5.
@@ -107,7 +107,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 ## Lab A · Setup and task 1 — 12 minutes
 
 - [ ] Put the **lab README** on screen — the tab you parked in §0 — scrolled to **Setup**
-- [ ] *"Tonight the lab comes in six short blocks. After each part of the demo, you do the same thing to the Registry. Each block ends at a note that says In class, stop here."*
+- [ ] *"Tonight the lab comes in seven short blocks. After each part of the demo, you do the same thing to the Registry. Each block ends at a note that says In class, stop here."*
 - [ ] *"The first block is setup and task 1. Task 1 installs the scaffolder tool, sets your connection string, and rebuilds your database. Use the same database name as last week."*
 - [ ] ⚠️ **The drop is not optional, and say why:** *"In this block of the lab, you will drop and recreate the database, because your week-7 database's migration history is yours — your timestamps, your files. The starter ships mine — different timestamps. They can't mix: point the starter at that database and it fails with 'there is already an object named Cryptids'. Drop it, and one `database update` rebuilds the whole thing, creatures included. The fact that that works is what a migration IS"*
 - [ ] ⚠️ **Then fence it, in the same breath** — *"you only ever drop a database you could rebuild from scratch — and tonight's is exactly that, a throwaway I can hand you again from a git clone. Your own project's database has records in it that nothing can hand back. There, a bad migration is fixed by adding another one"*
@@ -494,12 +494,20 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] 🎞️ **GO TO SLIDE 14** — *Deleted under you* · 🎯 *"That is the `catch` you read in the scaffold's Edit, and it just ran. The UPDATE matched no row, because the truck was deleted. EF threw. The catch checked whether the truck still exists. It does not, so the action returned NotFound. The scaffold already handled a case we had not thought about"*
 - [ ] **✓ CHECKPOINT:** someone can say why Delete is two requests, and what the GET half is allowed to do
 
+## Lab E · Task 4, part 1 — 7 minutes
+
+- [ ] Lab README on screen, scrolled to **Task 4 in full**
+- [ ] *"Copy the two Delete methods out of your scaffold controller, the same way I did. Then make the confirmation view and add the link. Stop there. Do not delete the scaffold yet."*
+- [ ] *"Check 4 stays red at the end of this block. Its message says Delete works and the scaffold is still in your project. The scaffold comes down after the next part of the demo."*
+- [ ] 👀 **Watch for:** *"already defines a member called 'Delete'"* — the POST got named `Delete` too. A **405** on posting the confirmation — `DeleteConfirmed` lost its `[ActionName("Delete")]`. `The view 'Delete' was not found` with the file right there — the restart prompt in terminal 1. And anyone who has already deleted the scaffold — that's fine, they are ahead; send them on to the packages
+- [ ] **Stop:** the first note in **Task 4 in full**, above **Task 4, part 2**. Where they should be: **`Passed: 3`** — check 4 is red, and its message says the scaffold is still in the project
+
 ## 7 · The scaffold comes down
 
 - [ ] *"The reference did its job. Everything worth keeping has been ported. Leaving it up means a second, unthemed admin UI at `/TrucksScaffold` that nobody maintains and everybody forgets"*
 - [ ] Delete **`Controllers/TrucksScaffoldController.cs`** and the **`Views/TrucksScaffold/`** folder
 - [ ] ⚠️ **Restart, don't trust the reload** — deleting a class is a rude edit, same as week 7: `dotnet watch` prints `ENC0033` and keeps serving the old build. `Ctrl+C`, `dotnet watch`
-- [ ] `/Trucks` works, Edit works, `/TrucksScaffold` is an honest 404. *"In your next lab block, check 4 stays red while your scaffold is still in the project"*
+- [ ] `/Trucks` works, Edit works, `/TrucksScaffold` is an honest 404. *"Your check 4 is red right now for this reason. In the lab block that comes next, you delete your scaffold, and check 4 goes green"*
 - [ ] **Now take the tool out too** — in the second terminal:
   ```bash
   dotnet remove package Microsoft.VisualStudio.Web.CodeGeneration.Design
@@ -508,14 +516,13 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] 🎯 **Watch the yellow `NU1901` warnings stop.** *"Those have been on screen since I added the two packages. They came from packages the scaffolder depends on. The scaffolder wrote our code and we kept the parts we wanted, so now we remove the packages. A build tool you have finished with should not stay in the project"*
 - [ ] ⚠️ **Say what's still there and why:** *"`EntityFrameworkCore.Design` stays — that's what `dotnet ef` runs on, and the new column after your next lab block needs it. It came with week 7, not with the scaffolder"*
 
-## Lab E · Task 4 — 10 minutes
+## Lab F · Task 4, part 2 — 4 minutes
 
-- [ ] Lab README on screen, scrolled to **Task 4 in full**
-- [ ] *"Copy the two Delete methods out of your scaffold controller, the same way I did. Then the confirmation view and the link. After that, delete the scaffold and remove the two packages. Copy first, because once the scaffold is deleted there is nothing to copy from."*
-- [ ] *"Check 4 stays red while the scaffold is still in your project. Its message says so. After you delete it, restart the app."*
+- [ ] Lab README on screen, scrolled to **Task 4, part 2 — the scaffold comes down**
+- [ ] *"Delete your scaffold controller and the scaffold's views folder. Restart the app. Then remove the two packages."*
 - [ ] *"Remove those two packages and nothing else. EntityFrameworkCore.Design stays — dotnet ef runs on it, and task 5 needs it."*
-- [ ] 👀 **Watch for:** a scaffold deleted before the Delete pair was copied — have them run task 2's scaffolder command again. *"already defines a member called 'Delete'"* — the POST got named `Delete` too. A **405** on posting the confirmation — `DeleteConfirmed` lost its `[ActionName("Delete")]`. Check 4 red with Delete working in the browser — read the message, it's the scaffold still standing. A page that still serves `/CryptidsScaffold` — `ENC0033`, no restart. And `dotnet ef` failing in the next block because `EntityFrameworkCore.Design` went out with the other two
-- [ ] **Stop:** the note after **Task 4 in full**. Where they should be: **`Passed: 4`** — checks 1 to 4, tonight's in-class target
+- [ ] 👀 **Watch for:** a page that still serves `/CryptidsScaffold` — `ENC0033`, no restart. Check 4 still red — read the message; the views folder or the controller is still there. And `dotnet ef` failing in the last block because `EntityFrameworkCore.Design` went out with the other two
+- [ ] **Stop:** the note at the end of **Task 4, part 2**. Where they should be: **`Passed: 4`** — checks 1 to 4, tonight's in-class target, and no yellow `NU1901` warnings in terminal 1
 
 ## 8 · A column on a live table *(slides 15–17)*
 
@@ -612,7 +619,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] *"When you add those two fields to the form, add their names to the Bind list too. Then restart the app before you test it. That's the slogan I just lost, and it will happen to your Latin names the same way."*
 - [ ] **The in-class target is still checks 1–4.** Checks 5 and 6 roll into the homework if time goes
 
-## Lab F · Tasks 5 and 6 — 8 minutes
+## Lab G · Tasks 5 and 6 — 7 minutes
 
 - [ ] Lab README on screen, scrolled to **Task 5 in full**
 - [ ] 👀 **Watch for:** `The model for context 'CryptidContext' has pending changes` — the model changed after the migration; add another one, forward only. Anyone reaching to delete the `Migrations` folder — stop them; that's the move that's gone this week. Plates that 404 — the `src` starts `/img/cryptids/`, no `wwwroot`. A Latin name that vanishes on save — the `[Bind]` list, then a restart. `Unable to resolve service` on the home page — check the `HomeController` constructor asks for `CryptidContext`

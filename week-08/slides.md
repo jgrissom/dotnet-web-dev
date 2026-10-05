@@ -322,7 +322,7 @@ the view · the form · **the `[Bind]` list**
 - **5** — two new columns, one additive migration
 - **6** — the plates go on display
 
-**⏱️ 8 minutes · target tonight: 1–4 green.**
+**⏱️ 7 minutes · target tonight: 1–4 green.**
 
 ---
 

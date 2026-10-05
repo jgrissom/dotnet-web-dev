@@ -2,7 +2,7 @@
 
 The Registry can take reports and show them. It cannot fix a typo in one, and it cannot get rid of one that turned out to be a hoax about a neighbor's dog. Tonight: a scaffolded reference controller, an Edit you port from it, a Delete that asks first — and then the archive's six **field-guide plates** go on display, which takes two new columns on a table that already has rows in it.
 
-**Time:** ~55 minutes in class, in six short blocks — each one follows the part of the demo it practices, and every block but the last ends at an **In class, stop here** note. **In-class target: checks 1–4 green.** Checks 5–6 (the plates) are the same moves your homework needs, and they roll into it if the clock wins.
+**Time:** ~55 minutes in class, in seven short blocks — each one follows the part of the demo it practices, and every block but the last ends at an **In class, stop here** note. **In-class target: checks 1–4 green.** Checks 5–6 (the plates) are the same moves your homework needs, and they roll into it if the clock wins.
 
 ## Setup
 
@@ -414,7 +414,7 @@ You've been editing code, and the debugger refuses to attach to an app `dotnet w
 
 ### Task 4 in full
 
-**Check:** `Check4_AFileCanBeClosed`
+**Check:** `Check4_AFileCanBeClosed` — it goes green at the end of part 2, when the scaffold is gone.
 
 **Copy the Delete pair** out of `Controllers/CryptidsScaffoldController.cs`, the same way you copied Edit in task 3. **Do this before the scaffold comes down** — once it's deleted there is nothing to copy from.
 
@@ -497,9 +497,20 @@ public async Task<IActionResult> DeleteConfirmed(int id)
 
 **Try it:** file a fake report through your Create form, then close its file. Watch the `DELETE ... WHERE` in terminal 1. Your six seeded creatures aren't precious — this database rebuilds from migrations — but deleting the fake keeps the next checks' counts obvious.
 
----
+**Run the checks, in terminal 3:**
 
-**Then the scaffold comes down.** Delete **`Controllers/CryptidsScaffoldController.cs`** and the whole **`Views/CryptidsScaffold/`** folder. It was the reference; everything worth keeping has been ported, and what's left is an unthemed second UI nobody maintains.
+```bash
+dotnet test Cryptids.Checks
+```
+
+**`Passed: 3`** — the same as before. Check 4's message says Delete works, and that `CryptidsScaffoldController` is still in the project. That's correct: taking the scaffold down is part 2.
+
+> [!NOTE]
+> **In class, stop here.** The scaffold comes down after the next part of the demo. Check 4 is still red, and that's expected. Finished early? Try **Produce the deleted-under-you 404 on purpose** from [🚀 Done early?](#-done-early) — it needs only the Edit and Delete you now have. Or help a classmate. Working at home? Carry straight on.
+
+#### Task 4, part 2 — the scaffold comes down
+
+**You have everything you need from the scaffold.** Delete **`Controllers/CryptidsScaffoldController.cs`** and the whole **`Views/CryptidsScaffold/`** folder. It was the reference; everything worth keeping has been ported, and what's left is an unthemed second UI nobody maintains.
 
 > [!WARNING]
 > **Restart after deleting it** — in terminal 1, `Ctrl+C`, then `dotnet watch`. Deleting a class is a rude edit: `dotnet watch` prints `ENC0033` and keeps serving the old build, exactly like week 7's `CryptidData.cs` deletion.
@@ -525,7 +536,7 @@ dotnet test Cryptids.Checks
 **`Passed: 4`** — tonight's in-class target. 🎉 Check 5's message says `Cryptid` has no `LatinName` property yet. That's correct: task 5 adds it, and the rest is the plates.
 
 > [!NOTE]
-> **In class, stop here.** Tasks 5 and 6 come after the next part of the demo. Finished early? Try **Produce the deleted-under-you 404 on purpose** or **Read the UPDATE closely** from [🚀 Done early?](#-done-early) — neither one touches task 5. Or help a classmate. Working at home? Carry straight on.
+> **In class, stop here.** Tasks 5 and 6 come after the next part of the demo. Finished early? Try **Read the UPDATE closely** or **Make the reads async too** from [🚀 Done early?](#-done-early) — neither one touches task 5. Or help a classmate. Working at home? Carry straight on.
 
 ### Task 5 in full
 
