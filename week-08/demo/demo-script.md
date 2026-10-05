@@ -398,7 +398,10 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ### Why Delete asks first *(slide 12)*
 
-- [ ] **Predict before the slide:** *"Delete could be one link — click it, record's gone. Why doesn't anyone build it that way?"* Take answers
+- [ ] **Show the scaffold's Delete before any slide.** In the browser, go to `/TrucksScaffold` and click **Delete** on any truck except Ghost Kitchen. The scaffold's page appears: *Are you sure you want to delete this?*, the truck's details, a **Delete** button and a **Back to List** link
+- [ ] ⚠️ **Do not click the Delete button on this page.** A seeded truck that goes missing breaks the counts later — seven trucks after the two-tab story, seven slogans in §8 — and Ghost Kitchen has to last until that story
+- [ ] **Ask, with that page on screen:** *"I clicked a link that says Delete, and nothing was deleted. The scaffold shows me this page and a button. Why didn't it delete the truck when I clicked the link?"* Take answers
+- [ ] Click **Back to List**
 - [ ] 🎞️ **GO TO SLIDE 12** — *Why Delete asks first* · the rule underneath: **a GET must never change data.** Link previews, browser prefetch, crawlers, a curious extension — *"things you don't control follow links all day. If following a link deletes a truck, then anything that follows your links can delete your data"*
 - [ ] So: *"the GET shows a confirmation page — the record that is about to be deleted, and a button. The POST does the deleting."* Two requests, on purpose
 
