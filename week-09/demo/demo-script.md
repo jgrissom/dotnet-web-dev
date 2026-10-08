@@ -190,7 +190,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   SELECT * FROM Specials;
   ```
 - [ ] Say what is now true: *"Fourteen rows, and each one has a TruckId. The database has the specials. No page shows them yet."*
-- [ ] ⚠️ **Restart the app now — `Ctrl+C` in terminal 1, then `dotnet watch` again.** EF Core builds its model once, at startup, and the running app started before `Special` existed. Every save since printed `Hot reload succeeded`, and that does not rebuild the model. Skip this and §4's first reload is a 500 page instead of *Nothing listed*, and the `Include` that should fix it fails with *"The expression 't.Specials' is invalid inside an 'Include' operation"*
+- [ ] ⚠️ **Restart the app now — `Ctrl+C` in terminal 1, then `dotnet watch` again.** EF Core builds its model once, at startup, and the running app started before `Special` existed. Every save since printed `Hot reload succeeded`, and that does not rebuild the model. Skip this and §4's first reload can be a 500 page instead of *Nothing listed*, and the `Include` that should fix it can fail with *"The expression 't.Specials' is invalid inside an 'Include' operation"*
 - [ ] Say why while it comes back up: *"I am restarting my app. EF Core works out what my tables look like once, when the app starts. I added a class and a table after it started, so I start it again. You do the same thing in your task 3."*
 
 ## Lab C · Task 3 — 6 minutes
