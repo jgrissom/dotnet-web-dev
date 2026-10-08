@@ -10,7 +10,7 @@ The night one table becomes two — and the week turns on a failure with **no sy
 | Prep&nbsp;/⁠&nbsp;in-⁠class&nbsp;script | 📖&nbsp;[lecture-⁠notes.md](lecture-notes.md) | Full lecture content, choosing your own second table, **troubleshooting appendix** |
 | Projected&nbsp;in&nbsp;class | 🎞️&nbsp;[slides.md](slides.md) | The deck (GFM, one slide per `##`) — [**present it live**](https://jgrissom.github.io/dotnet-web-dev/week-09/) (arrow keys, `F` for fullscreen) |
 | In&nbsp;class,&nbsp;live-⁠coding | 🎨&nbsp;[demo/⁠](demo/) | *Curbside grows relatives* — picks up where week 8 left it; [clickable cue sheet](https://jgrissom.github.io/dotnet-web-dev/week-09/demo/script.html) |
-| In&nbsp;class,&nbsp;last&nbsp;55&nbsp;min | 🧪&nbsp;[lab/⁠](lab/) | *The Registry gets a sightings log* — 6 `dotnet test` checks; 1/6 green out of the box (answer key in the private answer-keys repo) |
+| In&nbsp;class,&nbsp;50&nbsp;min&nbsp;in&nbsp;eight&nbsp;blocks | 🧪&nbsp;[lab/⁠](lab/) | *The Registry gets a sightings log* — 6 `dotnet test` checks; 1/6 green out of the box; each block follows the part of the demo it practices, and all but the last end at an *In class, stop here* note (answer key in the private answer-keys repo) |
 | With&nbsp;the&nbsp;homework | ✅&nbsp;[homework-⁠checks.js](homework-checks.js) | Student self-check — the same checks the grader runs (12 of the 20 pts; **nothing runs on load — `recheck()` is the only path**, and it files one row it cannot take back) |
 | Assigned&nbsp;at&nbsp;wrap-⁠up | 📤&nbsp;[homework.md](homework.md) | Their own app gets a second related table, a form with a dropdown, and the `Include` that makes it visible; URL + repo via Canvas |
 
@@ -24,9 +24,10 @@ The night one table becomes two — and the week turns on a failure with **no sy
 - Teach the three words in §1 — principal, dependent, foreign key — naming each against `Truck` and `Special`, so the beat doesn't depend on who did the reading
 - ⚠️ **Copy `week-09/demo-starter/Curbside` out of the private answer-keys repo**, set your secret (`set` only — the id ships), then run `dotnet ef database drop --force` and `dotnet ef database update` — **after your last rehearsal**, as the final prep step. A rehearsal leaves `Specials` and `Dishes` already built and §2 has nothing left to create
 - **Two integrated terminals** — `dotnet watch` in the first, `dotnet ef` in the second — and answer `a` at the first restart prompt
+- ⚠️ **Restart the app after §3's `database update`** — EF Core builds its model at startup, and without the restart §4's reveal is a 500 page instead of *Nothing listed*
+- **Week 9's lab README in a browser tab** — it goes on screen for all eight lab blocks; there is no lab slide
 - **mssql extension** signed in and tested, panel closed — one appearance tonight (§3, reading the fourteen rows the migration inserted)
 - ⚠️ **Protect §4's silence.** The empty list is the only bug this term with no symptom at all — don't announce it, and don't fix it in the same breath
-- Your finished week-9 Registry with `dotnet test` at 6/6 — **on localhost, nothing deployed for it**
 - Remind students to `git pull` the starters repo for the week-09 folder
 
 **Prev:** [← Week 8 — EF Core CRUD](../week-08/README.md) · **Next:** [Week 10 — The Midterm Project →](../week-10/README.md)

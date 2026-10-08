@@ -15,6 +15,9 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 > Lost your place? **The nearest 🎞️ above you is the slide that should be showing** — and every slide's footer names the section and beat of this sheet it belongs to, so you can go the other way too.
 
 > [!IMPORTANT]
+> **Tonight the lab comes in eight short blocks, one after each part of the demo that it practices.** Each block has its own `## Lab` section below — what to say, what to watch for, and the README note it stops at. The lab README goes on screen for every block. There is no lab slide. §6 has no lab task of its own, so it runs straight into the second ☕ break instead.
+
+> [!IMPORTANT]
 > **Tonight has two deliberate failures and one hidden cost, and none of the three gets announced.** **Failure #1** is §4: a truck's page says **Nothing listed** while the table holds two rows. **The hidden cost** is §5, and it is the odd one — the page is entirely **correct**, and it pays **eight queries** to draw. Nothing on screen looks wrong, which is exactly why the terminal is the only place it shows. **Failure #2** is §7: a perfectly filled form is refused, blaming a field the user cannot see. All three are silent and all three are met on your machine first; the two *failures* are the ones waiting in the homework's 🆘 list.
 >
 > ⚠️ **Nothing tonight gets broken and put back.** Every one of the three is the naive version written forward into the right one — there is no beat that damages working code and restores it, so nothing here needs undoing if you lose your place.
@@ -48,40 +51,48 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   ```
 - [ ] **Open a second integrated terminal** (the `+` on the terminal panel — it opens in the same folder). `dotnet watch` owns the first one all night; everything you type tonight goes in the second — §3's and §9's `dotnet ef migrations add` and `dotnet ef database update`
 - [ ] ⚠️ **Know the one prompt that will bite you, and answer it `a` the first time.** Creating a *new* `.cshtml` (§7's `Specials/Create.cshtml`, §9's `Dishes/Details.cshtml`) is a change hot reload cannot apply, so watch stops and asks **`Do you want to restart your app? Yes (y) / No (n) / Always (a) / Never (v)`** — **in terminal 1, while you are typing in terminal 2.** Miss it and the page 500s with *"The view 'Create' was not found"*, naming the exact path the file is sitting at. Answer **`a`** at the first prompt and it never asks again all night
-- [ ] **Park two browser tabs**: `/Trucks` and `/Trucks/Details/1`
+- [ ] **Park three browser tabs**: `/Trucks`, `/Trucks/Details/1`, and **week 9's lab README** on github.com — it goes on screen for every lab block tonight
 - [ ] **mssql extension** signed in, saved server connection tested, panel closed. It has **one** appearance tonight — §3, reading the fourteen rows the migration inserted
-- [ ] **Say the no-typing line out loud in the first minute.** Tonight is watched, not typed along with: *"nothing tonight is yours to type. Curbside is my app, the Registry is yours, and your keyboard time is the lab — where the checks answer you and I am in the room"*
+- [ ] **Say the no-typing line out loud in the first minute.** Tonight is watched, not typed along with: *"Nothing I type tonight is yours to type. Curbside is my app, and the Registry is yours. Your keyboard time is the lab blocks. There are eight of them tonight, one after each part of my demo."*
 - [ ] Teaching profile on, notifications off, editor font sized for the back of the room and for a small laptop screen
 
 > [!NOTE]
 > **🖥️ On screen, at curtain**
 >
 > - **VS Code** — left half, `instructor/week-09/Curbside` open, two integrated terminals: terminal 1 running `dotnet watch`, terminal 2 idle at the project root
-> - **Browser** — right half, two tabs: `/Trucks` (seven cards, slogans showing) and `/Trucks/Details/1`
+> - **Browser** — right half, three tabs: `/Trucks` (seven cards, slogans showing), `/Trucks/Details/1`, and the week 9 lab README
 
-## 1 · Where we left off *(slides 2–3)*
+## 1 · Where we left off *(slide 2)*
 
-### The payoff, retold *(slide 2)*
+### The payoff, retold
 
-- [ ] 🎞️ **GO TO SLIDE 2** — *One table. Every app is at least two*
-- [ ] Say what the slide is claiming, and be specific about what is missing: *"you have Create, Read, Update and Delete on trucks. What you do not have is a truck that knows anything about anything else. Seven rows, seven islands"*
-- [ ] Land the second half: *"tonight your records grow relatives — a second table whose rows point back at this one"*
+- [ ] **Before any slide:** the `/Trucks` tab on screen — seven cards, slogans showing
+- [ ] *"You have Create, Read, Update and Delete on trucks. Each truck is one row in one table, and no row refers to any other row."*
+- [ ] *"Tonight I add a second table to my app. Each row in it belongs to one truck. After each step I take, you take the same step on your Registry."*
 
-### The three words *(slide 3)*
+### The three words *(slide 2)*
 
-- [ ] 🎞️ **GO TO SLIDE 3** — *What a relationship is*
-- [ ] Name all three against tonight's two classes, so they arrive as things rather than as vocabulary: *"three words, and all three of them show up tonight. The truck is the principal — it stands on its own. The special is the dependent — it does not. And the foreign key is the one column that ties them together, and it lives on the dependent, never on the principal"*
-- [ ] 🎯 Then sharpen the first two, because this is the part the table cannot say: *"principal and dependent are not about importance. They are about who can exist alone. A truck with no specials is a truck. A special with no truck is a row nobody can explain"*
-- [ ] 💡 Close on the two lines at the foot of the slide, pointed forward: *"one truck, many specials. One special, one truck. In a minute you will watch that sentence turn into three properties"*
+- [ ] 🎞️ **GO TO SLIDE 2** — *What a relationship is* · *"Three words, and you will use all three tonight. The truck is the principal. It can exist without a special. The special is the dependent. It cannot exist without a truck. The foreign key is the one column that ties them together. It is on the dependent, never on the principal."*
+- [ ] 🎯 Still on slide 2 — the part the table cannot say: *"Principal and dependent are not about importance. They are about which one can exist alone. A truck with no specials is still a truck. A special with no truck is a row nobody can explain."*
+- [ ] 💡 Still on slide 2, the two lines at the bottom: *"One truck has many specials. A special belongs to one truck. After your first lab block, I write that sentence as three properties."*
 
-## 2 · The second table *(slide 4)*
+## Lab A · Setup and task 1 — 8 minutes
 
-### Three properties, two classes *(slide 4)*
+- [ ] Put the **lab README** on screen — the tab you parked in §0 — scrolled to **Setup**
+- [ ] *"Tonight the lab comes in eight short blocks. After each part of my demo, you do the same thing to your Registry. Each block ends at a note that says In class, stop here."*
+- [ ] *"The first block is setup and task 1. Task 1 sets your connection string, drops the lab database, rebuilds it, and starts your app. Use the same database name as last week."*
+- [ ] ⚠️ **The drop is not optional, and say why:** *"You drop the lab database because the starter ships my migration files, and your database remembers yours. They cannot be mixed. If you skip the drop, the update fails with 'there is already an object named Cryptids'."*
+- [ ] ⚠️ **Then fence it:** *"Only drop a database you can rebuild from scratch. The lab database is one of those. Never drop your own project's database. It has records that nothing can give back."*
+- [ ] *"The checks never touch SQL Server. Six out of six does not prove your connection string works. Your browser proves that."* Then the target: *"Tonight's in-class target is checks 1 to 5."*
+- [ ] 👀 **Watch for:** `There is already an object named 'Cryptids'` — they skipped the drop. `Could not find a MSBuild project file` — terminal 1 or 2 never ran `cd Cryptids.Web`. And `Login failed`, or a long wait that ends in a network error, on `database update` — the username or password, or the server name
+- [ ] **Stop:** the note after **Task 1 in full**. Where they should be: `dotnet test` prints **`Passed: 1`**, the app is running in terminal 1, and `/Cryptids` shows six creatures
 
-- [ ] 🎞️ **GO TO SLIDE 4** — *Three properties, two classes*
-- [ ] **Ask the question on the slide before you build any of it:** *"three properties up there, across two classes. Only one of them is a column in SQL Server. Which one?"*
-- [ ] Give it away only after they commit: *"`TruckId`. That is the whole relationship as far as the database is concerned — one integer. The other two are conveniences C# gives you for walking between objects, and neither exists in the table"*
-- [ ] Swipe back. Create `Models/Special.cs` — **type this one**, it is the shape of the night:
+## 2 · The second table
+
+### Three properties, two classes
+
+- [ ] In the editor — no slide for this part. *"I start with the dependent. A special belongs to one truck, so the Special class is where the foreign key goes."*
+- [ ] Create `Models/Special.cs` — **type this one**, it is the shape of the night:
   ```csharp
   using System.ComponentModel.DataAnnotations;
   using Microsoft.EntityFrameworkCore;
@@ -117,6 +128,8 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   public ICollection<Special> Specials { get; set; } = new List<Special>();
   ```
 - [ ] 🎯 Point at the initializer, because it is the difference between a bug and a blank page later: *"it starts as an empty list, not null. A truck with no specials should read as zero specials, not as a crash"*
+- [ ] **Now ask, with `Truck.cs` still on screen** — the answer is the bottom row of slide 2: *"I have now typed three properties across two classes. TruckId and Truck are on Special. Specials is on Truck. Only one of the three is a column in SQL Server. Which one?"* Take answers
+- [ ] *"TruckId. To the database, the whole relationship is that one integer. Truck and Specials are navigation properties. C# uses them to get from one object to the other, and neither one is in the table."*
 - [ ] Open `Data/CurbsideContext.cs` and add the set, under `Trucks`:
   ```csharp
   public DbSet<Special> Specials => Set<Special>();
@@ -142,9 +155,19 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   ```
 - [ ] 💡 Do **not** draw attention to the repeated dish names yet — three trucks sell Cheese Curds and that is §9's reveal. If someone spots it early, say *"hold that thought, you have just found the last thing we do tonight"*
 
-## 3 · The migration *(slide 5)*
+## Lab B · Task 2 — 10 minutes
 
-### Cascade is chosen for you *(slide 5)*
+- [ ] Lab README on screen, scrolled to **Task 2 in full**
+- [ ] *"Task 2 is what I just did, with one difference. I added a class. You add a class, and you also take a property out. Your Cryptid class has an int called Sightings. The Hodag says 47 reports because somebody typed 47. You delete that int, and Sightings becomes the collection."*
+- [ ] *"Deleting the int breaks the seed, and the compiler shows you those six errors. Four other places do not error at all. The README lists all five places. Work from that list, not from the error pane."*
+- [ ] ⚠️ *"Your homework adds a table and removes nothing. Taking a column out is the Registry's own change. Do not go looking for something to delete in your own app."*
+- [ ] *"When you finish, every card says 0 reports. That is correct."*
+- [ ] 👀 **Watch for:** a card that prints a type name starting `System.Collections.Generic.List` where the count should be — they fixed the seed and skipped the card, item 5. Six `CS0029` errors in `CryptidContext.cs` — that is the seed, item 1, and it is expected until they fix it. `NullReferenceException` on `Sightings.Count` — the collection has no `= new List<Sighting>();`. And anyone running `dotnet ef` already — not yet; that is task 3
+- [ ] **Stop:** the note after **Task 2 in full**. Where they should be: **`Passed: 2`**, and all six cards on `/Cryptids` say *0 reports*
+
+## 3 · The migration *(slide 3)*
+
+### Cascade is chosen for you *(slide 3)*
 
 - [ ] Terminal 2. **Nothing to guess here — say what you are going looking for, then go get it:** *"three migrations exist already. This one is going to contain something none of the others do. Let's find out what it is"*
   ```bash
@@ -156,10 +179,9 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   ```csharp
   onDelete: ReferentialAction.Cascade
   ```
-- [ ] 🎞️ **GO TO SLIDE 5** — *Cascade is chosen for you*
-- [ ] Deliver the inference chain, slowly, because this is the beat: *"I never typed the word cascade. I typed `int TruckId` with no question mark. That says a special must have a truck. So EF asks: what should happen to a special when its truck is deleted? It cannot be orphaned, because the column will not take a null — so it goes too"*
-- [ ] 🔗 Collect last week's reading question by name: *"the reading asked you what happens to a review when its trail is deleted. That is the answer, and the framework decided it on your behalf from a missing question mark"*
-- [ ] Swipe back. Apply it in terminal 2:
+- [ ] 🎞️ **GO TO SLIDE 3** — *Cascade is chosen for you* · deliver the inference chain, slowly, because this is the beat: *"I never typed the word cascade. I typed `int TruckId` with no question mark. That says a special must have a truck. So what happens to a special when its truck is deleted? The column will not take a null, so the special cannot stay without a truck. It is deleted too."*
+- [ ] 🔗 Still on slide 3 — collect last week's reading question by name: *"the reading asked you what happens to a review when its trail is deleted. That is the answer, and the framework decided it on your behalf from a missing question mark"*
+- [ ] Swipe back to the editor. Apply it in terminal 2:
   ```bash
   dotnet ef database update
   ```
@@ -167,11 +189,25 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   ```sql
   SELECT * FROM Specials;
   ```
-- [ ] Say what is now true, and set up §4 without announcing it: *"fourteen rows, each one pointing at a truck. The database knows all of this. Let us go put it on a page"*
+- [ ] Say what is now true: *"Fourteen rows, and each one has a TruckId. The database has the specials. No page shows them yet."*
+- [ ] ⚠️ **Restart the app now — `Ctrl+C` in terminal 1, then `dotnet watch` again.** EF Core builds its model once, at startup, and the running app started before `Special` existed. Every save since printed `Hot reload succeeded`, and that does not rebuild the model. Skip this and §4's first reload is a 500 page instead of *Nothing listed*, and the `Include` that should fix it fails with *"The expression 't.Specials' is invalid inside an 'Include' operation"*
+- [ ] Say why while it comes back up: *"I am restarting my app. EF Core works out what my tables look like once, when the app starts. I added a class and a table after it started, so I start it again. You do the same thing in your task 3."*
 
-## 4 · Failure #1 — the empty list *(slide 6)*
+## Lab C · Task 3 — 6 minutes
 
-### Empty is not missing *(slide 6)*
+- [ ] Lab README on screen, scrolled to **Task 3 in full**
+- [ ] *"Task 3 is the seed and the migration. Paste the seed and generate the migration. Read the migration before you apply it. Find the DropColumn and the CreateTable. They have the same name."*
+- [ ] *"Then find onDelete Cascade, inside CreateTable. You did not type that either."*
+- [ ] ⚠️ *"After database update, restart your app in terminal 1. It is the same restart I just did, for the same reason."*
+- [ ] *"Your pages will still say 0 reports when you finish. That is expected."*
+- [ ] 👀 **Watch for:** `Build failed` on `migrations add` — the seed still sets `Sightings = 47` somewhere; that is task 2's item 1. Every page that lists a creature failing after `database update`, with an error naming `Sightings` — they skipped the restart. And anyone worried that the cards still say *0 reports* — that is where task 3 ends
+- [ ] **Stop:** the note after **Task 3 in full**. Where they should be: **`Passed: 3`**, the app restarted, and the pages still saying *0 reports*
+
+## ☕ Break
+
+## 4 · Failure #1 — the empty list *(slide 4)*
+
+### Empty is not missing *(slide 4)*
 
 - [ ] Open `Views/Trucks/Details.cshtml`. Paste this in, just under the *Back to all trucks* link:
   ```cshtml
@@ -194,24 +230,32 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
       <p class="text-muted">Nothing listed.</p>
   }
   ```
-- [ ] **Predict before you reload, and be exact about the number:** *"the mssql panel just showed us Roll Models has two specials, Kimchi Fries and a Bulgogi Bowl. I am about to reload its page. What am I going to see?"*
+- [ ] **No prediction here — this failure is what teaches the rule, so nobody can reason it out yet.** Say what to look at: *"In the mssql panel, we saw that Roll Models has two specials: Kimchi Fries and a Bulgogi Bowl. I am going to reload the Roll Models page. Look under the heading On the menu."*
 - [ ] **Reload `/Trucks/Details/1`.** 🎯 **`Nothing listed.`** Let it sit there. Say nothing for a beat
-- [ ] Then walk the evidence out loud, in this order — the point is that every instrument says fine: *"the page is 200. There is no error. The terminal has no exception in it. And the database has the rows — we read them in the mssql panel before the break"*
-- [ ] Ask for the diagnosis before you give it: *"so where did the two specials go?"*
-- [ ] 🎞️ **GO TO SLIDE 6** — *Empty is not missing*
-- [ ] Deliver the rule as the answer to the question they just tried: *"the navigation property is empty until a query asks for it. EF Core does not go and fetch related rows on the off chance you wanted them — it fetched a truck, because a truck is what you asked for"*
-- [ ] Then the sentence that makes it dangerous, which is the last line on the slide: *"and an empty list looks exactly like a truck that has no specials. This failure has no symptom"*
-- [ ] Swipe back. Fix `Details` in `TrucksController`:
+- [ ] Then walk the evidence out loud, in this order — the point is that every instrument says fine: *"The page loaded with a 200. There is no error on it. The terminal has no exception in it. And the database has the rows. We read them in the mssql panel, after the migration ran."*
+- [ ] **Ask a question the terminal can answer:** *"Read the SELECT statements this page just ran, in the terminal. Which tables do they name?"* Take the answer: `Trucks`, and nothing else
+- [ ] 🎞️ **GO TO SLIDE 4** — *Empty is not missing* · *"That is the rule at the top of this slide. A navigation property is empty until a query asks for it. EF Core fetched a truck, because a truck is what I asked for. It does not fetch related rows unless I ask for them."*
+- [ ] Still on slide 4, the last line — the sentence that makes it dangerous: *"An empty list looks exactly like a truck that has no specials. Nothing on the page or in the terminal tells you which one you have."*
+- [ ] Still on slide 4, the code in the middle: *"That is the fix. One line, Include, between Trucks and FirstOrDefault."*
+- [ ] Swipe back to the editor. Fix `Details` in `TrucksController`:
   ```csharp
   var truck = _context.Trucks
       .Include(t => t.Specials)
       .FirstOrDefault(t => t.Id == id);
   ```
-- [ ] **Reload.** Two specials, with prices. 🎯 *"Same page, same database, same fourteen rows. One line"*
+- [ ] **Reload.** Two specials, with prices. 🎯 *"Same page, same database, same fourteen rows. I added one line."* Then point at the terminal: the page's first `SELECT` now has a `LEFT JOIN` to `Specials` in it
 
-## 5 · The hidden cost — how many SELECTs *(slides 7–8)*
+## Lab D · Task 4, part 1 — 5 minutes
 
-### Predict the count *(slide 7)*
+- [ ] Lab README on screen, scrolled to **Task 4 in full**
+- [ ] *"Do what I just did, in the same order. Paste the accounts list into your Details view first. Reload The Hodag's page and read what it says. Then add Include to your Details action and reload again."*
+- [ ] *"Stop when The Hodag's page shows three accounts. Check 4 stays red at this stop. Read its message. It tells you what the next part of my demo is about."*
+- [ ] 👀 **Watch for:** a 500 on The Hodag's page naming `Sightings`, or *invalid inside an 'Include' operation* — the app was never restarted after task 3's `database update`. *Nothing on file* that survives the `Include` — the `Include` went on a different action; they want `Details`. And anyone who has already put `Include` on `Index` — fine, they are ahead and at `Passed: 4`
+- [ ] **Stop:** the first note in **Task 4 in full**, above **Task 4, part 2**. Where they should be: **`Passed: 3`** — check 4 is red, and its message says `Include` is per-query. The Hodag's page shows three accounts; its card on `/Cryptids` still says *0 reports*
+
+## 5 · The hidden cost — how many SELECTs *(slide 5)*
+
+### Predict the count
 
 - [ ] Set the task up in the browser first, so the goal is concrete: go to `/Trucks` and say *"seven cards. I want each one to say how many specials that truck has"*
 - [ ] Edit `Index` in `TrucksController` — **type this one**, because the shape is the point:
@@ -241,13 +285,12 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   </div>
   ```
 - [ ] 🚨 **The `@if` is not decoration — leave it off and two other pages return 500.** This same card is drawn by `Details` (the *Also in* block) and by `Delete`, and neither of those actions puts `Counts` in `ViewData`. Without the guard the cast hands back `null`, the indexer runs on it, and you get `NullReferenceException` in `_TruckCard.cshtml` — on two pages you never edited
-- [ ] 🎯 Say it out loud, because it is the strongest case you will make all night for §6: *"a partial inherits whatever ViewData the parent had. Three pages draw this card. One of them put the counts in the bag — the other two handed it over empty, and this view has to ask before it reaches in. That is what a bag of object costs you"*
-- [ ] 🎞️ **GO TO SLIDE 7** — *How many SELECTs?*
-- [ ] **The slide is the exercise.** Read the loop off it and ask for a show of hands on a number: *"seven trucks. One page load. How many SELECT statements is that terminal about to print? Hands up for one. For seven. For eight"*
-- [ ] Swipe back. **Reload `/Trucks` and scroll the terminal.** 🎯 **Eight.** One for the trucks, then one per truck
-- [ ] 💡 Make the stakes real without a number you cannot support: *"seven trucks is eight queries. This page grows one query per row, forever"*
+- [ ] 🎯 Say it out loud, because it is the strongest case you will make all night for §6: *"A partial gets the same ViewData as the page that draws it. Three pages draw this card. Only Index puts the counts in ViewData. On the other two pages the counts are not there, so this view has to check before it reads them. ViewData stores everything as object, and this check is what that costs."*
+- [ ] **Scroll the editor back to the `Index` action, so the loop is on screen — no slide for this — and ask for a show of hands:** *"Read the loop in Index. There are seven trucks, and I am about to load this page once. How many SELECT statements will the terminal print? Hands up for one. For seven. For eight."*
+- [ ] **Reload `/Trucks` and scroll the terminal.** 🎯 **Eight.** *"Eight. One SELECT for the list of trucks, and then one more for each truck."*
+- [ ] 💡 Make the stakes real without a number you cannot support: *"Seven trucks cost eight queries. Every truck I add costs one more."*
 
-### One JOIN *(slide 8)*
+### One JOIN *(slide 5)*
 
 - [ ] Replace the whole `Index` action with the one line:
   ```csharp
@@ -265,25 +308,32 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
       <span class="text-muted small">@Model.Specials.Count on the menu</span>
   </div>
   ```
-- [ ] 💡 No guard needed now, and say why — it is the initializer beat from §2 paying off: *"`Specials` starts life as an empty list, never null, so this is safe on every page that draws the card. The two that have not asked for specials yet will honestly say zero"*
+- [ ] 💡 No guard needed now, and say why — it is the initializer beat from §2 paying off: *"Specials starts as an empty list, never null. So this line is safe on every page that draws the card. The two pages that have not asked for specials yet will say zero."*
 - [ ] **Reload and read the terminal.** 🎯 **One statement**, and it is a `LEFT JOIN`
-- [ ] 🎞️ **GO TO SLIDE 8** — *One JOIN*
-- [ ] Point at the SQL on the slide and say what it proves: *"you did not write that join. You said Include, and EF wrote the join — one trip, seven trucks and all fourteen specials in it"*
-- [ ] ⚠️ Then the rider that is the actual exam question, and it is the last line on the slide: *"Include is per query. I put it on Details twenty minutes ago and it did nothing for this page. It is not a setting on the model and it is not remembered"*
+- [ ] 🎞️ **GO TO SLIDE 5** — *One JOIN* · *"The top row is what I wrote first: one query for the trucks, and one more for each truck. That was eight. The bottom row is Include: one query, with seven trucks and all fourteen specials in it. I did not write that join. I wrote Include, and EF wrote the join."*
+- [ ] ⚠️ Still on slide 5, the three lines at the bottom — this is the actual exam question: *"Include is per query. I put Include on the Details action, and it did nothing for this page. It is not a setting on the model, and it is not remembered for the next query."*
 
-## 6 · The ViewModel *(slide 9)*
+## Lab E · Task 4, part 2 — 4 minutes
 
-### One view, two things *(slide 9)*
+- [ ] Lab README on screen, scrolled to **Task 4, part 2 — the cards**
+- [ ] *"Your cards already count rows. You wrote that line in task 2. They say 0 because your Index action has not asked for the sightings. Add the same Include to Index. Try it before you open the answer."*
+- [ ] *"Read terminal 1 before and after. It is one SELECT both times. After the change, it has a LEFT JOIN in it."*
+- [ ] *"You do not write the loop I wrote first. I wrote it to show you what it costs."*
+- [ ] 👀 **Watch for:** cards still at *0 reports* — the `Include` went back on `Details` instead of `Index`. Check 4 still red — have them read the message; it names the page and the number it is looking for
+- [ ] **Stop:** the note at the end of **Task 4, part 2**. Where they should be: **`Passed: 4`**, and The Hodag's card says *3 reports*
+
+## 6 · The ViewModel *(slide 6)*
+
+### One view, two things *(slide 6)*
 
 - [ ] Open `Views/Trucks/Details.cshtml` and scroll to the *Also in* block. Read the line that is already there, out loud, exactly as written:
   ```cshtml
   var alsoHere = (List<Truck>)ViewData["AlsoHere"]!;
   ```
-- [ ] 🎞️ **GO TO SLIDE 9** — *One view, two things*
-- [ ] Say what that line costs, since the slide shows it but cannot complain about it: *"a cast and an exclamation mark, in a view, because `ViewData` is a bag of `object` and it forgot what went in. And the exclamation mark is me promising the compiler it is not null — with nothing backing the promise"*
-- [ ] Then the rule, which is the reason the folder is about to exist: *"when a view needs more than one thing, stop stuffing them in a bag. Give it a type that holds both"*
-- [ ] ⚠️ And the boundary, because this is where people put entities by mistake: *"a ViewModel is not an entity. It has no table, it is never in the `DbContext`, and it does not go in `Models/`"*
-- [ ] Swipe back. Create the folder `ViewModels/` and `ViewModels/TruckDetailsViewModel.cs`:
+- [ ] Still in the editor, with that line on screen, say what it costs: *"That line has a cast and an exclamation mark, in a view. ViewData stores everything as object, so the view has to cast it back to a list of trucks. The exclamation mark tells the compiler the value is not null, and nothing checks that."*
+- [ ] 🎞️ **GO TO SLIDE 6** — *One view, two things* · the rule, which is the reason the folder is about to exist: *"When a view needs more than one thing, do not pass the second thing through ViewData. Give the view one type that holds both. That type is called a ViewModel."*
+- [ ] ⚠️ Still on slide 6, the three bullets — this is where people put entities by mistake: *"A ViewModel is not an entity. It has no table. It is never in the DbContext. It goes in a ViewModels folder, not in Models."*
+- [ ] Swipe back to the editor. Create the folder `ViewModels/` and `ViewModels/TruckDetailsViewModel.cs`:
   ```csharp
   using Curbside.Models;
 
@@ -295,7 +345,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
       public List<Truck> AlsoHere { get; set; } = new();
   }
   ```
-- [ ] ⚠️ **Add the using to `Views/_ViewImports.cshtml` now, in the same breath** — a namespace that does not exist yet breaks *every* view in the project, not just this one, and the error list will point at files you have not touched:
+- [ ] ⚠️ **Add the using to `Views/_ViewImports.cshtml` now, as the very next edit** — a namespace that does not exist yet breaks *every* view in the project, not just this one, and the error list will point at files you have not touched:
   ```cshtml
   @using Curbside.ViewModels
   ```
@@ -324,7 +374,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
       return View(viewModel);
   }
   ```
-- [ ] 🎯 Name the three edits that just happened, because pasting a whole method hides them: *"the ViewData line is gone, the two things are now properties on one object, and the last line hands over the view model instead of the truck"*
+- [ ] 🎯 Name the three edits that just happened, because pasting a whole method hides them: *"the ViewData line is gone, the two things are now properties on one object, and the last line passes the view model to the view instead of the truck"*
 - [ ] Change the view's first line to `@model TruckDetailsViewModel`, then let the compiler drive the easy half — every `Model.X` becomes `Model.Truck.X`, including `Also in @Model.Truck.City`
 - [ ] 🚨 **The compiler will NOT drive the other half, and that is the beat.** Delete the `var alsoHere = ...` line, then repoint its **two** uses — they are not next to each other. First the `@if` that opens the *Also in* block:
   ```cshtml
@@ -335,17 +385,19 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   @foreach (var other in Model.AlsoHere)
   ```
 - [ ] ⚠️ Miss either one and the page throws `NullReferenceException` on `alsoHere.Count`. **Nothing warns you**: `ViewData["AlsoHere"]` is typed `object`, so the cast compiles, and the `!` you are deleting was silencing the only complaint you would have had. The controller stopped filling the bag and the view had no way to find out
-- [ ] 🎯 Say it, because it is the closing argument for the whole section: *"that is the last thing ViewData does to us tonight. It compiled clean and waited until someone loaded the page. A view model would not have let me get that far"*
+- [ ] 🎯 Say it, because it is the closing argument for the whole section: *"ViewData let that mistake compile. I would have found it only when someone loaded the page. With a ViewModel, a property that is missing does not compile."*
 - [ ] **Reload `/Trucks/Details/1`.** 🎯 *"Same page. The cast is gone, the exclamation mark is gone, and the view now says what it wants in its first line"*
 - [ ] 💡 **Not a beat — just so it does not surprise you.** The *Also in* card now carries a count it did not have in §4, because §5 put one on every card. It reads **1 on the menu** and that is correct: this action's `AlsoHere` query asks for specials too. The room last saw this page before §5, so there is no before-and-after here to point at — **don't try to make one**
+- [ ] **No lab block follows this part — say so:** *"There is no lab block for this part. You make a ViewModel in your next block, for the report form."*
 
-## 7 · The report form *(slides 10–11)*
+## ☕ Break
 
-### The dropdown *(slide 10)*
+## 7 · The report form *(slide 7)*
 
-- [ ] 🎞️ **GO TO SLIDE 10** — *SelectList*
-- [ ] Read the two blocks as one mechanism, because the connection between them is the whole idea: *"the controller builds a list of trucks and says: the value is the Id, the words are the Name. The view drops it into a select. So the option a human clicks carries a truck id — and that id is the foreign key"*
-- [ ] Swipe back. Create `ViewModels/SpecialFormViewModel.cs` — **type the two `SelectList` lines**, they come back in a minute:
+### The dropdown
+
+- [ ] In the editor — no slide for this part. Say where it is going: *"A new special has to say which truck it belongs to. On a form, that is a dropdown of trucks. The controller builds the list, and the view draws it."*
+- [ ] Create `ViewModels/SpecialFormViewModel.cs` — **type the two `SelectList` lines**, they come back in a minute:
   ```csharp
   using Microsoft.AspNetCore.Mvc.Rendering;
   using Curbside.Models;
@@ -457,8 +509,13 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   <p><a asp-controller="Specials" asp-action="Create" asp-route-truckId="@Model.Truck.Id" class="btn btn-primary">＋ Add a special</a></p>
   ```
 - [ ] **Load `/Trucks/Details/1` and click the button.** The form comes up with **Roll Models already selected** — say why, because it is the query string doing it: *"the link passed `truckId=1`, the controller passed it to the SelectList as the selected value, and the dropdown came up on the right truck"*
+- [ ] 🎯 **Right-click the dropdown → Inspect.** In the Elements panel, expand the `<select>` — its `name` is `Special.TruckId` — and point at the `<option>` lines under it: the placeholder, then seven trucks in name order. Find Roll Models, the one marked `selected`:
+  ```html
+  <option selected="selected" value="1">Roll Models</option>
+  ```
+- [ ] *"Look at one option. The words are the truck's name. The value is the truck's Id. When I submit this form, the browser sends the value, not the words. That value is the foreign key. It goes into Special.TruckId."* Then close DevTools
 
-### The list is not an answer *(slide 11)*
+### The list is not an answer *(slide 7)*
 
 - [ ] Fill the form in completely and correctly — **Roll Models**, `Tteokbokki`, `8.50`, `Monday` — and narrate that it is correct as you type, so the failure lands: *"a real truck, a real dish, a price inside the range, a day"*
 - [ ] **Submit.** 🎯 The form comes back. Nothing saved
@@ -470,9 +527,8 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] 💡 *"That is week 6's troubleshooting advice and it is still the fastest thing you own: when a form silently refuses, ask it to show you everything it knows"*
 - [ ] **Submit again.** 🎯 **"The Trucks field is required."**
 - [ ] Let the room sit with the contradiction before you explain it: *"the Trucks field. There is a truck in that dropdown. It says Roll Models"*
-- [ ] 🎞️ **GO TO SLIDE 11** — *The list is not an answer*
-- [ ] Deliver the explanation the error message refuses to give: *"`Trucks` is not the dropdown. `Trucks` is the list of choices, and it is a non-nullable property. Week 6: a non-nullable property is a required field. The browser posted the truck you picked — it never posts the list it picked from, so as far as the binder is concerned a required field arrived empty"*
-- [ ] Swipe back. Add one character in `SpecialFormViewModel`:
+- [ ] 🎞️ **GO TO SLIDE 7** — *The list is not an answer* · the explanation the error message does not give: *"Trucks is not the dropdown. Trucks is the list of choices, and it is a non-nullable property. Week 6: a non-nullable property is a required field. The browser posted the truck I picked. It never posts the list I picked from. So the binder sees a required field that arrived empty."*
+- [ ] Still on slide 7, the line of code at the bottom: *"The fix is one question mark."* Swipe back to the editor. Add one character in `SpecialFormViewModel`:
   ```csharp
   public SelectList? Trucks { get; set; }
   ```
@@ -485,24 +541,27 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   form.Trucks = TruckChoices(form.Special.TruckId);
   ```
 - [ ] Walk it in order — the middle step is the one that is easy to miss: *"when this page first loaded, the controller built a list of seven trucks, and the view turned that list into seven options. Then I hit submit. The browser sent back the one option I picked. It does not send the other six, and it does not send the list"*
-- [ ] 🎯 Then the step that makes the line necessary: *"so the form object that arrives in this action has no truck list on it at all — that part was never posted. Hand it straight back to the view and the dropdown comes back empty. This line builds the list again before the form is redisplayed, which is why you have been looking at a full dropdown every time it came back"*
+- [ ] 🎯 Then the step that makes the line necessary: *"so the form object that arrives in this action has no truck list on it at all — that part was never posted. Pass it straight back to the view and the dropdown comes back empty. This line builds the list again before the form is redisplayed, which is why you have been looking at a full dropdown every time it came back"*
 
-## 8 · Delete takes the children *(slide 12)*
+## Lab F · Task 5 — 10 minutes
 
-### Closing a file takes the children *(slide 12)*
+- [ ] Lab README on screen, scrolled to **Task 5 in full**
+- [ ] *"Task 5 is the report form. It has three new files: a ViewModel, a controller and a view. It also adds one line to _ViewImports and a link on your Details page."*
+- [ ] *"Create the ViewModels folder, the class, and the using line in _ViewImports together. If the using names a namespace that does not exist yet, every view in your project stops compiling."*
+- [ ] *"Your ViewModel already has the question mark on SelectList. The README gives you the fix I had to find."*
+- [ ] *"Create.cshtml is a new view. The terminal running dotnet watch will ask to restart. Answer a."*
+- [ ] 👀 **Watch for:** every view failing to compile at once — the `@using` went in before the `ViewModels` folder and class existed. `The view 'Create' was not found` with the file right there — the restart prompt is waiting in terminal 1; **don't let them move the file**. *The Cryptids field is required* with a creature chosen — the `?` is missing, and after adding it the app may need a restart. A dropdown that comes back empty after a refused submit — the list isn't rebuilt inside `if (!ModelState.IsValid)`. **Sweep the room in this block** — it is the biggest one tonight
+- [ ] **Stop:** the note after **Task 5 in full**. Where they should be: **`Passed: 5`** — checks 1 to 5, tonight's in-class target
 
-- [ ] Go to `/Trucks/Details/1` and hover **Remove this truck**, but do not click yet
-- [ ] **Ask, and make them commit before anything happens:** *"Roll Models has three specials now. If I delete this truck, what happens to the three rows in the Specials table?"*
-- [ ] 🎞️ **GO TO SLIDE 12** — *Closing a file takes the children*
-- [ ] Answer it against the slide, and tie it back to a decision they watched get made: *"they are deleted. Not orphaned, not blocked — deleted. And we chose that back when we wrote the Special class, by typing `int TruckId` with no question mark"*
-- [ ] Then the design point, which is the reason this beat exists at all: *"so a page that asks *are you sure* is lying if it only shows the truck. It has to say what else is going with it"*
-- [ ] Swipe back. Load the specials in the Delete GET in `TrucksController`:
-  ```csharp
-  var truck = await _context.Trucks
-      .Include(t => t.Specials)
-      .FirstOrDefaultAsync(t => t.Id == id);
-  ```
-- [ ] And warn, in `Views/Trucks/Delete.cshtml` — **between the `</div>` that closes the card and the `<form>` below it**:
+## 8 · Delete takes the children
+
+### Closing a file takes the children
+
+- [ ] In the browser — no slide for this part. Go to `/Trucks/Details/1` and hover **Remove this truck**, but do not click yet
+- [ ] **Ask — the answer is on the cascade slide from §3:** *"Roll Models has three specials now. If I delete this truck, what happens to its three rows in the Specials table?"* Take answers
+- [ ] Answer it, and tie it back to a decision they watched get made: *"They are deleted too. They are not left behind, and the delete is not blocked. The migration says onDelete Cascade, and it says that because I typed int TruckId with no question mark in the Special class."*
+- [ ] Then the design point, which is the reason this beat exists at all: *"So a page that asks 'are you sure' is leaving something out if it only shows the truck. It has to say what else will be deleted."*
+- [ ] **Write the warning first.** In `Views/Trucks/Delete.cshtml` — **between the `</div>` that closes the card and the `<form>` below it**:
   ```cshtml
   @if (Model.Specials.Count > 0)
   {
@@ -513,20 +572,34 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
       </div>
   }
   ```
-- [ ] **Load `/Trucks/Delete/1`.** 🎯 **Three specials on file.** Then click **Keep it** — say out loud that you are not deleting it, because the room will assume you did
-- [ ] 💡 One rider on the `Include`, because it is the same lesson yet again: *"that page needed its own Include. Details had one, Index had one, the Also in list had one, and Delete still showed zero until I added a fourth"*
+- [ ] **Click Remove this truck — `/Trucks/Delete/1`.** There is no warning, and the card on the page says **0 on the menu**. **Ask:** *"There is no warning, and the card on this page says 0 on the menu. Roll Models has three specials. You have seen this twice tonight. What is missing?"* Take the answer: an `Include`
+- [ ] Load the specials in the Delete GET in `TrucksController` — replace the line that looks the truck up:
+  ```csharp
+  var truck = await _context.Trucks
+      .Include(t => t.Specials)
+      .FirstOrDefaultAsync(t => t.Id == id);
+  ```
+- [ ] **Reload `/Trucks/Delete/1`.** 🎯 **Three specials on file**, and the card says **3 on the menu**. Then click **Keep it** — say out loud that you are not deleting it, because the room will assume you did
+- [ ] 💡 One rider on the `Include`, because it is the same lesson yet again: *"That page needed its own Include. Details has one. Index has one. The Also in list has one. Delete showed zero until I added a fourth."*
 
-## 9 · One more foreign key *(slide 13)*
+## Lab G · Task 6 — 4 minutes
 
-### The join was already there *(slide 13)*
+- [ ] Lab README on screen, scrolled to **Task 6 in full**
+- [ ] *"The same two steps, in the same order. Paste the warning into your Delete view, and open The Hodag's Close the file page. There is no warning yet. Then add the Include yourself. It is the third one you have written tonight."*
+- [ ] *"When the warning shows, click Keep it. Do not close The Hodag's file."*
+- [ ] 👀 **Watch for:** the warning never appearing — the `Include` went on `DeleteConfirmed`, the POST, instead of the GET that takes `int? id`. And ⚠️ **check 6 green with no warning on the page** — the card on that page prints the count too, and the check is satisfied by it; the `Include` alone turns it green. Look at their Close-the-file page, not only at their count
+- [ ] **Stop:** the note after **Task 6 in full**. Where they should be: **`Passed: 6`**, and The Hodag's Close-the-file page shows the warning
+
+## 9 · One more foreign key *(slide 8)*
+
+### The join was already there *(slide 8)*
 
 - [ ] Back to the seed in `Data/CurbsideContext.cs`. Scroll so several rows are visible and **ask the room to find the problem**: *"read the dish names. What is wrong with this table?"*
 - [ ] Take the answer and sharpen it — the repeated name is the symptom, and the point is what the database does **not** know: *"three trucks sell Cheese Curds, and each one has that name typed into its own row. As far as SQL Server is concerned those are three unrelated rows that happen to contain the same letters. Nothing in this table says they are the same dish"*
-- [ ] 🎯 Then make the cost concrete, because that is what earns the next twenty minutes: *"so suppose I want a page that lists every truck selling cheese curds. The best I can do is compare the text and hope all three were typed identically — one stray capital, one missing s, and a truck quietly drops off that page. Nothing errors. The list is just wrong"*
-- [ ] 🎞️ **GO TO SLIDE 13** — *One more foreign key*
-- [ ] Say what the fix is before you type it, and name what it turns `Special` into: *"pull the name out into its own table. `Special` stops being a detail of a truck and becomes the link between a truck and a dish — and it carries the price and the day while it does it"*
-- [ ] ⚠️ Then the definition, which is the syllabus line landing: *"that is a many-to-many. Many trucks, many dishes. And the join has to be a class of its own precisely because it carries something — the price is not a fact about the truck or about the dish, it is a fact about the pairing"*
-- [ ] Swipe back. Create `Models/Dish.cs`:
+- [ ] 🎯 Then make the cost concrete, because that is what earns the next twenty minutes: *"so suppose I want a page that lists every truck selling cheese curds. The best I can do is compare the text and hope all three were typed identically — one stray capital or one missing s, and that truck is missing from the page. Nothing errors. The list is just wrong"*
+- [ ] 🎞️ **GO TO SLIDE 8** — *One more foreign key* · say what the fix is before you type it: *"Here is the fix. I move the dish name into its own table. Look at Special, in the middle of the diagram. It now has two foreign keys: one to a truck and one to a dish. It is the link between them, and it carries the price and the day."*
+- [ ] ⚠️ Still on slide 8, the lines under the diagram — the definition, which is the syllabus line landing: *"That is a many-to-many. Many trucks, many dishes. The join has to be a class of its own because it carries something. The price is not a fact about the truck or about the dish. It is a fact about the two together."*
+- [ ] Swipe back to the editor. Create `Models/Dish.cs`:
   ```csharp
   using System.ComponentModel.DataAnnotations;
 
@@ -597,7 +670,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
           .ThenInclude(s => s.Dish)
       .FirstOrDefault(t => t.Id == id);
   ```
-- [ ] 🎯 Name it plainly: *"`Include` gets you to the specials. `ThenInclude` keeps going, one hop further, to the dish each special names"*
+- [ ] 🎯 Name it plainly: *"`Include` gets you to the specials. `ThenInclude` keeps going, one step further, to the dish each special names"*
 - [ ] Second, **the form has a `Name` box that no longer has anything to bind to.** It becomes a second dropdown. `ViewModels/SpecialFormViewModel.cs` gains a list:
   ```csharp
   public SelectList? Dishes { get; set; }
@@ -692,29 +765,20 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   </ul>
   ```
 - [ ] **Go to `/Trucks/Details/2`, click Cheese Curds.** 🎯 **Cheese Curd Cartel, Pierogi Party, Sconnie Sliders**
-- [ ] Land the reveal, and be precise that nothing was added to make it possible: *"I did not build a new relationship for that page. Those are the same fourteen rows, read from the other end. That is what a many-to-many is — one join table, walked in either direction"*
+- [ ] Land the reveal, and be precise that nothing was added to make it possible: *"I did not build a new relationship for that page. Those are the same fourteen rows, read from the other end. That is what a many-to-many is — one join table, read in either direction"*
 
-## 10 · Hand off to the lab *(slide 14)*
+## Lab H · Catch up, or the stretch — 3 minutes
 
-- [ ] 🎞️ **GO TO SLIDE 14** — *Lab: the Registry gets a sightings log*
-- [ ] Read the five tasks off the slide, then name the one that will eat the time: *"task 4 is one line and it is the line everybody forgets. When your accounts do not show up, it is not the seed and it is not the migration"*
-- [ ] ~90 seconds of **what done looks like** — the answer key **on localhost**, from `week-09/lab/solution`. Nothing is deployed for this:
-  ```bash
-  dotnet run
-  ```
-  Show `/Cryptids` with report counts on the cards, a creature's page with its accounts, and the report form with its creature dropdown. Then, from `week-09/lab/solution`:
-  ```bash
-  dotnet test Cryptids.Checks
-  ```
-  printing **6/6**
-- [ ] ⚠️ **Say what is different about the Registry's first task, because it is a deletion:** *"your `Sightings` column — the one that says 47 reports for the Hodag — comes out. Somebody typed 47. Tonight it becomes the reports themselves, and the number gets smaller and true"*
-- [ ] ⚠️ **The task-1 database drop, with the why and the fence:** *"drop the lab database before your first migration, because the starter's migration history and yours will not agree. **Never on your own project** — your project has data you care about"*
-- [ ] **In-class target: checks 1–5.** Check 6 is the delete warning, and it rolls into the homework if the clock wins
+- [ ] Lab README on screen, scrolled to **The tasks**
+- [ ] *"This is the last block, and it has no stop. If any of your checks are red, finish those first. If you are at six, the stretch at the bottom of the README is what I just did. Witness becomes its own table, and Sighting becomes the link between a witness and a creature."*
+- [ ] *"The stretch has no check and no points. Your homework needs a one-to-many and nothing more."*
+- [ ] *"Tonight's in-class target was checks 1 to 5. Anything still red is Part 1 of your homework."*
+- [ ] 👀 **Watch for:** anyone still red on check 4 — one `Include` on `Details`, a second one on `Index`. Anyone still red on check 5 — have them read the check's message before they change anything
+- [ ] **No stop.** This block takes whatever time is left before the wrap-up. Anyone finished: the stretch, **🚀 Done early?** at the bottom of the README, or help a classmate
 
-## 11 · Wrap-up, after the lab *(slide 15)*
+## 10 · Wrap-up, after the lab *(slide 9)*
 
-- [ ] 🎞️ **GO TO SLIDE 15** — *Tonight, in one picture*
-- [ ] Walk the five rows, one sentence each, and give `Include` the emphasis because it is the row that costs points: *"per query. Not per model, not per app. Every page that shows related rows asks for them again"*
-- [ ] Homework: **a second related table on their own app.** One-to-many is enough — *"sightings for creatures, reviews for trails, showtimes for movies. Week 4 told you to pick a topic that could grow one. That bill is due"*
-- [ ] ⚠️ Say what the self-check leaves behind, because it cannot clean up after itself: *"it files one report through your form and it cannot take it back — nothing this week asks you to build a delete for the second table. It files one, marked Week 9 Test, and reuses that same row every run after"*
-- [ ] 🔗 Week 10: *"the midterm. Nothing new — you extend what you have into something you would show someone"*
+- [ ] 🎞️ **GO TO SLIDE 9** — *Tonight, in one picture* · walk the five rows, one sentence each, and give `Include` the emphasis because it is the row that costs points: *"Include is per query. It is not per model, and it is not per app. Every page that shows related rows asks for them again."*
+- [ ] Homework: **a second related table on their own app.** One-to-many is enough — *"Sightings for creatures, reviews for trails, showtimes for movies. Week 4 asked you to pick a topic that could grow a second list. This week you add it."*
+- [ ] ⚠️ Say what the self-check leaves behind, because it cannot clean up after itself: *"The self-check files one report through your form, and it cannot remove it. Nothing this week asks you to build a delete for the second table. It files one row, marked Week 9 Test, and it reuses that same row on every run after."*
+- [ ] 🔗 Week 10: *"Next week is the midterm. Nothing new is introduced. You extend what you have into something you would show someone."*
