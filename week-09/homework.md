@@ -110,6 +110,7 @@ az webapp up
 
 ## 🆘 Stuck?
 
+- **A page that worked a minute ago fails right after you add the model or run `database update`** — *"Cannot create a DbSet for …"*, or *"… is invalid inside an 'Include' operation"*. Restart your app: `Ctrl+C` in the terminal running it, then `dotnet watch` again. EF Core builds its model once, at startup, and hot reload doesn't rebuild it. [The migration](lecture-notes.md#part-3-the-migration-and-the-cascade-you-did-not-choose). Restart before you change any code.
 - **Related rows don't show, but the database has them** — [`Include`](lecture-notes.md#part-4-include--empty-is-not-missing). Silent, no error, accounts for most of this week's confusion.
 - **They show on one page and not another** — [`Include` is per query](lecture-notes.md#include-is-per-query). Every page asks again.
 - **`NullReferenceException` on `.Count`** — the collection isn't initialized on the property.

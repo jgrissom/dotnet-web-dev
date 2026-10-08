@@ -123,6 +123,11 @@ onDelete: ReferentialAction.Cascade
 > [!NOTE]
 > You can change it — Fluent API in `OnModelCreating` lets you say `.OnDelete(DeleteBehavior.Restrict)` to refuse the delete instead. Nothing this term needs it. Know that the default was a decision, not a law.
 
+> [!IMPORTANT]
+> **Restart the app after `database update` — `Ctrl+C` in the terminal running it, then the same `dotnet watch` command you started it with.** EF Core works out what your tables look like **once, when the app starts**, and a hot reload does not redo it. You added a class, a collection and a `DbSet` while the app was running, so the running app still has the old picture — even though `dotnet watch` printed `Hot reload succeeded` for every save.
+>
+> If a page that worked before the migration now fails — with *"Cannot create a DbSet for 'Special' because this type is not included in the model for the context"*, or *"The expression 't.Specials' is invalid inside an 'Include' operation"* — the code is probably fine and the running app is old. **Restart before you change anything.**
+
 ---
 
 ## Part 4: `Include` — empty is not missing
@@ -623,6 +628,9 @@ The homework asks for a second, related table on your own app. Nothing here is s
 
 **The page shows nothing, but the database has rows.**
 `Include`. This is Part 4, it is silent, and it accounts for more of this week's confusion than everything else combined. Check the query that fed *this specific page* — an `Include` somewhere else does not count.
+
+**A page that worked before the migration now fails — "Cannot create a DbSet for…", or an `Include` is reported as "invalid".**
+Restart the app: `Ctrl+C` in the terminal running it, then `dotnet watch` again. EF Core builds its model once, at startup, and hot reload does not rebuild it — so after you add a model class or apply a migration, the running app is still working from the old one. Part 3. Restart before you change any code.
 
 **`NullReferenceException` on `Model.Something.Count`.**
 Either the collection was never initialized (`= new List<Thing>()` on the property) or the query did not `Include` it and you are on a code path that assumed otherwise.
