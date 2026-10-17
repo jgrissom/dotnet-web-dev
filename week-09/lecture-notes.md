@@ -218,7 +218,7 @@ That is correct. The page shows the right numbers. Load it and read the terminal
 **Seven trucks produce eight `SELECT` statements** — one for the trucks, then one more for every truck on the page. The page issues one extra query per row, and it always will: a hundred rows is a hundred and one queries.
 
 > [!NOTE]
-> **You will meet the name *lazy loading*.** It is an EF Core feature that fetches related rows the first time your code touches a navigation property — and it does it exactly this way, one query per row. It is **off by default, and this course leaves it off.** If a search result tells you to turn it on to make related rows appear, the fix you want is `Include`.
+> **By default, EF Core loads no related rows at all** — that is Part 4's empty list. `Include` asks for them. If a search result suggests turning on *lazy loading* to make related rows appear, don't: it hides a missing `Include` behind one extra query per row, which is exactly the cost this part is about.
 
 Now the other version:
 
