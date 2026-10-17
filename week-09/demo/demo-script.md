@@ -537,6 +537,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   ```cshtml
   <p><a asp-controller="Specials" asp-action="Create" asp-route-truckId="@Model.Truck.Id" class="btn btn-primary">＋ Add a special</a></p>
   ```
+- [ ] ⚠️ **Restart the app before you click — `Ctrl+C` in terminal 1, then `dotnet watch`.** Since the last restart you have added a controller, a ViewModel and a view to the running app, and hot reload does not reliably pick up all three. A restart takes a few seconds and always does
 - [ ] **Load `/Trucks/Details/1` and click the button.** The form comes up with **Roll Models already selected** — say why, because it is the query string doing it: *"the link passed `truckId=1`, the controller passed it to the SelectList as the selected value, and the dropdown came up on the right truck"*
 - [ ] 🎯 **Right-click the dropdown → Inspect.** In the Elements panel, expand the `<select>` — its `name` is `Special.TruckId` — and point at the `<option>` lines under it: the placeholder, then seven trucks in name order. Find Roll Models, the one marked `selected`:
   ```html
