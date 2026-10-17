@@ -351,7 +351,7 @@ else
 }
 ```
 
-**Reload The Hodag's page — `/Cryptids/Details/1`.** It says **Nothing on file.** No error, nothing in terminal 1 but an ordinary `SELECT` — and that `SELECT` names one table, `Cryptids`. The Hodag has three reports in the database.
+**Reload The Hodag's page — `/Cryptids/Details/1`, and scroll down past the plate.** Your new heading, **The accounts**, sits below the picture, and under it the page says **Nothing on file.** Near the top, the line task 2 changed still says **0 reports on file.** No error, nothing in terminal 1 but an ordinary `SELECT` — and that `SELECT` names one table, `Cryptids`. The Hodag has three reports in the database.
 
 **A navigation property is empty until a query asks for it.** In `Controllers/CryptidsController.cs`, in the `Details` action, replace the line that looks the creature up:
 
