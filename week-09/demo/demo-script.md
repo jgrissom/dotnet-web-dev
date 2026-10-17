@@ -187,7 +187,6 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   onDelete: ReferentialAction.Cascade
   ```
 - [ ] 🎞️ **GO TO SLIDE 3** — *Cascade is chosen for you* · deliver the inference chain, slowly, because this is the beat: *"I never typed the word cascade. I typed `int TruckId` with no question mark. That says a special must have a truck. So what happens to a special when its truck is deleted? The column will not take a null, so the special cannot stay without a truck. It is deleted too."*
-- [ ] 🔗 Still on slide 3 — collect last week's reading question by name: *"the reading asked you what happens to a review when its trail is deleted. That is the answer, and the framework decided it on your behalf from a missing question mark"*
 - [ ] Swipe back to the editor. Apply it in terminal 2:
   ```bash
   dotnet ef database update
