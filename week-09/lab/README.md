@@ -37,7 +37,7 @@ CryptidsRelated/           ← in `dotnet-web`, the folder you copied and rename
 
 | Terminal | Where it stands | What runs in it |
 |---|---|---|
-| 1 | inside `Cryptids.Web` — `cd Cryptids.Web` | `dotnet watch` — **started in task 1**, then left alone |
+| 1 | inside `Cryptids.Web` — `cd Cryptids.Web` | **nothing yet.** Task 1 starts `dotnet watch` here, after your connection string is set, and it runs for the rest of the lab |
 | 2 | inside `Cryptids.Web` — `cd Cryptids.Web` | everything else: `dotnet user-secrets`, `dotnet ef` |
 | 3 | `CryptidsRelated`, the folder holding **both** projects | `dotnet test Cryptids.Checks` |
 
@@ -48,6 +48,8 @@ cd Cryptids.Web
 ```
 
 Terminal 3 stays in `CryptidsRelated`, because `dotnet test Cryptids.Checks` runs from the folder holding both projects.
+
+**Don't start the app yet.** It needs your connection string first, and task 1 sets it.
 
 **5. In terminal 3:**
 
