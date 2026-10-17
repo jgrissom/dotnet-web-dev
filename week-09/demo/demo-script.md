@@ -592,7 +592,12 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 - [ ] In the browser — no slide for this part. Go to `/Trucks/Details/1` and hover **Remove this truck**, but do not click yet
 - [ ] **Ask — the answer is on the cascade slide from §3:** *"Roll Models has three specials now. If I delete this truck, what happens to its three rows in the Specials table?"* Take answers
-- [ ] Answer it, and tie it back to a decision they watched get made: *"They are deleted too. They are not left behind, and the delete is not blocked. The migration says onDelete Cascade, and it says that because I typed int TruckId with no question mark in the Special class."*
+- [ ] **Answer it from the migration, not from memory.** Open `Migrations/…_AddSpecials.cs` and find the line §3 highlighted, the last line of the `table.ForeignKey` block:
+  ```csharp
+  onDelete: ReferentialAction.Cascade
+  ```
+  *"They are deleted too. This line in the migration says so: on delete, cascade. EF chose it because I typed int TruckId with no question mark. A special must have a truck, so when the truck goes, its specials go with it."*
+- [ ] Still on that line — the other choices: *"Cascade is one of three choices. Restrict refuses to delete a truck while it still has specials. Set null keeps the specials and empties their TruckId, which only works if TruckId can be null. EF picked cascade for us, and nothing this term needs a different one."*
 - [ ] Then the design point, which is the reason this beat exists at all: *"So a page that asks 'are you sure' is leaving something out if it only shows the truck. It has to say what else will be deleted."*
 - [ ] **Write the warning first.** In `Views/Trucks/Delete.cshtml` — **between the `</div>` that closes the card and the `<form>` below it**:
   ```cshtml
