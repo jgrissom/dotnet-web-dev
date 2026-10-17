@@ -487,7 +487,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
           new SelectList(_context.Trucks.OrderBy(t => t.Name).ToList(), "Id", "Name", selected);
   }
   ```
-- [ ] **Say what the controller does, with it on screen:** *"This controller has the same Create pair as my trucks: a GET that shows the form, and a POST that saves it. The GET takes a truckId from the link that opens the form. It starts a new special with that TruckId, and it builds the list of trucks with the helper at the bottom, TruckChoices. TruckChoices makes the SelectList: every truck, sorted by name, with the Id as the value, the name as the text, and the current truck selected. The POST adds the special, saves it, and goes back to that truck's Details page."*
+- [ ] **Say what the controller does, with it on screen:** *"This controller adds specials. It has the same two actions as Create for trucks. The GET shows the form, with a dropdown of trucks. The POST saves the new special and goes back to that truck's page. The method at the bottom builds the dropdown's list of trucks."*
 - [ ] Create `Views/Specials/Create.cshtml` *(watch terminal 1 for the restart prompt if you have not answered `a` yet)*:
   ```cshtml
   @model SpecialFormViewModel
