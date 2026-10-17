@@ -309,9 +309,9 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   ```
 - [ ] 🚨 **The `@if` is not decoration — leave it off and two other pages return 500.** This same card is drawn by `Details` (the *Also in* block) and by `Delete`, and neither of those actions puts `Counts` in `ViewData`. Without the guard the cast hands back `null`, the indexer runs on it, and you get `NullReferenceException` in `_TruckCard.cshtml` — on two pages you never edited
 - [ ] 🎯 Say it out loud, because it is the strongest case you will make all night for §6: *"A partial gets the same ViewData as the page that draws it. Three pages draw this card. Only Index puts the counts in ViewData. On the other two pages the counts are not there, so this view has to check before it reads them."*
-- [ ] **Scroll the editor back to the `Index` action, so the loop is on screen — no slide for this — and ask for a show of hands:** *"Read the loop in Index. There are seven trucks, and I am about to load this page once. How many SELECT statements will the terminal print? Hands up for one. For seven. For eight."*
+- [ ] **Scroll the editor back to the `Index` action, so the loop is on screen — no slide for this — and ask:** *"Read the loop in Index. There are seven trucks, and I am about to load this page once. How many SELECT statements will the terminal print?"*
 - [ ] **Reload `/Trucks` and scroll the terminal.** 🎯 **Eight.** *"Eight. One SELECT for the list of trucks, and then one more for each truck."*
-- [ ] 💡 Make the stakes real without a number you cannot support: *"Seven trucks cost eight queries. Every truck I add costs one more."*
+- [ ] 💡 Make the stakes real without a number you cannot support: *"Seven trucks cost eight queries. Every truck I add costs one more. How many queries should we need? Only one. Think about that at a larger scale. What if there were 1,000 trucks? Or 10,000?"*
 - [ ] 💡 Name the feature they will meet in search results, and fence it: *"EF Core has a feature called lazy loading. It fetches related rows the first time your code touches them, and it does it this way, one query per truck. It is off by default, and we leave it off."*
 
 ### One JOIN *(slide 5)*
