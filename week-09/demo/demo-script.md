@@ -714,10 +714,18 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   ```csharp
   public SelectList? Dishes { get; set; }
   ```
-- [ ] `SpecialsController` builds it, exactly like the trucks one — a second helper, and a line in each of the two places `Trucks` is already set:
+- [ ] `SpecialsController` builds the dish list exactly like the truck list — three edits. **First, the helper**, at the bottom of the class, below `TruckChoices`:
   ```csharp
   private SelectList DishChoices(int? selected) =>
       new SelectList(_context.Dishes.OrderBy(d => d.Name).ToList(), "Id", "Name", selected);
+  ```
+- [ ] **Second, the GET `Create`**, inside `new SpecialFormViewModel { … }`: put a comma after `Trucks = TruckChoices(truckId)`, then add this line below it — a new special has no dish yet, so nothing is selected:
+  ```csharp
+  Dishes = DishChoices(null)
+  ```
+- [ ] **Third, the POST `Create`**, inside `if (!ModelState.IsValid)`, below `form.Trucks = TruckChoices(form.Special.TruckId);` — the dish list is not posted back either:
+  ```csharp
+  form.Dishes = DishChoices(form.Special.DishId);
   ```
 - [ ] And in `Views/Specials/Create.cshtml`, **replace the whole `Name` block** with the dish picker:
   ```cshtml
