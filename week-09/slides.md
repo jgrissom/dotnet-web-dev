@@ -91,7 +91,7 @@ _context.Trucks
 
 Asking for related rows with `Include` is **eager loading**.
 
-No exception. No warning. No log line.
+No exception. No warning. No error in the log.
 
 **An empty list looks exactly like a truck with no specials.**
 
