@@ -238,7 +238,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
       <p class="text-muted">Nothing listed.</p>
   }
   ```
-- [ ] **Before you reload, open the mssql panel and run this** — the database's answer goes on screen right before the page's:
+- [ ] **Before you reload, open the mssql panel and run this** — the database's answer goes on screen right before the page's. **Leave this query tab open in the editor**; you compare the terminal against it in a moment:
   ```sql
   SELECT t.Name AS Truck, s.Name AS Special, s.Price, s.ServedOn
   FROM Specials AS s
@@ -250,7 +250,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] **No prediction here — this failure is what teaches the rule, so nobody can reason it out yet.** Say what to look at: *"The database says Roll Models has two specials. I am going to reload the Roll Models details page. Look under the heading On the menu."*
 - [ ] **Reload `/Trucks/Details/1`.** 🎯 **`Nothing listed.`** Let it sit there. Say nothing for a beat
 - [ ] Then walk the evidence out loud, in this order — the point is that every instrument says fine: *"The page loaded with a 200. There is no error on it. The terminal has no exception in it. And the database has the rows. The query in the mssql panel just showed them."*
-- [ ] **Ask a question the terminal can answer:** *"Read the SELECT statements this page just ran, in the terminal. Which tables do they name?"* Take the answer: `Trucks`, and nothing else
+- [ ] **Compare the two queries.** Keep the query tab in the editor and look at terminal 1 under it. Scroll terminal 1 to the first `SELECT` the page just ran — it ends `WHERE … [Id] = @id`; the second one is the *Also in* list. Ask: *"In the editor is the query I ran to see Roll Models' specials. In the terminal is the query the page ran. What is in my query that is missing from the page's?"* Take answers: the `JOIN`. The page's query never mentions `Specials`
 - [ ] 🎞️ **GO TO SLIDE 4** — *Empty is not missing* · *"That is the rule at the top of this slide. A navigation property is empty until a query asks for it. EF Core fetched a truck, because a truck is what I asked for. It does not fetch related rows unless I ask for them."*
 - [ ] Still on slide 4, the last line — the sentence that makes it dangerous: *"An empty list looks exactly like a truck that has no specials. Nothing on the page or in the terminal tells you which one you have."*
 - [ ] Still on slide 4, the code in the middle: *"That is the fix. One line, Include, between Trucks and FirstOrDefault."*
