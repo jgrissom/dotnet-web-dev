@@ -368,6 +368,8 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
       public List<Truck> AlsoHere { get; set; } = new();
   }
   ```
+- [ ] **Say what the class is, with it on screen:** *"This class holds the two things the Details page needs. Truck is the truck the page is about. AlsoHere is the list of other trucks in the same city, the list that was in ViewData. Both have a type, so the view can use them without a cast. The class has no Id and no DbSet, so it never becomes a table. It exists only to carry data from the controller to one view."*
+- [ ] If anyone asks about `= null!` on `Truck`, or before they do: *"The controller sets Truck every time it builds this object, before the view sees it. So this exclamation mark is a promise the controller keeps."*
 - [ ] ⚠️ **Add the using to `Views/_ViewImports.cshtml` now, as the very next edit** — a namespace that does not exist yet breaks *every* view in the project, not just this one, and the error list will point at files you have not touched:
   ```cshtml
   @using Curbside.ViewModels
