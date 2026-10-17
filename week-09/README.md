@@ -26,7 +26,7 @@ The night one table becomes two — and the week turns on a failure with **no sy
 - **Two integrated terminals** — `dotnet watch` in the first, `dotnet ef` in the second — and answer `a` at the first restart prompt
 - ⚠️ **Restart the app after §3's `database update`** — EF Core builds its model at startup, and without the restart §4's reveal can be a 500 page instead of *Nothing listed*
 - **Week 9's lab README in a browser tab** — it goes on screen for all eight lab blocks; there is no lab slide
-- **mssql extension** signed in and tested, panel closed — one appearance tonight (§3, reading the fourteen rows the migration inserted)
+- **mssql extension** signed in and tested, panel closed — two appearances tonight (§3, the fourteen rows the migration inserted; §4, Roll Models' two specials, right before the reload)
 - ⚠️ **Protect §4's silence.** The empty list is the only bug this term with no symptom at all — don't announce it, and don't fix it in the same breath
 - Remind students to `git pull` the starters repo for the week-09 folder
 

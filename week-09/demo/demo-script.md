@@ -53,7 +53,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] **Open a second integrated terminal** (the `+` on the terminal panel — it opens in the same folder). `dotnet watch` owns the first one all night; everything you type tonight goes in the second — §3's and §9's `dotnet ef migrations add` and `dotnet ef database update`
 - [ ] ⚠️ **Know the one prompt that will bite you, and answer it `a` the first time.** Creating a *new* `.cshtml` (§7's `Specials/Create.cshtml`, §9's `Dishes/Details.cshtml`) is a change hot reload cannot apply, so watch stops and asks **`Do you want to restart your app? Yes (y) / No (n) / Always (a) / Never (v)`** — **in terminal 1, while you are typing in terminal 2.** Miss it and the page 500s with `The view 'Create' was not found`, naming the exact path the file is sitting at. Answer **`a`** at the first prompt and it never asks again all night
 - [ ] **Park three browser tabs**: `/Trucks`, `/Trucks/Details/1`, and **week 9's lab README** on github.com — it goes on screen for every lab block tonight
-- [ ] **mssql extension** signed in, saved server connection tested, panel closed. It has **one** appearance tonight — §3, reading the fourteen rows the migration inserted
+- [ ] **mssql extension** signed in, saved server connection tested, panel closed. It has **two** appearances tonight — §3, reading the fourteen rows the migration inserted, and §4, a join that shows Roll Models' two specials right before its page claims there are none
 - [ ] **Say the no-typing line out loud in the first minute.** Tonight is watched, not typed along with: *"Nothing I type tonight is yours to type. Curbside is my app, and the Registry is yours. Your keyboard time is the lab blocks. There are eight of them tonight, one after each part of my demo."*
 - [ ] Teaching profile on, notifications off, editor font sized for the back of the room and for a small laptop screen
 
@@ -195,16 +195,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   ```sql
   SELECT * FROM Specials;
   ```
-- [ ] **Point at the `TruckId` column:** *"Every row has a TruckId. That is the foreign key, stored as a number. On its own, a 1 does not tell you which truck it is."*
-- [ ] **Same panel, run the join** — replace the query with this one:
-  ```sql
-  SELECT t.Name AS Truck, s.Name AS Special, s.Price, s.ServedOn
-  FROM Specials AS s
-  JOIN Trucks AS t ON t.Id = s.TruckId
-  WHERE t.Name = 'Roll Models'
-  ORDER BY s.Name;
-  ```
-- [ ] Two rows, with the truck's name on each. *"The join matches each special's TruckId to the Id of a truck. That is the job a foreign key does. The WHERE keeps only Roll Models. It has two specials: a Bulgogi Bowl and Kimchi Fries."*
+- [ ] **Point at the `TruckId` column:** *"Every row has a TruckId. That is the foreign key, stored as a number. A TruckId of 1 means the truck whose Id is 1."*
 - [ ] Say what is now true: *"Fourteen rows, and each one has a TruckId. The database has the specials. No page shows them yet."*
 - [ ] ⚠️ **Restart the app now — `Ctrl+C` in terminal 1, then `dotnet watch` again.** EF Core builds its model once, at startup, and the running app started before `Special` existed. Every save since printed `Hot reload succeeded`, and that does not rebuild the model. Skip this and §4's first reload can be a 500 page instead of *Nothing listed*, and the `Include` that should fix it can fail with `The expression 't.Specials' is invalid inside an 'Include' operation`
 - [ ] Say why while it comes back up: *"I am restarting my app. EF Core works out what my tables look like once, when the app starts. I added a class and a table after it started, so I start it again. You do the same thing in your task 3."*
@@ -247,9 +238,18 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
       <p class="text-muted">Nothing listed.</p>
   }
   ```
-- [ ] **No prediction here — this failure is what teaches the rule, so nobody can reason it out yet.** Say what to look at: *"In the mssql panel, we saw that Roll Models has two specials: Kimchi Fries and a Bulgogi Bowl. I am going to reload the Roll Models page. Look under the heading On the menu."*
+- [ ] **Before you reload, open the mssql panel and run this** — the database's answer goes on screen right before the page's:
+  ```sql
+  SELECT t.Name AS Truck, s.Name AS Special, s.Price, s.ServedOn
+  FROM Specials AS s
+  JOIN Trucks AS t ON t.Id = s.TruckId
+  WHERE t.Name = 'Roll Models'
+  ORDER BY s.Name;
+  ```
+- [ ] Two rows, with the truck's name on each. *"This joins each special's TruckId to the Id of a truck. That is the job a foreign key does. The WHERE keeps only Roll Models. In the database, Roll Models has two specials: a Bulgogi Bowl and Kimchi Fries."*
+- [ ] **No prediction here — this failure is what teaches the rule, so nobody can reason it out yet.** Say what to look at: *"The database says Roll Models has two specials. I am going to reload the Roll Models page. Look under the heading On the menu."*
 - [ ] **Reload `/Trucks/Details/1`.** 🎯 **`Nothing listed.`** Let it sit there. Say nothing for a beat
-- [ ] Then walk the evidence out loud, in this order — the point is that every instrument says fine: *"The page loaded with a 200. There is no error on it. The terminal has no exception in it. And the database has the rows. We read them in the mssql panel, after the migration ran."*
+- [ ] Then walk the evidence out loud, in this order — the point is that every instrument says fine: *"The page loaded with a 200. There is no error on it. The terminal has no exception in it. And the database has the rows. The query in the mssql panel just showed them."*
 - [ ] **Ask a question the terminal can answer:** *"Read the SELECT statements this page just ran, in the terminal. Which tables do they name?"* Take the answer: `Trucks`, and nothing else
 - [ ] 🎞️ **GO TO SLIDE 4** — *Empty is not missing* · *"That is the rule at the top of this slide. A navigation property is empty until a query asks for it. EF Core fetched a truck, because a truck is what I asked for. It does not fetch related rows unless I ask for them."*
 - [ ] Still on slide 4, the last line — the sentence that makes it dangerous: *"An empty list looks exactly like a truck that has no specials. Nothing on the page or in the terminal tells you which one you have."*
