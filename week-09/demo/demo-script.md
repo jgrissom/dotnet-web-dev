@@ -574,8 +574,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   ```csharp
   form.Trucks = TruckChoices(form.Special.TruckId);
   ```
-- [ ] Walk it in order — the middle step is the one that is easy to miss: *"when this page first loaded, the controller built a list of seven trucks, and the view turned that list into seven options. Then I hit submit. The browser sent back the one option I picked. It does not send the other six, and it does not send the list"*
-- [ ] 🎯 Then the step that makes the line necessary: *"so the form object that arrives in this action has no truck list on it at all — that part was never posted. Pass it straight back to the view and the dropdown comes back empty. This line builds the list again before the form is redisplayed, which is why you have been looking at a full dropdown every time it came back"*
+- [ ] Say what the line does: *"If the form is refused, this action shows the form again. The list of trucks did not come back with the form, so this line builds it again. It passes in the truck the user picked, so the dropdown still shows that truck."*
 
 ## Lab F · Task 5 — 10 minutes
 
