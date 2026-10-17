@@ -562,7 +562,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] **What the action expects:** switch the editor to `ViewModels/SpecialFormViewModel.cs`. *"This is what the POST action expects: a Special and a list of Trucks. The browser filled in the Special. Which property did it leave empty?"* Take the answer: `Trucks`
 - [ ] Close DevTools
 - [ ] 🎞️ **GO TO SLIDE 7** — *The list is not an answer* · the explanation the error message does not give: *"ASP.NET builds the whole ViewModel from what the browser sent, and it checks every property. Trucks arrived empty, and Trucks is non-nullable. Week 6: a non-nullable property counts as required. So a required field is empty, and the form is refused."*
-- [ ] Still on slide 7, the line of code at the bottom: *"The fix is one question mark."* Swipe back to the editor. Add one character in `SpecialFormViewModel`:
+- [ ] Still on slide 7, the line of code at the bottom: *"The fix is to make the field nullable — one question mark."* Swipe back to the editor. Add one character in `SpecialFormViewModel`:
   ```csharp
   public SelectList? Trucks { get; set; }
   ```
