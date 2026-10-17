@@ -656,7 +656,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   .Include(t => t.Specials)
       .ThenInclude(s => s.Dish)
   ```
-  *"Include gets the specials. ThenInclude goes one step further, to each special's dish."*
+  *"Include gets the truck's specials. ThenInclude gets each special's dish."*
 - [ ] Terminal 2 — the migration:
   ```bash
   dotnet ef migrations add AddDishes
