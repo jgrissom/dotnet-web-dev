@@ -553,7 +553,7 @@ public class SightingsController : Controller
 > [!IMPORTANT]
 > **Creating a new `.cshtml` makes `dotnet watch` stop and ask to restart** — `Do you want to restart your app? Yes (y) / No (n) / Always (a) / Never (v)`, in terminal 1, where watch is running. Answer **`a`** and it won't ask again for the rest of the lab. Until you answer, the app keeps serving the build from before your file existed.
 
-**Add the way in**, at the bottom of `Views/Cryptids/Details.cshtml`:
+**Add the way in**, in `Views/Cryptids/Details.cshtml`, below the accounts and just above `@section Scripts`:
 
 ```cshtml
 <p>
