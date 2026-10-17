@@ -247,7 +247,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   ORDER BY s.Name;
   ```
 - [ ] Two rows, with the truck's name on each. *"This joins each special's TruckId to the Id of a truck. That is the job a foreign key does. The WHERE keeps only Roll Models. In the database, Roll Models has two specials: a Bulgogi Bowl and Kimchi Fries."*
-- [ ] **No prediction here — this failure is what teaches the rule, so nobody can reason it out yet.** Say what to look at: *"The database says Roll Models has two specials. I am going to reload the Roll Models page. Look under the heading On the menu."*
+- [ ] **No prediction here — this failure is what teaches the rule, so nobody can reason it out yet.** Say what to look at: *"The database says Roll Models has two specials. I am going to reload the Roll Models details page. Look under the heading On the menu."*
 - [ ] **Reload `/Trucks/Details/1`.** 🎯 **`Nothing listed.`** Let it sit there. Say nothing for a beat
 - [ ] Then walk the evidence out loud, in this order — the point is that every instrument says fine: *"The page loaded with a 200. There is no error on it. The terminal has no exception in it. And the database has the rows. The query in the mssql panel just showed them."*
 - [ ] **Ask a question the terminal can answer:** *"Read the SELECT statements this page just ran, in the terminal. Which tables do they name?"* Take the answer: `Trucks`, and nothing else
