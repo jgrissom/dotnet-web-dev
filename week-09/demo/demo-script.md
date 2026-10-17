@@ -215,6 +215,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ### Empty is not missing *(slide 4)*
 
+- [ ] **In the editor, before you paste — say what this part is for:** *"The database has fourteen specials, and each one has a TruckId. Now I want each truck's page to show that truck's specials, under a heading called On the menu. The list reads Model.Specials, the collection I added to Truck. If a truck has no specials, the page says Nothing listed."*
 - [ ] Open `Views/Trucks/Details.cshtml`. Paste this in, just under the *Back to all trucks* link:
   ```cshtml
   <h2 class="h5 mt-4">On the menu</h2>
