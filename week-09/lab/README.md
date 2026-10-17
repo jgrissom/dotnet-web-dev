@@ -10,6 +10,10 @@ Tonight that number becomes the reports themselves: who saw it, where, when, and
 
 > [!IMPORTANT]
 > **The app arrives as week 8 finished it** — full CRUD, the field-guide plates, two migrations. If your own week-8 lab never got finished, you are **not** behind tonight. Check 1 passes before you touch anything.
+>
+> **If your builds print yellow `NU1902` and `NU1903` warnings, they're expected and not yours to fix.** They are security advisories against `System.Security.Cryptography.Pkcs`, which arrives three levels beneath the SQL Server package. Read the line above them: `Build succeeded`. Warnings, not errors. The fix has to come from Microsoft, as a newer version of the SQL Server package; until there is one, a project using SQL Server can show them, including your own. Leave your packages alone tonight.
+>
+> **When you start `dotnet watch` in terminal 1, it may repeat them in a line that looks worse than it is:** `msbuild: [Failure] Msbuild failed when processing the file … Cryptids.Web.csproj`. Read to the end of that line — its message is the same advisory. Nothing failed: the `Now listening on:` line above it means your app is running, and your edits still reload.
 
 **1. Update the starters clone.** Open `dotnet-web` in VS Code, then `` Ctrl+` `` for a terminal standing in it:
 
@@ -682,6 +686,7 @@ var witness = _context.Witnesses
 ## 🆘 Stuck?
 
 - **The build is broken after task 2** — that is the seed, and it is the *only* thing that errors. The other four places do not break the build at all, so a green build does not mean task 2 is done. Work the numbered list, not the error pane. [Task 2 in full ↑](#task-2-in-full)
+- **Yellow `NU1902` / `NU1903` warnings, or `msbuild: [Failure] Msbuild failed when processing the file`** in terminal 1 — not a failed build. Read to the end of the line: it's the `System.Security.Cryptography.Pkcs` advisory from Setup. If `Now listening on:` is above it, the app is running. Don't add, remove or update packages in the lab to make it go away.
 - **"Could not find a MSBuild project file"** — that terminal is standing in `CryptidsRelated`, which holds two projects. `dotnet watch`, `dotnet ef` and `dotnet user-secrets` need one: run `cd Cryptids.Web` in terminals 1 and 2. `dotnet test Cryptids.Checks` is the one that runs from `CryptidsRelated`, in terminal 3.
 - **Every page that lists or shows a creature fails right after `database update`** — the app is still running the build from before the migration. EF Core works out your tables once, at startup, and hot reload doesn't redo it. In terminal 1: `Ctrl+C`, then `dotnet watch`. The same goes for *"The expression 'c.Sightings' is invalid inside an 'Include' operation"* and *"Cannot create a DbSet for 'Sighting' because this type is not included in the model"* over code that matches the README — restart before you change anything.
 - **Pages say 0 reports after task 3** — expected. That's task 4.

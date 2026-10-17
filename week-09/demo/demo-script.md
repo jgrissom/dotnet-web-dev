@@ -49,6 +49,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   ```bash
   dotnet watch
   ```
+- [ ] ⚠️ **If terminal 1 prints yellow `NU1902` and `NU1903` warnings, then two `msbuild: [Failure] Msbuild failed when processing the file …` lines after `Now listening on:`.** All of them are the same thing: advisories published 2026-10-13 against `System.Security.Cryptography.Pkcs` 9.0.4, which arrives three levels under `Microsoft.EntityFrameworkCore.SqlServer` (through `Microsoft.Data.SqlClient`). The build succeeded and the app is running. EF 10.0.13 does not fix it — its `SqlClient` still brings a vulnerable `Pkcs` — so leave the packages alone; §1 names the warnings out loud. **No yellow lines?** A fixed SQL Server package has reached this starter — skip §1's warnings beats
 - [ ] **Open a second integrated terminal** (the `+` on the terminal panel — it opens in the same folder). `dotnet watch` owns the first one all night; everything you type tonight goes in the second — §3's and §9's `dotnet ef migrations add` and `dotnet ef database update`
 - [ ] ⚠️ **Know the one prompt that will bite you, and answer it `a` the first time.** Creating a *new* `.cshtml` (§7's `Specials/Create.cshtml`, §9's `Dishes/Details.cshtml`) is a change hot reload cannot apply, so watch stops and asks **`Do you want to restart your app? Yes (y) / No (n) / Always (a) / Never (v)`** — **in terminal 1, while you are typing in terminal 2.** Miss it and the page 500s with *"The view 'Create' was not found"*, naming the exact path the file is sitting at. Answer **`a`** at the first prompt and it never asks again all night
 - [ ] **Park three browser tabs**: `/Trucks`, `/Trucks/Details/1`, and **week 9's lab README** on github.com — it goes on screen for every lab block tonight
@@ -69,6 +70,9 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] **Before any slide:** the `/Trucks` tab on screen — seven cards, slogans showing
 - [ ] *"You have Create, Read, Update and Delete on trucks. Each truck is one row in one table, and no row refers to any other row."*
 - [ ] *"Tonight I add a second table to my app. Each row in it belongs to one truck. After each step I take, you take the same step on your Registry."*
+- [ ] ⚠️ **Only if terminal 1 shows yellow `NU1902`/`NU1903` lines — otherwise skip this beat and the two after it.** Point at terminal 1 and name them before anyone asks: *"Look at terminal 1. The yellow lines are warnings, not errors. NuGet checks every package my app depends on, including the packages those packages depend on. A package called System.Security.Cryptography.Pkcs comes in three levels under the SQL Server package, and two security advisories have been published against the version it uses."*
+- [ ] Still on terminal 1: *"Read the line above the warnings. It says Build succeeded. The two lines that say Msbuild failed repeat the same advisory. Nothing has failed, and the app is running."*
+- [ ] 🎯 Then where they meet it: *"Your Registry uses the same SQL Server package. If you see the same yellow lines in your own terminal in the first lab block, they are this same advisory. Your semester project may show them too. The fix has to come from Microsoft, as a newer version of the SQL Server package. Until there is one, these warnings are expected, and you do not need to change anything in the lab."*
 
 ### The three words *(slide 2)*
 
@@ -84,7 +88,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] ⚠️ **The drop is not optional, and say why:** *"You drop the lab database because the starter ships my migration files, and your database remembers yours. They cannot be mixed. If you skip the drop, the update fails with 'there is already an object named Cryptids'."*
 - [ ] ⚠️ **Then fence it:** *"Only drop a database you can rebuild from scratch. The lab database is one of those. Never drop your own project's database. It has records that nothing can give back."*
 - [ ] *"The checks never touch SQL Server. Six out of six does not prove your connection string works. Your browser proves that."* Then the target: *"Tonight's in-class target is checks 1 to 5."*
-- [ ] 👀 **Watch for:** `There is already an object named 'Cryptids'` — they skipped the drop. `Could not find a MSBuild project file` — terminal 1 or 2 never ran `cd Cryptids.Web`. And `Login failed`, or a long wait that ends in a network error, on `database update` — the username or password, or the server name
+- [ ] 👀 **Watch for:** yellow `NU1902`/`NU1903` warnings and `msbuild: [Failure] Msbuild failed…` in terminal 1 — if they appear, it's the `Pkcs` advisory from §1, not a failure; the README's Setup note covers it. `There is already an object named 'Cryptids'` — they skipped the drop. `Could not find a MSBuild project file` — terminal 1 or 2 never ran `cd Cryptids.Web`. And `Login failed`, or a long wait that ends in a network error, on `database update` — the username or password, or the server name
 - [ ] **Stop:** the note after **Task 1 in full**. Where they should be: `dotnet test` prints **`Passed: 1`**, the app is running in terminal 1, and `/Cryptids` shows six creatures
 
 ## 2 · The second table
