@@ -248,7 +248,7 @@ dotnet test Cryptids.Checks
 **`Passed: 2`** — checks 1 and 2. Check 3's message says the Sightings table is empty. That's correct: task 3 seeds it.
 
 > [!NOTE]
-> **In class, stop here.** Task 3 comes after the next part of the demo. Checks 3 to 6 are still red, and that's expected. Finished early? Put `Models/Sighting.cs` and `Models/Cryptid.cs` side by side and find the three properties that tie the two classes together. Decide which one of the three will be a column — task 3's migration shows you whether you were right. Or help a classmate with the five places. Working at home? Carry straight on.
+> **In class, stop here.** Task 3 comes after the next part of the demo. Checks 3 to 6 are still red, and that's expected. Finished early? Put `Models/Sighting.cs` and `Models/Cryptid.cs` side by side and find the three properties that tie the two classes together. Decide which one of the three will be a column — task 3's migration shows you whether you were right. Or help a classmate with the five places. ⚠️ **Don't file a new creature at this stop:** your model no longer has `Sightings`, but the table still has the column, so saving fails with *Cannot insert the value NULL into column 'Sightings'*. Task 3's migration drops the column. Working at home? Carry straight on.
 
 ### Task 3 in full
 
@@ -698,6 +698,7 @@ var witness = _context.Witnesses
 - **"Could not find a MSBuild project file"** — that terminal is standing in `CryptidsRelated`, which holds two projects. `dotnet watch`, `dotnet ef` and `dotnet user-secrets` need one: run `cd Cryptids.Web` in terminals 1 and 2. `dotnet test Cryptids.Checks` is the one that runs from `CryptidsRelated`, in terminal 3.
 - **Every page that lists or shows a creature fails right after `database update`** — the app is still running the build from before the migration. EF Core works out your tables once, at startup, and hot reload doesn't redo it. In terminal 1: `Ctrl+C`, then `dotnet watch`. The same goes for *"The expression 'c.Sightings' is invalid inside an 'Include' operation"* and *"Cannot create a DbSet for 'Sighting' because this type is not included in the model"* over code that matches the README — restart before you change anything.
 - **Pages say 0 reports after task 3** — expected. That's task 4.
+- **`Cannot insert the value NULL into column 'Sightings'` when you file a creature** — you're between task 2 and task 3: the model has lost `Sightings` but the table still has the column. Task 3's migration drops it; after that, filing works again.
 - **The details page shows the accounts but the cards still say 0 reports** — that's the end of task 4, part 1, and it's expected. Part 2 puts the `Include` on `Index`. [`Include` is per query](../lecture-notes.md#include-is-per-query).
 - **`NullReferenceException` on `Sightings.Count`** — the collection isn't initialized. It needs `= new List<Sighting>();` on the property.
 - **Every view suddenly fails to compile** — `_ViewImports.cshtml` names `Cryptids.Web.ViewModels` and the folder doesn't exist yet. [Task 5 in full ↑](#task-5-in-full)
