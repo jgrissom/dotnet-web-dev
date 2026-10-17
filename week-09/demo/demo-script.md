@@ -555,8 +555,12 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   <div asp-validation-summary="All" class="text-danger"></div>
   ```
 - [ ] 💡 *"That is week 6's troubleshooting advice and it is still the fastest thing you own: when a form silently refuses, ask it to show you everything it knows"*
+- [ ] **Before you submit again, open DevTools on the Network tab** (**⌥⌘I** on your Mac — `F12` on Windows — then **Network**). It only records requests made while it is open
 - [ ] **Submit again.** 🎯 **"The Trucks field is required."**
 - [ ] Let the room sit with the contradiction before you explain it: *"the Trucks field. There is a truck in that dropdown. It says Roll Models"*
+- [ ] **What the browser sent:** in the Network tab, click the `Create` request, then **Payload**. Four fields for the special — `Special.TruckId`, `Special.Name`, `Special.Price`, `Special.ServedOn` — and the `__RequestVerificationToken`. *"This is everything the browser sent: the special's four fields, and a security token."*
+- [ ] **What the action expects:** switch the editor to `ViewModels/SpecialFormViewModel.cs`. *"This is what the POST action expects: a Special and a list of Trucks. The browser filled in the Special. Which property did it leave empty?"* Take the answer: `Trucks`
+- [ ] Close DevTools
 - [ ] 🎞️ **GO TO SLIDE 7** — *The list is not an answer* · the explanation the error message does not give: *"The POST action takes the whole ViewModel. So when I submit, ASP.NET builds a new SpecialFormViewModel from what the browser sent, and it checks every property on it. The browser sent the special's fields, including the truck I picked. It did not send the list of trucks. A form only sends the values in its fields. So Trucks arrives empty, and Trucks is non-nullable. Week 6: a non-nullable property counts as required. A required field arrived empty, so the form is refused."*
 - [ ] Still on slide 7, the line of code at the bottom: *"The fix is one question mark."* Swipe back to the editor. Add one character in `SpecialFormViewModel`:
   ```csharp
