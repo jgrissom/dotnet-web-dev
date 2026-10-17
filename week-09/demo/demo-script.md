@@ -402,7 +402,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   ```
 - [ ] 🎯 Name the three edits that just happened, because pasting a whole method hides them: *"the ViewData line is gone, the two things are now properties on one object, and the last line passes the view model to the view instead of the truck"*
 - [ ] **Switch to `Views/Trucks/Details.cshtml`.** Change its first line from `@model Truck` to `@model TruckDetailsViewModel`. The compiler now flags every `Model.X` in this file — that is the easy half: change each one to `Model.Truck.X`, including `Also in @Model.Truck.City`
-- [ ] 🚨 **Still in `Views/Trucks/Details.cshtml` — the compiler will NOT flag the other half, and that is the beat.** Delete the `var alsoHere = ...` line, then repoint its **two** uses — they are not next to each other. First the `@if` that opens the *Also in* block:
+- [ ] 🚨 **Still in `Views/Trucks/Details.cshtml` — the compiler will NOT flag the old `var alsoHere = ...` line, and that is the beat.** It still compiles, because `ViewData` can hold anything. Delete it. Now the compiler flags its **two** uses, and they are not next to each other. First the `@if` that opens the *Also in* block:
   ```cshtml
   @if (Model.AlsoHere.Count > 0)
   ```
