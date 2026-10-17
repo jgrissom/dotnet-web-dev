@@ -374,6 +374,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   ```cshtml
   @using Curbside.ViewModels
   ```
+- [ ] Say it while you save it: *"This line lets every view in the project use the classes in ViewModels by their short names. I add it right after the class exists, never before. If this line names a namespace that does not exist yet, every view in the project stops compiling, and the errors point at files I never touched."*
 - [ ] **Replace the whole `Details` action** in `TrucksController` — this is the entire method, and the `ViewData["AlsoHere"]` line goes with it:
   ```csharp
   public IActionResult Details(int id)
