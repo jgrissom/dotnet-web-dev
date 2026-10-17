@@ -67,7 +67,8 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ### The payoff, retold
 
-- [ ] **Before any slide:** the `/Trucks` tab on screen. *"This is my app as we left it last week. There are seven trucks, and each card shows the truck's slogan, the column we added last week."*
+- [ ] **The title slide is still up from the gallery — talk to its list before you swipe away from it:** *"Here is tonight. First, a second table, tied to the first one by a foreign key. Then getting those related rows onto a page, which takes one word, Include. Then a form that adds a row and picks which truck it belongs to. Then what happens to those rows when a truck is deleted. And last, a many-to-many, where the link between two tables carries information of its own."*
+- [ ] **Swipe to the browser** — the `/Trucks` tab on screen. *"This is my app as we left it last week. There are seven trucks, and each card shows the truck's slogan, the column we added last week."*
 - [ ] *"My app can create, read, update and delete trucks. Each truck is one row in one table, and no row refers to any other row."*
 - [ ] *"Tonight I add a second table to my app. Each row in it belongs to one truck. After each step I take, you take the same step on the Cryptid Registry."*
 - [ ] ⚠️ **Only if terminal 1 shows yellow `NU1902`/`NU1903` lines — otherwise skip this beat and the two after it.** Point at terminal 1 and name them before anyone asks: *"Look at terminal 1. The yellow lines are warnings, not errors. NuGet checks every package my app depends on, including the packages those packages depend on. A package called System.Security.Cryptography.Pkcs comes in three levels under the SQL Server package, and two security advisories have been published against the version it uses."*

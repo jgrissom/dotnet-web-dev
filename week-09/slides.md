@@ -31,6 +31,14 @@ style: |
 
 .NET Web Development · Week 9 of 16
 
+**Tonight: one table becomes two**
+
+1. A second table, tied to the first by a **foreign key**
+2. **`Include`** — getting the related rows onto a page
+3. A form that picks which record a new row belongs to
+4. What **deleting** a record does to its related rows
+5. **Many-to-many** — when the link carries something of its own
+
 ---
 
 <!-- _footer: '🖥️ Demo §1 · the three words' -->
