@@ -89,7 +89,7 @@ _context.Trucks
     .FirstOrDefault(t => t.Id == id);
 ```
 
-<br>
+Asking for related rows with `Include` is **eager loading**.
 
 No exception. No warning. No log line.
 

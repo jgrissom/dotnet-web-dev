@@ -257,7 +257,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] **Compare the two queries.** Keep the query tab in the editor and look at terminal 1 under it. Scroll terminal 1 to the first `SELECT` the page just ran — it ends `WHERE … [Id] = @id`; the second one is the *Also in* list. Ask: *"In the editor is the query I ran to see Roll Models' specials. In the terminal is the query the page ran. What is in my query that is missing from the page's?"* Take answers: the `JOIN`. The page's query never mentions `Specials`
 - [ ] 🎞️ **GO TO SLIDE 4** — *Empty is not missing* · *"That is the rule at the top of this slide. A navigation property is empty until a query asks for it. EF Core fetched a truck, because a truck is what I asked for. It does not fetch related rows unless I ask for them."*
 - [ ] Still on slide 4, the last line — the sentence that makes it dangerous: *"An empty list looks exactly like a truck that has no specials. Nothing on the page or in the terminal tells you which one you have."*
-- [ ] Still on slide 4, the code in the middle: *"That is the fix. One line, Include, between Trucks and FirstOrDefault."*
+- [ ] Still on slide 4, the code in the middle: *"That is the fix. One line, Include, between Trucks and FirstOrDefault. Asking for related rows with Include is called eager loading. That is the name Microsoft's documentation uses."*
 - [ ] Swipe back to the editor. Fix `Details` in `TrucksController`:
   ```csharp
   var truck = _context.Trucks
@@ -310,6 +310,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] **Scroll the editor back to the `Index` action, so the loop is on screen — no slide for this — and ask for a show of hands:** *"Read the loop in Index. There are seven trucks, and I am about to load this page once. How many SELECT statements will the terminal print? Hands up for one. For seven. For eight."*
 - [ ] **Reload `/Trucks` and scroll the terminal.** 🎯 **Eight.** *"Eight. One SELECT for the list of trucks, and then one more for each truck."*
 - [ ] 💡 Make the stakes real without a number you cannot support: *"Seven trucks cost eight queries. Every truck I add costs one more."*
+- [ ] 💡 Name the feature they will meet in search results, and fence it: *"EF Core has a feature called lazy loading. It fetches related rows the first time your code touches them, and it does it this way, one query per truck. It is off by default, and we leave it off."*
 
 ### One JOIN *(slide 5)*
 

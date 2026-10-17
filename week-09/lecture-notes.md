@@ -176,6 +176,8 @@ var truck = _context.Trucks
     .FirstOrDefault(t => t.Id == id);
 ```
 
+Asking for the related rows up front, with `Include`, is called **eager loading** — the name you will see in Microsoft's documentation.
+
 > [!IMPORTANT]
 > **An empty list looks exactly like a truck that has no specials.** That is what makes this dangerous. There is no error to search for and no line in a log. If related rows are not showing up, the first thing to check — before the seed, before the migration, before anything — is whether the query that fed the page said `Include`.
 
@@ -214,6 +216,9 @@ ViewData["Counts"] = counts;
 That is correct. The page shows the right numbers. Load it and read the terminal.
 
 **Seven trucks produce eight `SELECT` statements** — one for the trucks, then one more for every truck on the page. The page issues one extra query per row, and it always will: a hundred rows is a hundred and one queries.
+
+> [!NOTE]
+> **You will meet the name *lazy loading*.** It is an EF Core feature that fetches related rows the first time your code touches a navigation property — and it does it exactly this way, one query per row. It is **off by default, and this course leaves it off.** If a search result tells you to turn it on to make related rows appear, the fix you want is `Include`.
 
 Now the other version:
 
