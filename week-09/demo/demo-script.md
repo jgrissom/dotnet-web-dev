@@ -569,7 +569,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] ⚠️ **Submit — and if the same error comes back over the file you just fixed, restart before you change anything else.** `Ctrl+C` in terminal 1, then `dotnet watch` again, then submit once more. ASP.NET works out which properties are required **once per model type** and caches it, so hot reload can print **`🔥 Hot reload succeeded.`** and leave this particular fix inert. *(Goes both ways in practice: inert after hot reload on three runs, live with no restart on another. Do not promise the room either outcome — just know the restart is the fix if the error repeats.)*
 - [ ] **Submit again.** 🎯 Redirect to Roll Models, and **Tteokbokki is on the menu, third in the list**
 - [ ] 💡 **Only if you had to restart** — say why, because otherwise it reads as superstition: *"that was not me being careful. The rule about which fields are required gets worked out once, when the app starts, and a hot reload does not always redo it"*
-- [ ] 💡 Close the loop on the fix: *"one question mark. The list is not an answer, so it is allowed to be absent"*
+- [ ] 💡 Close the loop on the fix: *"We do not need the list to create a new Special, so it is allowed to be null."*
 - [ ] 💡 **Now** collect the line nobody asked about. Scroll `SpecialsController` to the one sitting inside `if (!ModelState.IsValid)`:
   ```csharp
   form.Trucks = TruckChoices(form.Special.TruckId);
