@@ -642,7 +642,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   cp -R ~/Repos/dotnet-web-dev-answer-keys/week-09/demo-section9/Curbside/. .
   ```
   Ten files land: the new `Dish` class, `Special` with its second foreign key, the dish seed, the controllers and views that change, and a page for each dish. No migration — you generate that next.
-- [ ] Say it while it copies: *"I am not going to type this part. These files add a Dish table, point every special at a dish, and add a page for each dish."*
+- [ ] Say it while it copies: *"I am not going to type this part. These files add a Dish class, point every special at a dish, and add a page for each dish. The migration I run next adds the table."*
 - [ ] **Open `Models/Special.cs`.** `Name` is gone, and this is new:
   ```csharp
   [Display(Name = "Dish")]
