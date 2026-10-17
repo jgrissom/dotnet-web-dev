@@ -4,7 +4,7 @@ The Registry has a column that says **47 reports on file** for The Hodag. Somebo
 
 Tonight that number becomes the reports themselves: who saw it, where, when, and what they saw. Week 2's `report.html` was a form with nowhere to send anything. Tonight it gets somewhere to go.
 
-**Time:** ~50 minutes in class, in eight short blocks — each one follows the part of the demo it practices, and every block but the last ends at an **In class, stop here** note. **In-class target: checks 1–5 green.** Check 6 is the delete warning; it's the same move your homework needs, and it rolls into it if the clock wins.
+**Time:** ~50 minutes in class, in eight short blocks — each one follows the part of the demo it practices, and every block but the last ends at an **In class, stop here** note. The blocks are: **Setup and task 1** · task 2 · task 3 · task 4, part 1 · task 4, part 2 · task 5 · task 6 · and a last block for catching up or the stretch. **In-class target: checks 1–5 green.** Check 6 is the delete warning; it's the same move your homework needs, and it rolls into it if the clock wins.
 
 ## Setup
 
@@ -56,6 +56,8 @@ dotnet test Cryptids.Checks
 ```
 
 **1 / 6 passing.** Check 1 is the week-8 Registry you were handed, already working. The other five are tonight.
+
+**Now carry straight on to [Task 1](#task-1-in-full)** — it's part of this first block, which ends at the **In class, stop here** note after it.
 
 > [!CAUTION]
 > **Same folder split as the last two weeks:** `dotnet test Cryptids.Checks` runs from the folder holding *both* projects; `dotnet watch`, `dotnet ef` and `dotnet user-secrets` all run from **inside `Cryptids.Web`** — which is what step 4's table is arranging for you.
