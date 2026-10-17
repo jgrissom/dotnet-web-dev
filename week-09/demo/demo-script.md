@@ -296,6 +296,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   }
   ```
 - [ ] **Say what the action now does, with it on screen:** *"The list of trucks is still the view's model. That part has not changed. The counts go to the view separately, in ViewData. Counts is a dictionary. Each key is a truck's Id, and each value is how many specials that truck has. To fill it, the loop asks the database to count the specials for one truck at a time."*
+- [ ] Then say where this is going: *"This works, and it is not the way I want to leave it. Watch what it costs to pass data through ViewData."*
 - [ ] The count belongs **inside the card**, so it goes in the partial, not in `Index.cshtml`. Open `Views/Shared/_TruckCard.cshtml` and **replace the whole `card-footer` block** — the footer gains `d-flex justify-content-between`, which is what puts the count on the right of the Details link:
   ```cshtml
   <div class="card-footer d-flex justify-content-between">
