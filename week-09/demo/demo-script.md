@@ -632,7 +632,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ### The join was already there *(slide 8)*
 
-- [ ] Back to the seed in `Data/CurbsideContext.cs`. Scroll so several rows are visible and **ask the room to find the problem**: *"read the dish names. What is wrong with this table?"*
+- [ ] Back to the seed in `Data/CurbsideContext.cs`. Scroll so several rows are visible and **ask the room to find the problem**: *"read the Special names. What is wrong with this table?"*
 - [ ] Take the answer and sharpen it — the repeated name is the symptom, and the point is what the database does **not** know: *"three trucks sell Cheese Curds, and each one has that name typed into its own row. As far as SQL Server is concerned those are three unrelated rows that happen to contain the same letters. Nothing in this table says they are the same dish"*
 - [ ] 🎯 Then make the cost concrete, because that is what earns the next twenty minutes: *"so suppose I want a page that lists every truck selling cheese curds. The best I can do is compare the text and hope all three were typed identically — one stray capital or one missing s, and that truck is missing from the page. Nothing errors. The list is just wrong"*
 - [ ] 🎞️ **GO TO SLIDE 8** — *One more foreign key* · say what the fix is before you type it: *"Here is the fix. I move the dish name into its own table. Look at Special, in the middle of the diagram. It now has two foreign keys: one to a truck and one to a dish. It is the link between them, and it carries the price and the day."*
