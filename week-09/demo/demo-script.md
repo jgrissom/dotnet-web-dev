@@ -654,6 +654,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
       public ICollection<Special> Specials { get; set; } = new List<Special>();
   }
   ```
+- [ ] **Say what it is:** *"A dish is just a name. Like Truck, it has a collection of specials: every special that serves this dish."*
 - [ ] In `Models/Special.cs`, **delete** the `Name` property and its two attributes, and add the second key:
   ```csharp
   [Display(Name = "Dish")]
