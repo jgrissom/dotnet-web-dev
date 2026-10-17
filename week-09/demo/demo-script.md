@@ -195,7 +195,15 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   ```sql
   SELECT * FROM Specials;
   ```
-- [ ] **Point at the two rows with a `TruckId` of 1:** *"These two rows have a TruckId of 1. Truck 1 is Roll Models. So Roll Models has two specials: Kimchi Fries and a Bulgogi Bowl."*
+- [ ] **Point at the `TruckId` column:** *"Every row has a TruckId. That is the foreign key, stored as a number. On its own, a 1 does not tell you which truck it is."*
+- [ ] **Same panel, run the join** — replace the query with this one:
+  ```sql
+  SELECT t.Name AS Truck, s.Name AS Special, s.Price, s.ServedOn
+  FROM Specials AS s
+  JOIN Trucks AS t ON t.Id = s.TruckId
+  ORDER BY t.Name, s.Name;
+  ```
+- [ ] Still fourteen rows, now with truck names. *"The join matches each special's TruckId to the Id of a truck. That is the job a foreign key does. Look at the two Roll Models rows. Roll Models has two specials: a Bulgogi Bowl and Kimchi Fries."*
 - [ ] Say what is now true: *"Fourteen rows, and each one has a TruckId. The database has the specials. No page shows them yet."*
 - [ ] ⚠️ **Restart the app now — `Ctrl+C` in terminal 1, then `dotnet watch` again.** EF Core builds its model once, at startup, and the running app started before `Special` existed. Every save since printed `Hot reload succeeded`, and that does not rebuild the model. Skip this and §4's first reload can be a 500 page instead of *Nothing listed*, and the `Include` that should fix it can fail with `The expression 't.Specials' is invalid inside an 'Include' operation`
 - [ ] Say why while it comes back up: *"I am restarting my app. EF Core works out what my tables look like once, when the app starts. I added a class and a table after it started, so I start it again. You do the same thing in your task 3."*
