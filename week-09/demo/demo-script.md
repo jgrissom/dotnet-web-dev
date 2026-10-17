@@ -666,7 +666,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   ```csharp
   migrationBuilder.Sql("DELETE FROM Specials WHERE DishId = 0;");
   ```
-  The Tteokbokki you filed in §7 has `DishId` 0 and there is no dish 0, so without this line the foreign key is refused — `The ALTER TABLE statement conflicted with the FOREIGN KEY constraint`. *"The special I added through the form has no dish, so this line removes it. Without it, the database refuses the new foreign key."*
+  The Tteokbokki you filed in §7 has `DishId` 0 and there is no dish 0, so without this line the foreign key is refused — `The ALTER TABLE statement conflicted with the FOREIGN KEY constraint`. *"This deletes any special that has no dish, like the one I added through the form. Those would be orphans, and the new foreign key does not allow orphans."*
 - [ ] Terminal 2 — apply it:
   ```bash
   dotnet ef database update
