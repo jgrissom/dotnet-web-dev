@@ -532,6 +532,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
       <partial name="_ValidationScriptsPartial" />
   }
   ```
+- [ ] **Say what the form is, with it on screen:** *"This is the form for a new special. Its model is the ViewModel, so every field starts with Special. The first field is the dropdown. It gets its choices from Trucks, the SelectList, and the truck someone picks goes into Special.TruckId. The other three boxes are the special's name, its price, and the day it is served."*
 - [ ] Add the way in, at the bottom of `Views/Trucks/Details.cshtml`:
   ```cshtml
   <p><a asp-controller="Specials" asp-action="Create" asp-route-truckId="@Model.Truck.Id" class="btn btn-primary">＋ Add a special</a></p>
