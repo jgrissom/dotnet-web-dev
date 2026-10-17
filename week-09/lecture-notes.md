@@ -557,8 +557,7 @@ var truck = await _context.Trucks
 {
     <div class="alert alert-warning">
         This truck has <strong>@Model.Specials.Count</strong> special@(Model.Specials.Count == 1 ? "" : "s") on file.
-        Removing the truck removes @(Model.Specials.Count == 1 ? "it" : "them") too — the foreign key was
-        created with <code>onDelete: Cascade</code>, and nothing is going to ask you twice.
+        Removing the truck removes @(Model.Specials.Count == 1 ? "it" : "them") too.
     </div>
 }
 ```
