@@ -436,6 +436,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
       public SelectList Trucks { get; set; } = null!;
   }
   ```
+- [ ] **Say what the class holds, with it on screen:** *"This ViewModel holds the two things the form needs. Special is the new special the form fills in. Trucks is a SelectList. A SelectList is a class from ASP.NET Core, and it holds the choices for a dropdown. Each choice has a value, which the browser sends back, and text, which the user sees. The controller builds it from my trucks: the value is the truck's Id, and the text is the truck's name."*
 - [ ] Create `Controllers/SpecialsController.cs`:
   ```csharp
   using Microsoft.AspNetCore.Mvc;
