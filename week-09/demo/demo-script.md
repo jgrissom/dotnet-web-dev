@@ -637,180 +637,41 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] 🎯 Then make the cost concrete, because that is what earns the next twenty minutes: *"so suppose I want a page that lists every truck selling cheese curds. The best I can do is compare the text and hope all three were typed identically — one stray capital or one missing s, and that truck is missing from the page. Nothing errors. The list is just wrong"*
 - [ ] 🎞️ **GO TO SLIDE 8** — *One more foreign key* · say what the fix is before you type it: *"Here is the fix. I move the dish name into its own table. Look at Special, in the middle of the diagram. It now has two foreign keys: one to a truck and one to a dish. It is the link between them, and it carries the price and the day."*
 - [ ] ⚠️ Still on slide 8, the lines under the diagram — the definition, which is the syllabus line landing: *"That is a many-to-many. Many trucks, many dishes. The join has to be a class of its own because it carries something. The price is not a fact about the truck or about the dish. It is a fact about the two together."*
-- [ ] Swipe back to the editor. Create `Models/Dish.cs`:
-  ```csharp
-  using System.ComponentModel.DataAnnotations;
-
-  namespace Curbside.Models;
-
-  public class Dish
-  {
-      public int Id { get; set; }
-
-      [Required(ErrorMessage = "A dish needs a name.")]
-      [StringLength(60, MinimumLength = 2)]
-      public string Name { get; set; } = "";
-
-      public ICollection<Special> Specials { get; set; } = new List<Special>();
-  }
+- [ ] Swipe back to the editor. **Copy in the finished code — terminal 2, in the `Curbside` folder:**
+  ```bash
+  cp -R ~/Repos/dotnet-web-dev-answer-keys/week-09/demo-section9/Curbside/. .
   ```
-- [ ] **Say what it is:** *"A dish is just a name. Like Truck, it has a collection of specials: every special that serves this dish."*
-- [ ] In `Models/Special.cs`, **delete** the `Name` property and its two attributes, and add the second key:
+  Ten files land: the new `Dish` class, `Special` with its second foreign key, the dish seed, the controllers and views that change, and a page for each dish. No migration — you generate that next.
+- [ ] Say it while it copies: *"I am not going to type this part. These files add a Dish table, point every special at a dish, and add a page for each dish."*
+- [ ] **Open `Models/Special.cs`.** `Name` is gone, and this is new:
   ```csharp
   [Display(Name = "Dish")]
   public int DishId { get; set; }
 
   public Dish? Dish { get; set; }
   ```
-- [ ] Add the set and the dish seed to the context, and repoint all fourteen specials at dish ids — **paste, do not type**:
+  *"Special now has two foreign keys, TruckId and DishId. The dish's name lives in the Dish table now."*
+- [ ] **Open `Controllers/TrucksController.cs`, the `Details` action:**
   ```csharp
-  public DbSet<Dish> Dishes => Set<Dish>();
+  .Include(t => t.Specials)
+      .ThenInclude(s => s.Dish)
   ```
-  Then, in `OnModelCreating`, replace the whole `Special` seed block and add the dishes above it:
-  ```csharp
-  modelBuilder.Entity<Dish>().HasData(
-      new Dish { Id = 1, Name = "Kimchi Fries" },
-      new Dish { Id = 2, Name = "Bulgogi Bowl" },
-      new Dish { Id = 3, Name = "Cheese Curds" },
-      new Dish { Id = 4, Name = "Loaded Fries" },
-      new Dish { Id = 5, Name = "Birria Tacos" },
-      new Dish { Id = 6, Name = "Street Corn" },
-      new Dish { Id = 7, Name = "Gyro Plate" },
-      new Dish { Id = 8, Name = "Pierogi Plate" },
-      new Dish { Id = 9, Name = "Banh Mi" },
-      new Dish { Id = 10, Name = "Slider Trio" }
-  );
-
-  modelBuilder.Entity<Special>().HasData(
-      new Special { Id = 1, TruckId = 1, DishId = 1, Price = 9.50m, ServedOn = "Friday" },
-      new Special { Id = 2, TruckId = 1, DishId = 2, Price = 12.00m, ServedOn = "Saturday" },
-      new Special { Id = 3, TruckId = 2, DishId = 3, Price = 7.00m, ServedOn = "Friday" },
-      new Special { Id = 4, TruckId = 2, DishId = 4, Price = 8.50m, ServedOn = "Saturday" },
-      new Special { Id = 5, TruckId = 2, DishId = 10, Price = 9.00m, ServedOn = "Sunday" },
-      new Special { Id = 6, TruckId = 3, DishId = 5, Price = 11.00m, ServedOn = "Tuesday" },
-      new Special { Id = 7, TruckId = 3, DishId = 6, Price = 5.00m, ServedOn = "Tuesday" },
-      new Special { Id = 8, TruckId = 4, DishId = 7, Price = 13.00m, ServedOn = "Thursday" },
-      new Special { Id = 9, TruckId = 5, DishId = 8, Price = 10.00m, ServedOn = "Sunday" },
-      new Special { Id = 10, TruckId = 5, DishId = 3, Price = 7.50m, ServedOn = "Friday" },
-      new Special { Id = 11, TruckId = 5, DishId = 4, Price = 8.25m, ServedOn = "Thursday" },
-      new Special { Id = 12, TruckId = 6, DishId = 9, Price = 9.00m, ServedOn = "Wednesday" },
-      new Special { Id = 13, TruckId = 7, DishId = 10, Price = 10.50m, ServedOn = "Saturday" },
-      new Special { Id = 14, TruckId = 7, DishId = 3, Price = 6.50m, ServedOn = "Friday" }
-  );
-  ```
-- [ ] 🚨 **The build is broken right now, and that is the next thing to fix.** `Special.Name` is gone and two files still ask for it, so nothing compiles — **including `dotnet ef`, which builds the project before it can look at your model.** No migration is possible until these are done. First, `Views/Trucks/Details.cshtml`, where the menu row becomes a link:
-  ```cshtml
-  <a asp-controller="Dishes" asp-action="Details" asp-route-id="@special.DishId">@special.Dish!.Name</a>
-  ```
-- [ ] And `Details` in `TrucksController` needs one more hop — **this is the new word tonight**:
-  ```csharp
-  var truck = _context.Trucks
-      .Include(t => t.Specials)
-          .ThenInclude(s => s.Dish)
-      .FirstOrDefault(t => t.Id == id);
-  ```
-- [ ] 🎯 Name it plainly: *"`Include` gets you to the specials. `ThenInclude` keeps going, one step further, to the dish each special names"*
-- [ ] Second, **the form has a `Name` box that no longer has anything to bind to.** It becomes a second dropdown. `ViewModels/SpecialFormViewModel.cs` gains a list:
-  ```csharp
-  public SelectList? Dishes { get; set; }
-  ```
-- [ ] `SpecialsController` builds the dish list exactly like the truck list — three edits. **First, the helper**, at the bottom of the class, below `TruckChoices`:
-  ```csharp
-  private SelectList DishChoices(int? selected) =>
-      new SelectList(_context.Dishes.OrderBy(d => d.Name).ToList(), "Id", "Name", selected);
-  ```
-- [ ] **Second, the GET `Create`**, inside `new SpecialFormViewModel { … }`: put a comma after `Trucks = TruckChoices(truckId)`, then add this line below it — a new special has no dish yet, so nothing is selected:
-  ```csharp
-  Dishes = DishChoices(null)
-  ```
-- [ ] **Third, the POST `Create`**, inside `if (!ModelState.IsValid)`, below `form.Trucks = TruckChoices(form.Special.TruckId);` — the dish list is not posted back either:
-  ```csharp
-  form.Dishes = DishChoices(form.Special.DishId);
-  ```
-- [ ] And in `Views/Specials/Create.cshtml`, **replace the whole `Name` block** with the dish picker:
-  ```cshtml
-  <div class="mb-3">
-      <label asp-for="Special.DishId" class="form-label"></label>
-      <select asp-for="Special.DishId" asp-items="Model.Dishes" class="form-select">
-          <option value="">— pick a dish —</option>
-      </select>
-      <span asp-validation-for="Special.DishId" class="text-danger"></span>
-  </div>
-  ```
-- [ ] 🎯 Say what just happened to the form, because it is the normalization landing where they can see it: *"a text box became a dropdown. Nobody can invent a fourth spelling of cheese curds any more — they pick one that exists"*
-- [ ] **Now it compiles, so EF can run.** Terminal 2 — and **read the warning EF prints, do not scroll past it**:
+  *"Include gets the specials. ThenInclude goes one step further, to each special's dish."*
+- [ ] Terminal 2 — the migration:
   ```bash
   dotnet ef migrations add AddDishes
   ```
-- [ ] 🎯 Read the warning aloud, then answer it: *"an operation was scaffolded that may result in the loss of data. That is the `DropColumn`, and EF is right to say it — but we mean this one. The dish names are not lost, they moved"*
-- [ ] Open the migration and read the operations out loud, in order, because the order is what makes it safe: **`DropColumn`**, **`AddColumn DishId`**, **`CreateTable Dishes`**, **`InsertData`** with the ten dish names, fourteen **`UpdateData`** repointing every special, and only *then* the index and the foreign key
-- [ ] 💡 Say why that ordering matters: *"the foreign key constraint goes on last. If it went on first, fourteen rows with a `DishId` of zero would fail it instantly"*
-- [ ] 🚨 **Fourteen is not how many specials you have.** In §7 you filed one through the form, and `UpdateData` only repoints the fourteen the seed knows about. That row keeps `DishId` 0, no dish has id 0, and the foreign key on the last line is refused — `The ALTER TABLE statement conflicted with the FOREIGN KEY constraint`. **Add one line to the migration by hand**, just above `CreateIndex`:
+  EF prints *"An operation was scaffolded that may result in the loss of data"* — that is the `DropColumn` on the old `Name`; the names moved into `Dishes`, and nothing is lost
+- [ ] 🚨 **One line by hand before you apply it.** Open the new `Migrations/…_AddDishes.cs` and paste this just above `migrationBuilder.CreateIndex(`:
   ```csharp
   migrationBuilder.Sql("DELETE FROM Specials WHERE DishId = 0;");
   ```
-- [ ] 🎯 Say what that line is doing, because deleting a row the room watched you create needs saying out loud: *"every special we seeded got a dish. The one I added through the form did not — I typed its name as free text, and there is no dish row to point it at. So it goes. That is what it costs to normalize a column after the fact, and it is the argument for doing it before real people have put data in"*
-- [ ] 💡 One rider if anyone asks why EF did not write that line: *"it generated this from the model. It has no idea what is sitting in the table"*
+  The Tteokbokki you filed in §7 has `DishId` 0 and there is no dish 0, so without this line the foreign key is refused — `The ALTER TABLE statement conflicted with the FOREIGN KEY constraint`. *"The special I added through the form has no dish, so this line removes it. Without it, the database refuses the new foreign key."*
+- [ ] Terminal 2 — apply it:
   ```bash
   dotnet ef database update
   ```
-- [ ] Now the payoff. Create `Controllers/DishesController.cs`:
-  ```csharp
-  using Microsoft.EntityFrameworkCore;
-  using Microsoft.AspNetCore.Mvc;
-  using Curbside.Data;
-
-  namespace Curbside.Controllers;
-
-  public class DishesController : Controller
-  {
-      private readonly CurbsideContext _context;
-
-      public DishesController(CurbsideContext context)
-      {
-          _context = context;
-      }
-
-      public IActionResult Details(int id)
-      {
-          var dish = _context.Dishes
-              .Include(d => d.Specials)
-                  .ThenInclude(s => s.Truck)
-              .FirstOrDefault(d => d.Id == id);
-
-          if (dish == null)
-          {
-              return NotFound();
-          }
-
-          return View(dish);
-      }
-  }
-  ```
-- [ ] And `Views/Dishes/Details.cshtml`:
-  ```cshtml
-  @model Dish
-  @{
-      ViewData["Title"] = Model.Name;
-  }
-
-  <h1>@Model.Name</h1>
-
-  <h2 class="h5 mt-4">Served by</h2>
-
-  <ul class="list-group mb-4">
-      @foreach (var special in Model.Specials)
-      {
-          <li class="list-group-item d-flex justify-content-between">
-              <span>
-                  <a asp-controller="Trucks" asp-action="Details" asp-route-id="@special.TruckId">@special.Truck!.Name</a>
-                  <span class="text-muted">· @special.ServedOn</span>
-              </span>
-              <span>$@special.Price</span>
-          </li>
-      }
-  </ul>
-  ```
+- [ ] ⚠️ **Restart the app — `Ctrl+C` in terminal 1, then `dotnet watch`.** New classes and a new table, the same reason as §3
 - [ ] **Go to `/Trucks/Details/2`, click Cheese Curds.** 🎯 **Cheese Curd Cartel, Pierogi Party, Sconnie Sliders**
 - [ ] Land the reveal, and be precise that nothing was added to make it possible: *"I did not build a new relationship for that page. Those are the same fourteen rows, read from the other end. That is what a many-to-many is — one join table, read in either direction"*
 
