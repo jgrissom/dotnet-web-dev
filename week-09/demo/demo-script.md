@@ -597,7 +597,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   onDelete: ReferentialAction.Cascade
   ```
   *"They are deleted too. This line in the migration says so: on delete, cascade. EF chose it because I typed int TruckId with no question mark. A special must have a truck, so when the truck goes, its specials go with it."*
-- [ ] Still on that line — the other choices: *"Cascade is one of three choices. Restrict refuses to delete a truck while it still has specials. Set null keeps the specials and empties their TruckId, which only works if TruckId can be null. EF picked cascade for us — it is the default behavior."*
+- [ ] Still on that line — the other choices: *"Cascade is one of three choices. Restrict refuses to delete a truck while it still has specials. Set null keeps the specials and empties their TruckId, which only works if TruckId can be null. EF picked cascade for us — it is the default when the foreign key is required."*
 - [ ] Then the design point, which is the reason this beat exists at all: *"So a page that asks 'are you sure' is leaving something out if it only shows the truck. It has to say what else will be deleted."*
 - [ ] **Write the warning first.** In `Views/Trucks/Delete.cshtml` — **between the `</div>` that closes the card and the `<form>` below it**:
   ```cshtml
