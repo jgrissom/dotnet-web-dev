@@ -557,7 +557,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] 💡 *"That is week 6's troubleshooting advice and it is still the fastest thing you own: when a form silently refuses, ask it to show you everything it knows"*
 - [ ] **Submit again.** 🎯 **"The Trucks field is required."**
 - [ ] Let the room sit with the contradiction before you explain it: *"the Trucks field. There is a truck in that dropdown. It says Roll Models"*
-- [ ] 🎞️ **GO TO SLIDE 7** — *The list is not an answer* · the explanation the error message does not give: *"Trucks is not the dropdown. Trucks is the list of choices, and it is a non-nullable property. Week 6: a non-nullable property is a required field. The browser posted the truck I picked. It never posts the list I picked from. So the binder sees a required field that arrived empty."*
+- [ ] 🎞️ **GO TO SLIDE 7** — *The list is not an answer* · the explanation the error message does not give: *"The POST action takes the whole ViewModel. So when I submit, ASP.NET builds a new SpecialFormViewModel from what the browser sent, and it checks every property on it. The browser sent the special's fields, including the truck I picked. It did not send the list of trucks. A form only sends the values in its fields. So Trucks arrives empty, and Trucks is non-nullable. Week 6: a non-nullable property counts as required. A required field arrived empty, so the form is refused."*
 - [ ] Still on slide 7, the line of code at the bottom: *"The fix is one question mark."* Swipe back to the editor. Add one character in `SpecialFormViewModel`:
   ```csharp
   public SelectList? Trucks { get; set; }
