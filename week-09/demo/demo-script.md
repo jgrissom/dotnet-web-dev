@@ -349,7 +349,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ### One view, two things *(slide 6)*
 
-- [ ] Open `Views/Trucks/Details.cshtml` and scroll to the *Also in* block. Read the line that is already there, out loud, exactly as written:
+- [ ] Open `Views/Trucks/Details.cshtml` and scroll to the *Also in* block. **Point at this line — don't read it out;** the next beat says what it does:
   ```cshtml
   var alsoHere = (List<Truck>)ViewData["AlsoHere"]!;
   ```
