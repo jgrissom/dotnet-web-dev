@@ -135,7 +135,8 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] **Say what it is, with the line on screen:** *"This is a navigation property. It is not a column, and nothing about it is stored in the database. It holds a truck's specials as C# objects, so my code can go from a truck to its specials."*
 - [ ] 🎯 Point at the initializer, because it is the difference between a bug and a blank page later: *"it starts as an empty list, not null. A truck with no specials should read as zero specials, not as a crash"*
 - [ ] **Switch the editor to `Special.cs` and ask** — the answer is the bottom row of slide 2: *"Special has two properties that point at a truck: TruckId and Truck. One of them is a column in SQL Server. The other is a navigation property, like the one I just added to Truck. Which one is the column?"* Take answers
-- [ ] *"TruckId. To the database, the whole relationship is that one integer. Truck is a navigation property, the same as Specials. C# uses them to get from one object to the other, and neither one is in the table."*
+- [ ] *"TruckId. TruckId is the foreign key, the third word on slide 2. It is a column in the Specials table, and it holds the Id of the truck that the special belongs to. A special with a TruckId of 1 belongs to the truck whose Id is 1, which is Roll Models."*
+- [ ] *"To the database, the whole relationship is that one integer. Truck is a navigation property, the same as Specials. C# uses them to get from one object to the other, and neither one is in the table."*
 - [ ] Open `Data/CurbsideContext.cs` and add the set, under `Trucks`:
   ```csharp
   public DbSet<Special> Specials => Set<Special>();
