@@ -620,6 +620,9 @@ var cryptid = await _context.Cryptids
 
 Reload the page. **The warning appears, with the count in it.** Click **Keep it** — you are not closing The Hodag's file.
 
+> [!TIP]
+> **Still no warning, and the card still says *0 reports*, over a correct `Include`?** Restart the app — in terminal 1, `Ctrl+C`, then `dotnet watch` — and reload. Hot reload doesn't always apply a change to a query in a running app, and a restart always does.
+
 That's the **third** `Include` tonight. Details had one, Index had one, and this page counted zero until it got its own.
 
 **Run the checks, in terminal 3:**

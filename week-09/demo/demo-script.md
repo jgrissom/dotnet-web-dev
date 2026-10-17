@@ -617,6 +617,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
       .FirstOrDefaultAsync(t => t.Id == id);
   ```
 - [ ] **Reload `/Trucks/Delete/1`.** 🎯 **Three specials on file**, and the card says **3 on the menu**. Then click **Keep it** — say out loud that you are not deleting it, because the room will assume you did
+- [ ] ⚠️ **Only if the warning still isn't there over a correct `Include`:** restart — `Ctrl+C` in terminal 1, then `dotnet watch` — and reload. Hot reload doesn't always apply a change to a query; a restart does
 - [ ] 💡 One rider on the `Include`, because it is the same lesson yet again: *"That page needed its own Include. Details has one. Index has one. The Also in list has one. Delete showed zero until I added a fourth."*
 
 ## Lab G · Task 6 — 4 minutes
@@ -624,7 +625,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] Lab README on screen, scrolled to **Task 6 in full**
 - [ ] *"The same two steps, in the same order. Paste the warning into your Delete view, and open The Hodag's Close the file page. There is no warning yet. Then add the Include yourself. It is the third one you have written tonight."*
 - [ ] *"When the warning shows, click Keep it. Do not close The Hodag's file."*
-- [ ] 👀 **Watch for:** the warning never appearing — the `Include` went on `DeleteConfirmed`, the POST, instead of the GET that takes `int? id`. And ⚠️ **check 6 green with no warning on the page** — the card on that page prints the count too, and the check is satisfied by it; the `Include` alone turns it green. Look at their Close-the-file page, not only at their count
+- [ ] 👀 **Watch for:** a warning that only appears after a restart — hot reload left their `Include` unapplied; the README's tip covers it. The warning never appearing — the `Include` went on `DeleteConfirmed`, the POST, instead of the GET that takes `int? id`. And ⚠️ **check 6 green with no warning on the page** — the card on that page prints the count too, and the check is satisfied by it; the `Include` alone turns it green. Look at their Close-the-file page, not only at their count
 - [ ] **Stop:** the note after **Task 6 in full**. Where they should be: **`Passed: 6`**, and The Hodag's Close-the-file page shows the warning
 
 ## 9 · One more foreign key *(slide 8)*
