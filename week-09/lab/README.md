@@ -248,7 +248,7 @@ dotnet test Cryptids.Checks
 **`Passed: 2`** — checks 1 and 2. Check 3's message says the Sightings table is empty. That's correct: task 3 seeds it.
 
 > [!NOTE]
-> **In class, stop here.** Task 3 comes after the next part of the demo. Checks 3 to 6 are still red, and that's expected. Finished early? Put `Models/Sighting.cs` and `Models/Cryptid.cs` side by side and find the three properties that tie the two classes together. Decide which one of the three will be a column — task 3's migration shows you whether you were right. Or help a classmate with the five places. ⚠️ **Don't file a new creature at this stop:** your model no longer has `Sightings`, but the table still has the column, so saving fails with *Cannot insert the value NULL into column 'Sightings'*. Task 3's migration drops the column. Working at home? Carry straight on.
+> **In class, stop here.** Task 3 comes after the next part of the demo. Checks 3 to 6 are still red, and that's expected. Finished early? Put `Models/Sighting.cs` and `Models/Cryptid.cs` side by side and find the three properties that tie the two classes together. Decide which one of the three will be a column — task 3's migration shows you whether you were right. Or help a classmate with the five places. ⚠️ **Don't file a new creature at this stop:** your model no longer has `Sightings`, but the table still has the column, so saving fails with *Cannot insert the value NULL into column 'Sightings'*. Terminal 1 prints a long red stack trace for it, but that is the one request failing — the app is still running. Task 3's migration drops the column. Working at home? Carry straight on.
 
 ### Task 3 in full
 
