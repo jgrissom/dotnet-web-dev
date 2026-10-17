@@ -9,7 +9,7 @@ Week 4 told you to pick a topic that could grow a *second, related list* by week
 
 ## Part 1 — Finish the sightings log (nobody collects this)
 
-If checks 5 and 6 didn't go green in the lab, finish them now. [The lab README](lab/README.md) has every task in full, and `dotnet test Cryptids.Checks` tells you where you are.
+If any of the lab's checks are still red, finish them now. [The lab README](lab/README.md) has every task in full, and `dotnet test Cryptids.Checks` tells you where you are.
 
 **This is worth zero points and it is the best hour you can spend.** Everything in Part 2 is the same five moves against your own model, and doing them once with the checks answering you makes the second time about an hour.
 
