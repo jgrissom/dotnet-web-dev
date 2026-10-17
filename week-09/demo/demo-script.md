@@ -334,7 +334,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] 💡 No guard needed now, and say why — it is the initializer beat from §2 paying off: *"Specials starts as an empty list, never null. So this line is safe on every page that draws the card. The two pages that have not asked for specials yet will say zero."*
 - [ ] **Reload and read the terminal.** 🎯 **One statement**, and it is a `LEFT JOIN`
 - [ ] 🎞️ **GO TO SLIDE 5** — *One JOIN* · *"The top row is what I wrote first: one query for the trucks, and one more for each truck. That was eight. The bottom row is Include: one query, with seven trucks and all fourteen specials in it. I did not write that join. I wrote Include, and EF wrote the join."*
-- [ ] ⚠️ Still on slide 5, the three lines at the bottom — this is the actual exam question: *"Include is per query. I put Include on the Details action, and it did nothing for this page. It is not a setting on the model, and it is not remembered for the next query."*
+- [ ] ⚠️ Still on slide 5, the three lines at the bottom — this is the actual exam question: *"Include works only in the query you write it in. I put Include on the Details action, so the Details page loads its specials, and nothing else does. The Index action has its own query, so it needs its own Include. There is no setting on the Truck class that says always load the specials."*
 
 ## Lab E · Task 4, part 2 — 4 minutes
 
