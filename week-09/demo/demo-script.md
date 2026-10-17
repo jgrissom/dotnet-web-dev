@@ -238,7 +238,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
       <p class="text-muted">Nothing listed.</p>
   }
   ```
-- [ ] **Before you reload, open the mssql panel and run this** — the database's answer goes on screen right before the page's. **Leave this query tab open in the editor**; you compare the terminal against it in a moment:
+- [ ] **Before you reload, open the mssql panel and run this** — the database's answer goes on screen right before the page's:
   ```sql
   SELECT t.Name AS Truck, s.Name AS Special, s.Price, s.ServedOn
   FROM Specials AS s
@@ -246,6 +246,10 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   WHERE t.Name = 'Roll Models'
   ORDER BY s.Name;
   ```
+
+> [!IMPORTANT]
+> **Leave this query tab open in the editor.** After the reload, you compare it with the `SELECT` the page ran in terminal 1.
+
 - [ ] Two rows, with the truck's name on each. *"This joins each special's TruckId to the Id of a truck. That is the job a foreign key does. The WHERE keeps only Roll Models. In the database, Roll Models has two specials: a Bulgogi Bowl and Kimchi Fries."*
 - [ ] **No prediction here — this failure is what teaches the rule, so nobody can reason it out yet.** Say what to look at: *"The database says Roll Models has two specials. I am going to reload the Roll Models details page. Look under the heading On the menu."*
 - [ ] **Reload `/Trucks/Details/1`.** 🎯 **`Nothing listed.`** Let it sit there. Say nothing for a beat
