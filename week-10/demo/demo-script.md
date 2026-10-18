@@ -273,7 +273,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
       <p class="text-muted">No trucks on the street yet. <a asp-action="Create">Add the first one</a>.</p>
   }
   ```
-- [ ] **Say what they are, with the second one on screen:** *"If the list is empty, the page says so and links to the form. The details page and the list page are different views, so each one needs its own."*
+- [ ] **Say what they are, with the second one on screen:** *"If there are no trucks, the page says so and links to the Add a truck form. The dish list does the same with the Add a dish form. The details page and the list pages are different views, so each one needs its own if."*
 - [ ] ⚠️ **Somebody may point out that both lists already have a ＋ button.** *"They do, on my pages. On your app there may be no button at all. A sentence and a way out, every time."*
 - [ ] *"I am not deleting every truck to show you the empty truck list. The if on each list page works the same way as the one on the details page."*
 
