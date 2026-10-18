@@ -13,7 +13,9 @@
 // slide 2 inside it. None of that is visible to check-links or a render.
 //
 // Checks, per week:
-//   1. cues cover slides 2..last, in order, no duplicates, none invented
+//   1. cues cover slides 2..last, in order, no duplicates, none invented —
+//      a cue for slide 1 (the title, whose agenda is talked to at the top of §1)
+//      is optional, and the title slide needs no footer
 //   2. each cue's title matches that slide's real `##` heading
 //   3. each cue sits inside the slide range its section claims
 //   4. every cued slide carries a footer, pointing at the section it's cued in
@@ -88,7 +90,7 @@ for (const wk of fs.readdirSync(root).filter(d => /^week-\d+$/.test(d)).sort()) 
   const nums = cues.map(c => c.n);
   const expected = Array.from({ length: last - 1 }, (_, i) => i + 2);
   for (const n of expected) if (!nums.includes(n)) say(`slide ${n} has no 🎞️ cue`);
-  for (const n of nums) if (n < 2 || n > last) say(`cue names slide ${n}, but the deck has ${last} slides`);
+  for (const n of nums) if (n < 1 || n > last) say(`cue names slide ${n}, but the deck has ${last} slides`);
   if (nums.some((n, i) => i && n < nums[i - 1])) say(`cues are out of order: ${nums.join(", ")}`);
   const dupes = nums.filter((n, i) => nums.indexOf(n) !== i);
   if (dupes.length) say(`slide(s) cued more than once: ${[...new Set(dupes)].join(", ")}`);
@@ -106,7 +108,7 @@ for (const wk of fs.readdirSync(root).filter(d => /^week-\d+$/.test(d)).sort()) 
       say(`slide ${c.n} is cued inside §${c.sec}, which claims slides ${c.lo}–${c.hi}`);
 
     // 4/5 — the footer is the way back to this sheet
-    if (!slide.footer) { say(`slide ${c.n} is cued but has no _footer`); continue; }
+    if (!slide.footer) { if (c.n !== 1) say(`slide ${c.n} is cued but has no _footer`); continue; }
     const fsec = (slide.footer.match(/§(\d+[a-z]?)/) || [])[1];
     if (fsec !== c.sec)
       say(`slide ${c.n} footer says §${fsec} but it's cued in §${c.sec}`);

@@ -60,11 +60,12 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 > - **VS Code** — left half, `instructor/week-10/Curbside` open, two integrated terminals: terminal 1 running `dotnet watch`, terminal 2 idle at the project root
 > - **Browser** — right half, one window, four tabs: `/` (the stock template home page — that is the point), `/Trucks/Details/1`, `/Dishes`, and the week 10 homework
 
-## 1 · The stranger's pass *(slides 2–3)*
+## 1 · The stranger's pass *(slides 1–3)*
+
+- [ ] 🎞️ **GO TO SLIDE 1** — *Week 10 — The Midterm Project* · it is still up from the gallery — talk to its list before you swipe away from it: *"Here is tonight. First, I walk my own app as a stranger would and write down what is wrong. Then I fix it, one thing at a time: a front page of my own, lists that say something when they are empty, and a wrong id that lands somewhere. After each one, you do the same thing to your own app. The rest of the night is your three things."*
 
 ### Two different questions *(slide 2)*
 
-- [ ] **The title slide is still up from the gallery — talk to its list before you swipe away from it:** *"Here is tonight. First, I walk my own app as a stranger would and write down what is wrong. Then I fix it, one thing at a time: a front page of my own, lists that say something when they are empty, and a wrong id that lands somewhere. After each one, you do the same thing to your own app. The rest of the night is your three things."*
 - [ ] 🎞️ **GO TO SLIDE 2** — *Two questions* · *"Every week since week 4, the question has been: does it work? The checks answered it in the lab, and the self-check answered it on your URL. A script can answer that question with a yes or a no."*
 - [ ] 🎯 Still on slide 2, the second question, slowly: *"Tonight's question is: would you send someone this link? No script can answer that. That is why this week's self-check prints what it finds and scores nothing."*
 - [ ] 💡 Still on slide 2, the last line: *"Nothing new is introduced tonight. No package, no migration, no new table. There is one line you have not seen before, and I will point at it when we get there."*
