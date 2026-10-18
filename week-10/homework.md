@@ -59,22 +59,22 @@ Each requirement links to the section of the notes that shows it done.
 
    🔎 **The script sees both halves** — the stock Privacy text, and any link on your front page that comes back 404 or throws.
 
-   > [!NOTE]
-   > **In class, stop here.** Requirement 3 comes after the break and the next part of the demo. Where you should be: a front page of your own that you have **looked at**, a browser tab that doesn't say `Home Page`, Privacy real or gone from all four places — and `recheck()` no longer lists the template front page, the tab title or Privacy. Finished early? Give every other view a `ViewData["Title"]` of its own, then click every link in your navbar and footer. Or help a classmate. Working at home? Carry straight on.
+> [!NOTE]
+> **In class, stop here.** Requirement 3 comes after the break and the next part of the demo. Where you should be: a front page of your own that you have **looked at**, a browser tab that doesn't say `Home Page`, Privacy real or gone from all four places — and `recheck()` no longer lists the template front page, the tab title or Privacy. Finished early? Give every other view a `ViewData["Title"]` of its own, then click every link in your navbar and footer. Or help a classmate. Working at home? Carry straight on.
 
 3. **Empty lists say something.** Every list you render will be empty for somebody, and right now it draws a heading with nothing under it. Put an `@if (!Model.Any())` on your list page **and** on the related list on your details page, each with a sentence and a way to change it. → [When there is nothing there yet](lecture-notes.md#part-4-when-there-is-nothing-there-yet)
 
    📋 **The script cannot see this** — it can't empty your database. I read it in your repo. To see it yourself, create a brand-new record through your form and look at its page.
 
-   > [!NOTE]
-   > **In class, stop here.** Requirement 4 comes after the next part of the demo. Where you should be: a brand-new record's page says something and offers a way to change it, and your list page has its own `@if`. `recheck()` hasn't changed, and that's expected — it can't see this. The record you added is real data on your site: delete it, or keep it if it reads like real content. Finished early? For each table in your app, answer one question: how does a new row get into it from outside? If the answer is "I seed it", that's a finding. Or help a classmate. Working at home? Carry straight on.
+> [!NOTE]
+> **In class, stop here.** Requirement 4 comes after the next part of the demo. Where you should be: a brand-new record's page says something and offers a way to change it, and your list page has its own `@if`. `recheck()` hasn't changed, and that's expected — it can't see this. The record you added is real data on your site: delete it, or keep it if it reads like real content. Finished early? For each table in your app, answer one question: how does a new row get into it from outside? If the answer is "I seed it", that's a finding. Or help a classmate. Working at home? Carry straight on.
 
 4. **A wrong id lands somewhere.** Change a details URL to an id that doesn't exist. You get a blank browser page, because `NotFound()` sends no body — which is what every saved link to a record you deleted now does. Three pieces: a view, an action, and one line in `Program.cs` — **built in that order**, or there is a window where every wrong-id URL answers `500` instead. → [The page a wrong id lands on](lecture-notes.md#part-5-the-page-a-wrong-id-lands-on)
 
    🔎 **The script sees this one.** ⚠️ Both halves need a **restart** — read the note in that section before you decide it didn't work.
 
-   > [!NOTE]
-   > **In class, stop here.** The rest of the night comes after the break and the last part of the demo. Where you should be: a wrong id on your app lands on your own page, DevTools' Network tab still says `404` for it, and `recheck()` no longer lists the blank wrong-id page. Finished early? Try `/Nope`, and an Edit URL with an id that doesn't exist. Or help a classmate. Working at home? Carry straight on.
+> [!NOTE]
+> **In class, stop here.** The rest of the night comes after the break and the last part of the demo. Where you should be: a wrong id on your app lands on your own page, DevTools' Network tab still says `404` for it, and `recheck()` no longer lists the blank wrong-id page. Finished early? Try `/Nope`, and an Edit URL with an id that doesn't exist. Or help a classmate. Working at home? Carry straight on.
 
 5. **Your three things, fixed.** The ones from Part 1. They are yours, they are not on this list, and they are worth more than anything that is. Name them in your README (requirement 7) so I know what you chose. → [Choosing your three things](lecture-notes.md#part-10-choosing-your-three-things)
 
