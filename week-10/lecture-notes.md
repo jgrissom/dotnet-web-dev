@@ -394,9 +394,9 @@ and visitor reviews. Built for .NET Web Development at WCTC.
 
 ## The three things I fixed for the midterm
 
-1. The front page said the site's name and nothing else — no way in.
-2. The Privacy page was the template's. It's an About page now.
-3. A wrong id was a blank browser page. It lands on a page of mine.
+1. Reviews were in no order at all. They run newest first now.
+2. No trail card said whether a trail had reviews. Every card shows its count now.
+3. Removing a trail deleted its reviews without a word. The Remove page says how many go with it.
 
 ## Built with
 
@@ -411,7 +411,7 @@ The connection string lives in user secrets, not in this repo:
     dotnet watch
 ```
 
-⚠️ **The three-things section is not decoration — it is a graded requirement**, and it is the only place you tell me what you chose. Name them, one line each.
+⚠️ **The three-things section is not decoration — it is a graded requirement**, and it is the only place you tell me what you chose. Name them, one line each. Notice what is *not* on that list: the front page, Privacy and the wrong-id page. Everyone fixes those, so they are not three of yours.
 
 **The live URL is the part people most often leave out**, and it is the most valuable line in the file — it is what turns a repo into something a person can look at rather than read.
 
