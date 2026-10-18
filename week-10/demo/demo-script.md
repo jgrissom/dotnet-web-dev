@@ -96,15 +96,15 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
   }
   ```
 - [ ] **Say what it is, with it on screen:** *"This loads this week's self-check on my home page. Your week 9 line is in this same file. You replace it with this one."*
-- [ ] **Reload the `/` tab**, open DevTools on the **Console** (**⌥⌘I** on your Mac — `F12` on Windows), and type `recheck()`
-- [ ] ⚠️ **One red line arrives before the report**, naming `/Trucks/Details/1007` and `404 (Not Found)`. Get in front of it: *"That red line is the script asking for a truck that does not exist. It got a 404, and the browser logs every 404 in red. It is not an error in my page."*
-- [ ] Read the top line of the report: **`📋 4 things a stranger would trip over`**. Then point from each finding to the list on screen: *"The template front page and the Home Page tab are my item one. The Privacy page is item two. The wrong id is item three. The script found what we found."*
+- [ ] **Widen the window back, type `/` in the address bar** — your walk left this tab on `/Trucks/Details/999` — then open DevTools on the **Console** (**⌥⌘I** on your Mac — `F12` on Windows), and type `recheck()`
+- [ ] ⚠️ **The findings print one at a time. Partway through, a red line appears just above the wrong-id finding**, naming `/Trucks/Details/1007` and `404 (Not Found)`. Get in front of it: *"That red line is the script asking for a truck that does not exist. It got a 404, and the browser logs every 404 in red. It is not an error in my page."*
+- [ ] Scroll to the **`📋`** line under the last finding: **`📋 4 things a stranger would trip over`**. Then point from each finding to the list on screen: *"The template front page and the Home Page tab are my item one. The Privacy page is item two. The wrong id is item three. The script found what we found."*
 - [ ] 🎯 *"It found them because a stranger can see them without knowing what my site is about. It will never find your three things. Those are about your app, and only you know what it is for."*
 
 ## Studio A · Your own pass — 20 minutes
 
 - [ ] Put the **homework** on screen — the tab you parked in §0 — scrolled to **Part 1**
-- [ ] ⚠️ **Say plainly that this is the homework, because nine weeks have trained them otherwise:** *"Every week until now, the lab was a different app and it was never collected. Tonight is different. There is no lab. This is your midterm, on your own app. What you finish tonight is finished, and what you do not finish, you finish at home."*
+- [ ] ⚠️ **Say plainly that this is the homework, because nine weeks have trained them otherwise:** *"Since week 4, the lab was a different app from your homework, and it was never collected. Tonight is different. There is no lab. This is your midterm, on your own app. What you finish tonight is finished, and what you do not finish, you finish at home."*
 - [ ] *"This block is the walk you just watched, on your own app. Walk your deployed URL, then walk it on your phone, and write down what you see."*
 - [ ] *"Then swap the self-check. In Views/Home/Index.cshtml, replace your week 9 line with this week's. Run your app in terminal 1 with dotnet watch, open the console on localhost, and type recheck."*
 - [ ] 🎯 **The line that keeps their three their own:** *"The front page, the page you never wrote, and the wrong id are on everybody's list. Everybody fixes those tonight. Your three things are three more, about your app, that I have not mentioned. Put a star next to them."*
@@ -119,7 +119,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 - [ ] 🎞️ **GO TO SLIDE 4** — *What a front page owes a visitor* · *"One sentence about what this is, in the visitor's words. A truck is a Truck class to me, and a food truck to everyone else."*
 - [ ] 🎯 Still on slide 4, the second row: *"A way in is a button, not a navbar link. People stop looking at the navbar. A button in the middle of the page is the thing you are asking them to press."*
-- [ ] 💡 Still on slide 4, the last line: *"A visitor gives a new site about ten seconds. So the answer is a sentence and a way in, not a redesign."*
+- [ ] 💡 Still on slide 4, the last line: *"A visitor gives a new site about ten seconds. So what a front page needs is a sentence and a way in, not a redesign."*
 - [ ] **Swipe to the editor.** `Views/Home/Index.cshtml` — select everything in the file and paste the replacement:
   ```cshtml
   @{
@@ -169,7 +169,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
   <a asp-controller="Dishes" asp-action="Index" class="btn btn-outline-light btn-lg">Start from a dish</a>
   ```
 - [ ] **Reload.** Both buttons read. Read the new tab out loud — **Street food across Wisconsin - Curbside 🌮**
-- [ ] 💡 *"I am not teaching Bootstrap here. My page broke when I changed the theme in week 5, and nothing told me. That is what walking your own site is for."*
+- [ ] 💡 *"I am not teaching Bootstrap here. This panel would read fine on the default theme. I picked Darkly in week 5, and nothing told me which Bootstrap classes would stop working with it. That is what walking your own site is for."*
 
 ### The page you did not write
 
@@ -275,7 +275,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
   ```
 - [ ] **Say what they are, with the second one on screen:** *"If the list is empty, the page says so and links to the form. The details page and the list page are different views, so each one needs its own."*
 - [ ] ⚠️ **Somebody may point out that both lists already have a ＋ button.** *"They do, on my pages. On your app there may be no button at all. A sentence and a way out, every time."*
-- [ ] *"I am not deleting every truck to show you the list one working. It is the same if as the one on the details page."*
+- [ ] *"I am not deleting every truck to show you the empty truck list. The if on each list page works the same way as the one on the details page."*
 
 ## Studio C · Empty states — 13 minutes
 
@@ -300,7 +300,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
       return NotFound();
   }
   ```
-  *"This guard is in every controller you have written, and it is right. A truck that does not exist should get a 404. But NotFound sends the 404 with no body at all. There is no page for the browser to show, so it shows its own."*
+  *"Every Details action we have written since week 4 has this guard, and it is right. A truck that does not exist should get a 404. But NotFound sends the 404 with no body at all. There is no page for the browser to show, so it shows its own."*
 - [ ] 🎯 The reason this matters: *"This is not just someone typing a silly number. You built Delete in week 8. When you delete a record, every saved link to it lands here."*
 
 ### Three pieces *(slide 6)*
@@ -334,14 +334,14 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
   }
   ```
 - [ ] **Say what it is, with it on screen:** *"This action renders the Missing view. It is named Missing because NotFound is taken."*
-- [ ] **Show it before you wire it up** — browse to `/Home/Missing`. It is a real page: *"There is the page. Nothing sends anyone to it yet. That is the last line."*
+- [ ] **Show it before you wire it up** — browse to `/Home/Missing`. It is a real page: *"There is the page. Nothing sends anyone to it yet. The line in Program.cs does that, and it is the last piece."*
 - [ ] `Program.cs` — paste this **just above `app.UseRouting();`**:
   ```csharp
   // A wrong id, or a URL nobody recognizes, used to be a blank browser page.
   // This re-runs the request through /Home/Missing and keeps the 404 status.
   app.UseStatusCodePagesWithReExecute("/Home/Missing");
   ```
-- [ ] **Say what it is, with it on screen:** *"This is the new line. When a response is an error with no body, it runs the request again through /Home/Missing and uses that page as the body. The status code stays a 404."*
+- [ ] **Say what it is, with it on screen:** *"This is the new line. When a response is an error with no body, it runs the request again through /Home/Missing and uses that page as the body. The status code stays what it was. Here, that is a 404."*
 - [ ] ⚠️ **Watch terminal 1.** `Program.cs` runs once, when the app starts, so this line needs a restart. With `a` answered, `watch` prints `Restart is needed to apply the changes` and restarts. **If it prints `Press "Ctrl + R" to restart.` instead, press Ctrl+R in terminal 1** — until then the line does nothing. Say it to the room: *"Program.cs only runs when the app starts, so this line needs a restart. If your wrong id is still blank after you add it, look at your terminal."*
 - [ ] **Reload `/Trucks/Details/999`.** My page, my navbar, a way back. In the Network tab, the request still says **`404`**
 - [ ] 🎯 *"The visitor gets a real page, and the browser and search engines still get a 404."*
@@ -384,5 +384,5 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 ## 6 · Wrap-up, after the studio *(slide 8)*
 
 - [ ] 🎞️ **GO TO SLIDE 8** — *Tonight, in one picture* · five rows, one sentence each. **Front door** gets the emphasis: *"The front page is the one page every visitor sees, and nobody arrives on it already interested."*
-- [ ] Homework: finish it, deploy it, run the pass on the Azure URL. ⚠️ **Name the two things people lose points on:** *"Two things cost points every term. The self-check block deleted along with your old home page, and a README that never mentions your live URL."*
+- [ ] Homework: finish it, deploy it, run the pass on the Azure URL. ⚠️ **Name the two things people lose points on:** *"Two things are easy to lose points on. The self-check block deleted along with your old home page, and a README that never mentions your live URL."*
 - [ ] 🔗 Week 11: *"Next week is Identity: registration, login, and the thing you noticed tonight and left alone."*
