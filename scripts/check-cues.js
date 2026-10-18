@@ -35,6 +35,9 @@ const path = require("path");
 
 const root = path.resolve(process.argv[2] || ".");
 const problems = [];
+// Reported but never fatal: weeks 1-6 were taught with lab-slide and predict-the-table
+// cues this check flags, so it warns rather than turning CI red over taught weeks.
+const warnings = [];
 const norm = (s) => s.replace(/[`*]/g, "").replace(/[’]/g, "'").replace(/\.$/, "").trim().toLowerCase();
 
 // Slide 1 is the title slide; `##` headings are slides 2..n+1.
@@ -51,8 +54,16 @@ function slidesOf(file) {
 
 function cuesOf(file) {
   const out = [];
-  let sec = null, lo = null, hi = null, beat = false;
-  for (const line of fs.readFileSync(file, "utf8").split("\n")) {
+  const lines = fs.readFileSync(file, "utf8").split("\n");
+  // A checkbox that TALKS to the slide, rather than doing something to the
+  // editor or the terminal. Two house styles carry narration and both count:
+  // riding the cue line after a `·`, or a marked checkbox underneath it.
+  const BOX = /^\s*[-*] \[[ xX]\] /;
+  // This course carries narration as a spoken run, *"…"* (or _"…"_), anywhere on the beat.
+  const NARRATES = /^\s*[-*] \[[ xX]\] .*[*_]["“]/;
+  let sec = null, lo = null, hi = null, beat = false, ln = 0;
+  for (const line of lines) {
+    ln++;
     // Both emphasis delimiters are accepted. Markdown treats *em* and _em_ as
     // the same thing, and a formatter on save (Prettier rewrites * to _) will
     // silently swap one for the other across a whole file. That's cosmetic in
@@ -71,16 +82,32 @@ function cuesOf(file) {
     if (/^## /.test(line)) { sec = null; continue; }
     if (/^### /.test(line) && sec) { beat = true; continue; }
     m = line.match(/🎞️ \*\*GO TO SLIDE (\d+)\*\* — ([*_])((?:`[^`]*`|(?!\2).)+?)\2/);
-    if (m && sec) out.push({ n: +m[1], title: m[3].trim(), sec, lo, hi, beat });
+    if (m && sec) {
+      // Everything after the cue's title on the same line — the spoken run, after a `·`.
+      const trail = line.slice(m.index + m[0].length);
+      // Otherwise the beat under it has to be the one that talks.
+      let j = ln;                       // ln is 1-based, so this is the NEXT line
+      while (j < lines.length && !BOX.test(lines[j])) j++;
+      out.push({ n: +m[1], title: m[3].trim(), sec, lo, hi, beat, ln,
+                 own: /^\s*[-*] \[[ xX]\] 🎞️ \*\*GO TO SLIDE/.test(line),
+                 talks: /[*_]["“]/.test(trail) || (j < lines.length && NARRATES.test(lines[j])),
+                 next: (lines[j] || "").trim().slice(0, 60) });
+    }
   }
   return out;
 }
+
+// This script globs week-NN folders INSIDE `root`, so handing it a week folder
+// scans nothing and used to print the success line anyway — a green report over
+// zero files, which is worse than no report at all. Say so instead.
+let scanned = 0;
 
 for (const wk of fs.readdirSync(root).filter(d => /^week-\d+$/.test(d)).sort()) {
   const script = path.join(root, wk, "demo", "demo-script.md");
   const deck = path.join(root, wk, "slides.md");
   if (!fs.existsSync(script) || !fs.existsSync(deck)) continue;
 
+  scanned++;
   const slides = slidesOf(deck);
   const cues = cuesOf(script);
   const last = slides.length;
@@ -98,6 +125,20 @@ for (const wk of fs.readdirSync(root).filter(d => /^week-\d+$/.test(d)).sort()) 
   for (const c of cues) {
     const slide = slides[c.n - 1];
     if (!slide) continue;
+
+    // 0 — the cue leads its own checkbox, or the eye walks past it
+    if (!c.own)
+      say(`demo-script.md:${c.ln} buries the slide ${c.n} cue mid-line — a 🎞️ has to `
+        + `START its own "- [ ] " checkbox, or it gets missed at the projector.`);
+
+    // 0b — a cue with nothing to say. Every 🎞️ means stop, put the slide up and
+    // TALK to it; a bare one leaves the instructor reading the slide aloud. A
+    // WARNING, not a failure: a lab slide left up as the task list, or a slide
+    // that is itself the question, legitimately has no spoken run under it.
+    if (!c.talks)
+      warnings.push(`${wk}: demo-script.md:${c.ln} cues slide ${c.n} with no line to say. `
+        + `Put a spoken run (*"…"*) after the title on the cue line, or on the `
+        + `beat under it. Next beat is: "${c.next}"`);
 
     // 2 — the cue's title is really that slide's heading
     if (slide.title && !(norm(c.title) === norm(slide.title) || norm(c.title).startsWith(norm(slide.title))))
@@ -129,8 +170,19 @@ for (const wk of fs.readdirSync(root).filter(d => /^week-\d+$/.test(d)).sort()) 
     say(`demo-script.md has ${fences} fence lines — an odd count means one is unclosed`);
 }
 
+if (warnings.length)
+  console.warn("⚠️  cues with no spoken line (*\"…\"*) on the cue or the beat under it — not fatal:\n"
+    + warnings.map(w => "   " + w).join("\n"));
+
 if (problems.length) {
   console.error("❌ cue sheet / deck mismatches:\n" + problems.map(p => "   " + p).join("\n"));
   process.exit(1);
 }
-console.log("✅ demo cues line up with the decks (order, titles, section ranges, footers)");
+if (!scanned) {
+  console.error(`❌ no week-NN folders under ${root} — nothing was checked.\n`
+    + `   This script wants the root that CONTAINS the weeks: node scripts/check-cues.js .`);
+  process.exit(1);
+}
+console.log(`✅ demo cues line up with the decks in ${scanned} week(s) `
+  + `(order, titles, section ranges, footers, cues on their own line)`
+  + (warnings.length ? ` — ${warnings.length} warning(s) above` : ""));
