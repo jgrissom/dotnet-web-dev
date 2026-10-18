@@ -200,7 +200,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 ### Read-only from outside
 
-- [ ] **Swipe to the `/Dishes` tab** — no slide for this part. Ten dishes, each with a truck count. Ask: *"This page is fine. What can I do on it?"*
+- [ ] **Swipe to the `/Dishes` tab** — no slide for this part. Ten dishes, each with a truck count. Ask: *"This page is fine. Anything missing?"*
 - [ ] Wait, then name it: *"I can browse the dishes, but there is no way to add one, not here and not anywhere. The specials form only offers dishes that already exist. From the outside, this table is read-only."*
 - [ ] 🎯 Generalize it before fixing it: *"Look at each of your own tables tonight, and ask how a new row gets in. If the answer is 'I seed it' or 'I open the mssql panel', that table is read-only to everybody else. That can be the right call. But it should be a decision you made."*
 - [ ] *"A Create pair is week 8. Typing it again teaches nothing, so I am copying it in."* **Terminal 2**, the one you opened in §0:
