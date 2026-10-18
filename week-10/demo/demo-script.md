@@ -134,7 +134,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
           park, and what's on today.
       </p>
       <a asp-controller="Trucks" asp-action="Index" class="btn btn-primary btn-lg">Browse the trucks</a>
-      <a asp-controller="Dishes" asp-action="Index" class="btn btn-outline-secondary btn-lg">Start from a dish</a>
+      <a asp-controller="Dishes" asp-action="Index" class="btn btn-outline-secondary btn-lg ms-2">Start from a dish</a>
   </div>
 
   @section Scripts {
@@ -166,7 +166,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 - [ ] *"This tells Bootstrap that this panel is in dark mode."* **Reload.** The headline reads
 - [ ] ⚠️ **Point at the second button**, which is still hard to see: *"This button is a different problem. Its outline is a fixed dark grey, and dark mode does not change it."* Change its class:
   ```cshtml
-  <a asp-controller="Dishes" asp-action="Index" class="btn btn-outline-light btn-lg">Start from a dish</a>
+  <a asp-controller="Dishes" asp-action="Index" class="btn btn-outline-light btn-lg ms-2">Start from a dish</a>
   ```
 - [ ] **Reload.** Both buttons read. Point at the tab: *"The tab says Street food across Wisconsin now. That is what a bookmark gets called."*
 - [ ] 💡 *"I am not teaching Bootstrap here. This panel would read fine on the default theme. I picked Darkly in week 5, and nothing told me which Bootstrap classes would stop working with it. That is what walking your own site is for."*

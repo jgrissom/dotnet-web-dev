@@ -85,7 +85,7 @@ Here is the whole file, as the demo's version ends up — `Views/Home/Index.csht
         park, and what's on today.
     </p>
     <a asp-controller="Trucks" asp-action="Index" class="btn btn-primary btn-lg">Browse the trucks</a>
-    <a asp-controller="Dishes" asp-action="Index" class="btn btn-outline-light btn-lg">Start from a dish</a>
+    <a asp-controller="Dishes" asp-action="Index" class="btn btn-outline-light btn-lg ms-2">Start from a dish</a>
 </div>
 
 @section Scripts {
