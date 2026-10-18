@@ -119,7 +119,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 ### What a front page owes you *(slide 4)*
 
 - [ ] 🎞️ **GO TO SLIDE 4** — *What a front page owes a visitor* · *"One sentence about what this is, in the visitor's words. A truck is a Truck class to me, and a food truck to everyone else."*
-- [ ] 🎯 Still on slide 4, the second row: *"A way in is a button, not a navbar link. People stop looking at the navbar. A button in the middle of the page is the thing you are asking them to press."*
+- [ ] 🎯 Still on slide 4, the second row: *"A way in is a button, not a navbar link. That button has a name: a call to action. People stop looking at the navbar. A button in the middle of the page is the thing you are asking them to press."*
 - [ ] 💡 Still on slide 4, the last line: *"A visitor gives a new site about ten seconds. So what a front page needs is a sentence and a way in, not a redesign."*
 - [ ] **Swipe to the editor.** `Views/Home/Index.cshtml` — select everything in the file and paste the replacement:
   ```cshtml

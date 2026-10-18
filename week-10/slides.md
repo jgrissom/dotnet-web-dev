@@ -81,7 +81,7 @@ On your **deployed** URL — then again on your **phone**:
 | | |
 |---|---|
 | **What this is** | one sentence, in their words |
-| **A way in** | a button, not a navbar link |
+| **A way in** | a **call-to-action** button, not a navbar link |
 | **Why bother** | one more sentence |
 
 <br>

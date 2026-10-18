@@ -68,7 +68,7 @@ This is not anybody's fault. The semester project started in week 4 with a contr
 A front page that does its job answers three things, and it can do it in six lines:
 
 - **What this is.** One sentence, in the language a visitor would use, not the language your model uses.
-- **A way in.** A button to your list page. Not a link in the navbar — a button, on the page, that is obviously the thing to press.
+- **A way in.** A button to your list page — a **call to action**, as web designers call it. Not a link in the navbar — a button, on the page, that is obviously the thing to press.
 - **Why it is worth a click.** One more sentence, optional, and usually the difference between a page and a poster.
 
 Here is the whole file, as the demo's version ends up — `Views/Home/Index.cshtml`:
