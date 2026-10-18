@@ -158,7 +158,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
   color               rgb(255, 255, 255)
   ```
 - [ ] Point at the two values: *"The background is almost white. The text is white."*
-- [ ] 🎯 The diagnosis: *"bg-body-tertiary follows Bootstrap's light or dark mode. My theme, Darkly, sets the page colors dark, but nothing on this page turned on dark mode. So this panel uses its light-mode color, under white text. In week 5 you picked a theme. If yours is a dark one, this can happen to you."*
+- [ ] 🎯 The diagnosis: *"My theme, Darkly, makes the text white, but this panel's class still uses its light-mode color. If you picked a dark theme in week 5, this can happen to you."*
 - [ ] **The fix is one attribute** — on the hero `<div>`:
   ```cshtml
   <div class="p-5 mb-4 bg-body-tertiary rounded-3" data-bs-theme="dark">
