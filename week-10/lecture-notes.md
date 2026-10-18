@@ -167,6 +167,29 @@ Two honest options, and both are fine:
 
 **A page you have not written is worse than no page at all**, because the link promises something.
 
+### The other page you did not write
+
+There is a second one, and you have almost certainly never seen it: `Views/Shared/Error.cshtml`. On localhost, an exception shows you the detailed developer page, so the template's error page never appears. On your deployed site it does — `Program.cs` sends every unhandled exception to `/Home/Error` whenever the app is not running in Development, and a deployed app isn't. A visitor who hits a bug gets a red **Error.** heading, then a section called **Development Mode** explaining how to switch on more detailed error messages.
+
+Rewrite it the way Part 5 writes the wrong-id page: one sentence and a way back. This is the whole file — `Views/Shared/Error.cshtml`:
+
+```cshtml
+@model ErrorViewModel
+@{
+    ViewData["Title"] = "Something went wrong";
+}
+
+<div class="text-center py-5">
+    <h1 class="display-5">Something went wrong 🌮</h1>
+    <p class="lead text-muted">
+        That one's on us, not you. Try again in a minute, or start from the trucks.
+    </p>
+    <a asp-controller="Trucks" asp-action="Index" class="btn btn-primary">See every truck</a>
+</div>
+```
+
+The status code stays `500` — the visitor gets a real page, and the browser is still told something failed. You will not see the new page on localhost, because Development shows you the detailed error instead. That is the point: it is the one page you never see and any visitor might.
+
 ---
 
 ## Part 4: When there is nothing there yet
