@@ -77,7 +77,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 - [ ] Still on slide 3, the last line: *"Write it down before you fix anything. Once you start fixing the first thing, you are in the editor and the walk is over. The list is what you are making."*
 - [ ] **Swipe to the browser, `/` tab.** Open a new file in VS Code for the list, or use the whiteboard, and **keep it on screen**. Ask the room, and wait: *"I have never seen this site before. What is it?"*
 - [ ] The front page says **Welcome** and links to **learn.microsoft.com**. Let it sit, then: *"This is Microsoft's front page. I have built this app for seven weeks and never opened this file."*
-- [ ] **Read the browser tab out loud** — **Home Page - Curbside 🌮** — and say what it is: *"That is what a bookmark gets called."*
+- [ ] **Point at the browser tab:** *"The tab says Home Page - Curbside. That is what a bookmark gets called."*
 - [ ] Click **Privacy** in the navbar: *"Use this page to detail your site's privacy policy. A page I never wrote, linked from every page of my site."*
 - [ ] Click **Trucks**, then a truck, and be fair about it: *"This part is good. This is the part we built."*
 - [ ] In the address bar, change the id to `999` and press Enter → **the browser's own error page.** Ask: *"What happened to my site?"* Take answers
@@ -169,7 +169,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
   ```cshtml
   <a asp-controller="Dishes" asp-action="Index" class="btn btn-outline-light btn-lg">Start from a dish</a>
   ```
-- [ ] **Reload.** Both buttons read. Read the new tab out loud — **Street food across Wisconsin - Curbside 🌮**
+- [ ] **Reload.** Both buttons read. Point at the tab: *"The tab says Street food across Wisconsin now. That is what a bookmark gets called."*
 - [ ] 💡 *"I am not teaching Bootstrap here. This panel would read fine on the default theme. I picked Darkly in week 5, and nothing told me which Bootstrap classes would stop working with it. That is what walking your own site is for."*
 
 ### The page you did not write
