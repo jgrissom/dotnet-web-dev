@@ -90,7 +90,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 ### What the script sees
 
-- [ ] **Now the self-check, to compare with the list.** In the editor, open `Views/Home/Index.cshtml` and paste this at the bottom of the file, below the `</div>`:
+- [ ] **Now the self-check, to compare with the list.** In the editor, open `Views/Home/Index.cshtml` and paste this at the bottom of the file, below the `</div>`. **Curbside has never had a self-check** — the file is the stock template, with no `@section Scripts` — so on your app this is a fresh install; theirs replaces a week-9 line:
   ```cshtml
   @section Scripts {
       <script src="https://jgrissom.github.io/dotnet-web-dev/week-10/homework-checks.js"></script>
