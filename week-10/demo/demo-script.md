@@ -78,7 +78,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 - [ ] **Swipe to the browser, `/` tab.** Open a new file in VS Code for the list, or use the whiteboard, and **keep it on screen**. Ask the room, and wait: *"I have never seen this site before. What is it?"*
 - [ ] The front page says **Welcome** and links to **learn.microsoft.com**. Let it sit, then: *"This is Microsoft's front page. I have built this app for seven weeks and never opened this file."*
 - [ ] **Point at the browser tab:** *"The tab says Home Page - Curbside. That is what a bookmark gets called."*
-- [ ] Click **Privacy** in the navbar: *"Use this page to detail your site's privacy policy. A page I never wrote, linked from every page of my site."*
+- [ ] Click **Privacy** in the navbar: *"Use this page to detail your site's privacy policy, or get rid of it."*
 - [ ] Click **Trucks**, then a truck, and be fair about it: *"This part is good. This is the part we built."*
 - [ ] In the address bar, change the id to `999` and press Enter → **the browser's own error page.** Ask: *"What happened to my site?"* Take answers
 - [ ] 💡 **Then drag the window narrow**, down to phone width, and let the room watch it reflow: *"I cannot reach localhost from my phone, so this is the phone half of the slide. Your phone can reach your deployed URL."*
