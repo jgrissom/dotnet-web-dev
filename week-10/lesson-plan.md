@@ -12,7 +12,7 @@ By the end of this session, students can:
 1. Walk their own deployed application as a stranger would, and say why looking at it on a phone finds what a laptop or a PC hides.
 2. Name the difference between *working* and *finished*, and say why only one of them can be checked by a script.
 3. Say what a front page owes a first-time visitor, and write one.
-4. Look at a table in their own app and say how a new row gets into it from outside.
+4. Create a brand-new record through their own form, and say what its page shows before anything is attached to it.
 5. Say what a `@foreach` over an empty collection renders, and why they have never seen it.
 6. Write an empty state that offers a way out rather than a dead end.
 7. Say what `NotFound()` sends as a response body, and what the browser does with that.
@@ -64,7 +64,7 @@ By the end of this session, students can:
 - ⚠️ **Privacy comes out links first, file last.** Measured: deleting the view first, then restarting, leaves `/Home/Privacy` answering **500** until the action goes too. Links → action → view never leaves a link to a broken page.
 - ⚠️ **Protect the blank page.** In §1, change the id to `999` and stop talking. The room needs a second to register that the site has vanished.
 - ⚠️ **The fixes are deliberately unimpressive, and someone will say so.** The honest answer is that finished is made of small things, and that the reason an app is not finished is rarely that the remaining work is hard. Have that answer ready rather than defending the material.
-- 💡 **§3's opening question transfers furthest:** *how does a new row get into this table from outside?* Most students have a table only a seed or the mssql panel can change. It is Studio C's early-finisher item, and worth asking at three or four desks.
+- 💡 **§3's read-only table is Curbside's own.** `Dish` is the far end of week 9's many-to-many, which the homework did not require — every student table has a form by now (full CRUD since week 8, the second table's form since week 9). §3 says so out loud. What transfers is the next move: a brand-new record, and what its page looks like before anything is attached to it.
 - ⚠️ **If the build prints yellow `NU1902`/`NU1903` warnings and two `Msbuild failed` lines** — the `System.Security.Cryptography.Pkcs` advisory from week 9, which every SQL Server project in the course carries, Curbside and the students' own apps alike. §1 names it in one conditional beat. Every document says *if*, so nothing goes false when a fixed SQL Server package arrives.
 - **The report carrying no score will be queried.** Expect *"so how do I know if I'm done?"* The answer is on slide 7's right-hand column and in the homework's rubric — and it is worth saying plainly that this is what every job after this one is like.
 - ⚠️ **Do not let anyone start on authentication.** The stranger's pass surfaces it immediately. It is week 11's entire subject, it cannot be half-done, and an evening spent on it is an evening of the midterm lost. Studio A says so before anyone starts, and so does the homework.

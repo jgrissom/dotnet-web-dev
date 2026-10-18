@@ -19,7 +19,7 @@ The one night with nothing new in it. No package, no migration, no syntax — in
 
 ## What students walk out with
 
-**The habit of looking at their own work from outside it.** They can walk a deployed application as a stranger and say why looking at it on a phone finds what a laptop or a PC hides; name the difference between *working* and *finished*; say what a front page owes a first-time visitor and write one; look at a table and ask how a new row gets into it from outside; say what a `@foreach` over an empty collection renders and why they have never seen it; write an empty state that offers a way out instead of a dead end; say what `NotFound()` sends as a body and what a browser does with nothing; give an app a 404 page of its own while leaving the status code alone; and read a report that carries no score without mistaking a clean one for a finished one.
+**The habit of looking at their own work from outside it.** They can walk a deployed application as a stranger and say why looking at it on a phone finds what a laptop or a PC hides; name the difference between *working* and *finished*; say what a front page owes a first-time visitor and write one; create a brand-new record and see what its page shows before anything is attached to it; say what a `@foreach` over an empty collection renders and why they have never seen it; write an empty state that offers a way out instead of a dead end; say what `NotFound()` sends as a body and what a browser does with nothing; give an app a 404 page of its own while leaving the status code alone; and read a report that carries no score without mistaking a clean one for a finished one.
 
 ## 📋 Before class, don't forget
 
