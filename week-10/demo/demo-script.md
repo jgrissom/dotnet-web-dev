@@ -164,7 +164,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
   <div class="p-5 mb-4 bg-body-tertiary rounded-3" data-bs-theme="dark">
   ```
 - [ ] *"This tells Bootstrap that this panel is in dark mode."* **Reload.** The headline reads
-- [ ] ⚠️ **Point at the second button**, which is still hard to see: *"This one is a different problem. Secondary is a brand color, and in this theme it is dark grey. data-bs-theme does not change brand colors."* Change its class:
+- [ ] ⚠️ **Point at the second button**, which is still hard to see: *"This button is a different problem. Its outline is a fixed dark grey, and dark mode does not change it."* Change its class:
   ```cshtml
   <a asp-controller="Dishes" asp-action="Index" class="btn btn-outline-light btn-lg">Start from a dish</a>
   ```
