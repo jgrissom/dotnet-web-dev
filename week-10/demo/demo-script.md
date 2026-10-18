@@ -232,7 +232,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 ### Two things, not one *(slide 5)*
 
 - [ ] 🎞️ **GO TO SLIDE 5** — *An empty state is two things* · *"An empty page needs a sentence that says nothing is here yet. Everybody writes that half. It also needs a way to change it, and that is the half people skip."*
-- [ ] Still on slide 5, the two quoted lines: *"No reviews yet is a dead end. No reviews yet, be the first, with a button, gives the visitor something to do."*
+- [ ] Still on slide 5, the two quoted lines: *"A message without a CTA button is a dead end. Adding a CTA gives the visitor something to do."*
 - [ ] 💡 Still on slide 5, the last line: *"You have never seen your own app empty. You seeded it in week 7, and it has had data every time you looked. It is empty for the first person who uses it."*
 - [ ] **Swipe to the editor.** `Views/Dishes/Details.cshtml` — replace the whole `<ul>` block under the **Served by** heading:
   ```cshtml
