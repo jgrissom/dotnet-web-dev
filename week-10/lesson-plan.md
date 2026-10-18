@@ -9,7 +9,7 @@
 
 By the end of this session, students can:
 
-1. Walk their own deployed application as a stranger would, and say why looking at it on a phone finds what a laptop hides.
+1. Walk their own deployed application as a stranger would, and say why looking at it on a phone finds what a laptop or a PC hides.
 2. Name the difference between *working* and *finished*, and say why only one of them can be checked by a script.
 3. Say what a front page owes a first-time visitor, and write one.
 4. Look at a table in their own app and say how a new row gets into it from outside.

@@ -29,7 +29,7 @@ Here is the method, and it is worth doing deliberately rather than from memory.
 
 **Open your deployed URL.** Not localhost — the deployed one, because that is the one a stranger gets and the one I open. And not the tab you have had open since September; load it fresh, so you are looking at what is actually deployed rather than what was deployed in October.
 
-**Then open it on your phone.** This is the part that does the real work. You have built this thing on a laptop, at a width you chose, with the code in the next window — and you have almost certainly never once looked at it on the device half your visitors would use. Different width, bigger tap targets, no developer tools to explain anything away. Week 2 asked you to do this to your static Registry and graded it; nothing since has made it less true.
+**Then open it on your phone.** This is the part that does the real work. You have built this thing on a laptop or a PC, at a width you chose, with the code in the next window — and you have almost certainly never once looked at it on the device half your visitors would use. Different width, bigger tap targets, no developer tools to explain anything away. Week 2 asked you to do this to your static Registry and graded it; nothing since has made it less true.
 
 Then walk it, and write down what you see. Not what you meant:
 

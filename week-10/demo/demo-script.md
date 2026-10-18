@@ -73,7 +73,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 ### Walk it like you just arrived *(slide 3)*
 
-- [ ] 🎞️ **GO TO SLIDE 3** — *Walk it like you just arrived* · *"This is the stranger's pass. Open your deployed URL, not localhost, because that is the one a stranger gets and the one I grade. Then open it on your phone. You built this app on a laptop, at a width you picked. A phone is the cheapest way to look at it differently."*
+- [ ] 🎞️ **GO TO SLIDE 3** — *Walk it like you just arrived* · *"This is the stranger's pass. Open your deployed URL, not localhost, because that is the one a stranger gets and the one I grade. Then open it on your phone. You built this app on a laptop or a PC, at a width you picked. A phone is the cheapest way to look at it differently."*
 - [ ] Still on slide 3, the last line: *"Write it down before you fix anything. Once you start fixing the first thing, you are in the editor and the walk is over. The list is what you are making."*
 - [ ] **Swipe to the browser, `/` tab.** Open a new file in VS Code for the list, or use the whiteboard, and **keep it on screen**. Ask the room, and wait: *"I have never seen this site before. What is it?"*
 - [ ] The front page says **Welcome** and links to **learn.microsoft.com**. Let it sit, then: *"This is Microsoft's front page. I have built this app for seven weeks and never opened this file."*
