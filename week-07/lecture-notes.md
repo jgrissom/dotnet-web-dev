@@ -613,7 +613,7 @@ The second row is the one that matters. Deleting a secret from a file doesn't de
 > [!TIP]
 > **Check it yourself.** Run `git status` after setting your secret — nothing about it appears, because there's nothing in the repo to appear. The only file this week's secret work touched is your `.csproj`, and all it gained was that GUID.
 
-You'll do this again for real. Week 11 adds sign-in, and the same store holds the same kind of thing.
+Week 11 adds sign-in, and its users live in this same database — so it needs no secret of its own.
 
 ## Wrap-up (10 min)
 
