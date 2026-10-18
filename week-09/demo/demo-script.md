@@ -63,11 +63,12 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 > - **VS Code** — left half, `instructor/week-09/Curbside` open, two integrated terminals: terminal 1 running `dotnet watch`, terminal 2 idle at the project root
 > - **Browser** — right half, three tabs: `/Trucks` (seven cards, slogans showing), `/Trucks/Details/1`, and the week 9 lab README
 
-## 1 · Where we left off *(slide 2)*
+## 1 · Where we left off *(slides 1–2)*
+
+- [ ] 🎞️ **GO TO SLIDE 1** — *Week 9 — Related Data* · it is still up from the gallery — talk to its list before you swipe away from it: *"Here is tonight. First, a second table, tied to the first one by a foreign key. Then getting those related rows onto a page, which takes one word, Include. Then a form that adds a row and picks which truck it belongs to. Then what happens to those rows when a truck is deleted. And last, a many-to-many, where the link between two tables carries information of its own."*
 
 ### The payoff, retold
 
-- [ ] **The title slide is still up from the gallery — talk to its list before you swipe away from it:** *"Here is tonight. First, a second table, tied to the first one by a foreign key. Then getting those related rows onto a page, which takes one word, Include. Then a form that adds a row and picks which truck it belongs to. Then what happens to those rows when a truck is deleted. And last, a many-to-many, where the link between two tables carries information of its own."*
 - [ ] **Swipe to the browser** — the `/Trucks` tab on screen. *"This is my app as we left it last week. There are seven trucks, and each card shows the truck's slogan, the column we added last week."*
 - [ ] *"My app can create, read, update and delete trucks. Each truck is one row in one table, and no row refers to any other row."*
 - [ ] *"Tonight I add a second table to my app. Each row in it belongs to one truck. After each step I take, you take the same step on the Cryptid Registry."*
