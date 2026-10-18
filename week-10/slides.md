@@ -31,6 +31,14 @@ style: |
 
 .NET Web Development · Week 10 of 16
 
+**Tonight: from working to finished**
+
+1. Walk your own app as a **stranger**, and write down what's wrong
+2. A **front door** of your own
+3. Empty lists that **say something**
+4. A wrong id that **lands somewhere**
+5. The rest of the night: **your three things**, on your own app
+
 ---
 
 <!-- _footer: '🖥️ Demo §1 · two different questions' -->
@@ -82,28 +90,22 @@ Ten seconds of patience. That's the whole budget.
 
 ---
 
-<!-- _footer: '🖥️ Demo §3 · zero bytes' -->
+<!-- _footer: '🖥️ Demo §3 · two things, not one' -->
 
-## What does the browser draw?
+## An empty state is two things
 
-Every guard you've written does this:
+**A sentence** — nothing here yet.
 
-```csharp
-if (trail == null)
-{
-    return NotFound();
-}
-```
+**A way to change that** — and this is the half people skip.
 
-<br>
+> *No reviews yet.*  → a dead end
+> *No reviews yet — be the first* + a button  → a page
 
-404 — correct, honest, **and zero bytes of body.**
-
-**So what's on the screen?**
+You have never seen your own app empty. **It is empty for the first person who uses it.**
 
 ---
 
-<!-- _footer: '🖥️ Demo §3 · three pieces' -->
+<!-- _footer: '🖥️ Demo §4 · three pieces' -->
 
 ## Three pieces, one of them a line
 
@@ -120,42 +122,6 @@ app.UseStatusCodePagesWithReExecute("/Home/Missing");
 ```
 
 **In that order.** Wire it up first and every 404 becomes a 500.
-
----
-
-<!-- _footer: '🖥️ Demo §4 · what does this draw' -->
-
-## `Model` is empty. Now what?
-
-```cshtml
-<ul class="list-group">
-    @foreach (var dish in Model)
-    {
-        <li class="list-group-item">@dish.Name</li>
-    }
-</ul>
-```
-
-<br>
-
-No exception. A `foreach` over nothing is perfectly happy.
-
-**You have never seen this. You seeded your data in week 7.**
-
----
-
-<!-- _footer: '🖥️ Demo §4 · two things, not one' -->
-
-## An empty state is two things
-
-**A sentence** — nothing here yet.
-
-**A way to change that** — and this is the half people skip.
-
-<br>
-
-> *No reviews yet.*  → a dead end
-> *No reviews yet — be the first* + a button  → a page
 
 ---
 
@@ -176,25 +142,7 @@ No exception. A `foreach` over nothing is perfectly happy.
 
 ---
 
-<!-- _footer: '🖥️ Demo §6 · hand off to the studio' -->
-
-## Studio: your app, tonight
-
-- Your three things from week 9's walk
-- The front door · the empty states · the wrong-id page
-- Real data · a README with the live URL
-
-<br>
-
-I'm circulating. **Bring me your list, not your bugs.**
-
-<br>
-
-**⏱️ 100 minutes, with a break at the halfway point.**
-
----
-
-<!-- _footer: '🖥️ Demo §7 · wrap-up' -->
+<!-- _footer: '🖥️ Demo §6 · wrap-up' -->
 
 ## Tonight, in one picture
 

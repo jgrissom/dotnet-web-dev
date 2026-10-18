@@ -1,6 +1,6 @@
 # Week 10 Demo Script — Curbside Gets Finished ✨
 
-Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *first* instance of every pattern; paste the rest from here.
+Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from here; nothing tonight needs typing.
 
 > [!TIP]
 > **Clickable version:** [the hosted script](https://jgrissom.github.io/dotnet-web-dev/week-10/demo/script.html) — checkboxes survive refreshes; Reset button for next run.
@@ -15,7 +15,10 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 > Lost your place? **The nearest 🎞️ above you is the slide that should be showing** — and every slide's footer names the section and beat of this sheet it belongs to, so you can go the other way too.
 
 > [!IMPORTANT]
-> **Tonight is the odd one out and it is worth saying so to yourself before you start.** There is no new syntax, no migration and no package. There is **one** failure to debug, in §2 — and it is not staged. It is a real defect the app has been carrying, which is the most on-message thing that could have happened to this week. What there is instead is **a list, written on screen in §1, and then worked through**. The teaching is the noticing, not the typing — so the pace is slower than it looks on paper, and the room should be talking. Three of the beats below are questions you ask and wait for.
+> **Tonight there is no lab. After each part of the demo, students make the same move on their own midterm app, in a studio block.** Each block has its own `## Studio` section below — what to say, what to watch for, and the **In class, stop here** note in the homework it stops at. The homework is on screen for every block, because tonight the homework *is* the studio. There is no studio slide. The last block, Studio E, has no stop and runs to the wrap-up.
+
+> [!IMPORTANT]
+> **There is no new syntax tonight and one line of new API** — `UseStatusCodePagesWithReExecute`, in §4. There is **one** failure to debug, in §2, and it is not staged: a real defect Curbside has carried since week 5. The teaching is the noticing, not the typing, so the room should be talking.
 >
 > ⚠️ **Nothing tonight gets broken and put back.** Every change is forward. If you lose your place, nothing needs undoing.
 
@@ -37,65 +40,87 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   dotnet ef database drop --force
   dotnet ef database update
   ```
-  Five migrations replay. Then check `/Trucks` shows **seven** cards, each with a specials count on it
-- [ ] **Rehearse the whole script once in a separate copy (≈30 min).** Tonight is shorter than most weeks and the risk is the opposite of usual — not running out of time, but running out of *material* and filling it with waffle. Time §1 in particular
-- [ ] 🚨 **Then run the drop + rebuild above again — the rehearsal used the same database.** A separate *copy* is not a separate database: the `<UserSecretsId>` ships in the `.csproj`, so every copy reads one secret and points at one database. Your rehearsal will have added a dish called **Elote Dog** in §4, and it will still be there. **Last thing before class, always: drop, update, `/Dishes` shows ten**
-- [ ] Run it, same terminal:
+  Five migrations replay. Then check `/Trucks` shows **seven** cards and `/Dishes` shows **ten** dishes
+- [ ] **Rehearse the whole script once in a separate copy.** Tonight's demo is short; the risk is not running out of time, it is filling a quiet moment with talk. Time §1 in particular
+- [ ] 🚨 **Then run the drop + rebuild above again — the rehearsal used the same database.** A separate *copy* is not a separate database: the `<UserSecretsId>` ships in the `.csproj`, so every copy reads one secret and points at one database. Your rehearsal added a dish called **Elote Dog** in §3, and it will still be there. **Last thing before class, always: drop, update, `/Dishes` shows ten**
+- [ ] Run it, same terminal. `dotnet watch` owns terminal 1 all night — there is no `dotnet ef` in the demo:
   ```bash
   dotnet watch
   ```
-- [ ] ⚠️ **Know the one prompt that will bite you, and answer it `a` the first time.** Tonight makes **three** edits hot reload cannot apply — two brand-new `.cshtml` files (§3 and §4) and `Program.cs` in §3, which only ever runs at startup. `watch` handles both by restarting, and it **asks first**: **`Do you want to restart your app? Yes (y) / No (n) / Always (a) / Never (v)`**. Answer **`a`** at the first prompt and it never asks again all night. Miss it and §3's payoff silently doesn't happen
-- [ ] **One browser window all night, three tabs parked**: `/`, `/Trucks/Details/1` and `/Dishes`. One window means no *"which one was that in?"* mid-demo
-- [ ] **Say the no-typing line out loud in the first minute.** Tonight is watched, not typed along with: *"nothing tonight is yours to type. Curbside is my app and yours is yours — and tonight your app is the whole assignment, so your keyboard time is the studio block, which is most of the evening"*
+- [ ] **Open a second integrated terminal** (the `+` on the terminal panel — it opens in the same folder). It runs **one** command tonight, §3's `cp`, because terminal 1 is busy with `dotnet watch`
+- [ ] ⚠️ **If terminal 1 prints yellow `NU1902` and `NU1903` warnings, then two `msbuild: [Failure] Msbuild failed when processing the file …` lines after `Now listening on:`** — the same `System.Security.Cryptography.Pkcs` advisory as week 9, three levels under the SQL Server package. The build succeeded and the app is running; leave the packages alone. VS Code may also show the *There were problems loading project Curbside.csproj* toast — dismiss it. **No yellow lines?** A fixed SQL Server package has reached this starter — skip §1's warnings beat
+- [ ] ⚠️ **Know the one prompt tonight, and answer it `a`.** It first appears in **§2, when you delete `Privacy.cshtml`** — `Do you want to restart your app? Yes (y) / No (n) / Always (a) / Never (v)`, in terminal 1. Answer **`a`** there and `watch` restarts by itself for every later edit that needs one: §3's copied-in view, §4's new view, and §4's `Program.cs` line. *(Measured: with `a` answered, the `Program.cs` edit prints `Restart is needed to apply the changes` and restarts on its own. With `y` answered instead, the same edit prints `⚠  Press "Ctrl + R" to restart.` and the line does nothing until you do.)*
+- [ ] **One browser window all night, four tabs parked**: `/`, `/Trucks/Details/1`, `/Dishes`, and **week 10's homework** on github.com — it goes on screen for every studio block tonight
+- [ ] **Say the no-typing line out loud in the first minute.** *"Nothing I type tonight is yours to type. Curbside is my app, and your midterm app is yours. After each part of my demo, you make the same change to your own app. Those studio blocks are most of tonight."*
 - [ ] Teaching profile on, notifications off, editor font sized for the back of the room and for a small laptop screen
 
 > [!NOTE]
 > **🖥️ On screen, at curtain**
 >
-> - **VS Code** — left half, `instructor/week-10/Curbside` open, one integrated terminal running `dotnet watch`
-> - **Browser** — right half, one window, three tabs: `/` (the stock template home page — that is the point), `/Trucks/Details/1` and `/Dishes`
+> - **VS Code** — left half, `instructor/week-10/Curbside` open, two integrated terminals: terminal 1 running `dotnet watch`, terminal 2 idle at the project root
+> - **Browser** — right half, one window, four tabs: `/` (the stock template home page — that is the point), `/Trucks/Details/1`, `/Dishes`, and the week 10 homework
 
 ## 1 · The stranger's pass *(slides 2–3)*
 
 ### Two different questions *(slide 2)*
 
-- [ ] 🎞️ **GO TO SLIDE 2** — *Two questions*
-- [ ] Name what has been true for six weeks, and then the turn: *"every week since week 4, the question has been: does it work. `dotnet test` answered it in the lab and the self-check answered it on your URL. Both of those have a yes or a no, and a script can ask them"*
-- [ ] 🎯 Then the second question, slowly, because it is the whole evening: *"tonight's question is: would you send someone this link. There is no script for that one. That is why this week's self-check scores nothing — every week since week 3 has handed you a script that counted points, and this is the first that doesn't"*
-- [ ] 💡 Close on the line at the foot of the slide: *"nothing new gets introduced tonight. No package, no migration, no new table. There is exactly one line all evening you have not met before, and I will point at it when we get there. Everything else is a view, a controller and an if — the hard part is deciding it is worth doing"*
+- [ ] **The title slide is still up from the gallery — talk to its list before you swipe away from it:** *"Here is tonight. First, I walk my own app as a stranger would and write down what is wrong. Then I fix it, one thing at a time: a front page of my own, lists that say something when they are empty, and a wrong id that lands somewhere. After each one, you do the same thing to your own app. The rest of the night is your three things."*
+- [ ] 🎞️ **GO TO SLIDE 2** — *Two questions* · *"Every week since week 4, the question has been: does it work? The checks answered it in the lab, and the self-check answered it on your URL. A script can answer that question with a yes or a no."*
+- [ ] 🎯 Still on slide 2, the second question, slowly: *"Tonight's question is: would you send someone this link? No script can answer that. That is why this week's self-check prints what it finds and scores nothing."*
+- [ ] 💡 Still on slide 2, the last line: *"Nothing new is introduced tonight. No package, no migration, no new table. There is one line you have not seen before, and I will point at it when we get there."*
+- [ ] ⚠️ **Only if terminal 1 shows yellow `NU1902`/`NU1903` lines — otherwise skip this beat.** Swipe to the editor and point at them: *"These are the same warnings as last week: an advisory against a package the SQL Server package brings in. Read the line above them. Build succeeded. Your own app uses SQL Server too, so you may see them tonight. Leave them alone."*
 
 ### Walk it like you just arrived *(slide 3)*
 
-- [ ] 🎞️ **GO TO SLIDE 3** — *Walk it like you just arrived*
-- [ ] **The slide is the exercise.** Say why both halves of that first line are on it: *"the deployed URL, not your localhost — that is the one I open and the one a stranger gets. And then your phone, which is the half that does the real work. You built this on a laptop at a width you picked. You have probably never once looked at it on the thing half your visitors are holding"*
-- [ ] 🎯 Be honest about why the phone and not some ritual: *"there is no trick for un-knowing your own app. You cannot clear your memory of where the nav link goes. What you can do is change the screen underneath it, and a phone is the cheapest way to do that"*
-- [ ] Land the last line as an instruction rather than advice: *"write it down before you fix anything. The moment you fix the first thing you noticed, you are in the editor and the pass is over. The list is what you are making right now"*
-- [ ] 🔗 Connect it back: *"week 9's reading asked you to do exactly this and bring three things. If you brought them, that list is your midterm and you already started"*
-
-- [ ] **Swipe to the browser, `/` tab.** Walk Curbside out loud, and **keep a real list on screen** — a new file in VS Code, or the whiteboard. Ask the room rather than telling them: *"I have never seen this site before. What is it?"*
-  - The front page says **Welcome** and links to **learn.microsoft.com**. Let that sit for a second before naming it: *"this is Microsoft's front page. I have been building this app for seven weeks and I have never once opened this file"*
-  - Click **Privacy** in the navbar: *"Use this page to detail your site's privacy policy"*
-  - Read the browser tab out loud: **Home Page - Curbside 🌮**
-  - Click **Trucks**, then a truck, and be fair about it: *"this part is good. This is the part we built"*
-  - In the address bar, change the id to `999` → **a blank browser page.** Ask: *"what happened to my site?"*
-  - 💡 **Then drag the window narrow**, down to phone width, and let them watch it reflow. This is the phone half of slide 3, done on screen — you cannot reach localhost from a phone, so this is the demonstrable version: *"this is week 2's move, and it is the one thing tonight you can do to your own app in ten seconds"*
+- [ ] 🎞️ **GO TO SLIDE 3** — *Walk it like you just arrived* · *"This is the stranger's pass. Open your deployed URL, not localhost, because that is the one a stranger gets and the one I grade. Then open it on your phone. You built this app on a laptop, at a width you picked. A phone is the cheapest way to look at it differently."*
+- [ ] Still on slide 3, the last line: *"Write it down before you fix anything. Once you start fixing the first thing, you are in the editor and the walk is over. The list is what you are making."*
+- [ ] **Swipe to the browser, `/` tab.** Open a new file in VS Code for the list, or use the whiteboard, and **keep it on screen**. Ask the room, and wait: *"I have never seen this site before. What is it?"*
+- [ ] The front page says **Welcome** and links to **learn.microsoft.com**. Let it sit, then: *"This is Microsoft's front page. I have built this app for seven weeks and never opened this file."*
+- [ ] **Read the browser tab out loud** — **Home Page - Curbside 🌮** — and say what it is: *"That is what a bookmark gets called."*
+- [ ] Click **Privacy** in the navbar: *"Use this page to detail your site's privacy policy. A page I never wrote, linked from every page of my site."*
+- [ ] Click **Trucks**, then a truck, and be fair about it: *"This part is good. This is the part we built."*
+- [ ] In the address bar, change the id to `999` and press Enter → **the browser's own error page.** Ask: *"What happened to my site?"* Take answers
+- [ ] 💡 **Then drag the window narrow**, down to phone width, and let the room watch it reflow: *"I cannot reach localhost from my phone, so this is the phone half of the slide. Your phone can reach your deployed URL."*
 - [ ] Write the list on screen, in the room's words. It should come out close to:
-  1. the front page is not mine
-  2. there is a page in my navbar I have never written
-  3. a wrong id is a blank browser page
-- [ ] 🎯 Say what the list is for before leaving it up: *"three things. Not thirty. I am going to fix these three before the break and a bit after it, and then the app is done — and the same is true of yours, which is why I asked you for three and not for a plan"*
+  1. the front page is Microsoft's, and its tab says Home Page
+  2. there is a page in my navbar I never wrote
+  3. a wrong id lands on the browser's error page
+- [ ] *"Three things. I fix these three tonight, and after each one you fix the same thing on your app."*
+
+### What the script sees
+
+- [ ] **Now the self-check, to compare with the list.** In the editor, open `Views/Home/Index.cshtml` and paste this at the bottom of the file, below the `</div>`:
+  ```cshtml
+  @section Scripts {
+      <script src="https://jgrissom.github.io/dotnet-web-dev/week-10/homework-checks.js"></script>
+  }
+  ```
+- [ ] **Say what it is, with it on screen:** *"This loads this week's self-check on my home page. Your week 9 line is in this same file. You replace it with this one."*
+- [ ] **Reload the `/` tab**, open DevTools on the **Console** (**⌥⌘I** on your Mac — `F12` on Windows), and type `recheck()`
+- [ ] ⚠️ **One red line arrives before the report**, naming `/Trucks/Details/1007` and `404 (Not Found)`. Get in front of it: *"That red line is the script asking for a truck that does not exist. It got a 404, and the browser logs every 404 in red. It is not an error in my page."*
+- [ ] Read the top line of the report: **`📋 4 things a stranger would trip over`**. Then point from each finding to the list on screen: *"The template front page and the Home Page tab are my item one. The Privacy page is item two. The wrong id is item three. The script found what we found."*
+- [ ] 🎯 *"It found them because a stranger can see them without knowing what my site is about. It will never find your three things. Those are about your app, and only you know what it is for."*
+
+## Studio A · Your own pass — 20 minutes
+
+- [ ] Put the **homework** on screen — the tab you parked in §0 — scrolled to **Part 1**
+- [ ] ⚠️ **Say plainly that this is the homework, because nine weeks have trained them otherwise:** *"Every week until now, the lab was a different app and it was never collected. Tonight is different. There is no lab. This is your midterm, on your own app. What you finish tonight is finished, and what you do not finish, you finish at home."*
+- [ ] *"This block is the walk you just watched, on your own app. Walk your deployed URL, then walk it on your phone, and write down what you see."*
+- [ ] *"Then swap the self-check. In Views/Home/Index.cshtml, replace your week 9 line with this week's. Run your app in terminal 1 with dotnet watch, open the console on localhost, and type recheck."*
+- [ ] 🎯 **The line that keeps their three their own:** *"The front page, the page you never wrote, and the wrong id are on everybody's list. Everybody fixes those tonight. Your three things are three more, about your app, that I have not mentioned. Put a star next to them."*
+- [ ] ⚠️ Before anyone starts: *"You will notice that anybody with your URL can delete your records. Leave it. That is next week's whole subject, and a midterm night spent on half a login is a night lost."*
+- [ ] **On Zoom:** *"When you have your three, post them in the chat."* Keep the chat open — it is your map of who is stuck. **In a room:** circulate and ask each person *"what are your three, and which one is the worst?"*
+- [ ] 👀 **Watch for:** `recheck is not defined` — the script tag is not on the page they are on: it lives in `Views/Home/Index.cshtml`, so the console has to be on `/`. A banner saying **Week 9** — the old line is still there; this week's replaces it. An app that will not start on a lab PC — the user secret is gone after a reboot; set it again. Yellow `NU1902`/`NU1903` lines — the same advisory as Curbside's. A deployed site that takes a while to load — a free-tier app sleeps; the first page can take thirty seconds. And anyone already in the editor fixing things — send them back to the list
+- [ ] **Stop:** the note at the end of **Swap the self-check over first**. Where they should be: a written list, with **three of their own starred**, and `recheck()` on localhost has printed its findings
 
 ## 2 · The front door *(slide 4)*
 
 ### What a front page owes you *(slide 4)*
 
-- [ ] 🎞️ **GO TO SLIDE 4** — *What a front page owes a visitor*
-- [ ] Take the three rows in order, and say the thing the table cannot: *"one sentence in their words, not your model's. A truck is a `Truck` to me and a food truck to everybody else"*
-- [ ] 🎯 The second row is the one worth pressing: *"a button, not a navbar link. The navbar is furniture — people stop seeing it by the second page. A button in the middle of the page is the thing you are asking them to press"*
-- [ ] 💡 Close on the budget line at the foot: *"a visitor gives you about ten seconds. That is not me being dramatic — that is the whole budget, and it is why the answer is a sentence and a way in, not a redesign"*
-
-- [ ] **Swipe to the editor.** Open `Views/Home/Index.cshtml` — the whole file, so the room sees how little is there
-- [ ] Paste the replacement:
+- [ ] 🎞️ **GO TO SLIDE 4** — *What a front page owes a visitor* · *"One sentence about what this is, in the visitor's words. A truck is a Truck class to me, and a food truck to everyone else."*
+- [ ] 🎯 Still on slide 4, the second row: *"A way in is a button, not a navbar link. People stop looking at the navbar. A button in the middle of the page is the thing you are asking them to press."*
+- [ ] 💡 Still on slide 4, the last line: *"A visitor gives a new site about ten seconds. So the answer is a sentence and a way in, not a redesign."*
+- [ ] **Swipe to the editor.** `Views/Home/Index.cshtml` — select everything in the file and paste the replacement:
   ```cshtml
   @{
       ViewData["Title"] = "Street food across Wisconsin";
@@ -115,196 +140,101 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
       <script src="https://jgrissom.github.io/dotnet-web-dev/week-10/homework-checks.js"></script>
   }
   ```
-- [ ] ⚠️ **Stop on that `@section Scripts` block for ten seconds.** It is the only part of the paste that is not about the front page, and it is a graded trap in tonight's homework: *"this is where your self-check lives. Requirement one has you rewrite this exact file — and if you rewrite it without putting this block back, your console goes quiet, and the silence reads exactly like a clean report"*
-  - 💡 Curbside has never had one, so this is a fresh install. **Theirs is a replacement** — their week-9 line is sitting in that file right now
-- [ ] Point at what is *not* new in it before reloading: *"Bootstrap classes from week 2, two anchor tag helpers from week 4, and a `ViewData` title from week 4. There is nothing here you have not typed"*
+- [ ] **Say what it is, with it on screen:** *"This is my new front page: one sentence about what the site is, and two buttons into it. The title at the top is what the browser tab says."*
+- [ ] ⚠️ **Point at the `@section Scripts` block at the bottom:** *"I replaced the whole file, and the self-check was in it. So the block goes back in at the bottom. If you rewrite your home page without it, your console goes quiet, and a quiet console looks like a clean report."*
 
 ### The headline nobody can read *(no slide — the browser is the reveal)*
 
 > [!IMPORTANT]
-> **This is the one real failure of the night and it is not staged** — the markup is correct, the page is a clean 200, every check this course owns stays green, and the front page is unreadable. That is the week's whole thesis arriving by accident, so give it the ninety seconds.
+> **This is the one real failure of the night and it is not staged** — the markup is correct, the page is a clean 200, and the front page is unreadable. Give it its time.
 
-- [ ] **Reload the `/` tab.** The headline and the paragraph are **gone** — a pale slab with a blue button floating on it. **Say nothing.** Let them find it
-- [ ] Ask it straight: *"what happened to my front page?"* Take answers. Somebody will say the text is white on white, and they are right
-- [ ] 🎯 Then make the point that earns the beat, before fixing anything: *"and notice what did not happen. No error. No red. The markup is correct — I could show you the HTML and you would sign it off. Every check this course has ever given you is still green. The page just cannot be read. That is the entire reason this week exists"*
-- [ ] **Right-click the pale slab → Inspect.** The slab *is* the hero `<div>`, so that lands on it directly — if you hit the invisible headline instead, the div is the line above it in the tree
-- [ ] **Computed tab**, and type `color` in its filter box. Both numbers are sitting next to each other:
+- [ ] **Reload the `/` tab.** The headline and the paragraph are **gone** — a pale panel with a blue button on it. **Say nothing.** Let them find it
+- [ ] Ask it straight: *"What happened to my front page?"* Take answers. Somebody will say the text is white on white, and they are right
+- [ ] 🎯 Then the point that earns the beat, before fixing anything: *"There is no error. The page loaded with a 200, and the markup is correct. The page just cannot be read. No script told me that. I had to look."*
+- [ ] **Right-click the pale panel → Inspect.** That lands on the hero `<div>`; if you hit the invisible headline instead, the div is the line above it in the tree
+- [ ] **Computed tab**, and type `color` in its filter box. Both numbers are next to each other:
   ```
   background-color    rgb(248, 249, 250)
   color               rgb(255, 255, 255)
   ```
-- [ ] 🎯 Read them out and let the room do the arithmetic: *"near-white behind. White in front. Nothing is broken — those are just two numbers that should never have met"*
-- [ ] 🎯 The diagnosis, and it is a callback: *"week 2 taught you this exact class. `bg-light` is literally light in every theme; `bg-body-tertiary` follows the theme. That was true, and it is still true — but it follows **Bootstrap's** light-or-dark switch, and nothing on this page has ever thrown that switch. Darkly filled in the body color and left the surface tint at the value it ships with, which is a light-mode value. Week 2's site was on a light theme, so it never came up. In week 5 you picked a theme, and some of us picked a dark one"*
-- [ ] **The fix is one attribute, and week 2 already showed you it.** On the hero div:
+- [ ] Point at the two values: *"The background is almost white. The text is white."*
+- [ ] 🎯 The diagnosis: *"bg-body-tertiary follows Bootstrap's light or dark mode. My theme, Darkly, sets the page colors dark, but nothing on this page turned on dark mode. So this panel uses its light-mode color, under white text. In week 5 you picked a theme. If yours is a dark one, this can happen to you."*
+- [ ] **The fix is one attribute** — on the hero `<div>`:
   ```cshtml
   <div class="p-5 mb-4 bg-body-tertiary rounded-3" data-bs-theme="dark">
   ```
-- [ ] **Reload.** Readable — the hero is now a shade lighter than the page instead of a slab
-- [ ] ⚠️ **Now point at the second button**, which is still a ghost: *"the outline button did not come back. That one is not the same bug. `secondary` is a **brand** color, and in this theme it is a dark grey — `data-bs-theme` does not touch brand colors, only the page surfaces"*
+- [ ] *"This tells Bootstrap that this panel is in dark mode."* **Reload.** The headline reads
+- [ ] ⚠️ **Point at the second button**, which is still hard to see: *"This one is a different problem. Secondary is a brand color, and in this theme it is dark grey. data-bs-theme does not change brand colors."* Change its class:
   ```cshtml
   <a asp-controller="Dishes" asp-action="Index" class="btn btn-outline-light btn-lg">Start from a dish</a>
   ```
-- [ ] **Reload.** Both buttons read
-- [ ] 💡 Close the beat on the transferable line, not the CSS: *"I am not teaching you Bootstrap here. The rule you learned in week 2 was right. What changed was the app underneath it, and nobody sends you a notice when that happens. That is what walking your own site is for"*
+- [ ] **Reload.** Both buttons read. Read the new tab out loud — **Street food across Wisconsin - Curbside 🌮**
+- [ ] 💡 *"I am not teaching Bootstrap here. My page broke when I changed the theme in week 5, and nothing told me. That is what walking your own site is for."*
 
-- [ ] Read the new browser tab out loud — *"Street food across Wisconsin"* — and say why that line matters: *"that is what a bookmark gets called, and what shows up when somebody pastes this into a chat"*
+### The page you did not write
 
-- [ ] Now **Privacy**, and pose it as a choice rather than a fix: *"two honest answers. Make it real — an About page, who built this and why — or delete it. What I will not do is leave a link in my navbar to a page I have never written"*
-- [ ] Delete it in front of them, and count the places out loud as you go — **four**:
-  - `Views/Home/Privacy.cshtml` — delete the file
-  - the `Privacy()` action on `Controllers/HomeController.cs`
-  - the navbar `<li>` in `Views/Shared/_Layout.cshtml`
-  - the footer link, in the same file
-- [ ] While in the footer, replace what is left:
+- [ ] Pose it as a choice: *"Privacy has two honest answers. Make it a real page, like an About page that says who built this and why. Or delete it. What I will not do is link to a page I never wrote."*
+- [ ] *"I am deleting it, in four places, starting with the links, so nothing points at a page that is gone."* Open `Views/Shared/_Layout.cshtml` and delete **the Privacy `<li>` in the navbar** — **one**
+- [ ] Same file, the footer — **two**. Replace the whole line inside the footer's `<div class="container">` with:
   ```cshtml
   &copy; 2026 Curbside 🌮 — a WCTC .NET Web Development project
   ```
-- [ ] **Reload.** Navbar is Home · Trucks · Dishes. 🎯 *"a page you have not written is worse than no page"*
+- [ ] `Controllers/HomeController.cs` — delete the `Privacy()` action — **three**
+- [ ] Delete the file `Views/Home/Privacy.cshtml` — **four**
+- [ ] ⚠️ **Terminal 1 asks `Do you want to restart your app?` — answer `a`.** Say why while it restarts: *"Deleting a view is a change hot reload cannot make, so dotnet watch asks to restart. I answer a, for always, and it restarts by itself from now on. You will see the same question tonight. If a change seems to do nothing, look at the terminal."*
+- [ ] **Reload.** The navbar is Home · Trucks · Dishes. 🎯 *"A page you have not written is worse than no page."*
+- [ ] **Check it with the script** — Console, `recheck()`. **`📋 1 thing a stranger would trip over`**, and it is the wrong id: *"Three of the four are gone. The last one is item three on my list."*
 
-## 3 · The blank page *(slides 5–6)*
+## Studio B · Front door and Privacy — 15 minutes
 
-### Zero bytes *(slide 5)*
+- [ ] Homework on screen, scrolled to **Requirement 1**
+- [ ] *"This block is requirements one and two. Rewrite your home page: what your site is, who it is for, and a button into your list page. Give it a title. Then deal with Privacy: make it real, or delete it in all four places."*
+- [ ] ⚠️ *"Two things I just ran into. When you rewrite Views/Home/Index.cshtml, put the self-check block back at the bottom. And look at your page after you change it. If you picked a dark theme, you may have my white-on-white problem."*
+- [ ] *"If you delete Privacy, take out the links and the action first and the file last. Deleting the file asks to restart. Answer a."*
+- [ ] 👀 **Watch for:** a console that goes quiet — the `@section Scripts` block went with the old home page. A headline nobody can read — near-white text on a near-white panel; the fix is `data-bs-theme="dark"` on the panel. A **500** on `/Home/Privacy` — the view is gone and the action is not. A restart prompt left unanswered in terminal 1, while someone wonders why the page has not changed
+- [ ] **Stop:** the note after **Requirement 2**. Where they should be: a front page of their own, which they have **looked at**, with a tab title that is not `Home Page`; Privacy real, or gone from all four places; and `recheck()` no longer lists the template front page, the tab title or Privacy
 
-- [ ] 🎞️ **GO TO SLIDE 5** — *What does the browser draw?*
-- [ ] Read the guard off the slide and give it credit first: *"this is in every controller you have written, and it is right. A record that is not there should be a 404 — that is the honest answer"*
-- [ ] 🎯 Then the sentence the slide is built around: *"the status is correct. What `NotFound()` sends as the **body** is nothing at all. Zero bytes"*
-- [ ] **Ask the question on the slide and wait for an answer:** *"so what is on the screen? There is no page. What does a browser put there?"* Take a couple of guesses before moving
-- [ ] **Swipe to the browser.** That tab is still on `/Trucks/Details/999` from §1 — reload it. This time do not move on: walk what is missing, out loud, item by item. *"No navbar. No Curbside. Nothing on this screen says my site still exists. And that is Chrome's wording, not mine — a visitor cannot tell whether I am broken or gone"*
-- [ ] 🎯 Make it real rather than hypothetical — this is the beat that earns the section: *"and this is not me typing a silly number. You built Delete in week 8. The moment you delete a record, every saved link to it — every bookmark, everything anyone shared — comes **here**"*
+## ☕ Break
 
-### Three pieces *(slide 6)*
+## 3 · A table nobody can add to *(slide 5)*
 
-- [ ] 🎞️ **GO TO SLIDE 6** — *Three pieces, one of them a line*
-- [ ] **The code on this slide does not exist yet** — read it as a plan, bottom-up, which is the order you are about to build it in: *"a view, an action to render it, and one line to send every empty 404 there. Two of those three you already know how to write — the line is the new thing"*
-- [ ] Say what `UseStatusCodePagesWithReExecute` actually does, because the name does not: *"when a response comes back in the four hundreds or the five hundreds **with nothing in the body**, this re-runs the request through that path and uses what comes back as the body. The status code is left alone"*
-- [ ] ⚠️ **Both halves of that matter, and somebody will ask about one of them.** It is not only 404s — anything from 400 to 599 with an empty body lands here. And it is *only* the empty ones: a response that already wrote a body keeps it, which is why your real exceptions still get `/Home/Error` rather than this page
-- [ ] ⚠️ The middle block is on the slide for one reason — say it: *"do not call the action `NotFound`. `Controller` already has a method by that name, and it is the one returning the blank page we are replacing. Yours would shadow it and the compiler will tell you so"*
+### Read-only from outside
 
-> [!IMPORTANT]
-> **Build it bottom-up: view, then action, then the line that wires them together.** The order is not cosmetic. Go the other way — middleware first — and there is a window where the app is told to render a page that does not exist yet, and **every wrong-id URL answers `500`** instead of the blank page you are trying to replace. Measured. Built in this order, every intermediate state is harmless.
-
-- [ ] **Swipe to the editor.** New file, `Views/Home/Missing.cshtml` — an ordinary view, nothing routes to it yet:
-  ```cshtml
-  @{
-      ViewData["Title"] = "Not found";
-  }
-
-  <div class="text-center py-5">
-      <h1 class="display-5">Keep on Truckin' 🌮</h1>
-      <p class="lead text-muted">
-          That page doesn't exist — or it did, and the truck moved on.
-      </p>
-      <a asp-controller="Trucks" asp-action="Index" class="btn btn-primary">See every truck</a>
-  </div>
+- [ ] **Swipe to the `/Dishes` tab** — no slide for this part. Ten dishes, each with a truck count. Ask: *"This page is fine. What can I do on it?"*
+- [ ] Wait, then name it: *"I can read. There is no way to add a dish, not here and not anywhere. The specials form only offers dishes that already exist. From the outside, this table is read-only."*
+- [ ] 🎯 Generalize it before fixing it: *"Look at each of your own tables tonight, and ask how a new row gets in. If the answer is 'I seed it' or 'I open the mssql panel', that table is read-only to everybody else. That can be the right call. But it should be a decision you made."*
+- [ ] *"A Create pair is week 8. Typing it again teaches nothing, so I am copying it in."* **Terminal 2**, the one you opened in §0:
+  ```bash
+  cp -R ~/Repos/dotnet-web-dev-answer-keys/week-10/demo-section3/Curbside/. .
   ```
-- [ ] `Controllers/HomeController.cs` — the action that renders it:
+- [ ] Say it while it copies: *"These three files add a Create pair to the dishes controller, a form for a new dish, and a button on the dish list."*
+- [ ] **Open `Controllers/DishesController.cs`** and point at the last line of the POST:
   ```csharp
-  // Not called NotFound() — Controller already has a method by that name,
-  // and it's the one that returns the blank page we're replacing.
-  public IActionResult Missing()
-  {
-      return View();
-  }
+  return RedirectToAction(nameof(Details), new { id = dish.Id });
   ```
-- [ ] 💡 **Show it before you wire it up** — browse to `/Home/Missing`. It is a real page already, and nothing is routed to it: *"there is the page. Nothing sends anyone to it yet. That is the last line"*
-- [ ] Now `Program.cs`, above `app.UseRouting()`:
-  ```csharp
-  // A wrong id, or a URL nobody recognizes, used to be a blank browser page.
-  // This re-runs the request through /Home/Missing and keeps the 404 status.
-  app.UseStatusCodePagesWithReExecute("/Home/Missing");
+  *"After a new dish is saved, this sends me straight to that dish's own page."*
+- [ ] ⚠️ **Look at terminal 1.** The new view needs a restart, and because you answered `a` in §2, `watch` prints `Restart is needed to apply the changes` and restarts by itself. **If it is asking instead**, answer `a` now — until it restarts, `/Dishes/Create` is a 500 and the dish list shows no button
+- [ ] **Reload `/Dishes`, click ＋ Add a dish**, and check the form renders. ⚠️ **Do not submit it yet** — the new dish's page is the payoff, and you only get it once. Go back to `/Dishes`
+
+### What a new record looks like
+
+- [ ] **Open `Views/Dishes/Details.cshtml`** in the editor and point at the `@foreach` under **Served by**. Ask — the answer is a loop that runs zero times: *"A dish nobody serves yet has no specials. This loop goes over the dish's specials. So what does this page draw for a brand-new dish?"* Take answers
+- [ ] **Swipe to the browser.** `/Dishes` → **＋ Add a dish** → `Elote Dog` → **Add it**
+- [ ] You land on `/Dishes/Details/11`. **Let it sit before saying anything.** **Elote Dog**, *← All dishes*, **Served by** — and then nothing
+- [ ] **Show the evidence:** right-click the empty space under *Served by* → **Inspect**. In the Elements panel, the list is there, with nothing inside it:
+  ```html
+  <ul class="list-group mb-4">
+  </ul>
   ```
-- [ ] Say why the position matters: *"above `UseRouting`. It has to be in the pipeline before the thing that produces the 404, or there is nothing for it to catch"*
-- [ ] ⚠️ **Check the terminal before you reload.** Two of those edits are ones hot reload cannot apply — a brand-new `.cshtml`, and `Program.cs`, which only runs at startup. `dotnet watch` restarts for them, and if you did not answer `a` in §0 the prompt is sitting there waiting. **Say it to the room while you check**, because they will hit the same thing tonight: *"two of the three things I just typed need the app to restart. Watch will do it — but it asks first, over in the terminal, while I am typing in the editor. That is the single most common reason a correct fix looks like it did nothing"*
-- [ ] **Reload `/Trucks/Details/999`.** Your page, your navbar, a way home
-- [ ] 🎯 Then the part that is easy to miss, and worth pointing at: *"and it is still a 404. Check the Network tab if you want — the page apologizes to a person and still tells the truth to a machine. Those are two different audiences and you can serve both"*
-- [ ] Try one more, to show the reach: type `/Vendors` — a controller that has never existed. **Same page.** *"one line covered a wrong id, a misspelled URL, and everything else that ends in a 404 with nothing in it"*
+  *"The record saved, the query ran, and the page loaded with a 200. The loop ran zero times, so the list is empty, and an empty list draws nothing."*
+- [ ] 🎯 *"This is every new record in your app. The first review of a trail, the first visit to a ballpark. Whatever this page does now is what everybody's first one looks like."*
 
-## 4 · A table nobody can add to *(slides 7–8)*
+### Two things, not one *(slide 5)*
 
-- [ ] **Swipe to the `/Dishes` tab.** Ten dishes, each with a truck count. Ask: *"this page is fine. What can I do on it?"*
-- [ ] Wait, then name it: *"I can read. There is no way to add a dish — not here, not anywhere. The dropdown on the specials form only offers dishes that already exist. This table is read-only from the outside"*
-- [ ] 🎯 Generalize it before fixing it, because this is the part that transfers: *"go through your own tables tonight and ask how a new row gets in. If the honest answer is 'I seed it' or 'I open the mssql panel', that part of your app is read-only to everybody else. That might be the right call — but it should be a call"*
-
-- [ ] **Swipe to the editor.** `Controllers/DishesController.cs` — the Create pair, same shape as week 8's:
-  ```csharp
-  // GET /Dishes/Create — a hand-written pair, same shape as Trucks.
-  public IActionResult Create()
-  {
-      return View();
-  }
-
-  // POST /Dishes/Create
-  [HttpPost]
-  [ValidateAntiForgeryToken]
-  public async Task<IActionResult> Create(Dish dish)
-  {
-      if (!ModelState.IsValid)
-      {
-          return View(dish);
-      }
-
-      _context.Dishes.Add(dish);
-      await _context.SaveChangesAsync();
-
-      return RedirectToAction(nameof(Details), new { id = dish.Id });
-  }
-  ```
-- [ ] ⚠️ `Dish` lives in `Curbside.Models` and this file does not have the using yet — add it at the top with the others: `using Curbside.Models;`
-- [ ] New file, `Views/Dishes/Create.cshtml`:
-  ```cshtml
-  @model Dish
-  @{
-      ViewData["Title"] = "Add a dish";
-  }
-
-  <h1>Add a dish</h1>
-
-  <form asp-action="Create" method="post" class="col-md-6">
-      <div asp-validation-summary="All" class="text-danger"></div>
-
-      <div class="mb-3">
-          <label asp-for="Name" class="form-label"></label>
-          <input asp-for="Name" class="form-control" />
-          <span asp-validation-for="Name" class="text-danger"></span>
-      </div>
-
-      <button type="submit" class="btn btn-primary">Add it</button>
-      <a asp-action="Index" class="btn btn-link">Cancel</a>
-  </form>
-
-  @section Scripts {
-      <partial name="_ValidationScriptsPartial" />
-  }
-  ```
-- [ ] And the way in, in `Views/Dishes/Index.cshtml`, above the `<ul>`:
-  ```cshtml
-  <a asp-action="Create" class="btn btn-primary mb-4">＋ Add a dish</a>
-  ```
-- [ ] ⚠️ **That is the second new `.cshtml` tonight, so the app has to restart again.** Answered `a` in §0? `watch` is doing it now — give it a few seconds. Did not? The prompt is sitting in the terminal waiting for you
-- [ ] 🚨 **Prove it works before you put the slide up.** Reload `/Dishes`, click **＋ Add a dish**, and check that the form renders. ⚠️ **Do not fill it in and do not submit it** — landing on a brand-new dish's page is the payoff after slide 7, and you only get it once. Look at the form, then leave
-  - ⚠️ **Clicking through is the check; seeing the button is not.** Adding that button edited an *existing* view, which hot reload applies happily. The thing that needed the restart is the **new** `Create.cshtml`, and the only way to know it is there is to ask for it
-  - ⚠️ **A 500 saying *"The view 'Create' was not found"* means the restart has not happened.** The file is fine and it is in the right place — **do not go looking for it.** Answer the prompt in the terminal, or press **Ctrl+R** there, then reload
-  - 💡 Fifteen seconds, and it is the one check worth making in this section: skip it and a missing restart surfaces **after** slide 7 has asked the room a question, with you debugging in the middle of your own setup
-- [ ] **Back to `/Dishes`** — still ten dishes, nothing added. That is where slide 7 wants the room looking
-
-### What does this draw *(slide 7)*
-
-- [ ] 🎞️ **GO TO SLIDE 7** — *`Model` is empty. Now what?*
-- [ ] **Ask the question on the slide before you run anything, and wait.** *"a `foreach` over an empty list. No error — that is legal and it is fine. But what is on the page?"*
-- [ ] 🎯 Then the line at the foot of the slide, which is the reason the room has never thought about this: *"you have never seen your own app empty. You seeded it in week 7 and it has had data in it every single time you have looked. It will be empty for the first person who uses it"*
-
-- [ ] **Swipe to the browser.** `/Dishes` → **＋ Add a dish** → type `Elote Dog` → **Add it**
-- [ ] You land on `/Dishes/Details/11`. **Let it sit before saying anything.** The page reads: **Elote Dog**, *← All dishes*, **Served by** — and then **nothing at all.** A heading with empty space under it
-- [ ] Ask what they are looking at: *"is that broken? It is not. The record saved, the query ran, the page is a clean 200. There is a heading that says Served by, and underneath it there is nothing — because a `foreach` over an empty list draws exactly nothing"*
-- [ ] 🎯 *"and this is every new record in your app. The first review of a trail, the first sighting of a creature. Whatever that page does right now is what everybody's first one looks like"*
-
-### Two things, not one *(slide 8)*
-
-- [ ] 🎞️ **GO TO SLIDE 8** — *An empty state is two things*
-- [ ] Give the first half quickly and spend the time on the second: *"a sentence saying nothing is here — everybody gets that one. A way to change it — that is the half people skip"*
-- [ ] Read the two lines at the foot as the contrast they are: *"'No reviews yet' is a dead end. It is a sign on a locked door. 'No reviews yet — be the first', with a button, is a page that does something"*
-
-- [ ] **Swipe to the editor.** `Views/Dishes/Details.cshtml` — wrap the list:
+- [ ] 🎞️ **GO TO SLIDE 5** — *An empty state is two things* · *"An empty page needs a sentence that says nothing is here yet. Everybody writes that half. It also needs a way to change it, and that is the half people skip."*
+- [ ] Still on slide 5, the two quoted lines: *"No reviews yet is a dead end. No reviews yet, be the first, with a button, gives the visitor something to do."*
+- [ ] 💡 Still on slide 5, the last line: *"You have never seen your own app empty. You seeded it in week 7, and it has had data every time you looked. It is empty for the first person who uses it."*
+- [ ] **Swipe to the editor.** `Views/Dishes/Details.cshtml` — replace the whole `<ul>` block under the **Served by** heading:
   ```cshtml
   @if (Model.Specials.Any())
   {
@@ -327,50 +257,132 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
       <p><a asp-controller="Specials" asp-action="Create" class="btn btn-primary">＋ Put it on a truck</a></p>
   }
   ```
-- [ ] **Reload `/Dishes/Details/11`.** *"No truck is serving this yet"* and a button
-- [ ] Then the same move twice more, fast — **paste both, they are the same shape**. `Views/Dishes/Index.cshtml` and `Views/Trucks/Index.cshtml`, above each loop:
+- [ ] **Say what it is, with it on screen:** *"If the dish has specials, the page shows the same list as before. If it has none, the page says so and gives a button to put the dish on a truck."*
+- [ ] **Reload `/Dishes/Details/11`.** *No truck is serving this yet*, and a button
+- [ ] **The list pages need one too.** `Views/Dishes/Index.cshtml` — paste this **between the ＋ Add a dish button and the `<ul>`**:
   ```cshtml
   @if (!Model.Any())
   {
       <p class="text-muted">No dishes yet. <a asp-action="Create">Add the first one</a>.</p>
   }
   ```
-- [ ] ⚠️ **Somebody will point out that the ＋ button is already right above it.** Answer it, because the answer is the rule from the slide: *"it is — on this page. The empty state still gets its own link, because when it fires it is the only thing on the page, and on your app there may be no button above it at all. A sentence and a way out. Both, every time"*
-- [ ] Say why you are not demonstrating these two: *"I would have to delete every truck to show you this one working, and I am not wrecking my own demo to prove a point. But it is the same `@if`, and your list page needs it as much as your details page does"*
+- [ ] `Views/Trucks/Index.cshtml` — paste this **between the ＋ Add a truck button and the `<div class="row …">` that holds the cards**:
+  ```cshtml
+  @if (!Model.Any())
+  {
+      <p class="text-muted">No trucks on the street yet. <a asp-action="Create">Add the first one</a>.</p>
+  }
+  ```
+- [ ] **Say what they are, with the second one on screen:** *"If the list is empty, the page says so and links to the form. The details page and the list page are different views, so each one needs its own."*
+- [ ] ⚠️ **Somebody may point out that both lists already have a ＋ button.** *"They do, on my pages. On your app there may be no button at all. A sentence and a way out, every time."*
+- [ ] *"I am not deleting every truck to show you the list one working. It is the same if as the one on the details page."*
 
-## 5 · The pass, again *(slide 9)*
+## Studio C · Empty states — 13 minutes
 
-- [ ] **Swipe to the `/` tab.** F12 → Console → type `recheck()`
-- [ ] ⚠️ **Before the report there is a block of red, and you should get in front of it rather than let the room read it as a crash.** Seven or so lines of stack trace, starting `GET /Trucks/Details/1007 404 (Not Found)`. **It is the script doing its job** — and it is a callback worth making: *"that is the wrong-id check running. It asked for a truck that does not exist, and it got a 404 — which is exactly what we built twenty minutes ago. The red is the browser noting the status, not an error in the page"*
-- [ ] Then read the top line out loud: **`Nothing here a stranger would trip over`**
-- [ ] ⚠️ **Do not undercut it here — the undercut is on the slide, four lines from now.** Ask the question and let it sit instead: *"zero findings. So is it finished?"*
+- [ ] Homework on screen, scrolled to **Requirement 3**
+- [ ] *"This block is requirement three. First see the problem on your own app. Add a brand-new record through your form, and open its page. Look at the related list."*
+- [ ] *"Then add an if to that related list on your details page, and one to your list page. Each one needs a sentence and a way to change it."*
+- [ ] *"The record you just added is real data on your site. When you are done, delete it, or keep it if it reads like real content."*
+- [ ] *"The script cannot see this one. It cannot empty your database. You have to look."*
+- [ ] 👀 **Watch for:** `NullReferenceException` on `Model.Any()` or `.Count` — the collection property was never initialized; it needs `= new List<…>();` (week 9). An empty state on the list page only — the details page's related list is a different view. A record that will not save — the form is refusing it; switch the summary to `asp-validation-summary="All"` to see why. A form that is nowhere to be found — that is a finding for their list
+- [ ] **Stop:** the note after **Requirement 3**. Where they should be: a brand-new record's page says something and offers a way to change it, and the list page has its own `@if`. `recheck()` has not changed, and that is expected
 
-### What it can and cannot see *(slide 9)*
+## 4 · The blank page *(slide 6)*
 
-- [ ] 🎞️ **GO TO SLIDE 9** — *The script scores nothing*
-- [ ] Take the left column first and fast — *"these are the things a stranger can see without knowing what your site is about, which is why a script can find them"*
-- [ ] 🎯 Then the right column slowly, because it is the assignment: *"none of these can be checked by anything. It cannot empty your database, so it has never seen your empty states. It cannot tell a real record from a placeholder. And it has no opinion at all about whether the thing is any good"*
-- [ ] Land the line at the foot: *"zero findings is not full marks. It means nothing is obviously broken. Nine of the twenty points are things this script never looks at"*
-- [ ] 💡 Be straight about the change of instrument: *"this is the first week since week 3 where the script does not count. That is deliberate. What is being graded this week is judgement — you use your judgement when completing the studio, then I'll use mine when grading"*
+### Zero bytes
 
-## 6 · Hand off to the studio *(slide 10)*
+- [ ] **Swipe to the `/Trucks/Details/1` tab** — no slide for this part. Open DevTools on the **Network** tab first; it only records while it is open
+- [ ] Change the id to `999` and press Enter. The browser's error page again. In the Network tab, click the `999` request: **Status `404`**. Then its **Response** tab: there is nothing in it
+- [ ] **Swipe to the editor.** `Controllers/TrucksController.cs`, the `Details` action, and point at the guard:
+  ```csharp
+  if (truck == null)
+  {
+      return NotFound();
+  }
+  ```
+  *"This guard is in every controller you have written, and it is right. A truck that does not exist should get a 404. But NotFound sends the 404 with no body at all. There is no page for the browser to show, so it shows its own."*
+- [ ] 🎯 The reason this matters: *"This is not just someone typing a silly number. You built Delete in week 8. When you delete a record, every saved link to it lands here."*
 
-- [ ] 🎞️ **GO TO SLIDE 10** — *Studio: your app, tonight*
-- [ ] ~60 seconds of *what done looks like*: put the finished Curbside up — the new front page, a wrong id landing on your own page, `/Dishes/Details/11` saying *No truck is serving this yet*. ⚠️ **This is on localhost. Nothing is deployed for tonight's demo** — say so, because the course's own rule is that the deployed app is the grade and "my finished Curbside" reads as an Azure app otherwise
-- [ ] Walk the three bullets as the evening's shape: *"your three things first — they are worth more than anything on my list. Then the front door, the empty states and the wrong-id page, which everybody needs. Then real data and a README with the live URL on it"*
-- [ ] 🎯 **Then draw the line between the two, because this is the one that will go wrong quietly**: *"and your three cannot be my three. The front page, the page you never wrote, the wrong id — everybody is doing those, they are the floor. If what you wrote down last week was that list, then you wrote down my list. Go back and look again, on your own app, for three things I have not mentioned"*
-- [ ] 🎯 Say the line at the foot and mean it: *"bring me your list, not your bugs. I would rather spend four minutes arguing about whether your front page says the right thing than four minutes on a missing semicolon"*
-- [ ] ⚠️ Name the one thing not to do tonight, before anyone starts: *"you are going to notice that anybody with your URL can delete your records. Leave it. That is week 11, it is the whole week, and a midterm evening spent half-building a login is an evening wasted"*
-- [ ] ⚠️ **Say plainly that this IS the homework, because nine weeks have trained them otherwise** — the lab has always been a different app and never collected: *"one thing before you start. This is not practice for the assignment. This is the assignment. What you finish tonight is finished, and whatever you do not get to, you finish at home"*
-- [ ] 🎯 **And push them to deploy before they leave, which is the opposite of what they will assume** — it is the single cheapest thing you can do for their evening: *"if you get that far, deploy it tonight rather than at home. Push it, run `az webapp up`, and run the check against the real URL while you can still ask me. A deploy that breaks with me here is a five-minute problem. The same break on your own is your whole evening"*
-- [ ] **Then work the class for the rest of the block. The question is the same either way** — *"what are your three, and which one is the worst?"* — but the mechanics are not:
-  - **In a room** — circulate, and ask it at each desk.
-  - **On Zoom — do not go around one at a time; that is the room's constraint, not Zoom's.** Ask everyone to **post their three things in the chat before anyone starts working**. The whole class takes about ninety seconds and you get the entire set *in writing*, which a room cannot give you: read it, say two or three patterns out loud, and keep it open as your map of who is stuck. Then run a queue — *"put your name in the chat whenever you want me to look at something"* — and take them in order, asking each to share their screen.
-  - ⚠️ **Don't use breakout rooms for this.** Everyone is working alone on their own app; there is no pair work to protect. Breakouts would only put distance between you and the person who needs you.
+### Three pieces *(slide 6)*
 
-## 7 · Wrap-up, after the studio *(slide 11)*
+- [ ] 🎞️ **GO TO SLIDE 6** — *Three pieces, one of them a line* · *"This is the plan, in the order I build it: a view, an action that renders it, and one line that sends every empty 404 to it. You already know how to write the view and the action. The line is the new part."*
+- [ ] Still on slide 6, the line at the bottom: *"The order matters. If the line goes in first, it sends every 404 to a view that does not exist yet, and every wrong id becomes a 500."*
+- [ ] Still on slide 6, the middle block: *"Do not call the action NotFound. Controller already has a method with that name. It is the one sending the empty 404."*
+- [ ] **Swipe to the editor.** New file, `Views/Home/Missing.cshtml`:
+  ```cshtml
+  @{
+      ViewData["Title"] = "Not found";
+  }
 
-- [ ] 🎞️ **GO TO SLIDE 11** — *Tonight, in one picture*
-- [ ] Five rows, one sentence each. **Front door** gets the emphasis — *"it is the page you can least afford to get wrong, because it is the one nobody arrives already interested"*
-- [ ] Homework: finish it, deploy it, run the pass on the Azure URL. ⚠️ **Say the two things people lose points on**: the `@section Scripts` block deleted along with the old home page, and a README that never mentions the live URL
-- [ ] 🔗 Week 11: *"Identity. Registration, login, and the thing you noticed tonight and left alone"*
+  <div class="text-center py-5">
+      <h1 class="display-5">Keep on Truckin' 🌮</h1>
+      <p class="lead text-muted">
+          That page doesn't exist — or it did, and the truck moved on.
+      </p>
+      <a asp-controller="Trucks" asp-action="Index" class="btn btn-primary">See every truck</a>
+  </div>
+  ```
+- [ ] **Say what it is, with it on screen:** *"This is the page a visitor sees when something is not found: a heading, one sentence, and a button back to the trucks. It is an ordinary view."*
+- [ ] ⚠️ It is a new view, so terminal 1 prints `Restart is needed to apply the changes` and restarts by itself. Let it finish before the next step
+- [ ] `Controllers/HomeController.cs` — paste the action where `Privacy()` used to be:
+  ```csharp
+  // Not called NotFound() — Controller already has a method by that name,
+  // and it's the one that returns the blank page we're replacing.
+  public IActionResult Missing()
+  {
+      return View();
+  }
+  ```
+- [ ] **Say what it is, with it on screen:** *"This action renders the Missing view. It is named Missing because NotFound is taken."*
+- [ ] **Show it before you wire it up** — browse to `/Home/Missing`. It is a real page: *"There is the page. Nothing sends anyone to it yet. That is the last line."*
+- [ ] `Program.cs` — paste this **just above `app.UseRouting();`**:
+  ```csharp
+  // A wrong id, or a URL nobody recognizes, used to be a blank browser page.
+  // This re-runs the request through /Home/Missing and keeps the 404 status.
+  app.UseStatusCodePagesWithReExecute("/Home/Missing");
+  ```
+- [ ] **Say what it is, with it on screen:** *"This is the new line. When a response is an error with no body, it runs the request again through /Home/Missing and uses that page as the body. The status code stays a 404."*
+- [ ] ⚠️ **Watch terminal 1.** `Program.cs` runs once, when the app starts, so this line needs a restart. With `a` answered, `watch` prints `Restart is needed to apply the changes` and restarts. **If it prints `Press "Ctrl + R" to restart.` instead, press Ctrl+R in terminal 1** — until then the line does nothing. Say it to the room: *"Program.cs only runs when the app starts, so this line needs a restart. If your wrong id is still blank after you add it, look at your terminal."*
+- [ ] **Reload `/Trucks/Details/999`.** My page, my navbar, a way back. In the Network tab, the request still says **`404`**
+- [ ] 🎯 *"The visitor gets a real page, and the browser and search engines still get a 404."*
+- [ ] Try one more: `/Vendors` — a controller that has never existed. **Same page.** *"One line covers a wrong id, a misspelled URL, and every other empty 404."* Close DevTools
+
+## Studio D · The wrong-id page — 12 minutes
+
+- [ ] Homework on screen, scrolled to **Requirement 4**
+- [ ] *"This block is requirement four. The same three pieces, in the same order: the view, the action, then the line in Program.cs."*
+- [ ] *"Point the button on your Missing page at your own list page. After the Program.cs line, check terminal 1. If it asks to restart, answer a. If it says press Ctrl+R, press it."*
+- [ ] *"Then change an id on your own app, and check the Network tab. It should still say 404."*
+- [ ] 👀 **Watch for:** a compiler error naming `NotFound` — the action was given that name; call it `Missing`. Every wrong id suddenly a **500** with `The view 'Missing' was not found` — the `Program.cs` line went in before the view existed. A wrong id still blank — the app has not restarted since the `Program.cs` line. Their page showing with a status of **200** — they returned the view from inside the guard instead of leaving `NotFound()` there
+- [ ] **Stop:** the note after **Requirement 4**. Where they should be: a wrong id on their app lands on their own page, the Network tab still says `404`, and `recheck()` no longer lists the blank wrong-id page
+
+## ☕ Break
+
+## 5 · The pass, again *(slide 7)*
+
+- [ ] **Swipe to the `/` tab.** Console → `recheck()`. The same red `404` line first — it is the script's wrong-id request again
+- [ ] Read the top line: **`📋 Nothing here a stranger would trip over`**, and the line under it: **`This is localhost. Run it again on your Azure URL`**
+- [ ] ⚠️ **Don't undercut it here — the slide does that.** Ask, and let it sit: *"Zero findings. So is my app finished?"*
+
+### What it can and cannot see *(slide 7)*
+
+- [ ] 🎞️ **GO TO SLIDE 7** — *The script scores nothing* · the left column, quickly: *"These are things a stranger can see without knowing what your site is about. That is why a script can find them."*
+- [ ] 🎯 Still on slide 7, the right column, slowly: *"None of these can be checked by a script. It cannot empty your database, so it has never seen your empty states. It cannot tell a real record from a placeholder. And it has no opinion about whether your app is any good."*
+- [ ] Still on slide 7, the last line: *"Zero findings is not full marks. It means nothing is obviously broken. Nine of the twenty points are things this script never looks at."*
+- [ ] 💡 *"This is the first week since week 3 where the script does not count. What is graded this week is judgement. You use yours tonight, and I use mine when I grade."*
+
+## Studio E · Your three things — 50 minutes
+
+- [ ] Homework on screen, scrolled to **Requirement 5**
+- [ ] *"This is the last block, and it has no stop. Your three things first. They are worth more than anything on my list. Then your data: look for test rows, and especially a row called Week 7 Test or Week 9 Test. Then your README, with your live URL in it."*
+- [ ] 🎯 **Push them to deploy before they leave:** *"If you get that far, deploy tonight. Push, run az webapp up, and run the check on your Azure URL while I am here. A deploy that breaks while I am here is a short problem. The same break at home can take your whole evening."* Then: *"My Curbside is on localhost. Nothing is deployed for it. Yours is graded on its Azure URL."*
+- [ ] 🎯 *"Bring me your list, not your bugs. I would rather spend four minutes on whether your front page says the right thing than four minutes on a missing semicolon."*
+- [ ] **Work the class for the rest of the block.** The question is the same either way — *"what are your three, and which one is the worst?"* **In a room**, circulate and ask it at each desk. **On Zoom**, run a queue: *"Put your name in the chat whenever you want me to look at something."* Take them in order, and ask each to share their screen. ⚠️ **Don't use breakout rooms** — everyone is working alone, so they only put distance between you and the person who needs you
+- [ ] 👀 **Watch for:** a three-things list that is my list — send them back to their own app for three I did not mention. Anyone starting on a login — stop them; it is next week. A migration in their three things — `dotnet ef database update` before `az webapp up`, or every page that touches it throws `Invalid object name`. A README that is not at the root of the repo, or that has no live URL
+- [ ] **No stop.** This block takes the time left before the wrap-up
+
+## 6 · Wrap-up, after the studio *(slide 8)*
+
+- [ ] 🎞️ **GO TO SLIDE 8** — *Tonight, in one picture* · five rows, one sentence each. **Front door** gets the emphasis: *"The front page is the one page every visitor sees, and nobody arrives on it already interested."*
+- [ ] Homework: finish it, deploy it, run the pass on the Azure URL. ⚠️ **Name the two things people lose points on:** *"Two things cost points every term. The self-check block deleted along with your old home page, and a README that never mentions your live URL."*
+- [ ] 🔗 Week 11: *"Next week is Identity: registration, login, and the thing you noticed tonight and left alone."*

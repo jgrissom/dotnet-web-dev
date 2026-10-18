@@ -8,7 +8,7 @@ This is the midterm. **Nothing new gets introduced** — there is no new syntax 
 **Keep [the lecture notes](lecture-notes.md) open while you work.** Every requirement below links to the section that shows it done.
 
 > [!IMPORTANT]
-> **The studio block in class was this assignment, not practice for it.** Every week since week 4 has had a lab on one app and homework on another, and the lab was never collected — **tonight is not that.** There is no separate lab this week. What you worked on with me in the room is the same work graded below, on the same app, and whatever you finished in class is finished. This document is the rest of it.
+> **The studio blocks in class were this assignment, not practice for it.** Every week since week 4 has had a lab on one app and homework on another, and the lab was never collected — **tonight is not that.** There is no separate lab this week. What you worked on with me in the room is the same work graded below, on the same app, and whatever you finished in class is finished. This document is the rest of it.
 >
 > Missed the session? Nothing is lost — everything you need is here and in [the notes](lecture-notes.md).
 
@@ -41,6 +41,9 @@ Open `Views/Home/Index.cshtml`, find the **week-09** line, and **replace it**:
 
 ⚠️ **Nothing runs when the page loads.** Open the console (F12) and type `recheck()` when you want it to look. Unlike weeks 6–9, **this one only reads** — it submits nothing and writes no rows, so run it as often as you like.
 
+> [!NOTE]
+> **In class, stop here.** The front door comes after the next part of the demo. Where you should be: your list is written — everything you saw, with **three of your own starred** — and `recheck()` on localhost has printed its findings. Finished early? Walk your deployed site on your phone again and look only at your forms: could a person find each one without you telling them where it is? Or help a classmate. Working at home? Carry straight on.
+
 ### Then build it
 
 Each requirement links to the section of the notes that shows it done.
@@ -52,17 +55,26 @@ Each requirement links to the section of the notes that shows it done.
 
    🔎 **The script sees this one.** Two of its findings go away — but **not** an unreadable page. It reads your HTML, not your colors. That one is yours to look at.
 
-2. **Deal with the pages you didn't write, and the links that go nowhere.** The stock **Privacy** page is linked from your navbar and your footer and says *"Use this page to detail your site's privacy policy."* Either make it real — an About page for your project is the usual answer — or delete it: the view, the action, and **both** links in `_Layout.cshtml`. Then click **every** remaining link and make sure it lands somewhere: a dead link in the navbar is on every page of your site at once. → [The page you did not write](lecture-notes.md#the-page-you-did-not-write) · [Dead ends](lecture-notes.md#part-6-dead-ends)
+2. **Deal with the pages you didn't write, and the links that go nowhere.** The stock **Privacy** page is linked from your navbar and your footer and says *"Use this page to detail your site's privacy policy."* Either make it real — an About page for your project is the usual answer — or delete it: **both** links in `_Layout.cshtml`, then the action, then the view — in that order, so nothing ever links to a page that is half gone. Deleting the view makes `dotnet watch` ask to restart; answer `a`. Then click **every** remaining link and make sure it lands somewhere: a dead link in the navbar is on every page of your site at once. → [The page you did not write](lecture-notes.md#the-page-you-did-not-write) · [Dead ends](lecture-notes.md#part-6-dead-ends)
 
    🔎 **The script sees both halves** — the stock Privacy text, and any link on your front page that comes back 404 or throws.
+
+   > [!NOTE]
+   > **In class, stop here.** Requirement 3 comes after the break and the next part of the demo. Where you should be: a front page of your own that you have **looked at**, a browser tab that doesn't say `Home Page`, Privacy real or gone from all four places — and `recheck()` no longer lists the template front page, the tab title or Privacy. Finished early? Give every other view a `ViewData["Title"]` of its own, then click every link in your navbar and footer. Or help a classmate. Working at home? Carry straight on.
 
 3. **Empty lists say something.** Every list you render will be empty for somebody, and right now it draws a heading with nothing under it. Put an `@if (!Model.Any())` on your list page **and** on the related list on your details page, each with a sentence and a way to change it. → [When there is nothing there yet](lecture-notes.md#part-4-when-there-is-nothing-there-yet)
 
    📋 **The script cannot see this** — it can't empty your database. I read it in your repo. To see it yourself, create a brand-new record through your form and look at its page.
 
+   > [!NOTE]
+   > **In class, stop here.** Requirement 4 comes after the next part of the demo. Where you should be: a brand-new record's page says something and offers a way to change it, and your list page has its own `@if`. `recheck()` hasn't changed, and that's expected — it can't see this. The record you added is real data on your site: delete it, or keep it if it reads like real content. Finished early? For each table in your app, answer one question: how does a new row get into it from outside? If the answer is "I seed it", that's a finding. Or help a classmate. Working at home? Carry straight on.
+
 4. **A wrong id lands somewhere.** Change a details URL to an id that doesn't exist. You get a blank browser page, because `NotFound()` sends no body — which is what every saved link to a record you deleted now does. Three pieces: a view, an action, and one line in `Program.cs` — **built in that order**, or there is a window where every wrong-id URL answers `500` instead. → [The page a wrong id lands on](lecture-notes.md#part-5-the-page-a-wrong-id-lands-on)
 
    🔎 **The script sees this one.** ⚠️ Both halves need a **restart** — read the note in that section before you decide it didn't work.
+
+   > [!NOTE]
+   > **In class, stop here.** The rest of the night comes after the break and the last part of the demo. Where you should be: a wrong id on your app lands on your own page, DevTools' Network tab still says `404` for it, and `recheck()` no longer lists the blank wrong-id page. Finished early? Try `/Nope`, and an Edit URL with an id that doesn't exist. Or help a classmate. Working at home? Carry straight on.
 
 5. **Your three things, fixed.** The ones from Part 1. They are yours, they are not on this list, and they are worth more than anything that is. Name them in your README (requirement 7) so I know what you chose. → [Choosing your three things](lecture-notes.md#part-10-choosing-your-three-things)
 
@@ -140,8 +152,9 @@ You are not adding a table this week, so there is probably no migration to apply
 
 - **My new front page is blank / the headline vanished** — near-white text on a near-white panel, which a dark Bootswatch theme causes and nothing reports. Add `data-bs-theme="dark"` to the panel. [Part 3](lecture-notes.md#part-3-the-front-door) has the why, and how to read it in DevTools if you want it.
 - **I rewrote my home page and the console went quiet** — the `@section Scripts` block lived in that file and you replaced it. [Put it back](lecture-notes.md#part-3-the-front-door).
+- **`/Home/Privacy` gives a 500 after I deleted the page** — the view is gone and the `Privacy()` action is still there. Delete the action too. [The page you did not write](lecture-notes.md#the-page-you-did-not-write).
 - **`NotFound` gives a compiler error when I add the action** — `Controller` already has a method by that name. Call yours `Missing`. [Part 5](lecture-notes.md#part-5-the-page-a-wrong-id-lands-on).
-- **I added the `Program.cs` line and a wrong id is still blank** — `Program.cs` only runs at startup, so this needs a restart, and so does the new `.cshtml`. `dotnet watch` asks first, in the terminal it is running in — while you are typing in the editor. Look there for `Do you want to restart your app?` and answer `a`. [Part 5](lecture-notes.md#part-5-the-page-a-wrong-id-lands-on).
+- **I added the `Program.cs` line and a wrong id is still blank** — `Program.cs` only runs at startup, so the app has to restart. Look at the terminal running `dotnet watch`: if it says `Press "Ctrl + R" to restart`, press Ctrl+R there. If it is asking `Do you want to restart your app?`, answer `a`, and it restarts by itself from then on. [Part 5](lecture-notes.md#part-5-the-page-a-wrong-id-lands-on).
 - **Every wrong id suddenly 500s, and the error names a view** — you added the `Program.cs` line before writing `Views/Home/Missing.cshtml`. Build the view and the action first. [Part 5](lecture-notes.md#part-5-the-page-a-wrong-id-lands-on).
 - **My 404 page shows but the status is 200** — you returned the view from inside the guard instead of letting the middleware do it. [Part 5](lecture-notes.md#part-5-the-page-a-wrong-id-lands-on).
 - **The empty state never appears** — a list page and the related list on a details page are two different views. Both need their own `@if`. [Part 4](lecture-notes.md#part-4-when-there-is-nothing-there-yet).

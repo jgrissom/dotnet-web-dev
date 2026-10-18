@@ -162,7 +162,7 @@ It is linked from your navbar and from your footer, so it is on every page of yo
 
 Two honest options, and both are fine:
 
-- **Delete it.** The view (`Views/Home/Privacy.cshtml`), the action on `HomeController`, and **both** links in `_Layout.cshtml` — navbar and footer. Four small deletions.
+- **Delete it.** **Both** links in `_Layout.cshtml` — navbar and footer — then the `Privacy()` action on `HomeController`, then the view (`Views/Home/Privacy.cshtml`). Four small deletions, and the order matters: delete the view while the action is still there and `/Home/Privacy` answers **500** until the action goes too. Deleting the view is a change `dotnet watch` can't hot-reload, so it asks to restart — answer `a`.
 - **Make it an About page.** Same file, real content: what this project is, who built it, what it is for. On a course project this is often the better answer, because it gives you somewhere to say "this is a student project" out loud.
 
 **A page you have not written is worse than no page at all**, because the link promises something.
@@ -311,13 +311,13 @@ That second condition is what keeps this from colliding with the `app.UseExcepti
 > **Do not call the action `NotFound()`.** `Controller` already has a method by that name — it is the one returning the blank page you are replacing — and yours would shadow it. Name it `Missing`, `Gone`, `PageNotFound`, anything else.
 
 > [!IMPORTANT]
-> **Both halves of this are edits `dotnet watch` cannot hot-reload.** `Program.cs` only ever runs at startup, and a brand-new `.cshtml` is a change the running app cannot absorb. `watch` handles it by **restarting** — and in the integrated terminal it asks first:
+> **Both halves of this need the app to restart.** A brand-new `.cshtml` is a change the running app cannot absorb, and `Program.cs` only ever runs at startup. Look at the terminal `dotnet watch` is running in — you are typing in the editor, so it is easy to miss — and it may be asking this:
 >
 > ```
 > Do you want to restart your app? Yes (y) / No (n) / Always (a) / Never (v)
 > ```
 >
-> That prompt appears in the terminal `dotnet watch` is running in, while you are typing in the editor. **If your wrong-id URL still comes back blank after the edit, go and look at that terminal — the prompt is probably sitting there unanswered.** Answer `a` once and it stops asking for the rest of the session.
+> Answer `a` and it restarts, and from then on restarts by itself whenever it needs to. **If instead it says `Press "Ctrl + R" to restart.`, press Ctrl+R in that terminal.** That is the `Program.cs` edit when you have not answered `a` yet: the reload reports success, and the line does nothing until the app starts again. **If your wrong-id URL still comes back blank after the edit, go and look at that terminal.**
 
 ---
 
@@ -448,7 +448,7 @@ The `@section Scripts` block with the self-check `<script>` tag lived in `Views/
 You named the action `NotFound`. `Controller` already has a method by that name. Rename yours. Part 5.
 
 **I added the `Program.cs` line and a wrong id is still blank.**
-`Program.cs` runs once, at startup, so this edit needs a restart — and creating `Missing.cshtml` needs one too. `dotnet watch` asks before restarting, in the terminal it is running in — while you are typing in the editor. Look there for `Do you want to restart your app?` and answer `a`. Part 5.
+`Program.cs` runs once, at startup, so this edit needs a restart — and creating `Missing.cshtml` needs one too. Look at the terminal `dotnet watch` is running in: if it says `Press "Ctrl + R" to restart`, press Ctrl+R there; if it asks `Do you want to restart your app?`, answer `a`. Part 5.
 
 **Every wrong id suddenly returns `500`, and the error names a view.**
 You added the `Program.cs` line before the view existed, so the app is re-running the request through a page that isn't there yet. Create `Views/Home/Missing.cshtml` and the action, and it clears. Part 5 — this is why that section builds bottom-up.
