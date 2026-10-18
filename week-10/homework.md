@@ -143,8 +143,11 @@ Sample output, from a run against a site with two things left:
 9. **Deploy, then run the stranger's pass on your Azure URL.**
 
 ```bash
-az webapp up
+az webapp up --name your-app-XX1234 --sku F1 --os-type Linux \
+  --runtime DOTNETCORE:10.0 --location "<YOUR-US-REGION>"
 ```
+
+Use your own app's name and region — the ones you have deployed to all term. ⚠️ **Keep `--os-type Linux` and `--runtime DOTNETCORE:10.0`.** Without them `az webapp up` assumes Windows and the newest .NET it knows, and refuses to deploy to your Linux app.
 
 You are not adding a table this week, so there is probably no migration to apply. **If one of your three things did change the model**, migrate first and deploy second — `dotnet ef database update`, then `az webapp up`. New code on an old schema throws `Invalid object name` on every page that touches it.
 
@@ -160,6 +163,7 @@ You are not adding a table this week, so there is probably no migration to apply
 - **The empty state never appears** — a list page and the related list on a details page are two different views. Both need their own `@if`. [Part 4](lecture-notes.md#part-4-when-there-is-nothing-there-yet).
 - **`Model.Any()` throws `NullReferenceException`** — the collection property was never initialized. [Week 9, Part 2](../week-09/lecture-notes.md#part-2-three-properties-two-classes).
 - **A `Week 9 Test` row is on my site and that table has no Delete** — delete it by hand in the mssql panel. [Part 7](lecture-notes.md#part-7-data-that-reads-like-data).
+- **`az webapp up` says `The webapp '…' is a Linux app` and wants to create a new one** — the command is missing `--os-type Linux` and `--runtime DOTNETCORE:10.0`. Use the full command in [Part 4](#part-4--deploy-it-graded), with your own app's name.
 - **GitHub isn't rendering my README** — it has to be `README.md` at the repository **root**. [Part 8](lecture-notes.md#part-8-the-readme-a-stranger-reads).
 - **The self-check banner says Week 9** — last week's script is still installed. This week's line replaces it.
 

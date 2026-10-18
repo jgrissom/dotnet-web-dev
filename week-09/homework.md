@@ -101,8 +101,11 @@ dotnet ef database update
 **Then** deploy:
 
 ```bash
-az webapp up
+az webapp up --name your-app-XX1234 --sku F1 --os-type Linux \
+  --runtime DOTNETCORE:10.0 --location "<YOUR-US-REGION>"
 ```
+
+Use your own app's name and region — the ones you have deployed to all term. ⚠️ **Keep `--os-type Linux` and `--runtime DOTNETCORE:10.0`.** Without them `az webapp up` assumes Windows and the newest .NET it knows, and refuses to deploy to your Linux app.
 
 ⚠️ **The order matters and a redeploy does not run your migration.** Migrating first leaves your *old* deployed code running against the *new* schema for a moment, which is harmless — it never asks for the table it does not know about. The other way round puts new code on an old schema, and every page that touches your second table throws `Invalid object name`. If your deployed site 500s while localhost is fine, that is the first thing to check.
 
