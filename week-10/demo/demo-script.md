@@ -149,8 +149,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 > [!IMPORTANT]
 > **This is the one real failure of the night and it is not staged** — the markup is correct, the page is a clean 200, and the front page is unreadable. Give it its time.
 
-- [ ] **Reload the `/` tab.** The headline and the paragraph are **gone** — a pale panel with a blue button on it. **Say nothing.** Let them find it
-- [ ] Ask it straight: *"What happened to my front page?"* Take answers. Somebody will say the text is white on white, and they are right
+- [ ] **Reload the `/` tab.** The headline and the paragraph are **gone** — a pale panel with two buttons on it. Let it sit for a moment, then: *"I know it is not much to look at right now. There should be a headline and a sentence on that panel. Where did they go?"* Take answers. Somebody will say the text is white on white, and they are right
 - [ ] 🎯 Then the point that earns the beat, before fixing anything: *"There is no error. The page loaded with a 200, and the markup is correct. The page just cannot be read. No script told me that. I had to look."*
 - [ ] **Right-click the pale panel → Inspect.** That lands on the hero `<div>`; if you hit the invisible headline instead, the div is the line above it in the tree
 - [ ] **Computed tab**, and type `color` in its filter box. Both numbers are next to each other:
