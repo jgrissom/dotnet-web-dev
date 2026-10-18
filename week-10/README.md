@@ -33,4 +33,4 @@ The one night with nothing new in it. No package, no migration, no syntax — in
 - ⚠️ **Say that the studio is the homework**, at the start of Studio A — and that their three things are not your three
 - ⚠️ **Nobody starts on authentication tonight.** The stranger's pass surfaces it immediately; it is week 11's whole subject and cannot be half-done
 
-**Prev:** [← Week 9 — Related Data](../week-09/README.md) · **Next:** Week 11 — ASP.NET Core Identity *(coming)*
+**Prev:** [← Week 9 — Related Data](../week-09/README.md) · **Next:** [Week 11 — ASP.NET Core Identity →](../week-11/README.md)
