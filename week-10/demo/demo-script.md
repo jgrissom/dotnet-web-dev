@@ -202,7 +202,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 - [ ] **Swipe to the `/Dishes` tab** — no slide for this part. Ten dishes, each with a truck count. Ask: *"This page is fine. Anything missing?"*
 - [ ] Wait, then name it: *"I can browse the dishes, but there is no way to add one, not here and not anywhere. The specials form only offers dishes that already exist. From the outside, this table is read-only."*
-- [ ] 🎯 Say why your app is the odd one out: *"Your apps will not have a table like this. Dishes came from the many-to-many I built in week 9, and your homework did not need one. Every table you built has a form. I am adding a form for dishes because a brand-new dish is the quickest way to show you what a new record looks like."*
+- [ ] 🎯 Say why your app is the odd one out: *"Your apps will not have a table like this. Dishes came from the many-to-many I built in week 9, and that was not a homework requirement. Every table you built has a form. I am adding a form for dishes because a brand-new dish is the quickest way to show you what a new record looks like."*
 - [ ] *"A Create pair is week 8. Typing it again teaches nothing, so I am copying it in."* **Terminal 2**, the one you opened in §0:
   ```bash
   cp -R ~/Repos/dotnet-web-dev-answer-keys/week-10/demo-section3/Curbside/. .
