@@ -218,7 +218,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 ### What a new record looks like
 
-- [ ] **Open `Views/Dishes/Details.cshtml`** in the editor and point at the `@foreach` under **Served by**. Ask — the answer is a loop that runs zero times: *"A dish nobody serves yet has no specials. This loop goes over the dish's specials. So what does this page draw for a brand-new dish?"* Take answers
+- [ ] **Open `Views/Dishes/Details.cshtml`** in the editor and point at the `@foreach` under **Served by**. Ask — the answer is a loop with nothing to go over: *"This page lists every truck that serves this dish, one line for each truck. A dish I add tonight is not on any truck yet. What will this page show under Served by?"* Take answers
 - [ ] **Swipe to the browser.** `/Dishes` → **＋ Add a dish** → `Elote Dog` → **Add it**
 - [ ] You land on `/Dishes/Details/11`. **Let it sit before saying anything.** **Elote Dog**, *← All dishes*, **Served by** — and then nothing
 - [ ] **Show the evidence:** right-click the empty space under *Served by* → **Inspect**. In the Elements panel, the list is there, with nothing inside it:
