@@ -292,7 +292,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 ### Zero bytes
 
 - [ ] **Swipe to the `/Trucks/Details/1` tab** — no slide for this part. Open DevTools on the **Network** tab first; it only records while it is open
-- [ ] Change the id to `999` and press Enter. The browser's error page again. In the Network tab, click the `999` request: **Status `404`**. Then its **Response** tab: there is nothing in it
+- [ ] Change the id to `999` and press Enter. The browser's error page again. In the Network tab, click the `999` request: **Status `404`**. Then its **Response** tab: there is nothing in it. *"The server answered with a 404, and it sent nothing with it. That empty response is why the browser shows its own page."*
 - [ ] **Swipe to the editor.** `Controllers/TrucksController.cs`, the `Details` action, and point at the guard:
   ```csharp
   if (truck == null)
