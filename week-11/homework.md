@@ -33,7 +33,17 @@ Same app you've been building since week 4. Since week 6 anyone with your URL co
 > [!TIP]
 > **Commit as you go, the way you have since week 3.** Three of tonight's twenty points are the history itself, and they're all-or-nothing: fewer than three commits scores zero. One commit per requirement you finish is the natural rhythm.
 
-### Swap the self-check over first
+### Clear the yellow warnings first
+
+Since week 9, every build of your app has probably printed yellow `NU1902` / `NU1903` warnings about `System.Security.Cryptography.Pkcs` — a package the SQL Server package brings in, with known security problems in the version it asks for. A fixed version exists. From the folder with your `.csproj`, once:
+
+```bash
+dotnet add package System.Security.Cryptography.Pkcs --version 10.0.13
+```
+
+Your version wins over the old one, and the warnings stop — along with the `msbuild: [Failure]` lines and the VS Code pop-up that came with them. One line appears in your `.csproj`; commit it like any other change. Already added it from week 9's 🆘 Stuck? Skip this.
+
+### Swap the self-check over
 
 Open `Views/Home/Index.cshtml`, find the **week-10** line, and **replace it**:
 
@@ -154,7 +164,7 @@ Then run the self-check on your Azure URL. That is the run I grade.
 - **The navbar says you're signed in, and locked pages still send you to sign in** — `UseAuthentication()` is below `UseAuthorization()`. [Program.cs](lecture-notes.md#programcs).
 - **The navbar says *Signed in as* and nothing after it** — your account is older than your new column. [The fallback](lecture-notes.md#the-navbar-looks-you-up).
 - **`The Entity Framework tools version … is older than that of the runtime`** — a warning, not an error. The command still worked.
-- **Yellow `NU1902` / `NU1903` warnings about `System.Security.Cryptography.Pkcs`** — the advisory from weeks 9 and 10, not your code. `Build succeeded` is the line that counts.
+- **Yellow `NU1902` / `NU1903` warnings about `System.Security.Cryptography.Pkcs`** — the advisory from weeks 9 and 10, not your code, and one command clears it. [Clear the yellow warnings first](#clear-the-yellow-warnings-first).
 - **The deployed site throws `Invalid object name 'AspNetUsers'`** — migrate, then deploy. Part 4.
 - **The self-check banner says Week 10** — last week's script is still installed. This week's line replaces it.
 - **You're signed out and didn't sign out** — the self-check did, on purpose. Sign back in.

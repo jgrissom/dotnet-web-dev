@@ -11,11 +11,7 @@ Tonight the Registry gets members. A table to keep them in, a way to join, a way
 > [!IMPORTANT]
 > **The app arrives as week 9 finished it, plus three fixes from the midterm** — the Privacy page is gone, a wrong id lands on the Registry's own *Not on file* page, and `/Cryptids` says *1 creature*, not *1 creatures*. Week 10 had no lab, so they're done for you; none of tonight's work touches them. If your own week-9 lab never got finished, you are **not** behind. Check 1 passes before you touch anything.
 >
-> **If your builds print yellow `NU1902` and `NU1903` warnings, they're expected and not yours to fix.** They are security advisories against `System.Security.Cryptography.Pkcs`, which arrives three levels beneath the SQL Server package. Read the line above them: `Build succeeded`. Warnings, not errors. Tonight's Identity package doesn't add to them or fix them. Leave your packages alone, apart from the one task 2 adds.
->
-> **When you start `dotnet watch` in terminal 1, it may repeat them in a line that looks worse than it is:** `msbuild: [Failure] Msbuild failed when processing the file … Cryptids.Web.csproj`. Read to the end of that line — its message is the same advisory. Nothing failed: the `Now listening on:` line above it means your app is running.
->
-> **VS Code may also pop up "There were problems loading project Cryptids.Web.csproj. See log for details."** — the same advisory again, and it comes back each time the project reloads. Dismiss it.
+> **The yellow `NU1902` / `NU1903` warnings from weeks 9 and 10 are fixed in this starter.** They were security advisories against `System.Security.Cryptography.Pkcs`, a package the SQL Server package brings in, and `Cryptids.Web.csproj` now asks for the fixed version itself — that's the `System.Security.Cryptography.Pkcs` line. Your semester project needs the same line; the homework's first step adds it.
 
 **1. Update the starters clone.** Open `dotnet-web` in VS Code, then `` Ctrl+` `` for a terminal standing in it:
 
@@ -837,7 +833,11 @@ The GET has to become `async Task<IActionResult>` to `await`. **Nothing gets loc
 - **Every page fails, check 1 included, with `The entity type 'IdentityPasskeyData' requires a primary key to be defined`** — `base.OnModelCreating(modelBuilder);` is missing from the top of `OnModelCreating`. [Task 2 in full ↑](#task-2-in-full)
 - **`The view 'Register' was not found`, and the file is right there** — look at terminal 1. `dotnet watch` is asking **`Do you want to restart your app?`**, and until you answer it the app keeps serving the build from before your file existed. Press **`a`**. Don't move the file. *(It's asking again because the app was restarted with `Ctrl+C` — use `Ctrl+R`.)*
 - **A page fails right after `database update` with something about `AspNetUsers` or `FieldName`** — the app is still running the model from before the migration. `Ctrl+R` in terminal 1. EF Core works out your tables once, at startup.
-- **Yellow `NU1902` / `NU1903` warnings, or `msbuild: [Failure] Msbuild failed when processing the file`** — not a failed build. It's the `System.Security.Cryptography.Pkcs` advisory from Setup. If `Now listening on:` is above it, the app is running. Leave your packages alone.
+- **Yellow `NU1902` / `NU1903` warnings, or `msbuild: [Failure] Msbuild failed when processing the file`** — not a failed build. It's the `System.Security.Cryptography.Pkcs` advisory from Setup, and it means your copy of the starter is older than the fix. From `Cryptids.Web`, once:
+
+  ```bash
+  dotnet add package System.Security.Cryptography.Pkcs --version 10.0.13
+  ```
 - **`NU1605: Detected package downgrade`**, or `The Entity Framework tools version … is older than that of the runtime`, after adding the Identity package — it went in without `--version 10.0.10`. Run task 2's `dotnet add package` line again, exactly as written.
 - **A registration is refused and the page says nothing** — the `foreach` that copies `result.Errors` into `ModelState` is missing, or the summary says `ModelOnly`. Use `asp-validation-summary="All"`.
 - **`Username '…' is already taken.`** — that email has joined already. It worked the first time.
