@@ -15,7 +15,17 @@ If any of the lab's checks are still red, finish them now. [The lab README](lab/
 
 ## Part 2 — Your semester project gets a second table (graded)
 
-### Swap the self-check over first
+### Clear the yellow warnings first
+
+Every build of your app probably prints yellow `NU1902` / `NU1903` warnings about `System.Security.Cryptography.Pkcs` — a package the SQL Server package brings in, with known security problems in the version it asks for. They're not from your code, and a fixed version exists. From the folder with your `.csproj`, once:
+
+```bash
+dotnet add package System.Security.Cryptography.Pkcs --version 10.0.13
+```
+
+Your version wins over the old one, and the warnings stop — along with the `msbuild: [Failure]` lines and the VS Code pop-up that came with them. One line appears in your `.csproj`; commit it like any other change.
+
+### Swap the self-check over
 
 Open `Views/Home/Index.cshtml`, find the **week-08** line, and **replace it**:
 
@@ -113,13 +123,7 @@ Use your own app's name and region — the ones you have deployed to all term. �
 
 ## 🆘 Stuck?
 
-- **Yellow `NU1902` / `NU1903` warnings about `System.Security.Cryptography.Pkcs`, and `msbuild: [Failure] Msbuild failed…`, or a VS Code pop-up saying "There were problems loading project"** — not your code and not a failed build. It's a security advisory against a package that comes in under the SQL Server package, and a fixed version of it exists. Add it once, from the folder with your `.csproj`, and the warnings stop:
-
-  ```bash
-  dotnet add package System.Security.Cryptography.Pkcs --version 10.0.13
-  ```
-
-  Your version wins over the old one the SQL Server package asks for. One line appears in your `.csproj`; commit it like any other change.
+- **Yellow `NU1902` / `NU1903` warnings about `System.Security.Cryptography.Pkcs`, and `msbuild: [Failure] Msbuild failed…`, or a VS Code pop-up saying "There were problems loading project"** — not your code and not a failed build, and one command clears it. [Clear the yellow warnings first](#clear-the-yellow-warnings-first).
 - **A page that worked a minute ago fails right after you add the model or run `database update`** — *"Cannot create a DbSet for …"*, or *"… is invalid inside an 'Include' operation"*. Restart your app: `Ctrl+C` in the terminal running it, then `dotnet watch` again. EF Core builds its model once, at startup, and hot reload doesn't rebuild it. [The migration](lecture-notes.md#part-3-the-migration-and-the-cascade-you-did-not-choose). Restart before you change any code.
 - **Related rows don't show, but the database has them** — [`Include`](lecture-notes.md#part-4-include--empty-is-not-missing). Silent, no error, accounts for most of this week's confusion.
 - **They show on one page and not another** — [`Include` is per query](lecture-notes.md#include-is-per-query). Every page asks again.

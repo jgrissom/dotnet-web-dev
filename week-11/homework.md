@@ -35,13 +35,13 @@ Same app you've been building since week 4. Since week 6 anyone with your URL co
 
 ### Clear the yellow warnings first
 
-Since week 9, every build of your app has probably printed yellow `NU1902` / `NU1903` warnings about `System.Security.Cryptography.Pkcs` — a package the SQL Server package brings in, with known security problems in the version it asks for. A fixed version exists. From the folder with your `.csproj`, once:
+Week 9's homework opened with this step. If your builds still print yellow `NU1902` / `NU1903` warnings about `System.Security.Cryptography.Pkcs` — a package the SQL Server package brings in, with known security problems in the version it asks for — it didn't happen yet. From the folder with your `.csproj`, once:
 
 ```bash
 dotnet add package System.Security.Cryptography.Pkcs --version 10.0.13
 ```
 
-Your version wins over the old one, and the warnings stop — along with the `msbuild: [Failure]` lines and the VS Code pop-up that came with them. One line appears in your `.csproj`; commit it like any other change. Already added it from week 9's 🆘 Stuck? Skip this.
+Your version wins over the old one, and the warnings stop — along with the `msbuild: [Failure]` lines and the VS Code pop-up that came with them. One line appears in your `.csproj`; commit it like any other change. No yellow warnings? Skip this.
 
 ### Swap the self-check over
 
