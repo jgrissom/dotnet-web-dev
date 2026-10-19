@@ -142,7 +142,7 @@ A register page is a Create pair — the same shape as every one since week 6 �
 
 ### The ViewModel
 
-`ViewModels/RegisterViewModel.cs`, as it ends the week:
+`ViewModels/RegisterViewModel.cs`, the whole file:
 
 ```csharp
 using System.ComponentModel.DataAnnotations;
@@ -158,11 +158,6 @@ public class RegisterViewModel
     public string Email { get; set; } = "";
 
     [Required]
-    [Display(Name = "What should we call you?")]
-    [StringLength(40, MinimumLength = 2)]
-    public string DisplayName { get; set; } = "";
-
-    [Required]
     [DataType(DataType.Password)]
     public string Password { get; set; } = "";
 
@@ -174,7 +169,7 @@ public class RegisterViewModel
 }
 ```
 
-It is **not** the user. The password arrives here once, gets hashed, and goes no further — which is exactly why it is a ViewModel and not a property on your user class. `[Compare]` checks the two password boxes match. *(`DisplayName` arrives in Part 7; leave it out until then.)*
+It is **not** the user. The password arrives here once, gets hashed, and goes no further — which is exactly why it is a ViewModel and not a property on your user class. `[Compare]` checks the two password boxes match. [Part 7](#on-the-form) adds one more property to it.
 
 ### The controller
 
@@ -243,7 +238,7 @@ Three lines in the POST are the whole of it:
 
 ### The view
 
-`Views/Account/Register.cshtml` — an ordinary week-6 form. This is the version that ends the week, with Part 7's field in it:
+`Views/Account/Register.cshtml` — an ordinary week-6 form, the whole file:
 
 ```cshtml
 @model RegisterViewModel
@@ -260,12 +255,6 @@ Three lines in the POST are the whole of it:
         <label asp-for="Email" class="form-label"></label>
         <input asp-for="Email" class="form-control" autocomplete="username" />
         <span asp-validation-for="Email" class="text-danger"></span>
-    </div>
-
-    <div class="mb-3">
-        <label asp-for="DisplayName" class="form-label"></label>
-        <input asp-for="DisplayName" class="form-control" />
-        <span asp-validation-for="DisplayName" class="text-danger"></span>
     </div>
 
     <div class="mb-3">
@@ -603,11 +592,32 @@ else
 
 ### On the form
 
-Three small edits put it on registration: the `DisplayName` property on `RegisterViewModel` (in [Part 3](#the-viewmodel)'s file above), its label-input-span block on `Register.cshtml` between Email and Password (in [the view above](#the-view)), and the Register POST setting it on the new user:
+Three small edits put it on registration. `ViewModels/RegisterViewModel.cs`, under `Email`:
+
+```csharp
+[Required]
+[Display(Name = "What should we call you?")]
+[StringLength(40, MinimumLength = 2)]
+public string DisplayName { get; set; } = "";
+```
+
+`Views/Account/Register.cshtml`, between the Email block and the Password block:
+
+```cshtml
+<div class="mb-3">
+    <label asp-for="DisplayName" class="form-label"></label>
+    <input asp-for="DisplayName" class="form-control" />
+    <span asp-validation-for="DisplayName" class="text-danger"></span>
+</div>
+```
+
+And in `Controllers/AccountController.cs`, the Register POST, the line that makes the new user:
 
 ```csharp
 var user = new AppUser { UserName = form.Email, Email = form.Email, DisplayName = form.DisplayName };
 ```
+
+**Add the property before the box.** A view that says `asp-for="DisplayName"` while the ViewModel has no `DisplayName` doesn't compile: `CS1061: 'RegisterViewModel' does not contain a definition for 'DisplayName'`.
 
 `[StringLength]` on the ViewModel is a rule you typed, so the form refuses a one-letter name in the browser and on the server.
 

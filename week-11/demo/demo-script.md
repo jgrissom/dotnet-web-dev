@@ -83,7 +83,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 - [ ] Put the **lab README** on screen — the tab you parked in §0 — scrolled to **Setup**
 - [ ] *"Tonight the lab comes in seven short blocks. After each part of my demo, you do the same thing to your Registry. Each block ends at a note that says In class, stop here."*
-- [ ] *"The first block is setup and task 1. Task 1 sets your connection string, drops the lab database, rebuilds it, and starts your app. Use the same database name as last time."*
+- [ ] *"The first block is setup and task 1. Task 1 sets your connection string, drops the lab database, rebuilds it, and starts your app. Use the same database name as in week 9."*
 - [ ] ⚠️ **The drop is not optional, and say why:** *"You drop the lab database because the starter ships my migration files, and your database remembers yours. They cannot be mixed. If you skip the drop, the update fails with there is already an object named Cryptids."*
 - [ ] ⚠️ **Then fence it:** *"Only drop a database you can rebuild from scratch. The lab database is one of those. Never drop your own project's database. It has records that nothing can give back."*
 - [ ] *"The checks never touch SQL Server. Six out of six does not prove your connection string works. Your browser proves that."* Then the target: *"Tonight's in-class target is checks 1 to 5."*
@@ -135,9 +135,9 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
   ```csharp
   public class CurbsideContext : IdentityDbContext<AppUser>
   ```
-- [ ] **Say what it is, with it on screen:** *"My context is now an IdentityDbContext for my AppUser. It still has my trucks, specials and dishes. It also has Identity's seven tables, and that base line is what configures them."*
+- [ ] **Say what it is, with it on screen:** *"My context is now an IdentityDbContext for my AppUser. It still has my trucks, specials and dishes. It also has Identity's seven tables, and the base OnModelCreating line is what configures them."*
 - [ ] ⚠️ **Terminal 1 — the prompt.** It prints `ENC0014: Updating the base class and/or base interface(s) of class requires restarting the application`, then `Do you want to restart your app?` **Answer `a`.** Say why while it restarts: *"Changing what a class inherits from is a change hot reload cannot make, so dotnet watch asks to restart. I answer a, for always, and from now on it restarts by itself when it has to. You get the same question in your lab."*
-- [ ] 💡 *"If you forget the base line, nothing errors here. The app fails the first time anything touches the database. Your lab README has the exact message."*
+- [ ] 💡 *"If you forget the base OnModelCreating line, nothing errors here. The app fails the first time anything touches the database. Your lab README has the exact message."*
 
 ### Program.cs
 
@@ -183,7 +183,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 - [ ] Lab README on screen, scrolled to **Task 2 in full**
 - [ ] *"Task 2 is what I just did, on the Registry. Your user class is called Member. Then the context, then Program.cs, then the migration."*
-- [ ] *"When you change the context's base class, terminal 1 asks to restart. Answer a. Then put the base line in OnModelCreating before you go any further."*
+- [ ] *"In the context, add the line that calls base OnModelCreating first. Then change the base class. When terminal 1 asks to restart, answer a."*
 - [ ] *"After database update, press Ctrl R in terminal 1. Not Ctrl C."*
 - [ ] 👀 **Watch for:** every page failing, check 1 included, with `The entity type 'IdentityPasskeyData' requires a primary key to be defined` — `base.OnModelCreating(modelBuilder);` is missing. `The type or namespace name 'IdentityDbContext<>' could not be found` — the using at the top of the context. The restart prompt unanswered in terminal 1 while they wonder why nothing changes. Anyone who added the package with no `--version` and got `NU1605` — the README's command is pinned for that reason
 - [ ] **Stop:** the note after **Task 2 in full**. Where they should be: **`Passed: 2`**, `AspNetUsers` empty in the mssql panel, and the app restarted
@@ -213,7 +213,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
       ModelState.AddModelError("", error.Description);
   }
   ```
-  *"If Identity refuses, it says why, in result. This loop copies its reasons onto the form, the same ModelState as week 6."*
+  *"If Identity refuses, it says why, in the result. This loop copies its reasons onto the form, the same ModelState as week 6."*
   ```csharp
   await _signInManager.SignInAsync(user, isPersistent: false);
   ```
@@ -263,7 +263,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
       form.Email, form.Password, form.RememberMe, lockoutOnFailure: false);
   ```
   *"PasswordSignInAsync checks the password against the hash, and if they match, it sets the same cookie as before."*
-- [ ] Scroll to the bottom, the Logout action: *"Signing out deletes the cookie. Notice HttpPost on it. That matters in a minute."*
+- [ ] Scroll to the bottom, the Logout action: *"Signing out deletes the cookie. Notice HttpPost on it. That matters when we get to the sign out button."*
 
 ### The navbar
 
@@ -351,7 +351,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 ### Signed in is not trusted *(slide 8)*
 
 - [ ] 🎞️ **GO TO SLIDE 8** — *Signed in is not trusted* · *"Here is what tonight did not fix. Anyone can create an account. All it takes is an email address. So the lock keeps out people who have not signed in, and anybody can sign in."*
-- [ ] 🎯 Still on slide 8, the last line: *"Next week is roles: not just signed in, but signed in as someone allowed to do this. Until then, this is a known gap, and I am saying it out loud, the same way I said it about the forms in week 6."*
+- [ ] 🎯 Still on slide 8, the last line: *"Next week is roles: not just signed in, but signed in as someone allowed to do this. Until then, this is a known gap, and I am saying it out loud, the same way I named it last week."*
 
 ## Lab E · Task 5 — 12 minutes
 
