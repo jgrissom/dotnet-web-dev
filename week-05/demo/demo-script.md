@@ -53,7 +53,13 @@ Don't ask the question rhetorically; make them look at both halves. Use the **ho
 - [ ] **Editor:** open `Views/Home/Index.cshtml`. **The whole file is 8 lines**, and only 4 of them are markup — a `div`, an `h1`, a `p`. No scrolling; the room can see all of it at once. Say it: *no `<html>`, no `<head>`, no navbar, no footer*
 - [ ] **Browser:** the `/` tab → **View Source** (`⌘⌥U` on a Mac — plain `⌘U` won't do it in Chrome; right-click → *View Page Source* always works)
 - [ ] Scroll to the **top**: `<!DOCTYPE html>`, `<head>`, the stylesheet, the navbar. **None of it was in the file you just read**
-- [ ] `⌘F` / `Ctrl+F` for `display-4` — their content is **lines 40–43**, of **58**
+- [ ] Search for this with <kbd>⌘F</kbd> / <kbd>Ctrl+F</kbd>:
+
+  ```text
+  display-4
+  ```
+
+  Their content is **lines 40–43**, of **58**
 - [ ] **Say the numbers:** *"Four lines of that page are yours. Fifty-four aren't."*
 - [ ] **Point at the rendered page, not just the source** — a navbar, one centered heading, a footer. *"Almost everything you're looking at came from somewhere else."* On the home page the shell **is** the page, which is why we're starting here
 - [ ] **Now ask it:** *"So who wrote it?"* — let the room answer before you open anything
