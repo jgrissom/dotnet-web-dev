@@ -419,7 +419,8 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
   </ul>
   ```
 - [ ] **Say what it is:** *"The cookie says who I am, but not my display name. That is a column, so the navbar looks me up in the database and shows it."*
-- [ ] **Ask — the answer is the `defaultValue` line you just pointed at:** *"I am still signed in as Ada. Her account was made before this column existed. What will my navbar say?"* Take answers
+- [ ] **Make sure you are signed in as Ada before you ask.** If the navbar says **Sign in**, click it and sign in with `ada@example.com` and `Curbside-2026` — Ada is the account from §3, made before this column existed
+- [ ] **Ask — the answer is the `defaultValue` line you just pointed at:** *"I am signed in as Ada. Her account was made before this column existed. What will my navbar say?"* Take answers
 - [ ] **Reload `/`.** 🎯 *Signed in as* — and nothing after it. *"An empty string. Her row has the new column, and nothing in it."*
 - [ ] *"This is week 10 again. An empty value needs something to show instead. What should the navbar show for someone with no display name?"* Take the answer: the email. Replace the whole file again — the `var name` line is new, and the `<span>` shows it:
   ```cshtml

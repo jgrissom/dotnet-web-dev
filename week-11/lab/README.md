@@ -739,7 +739,7 @@ else
 
 The cookie says *who* is signed in, but not their field name — that's a column, so the partial looks the member up.
 
-**Reload. Your navbar says *Signed in as* — and nothing.** You joined in task 3, before the column existed, and the migration gave you an empty string. That's week 10's empty state in a new place, and the fix is the same: show something else when there's nothing to show. Replace the whole file again — the `var name` line is new, and the `<span>` shows it:
+**Reload.** *(Signed out? Sign in first, with the account you made in task 3.)* **Your navbar says *Signed in as* — and nothing.** You joined in task 3, before the column existed, and the migration gave you an empty string. That's week 10's empty state in a new place, and the fix is the same: show something else when there's nothing to show. Replace the whole file again — the `var name` line is new, and the `<span>` shows it:
 
 ```cshtml
 @using Microsoft.AspNetCore.Identity
