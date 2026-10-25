@@ -12,11 +12,14 @@
 //  Type  recheck()  when you want it to run.
 //
 //  ⚠️  IT CREATES ONE ACCOUNT ON YOUR SITE — week11-selfcheck@example.com —
-//  and every run after the first REUSES it instead of making another. It
-//  signs that account in and out to test your login, so WHEN IT FINISHES YOUR
-//  BROWSER IS SIGNED OUT, even if you were signed in as yourself before. Sign
-//  back in when it's done. Delete the account by hand in the mssql panel
-//  (the AspNetUsers table) if you want it gone.
+//  and every run after the first REUSES it instead of making another. If that
+//  account was made before your registration form had its field of your own,
+//  it can never show your name, so the check makes ONE more,
+//  week11-selfcheck-name@example.com, and reuses that too. It signs them in
+//  and out to test your login, so WHEN IT FINISHES YOUR BROWSER IS SIGNED OUT,
+//  even if you were signed in as yourself before. Sign back in when it's done.
+//  Delete them by hand in the mssql panel (the AspNetUsers table) if you want
+//  them gone.
 //
 //  It does NOT need to know what your app is about. Your registration and
 //  sign-in pages live at /Account/Register and /Account/Login — the framework's
@@ -31,6 +34,9 @@
   const WEEK = 11;
   const MARKER = `Week ${WEEK} Test`;
   const EMAIL = "week11-selfcheck@example.com";
+  // Made only when the first account is older than the form's field of your
+  // own — see check 9. At most these two, ever, and both are reused.
+  const EMAIL_NAMED = "week11-selfcheck-name@example.com";
   // Passes Identity's default rules: upper, lower, a digit, a symbol, 6+ long.
   const PASSWORD = "Week11-Check!";
   const WRONG = "Not-The-Password-7";
@@ -230,7 +236,7 @@
     const root = String(baseUrl).replace(/\/$/, "");
     const stale = new Set();
     const results = {};        // filled in whatever order the run reaches them
-    let leftBehind = false, adopted = false, ownField = null, wasSignedIn = false;
+    let leftBehind = false, leftBehindNamed = false, adopted = false, ownField = null, wasSignedIn = false;
 
     const CHECKS = [
       // In requirement order, so the first red one is always the next thing to build.
@@ -260,7 +266,7 @@
       const checks = CHECKS.map(([key, pts, label]) =>
         results[key] || { pass: false, blocked: true, pts, label, hint: "waiting on an earlier step", todo: null });
       if (onCheck) checks.forEach(onCheck);
-      return { route, checks, stale: [...stale], leftBehind, adopted, ownField, wasSignedIn, readOnly: !write, ...tally(checks) };
+      return { route, checks, stale: [...stale], leftBehind, leftBehindNamed, adopted, ownField, wasSignedIn, readOnly: !write, ...tally(checks) };
     };
 
     // ── their home page ───────────────────────────────────────────────────────
@@ -356,7 +362,7 @@
       const res = await send(new URL(action, root + "/").toString(), { method: "POST", form: { __RequestVerificationToken: tokenOf(form) || tokenOf(page.body) } });
       return !!res;
     };
-    const signIn = async (password) => {
+    const signIn = async (password, email = EMAIL) => {
       const page = await send(root + "/Account/Login");
       if (!page || page.status >= 400) return null;
       const form = postForms(page.body).find(f => formFields(f).some(isPassword));
@@ -364,10 +370,25 @@
       const body = { __RequestVerificationToken: tokenOf(form) };
       for (const f of formFields(form)) {
         if (f.hidden) continue;
-        body[f.name] = isPassword(f) ? password : isEmail(f) ? EMAIL : f.type === "checkbox" ? "false" : validValue(f);
+        body[f.name] = isPassword(f) ? password : isEmail(f) ? email : f.type === "checkbox" ? "false" : validValue(f);
       }
       const action = formAction(form) || "/Account/Login";
       return send(new URL(action, root + "/Account/Login").toString(), { method: "POST", form: body });
+    };
+    // Fills in your registration form the way a person would, with your own
+    // rules deciding every value, and posts it. Always from a fresh page, so the
+    // antiforgery token belongs to whoever is (not) signed in right now.
+    const registerAs = async (email) => {
+      const page = await send(root + "/Account/Register");
+      const form = page && postForms(page.body).find(f => formFields(f).some(isPassword));
+      if (!form) return null;
+      const body = { __RequestVerificationToken: tokenOf(form) || tokenOf(page.body) };
+      for (const f of formFields(form)) {
+        if (f.hidden) continue;
+        body[f.name] = isPassword(f) ? PASSWORD : isEmail(f) ? email : validValue(f);
+      }
+      const action = formAction(form) || "/Account/Register";
+      return send(new URL(action, root + "/Account/Register").toString(), { method: "POST", form: body });
     };
     const signedIn = async () => {
       const page = await send(root + "/");
@@ -466,12 +487,25 @@
     }
 
     // ── 9. the navbar knows your name ─────────────────────────────────────────
+    // An account reused from an earlier run may be OLDER than your field of your
+    // own — made before the form asked for it — so its value is empty and your
+    // fallback rightly shows the email. That account can never show the name, so
+    // check it on a second account made now, while the form has the field.
     const ownValue = own.length ? validValue(own[0]) : null;
+    let nameHome = homeIn, usedNamed = false;
+    if (own.length && formOut && adopted && !homeIn.body.includes(ownValue)) {
+      await signOut();
+      const named = await registerAs(EMAIL_NAMED);
+      if (named && named.redirected) leftBehindNamed = true;
+      if (!(await signedIn())) await signIn(PASSWORD, EMAIL_NAMED);
+      nameHome = await send(root + "/");
+      usedNamed = true;
+    }
     if (!own.length) set("name", "blocked", null, { hint: "needs a field of your own on the registration form" });
     else if (!formOut) set("name", "blocked", null, { hint: "needs the signed-in navbar first" });
-    else set("name", homeIn.body.includes(ownValue) ? "pass" : "fail",
+    else set("name", nameHome && nameHome.body.includes(ownValue) ? "pass" : "fail",
       `the navbar knows the name you registered with — "${ownValue}"`, {
-        hint: `I registered with ${own[0].name} = "${ownValue}", and the signed-in navbar doesn't show it.`,
+        hint: `I registered ${usedNamed ? EMAIL_NAMED : EMAIL} with ${own[0].name} = "${ownValue}", and the signed-in navbar doesn't show it.`,
         todo: "In _LoginPartial, look the user up and show your property where the email was:\n"
             + "    @inject UserManager<YourUser> UserManager\n"
             + "    var user = await UserManager.GetUserAsync(User);\n"
@@ -543,9 +577,18 @@
 
   const isLocal = (url) => /localhost|127\.0\.0\.1|\[::1\]/i.test(String(url));
 
-  const LEFTOVER = `This created one account, ${EMAIL}, on your site. Every run after this one `
-    + "REUSES it rather than making another. Delete it by hand in the mssql panel (the AspNetUsers "
-    + "table) if you want it gone.";
+  const LEFTOVER = (emails) => {
+    const one = emails.length === 1;
+    return `This created ${one ? "one account" : "two accounts"} on your site — ${emails.join(" and ")}. `
+      + `Every run after this one REUSES ${one ? "it" : "them"} rather than making more. Delete `
+      + `${one ? "it" : "them"} by hand in the mssql panel (the AspNetUsers table) if you want `
+      + `${one ? "it" : "them"} gone.`
+      + (emails.includes(EMAIL_NAMED)
+        ? ` (${EMAIL_NAMED} exists because ${EMAIL} was made before your registration form had its `
+          + "field of your own, so it can never show your name.)"
+        : "");
+  };
+  const madeEmails = (res) => [res.leftBehind ? EMAIL : null, res.leftBehindNamed ? EMAIL_NAMED : null].filter(Boolean);
 
   const SIGNED_OUT = "Your browser is now SIGNED OUT — the check signs its own account in and out "
     + "to test your login. Sign back in as yourself if you were.";
@@ -557,7 +600,7 @@
 
   // ── Node: export for the grader, and support `node homework-checks.js <url>` ──
   if (typeof module !== "undefined" && module.exports) {
-    module.exports = { runChecks, MARKER, EMAIL };
+    module.exports = { runChecks, MARKER, EMAIL, EMAIL_NAMED };
   }
 
   const isNodeCli =
@@ -578,7 +621,7 @@
     (async () => {
       console.log(`\n🔎 Week ${WEEK} self-check — ${url}`);
       console.log("   (a sleeping free-tier app can take ~30s for the first check)");
-      console.log(`   ⚠️  this creates ONE account, ${EMAIL}, and reuses it forever after\n`);
+      console.log(`   ⚠️  this creates one account, ${EMAIL} — rarely a second — and reuses them forever after\n`);
       const res = await runChecks(url, forced, (c) => {
         console.log(`${c.pass ? "✅" : c.blocked ? "⬜" : "❌"} ${String(c.pts).padStart(2)} pts  ${c.label}`);
         if (c.hint) console.log(`         ↳ ${c.hint}`);
@@ -594,7 +637,7 @@
       else if (isLocal(url)) console.log("\n⚠️  That was localhost. Run it again on your Azure URL — the deployed one is what I grade.");
       else console.log("\n🎉 Your site knows who its visitors are — and strangers can read it, but can't change it.");
 
-      if (res.leftBehind) console.log(`\n🧹 ${LEFTOVER}`);
+      if (madeEmails(res).length) console.log(`\n🧹 ${LEFTOVER(madeEmails(res))}`);
       console.log(`\nℹ️  ${WHERE_THE_POINTS_ARE}`);
       console.log("\nThe other 6 points I check in your repo:");
       BY_HAND.forEach(l => console.log("   • " + l));
@@ -632,7 +675,7 @@
         console.log("%c🎉 Your site knows who its visitors are — and strangers can read it, but can't change it.", `${bold}; color: green`);
       }
 
-      if (res.leftBehind) console.log(`%c🧹 ${LEFTOVER}`, "color: #d29922");
+      if (madeEmails(res).length) console.log(`%c🧹 ${LEFTOVER(madeEmails(res))}`, "color: #d29922");
       console.log(`%c🚪 ${SIGNED_OUT}`, "color: #d29922");
       console.log(`%cℹ️  ${WHERE_THE_POINTS_ARE}`, "color: #79c0ff");
       console.log("%cThe other 6 points I check in your repo:", bold);
@@ -643,7 +686,7 @@
     const run = (forcedRoute) => {
       console.log(`%c🔎 Week ${WEEK} self-check — ${window.location.origin}`, big);
       console.log("Results appear when the run finishes — a sleeping free-tier app can take ~30s.");
-      console.log(`%c⚠️  This creates one account (${EMAIL}), signs it in and out, and leaves your browser signed out.`, "color: #d29922");
+      console.log(`%c⚠️  This creates one account (${EMAIL}) — rarely a second — signs it in and out, and leaves your browser signed out.`, "color: #d29922");
       if (forcedRoute) console.log(`Checking /${forcedRoute} directly (you told me where to look).`);
       return runChecks(window.location.origin, forcedRoute || null, printCheck, { write: true }).then(report);
     };

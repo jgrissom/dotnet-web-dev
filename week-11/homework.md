@@ -49,7 +49,7 @@ Open `Views/Home/Index.cshtml`, find the **week-10** line, and **replace it**:
 > [!WARNING]
 > **Nothing runs when the page loads.** Type `recheck()` in the console when you want it to run, because it does two things to your site that you should know about first:
 >
-> - **It creates one account**, `week11-selfcheck@example.com`, and every run after the first **reuses** it. Delete it by hand in the mssql panel (`AspNetUsers`) if you want it gone.
+> - **It creates one account**, `week11-selfcheck@example.com`, and every run after the first **reuses** it. If that account was made before your form had its field of your own, it can never show your name, so the check makes **one more**, `week11-selfcheck-name@example.com`, and reuses that too. Delete them by hand in the mssql panel (`AspNetUsers`) if you want them gone.
 > - **It signs your browser out.** It signs its own account in and out to test your login, so when it finishes you're signed out — even if you were signed in as yourself. Sign back in when it's done.
 
 ### Then build it
