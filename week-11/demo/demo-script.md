@@ -176,7 +176,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
   SELECT * FROM AspNetUsers;
   ```
   No rows. *"The table is there, with every column a user needs, and nobody in it yet."*
-- [ ] ⚠️ **Restart the app — Ctrl+R in terminal 1.** It prints `Restart requested.` EF Core works out what my tables look like once, when the app starts, and seven new tables arrived after this one started. Say why while it comes back up: *"I am restarting my app. EF Core works out the shape of my database once, when the app starts. I just added seven tables, so I start it again. I use Ctrl R, not Ctrl C, because Ctrl R keeps my a answer. You do the same thing in your task 2."*
+- [ ] ⚠️ **Restart the app — Ctrl+R in terminal 1.** It prints `Restart requested.` EF Core works out what my tables look like once, when the app starts, and seven new tables arrived after this one started. Say why while it comes back up: *"I am restarting my app. EF Core works out the shape of my database once, when the app starts. I just added seven tables, so I start it again. I use Ctrl R, not Ctrl C. Ctrl R restarts the app, and dotnet watch still remembers that I chose always. Ctrl C would make it ask again. You do the same thing in your task 2."*
 
 ## Lab B · Task 2 — 15 minutes
 
