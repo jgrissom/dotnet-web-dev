@@ -162,6 +162,7 @@ Then run the self-check on your Azure URL. That is the run I grade.
 - **The navbar never changes** — the `<partial name="_LoginPartial" />` line isn't in `_Layout.cshtml`. [The navbar](lecture-notes.md#the-navbar).
 - **Signed out, a locked page still opens over a correct `[Authorize]`** — hot reload can report an attribute as applied when it isn't. `Ctrl+R`.
 - **The navbar says you're signed in, and locked pages still send you to sign in** — `UseAuthentication()` is below `UseAuthorization()`. [Program.cs](lecture-notes.md#programcs).
+- **Your new box is missing from the register form, or what you type in it never shows up, over correct code** — restart with `Ctrl+R`. A new property with rules on a ViewModel is worked out when the app starts, and hot reload doesn't always redo it. [On the form](lecture-notes.md#on-the-form).
 - **The navbar says *Signed in as* and nothing after it** — your account is older than your new column. [The fallback](lecture-notes.md#the-navbar-looks-you-up).
 - **`The Entity Framework tools version … is older than that of the runtime`** — a warning, not an error. The command still worked.
 - **Yellow `NU1902` / `NU1903` warnings about `System.Security.Cryptography.Pkcs`** — the advisory from weeks 9 and 10, not your code, and one command clears it. [Clear the yellow warnings first](#clear-the-yellow-warnings-first).

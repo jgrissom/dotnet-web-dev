@@ -770,6 +770,8 @@ public string FieldName { get; set; } = "";
 var member = new Member { UserName = form.Email, Email = form.Email, FieldName = form.FieldName };
 ```
 
+**Press `Ctrl+R` in terminal 1 before you try it.** `dotnet watch` may say `Hot reload succeeded` for all three edits, but a new property with validation rules on a ViewModel changes what ASP.NET works out about the form when the app starts, and hot reload doesn't always redo that. If the new box is missing, or the navbar still shows your email after you join, that's why. The restart takes a few seconds.
+
 Sign out, then **Join** again with a new email and a field name. The navbar says *Signed in as* and your field name.
 
 **See both in the table.** In the mssql panel:

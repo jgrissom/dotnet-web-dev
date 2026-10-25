@@ -476,6 +476,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
   var user = new AppUser { UserName = form.Email, Email = form.Email, DisplayName = form.DisplayName };
   ```
 - [ ] **Say what they are:** *"The form asks for a display name, and the Register POST puts it on the new user."*
+- [ ] ⚠️ **Ctrl+R in terminal 1 before you test the form.** Terminal 1 may print `Hot reload succeeded` for all three edits, but a new property with validation rules on a ViewModel changes what ASP.NET works out about the form when the app starts, and hot reload does not always redo that. It has gone both ways in rehearsal. A restart costs a few seconds and always works. Say it: *"I am restarting before I try the form. The new box has rules on it, and ASP.NET reads those rules when the app starts."*
 - [ ] Sign out, then **Create an account**: **Email** `bea@example.com`, **What should we call you?** `Bea`, and `Curbside-2026` in **Password** and again in **Confirm password**. 🎯 *Signed in as Bea*
 - [ ] **mssql panel** — the two accounts, side by side:
   ```sql

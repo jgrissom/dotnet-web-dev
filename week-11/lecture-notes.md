@@ -632,6 +632,8 @@ var user = new AppUser { UserName = form.Email, Email = form.Email, DisplayName 
 
 **Add the property before the box.** A view that says `asp-for="DisplayName"` while the ViewModel has no `DisplayName` doesn't compile: `CS1061: 'RegisterViewModel' does not contain a definition for 'DisplayName'`.
 
+**Then press `Ctrl+R` in the terminal running `dotnet watch` before you test it.** A new property with validation rules on a ViewModel changes what ASP.NET works out about the form when the app starts. Hot reload can print `Hot reload succeeded` and still leave the old form in place — the box missing, or the new value ignored. A restart always applies it.
+
 `[StringLength]` on the ViewModel is a rule you typed, so the form refuses a one-letter name in the browser and on the server.
 
 ---
@@ -718,6 +720,9 @@ Real sites that share sign-in across several applications — *Sign in with Micr
 
 **`NullReferenceException` in `_LoginPartial`**
 - The partial reads `user.DisplayName` without the `?`. Use `user?.DisplayName` — `GetUserAsync` returns null when the signed-in account no longer exists.
+
+**The new box on the register form is missing, or what you type in it never shows up — over correct code**
+- The app is still using the form it worked out when it started. `Ctrl+R` in the terminal running `dotnet watch`. [Part 7](#on-the-form).
 
 **The navbar says *Signed in as* and nothing after it**
 - Your account is older than the column. [The fallback line](#the-navbar-looks-you-up).
