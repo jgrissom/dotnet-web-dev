@@ -134,7 +134,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
   ```csharp
   public class CurbsideContext : IdentityDbContext<AppUser>
   ```
-- [ ] **Say what it is, with it on screen:** *"My context is now an IdentityDbContext for my AppUser. It still has my trucks, specials and dishes. It also has Identity's seven tables, and the base OnModelCreating line is what configures them."*
+- [ ] **Say what it is, with it on screen:** *"IdentityDbContext is Microsoft's own DbContext, with Identity's seven tables already declared in it. By inheriting from it instead of plain DbContext, my context gets those seven tables, and keeps my trucks, specials and dishes. One context, one database, both jobs. The base OnModelCreating line is what configures Identity's seven."*
 - [ ] ⚠️ **Terminal 1 — the prompt.** It prints `ENC0014: Updating the base class and/or base interface(s) of class requires restarting the application`, then `Do you want to restart your app?` **Answer `a`.** Say why while it restarts: *"Changing what a class inherits from is a change hot reload cannot make, so dotnet watch asks to restart. I answer a, for always, and from now on it restarts by itself when it has to. You get the same question in your lab."*
 - [ ] 💡 *"If you forget the base OnModelCreating line, nothing errors here. The app fails the first time anything touches the database. Your lab README has the exact message."*
 

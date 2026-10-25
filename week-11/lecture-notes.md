@@ -80,7 +80,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 public class CurbsideContext : IdentityDbContext<AppUser>
 ```
 
-Your context still has every `DbSet` it had. Inheriting `IdentityDbContext<AppUser>` adds Identity's seven tables to it, and **`base.OnModelCreating` is what configures them** — their keys, their indexes, how they point at each other. Leave it out and nothing complains until the first time anything touches the database, and then everything does:
+**`IdentityDbContext<AppUser>` is Microsoft's own `DbContext`, with a `DbSet` already declared for each of Identity's seven tables** — `Users`, `Roles`, `UserRoles`, `UserClaims`, `UserLogins`, `UserTokens` and `RoleClaims`. Inheriting from it instead of plain `DbContext` gives your context those seven, and it keeps every `DbSet` it already had: one context, one database, your data and your users together. `AddEntityFrameworkStores<CurbsideContext>()` in `Program.cs` is what tells Identity to use it. **`base.OnModelCreating` is what configures Identity's seven tables** — their keys, their indexes, how they point at each other. Leave it out and nothing complains until the first time anything touches the database, and then everything does:
 
 ```
 The entity type 'IdentityPasskeyData' requires a primary key to be defined.
