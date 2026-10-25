@@ -583,7 +583,7 @@ public class AccountController : Controller
 **Now the navbar. Create `Views/Shared/_LoginPartial.cshtml`:**
 
 ```cshtml
-<ul class="navbar-nav">
+<ul class="navbar-nav align-items-sm-center">
 @if (User.Identity?.IsAuthenticated == true)
 {
     <li class="nav-item">
@@ -764,7 +764,7 @@ Sign out, then **Join** again with a new email and a field name. The navbar says
 @using Microsoft.AspNetCore.Identity
 @inject UserManager<Member> UserManager
 
-<ul class="navbar-nav">
+<ul class="navbar-nav align-items-sm-center">
 @if (User.Identity?.IsAuthenticated == true)
 {
     // The cookie says WHO is signed in. Anything else about them — the

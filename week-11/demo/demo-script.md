@@ -268,7 +268,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 - [ ] Say the goal: *"Now the navbar, so the page can finally tell me whether I am signed in."* Create `Views/Shared/_LoginPartial.cshtml` and paste:
   ```cshtml
-  <ul class="navbar-nav">
+  <ul class="navbar-nav align-items-sm-center">
   @if (User.Identity?.IsAuthenticated == true)
   {
       <li class="nav-item">

@@ -446,7 +446,7 @@ public class LoginViewModel
 `Views/Shared/_LoginPartial.cshtml`. This is the first version, before Part 7 — it shows the email the cookie carries:
 
 ```cshtml
-<ul class="navbar-nav">
+<ul class="navbar-nav align-items-sm-center">
 @if (User.Identity?.IsAuthenticated == true)
 {
     <li class="nav-item">
@@ -470,7 +470,7 @@ else
 </ul>
 ```
 
-`User` is available in every view, and `User.Identity.IsAuthenticated` is true when the cookie says someone is signed in. Then, in `Views/Shared/_Layout.cshtml`, **between the navbar's `</ul>` and the `</div>` under it**:
+`User` is available in every view, and `User.Identity.IsAuthenticated` is true when the cookie says someone is signed in. `align-items-sm-center` on the `<ul>` lines the *Signed in as* text up with the links beside it — plain text sits a little higher than a link otherwise — and the `sm` keeps the collapsed phone menu left-aligned. Then, in `Views/Shared/_Layout.cshtml`, **between the navbar's `</ul>` and the `</div>` under it**:
 
 ```cshtml
 <partial name="_LoginPartial" />
@@ -573,7 +573,7 @@ The cookie says *who* is signed in, but not their display name — that's a colu
 @using Microsoft.AspNetCore.Identity
 @inject UserManager<AppUser> UserManager
 
-<ul class="navbar-nav">
+<ul class="navbar-nav align-items-sm-center">
 @if (User.Identity?.IsAuthenticated == true)
 {
     var user = await UserManager.GetUserAsync(User);
