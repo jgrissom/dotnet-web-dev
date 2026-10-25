@@ -291,6 +291,19 @@ Passwords must have at least one uppercase ('A'-'Z').
 
 Those are Identity's defaults: six characters or more, with an uppercase letter, a lowercase letter, a digit and a symbol. Register the same email twice and you get `Username '…' is already taken.` Both arrive through `result.Errors`.
 
+**The rules can be changed**, in `Program.cs`, by passing options to `AddIdentity`:
+
+```csharp
+builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
+{
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequiredLength = 10;
+})
+    .AddEntityFrameworkStores<CurbsideContext>();
+```
+
+With these two lines, `Short1A` is refused with `Passwords must be at least 10 characters.` and `Curbside2026` — no symbol — is accepted. This course leaves the defaults alone; loosening them makes accounts easier to break into, and the self-check's own password passes them.
+
 ### The password is never stored
 
 After a successful registration, the row in `AspNetUsers` has your email in it and a `PasswordHash` that is 84 characters long and starts `AQAAAAIAAYagAAAAE`. That is all the database knows about your password.

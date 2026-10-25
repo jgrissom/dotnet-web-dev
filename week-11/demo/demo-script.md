@@ -221,7 +221,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 ### Never stored *(slide 4)*
 
 - [ ] **Browse to `/Account/Register`** — there is no link to it yet. Fill it in: `ada@example.com`, and `password` in both password boxes. **Submit.**
-- [ ] 🎯 Three messages: `Passwords must have at least one non alphanumeric character.`, `Passwords must have at least one digit ('0'-'9').`, `Passwords must have at least one uppercase ('A'-'Z').` *"I did not write any of these. They are Identity's own rules, and the loop I just showed you is what put them on the page."*
+- [ ] 🎯 Three messages: `Passwords must have at least one non alphanumeric character.`, `Passwords must have at least one digit ('0'-'9').`, `Passwords must have at least one uppercase ('A'-'Z').` *"The Identity framework has password hardening rules built in by default. They can be overridden. The errors are on the form because of the foreach loop: it copies Identity's errors into ModelState, and the page shows them the same way as the form validation we have already seen."*
 - [ ] Now `Curbside-2026` in both. **Submit.** It lands on the front page — **and the page looks exactly the same.** Say it before anyone asks: *"Nothing on the page changed. My navbar does not know about signing in yet. That is the next part. So the proof is somewhere else."*
 - [ ] 🎞️ **GO TO SLIDE 4** — *The password is never stored* · *"CreateAsync took my password, and a hash is what it saved. A hash can be checked against a password. It cannot be turned back into one."*
 - [ ] Still on slide 4, the middle line: *"That is why the migration had a PasswordHash column and no password column. Let's look at the row."*
