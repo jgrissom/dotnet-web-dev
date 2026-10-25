@@ -647,6 +647,16 @@ Search for ASP.NET Core Identity and most of what you find uses the **default Id
 
 That's a fine way to build a real site, and it does things this course's `AccountController` doesn't: email confirmation, password reset, two-factor sign-in, external logins. This course writes the controller instead because every line of it is a shape you've built since week 6, so you can read all of it. The Identity underneath — `UserManager`, `SignInManager`, the tables, the cookie, `[Authorize]` — is identical either way.
 
+### Why every app keeps its own users
+
+Curbside, the Registry and your own app each keep their users in their own database. It's tempting to point all three at one shared users database, so one account works everywhere. It wouldn't — not on its own:
+
+- **Sharing the users isn't sharing the sign-in.** Each app sets its own cookie, on its own site, encrypted with its own keys. A user who existed in all three would still sign in to each one separately.
+- **Roles would leak between apps.** `AspNetRoles` is one table, so a *Curator* in one app would be a *Curator* in all of them.
+- **Three apps would be migrating one set of tables**, and one of them changing the schema can break the other two.
+
+Real sites that share sign-in across several applications — *Sign in with Microsoft*, *Sign in with Google*, one company login for every internal tool — don't share a database. They use an **identity provider**: one service that signs people in and tells each app who they are, using a standard called OpenID Connect. Each app still keeps its own data, and still decides for itself what a signed-in user may do there.
+
 ---
 
 ## Troubleshooting
