@@ -711,20 +711,29 @@ dotnet ef database update
 @inject UserManager<Member> UserManager
 ```
 
-...and replace the `<span class="navbar-text …">` line with these two:
+...then this line **right under the `{` that opens `@if (User.Identity?.IsAuthenticated == true)`, above the first `<li>`** — Razor reads that spot as C#, and under the `<li>` it would be page text instead, failing with `CS0103: The name 'member' does not exist in the current context`:
 
 ```cshtml
 var member = await UserManager.GetUserAsync(User);
+```
+
+...and change the `<span class="navbar-text me-2">` line to:
+
+```cshtml
 <span class="navbar-text me-2">Signed in as @member?.FieldName</span>
 ```
 
 The cookie says *who* is signed in, but not their field name — that's a column, so the partial looks the member up.
 
-**Reload. Your navbar says *Signed in as* — and nothing.** You joined in task 3, before the column existed, and the migration gave you an empty string. That's week 10's empty state in a new place, and the fix is the same: show something else when there's nothing to show. Replace those two lines with these three:
+**Reload. Your navbar says *Signed in as* — and nothing.** You joined in task 3, before the column existed, and the migration gave you an empty string. That's week 10's empty state in a new place, and the fix is the same: show something else when there's nothing to show. Paste this line right under the `var member` line:
 
 ```cshtml
-var member = await UserManager.GetUserAsync(User);
 var name = string.IsNullOrEmpty(member?.FieldName) ? User.Identity.Name : member.FieldName;
+```
+
+...and change the `<span>` line to show it:
+
+```cshtml
 <span class="navbar-text me-2">Signed in as @name</span>
 ```
 
