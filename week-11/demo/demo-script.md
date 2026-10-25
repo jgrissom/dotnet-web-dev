@@ -70,7 +70,6 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 - [ ] **Swipe to the browser, the `/Trucks/Delete/1` tab.** *"This is the page that deletes Roll Models. I have not signed in. There is nothing to sign in to."*
 - [ ] *"Since week 6, anybody with my URL could add a truck. Since week 8, anybody could edit one or delete one. Nothing ever asked who they were."* Click **Keep it** — say out loud that you are not deleting it
-- [ ] *"Last week's reading asked you to write down which pages anyone should see, and which should need an account. Who has theirs?"* Take two or three, and read one back to the room
 - [ ] ⚠️ **Only if terminal 1 shows yellow `NU1902`/`NU1903` lines — otherwise skip this beat.** Swipe to the editor and point at them: *"These are the same warnings as the last two weeks: an advisory against a package the SQL Server package brings in. Read the line above them. Build succeeded. The fix is one command, and it is the first step of tonight's homework."*
 
 ### Two questions *(slide 2)*
@@ -454,7 +453,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 ## 7 · Wrap-up, after the lab *(slide 9)*
 
 - [ ] 🎞️ **GO TO SLIDE 9** — *Tonight, in one picture* · walk the five rows, one sentence each, and give the last row the emphasis: *"Signed in is not trusted. Anyone can make an account. Next week, the lock asks who you are, not just whether you signed in."*
-- [ ] Homework: **the same six moves on their own app.** *"Your user class, the context, register, sign in and out, the lock on your writes, and one property of your own. Use the split you brought tonight to decide which pages get the lock."*
+- [ ] Homework: **the same six moves on their own app.** *"Your user class, the context, register, sign in and out, the lock on your writes, and one property of your own. Decide which of your pages should need an account, and put the lock on those."*
 - [ ] ⚠️ Say what the self-check leaves behind, and what it does to your browser: *"The self-check creates one account on your site, week11-selfcheck at example dot com, and reuses it on every run after. It signs that account in and out to test your login, so when it finishes, your browser is signed out. Sign back in as yourself."*
 - [ ] 💡 *"My Curbside is on localhost. Nothing is deployed for it. Yours is graded on its Azure URL, and the migration goes to the database before you deploy, same as week 9."*
 - [ ] 🔗 Week 12: *"Next week is roles, claims, and securing the rest of the application: not just signed in, but signed in as someone who is allowed."*
