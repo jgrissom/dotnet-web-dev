@@ -344,7 +344,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 - [ ] Click **＋ Add a truck**. 🎯 You land on the **Sign in** page. In the Network tab, the first request is `Create`, status **`302`**, and its **Location** header is `/Account/Login?ReturnUrl=%2FTrucks%2FCreate`
 - [ ] *"The server answered with a 302, a redirect to the sign-in page. And it wrote down where I was trying to go, in ReturnUrl. Slash Trucks slash Create."*
 - [ ] Sign in with `Curbside-2026`. 🎯 You land on **`/Trucks/Create`** — the form, not the front page. *"After I sign in, it sends me back to the page I wanted. That is what ReturnUrl is for."*
-- [ ] 💡 *"I never told it where the sign-in page is. AddIdentity sends people to slash Account slash Login unless you say otherwise. That is why our controller is called Account and the action is called Login."*
+- [ ] 💡 *"I never told it where the sign-in page is. AddIdentity sends people to slash Account slash Login unless you say otherwise. That is why our controller is called Account and the action is called Login. These are the Identity framework's defaults."*
 - [ ] **The other two controllers.** `Controllers/DishesController.cs` — the same using, `[Authorize]` above the class, `[AllowAnonymous]` above `Index()` and `Details(int id)`. `Controllers/SpecialsController.cs` — the using and `[Authorize]` above the class, and nothing else: it only has the Create pair. *"Every Curbside write needs an account now. Every read is still open to anybody."*
 
 ### Signed in is not trusted *(slide 8)*
