@@ -389,29 +389,67 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 ### Ada is older than the column
 
-- [ ] `Views/Shared/_LoginPartial.cshtml`. Paste these two lines at the very top of the file:
+- [ ] `Views/Shared/_LoginPartial.cshtml` — select everything in the file and paste the replacement. Three lines are new: the two at the top, and the `var user` line inside the `@if`:
   ```cshtml
   @using Microsoft.AspNetCore.Identity
   @inject UserManager<AppUser> UserManager
-  ```
-- [ ] Then two edits inside the `@if`. First, paste this line **right under the `{` that opens `@if (User.Identity?.IsAuthenticated == true)`, above the first `<li>`**. Razor reads that spot as C#; under the `<li>` it would be page text, and the build fails with `CS0103: The name 'user' does not exist in the current context`:
-  ```cshtml
-  var user = await UserManager.GetUserAsync(User);
-  ```
-- [ ] Then change the `<span class="navbar-text me-2">` line to:
-  ```cshtml
-  <span class="navbar-text me-2">Signed in as @user?.DisplayName</span>
+
+  <ul class="navbar-nav align-items-sm-center">
+  @if (User.Identity?.IsAuthenticated == true)
+  {
+      var user = await UserManager.GetUserAsync(User);
+      <li class="nav-item">
+          <span class="navbar-text me-2">Signed in as @user?.DisplayName</span>
+      </li>
+      <li class="nav-item">
+          <form asp-controller="Account" asp-action="Logout" method="post">
+              <button type="submit" class="btn btn-link nav-link">Sign out</button>
+          </form>
+      </li>
+  }
+  else
+  {
+      <li class="nav-item">
+          <a class="nav-link" asp-controller="Account" asp-action="Register">Create an account</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" asp-controller="Account" asp-action="Login">Sign in</a>
+      </li>
+  }
+  </ul>
   ```
 - [ ] **Say what it is:** *"The cookie says who I am, but not my display name. That is a column, so the navbar looks me up in the database and shows it."*
 - [ ] **Ask — the answer is the `defaultValue` line you just pointed at:** *"I am still signed in as Ada. Her account was made before this column existed. What will my navbar say?"* Take answers
 - [ ] **Reload `/`.** 🎯 *Signed in as* — and nothing after it. *"An empty string. Her row has the new column, and nothing in it."*
-- [ ] *"This is week 10 again. An empty value needs something to show instead. What should the navbar show for someone with no display name?"* Take the answer: the email. Paste this line right under the `var user` line:
+- [ ] *"This is week 10 again. An empty value needs something to show instead. What should the navbar show for someone with no display name?"* Take the answer: the email. Replace the whole file again — the `var name` line is new, and the `<span>` shows it:
   ```cshtml
-  var name = string.IsNullOrEmpty(user?.DisplayName) ? User.Identity.Name : user.DisplayName;
-  ```
-- [ ] And change the `<span>` line to show it:
-  ```cshtml
-  <span class="navbar-text me-2">Signed in as @name</span>
+  @using Microsoft.AspNetCore.Identity
+  @inject UserManager<AppUser> UserManager
+
+  <ul class="navbar-nav align-items-sm-center">
+  @if (User.Identity?.IsAuthenticated == true)
+  {
+      var user = await UserManager.GetUserAsync(User);
+      var name = string.IsNullOrEmpty(user?.DisplayName) ? User.Identity.Name : user.DisplayName;
+      <li class="nav-item">
+          <span class="navbar-text me-2">Signed in as @name</span>
+      </li>
+      <li class="nav-item">
+          <form asp-controller="Account" asp-action="Logout" method="post">
+              <button type="submit" class="btn btn-link nav-link">Sign out</button>
+          </form>
+      </li>
+  }
+  else
+  {
+      <li class="nav-item">
+          <a class="nav-link" asp-controller="Account" asp-action="Register">Create an account</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" asp-controller="Account" asp-action="Login">Sign in</a>
+      </li>
+  }
+  </ul>
   ```
 - [ ] **Reload.** *Signed in as ada@example.com*. *"If there is a display name, it shows that. If not, it shows the email."*
 

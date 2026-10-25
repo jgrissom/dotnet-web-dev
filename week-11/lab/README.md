@@ -704,70 +704,42 @@ dotnet ef database update
 
 **Then `Ctrl+R` in terminal 1** — a new column, the same restart as task 2.
 
-**Now the navbar shows it.** In `Views/Shared/_LoginPartial.cshtml`, two lines at the very top of the file:
+**Now the navbar shows it.** Replace the whole of `Views/Shared/_LoginPartial.cshtml` with this. What's new is the two lines at the top, and the `var member` line — with its comment — inside the `@if`:
 
 ```cshtml
 @using Microsoft.AspNetCore.Identity
 @inject UserManager<Member> UserManager
-```
 
-...then this line **right under the `{` that opens `@if (User.Identity?.IsAuthenticated == true)`, above the first `<li>`** — Razor reads that spot as C#, and under the `<li>` it would be page text instead, failing with `CS0103: The name 'member' does not exist in the current context`:
-
-```cshtml
-var member = await UserManager.GetUserAsync(User);
-```
-
-...and change the `<span class="navbar-text me-2">` line to:
-
-```cshtml
-<span class="navbar-text me-2">Signed in as @member?.FieldName</span>
+<ul class="navbar-nav align-items-sm-center">
+@if (User.Identity?.IsAuthenticated == true)
+{
+    // The cookie says WHO is signed in. Anything else about them — the
+    // field name — is a column, so the partial looks the member up.
+    var member = await UserManager.GetUserAsync(User);
+    <li class="nav-item">
+        <span class="navbar-text me-2">Signed in as @member?.FieldName</span>
+    </li>
+    <li class="nav-item">
+        <form asp-controller="Account" asp-action="Logout" method="post">
+            <button type="submit" class="btn btn-link nav-link">Sign out</button>
+        </form>
+    </li>
+}
+else
+{
+    <li class="nav-item">
+        <a class="nav-link" asp-controller="Account" asp-action="Register">Join</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" asp-controller="Account" asp-action="Login">Sign in</a>
+    </li>
+}
+</ul>
 ```
 
 The cookie says *who* is signed in, but not their field name — that's a column, so the partial looks the member up.
 
-**Reload. Your navbar says *Signed in as* — and nothing.** You joined in task 3, before the column existed, and the migration gave you an empty string. That's week 10's empty state in a new place, and the fix is the same: show something else when there's nothing to show. Paste this line right under the `var member` line:
-
-```cshtml
-var name = string.IsNullOrEmpty(member?.FieldName) ? User.Identity.Name : member.FieldName;
-```
-
-...and change the `<span>` line to show it:
-
-```cshtml
-<span class="navbar-text me-2">Signed in as @name</span>
-```
-
-Reload: your email again. Now give new members a field name when they join — three small edits.
-
-**`ViewModels/RegisterViewModel.cs`, under `Email`:**
-
-```csharp
-[Required]
-[Display(Name = "Field name")]
-[StringLength(40, MinimumLength = 2)]
-public string FieldName { get; set; } = "";
-```
-
-**`Views/Account/Register.cshtml`, between the Email block and the Password block:**
-
-```cshtml
-<div class="mb-3">
-    <label asp-for="FieldName" class="form-label"></label>
-    <input asp-for="FieldName" class="form-control" />
-    <div class="form-text">The name you sign your reports with.</div>
-    <span asp-validation-for="FieldName" class="text-danger"></span>
-</div>
-```
-
-**`Controllers/AccountController.cs`, the Register POST** — the line that makes the member:
-
-```csharp
-var member = new Member { UserName = form.Email, Email = form.Email, FieldName = form.FieldName };
-```
-
-Sign out, then **Join** again with a new email and a field name. The navbar says *Signed in as* and your field name.
-
-<details><summary>Want to compare? The whole _LoginPartial.cshtml</summary>
+**Reload. Your navbar says *Signed in as* — and nothing.** You joined in task 3, before the column existed, and the migration gave you an empty string. That's week 10's empty state in a new place, and the fix is the same: show something else when there's nothing to show. Replace the whole file again — the `var name` line is new, and the `<span>` shows it:
 
 ```cshtml
 @using Microsoft.AspNetCore.Identity
@@ -801,7 +773,35 @@ else
 </ul>
 ```
 
-</details>
+Reload: your email again. Now give new members a field name when they join — three small edits.
+
+**`ViewModels/RegisterViewModel.cs`, under `Email`:**
+
+```csharp
+[Required]
+[Display(Name = "Field name")]
+[StringLength(40, MinimumLength = 2)]
+public string FieldName { get; set; } = "";
+```
+
+**`Views/Account/Register.cshtml`, between the Email block and the Password block:**
+
+```cshtml
+<div class="mb-3">
+    <label asp-for="FieldName" class="form-label"></label>
+    <input asp-for="FieldName" class="form-control" />
+    <div class="form-text">The name you sign your reports with.</div>
+    <span asp-validation-for="FieldName" class="text-danger"></span>
+</div>
+```
+
+**`Controllers/AccountController.cs`, the Register POST** — the line that makes the member:
+
+```csharp
+var member = new Member { UserName = form.Email, Email = form.Email, FieldName = form.FieldName };
+```
+
+Sign out, then **Join** again with a new email and a field name. The navbar says *Signed in as* and your field name.
 
 **Run the checks, in terminal 3:**
 
