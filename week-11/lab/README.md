@@ -803,6 +803,14 @@ var member = new Member { UserName = form.Email, Email = form.Email, FieldName =
 
 Sign out, then **Join** again with a new email and a field name. The navbar says *Signed in as* and your field name.
 
+**See both in the table.** In the mssql panel:
+
+```sql
+SELECT UserName, FieldName FROM AspNetUsers;
+```
+
+Your task-3 account has an empty `FieldName` — the migration's `defaultValue` — and the one you just made has the name you typed. The checks' own accounts aren't here: they live only in the in-memory database a test run uses.
+
 **Run the checks, in terminal 3:**
 
 ```bash

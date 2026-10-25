@@ -52,7 +52,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 - [ ] ⚠️ **Know the one prompt, and where it comes.** It is **not** at the first new file. It is in **§2, the moment the context's base class changes** — `ENC0014: Updating the base class and/or base interface(s) of class requires restarting the application`, then **`Do you want to restart your app? Yes (y) / No (n) / Always (a) / Never (v)`** — in terminal 1, while you are typing in terminal 2. **Answer `a`.** After that, `watch` restarts by itself for `Program.cs`, both copy-ins and the new partial. *(Measured on a pty-driven `dotnet watch`.)*
 - [ ] ⚠️ **Every restart tonight is Ctrl+R in terminal 1, never Ctrl+C + `dotnet watch`.** *Always* belongs to the `watch` session. Ctrl+C ends the session, and the next new file stops and asks again — measured: after a Ctrl+C restart in §2, §3's copy-in sat at the prompt and `/Account/Register` was a `404` until it was answered. Ctrl+R restarts the app and keeps the session
 - [ ] **Park three browser tabs**: `/`, `/Trucks/Delete/1`, and **week 11's lab README** on github.com — it goes on screen for every lab block tonight
-- [ ] **mssql extension** signed in, saved server connection tested, panel closed. It has **two** appearances tonight — §2, the empty `AspNetUsers` table, and §3, the row your registration writes
+- [ ] **mssql extension** signed in, saved server connection tested, panel closed. It has **three** appearances tonight — §2, the empty `AspNetUsers` table, §3, the row your registration writes, and §6, Ada's and Bea's rows with the new `DisplayName` column
 - [ ] **Say the no-typing line out loud in the first minute.** Tonight is watched, not typed along with: *"Nothing I type tonight is yours to type. Curbside is my app, and the Registry is yours. Your keyboard time is the lab blocks. There are seven of them tonight, one after each part of my demo."*
 - [ ] Teaching profile on, notifications off, editor font sized for the back of the room and for a small laptop screen
 
@@ -476,7 +476,12 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
   var user = new AppUser { UserName = form.Email, Email = form.Email, DisplayName = form.DisplayName };
   ```
 - [ ] **Say what they are:** *"The form asks for a display name, and the Register POST puts it on the new user."*
-- [ ] Sign out, then **Create an account**: **Email** `bea@example.com`, **What should we call you?** `Bea`, and `Curbside-2026` in **Password** and again in **Confirm password**. 🎯 *Signed in as Bea*. *"A property of my own, on the form, in the database, in the navbar."*
+- [ ] Sign out, then **Create an account**: **Email** `bea@example.com`, **What should we call you?** `Bea`, and `Curbside-2026` in **Password** and again in **Confirm password**. 🎯 *Signed in as Bea*
+- [ ] **mssql panel** — the two accounts, side by side:
+  ```sql
+  SELECT UserName, DisplayName FROM AspNetUsers;
+  ```
+  Two rows: `ada@example.com` with nothing in `DisplayName`, and `bea@example.com` with `Bea`. *"Ada's row was there before the column, so the migration gave her an empty string. Bea's display name came from the form. A property of my own, on the form, in the database, in the navbar."*
 
 ## Lab F · Task 6 — 13 minutes
 

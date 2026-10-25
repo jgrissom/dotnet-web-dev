@@ -25,7 +25,7 @@ The night the app learns who its visitors are. Since week 6 anyone with the URL 
 - **Two integrated terminals** — `dotnet watch` in the first, everything else in the second
 - ⚠️ **The first restart prompt is in §2, at the context's base-class change — answer `a`.** And **every restart tonight is `Ctrl+R`**, not `Ctrl+C`: *Always* belongs to the `watch` session, and `Ctrl+C` ends it
 - **Week 11's lab README in a browser tab** — it goes on screen for all seven lab blocks; there is no lab slide
-- **mssql extension** signed in and tested, panel closed — two appearances (§2, the empty `AspNetUsers`; §3, the row with a hash in it)
+- **mssql extension** signed in and tested, panel closed — three appearances (§2, the empty `AspNetUsers`; §3, the row with a hash in it; §6, the new `DisplayName` column)
 - ⚠️ **Say *signed in is not trusted* out loud in §5.** Week 12 is roles
 - Remind students to `git pull` the starters repo for the week-11 folder
 
