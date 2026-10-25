@@ -33,17 +33,7 @@ Same app you've been building since week 4. Since week 6 anyone with your URL co
 > [!TIP]
 > **Commit as you go, the way you have since week 3.** Three of tonight's twenty points are the history itself, and they're all-or-nothing: fewer than three commits scores zero. One commit per requirement you finish is the natural rhythm.
 
-### Clear the yellow warnings first
-
-Week 9's homework opened with this step. If your builds still print yellow `NU1902` / `NU1903` warnings about `System.Security.Cryptography.Pkcs` — a package the SQL Server package brings in, with known security problems in the version it asks for — it didn't happen yet. From the folder with your `.csproj`, once:
-
-```bash
-dotnet add package System.Security.Cryptography.Pkcs --version 10.0.13
-```
-
-Your version wins over the old one, and the warnings stop — along with the `msbuild: [Failure]` lines and the VS Code pop-up that came with them. One line appears in your `.csproj`; commit it like any other change. No yellow warnings? Skip this.
-
-### Swap the self-check over
+### Swap the self-check over first
 
 Open `Views/Home/Index.cshtml`, find the **week-10** line, and **replace it**:
 
@@ -165,7 +155,7 @@ Then run the self-check on your Azure URL. That is the run I grade.
 - **Your new box is missing from the register form, or what you type in it never shows up, over correct code** — restart with `Ctrl+R`. A new property with rules on a ViewModel is worked out when the app starts, and hot reload doesn't always redo it. [On the form](lecture-notes.md#on-the-form).
 - **The navbar says *Signed in as* and nothing after it** — your account is older than your new column. [The fallback](lecture-notes.md#the-navbar-looks-you-up).
 - **`The Entity Framework tools version … is older than that of the runtime`** — a warning, not an error. The command still worked.
-- **Yellow `NU1902` / `NU1903` warnings about `System.Security.Cryptography.Pkcs`** — the advisory from weeks 9 and 10, not your code, and one command clears it. [Clear the yellow warnings first](#clear-the-yellow-warnings-first).
+- **Yellow `NU1902` / `NU1903` warnings about `System.Security.Cryptography.Pkcs`** — the advisory week 9's homework fixed. If your app still shows them, from the folder with your `.csproj`, once: `dotnet add package System.Security.Cryptography.Pkcs --version 10.0.13`. One line appears in your `.csproj`; commit it.
 - **The deployed site throws `Invalid object name 'AspNetUsers'`** — migrate, then deploy. Part 4.
 - **The self-check banner says Week 10** — last week's script is still installed. This week's line replaces it.
 - **You're signed out and didn't sign out** — the self-check did, on purpose. Sign back in.

@@ -70,7 +70,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 - [ ] **Swipe to the browser, the `/Trucks/Delete/1` tab.** *"This is the page that deletes Roll Models. I have not signed in. There is nothing to sign in to."*
 - [ ] *"Since week 6, anybody with my URL could add a truck. Since week 8, anybody could edit one or delete one. Nothing ever asked who they were."* Click **Keep it** — say out loud that you are not deleting it
-- [ ] ⚠️ **Only if terminal 1 shows yellow `NU1902`/`NU1903` lines — otherwise skip this beat.** Swipe to the editor and point at them: *"These are the same warnings as the last two weeks: an advisory against a package the SQL Server package brings in. Read the line above them. Build succeeded. The fix is one command, and it is the first step of tonight's homework."*
+- [ ] ⚠️ **Only if terminal 1 shows yellow `NU1902`/`NU1903` lines — otherwise skip this beat.** Swipe to the editor and point at them: *"These are the same warnings as the last two weeks: an advisory against a package the SQL Server package brings in. Read the line above them. Build succeeded. If your own app still shows them, the fix is one command, and it is in your homework's Stuck list."*
 
 ### Two questions *(slide 2)*
 

@@ -11,7 +11,7 @@ Tonight the Registry gets members. A table to keep them in, a way to join, a way
 > [!IMPORTANT]
 > **The app arrives as week 9 finished it, plus three fixes from the midterm** — the Privacy page is gone, a wrong id lands on the Registry's own *Not on file* page, and `/Cryptids` says *1 creature*, not *1 creatures*. Week 10 had no lab, so they're done for you; none of tonight's work touches them. If your own week-9 lab never got finished, you are **not** behind. Check 1 passes before you touch anything.
 >
-> **The yellow `NU1902` / `NU1903` warnings from weeks 9 and 10 are fixed in this starter.** They were security advisories against `System.Security.Cryptography.Pkcs`, a package the SQL Server package brings in, and `Cryptids.Web.csproj` now asks for the fixed version itself — that's the `System.Security.Cryptography.Pkcs` line. Your semester project needs the same line; the homework's first step adds it.
+> **The yellow `NU1902` / `NU1903` warnings from weeks 9 and 10 are fixed in this starter.** They were security advisories against `System.Security.Cryptography.Pkcs`, a package the SQL Server package brings in, and `Cryptids.Web.csproj` now asks for the fixed version itself — that's the `System.Security.Cryptography.Pkcs` line. Your semester project got the same line in week 9's homework; if it still shows the warnings, this week's homework has the command in its 🆘 list.
 
 **1. Update the starters clone.** Open `dotnet-web` in VS Code, then `` Ctrl+` `` for a terminal standing in it:
 
