@@ -200,7 +200,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
   ```
   Three files land: `ViewModels/RegisterViewModel.cs`, `Controllers/AccountController.cs` and `Views/Account/Register.cshtml`. Terminal 1 prints `Restart is needed to apply the changes` and restarts by itself
 - [ ] Say it while it restarts: *"A ViewModel for the form, a controller with a Register pair, and the form itself. I am going to look at three lines in the controller."*
-- [ ] **Open `ViewModels/RegisterViewModel.cs`.** *"The form posts an email, a password and the password again. Compare checks that the two passwords match. This is not the user. The password arrives here once and goes no further."*
+- [ ] **Open `ViewModels/RegisterViewModel.cs`.** *"The form posts an email, a password and the password again. Compare checks that the two passwords match. This class only carries what the form sends. It is not the AppUser that gets saved. The password reaches this class once, Identity turns it into a hash, and the password itself is never stored."*
 - [ ] **Open `Controllers/AccountController.cs`, the Register POST.** Point at the three lines in order:
   ```csharp
   var result = await _userManager.CreateAsync(user, form.Password);

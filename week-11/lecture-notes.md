@@ -169,7 +169,7 @@ public class RegisterViewModel
 }
 ```
 
-It is **not** the user. The password arrives here once, gets hashed, and goes no further — which is exactly why it is a ViewModel and not a property on your user class. `[Compare]` checks the two password boxes match. [Part 7](#on-the-form) adds one more property to it.
+It only carries what the form sends — it is **not** your user class, and it never gets saved. The password reaches it once, Identity turns it into a hash, and the password itself is never stored. That's why it's a ViewModel, and why `Password` is never a property on your user class. `[Compare]` checks the two password boxes match. [Part 7](#on-the-form) adds one more property to it.
 
 ### The controller
 
