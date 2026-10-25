@@ -704,42 +704,7 @@ dotnet ef database update
 
 **Then `Ctrl+R` in terminal 1** — a new column, the same restart as task 2.
 
-**Now the navbar shows it.** Replace the whole of `Views/Shared/_LoginPartial.cshtml` with this. What's new is the two lines at the top, and the `var member` line — with its comment — inside the `@if`:
-
-```cshtml
-@using Microsoft.AspNetCore.Identity
-@inject UserManager<Member> UserManager
-
-<ul class="navbar-nav align-items-sm-center">
-@if (User.Identity?.IsAuthenticated == true)
-{
-    // The cookie says WHO is signed in. Anything else about them — the
-    // field name — is a column, so the partial looks the member up.
-    var member = await UserManager.GetUserAsync(User);
-    <li class="nav-item">
-        <span class="navbar-text me-2">Signed in as @member?.FieldName</span>
-    </li>
-    <li class="nav-item">
-        <form asp-controller="Account" asp-action="Logout" method="post">
-            <button type="submit" class="btn btn-link nav-link">Sign out</button>
-        </form>
-    </li>
-}
-else
-{
-    <li class="nav-item">
-        <a class="nav-link" asp-controller="Account" asp-action="Register">Join</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" asp-controller="Account" asp-action="Login">Sign in</a>
-    </li>
-}
-</ul>
-```
-
-The cookie says *who* is signed in, but not their field name — that's a column, so the partial looks the member up.
-
-**Reload.** *(Signed out? Sign in first, with the account you made in task 3.)* **Your navbar says *Signed in as* — and nothing.** You joined in task 3, before the column existed, and the migration gave you an empty string. That's week 10's empty state in a new place, and the fix is the same: show something else when there's nothing to show. Replace the whole file again — the `var name` line is new, and the `<span>` shows it:
+**Now the navbar shows it.** Replace the whole of `Views/Shared/_LoginPartial.cshtml` with this:
 
 ```cshtml
 @using Microsoft.AspNetCore.Identity
@@ -773,7 +738,11 @@ else
 </ul>
 ```
 
-Reload: your email again. Now give new members a field name when they join — three small edits.
+What's new is the two lines at the top and the two `var` lines inside the `@if`. The cookie says *who* is signed in, but not their field name — that's a column, so the partial looks the member up.
+
+**The `var name` line is the demo's fallback.** You joined in task 3, before the column existed, so the migration gave your account an empty `FieldName`. Without that line your navbar would say *Signed in as* and nothing after it — week 10's empty state in a new place. With it, an empty field name shows your email instead.
+
+**Reload.** *(Signed out? Sign in first, with the account you made in task 3.)* The navbar shows your email. Now give new members a field name when they join — three small edits.
 
 **`ViewModels/RegisterViewModel.cs`, under `Email`:**
 

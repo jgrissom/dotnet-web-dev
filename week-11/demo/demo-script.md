@@ -487,8 +487,8 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 - [ ] Lab README on screen, scrolled to **Task 6 in full**
 - [ ] *"Task 6 is a field name for your members: the name they sign their reports with. The property, the migration, the form, and the navbar."*
-- [ ] *"After database update, Ctrl R in terminal 1. Then look at your own navbar before you change anything else. Your account is older than the column too."*
-- [ ] 👀 **Watch for:** `Invalid column name 'FieldName'` — they skipped `database update`, or the restart after it. A navbar reading *Signed in as* and nothing — that is the beat; the fallback is next in the README. Check 6 saying the form doesn't ask for it — the box went on `Register.cshtml` but the property isn't on `RegisterViewModel`, or the other way round
+- [ ] *"After database update, Ctrl R in terminal 1. The navbar file is one paste, with the fallback already in it, because your account is older than the column too."*
+- [ ] 👀 **Watch for:** `Invalid column name 'FieldName'` — they skipped `database update`, or the restart after it. A navbar reading *Signed in as* and nothing — the `var name` fallback line is missing from their partial. Check 6 saying the form doesn't ask for it — the box went on `Register.cshtml` but the property isn't on `RegisterViewModel`, or the other way round
 - [ ] **Stop:** the note after **Task 6 in full**. Where they should be: **`Passed: 6`**, and a new account whose field name is in the navbar
 
 ## Lab G · Catch up, or the stretch — 10 minutes
