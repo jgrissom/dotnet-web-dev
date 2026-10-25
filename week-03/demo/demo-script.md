@@ -236,7 +236,7 @@ Tonight's demo app does not exist yet — building it in front of the room *is* 
 
 ## 6 · Wrap-up, after the lab *(slides 17–18)*
 
-- [ ] 🎞️ **GO TO SLIDE 17** — *Before next week*. The homework and the reading
+- [ ] 🎞️ **GO TO SLIDE 17** — *Before next week*. The homework
 - [ ] **Land the last line:** *"the Cryptid Registry you built out of flat HTML in week 2 — next week you build it again in C#, and this time the pages come off a model"*
 - [ ] 🎞️ **GO TO SLIDE 18** — *The semester, from tonight's summit*. Where the next thirteen weeks go
 - [ ] 🎯 **Trace the chain, then land the last line:** *"browser, HTTP, routing, C#, HTML, Azure — every link in that chain ran on screen tonight, and the last one is your homework. Week 7 adds a database. Everything between here and there is refinement of a pipeline you have already watched work"*

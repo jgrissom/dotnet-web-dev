@@ -187,4 +187,4 @@ Every individual step is also browsable as a red/green diff at [the commit list]
 
 ## 6 · Wrap-up, after the lab *(slide 15)*
 
-- [ ] 🎞️ **GO TO SLIDE 15** — *Before next week*. The homework, the deploy, and the reading
+- [ ] 🎞️ **GO TO SLIDE 15** — *Before next week*. The homework and the deploy

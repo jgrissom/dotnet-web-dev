@@ -75,11 +75,11 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] **Seven trucks.** *"Last week that reload was the whole show. This week it's just true."*
 - [ ] *"You can read a table, show one row of it, and add to it. In CRUD terms you have C and R (Create and Read). Tonight is U and D (Update and Delete) — and most of it gets written for you."*
 
-### Collect the reading *(slide 2)*
+### What Edit needs *(slide 2)*
 
-- [ ] **Collect the reading before any slide goes up** — the slide lists the answers: *"Suppose we want to implement the UPDATE part of CRUD. How is it different from CREATE? We need a form? We need an http post? What is different?"* Take three or four answers out loud
+- [ ] **Ask the room before any slide goes up** — the slide lists the answers: *"Suppose we want to implement the UPDATE part of CRUD. How is it different from CREATE? We need a form? We need an http post? What is different?"* Take three or four answers out loud
 - [ ] 🎞️ **GO TO SLIDE 2** — *What Edit needs* · walk the slide's three, crediting the room for each one they found: *"The big difference is that the form arrives pre-filled with the record's existing field values. In order to do that, the app has to know which record. And the save is an UPDATE, not an INSERT."*
-- [ ] 🎯 **Then the reading's second question — it's the slide's bottom line — and don't answer it:** *"when you hit Save on an edit, how does the app know which record you meant? Your Create form never sends an Id."* Take guesses. *"We are going to find that out in today's class."*
+- [ ] 🎯 **Then the slide's bottom line — a second question, and don't answer it:** *"when you hit Save on an edit, how does the app know which record you meant? Your Create form never sends an Id."* Take guesses. *"We are going to find that out in today's class."*
 
 ### The shape of the night *(slide 3)*
 

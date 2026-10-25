@@ -446,6 +446,6 @@ Everything here happens in `Views/Trucks/Index.cshtml`.
 
 ## 7 · Wrap-up, after the lab *(slides 20–21)*
 
-- [ ] 🎞️ **GO TO SLIDE 20** — *Before next week*. The homework and the reading
+- [ ] 🎞️ **GO TO SLIDE 20** — *Before next week*. The homework
 - [ ] 🎯 **Spend the time on the second checkmark — it's the only one that outlives tonight:** *"the topic you pick this week is the app you keep extending for the rest of the semester. In week 9 you add a second related table to it, so pick something that can grow one"* — then land the slide's last line: **pick a topic you can live with**
 - [ ] 🎞️ **GO TO SLIDE 21** — *The chain, complete*. Walk it once: URL → route → controller → model → view

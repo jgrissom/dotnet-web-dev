@@ -32,7 +32,7 @@ style: |
 
 ---
 
-<!-- _footer: '🖥️ Demo §1 · collect the reading' -->
+<!-- _footer: '🖥️ Demo §1 · what Edit needs' -->
 
 ## What Edit needs
 
