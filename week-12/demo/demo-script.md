@@ -134,7 +134,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 - [ ] Lab README on screen, scrolled to **Task 2 in full**
 - [ ] *"Task 2 is the same change on your Registry. Your role is called Curator, because a curator looks after the archive. The attribute on CryptidsController gets Roles equals Curator."*
 - [ ] ⚠️ *"Leave SightingsController alone, exactly like last week. Reports are what the public files. Nobody needs a role to report a sighting, and check 2 fails if you lock it."*
-- [ ] *"Then click File a report, signed in as yourself, and look at the address bar."*
+- [ ] *"Then click Open a new file, the button that adds a creature, signed in as yourself, and look at the address bar."*
 - [ ] 👀 **Watch for:** check 2 saying a POST got through — the role went on the GET actions, not the class. The form still opening after the edit — hot reload; Ctrl+R in terminal 1. `Curators` or `curator` in the attribute — that's fine until task 4, when the seeder has to spell it the same way
 - [ ] **Stop:** the note after **Task 2 in full**. Where they should be: **`Passed: 2`**, and their own account landing on the Not on file page at `/Account/AccessDenied`
 
@@ -280,7 +280,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 - [ ] Lab README on screen, scrolled to **Task 4 in full**
 - [ ] *"Task 4 makes you the curator. In terminal 2, set Admin Email to the email you joined with in task 1. Then the seeder file, then the lines in Program.cs."*
-- [ ] *"Then try to file a report, still signed in. You will be refused, and that is correct. Sign out, sign back in, and try again."*
+- [ ] *"Then try Open a new file, still signed in. You will be refused, and that is correct. Sign out, sign back in, and try again."*
 - [ ] 👀 **Watch for:** the refusal after restarting — they have done it right; sign out and back in. Never let in, even after signing in again — the role name in `RoleSeeder.cs` and in the attribute disagree (`Curator` both times), the secret's key isn't exactly `Admin:Email`, or the email isn't the one they joined with: `dotnet user-secrets list` shows it. `Unhandled exception … The ConnectionString property has not been initialized` before `Now listening on:` — the connection string secret is gone (a frozen lab PC); set it again
 - [ ] **Stop:** the note after **Task 4 in full**. Where they should be: **`Passed: 4`**, and the form opening for their own account after signing in again
 
@@ -475,7 +475,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 ## Lab E · Task 5 — 12 minutes
 
 - [ ] Lab README on screen, scrolled to **Task 5 in full**
-- [ ] *"Task 5 hides the archive's buttons. File a report on the list, and Correct the record and Close the file on a creature's page. Each one inside an if that asks whether you are a Curator."*
+- [ ] *"Task 5 hides the archive's buttons. Open a new file on the list, and Correct the record and Close the file on a creature's page. Each one inside an if that asks whether you are a Curator."*
 - [ ] ⚠️ *"Report a sighting stays outside the if. That one is for the public, and check 5 fails if a visitor cannot see it."*
 - [ ] *"Then sign out, and type Cryptids slash Create into the address bar."*
 - [ ] 👀 **Watch for:** check 5 saying a visitor can't see 👁️ *Report a sighting* — it went inside the `@if` with the others. The curator seeing nothing either — the role name inside `IsInRole` isn't `Curator`, or they haven't signed in again since task 4. **Sweep the room here** — this is tonight's in-class target

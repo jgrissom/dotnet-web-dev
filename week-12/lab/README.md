@@ -9,7 +9,7 @@ Tonight the archive gets a curator. The lock asks for a **role**, not just an ac
 ## Setup
 
 > [!IMPORTANT]
-> **The app arrives as week 11 finished it** — members can join, sign in and sign out, every member has a field name, and the archive's writes are behind a sign-in-only `[Authorize]`. If your own week-11 lab never got to six, you are **not** behind. Check 1 passes before you touch anything.
+> **The app arrives as week 11 finished it** — members can join, sign in and sign out, every member has a field name, and the archive's writes are behind a sign-in-only `[Authorize]`. **One label changed:** the button that adds a creature is now **＋ Open a new file**, not *＋ File a report*. Tonight a *report* means a sighting, which anyone can file; a *file* is the archive, which only a curator opens, corrects or closes. If your own week-11 lab never got to six, you are **not** behind. Check 1 passes before you touch anything.
 
 **1. Update the starters clone.** Open `dotnet-web` in VS Code, then `` Ctrl+` `` for a terminal standing in it:
 
@@ -165,7 +165,7 @@ public class CryptidsController : Controller
 > [!TIP]
 > **Still signed in, and the form still opens over a correct attribute?** Press `Ctrl+R` in terminal 1 and try again. MVC works out each action's filters when the app starts, so an attribute is the kind of edit hot reload can report as applied when it isn't. A restart always applies it.
 
-**See where you land.** You're still signed in from task 1. Go to `/Cryptids` and click **＋ File a report**. The address bar says **`/Account/AccessDenied?ReturnUrl=%2FCryptids%2FCreate`** — and the page says ***Not on file***. That is Identity's other default: a visitor who isn't signed in goes to `/Account/Login`, and a member who is signed in without the role goes to `/Account/AccessDenied`. Nothing answers there yet, so it's a 404, and every 404 gets the Registry's Missing page.
+**See where you land.** You're still signed in from task 1. Go to `/Cryptids` and click **＋ Open a new file**. The address bar says **`/Account/AccessDenied?ReturnUrl=%2FCryptids%2FCreate`** — and the page says ***Not on file***. That is Identity's other default: a visitor who isn't signed in goes to `/Account/Login`, and a member who is signed in without the role goes to `/Account/AccessDenied`. Nothing answers there yet, so it's a 404, and every 404 gets the Registry's Missing page.
 
 **Run the checks, in terminal 3:**
 
@@ -176,7 +176,7 @@ dotnet test Cryptids.Checks
 **`Passed: 2`** — checks 1 and 2. Check 3's message says `/Account/AccessDenied` came back 404. That's correct: task 3 writes it.
 
 > [!NOTE]
-> **In class, stop here.** Task 3 comes after the break and the next part of the demo. Checks 3 to 6 are still red, and that's expected. Finished early? Sign out, then click **＋ File a report** — you go to the sign-in page, not AccessDenied. Same lock, two visitors, two answers. Or help a classmate. Working at home? Carry straight on.
+> **In class, stop here.** Task 3 comes after the break and the next part of the demo. Checks 3 to 6 are still red, and that's expected. Finished early? Sign out, then click **＋ Open a new file** — you go to the sign-in page, not AccessDenied. Same lock, two visitors, two answers. Or help a classmate. Working at home? Carry straight on.
 
 ### Task 3 in full
 
@@ -299,7 +299,7 @@ Terminal 1 prints `Restart is needed to apply the changes` and restarts on its o
 > [!WARNING]
 > **From now on your app talks to the database the moment it starts** — the seeder runs before `Now listening on:`. If the connection string secret is gone (a frozen lab PC wipes it), the app stops there with `Unhandled exception. System.InvalidOperationException: The ConnectionString property has not been initialized.` Set it again, task 1's first command.
 
-**Now try it.** You're still signed in. Click **＋ File a report.** ***Curators only.***
+**Now try it.** You're still signed in. Click **＋ Open a new file.** ***Curators only.***
 
 **That's correct, and it's the lesson.** The seeder gave you the role — in the mssql panel:
 
@@ -310,7 +310,7 @@ JOIN AspNetRoles r ON r.Id = ur.RoleId
 JOIN AspNetUsers u ON u.Id = ur.UserId;
 ```
 
-One row: `Curator`, and your email. But **your cookie was made when you signed in, before you had the role**, and the lock reads the cookie, not the database. **Sign out, sign back in**, and click **＋ File a report** again. The form.
+One row: `Curator`, and your email. But **your cookie was made when you signed in, before you had the role**, and the lock reads the cookie, not the database. **Sign out, sign back in**, and click **＋ Open a new file** again. The form.
 
 *(Identity also re-checks the cookie against the database every 30 minutes, so a role can arrive on its own. Signing in again is how you get it now.)*
 
@@ -320,7 +320,7 @@ One row: `Curator`, and your email. But **your cookie was made when you signed i
 dotnet test Cryptids.Checks
 ```
 
-**`Passed: 4`** — checks 1 to 4. Check 5's message says a visitor sees the ＋ File a report button. That's correct: task 5 hides it.
+**`Passed: 4`** — checks 1 to 4. Check 5's message says a visitor sees the ＋ Open a new file button. That's correct: task 5 hides it.
 
 > [!NOTE]
 > **In class, stop here.** Task 5 comes after the break and the next part of the demo. Checks 5 and 6 are still red, and that's expected. Finished early? Run `dotnet user-secrets list` in terminal 2 — two lines, your connection string and your email. Nothing in your repo knows either one. Or help a classmate who keeps getting *Curators only*: ask them whether they signed out and back in. Working at home? Carry straight on.
@@ -329,12 +329,12 @@ dotnet test Cryptids.Checks
 
 **Check:** `Check5_OnlyCuratorsSeeTheButtons`
 
-**In `Views/Cryptids/Index.cshtml`**, the ＋ File a report button goes inside an `@if`:
+**In `Views/Cryptids/Index.cshtml`**, the ＋ Open a new file button goes inside an `@if`:
 
 ```cshtml
 @if (User.IsInRole("Curator"))
 {
-    <a asp-action="Create" class="btn btn-primary mb-4">＋ File a report</a>
+    <a asp-action="Create" class="btn btn-primary mb-4">＋ Open a new file</a>
 }
 ```
 
@@ -461,7 +461,7 @@ Everything around it stays: the `var name` fallback from week 11 still decides w
 - **Signed out and in again, and *still* *Curators only*** — the seeder never gave you the role. Check three spellings: `"Curator"` in the attribute and in `RoleSeeder.cs` must match; the secret's key must be exactly `Admin:Email`; and `dotnet user-secrets list` must show the email you joined with. Then `Ctrl+R` in terminal 1 — the seeder only runs at startup.
 - **Signed in, and `/Cryptids/Create` still opens** — the attribute isn't `[Authorize(Roles = "Curator")]` yet, or hot reload hasn't applied it. `Ctrl+R` in terminal 1. [Task 2 in full ↑](#task-2-in-full)
 - **Check 2 says a POST got through** — the role went on the GET actions instead of the class.
-- **Check 2 says a visitor couldn't file a report** — `SightingsController` got an `[Authorize]`. Take it off; reports are public.
+- **Check 2 says a visitor couldn't report a sighting** — `SightingsController` got an `[Authorize]`. Take it off; reports are public.
 - **`/Account/AccessDenied` is *Not on file*, and the view is right there** — the `AccessDenied()` action isn't on `AccountController`, or terminal 1 is asking `Do you want to restart your app?` — answer `a`. Don't move the file.
 - **A `500` with `The view 'AccessDenied' was not found`** — the action is there and the view isn't, or the restart prompt is still waiting in terminal 1. [Task 3 in full ↑](#task-3-in-full)
 - **Check 5 says a visitor can't see 👁️ Report a sighting** — it went inside the `@if` with the archive's buttons. Move it out.
