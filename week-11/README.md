@@ -29,4 +29,4 @@ The night the app learns who its visitors are. Since week 6 anyone with the URL 
 - ⚠️ **Say *signed in is not trusted* out loud in §5.** Week 12 is roles
 - Remind students to `git pull` the starters repo for the week-11 folder
 
-**Prev:** [← Week 10 — The Midterm Project](../week-10/README.md) · **Next:** Week 12 — Roles, claims and securing the application *(coming)*
+**Prev:** [← Week 10 — The Midterm Project](../week-10/README.md) · **Next:** [Week 12 — Roles, Claims and Securing the Application →](../week-12/README.md)

@@ -20,7 +20,7 @@ Full-stack web development with **ASP.NET Core MVC on .NET 10**, **Entity Framew
 | 9 | EF Core relationships (1-many, many-many), LINQ queries, ViewModels | [`week-⁠09/`](week-09/) | ✅&nbsp;Ready |
 | 10 | Midterm project: extend your semester project into a finished build, tying weeks 3–9 together | [`week-⁠10/`](week-10/) | ✅&nbsp;Ready |
 | 11 | ASP.NET Core Identity: registration, login, customizing IdentityUser | [`week-⁠11/`](week-11/) | ✅&nbsp;Ready |
-| 12 | Identity pt. 2: roles, claims, `[Authorize]`, securing the app | `week-⁠12/` | 🚧&nbsp;Planned |
+| 12 | Identity pt. 2: roles, claims, `[Authorize]`, securing the app | [`week-⁠12/`](week-12/) | ✅&nbsp;Ready |
 | 13 | ⚡ **Flex week** — polish topics: dependency injection & services, TempData, paging/filtering/search. *In a 15-week semester, skip this week*: nothing later depends on it, and its topics live on as stretch goals | `week-⁠13/` | 🚧&nbsp;Planned |
 | 14 | Intro to Web API: controllers vs. minimal APIs, JSON, testing endpoints | `week-⁠14/` | 🚧&nbsp;Planned |
 | 15 | Consuming your API with JavaScript fetch; production concerns (config, secrets, CI/CD with GitHub Actions); 🤝 in-class pair lab: fork → pull request → review → merge conflict | `week-⁠15/` | 🚧&nbsp;Planned |
