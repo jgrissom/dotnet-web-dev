@@ -249,7 +249,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
       }
   }
   ```
-- [ ] **Say what it is, with it on screen:** *"Three workers from Identity. RoleManager makes roles. UserManager finds users and gives them roles, the same UserManager as last week's register page. And configuration, for the email. If the role is missing, it makes it. If there is an email, and someone registered with it, and they are not an admin yet, it makes them one. Run it twice and nothing changes the second time."*
+- [ ] **Say what it is, with it on screen:** *"Two classes from Identity, and configuration. RoleManager makes roles. UserManager finds users and gives them roles, the same UserManager as last week's register page. Configuration gives me the email. If the role is missing, it makes it. If there is an email, and someone registered with it, and they are not an admin yet, it makes them one. Run it twice and nothing changes the second time."*
 - [ ] Open `Program.cs`. Paste this **just below `var app = builder.Build();`**:
   ```csharp
   // Week 12: the Admin role, and who holds it. Runs once, at startup.
