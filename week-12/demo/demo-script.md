@@ -49,13 +49,13 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
   dotnet ef database update
   ```
   Seven migrations replay. **No new migration tonight** — `AspNetRoles` and `AspNetUserRoles` came with week 11's `AddIdentity`, and they are empty
+- [ ] **Rehearse the whole script once in a separate copy.** Besides finding what is broken, it is the only way to see §4's refusal for yourself before the room does. Stop the rehearsal's `dotnet watch` when you're done — both copies use the same port
+- [ ] 🚨 **Then check the secret and rebuild the database again** — `user-secrets list` (remove `Admin:Email` if it's there), drop and update. A separate *copy* is not a separate database or a separate secret store: the `<UserSecretsId>` ships in the `.csproj`. Your rehearsal left an `Admin:Email` secret, an `Admin` role, Ada holding it, and Sam. **Last thing before class, always: `user-secrets list` shows one line, drop, update**
 - [ ] Run it, same terminal:
   ```bash
   dotnet watch
   ```
 - [ ] **Register Ada.** Browse to `/Account/Register`: **Email** `ada@example.com`, **What should we call you?** `Ada`, `Curbside-2026` in **Password** and again in **Confirm password**. Then **Sign out**. Ada is your own account tonight: §4 makes her the admin. Sam, the stranger, registers live in §1
-- [ ] **Rehearse the whole script once in a separate copy.** Besides finding what is broken, it is the only way to see §4's refusal for yourself before the room does
-- [ ] 🚨 **Then do all three resets again — files, `user-secrets list`, drop and update — and register Ada again.** A separate *copy* is not a separate database or a separate secret store: the `<UserSecretsId>` ships in the `.csproj`. Your rehearsal left an `Admin:Email` secret, an `Admin` role, Ada holding it, and Sam. **Last thing before class, always: `user-secrets list` shows one line, drop, update, Ada registered and signed out**
 - [ ] **Open a second integrated terminal** (the `+` on the terminal panel — it opens in the same folder). `dotnet watch` owns the first one all night; §4's `dotnet user-secrets` goes in the second
 - [ ] ⚠️ **Know the one prompt, and where it comes.** It is **not** at §2's attribute edit — that hot-reloads. It is in **§3, the moment `Views/Account/AccessDenied.cshtml` is created** — `ENC0021: Adding attribute requires restarting the application`, then **`Do you want to restart your app? Yes (y) / No (n) / Always (a) / Never (v)`** — in terminal 1. **Answer `a`.** After that, `watch` restarts by itself for §4's `Program.cs` and §6's new view. *(Measured on a pty-driven `dotnet watch`.)*
 - [ ] ⚠️ **Every restart tonight is Ctrl+R in terminal 1, never Ctrl+C + `dotnet watch`.** *Always* belongs to the `watch` session; Ctrl+C ends it, and the next new file stops and asks again
