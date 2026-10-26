@@ -119,7 +119,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 - [ ] Point at the address bar: *"Look at the address. Account, AccessDenied. Identity has two places it sends people. Someone who is not signed in goes to Account Login. Someone who is signed in, but is not allowed, goes to Account AccessDenied. These are the Identity framework's defaults, the same as the sign-in page last week."*
 - [ ] **Ask the second one — the answer is week 10:** *"Now look at the page. It says that page doesn't exist. Which part of my app put this page up?"* Take the answer: *"The Missing page from week 10. Nothing in my app answers at Account AccessDenied, so it is a 404, and every 404 gets the Missing page."*
 - [ ] 🎞️ **GO TO SLIDE 3** — *A role on the lock* · *"Here are the three visitors, and where each one lands. Not signed in, the sign-in page. Signed in without the role, AccessDenied. Signed in with it, the form."*
-- [ ] 🎯 Still on slide 3, the last line: *"I never configured either of those addresses. I write the pages, and Identity sends people to them. The sign-in page exists since last week. AccessDenied is the one I still owe."*
+- [ ] 🎯 Still on slide 3, the last line: *"I never configured either of those addresses. I write the pages, and Identity sends people to them. The sign-in page has existed since last week. AccessDenied is the one I still owe."*
 
 ### Every write
 
@@ -161,7 +161,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
   ```
 - [ ] **Say what it is:** *"A page that tells someone who is signed in that this part of the site is for admins, and a way back to the trucks."*
 - [ ] ⚠️ **Terminal 1 — the prompt.** It prints `ENC0021: Adding attribute requires restarting the application`, then `Do you want to restart your app?` **Answer `a`.** Say why while it restarts: *"A new view is a change hot reload cannot make, so dotnet watch asks to restart. I answer a, for always, and from now on it restarts by itself when it has to. You get the same question in your lab."*
-- [ ] **Reload the AccessDenied tab.** Still ***Keep on Truckin'***. *"The view is there, and there is still no action to show it. So it is still a 404."*
+- [ ] **Reload the page** — the address bar still says `/Account/AccessDenied`. Still ***Keep on Truckin'***. *"The view is there, and there is still no action to show it. So it is still a 404."*
 
 ### Then the action
 
@@ -533,7 +533,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 ### Sam's five, Ada's six
 
 - [ ] **Swipe to the browser.** Signed in as Sam, browse to **`/Account/Claims`**. Five rows: `…/nameidentifier`, `…/name`, `…/emailaddress`, `AspNet.Identity.SecurityStamp`, `amr`. *"This is everything my app knows about Sam without asking the database. His id, his name, his email, a stamp Identity uses to tell whether the account has changed, and how he signed in: pwd, a password."*
-- [ ] **Sign out**, **sign in** as Ada, **`/Account/Claims`**. 🎯 **Six rows** — one of them `http://schemas.microsoft.com/ws/2008/06/identity/claims/role`, value **`Admin`**. *"Ada has one more row. That is her role."*
+- [ ] **Sign out**, **sign in** as Ada, **`/Account/Claims`**. 🎯 **Six rows** — one of them `http://schemas.microsoft.com/ws/2008/06/identity/claims/role`, value **`Admin`**. *"Ada has one more row than Sam. That is her role."*
 - [ ] 🎞️ **GO TO SLIDE 7** — *A role is a claim* · *"A claim is one fact about you, written into the cookie when you sign in. A role is just a claim whose type is role."*
 - [ ] Still on slide 7, the last line: *"So User IsInRole and Authorize with Roles are both reading that one row. That is why the role arrived when Ada signed in again: a new sign-in writes a new set of claims."*
 
@@ -562,7 +562,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 ## 8 · Wrap-up, after the lab *(slide 9)*
 
-- [ ] 🎞️ **GO TO SLIDE 9** — *Tonight, in one picture* · walk the five rows, one sentence each, and give the last row the emphasis: *"A hidden button is a courtesy. The attribute is the lock. If you only remember one row, remember that one."*
+- [ ] 🎞️ **GO TO SLIDE 9** — *Tonight, in one picture* · walk the five rows, one sentence each, and give the last row the emphasis: *"Hiding a button only saves someone a click that would be refused. The attribute is the lock. If you only remember one row, remember that one."*
 - [ ] Homework: **the same four moves on their own app.** *"The role on your lock, an AccessDenied page, a seeder that reads your own email from configuration, and the buttons hidden. You pick the role's name. Pick one that says what that person does in your app."*
 - [ ] ⚠️ Say what the self-check can't see, and what it does to your browser: *"The self-check signs in as last week's self-check account, which has no role, and makes sure it is refused everything. It cannot see your admin succeed, because it does not know your password and never should. So the homework's last step is yours: sign in as your admin on Azure, and change something. And when the check finishes, your browser is signed out."*
 - [ ] 💡 *"On Azure, your admin's email is an app setting called Admin underscore underscore Email, the same command as the connection string in week 7. Setting it restarts the app, and the seeder runs then. Then sign out and back in, the same as tonight."*

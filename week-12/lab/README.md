@@ -201,7 +201,7 @@ dotnet test Cryptids.Checks
 > [!IMPORTANT]
 > **Terminal 1 now stops and asks:** `ENC0021: Adding attribute requires restarting the application`, then `Do you want to restart your app? Yes (y) / No (n) / Always (a) / Never (v)`. **Answer `a`.** A new view is a change hot reload can't make. With `a` answered, `watch` restarts by itself every time it has to for the rest of the lab.
 
-Reload the AccessDenied tab: still *Not on file*. The view exists, and there is no action to show it yet.
+Reload the page — the address bar still says `/Account/AccessDenied` — and it's still *Not on file*. The view exists, and there is no action to show it yet.
 
 **Then the action.** In `Controllers/AccountController.cs`, just above the comment `// POST /Account/Logout`:
 
