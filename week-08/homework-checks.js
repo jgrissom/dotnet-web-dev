@@ -37,6 +37,9 @@
   const EDITED = `Week ${WEEK} Test (edited)`;
   // Recognizes a leftover from ANY week, and survives being clipped to a short
   // StringLength — the marker is trimmed to fit their own rules before it's sent.
+  // This only says "worth a closer look": the text can reach a page without being
+  // this record's own — a category called "Week 9 Test" prints on every recipe in
+  // it. isLeftover below decides, because adoption ends in that record's DELETE.
   const MARKER_RX = /Week\s*\d+/i;
 
   // In Node, fetch doesn't keep cookies, and the antiforgery token needs its
@@ -182,6 +185,21 @@
       fields.push(field);
     }
     return fields;
+  }
+
+  // True when one of the record's own text boxes holds a marker — whole, clipped to
+  // a short StringLength, or padded to a long minimum. A <select> doesn't count:
+  // its options are other records, not this one.
+  function isLeftover(form) {
+    const boxes = [
+      ...formFields(form).filter(f => f.tag === "input" && !f.hidden).map(f => f.value),
+      ...[...form.matchAll(/<textarea\b[^>]*>([\s\S]*?)<\/textarea>/gi)].map(m => m[1]),
+    ];
+    return boxes.some(box => {
+      const v = box.trim().replace(/x+$/, "");
+      const week = v.match(/^Week (\d+)/);
+      return week !== null && `Week ${week[1]} Test (edited)`.startsWith(v);
+    });
   }
 
   function validValue(f) {
@@ -436,9 +454,16 @@
     let adoptedId = null;
     if (markerWasAlreadyThere) {
       for (const cand of [...originalIds].sort((a, b) => b - a).slice(0, 12)) {
-        const p = await getWithWakeup(`${root}/${route}/Details/${cand}`);
-        if (p && p.status < 400 && MARKER_RX.test(p.body)) { adoptedId = cand; break; }
+        const p = await getWithWakeup(`${root}/${route}/Edit/${cand}`);
+        const form = p && p.status < 400 ? formHtml(p.body) : "";
+        // No Edit form yet means nothing can be deleted yet, so the page text will do.
+        const d = form ? null : await getWithWakeup(`${root}/${route}/Details/${cand}`);
+        if (form ? isLeftover(form) : d && d.status < 400 && MARKER_RX.test(d.body)) {
+          adoptedId = cand;
+          break;
+        }
       }
+      markerWasAlreadyThere = adoptedId !== null;
     }
 
     if (!write) {
