@@ -499,7 +499,17 @@
     const parentId = parentIds[0];
     const parentUrl = `/${route}/Details/${parentId}`;
     const parentBefore = await getWithWakeup(root + parentUrl);
-    const alreadyFiled = parentBefore && parentBefore.status < 400 && MARKER_RX.test(parentBefore.body);
+    // What this form would file, clipped or padded to their rules, and only where it's
+    // rendered as text: a dropdown of categories can name a test row and prove nothing.
+    // Any "Week N" used to count here, which passed checks 5 and 6 with nothing filed.
+    const filedText = childFields
+      .filter(f => (f.type === "text" || f.type === "textarea") && !f.isNumber)
+      .map(validValue).filter(v => /^Week \d/.test(v));
+    const showsReport = (html) => {
+      const seen = String(html).replace(/<select\b[\s\S]*?<\/select>/gi, "").toLowerCase();
+      return filedText.some(v => seen.includes(v.toLowerCase()));
+    };
+    const alreadyFiled = parentBefore && parentBefore.status < 400 && showsReport(parentBefore.body);
     if (alreadyFiled) { markerWasAlreadyThere = true; adopted = true; }
 
     const action = formAction(childForm) || childFormUrl;
@@ -571,7 +581,7 @@
     // The one that catches the whole week. The row is in the database — check 5
     // just put it there — so if the page doesn't show it, the query didn't ask.
     const parentAfter = await getWithWakeup(root + parentUrl);
-    const shows = parentAfter && parentAfter.status < 400 && MARKER_RX.test(parentAfter.body);
+    const shows = parentAfter && parentAfter.status < 400 && showsReport(parentAfter.body);
 
     add(shows ? "pass" : "fail", 3, "and it appears on that record's own page", {
       hint: `the report is saved — your form accepted it — but ${parentUrl} doesn't show it. `
