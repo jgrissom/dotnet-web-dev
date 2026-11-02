@@ -98,7 +98,7 @@ section footer { color: #9fb2c1; font-size: 0.6em; opacity: 0.85; }
 <li><strong>Weeks 3–6</strong> — ASP.NET Core MVC: pages, forms, validation <em>(the server)</em></li>
 <li><strong>Weeks 7–10</strong> — Entity Framework Core + SQL Server, midterm project <em>(the data)</em></li>
 <li><strong>Weeks 11–13</strong> — Identity: logins, roles, security</li>
-<li><strong>Weeks 14–16</strong> — Web API + final project</li>
+<li><strong>Weeks 13–16</strong> — Web API + final project</li>
 </ul>
 <footer><img class="emoji" draggable="false" alt="🖥️" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f5a5.svg" data-marp-twemoji=""/> Demo §1 · the arc</footer>
 </section>
@@ -404,7 +404,7 @@ section footer { color: #9fb2c1; font-size: 0.6em; opacity: 0.85; }
 <ol>
 <li>Validation feedback &amp; UI sprinkles</li>
 <li>Working alongside Bootstrap</li>
-<li><strong>Week 15: your JS calls your own Web API</strong></li>
+<li><strong>Week 14: your JS calls your own Web API</strong></li>
 </ol>
 </li>
 <li>Tonight is a <strong>refresher</strong>, not a lesson: calibrating to the modern idioms this course speaks, and un-learning old-tutorial habits.</li>
@@ -1134,7 +1134,7 @@ section pre .hljs-name { color: #7ee787; }
 section pre .hljs-selector-class, section pre .hljs-selector-pseudo { color: #7ee787; }
 section footer { color: #9fb2c1; font-size: 0.6em; opacity: 0.85; }
 ;" data-marpit-pagination-total="25">
-<h2 id="fetch--asyncawait--a-preview-of-week-15">fetch + async/await — a preview of week 15</h2>
+<h2 id="fetch--asyncawait--a-preview-of-week-14">fetch + async/await — a preview of week 14</h2>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-js"><span class="hljs-keyword">const</span> <span class="hljs-title function_">loadUsers</span> = <span class="hljs-keyword">async</span> (<span class="hljs-params"></span>) =&gt; {
   <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> <span class="hljs-title function_">fetch</span>(<span class="hljs-string">&quot;https://jsonplaceholder.typicode.com/users&quot;</span>);
   <span class="hljs-keyword">const</span> users = <span class="hljs-keyword">await</span> response.<span class="hljs-title function_">json</span>();  <span class="hljs-comment">// JSON → array of objects</span>
@@ -1145,7 +1145,7 @@ section footer { color: #9fb2c1; font-size: 0.6em; opacity: 0.85; }
 </code></pre>
 <ul>
 <li><code>await</code> = &quot;wait here until the answer comes back&quot; — the network isn't instant</li>
-<li>In week 15 the URL is <strong>your own API</strong></li>
+<li>In week 14 the URL is <strong>your own API</strong></li>
 </ul>
 <footer><img class="emoji" draggable="false" alt="🖥️" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f5a5.svg" data-marp-twemoji=""/> Demo §6 · fetch</footer>
 </section>
