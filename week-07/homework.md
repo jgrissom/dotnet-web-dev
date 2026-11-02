@@ -229,7 +229,7 @@ That shows you the actual exception rather than a 500. There's also `az webapp r
 > **Use the same US region that worked before.** Apps deployed to Canadian regions have never been able to reach the school's SQL Server. If your deployed app throws a 500 while localhost is fine, check the region first — then check the app setting above.
 
 > [!IMPORTANT]
-> **You don't run migrations against a separate production database.** Your laptop and your Azure app point at the *same* database, and you already migrated it. That's not what a real project does — week 15 covers what real projects do — but it's what makes the next part possible.
+> **You don't run migrations against a separate production database.** Your laptop and your Azure app point at the *same* database, and you already migrated it. That's not what a real project does — week 14 covers what real projects do — but it's what makes the next part possible.
 
 ## Part 6 — The two minutes that are actually the point ⭐
 

@@ -40,7 +40,7 @@ style: |
 - **Weeks 3–6** — ASP.NET Core MVC: pages, forms, validation *(the server)*
 - **Weeks 7–10** — Entity Framework Core + SQL Server, midterm project *(the data)*
 - **Weeks 11–13** — Identity: logins, roles, security
-- **Weeks 14–16** — Web API + final project
+- **Weeks 13–16** — Web API + final project
 
 ---
 
@@ -115,7 +115,7 @@ Browser (client)  ── HTTP request ──►  Server (ASP.NET app)
 - JS appears three times in this course:
   1. Validation feedback & UI sprinkles
   2. Working alongside Bootstrap
-  3. **Week 15: your JS calls your own Web API**
+  3. **Week 14: your JS calls your own Web API**
 - Tonight is a **refresher**, not a lesson: calibrating to the modern idioms this course speaks, and un-learning old-tutorial habits.
 
 ---
@@ -352,7 +352,7 @@ C# bridge: an event + a lambda for the handler.
 ---
 
 <!-- _footer: '🖥️ Demo §6 · fetch' -->
-## fetch + async/await — a preview of week 15
+## fetch + async/await — a preview of week 14
 
 ```js
 const loadUsers = async () => {
@@ -365,7 +365,7 @@ loadUsers()   // ← type this to run it, then watch the console
 ```
 
 - `await` = "wait here until the answer comes back" — the network isn't instant
-- In week 15 the URL is **your own API**
+- In week 14 the URL is **your own API**
 
 ---
 

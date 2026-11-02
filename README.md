@@ -21,15 +21,15 @@ Full-stack web development with **ASP.NET Core MVC on .NET 10**, **Entity Framew
 | 10 | Midterm project: extend your semester project into a finished build, tying weeks 3–9 together | [`week-⁠10/`](week-10/) | ✅&nbsp;Ready |
 | 11 | ASP.NET Core Identity: registration, login, customizing IdentityUser | [`week-⁠11/`](week-11/) | ✅&nbsp;Ready |
 | 12 | Identity pt. 2: roles, claims, `[Authorize]`, securing the app | [`week-⁠12/`](week-12/) | ✅&nbsp;Ready |
-| 13 | ⚡ **Flex week** — polish topics: dependency injection & services, TempData, paging/filtering/search. *In a 15-week semester, skip this week*: nothing later depends on it, and its topics live on as stretch goals | [`week-⁠13/`](week-13/) | ✅&nbsp;Ready |
-| 14 | Intro to Web API: controllers vs. minimal APIs, JSON, testing endpoints | `week-⁠14/` | 🚧&nbsp;Planned |
-| 15 | Consuming your API with JavaScript fetch; production concerns (config, secrets, CI/CD with GitHub Actions); 🤝 in-class pair lab: fork → pull request → review → merge conflict | `week-⁠15/` | 🚧&nbsp;Planned |
+| 13 | Intro to Web API: controllers vs. minimal APIs, JSON, testing endpoints | `week-⁠13/` | 🚧&nbsp;Planned |
+| 14 | Consuming your API with JavaScript fetch; production concerns (config, secrets, CI/CD with GitHub Actions); 🤝 in-class pair lab: fork → pull request → review → merge conflict | `week-⁠14/` | 🚧&nbsp;Planned |
+| 15 | ⚡ **Flex week** — polish topics: dependency injection & services, TempData, paging/filtering/search. *No homework, and the first thing to give way*: lose a session anywhere before it, or run a 15-week semester, and it is skipped. Nothing depends on it, and its topics live on as stretch goals | [`week-⁠15/`](week-15/) | ✅&nbsp;Ready |
 | 16 | Final project work & presentations *(individual)* | `week-⁠16/` | 🚧&nbsp;Planned |
 
 > [!IMPORTANT]
 > **The semester project starts in week 4.** Week 4's homework has each student build a list-and-details site on a topic they choose, and every week after that extends *that same app*: a real layout and theme (5), forms and validation (6), the hard-coded list moves into SQL Server (7), full CRUD (8), a second related table (9), and the midterm builds on whatever they've got. Choose the topic with week 9 in mind — it needs to support a second, related list.
 >
-> **Every graded artifact in this course is individual** — including the final project. Team git (branching, pull requests, code review, resolving a merge conflict) is taught in week 15's **in-class lab**, on a throwaway repo, where it costs nobody points and nobody's own project gets touched.
+> **Every graded artifact in this course is individual** — including the final project. Team git (branching, pull requests, code review, resolving a merge conflict) is taught in week 14's **in-class lab**, on a throwaway repo, where it costs nobody points and nobody's own project gets touched.
 
 ## How to use this repo
 
@@ -43,7 +43,7 @@ Full-stack web development with **ASP.NET Core MVC on .NET 10**, **Entity Framew
 2. **In class:** present the slides — `slides.md` in VS Code with the **Marp for VS Code** extension, the exported `slides.html` in any browser (`F` for fullscreen, arrow keys — works offline), or the hosted Pages site. Keep `lecture-notes.md` open on a second screen as your script.
 3. **After class:** `homework.md` is the assignment. Lab answer keys live in the **private** [dotnet-web-dev-answer-keys](https://github.com/jgrissom/dotnet-web-dev-answer-keys) repo — never in this one.
 4. **Drafting future weeks:** work on a branch; merge to `main` when the week goes live. Everything on `main` is public immediately.
-5. **Short semester?** Week 13 is the designated flex week — skip it in a 15-week run and weeks 14–16 shift up one session. Later weeks are written to never depend on it.
+5. **Lost a session, or a short semester?** Week 15 is the designated flex week — it is last on purpose, so skip it and week 16 stays put. It carries no homework, and nothing is written to depend on it.
 
 ## Weekly Package
 

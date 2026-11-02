@@ -27,9 +27,9 @@ style: |
 
 <!-- _paginate: false -->
 
-# Week 13 — Polish
+# Week 15 — Polish
 
-.NET Web Development · Week 13 of 16
+.NET Web Development · Week 15 of 16
 
 **Tonight: the same app, easier to use and easier to read**
 

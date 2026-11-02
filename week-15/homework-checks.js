@@ -1,11 +1,11 @@
 // ═══════════════════════════════════════════════════════════════════════════
-//  Week 13 homework self-check — the SAME checks I grade with.
+//  Week 15 stretch self-check. Optional: nothing here is graded.
 //
 //  EASIEST WAY — include it like a CDN, exactly like last week. Open
-//  Views/Home/Index.cshtml, find the week-12 line, and REPLACE it:
+//  Views/Home/Index.cshtml, find last week's line, and REPLACE it:
 //
 //    @section Scripts {
-//        <script src="https://jgrissom.github.io/dotnet-web-dev/week-13/homework-checks.js"></script>
+//        <script src="https://jgrissom.github.io/dotnet-web-dev/week-15/homework-checks.js"></script>
 //    }
 //
 //  Then load that page and open the console (F12). NOTHING RUNS ON ITS OWN.
@@ -18,15 +18,11 @@
 //
 //  ⚠️  IT CANNOT SEE YOUR CONFIRMATION MESSAGE OR YOUR SERVICE. A message only
 //  appears after a change, and a change needs your role, which this check
-//  doesn't hold. A service is invisible from outside. Both are read from your
-//  repo at grading time, and the homework tells you how to test the message
-//  yourself.
-//
-//  12 of the 20 points are in here. The rest: 5 from your repo (the message
-//  and the service) and 3 from commits.
+//  doesn't hold. A service is invisible from outside. The stretch page tells
+//  you how to test the message yourself.
 // ═══════════════════════════════════════════════════════════════════════════
 (function () {
-  const WEEK = 13;
+  const WEEK = 15;
   const inBrowser = typeof window !== "undefined";
 
   // A word no student's records contain, to prove the search really filters.
@@ -372,7 +368,7 @@
       set("paged", "blocked", null, {
         hint: `your list shows ${firstIds.length} record${firstIds.length === 1 ? "" : "s"} and no link to a second page. `
             + "Either paging isn't built yet, or your page size is bigger than your list. I can't tell which from "
-            + "here, and I won't guess, so this one is worth nothing until there's a second page to look at.",
+            + "here, and I won't guess.",
         todo: firstIds.length > 2
           ? `Page your list. Your page size has to be smaller than your record count: with ${firstIds.length} `
             + "on this page, a page size of 2 works. There's a link to the next page on every page but the last."
@@ -418,15 +414,6 @@
       + `<script> tag; this week's line REPLACES it.`
     : null;
 
-  const BY_HAND = [
-    "1 pt — TempData set in a controller, before a redirect",
-    "1 pt — a view that shows it (your _Layout.cshtml, so every page can)",
-    "1 pt — a service: an interface, and a class that implements it",
-    "1 pt — registered in Program.cs (AddScoped<IYourService, YourService>())",
-    "1 pt — a controller that asks for the interface in its constructor",
-    "3 pts — 3+ meaningful commits, pushed to a public repo",
-  ];
-
   const isLocal = (url) => /localhost|127\.0\.0\.1|\[::1\]/i.test(String(url));
 
   const CANT_SEE = "This check can't see your confirmation message or your service. A message only shows up "
@@ -437,9 +424,7 @@
   const NOTHING_TOUCHED = "This check only read your pages: nothing was signed in or out, and nothing was added. "
     + "If you were signed in, you still are.";
 
-  const WHERE_THE_POINTS_ARE =
-    "12 of the 20 points are in this script — everything a visitor can see from outside. The other 8: "
-    + "the message and the service (5, from your repo) and commits (3).";
+  const NOT_GRADED = "This is an optional stretch. Nothing here is collected, and it's worth no points.";
 
   // ── Node: export for the grader, and support `node homework-checks.js <url>` ──
   if (typeof module !== "undefined" && module.exports) {
@@ -465,25 +450,22 @@
       console.log(`\n🔎 Week ${WEEK} self-check — ${url}`);
       console.log("   (a sleeping free-tier app can take ~30s for the first check)\n");
       const res = await runChecks(url, forced, (c) => {
-        console.log(`${c.pass ? "✅" : c.blocked ? "⬜" : "❌"} ${String(c.pts).padStart(2)} pts  ${c.label}`);
+        console.log(`${c.pass ? "✅" : c.blocked ? "⬜" : "❌"}  ${c.label}`);
         if (c.hint) console.log(`         ↳ ${c.hint}`);
       });
-      const { earned, possible, green, total, route } = res;
+      const { green, total, route } = res;
       const oldOne = staleWarning(res.stale);
       if (oldOne) console.log(`\n🚨 ${oldOne}`);
-      console.log(`\n📋 ${green} of ${total} checks green · ${earned} of ${possible} points${route ? `  (controller: /${route})` : ""}`);
+      console.log(`\n📋 ${green} of ${total} checks green${route ? `  (controller: /${route})` : ""}`);
 
       const next = res.checks.find(c => !c.pass && !c.blocked && c.todo)
                 || res.checks.find(c => !c.pass && c.todo);
       if (next) console.log(`\n👉 Next: ${next.todo}`);
-      else if (isLocal(url)) console.log("\n⚠️  That was localhost. Run it again on your Azure URL — the deployed one is what I grade.");
+      else if (isLocal(url)) console.log("\n✅ That was localhost. If you deploy, run it on your Azure URL too.");
       else console.log("\n🎉 Your list can be searched, it comes in pages, and it holds up to anything a visitor types.");
 
       console.log(`\n🔑 ${CANT_SEE}`);
-      console.log(`\nℹ️  ${WHERE_THE_POINTS_ARE}`);
-      console.log("\nThe other 8 points I check in your repo:");
-      BY_HAND.forEach(l => console.log("   • " + l));
-      console.log("\nSubmit your Azure URL + repo URL via Canvas.\n");
+      console.log(`\nℹ️  ${NOT_GRADED}\n`);
       process.exit(green === total ? 0 : 1);
     })();
   }
@@ -496,15 +478,15 @@
     const printCheck = (c) => {
       const mark = c.pass ? "✅" : c.blocked ? "⬜" : "❌";
       const color = c.pass ? "color: green" : c.blocked ? "color: gray" : "color: crimson";
-      console.log(`%c${mark} ${c.pts} pts  ${c.label}`, color);
+      console.log(`%c${mark}  ${c.label}`, color);
       if (c.hint) console.log(`      ↳ ${c.hint}`);
     };
 
     const report = (res) => {
-      const { earned, possible, green, total, route } = res;
+      const { green, total, route } = res;
       const oldOne = staleWarning(res.stale);
       if (oldOne) console.log(`%c🚨 ${oldOne}`, `${bold}; color: crimson`);
-      console.log(`%c📋 ${green} of ${total} checks green · ${earned} of ${possible} points${route ? `  (controller: /${route})` : ""}`, big);
+      console.log(`%c📋 ${green} of ${total} checks green${route ? `  (controller: /${route})` : ""}`, big);
 
       const next = res.checks.find(c => !c.pass && !c.blocked && c.todo)
                 || res.checks.find(c => !c.pass && c.todo);
@@ -512,16 +494,14 @@
         console.log(`%c👉 Next: ${next.todo}`, `${bold}; color: #79c0ff`);
         console.log("Fix that, then type  recheck()  again.");
       } else if (isLocal(window.location.origin)) {
-        console.log("%c⚠️  This is localhost. Run it again on your Azure URL — the deployed one is what I grade.", `${bold}; color: #d29922`);
+        console.log("%c✅ That was localhost. If you deploy, run it on your Azure URL too.", `${bold}; color: green`);
       } else {
         console.log("%c🎉 Your list can be searched, it comes in pages, and it holds up to anything a visitor types.", `${bold}; color: green`);
       }
 
       console.log(`%c🔑 ${CANT_SEE}`, "color: #d29922");
       console.log(`%c✅ ${NOTHING_TOUCHED}`, "color: #79c0ff");
-      console.log(`%cℹ️  ${WHERE_THE_POINTS_ARE}`, "color: #79c0ff");
-      console.log("%cThe other 8 points I check in your repo:", bold);
-      BY_HAND.forEach(l => console.log("   • " + l.trim()));
+      console.log(`%cℹ️  ${NOT_GRADED}`, "color: #79c0ff");
       console.log("%cType  recheck()  to run again — or  recheck(\"Trails\")  with your controller name.", "color: #79c0ff");
     };
 

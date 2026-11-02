@@ -560,4 +560,4 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 - [ ] ⚠️ Say what the self-check can't see, and what it does to your browser: *"The self-check signs in as last week's self-check account, which has no role, and makes sure it is refused everything. It cannot see your admin succeed, because it does not know your password and never should. So the homework's last step is yours: sign in as your admin on Azure, and change something. And when the check finishes, your browser is signed out."*
 - [ ] 💡 *"On Azure, your admin's email is an app setting called Admin underscore underscore Email, the same command as the connection string in week 7. Setting it restarts the app, and the seeder runs then. Then sign out and back in, the same as tonight."*
 - [ ] 💡 *"My Curbside is on localhost. Nothing is deployed for it. Yours is graded on its Azure URL."*
-- [ ] 🔗 Week 13: *"Next week is the flex week: services, TempData, and paging and search."*
+- [ ] 🔗 Week 13: *"Next week your app starts answering with JSON. That is Web API."*

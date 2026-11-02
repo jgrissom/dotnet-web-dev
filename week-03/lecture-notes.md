@@ -25,7 +25,7 @@ Content-Type: text/html
 ```
 
 - A request has a **verb**, a **path**, and **headers**. A response has a **status code**, headers, and a **body**.
-- Everything this semester — every page, every form post, every API call in week 14 — is this exchange, repeated.
+- Everything this semester — every page, every form post, every API call in week 13 — is this exchange, repeated.
 
 > [!TIP]
 > **Do this:** open the hosted coffee page, F12 → **Network** tab, refresh. Click the first request — there's the real request and response, headers and all. Click a CSS request too: same shape, different `Content-Type`. Demystified.
@@ -36,7 +36,7 @@ Content-Type: text/html
 |------|---------|-------------|
 | `GET` | "give me this" — safe, repeatable | every page view |
 | `POST` | "here's data, do something" | forms (week 6), creating records (week 8) |
-| `PUT` / `DELETE` | update / remove | Web API (week 14) |
+| `PUT` / `DELETE` | update / remove | Web API (week 13) |
 
 | Code | Meaning | You'll meet it |
 |------|---------|----------------|

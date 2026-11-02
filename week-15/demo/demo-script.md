@@ -1,9 +1,9 @@
-# Week 13 Demo Script — Curbside Gets Polished ✨
+# Week 15 Demo Script — Curbside Gets Polished ✨
 
 Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from here; nothing tonight is worth typing.
 
 > [!TIP]
-> **Clickable version:** [the hosted script](https://jgrissom.github.io/dotnet-web-dev/week-13/demo/script.html) — checkboxes survive refreshes; Reset button for next run.
+> **Clickable version:** [the hosted script](https://jgrissom.github.io/dotnet-web-dev/week-15/demo/script.html) — checkboxes survive refreshes; Reset button for next run.
 
 > [!TIP]
 > **This sheet is the running order. The deck is a prop it tells you to pick up.**
@@ -22,11 +22,14 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 ## 0 · Before class
 
-- [ ] ⚠️ **Re-rehearsing this week? Delete `instructor/week-13/Curbside` first** — a rehearsal leaves it in tonight's **end** state, and every beat below starts from week 12's. Deleting the folder in Finder is enough; the next step recreates it
-- [ ] VS Code → File → Open Folder → in `~/Repos/dotnet-web-dev-course/instructor/week-13`, create a new empty **folder** named `Curbside` and open it *(the dialog's **New Folder** button makes `week-13` too, the first time)*. **The folder stays empty — there is no `dotnet new` tonight;** the next step fills it with the starter
+> [!NOTE]
+> **Tonight's Curbside is deliberately week 12's, with none of weeks 13–14's Web API in it.** This is the flex week: nothing tonight needs the API, and in a 15-week run tonight is skipped.
+
+- [ ] ⚠️ **Re-rehearsing this week? Delete `instructor/week-15/Curbside` first** — a rehearsal leaves it in tonight's **end** state, and every beat below starts from week 12's. Deleting the folder in Finder is enough; the next step recreates it
+- [ ] VS Code → File → Open Folder → in `~/Repos/dotnet-web-dev-course/instructor/week-15`, create a new empty **folder** named `Curbside` and open it *(the dialog's **New Folder** button makes `week-15` too, the first time)*. **The folder stays empty — there is no `dotnet new` tonight;** the next step fills it with the starter
 - [ ] Integrated terminal (**Ctrl+&#96;**) — fill the empty folder with tonight's starter. This is Curbside as week 12's demo left it: the Admin role on every write, the seeder, the hidden buttons and the claims page:
   ```bash
-  cp -R ~/Repos/dotnet-web-dev-answer-keys/week-13/demo-starter/Curbside/. .
+  cp -R ~/Repos/dotnet-web-dev-answer-keys/week-15/demo-starter/Curbside/. .
   ```
   The trailing `/.` copies the *contents* in, so the project lands at the top of the window you already have open — no folder inside a folder
 
@@ -40,7 +43,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
   ```bash
   dotnet user-secrets list
   ```
-  **Two lines**, `Admin:Email = ada@example.com` and `ConnectionStrings:DefaultConnection = …`. Unlike last week, the email stays in place all night: Ada is the admin before the room arrives
+  **Two lines**, `Admin:Email = ada@example.com` and `ConnectionStrings:DefaultConnection = …`. Unlike week 12, the email stays in place all night: Ada is the admin before the room arrives
 - [ ] ⚠️ **Rebuild the database — before your rehearsal, and again after it:**
   ```bash
   dotnet ef database drop --force
@@ -55,21 +58,21 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
   ```
 - [ ] **Register Ada.** Browse to `/Account/Register`: **Email** `ada@example.com`, **What should we call you?** `Ada`, `Curbside-2026` in **Password** and again in **Confirm password**
 - [ ] **Press Ctrl+R in the terminal, then sign out and back in as Ada.** The seeder hands the role out at startup, so it needs a restart after she registers, and her cookie needs a fresh sign-in after that. Check it: `/Trucks` shows **＋ Add a truck**
-- [ ] ⚠️ **Know the one prompt, and where it comes.** It is **not** in §2, §3 or §4: all of those edits hot-reload, new ViewModel and changed action signature included. It is in **§5, when the `TrucksController` paste lands** — `ENC0004: Updating the modifiers of const field requires restarting the application`, then **`Do you want to restart your app? Yes (y) / No (n) / Always (a) / Never (v)`**. **Answer `a`.** After that, `watch` restarts by itself for every `Program.cs` edit. *(Measured on a pty-driven `dotnet watch`.)*
+- [ ] ⚠️ **Know the one prompt, and where it comes.** It is **not** in §2, §3 or §4: those edits never ask. *(§4 does need a Ctrl+R that you press yourself; the beat says when.)* It is in **§5, when the `TrucksController` edits are saved** — `ENC0004: Updating the modifiers of const field requires restarting the application`, then **`Do you want to restart your app? Yes (y) / No (n) / Always (a) / Never (v)`**. **Answer `a`.** After that, `watch` restarts by itself for every `Program.cs` edit. *(Measured on a pty-driven `dotnet watch`.)*
 - [ ] ⚠️ **Every restart tonight is Ctrl+R in the terminal, never Ctrl+C + `dotnet watch`.** *Always* belongs to the `watch` session; Ctrl+C ends it
-- [ ] **Park three browser tabs**: `/`, `/Trucks`, and **week 13's lab README** on github.com — it goes on screen for every lab block tonight
+- [ ] **Park three browser tabs**: `/`, `/Trucks`, and **week 15's lab README** on github.com — it goes on screen for every lab block tonight
 - [ ] **Say the no-typing line out loud in the first minute.** Tonight is watched, not typed along with: *"Nothing I type tonight is yours to type. Curbside is my app, and the Registry is yours. Your keyboard time is the lab blocks. There are six of them tonight."*
 - [ ] Teaching profile on, notifications off, editor font sized for the back of the room and for a small laptop screen
 
 > [!NOTE]
 > **🖥️ On screen, at curtain**
 >
-> - **VS Code** — left half, `instructor/week-13/Curbside` open, one integrated terminal running `dotnet watch`
-> - **Browser** — right half, three tabs: `/` (Curbside's front page, **signed in as Ada**), `/Trucks`, and the week 13 lab README
+> - **VS Code** — left half, `instructor/week-15/Curbside` open, one integrated terminal running `dotnet watch`
+> - **Browser** — right half, three tabs: `/` (Curbside's front page, **signed in as Ada**), `/Trucks`, and the week 15 lab README
 
 ## 1 · The silent save *(slide 1)*
 
-- [ ] 🎞️ **GO TO SLIDE 1** — *Week 13 — Polish* · it is still up from the gallery — talk to its list before you swipe away from it: *"Nothing tonight adds a table. The app you have works. Tonight it gets easier to use, and then easier to read. First, a message after every change. Then a search box and a filter, then pages. Then a question that has been open since week 7: where does underscore context come from? And last, how long those things last."*
+- [ ] 🎞️ **GO TO SLIDE 1** — *Week 15 — Polish* · it is still up from the gallery — talk to its list before you swipe away from it: *"Nothing tonight adds a table. The app you have works. Tonight it gets easier to use, and then easier to read. First, a message after every change. Then a search box and a filter, then pages. Then where underscore context comes from, which this course has not explained since it arrived in week 7. And last, how long a service lasts."*
 
 ### Nothing says so
 
@@ -80,8 +83,8 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 ## Lab A · Setup and task 1 — 8 minutes
 
 - [ ] Put the **lab README** on screen — the tab you parked in §0 — scrolled to **Setup**
-- [ ] *"Tonight the lab comes in six short blocks. After each part of my demo, you do the same kind of thing to your Registry, plus one thing I did not show. Each block ends at a note that says In class, stop here."*
-- [ ] *"The first block is setup and task 1. There is no database drop tonight. This starter has the same migrations as last week's, so your database, your account and your curator role are all still there. You run update, it applies nothing, and you sign in."*
+- [ ] *"Tonight the lab comes in six short blocks. After each part of my demo, you do the same kind of thing to your Registry, plus one thing I did not show. Each block but the last ends at a note that says In class, stop here."*
+- [ ] *"The first block is setup and task 1. There is no database drop tonight. This starter has the same migrations as week 12's, so your database, your account and your curator role are all still there. You run update, it applies nothing, and you sign in."*
 - [ ] *"If your secrets are gone, because you are on a frozen lab PC, task 1 has both commands. Tonight's in-class target is all five checks."*
 - [ ] 👀 **Watch for:** `There is already an object named 'Cryptids'` on `database update` — they never ran week 12's lab, so their database has their own week-11 migrations; the callout in task 1 is for them. `The ConnectionString property has not been initialized` before `Now listening on:` — the secret is gone; set it again. No **＋ Open a new file** after signing in — `Admin:Email` is missing or holds a different email. `Could not find a MSBuild project file` — terminal 1 or 2 never ran `cd Cryptids.Web`
 - [ ] **Stop:** the note after **Task 1 in full**. Where they should be: `dotnet test` prints **`Passed: 1`**, the app is running in terminal 1, and they are signed in as their curator
@@ -124,14 +127,14 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
   ```csharp
   TempData["Message"] = $"{truck.Name} is off the street.";
   ```
-- [ ] **Say what they are:** *"The same message, on the other two writes. Delete sets it inside the if, so the message only appears when a truck was really removed."*
+- [ ] **Say what they are:** *"A message on the other two writes, in their own words. Delete sets it inside the if that checks the truck was found, so the message only appears when a truck was really removed."*
 - [ ] **Swipe to the browser.** Open **Larb Larder**, **🗑️ Remove this truck**, confirm: `Larb Larder is off the street.` Do the same for **Pad Thai Pilot**. *"Back to eight trucks, and it told me both times."*
 
 ## Lab B · Task 2 — 15 minutes
 
 - [ ] Lab README on screen, scrolled to **Task 2 in full**
 - [ ] *"Task 2 is the same message on your three archive writes, in your words. The block goes in your layout."*
-- [ ] ⚠️ *"Then the one I did not show. When a visitor files a sighting, they should get a message too, and it should name the creature. That form only posts the creature's id. So your POST has to look the name up."*
+- [ ] ⚠️ *"Then the one I did not show. When a visitor files a sighting, they should get a message too, and it should name the creature. The sighting form only posts the creature's id. So your POST has to look the name up."*
 - [ ] 👀 **Watch for:** check 2 saying no message after filing a creature — the block isn't in `_Layout.cshtml`, or it still says `ViewData`. Check 2 naming Mothman — the sighting POST. A `CS0103` on `name` — they wrote the lookup after the `TempData` line. The message on the next page too — `TempData.Keep` or `Peek` from a search result
 - [ ] **Stop:** the note after **Task 2 in full**. Where they should be: **`Passed: 2`**, and a message on their screen after filing a sighting, signed out
 
@@ -207,7 +210,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
   </div>
   ```
 - [ ] **Say what it is:** *"The form has method get, and there is no action on it, so it goes back to this same page with the fields in the address. Search is a box, city is a dropdown, and each keeps what you chose. Everything else is the page you already had."*
-- [ ] Say the goal: *"Last piece, the action. It takes the search and the city, builds the query one step at a time, and hands the ViewModel to the page."* `Controllers/TrucksController.cs` — replace the whole `Index` method, from `public IActionResult Index()` to its closing brace. Keep the two comment lines and `[AllowAnonymous]` above it:
+- [ ] Say the goal: *"Last piece, the action. It takes the search and the city, builds the query one step at a time, and hands the ViewModel to the page."* `Controllers/TrucksController.cs` — replace the whole `Index` method, from `public IActionResult Index()` to its closing brace. Keep the comment lines and `[AllowAnonymous]` above it:
   ```csharp
       public IActionResult Index(string? search, string? city)
       {
@@ -237,7 +240,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
           });
       }
   ```
-- [ ] **Say what it is, with it on screen:** *"The first statement builds a query and does not run it. Each if adds a Where to it, but only when that box was filled in. The query runs once, at ToList. The search looks in three columns. The last line asks the database for its list of cities, each one once."*
+- [ ] **Say what it is, with it on screen:** *"The first statement builds a query and does not run it. AsQueryable is there so that variable can hold the result of a Where. Each if adds a Where to it, but only when that box was filled in. The query runs once, at ToList. The search looks in three columns. The last line asks the database for its list of cities, each one once."*
 - [ ] 💡 ⚠️ Don't reload until all three are in: between the pastes the page and the action disagree about the model, and that is a `500` you don't need to show. If a `500` survives the third paste, press Ctrl+R in the terminal
 
 ### Watch the address bar *(slide 3)*
@@ -245,7 +248,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 - [ ] **Swipe to the browser**, `/Trucks`. Say what to watch: *"Watch the address bar, not the cards."* Type `korean` in the box and press **Search**. 🎯 **One truck, Roll Models, and `/Trucks?search=korean&city=` in the address bar.** The box still says `korean`
 - [ ] *"I typed korean in lowercase and the database said Korean. SQL Server ignores case by default, and that is the database's setting, not my code."*
 - [ ] 🎞️ **GO TO SLIDE 3** — *The address bar is the search* · *"Those are the same names. search in the address, search in the action. That is model binding, the same as question mark name equals Ada in week 3."*
-- [ ] Still on slide 3, the last line: *"This form is a GET on purpose. A search changes nothing, so it does not need a POST, and it needs no sign-in. And a GET lives in the address bar, so I can bookmark this search or send it to someone."*
+- [ ] Still on slide 3, the last line: *"A form that POSTs carries an antiforgery token, because it changes something. This form has no token, because a search changes nothing. So a visitor who is not signed in can use it, and I can bookmark this address or send it to someone."*
 - [ ] **Swipe to the browser.** Clear the box. Pick **Milwaukee** in the dropdown and press **Search**: Banh Mi Mobile and Taco Tornado. Then type `taco` in the box too, and **Search**: Taco Tornado. *"Both Wheres ran. Each one narrows what the last one left."*
 - [ ] Type `zzz`, **Search**: *No trucks match that.* *"And a search with no answer says so."*
 
@@ -261,7 +264,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 ### The arithmetic
 
-- [ ] 🎞️ **GO TO SLIDE 4** — *A page is Skip and Take* · *"Three to a page. For page 2, I skip the first three rows and take the next three. Page 3 skips six. It is the page number minus one, times the page size."*
+- [ ] 🎞️ **GO TO SLIDE 4** — *A page is Skip and Take* · *"All of paging is one sum: the page number minus one, times the page size. That is how many rows to skip. The page number is the only thing the server needs from the visitor."*
 - [ ] Still on slide 4, the order line: *"The order is the part to remember. Filter first, or you would search one page. Count next, or you would only know how many are on this page. Sort before you cut, or the database can hand back the rows in any order, and a row can show up on two pages."*
 
 ### Three to a page
@@ -333,7 +336,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
           });
       }
   ```
-- [ ] **Say what it is, with it on screen:** *"A new page parameter that starts at one. Everything above the Count line is what I already had. The Count runs first. Then the arithmetic, then Skip and Take. Math.Clamp keeps the page number between one and the last page, because anybody can type a page number into the address bar. On SQL Server, page zero would mean a negative offset, and the database refuses that."*
+- [ ] **Say what it is, with it on screen:** *"A new page parameter that starts at one. Everything above the Count line is what I already had. The Count runs first. Then the arithmetic, then Skip and Take. The double in that division matters, because in C# eight divided by three as whole numbers is two, and I need three pages. Math.Clamp keeps the page number between one and the last page, because anybody can type a page number into the address bar. On SQL Server, page zero would mean a negative offset, and the database refuses that."*
 - [ ] Say the goal: *"Last, the links. Previous and Next, and each one carries the search and the city."* `Views/Trucks/Index.cshtml` — select everything and paste:
   ```cshtml
   @model TruckListViewModel
@@ -410,6 +413,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
   }
   ```
 - [ ] **Say what it is:** *"The count at the top now reads the total. Below the cards there is a Previous link, the page number, and a Next link. Each link gets a page number one away from this one, plus the search and the city, through asp-route. Those attributes go into the link's query string."*
+- [ ] ⚠️ **Press Ctrl+R in the terminal before you reload.** Say why: *"I added properties to the ViewModel and a view now reads them. Hot reload can say it succeeded and then answer every page with a 500. A restart always clears it, so I restart first."* *(Measured with one save per paste: `Hot reload succeeded`, then `Token 2000000 is not valid in the scope of module`. Ctrl+R cleared it. This is the only restart you choose tonight.)*
 
 ### Walk it
 
@@ -431,7 +435,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 ### Move the query out
 
-- [ ] **Swipe to the editor, `TrucksController.cs`, the `Index` method.** Say the goal: *"Look at this action. It is nearly forty lines, and all it does is read a list. A controller's job is to take a request and hand back a page. So this query is moving into a class of its own, called a service. And that answers a question from week 7, so watch how it gets here."*
+- [ ] **Swipe to the editor, `TrucksController.cs`, the `Index` method.** Say the goal: *"Look at this action. It is nearly forty lines, and all it does is read a list. A controller's job is to take a request and hand back a page. So this query is moving into a class of its own, called a service. The service needs the context too, and getting it there shows where underscore context has been coming from."*
 - [ ] First, what the service promises. Create `Services/ITruckService.cs` and paste:
   ```csharp
   using Curbside.ViewModels;
@@ -508,8 +512,8 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
       }
   }
   ```
-- [ ] **Say what it is, with it on screen:** *"This is the query from the controller, moved here. The only new part is at the top: this class asks for the context in its constructor, the same way the controller always did."*
-- [ ] Say the goal: *"Now the controller gets short. It asks for the service, and the action is one line."* `Controllers/TrucksController.cs`: first add the using at the top:
+- [ ] **Say what it is, with it on screen:** *"This is the query from the controller, moved here. Two things are new, both at the top. The colon and ITruckService on the class line are a promise that this class has every method the interface lists. And the class asks for the context in its constructor, the same way the controller always did."*
+- [ ] Say the goal: *"Now the controller gets short. It asks for the service, and the action is one line."* ⚠️ **Make all three edits below, then save once.** The file does not compile between them, and a save in the middle stops the app. `Controllers/TrucksController.cs`: first add the using at the top:
   ```csharp
   using Curbside.Services;
   ```
@@ -517,7 +521,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
   ```csharp
       private readonly CurbsideContext _context;
 
-      // Week 13: the list comes from a service. Same move as the context: ask
+      // Week 15: the list comes from a service. Same move as the context: ask
       // for it in the constructor, and it is handed over.
       private readonly ITruckService _trucks;
 
@@ -534,26 +538,26 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
           return View(_trucks.GetList(search, city, page));
       }
   ```
-- [ ] ⚠️ **The terminal — the prompt.** It prints `ENC0004: Updating the modifiers of const field requires restarting the application`, then `Do you want to restart your app?` **Answer `a`.** Say why while it restarts: *"Removing that constant is a change hot reload cannot make, so dotnet watch asks to restart. I answer a, for always, and from now on it restarts by itself."*
-- [ ] Say what to watch: *"Nothing is left in the controller but one line. Watch the page."* **Swipe to the browser**, reload `/Trucks`. 🎯 **A 500: `Unable to resolve service for type 'Curbside.Services.ITruckService' while attempting to activate 'Curbside.Controllers.TrucksController'`**
+- [ ] **Save.** ⚠️ **The terminal — the prompt.** It prints `ENC0004: Updating the modifiers of const field requires restarting the application`, then `Do you want to restart your app?` **Answer `a`.** Say why while it restarts: *"Removing the PageSize constant is a change hot reload cannot make, so dotnet watch asks to restart. I answer a, for always, and from now on it restarts by itself."*
+- [ ] Say what to watch: *"Nothing is left in Index but one line. Watch the page."* **Swipe to the browser**, reload `/Trucks`. 🎯 **A 500: `Unable to resolve service for type 'Curbside.Services.ITruckService' while attempting to activate 'Curbside.Controllers.TrucksController'`**
 
 ### The container *(slide 5)*
 
 - [ ] Point at the message: *"Read that out with me. ASP.NET tried to make a TrucksController. It looked at the constructor, saw it needs an ITruckService, and could not find one. So something has been building my controllers all along, and it has been filling in that constructor."*
-- [ ] 🎞️ **GO TO SLIDE 5** — *Where `_context` comes from* · *"Here is the answer from week 7. In Program.cs, AddDbContext puts the context on a list. That list is called the container. When a request needs a controller, ASP.NET looks at its constructor and hands it what it asks for from the container. Nothing in my code has ever said new TrucksController. That is dependency injection."*
-- [ ] Still on slide 5, the second row: *"It is the same for last week's seeder. UserManager came from AddIdentity. And the last row is what is missing: nothing has told the container about ITruckService."*
+- [ ] 🎞️ **GO TO SLIDE 5** — *Where `_context` comes from* · *"Here is where underscore context comes from. In Program.cs, AddDbContext puts the context on a list. That list is called the container. When a request needs a controller, ASP.NET looks at its constructor and hands it what it asks for from the container. Nothing in my code has ever said new TrucksController. That is dependency injection."*
+- [ ] Still on slide 5, the second row: *"The second row is the same idea. AccountController asks for a UserManager, and AddIdentity is what registered it. The last row is what is missing: nothing has told the container about ITruckService."*
 - [ ] **Swipe to the editor.** `Program.cs` — add the using at the top:
   ```csharp
   using Curbside.Services;
   ```
   and paste this **just above `var app = builder.Build();`**:
   ```csharp
-  // Week 13: when anything asks for an ITruckService, hand it a TruckService.
+  // Week 15: when anything asks for an ITruckService, hand it a TruckService.
   // One per request, the same lifetime AddDbContext gives the context.
   builder.Services.AddScoped<ITruckService, TruckService>();
   ```
 - [ ] **Say what it is:** *"One line. When anything asks for an ITruckService, hand it a TruckService."* The terminal restarts by itself — that is the `a`
-- [ ] **Swipe to the browser**, reload. 🎯 **Three cards, `Page 1 of 3`.** *"The same page, and the same query. The controller got shorter, and the query has a name."*
+- [ ] **Swipe to the browser**, reload. 🎯 **Three cards, `Page 1 of 3`.** *"The same page as before, from the same query. Index is one line now, and the query is called GetList."*
 
 ### One line changes *(slide 6)*
 
@@ -579,7 +583,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
   The terminal restarts by itself
 - [ ] **Swipe to the browser**, reload. 🎯 ***No trucks match that.***
 - [ ] 🎞️ **GO TO SLIDE 6** — *Why ask for the interface* · *"I changed one line in Program.cs. I did not open the controller. It asks for ITruckService and it never names a class, so it took whatever it was handed."*
-- [ ] Still on slide 6, the last line: *"So a test can hand it a fake one, and tomorrow's version can replace today's, and the controller never hears about it. That is what the interface buys."*
+- [ ] Still on slide 6, the last line: *"So a test can give the controller a fake ITruckService, and a new version of the service can replace this one, and the controller's code does not change. That is why it asks for the interface."*
 - [ ] **Swipe to the editor.** `Program.cs` — change it back:
   ```csharp
   builder.Services.AddScoped<ITruckService, TruckService>();
@@ -600,14 +604,14 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 ### The wrong word
 
-- [ ] **Swipe to the editor.** `Program.cs`. Say the goal: *"I have said AddScoped twice and not said why. There are three words that could go there. Let me try another one."* Change `AddScoped` to `AddSingleton`:
+- [ ] **Swipe to the editor.** `Program.cs`. Say the goal: *"I have been pasting AddScoped without saying why. There are three words that could go there. Let me try another one."* Change `AddScoped` to `AddSingleton`:
   ```csharp
   builder.Services.AddSingleton<ITruckService, TruckService>();
   ```
-- [ ] 🎯 **The terminal.** The app stops: `Cannot consume scoped service 'Curbside.Data.CurbsideContext' from singleton 'Curbside.Services.ITruckService'`, then `Waiting for a file to change before restarting`. *"It will not even start. That is a useful error. A singleton is one object for the life of the app. It asked for the context, and the context is meant to last for one request."*
-- [ ] 🎞️ **GO TO SLIDE 7** — *How long one lasts* · *"This is called a service's lifetime. Transient gives you a new one every time something asks. Scoped gives you one per request, so everything in that request shares it. Singleton gives you one for the whole app, shared by every visitor."*
-- [ ] Still on slide 7, the table: *"The context is scoped because it remembers what it has loaded, and that should not leak from one visitor's request into another's. So anything that holds the context is scoped too. That is why it is AddScoped."*
-- [ ] Still on slide 7, the last line: *"That also finishes a line from last week. A scope is a request, more or less. At startup there is no request, so the seeder had to make a scope for itself. That is what CreateScope was doing."*
+- [ ] 🎯 **The terminal.** The app stops: `Cannot consume scoped service 'Curbside.Data.CurbsideContext' from singleton 'Curbside.Services.ITruckService'`, then `Waiting for a file to change before restarting`. *"The app will not even start, and that is a useful error. A singleton is one object for the life of the app. TruckService is a singleton now, and it asks for the context, which is meant to last for one request."*
+- [ ] 🎞️ **GO TO SLIDE 7** — *How long one lasts* · *"The word for this is a service's lifetime. The row to remember is the middle one: one per request, so everything that runs during one page load shares the same context."*
+- [ ] Still on slide 7, the table: *"The context remembers what it has loaded, and that memory should not carry from one visitor's request to another's. So anything that holds the context is scoped too, which is why the line says AddScoped."*
+- [ ] Still on slide 7, the last line: *"Week 12's seeder had a line called CreateScope. A request gets a scope automatically. At startup there is no request, so the seeder had to make a scope for itself."*
 - [ ] **Swipe to the editor.** Change it back:
   ```csharp
   builder.Services.AddScoped<ITruckService, TruckService>();
@@ -618,16 +622,15 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 - [ ] Lab README on screen, scrolled to **The tasks**
 - [ ] *"This is the last block, and it has no stop. If any of your checks are red, finish those first. If you are at five, the stretch adds a sort order to the Registry, and it goes through everything tonight: a parameter, the service, the form and the page links."*
-- [ ] *"The stretch has no check and no points. Tonight's in-class target was all five checks. Anything still red is Part 1 of your homework."*
+- [ ] *"The stretch has no check and no points. Tonight's in-class target was all five checks. Anything still red is yours to finish if you want to; nothing is collected."*
 - [ ] 👀 **Watch for:** anyone still red on check 5 — have them read its message first; it names the one thing missing
-- [ ] 👀 **Stretch:** the sort lost on page 2 — the third `asp-route`. `The type or namespace name` errors in `ICryptidService` — every caller changes when the signature does, which is the moment to say so
+- [ ] 👀 **Stretch:** the sort lost on page 2 — the third `asp-route`. `CS0535` on `CryptidService` — the interface changed and the class didn't yet; every caller changes when the signature does, which is the moment to say so
 - [ ] **No stop.** This block takes whatever time is left before the wrap-up. Anyone finished: the stretch, **🚀 Done early?** at the bottom of the README, or help a classmate
 
 ## 7 · Wrap-up, after the lab *(slide 8)*
 
-- [ ] 🎞️ **GO TO SLIDE 8** — *Tonight, in one picture* · walk the five rows, one sentence each, and give the last row the emphasis: *"Every constructor in your app has been filled in from a list in Program.cs since week 7. If you only remember one row, remember that one."*
-- [ ] Homework: **the same four moves on their own app.** *"A message after every change, a search box, pages, and one service with an interface. Your page size has to be smaller than your record count, so there is a second page to look at. With five records, two to a page is fine."*
-- [ ] ⚠️ Say what the self-check can't see: *"The self-check only reads your pages. It never signs in, so it leaves you signed in. That also means it cannot see your message, because a message needs a change, and a change needs your role. It cannot see your service either. I read both of those from your repo. So test the message yourself: sign in, change something, read it, reload."*
-- [ ] 💡 *"There is no migration this week. Nothing about your tables changed."*
-- [ ] 💡 *"My Curbside is on localhost. Nothing is deployed for it. Yours is graded on its Azure URL."*
-- [ ] 🔗 Week 14: *"Next week your app starts answering with JSON. That is Web API."*
+- [ ] 🎞️ **GO TO SLIDE 8** — *Tonight, in one picture* · *"The message survives the redirect because it is TempData. A search is a GET, so the address bar holds the result. A page is Where, Count and OrderBy, then Skip and Take. A service takes the query out of the controller. And every constructor in your app has been filled in from a list in Program.cs since week 7. If you only remember one row, remember that one."*
+- [ ] ⚠️ **There is no homework tonight, so say that first.** *"There is no homework from tonight. Your project and your presentation come first. If you want these four moves on your own app, the stretch file has them with a self-check, and it is worth no points."*
+- [ ] Say what that self-check can't see: *"That self-check only reads your pages, so it never signs you out. It also cannot see your message or your service. To test the message, sign in, change something, read it, and reload."*
+- [ ] 💡 *"My Curbside is on localhost. Nothing is deployed for it."*
+- [ ] 🔗 Week 16: *"Next week you present."*

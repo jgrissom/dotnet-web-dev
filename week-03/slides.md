@@ -84,7 +84,7 @@ Content-Type: text/html
 |------|---------|---------------|
 | `GET` | "give me this" | every page view |
 | `POST` | "here's data" | forms — week 6 |
-| `PUT` / `DELETE` | update / remove | Web API — week 14 |
+| `PUT` / `DELETE` | update / remove | Web API — week 13 |
 
 ---
 

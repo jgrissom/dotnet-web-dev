@@ -9,7 +9,7 @@
 - **Weeks 3–6:** ASP.NET Core MVC — the server side: pages, forms, validation.
 - **Weeks 7–10:** Entity Framework Core + SQL Server — real data, midterm project.
 - **Weeks 11–13:** Identity — logins, roles, security, polish.
-- **Weeks 14–16:** Web API + final project — your JavaScript calling your own API.
+- **Weeks 13–16:** Web API + final project — your JavaScript calling your own API.
 
 **The project thread — say this on night one.** In **week 4** each student picks their own topic and builds a small list-and-details site from an empty folder. Every week after that extends *that same app*: a real layout and theme, forms and validation, then the hard-coded data moves into SQL Server, then logins, then an API. It's what they present in week 16. Mentioning it now means week 4's "pick something you can live with" lands as a reminder rather than a surprise — and students start thinking about a topic three weeks early, which is exactly what you want.
 
@@ -61,7 +61,7 @@ Students work through **[setup-guide.md](setup-guide.md)** at their own pace —
 ## Part 3: Why JavaScript in a .NET course? (10 min)
 
 - The browser only runs one language: JavaScript. Whatever the server is written in — C#, Python, Java — the interactive parts of a web page are JS.
-- In this course JS shows up three times: form validation feedback (week 6), sprinkles of interactivity throughout, and the finale — **week 15, your JavaScript calls the Web API you built.**
+- In this course JS shows up three times: form validation feedback (week 6), sprinkles of interactivity throughout, and the finale — **week 14, your JavaScript calls the Web API you built.**
 - This is a refresher, not a lesson. The prerequisite is C#, and the course assumes some JavaScript — tonight calibrates everyone to the modern idioms this course uses, and flagging the places where JS habits from older tutorials (or a rusty memory) will bite.
 
 Key differences to set expectations:
@@ -180,7 +180,7 @@ greet("Ada");   // "Hello, Ada!"
 ```
 
 - **C# bridge:** arrow functions ARE lambdas — `(a, b) => a + b` is valid in both languages.
-- We'll use both forms; arrow functions dominate modern code and become essential with `fetch` in week 15.
+- We'll use both forms; arrow functions dominate modern code and become essential with `fetch` in week 14.
 
 > [!WARNING]
 > Call a JS function with too few arguments and the missing ones are silently `undefined` — no compiler error. This is where dynamic typing bites; default parameters are the guard rail.
@@ -239,7 +239,7 @@ student.gpa = 4.0;     // mutate a property (fine even with const)
 student.year = 2;      // add a property on the fly — no class needed!
 ```
 
-- **C# bridge:** looks like an object initializer, but there is no class. Objects are bags of key/value pairs, closer to `Dictionary<string, object>`. This is exactly the shape of the JSON your Web API returns in week 14.
+- **C# bridge:** looks like an object initializer, but there is no class. Objects are bags of key/value pairs, closer to `Dictionary<string, object>`. This is exactly the shape of the JSON your Web API returns in week 13.
 
 ### Copying an object
 
@@ -317,7 +317,7 @@ const honorRoll = students
 
 ## Part 6: DOM & fetch highlights (25 min live-code)
 
-A fast tour, not a deep dive — you'll use these for real in week 2 (Bootstrap interactivity) and week 15 (calling your own API).
+A fast tour, not a deep dive — you'll use these for real in week 2 (Bootstrap interactivity) and week 14 (calling your own API).
 
 ### The DOM in three APIs
 
@@ -348,7 +348,7 @@ button.addEventListener("click", () => {
 > Older tutorials and Stack Overflow answers use `document.getElementById("status")` — same result for ids, still perfectly valid, not deprecated. We standardize on `querySelector` because one API covers every selector you'll ever need; just don't be confused when you see the other one in the wild.
 - **C# bridge:** `addEventListener` is wiring up an event handler — same idea as C# events, and the arrow function is the handler delegate.
 
-### fetch + async/await — the shape of week 15
+### fetch + async/await — the shape of week 14
 
 ```js
 const loadUsers = async () => {
@@ -362,10 +362,10 @@ const loadUsers = async () => {
 loadUsers();
 ```
 
-- `fetch` makes an HTTP request from JS. Teach `await` from scratch — "pause right here until the answer comes back" — and **don't lean on C# for this one**: a beginner C# course rarely reaches `async`/`await`, so assume this is their first encounter with the keyword. (If someone has seen C#'s version, confirm it's the same idea.) Keep it at the intuition level tonight; the mechanics come in week 15.
+- `fetch` makes an HTTP request from JS. Teach `await` from scratch — "pause right here until the answer comes back" — and **don't lean on C# for this one**: a beginner C# course rarely reaches `async`/`await`, so assume this is their first encounter with the keyword. (If someone has seen C#'s version, confirm it's the same idea.) Keep it at the intuition level tonight; the mechanics come in week 14.
 > [!TIP]
-> **Delivery tip:** the console supports top-level `await`, so demo it line-by-line instead of pasting the whole function — `const response = await fetch(...)` ⏎, inspect `response`, `const users = await response.json()` ⏎, expand `users` in the console (triangle = "JSON is arrays of objects" made visible), then `users.map(u => u.name)`. Each Enter is a prediction moment. The slide's `async () =>` wrapper is the *file* form they'll write in week 15; mention that, don't retype it.
-- Land this: the API returns **an array of objects** — everything from Part 5 applies. In week 15, the URL will be *your* API instead of a placeholder.
+> **Delivery tip:** the console supports top-level `await`, so demo it line-by-line instead of pasting the whole function — `const response = await fetch(...)` ⏎, inspect `response`, `const users = await response.json()` ⏎, expand `users` in the console (triangle = "JSON is arrays of objects" made visible), then `users.map(u => u.name)`. Each Enter is a prediction moment. The slide's `async () =>` wrapper is the *file* form they'll write in week 14; mention that, don't retype it.
+- Land this: the API returns **an array of objects** — everything from Part 5 applies. In week 14, the URL will be *your* API instead of a placeholder.
 - Don't go deeper tonight (no error handling, no POST) — that arrives when they build against real endpoints.
 - **"The action has been blocked" / CSP error:** someone ran the demo in the console of a Chrome-internal page (new tab, `chrome://settings`…). The console runs code *as the current page*, and Chrome's own pages block outside network requests. Fix: open the lab's `index.html` (or any normal website) first, then F12. Expect a few students to hit this.
 - **Offline fallback:** if classroom internet (or jsonplaceholder) is down, paste a hardcoded `const users = [{ name: "Leanne Graham" }, { name: "Ervin Howell" }]` and run the same `.map` line — you lose the network moment but keep the JSON-is-arrays-of-objects point. The real fetch becomes a "try it at home."

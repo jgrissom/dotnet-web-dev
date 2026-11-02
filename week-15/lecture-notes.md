@@ -1,10 +1,10 @@
-# Week 13 — Dependency Injection, TempData, Paging, Filtering and Search
+# Week 15 — Dependency Injection, TempData, Paging, Filtering and Search
 
 **What this covers:** a confirmation message that survives a redirect; a search box and a filter that live in the address bar; a list that comes in pages; moving a query into a service behind an interface; where every constructor's arguments have been coming from since week 7; and how long each of those things lasts.
 
 **Nothing here changes your tables.** There is no migration this week.
 
-**Keep this open while you work.** Every requirement in the homework has a section here, and the 🆘 section at the bottom of the homework links straight into it.
+**Keep this open while you work.** Every item in the optional [stretch](stretch.md) has a section here.
 
 ---
 
@@ -168,13 +168,15 @@ The box's `name` is what the action's parameter has to match. That's week 3's mo
     }
 ```
 
-**A query isn't run when you write it.** `_context.Trucks.Include(…)` describes one, and `AsQueryable()` lets you add to the description. Each `Where` narrows what the one before it left. Only `ToList()` sends anything to the database, and by then it's one SQL statement with one `WHERE`.
+**A query isn't run when you write it.** `_context.Trucks.Include(…)` describes one. `AsQueryable()` is there for the variable's type: `var` would otherwise take the exact type `Include` returns, and the result of a `Where` couldn't be assigned back to it. Each `Where` narrows what the one before it left. Only `ToList()` sends anything to the database, and by then it's one SQL statement with one `WHERE`.
 
 `Where` with `Contains` becomes `LIKE '%…%'`. **Whether capitals matter is the database's decision, not your code's:** SQL Server's default ignores them, so `korean` finds Korean. The in-memory database behind `dotnet test` doesn't ignore them.
 
 `Select(t => t.City).Distinct()` asks the database for each city once, which is how the dropdown gets its options without anyone typing them.
 
 **A nullable column** needs one more check, or the compiler warns `CS8602`: `c.LatinName != null && c.LatinName.Contains(search)`. It's a warning, not a crash. In the database a `NULL` simply doesn't match.
+
+**A search with no answer should say so.** The view's empty check reads `Model.Trucks`, and says *No trucks match that.*
 
 ### A filter's values don't have to be column values
 
@@ -205,7 +207,7 @@ Three to a page means two numbers: how many rows to **skip**, and how many to **
 |---|---|---|
 | 1 | 0 | rows 1–3 |
 | 2 | 3 | rows 4–6 |
-| 3 | 6 | rows 7–9 |
+| 3 | 6 | rows 7–8, with eight trucks |
 
 Those two lines are short. Getting them in the right place is the actual work:
 
@@ -281,11 +283,13 @@ public class TruckListViewModel
     }
 ```
 
-`int page = 1` is a default: `/Trucks` with no page number is page 1. `Math.Ceiling` rounds up, because eight trucks at three to a page is three pages, not 2.67. `Math.Max(1, …)` means an empty result still has one page.
+`int page = 1` is a default: `/Trucks` with no page number is page 1. `(double)` matters: in C#, dividing two whole numbers gives a whole number, so 8 / 3 is 2. `Math.Ceiling` rounds up, because eight trucks at three to a page is three pages, not 2.67. `Math.Max(1, …)` means an empty result still has one page.
 
 ⚠️ **Your page size has to be smaller than your record count**, or there is nothing to page through. With a handful of records, 2 works fine; it's a constant, and it's one line to change as the app grows.
 
 ### The links
+
+⚠️ **After changing the ViewModel and the view, restart with `Ctrl+R` before you reload.** Hot reload can print `Hot reload succeeded` and then answer every page with `Token 2000000 is not valid in the scope of module`. Your code is fine.
 
 **In `Views/Trucks/Index.cshtml`, below the cards:**
 
@@ -324,7 +328,7 @@ An `asp-route-…` attribute goes into the link's query string. Asking for `asp-
 
 The count at the top reads `Model.TotalCount`, so it still says eight on a page of three.
 
-**A numbered pager** is the same idea in a `for` loop, using Bootstrap's `pagination` classes:
+**A numbered pager** is the same idea in a `for` loop, using Bootstrap's `pagination` classes. This one is the Registry's, whose filter is `Status`:
 
 ```cshtml
 
@@ -377,6 +381,8 @@ So that's the answer to week 12's question too. `RoleManager` and `UserManager` 
 `Index` is nearly forty lines now, and all it does is read a list. A controller's job is to take a request and return a page. A class that does the work behind it is a **service**.
 
 ### An interface, and a class
+
+An **interface** lists methods with no code in them: it says what something can do, and nothing about how. A class that writes `: ITruckService` after its name promises to have every method on that list, and the compiler holds it to that.
 
 **`Services/ITruckService.cs`** — this is the whole file:
 
@@ -457,14 +463,14 @@ public class TruckService : ITruckService
 }
 ```
 
-It's the same query. The only new part is the top: the service asks for the context in its constructor, because the container will fill that in too.
+It's the same query. Apart from `: ITruckService`, the only new part is the top: the service asks for the context in its constructor, because the container will fill that in too.
 
 **In `TrucksController`:** add `using Curbside.Services;`, remove `PageSize`, ask for the interface alongside the context, and `Index` is one line:
 
 ```csharp
     private readonly CurbsideContext _context;
 
-    // Week 13: the list comes from a service. Same move as the context: ask
+    // Week 15: the list comes from a service. Same move as the context: ask
     // for it in the constructor, and it is handed over.
     private readonly ITruckService _trucks;
 
@@ -496,7 +502,7 @@ while attempting to activate 'Curbside.Controllers.TrucksController'.
 That message is the whole of Part 4 in one line: ASP.NET tried to build the controller, looked at the constructor, and the container had no such thing. **In `Program.cs`, just above `var app = builder.Build();`,** with `using Curbside.Services;` at the top:
 
 ```csharp
-// Week 13: when anything asks for an ITruckService, hand it a TruckService.
+// Week 15: when anything asks for an ITruckService, hand it a TruckService.
 // One per request, the same lifetime AddDbContext gives the context.
 builder.Services.AddScoped<ITruckService, TruckService>();
 ```
@@ -565,7 +571,7 @@ The moves are the same four; the names are yours.
 | page size | 3 | smaller than your record count: **2 always works** |
 | the service | `ITruckService`, `TruckService` | `IYourThingService`, `YourThingService`, in `Services/` |
 
-The self-check reads your form and your links to find your parameter names, so call them what you like. **It can't see your message or your service**, so test the message yourself: sign in as your admin, change something, read it, reload.
+This is optional: **tonight has no homework**, and [the stretch](stretch.md) is worth no points. Its self-check reads your form and your links to find your parameter names, so call them what you like. **It can't see your message or your service**, so test the message yourself: sign in as your admin, change something, read it, reload.
 
 **No migration and no new app setting**, so deploying is the plain `az webapp up` you've used all term.
 
@@ -584,6 +590,9 @@ Search for these topics and you'll find much more than tonight:
 ---
 
 ## Troubleshooting
+
+**A `500` with `Token 2000000 is not valid in the scope of module`, over correct code**
+- Hot reload after a ViewModel change. Restart with `Ctrl+R`. Your code is fine.
 
 **No message after a change**
 - `_Layout.cshtml` doesn't show it, or something still says `ViewData`. [Why `ViewData` can't do it](#why-viewdata-cant-do-it).

@@ -1,4 +1,4 @@
-# Week 13 Lab — The Registry Gets Polished ✨
+# Week 15 Lab — The Registry Gets Polished ✨
 
 The Registry works. Nobody could call it easy to use: a curator files a creature and nothing says so, the list has no search box, and every query lives inside a controller.
 
@@ -9,7 +9,7 @@ Tonight it says what just happened, it can be searched and filtered, it comes in
 ## Setup
 
 > [!IMPORTANT]
-> **The app arrives as week 12 finished it** — a Curator role on the archive's writes, a seeder that reads `Admin:Email`, an AccessDenied page, and the buttons hidden from everyone but a curator. If your own week-12 lab never got to five, you are **not** behind. Check 1 passes before you touch anything.
+> **The app arrives as week 12 finished it, on purpose, with none of weeks 13–14's Web API in it.** Nothing tonight needs the API. It has a Curator role on the archive's writes, a seeder that reads `Admin:Email`, an AccessDenied page, and the buttons hidden from everyone but a curator. If your own week-12 lab never got to five, you are **not** behind. Check 1 passes before you touch anything.
 
 **1. Update the starters clone.** Open `dotnet-web` in VS Code, then `` Ctrl+` `` for a terminal standing in it:
 
@@ -19,7 +19,7 @@ git -C dotnet-web-starters pull
 
 `-C` tells git to work *in that folder* without moving your terminal into it — you stay in `dotnet-web`, which is where every other command belongs.
 
-**2. Copy the `week-13` folder out of `dotnet-web-starters` and into `dotnet-web`** — next to the clone, never inside it — **and rename the copy.** `CryptidsPolish` works. (Never work inside the clone.)
+**2. Copy the `week-15` folder out of `dotnet-web-starters` and into `dotnet-web`** — next to the clone, never inside it — **and rename the copy.** `CryptidsPolish` works. (Never work inside the clone.)
 
 ```
 CryptidsPolish/           ← in `dotnet-web`, the folder you copied and renamed
@@ -101,7 +101,7 @@ Cryptids.Web/
 
 **Check 1 is already green** — this task is about your database, which the checks can't see but your browser needs.
 
-**No database drop tonight, and here is why.** This starter has exactly the same migration files as last week's, so your database, your account and your curator role are all still valid. The `<UserSecretsId>` hasn't changed either, so your secrets carry over too.
+**No database drop tonight, and here is why.** This starter has exactly the same migration files as week 12's, so your database, your account and your curator role are all still valid. The `<UserSecretsId>` hasn't changed either, so your secrets carry over too.
 
 **Look at your secrets — in terminal 2:**
 
@@ -255,7 +255,16 @@ public class CryptidListViewModel
 </form>
 ```
 
-**In `Controllers/CryptidsController.cs`**, `Index` takes the two values. Build it the way the demo built its query: start with `.Include(c => c.Sightings).AsQueryable()`, add a `Where` for each box that was filled in, and run it once at `ToList`, sorted by name. Two things are different from the demo:
+**And just below the form, so a search that finds nothing says so:**
+
+```cshtml
+@if (!Model.Cryptids.Any())
+{
+    <p class="text-muted">Nothing on file matches that.</p>
+}
+```
+
+**In `Controllers/CryptidsController.cs`**, add `using Cryptids.Web.ViewModels;` at the top: the demo's controller already had it, and yours doesn't. Then `Index` takes the two values. Build it the way the demo built its query: start with `.Include(c => c.Sightings).AsQueryable()`, add a `Where` for each box that was filled in, and run it once at `ToList`, sorted by name. Two things are different from the demo:
 
 - **Search three columns:** `Name`, `Region` and `LatinName`. **`LatinName` is nullable**, so the compiler warns you (`CS8602`) until you check it isn't null first. That's a warning, not a crash: in the database a `NULL` simply doesn't match. Clear it anyway.
 - **The dropdown's values aren't column values.** `status` is the word `unconfirmed` or `debunked`, or nothing. `IsDebunked` is a `bool`. Your `if` turns one into the other.
@@ -402,6 +411,9 @@ public class CryptidListViewModel
 
 **In `Views/Cryptids/Index.cshtml`**, the count line reads `Model.TotalCount`, so it still says 6 on a page of three.
 
+> [!IMPORTANT]
+> **Press `Ctrl+R` in terminal 1 once this view is saved, before you reload.** You added properties to the ViewModel and a view now reads them. Hot reload can print `Hot reload succeeded` and then answer every page with a 500: `Token 2000000 is not valid in the scope of module`. Your code is fine, and a restart clears it.
+
 **Now the pager, and it's different from the demo's.** The demo had Previous and Next. You want **a numbered link for every page**: a `for` loop from 1 to `Model.TotalPages`, using Bootstrap's `pagination` classes, with the current page marked `active`. **Every link carries `asp-route-page`, `asp-route-search` and `asp-route-status`**, or page 2 of a filtered list is page 2 of everything.
 
 <details>
@@ -426,7 +438,7 @@ public class CryptidListViewModel
 
 </details>
 
-**See it work.** Page 1 is Bigfoot, Chupacabra and Mothman. Click **2**. Pick **Unconfirmed** and search `e`: four creatures, two pages. Click **2**, and read the address bar. Then type `/Cryptids?page=99` and `/Cryptids?page=0`: the nearest real page, and no error.
+**See it work,** after `Ctrl+R` if you haven't pressed it since the ViewModel changed. Page 1 is Bigfoot, Chupacabra and Mothman. Click **2**. Pick **Unconfirmed** and search `e`: four creatures, two pages. Click **2**, and read the address bar. Then type `/Cryptids?page=99` and `/Cryptids?page=0`: the nearest real page, and no error.
 
 **Run the checks, in terminal 3:**
 
@@ -549,7 +561,7 @@ public class CryptidService : ICryptidService
 **Register it.** In `Program.cs`, add `using Cryptids.Web.Services;` at the top, and just above `var app = builder.Build();`:
 
 ```csharp
-// Week 13: when anything asks for an ICryptidService, hand it a CryptidService.
+// Week 15: when anything asks for an ICryptidService, hand it a CryptidService.
 // One per request, the same lifetime AddDbContext gives the context.
 builder.Services.AddScoped<ICryptidService, CryptidService>();
 ```
@@ -569,7 +581,7 @@ public IActionResult Index(string? search, string? status, int page = 1)
 > [!IMPORTANT]
 > **Terminal 1 now stops and asks:** `ENC0004: Updating the modifiers of const field requires restarting the application`, then `Do you want to restart your app? Yes (y) / No (n) / Always (a) / Never (v)`. **Answer `a`.**
 
-**The part the demo didn't do: `HomeController`.** Its only query is the featured creature, and that's in the service now. So it asks for `ICryptidService` **instead of** the context. Remove the `_context` field, change the constructor, and `Index` becomes:
+**The part the demo didn't do: `HomeController`.** Its only query is the featured creature, and that's in the service now. So it asks for `ICryptidService` **instead of** the context. Add `using Cryptids.Web.Services;`, replace the `_context` field with `private readonly ICryptidService _cryptids;`, change the constructor to match, and `Index` becomes:
 
 ```csharp
 public async Task<IActionResult> Index()
@@ -589,11 +601,11 @@ dotnet test Cryptids.Checks
 **`Passed: 5`** — all five, tonight's in-class target. 🎉 Check 5 doesn't read your code: it wraps your service in a recorder, loads `/Cryptids` and `/`, and checks your service was really called.
 
 > [!NOTE]
-> **In class, this is the last stop.** The rest of the demo comes next, then a last block for catching up or the stretch below. Finished early? Change `AddScoped` to `AddSingleton`, save, and read what terminal 1 says. Change it back. Or help a classmate. Working at home? You're done.
+> **In class, this is the last stop.** The rest of the demo comes next, then a last block for catching up or the stretch below. Finished early? Read `CryptidsController`'s constructor and say where each argument comes from. Or help a classmate. Working at home? You're done.
 
 ### Stretch: sort the list
 
-**No check, no points, and nobody needs this for the homework.** In class this is the last block — and the block has no stop. If any of your checks are still red, finish those first.
+**No check, no points, and nobody needs this.** In class this is the last block — and the block has no stop. If any of your checks are still red, finish those first.
 
 Let a visitor sort by name or by year first sighted. It touches everything tonight:
 
@@ -625,6 +637,8 @@ Keep `Name` as a tiebreaker if you like, with `ThenBy`. **Notice what changed wh
 - **Page 1 shows the wrong three** — `OrderBy` is missing, or comes after `Take`. [Task 4 in full ↑](#task-4-in-full)
 - **Check 4 says page 1 should still say 6 creatures on file** — the count line reads `Model.Cryptids.Count`. Use `Model.TotalCount`.
 - **Page 2 of a search shows everything** — the page links need `asp-route-search` and `asp-route-status`.
+- **A `500` with `Token 2000000 is not valid in the scope of module`, over correct code** — hot reload after a ViewModel change. `Ctrl+R` in terminal 1. [Task 4 in full ↑](#task-4-in-full)
+- **`The type or namespace name 'CryptidListViewModel' could not be found`** in `CryptidsController.cs` — `using Cryptids.Web.ViewModels;` at the top.
 - **`Unable to resolve service for type 'Cryptids.Web.Services.ICryptidService'`, and every check is red** — the `AddScoped` line is missing, it's below `builder.Build()`, or terminal 1 is waiting for `Ctrl+R`. [Task 5 in full ↑](#task-5-in-full)
 - **`Cannot consume scoped service … from singleton`** — it's `AddSingleton`; use `AddScoped`. The service holds the context, and the context lives for one request.
 - **A `500` over code you're sure is right** — terminal 1 may be asking `Do you want to restart your app?`. Answer `a`. If it says `Press "Ctrl + R" to restart.`, press it.

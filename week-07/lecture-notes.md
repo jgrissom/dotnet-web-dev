@@ -592,7 +592,7 @@ Then — and this is the demonstration that makes the whole night land — **add
 > **Stay in a US region.** Apps deployed to Canadian regions have never been able to reach the school's SQL Server. Use the region that worked for you in weeks 3–6; it's on the class list.
 
 > [!IMPORTANT]
-> **You do not need to run migrations against a "production" database**, because there isn't one — your laptop and your Azure app share a single database, and you already migrated it. That's unusual for a real deployment and completely fine for a course. Week 15 talks about what real projects do instead.
+> **You do not need to run migrations against a "production" database**, because there isn't one — your laptop and your Azure app share a single database, and you already migrated it. That's unusual for a real deployment and completely fine for a course. Week 14 talks about what real projects do instead.
 
 ### Keeping the password out of a public repo
 

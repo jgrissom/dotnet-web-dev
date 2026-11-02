@@ -183,7 +183,7 @@ Then run the self-check on your Azure URL. That is the run I grade.
 
 ## 📖 Reading for next week (~10 min)
 
-Week 13 is the **flex week**: dependency injection and services, `TempData`, and paging, filtering and search.
+Week 13 is **Web API**: controllers versus minimal APIs, JSON, and testing endpoints.
 
-- **Your list page — how long is it now?** Count the records. Write down how long it would be with a hundred times as many, and what a visitor would want to do on it first: search, filter, or page through.
-- Open one of your controllers and find the `_context` it's handed in its constructor. Week 13 asks where that comes from.
+- Open any page of your app and view its source. All of that HTML is for a person. **What would a program that only wanted your records need from you instead?**
+- Write down one thing someone could build on top of your data if your app answered with data rather than pages.

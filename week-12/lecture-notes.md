@@ -189,7 +189,7 @@ using (var scope = app.Services.CreateScope())
 }
 ```
 
-`CreateScope` is there because this code isn't in a controller. A controller is handed what it asks for in its constructor; at startup, nothing hands you anything, so the code asks for `RoleManager` and `UserManager` itself, and lets them go when it's done. Week 13 is about where they come from. `await` works here because `Program.cs` is allowed to await at the top level.
+`CreateScope` is there because this code isn't in a controller. A controller is handed what it asks for in its constructor; at startup, nothing hands you anything, so the code asks for `RoleManager` and `UserManager` itself, and lets them go when it's done. The flex week is about where they come from. `await` works here because `Program.cs` is allowed to await at the top level.
 
 ⚠️ **Your app now talks to the database the moment it starts.** Before this, it started without touching the database and failed on the first page that needed it. Now the seeder runs before `Now listening on:`, so:
 

@@ -96,7 +96,7 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
 
 - [ ] 🎞️ **GO TO SLIDE 8** — *Why JavaScript in a .NET course?*
 - [ ] 🎯 **Set the register for the next hour — this is the sentence that stops it feeling remedial:** *"tonight is calibration, not instruction — nobody is here to be taught JavaScript. We are agreeing on which dialect this course speaks, and flagging the habits from older tutorials that will bite you"*
-- [ ] *"It shows up three times: validation feedback in week 6, sprinkles throughout, and in week 15 your JavaScript calls the Web API you built"*
+- [ ] *"It shows up three times: validation feedback in week 6, sprinkles throughout, and in week 14 your JavaScript calls the Web API you built"*
 
 ## 4 · The dialect this course speaks *(slides 9–14)*
 
@@ -315,7 +315,7 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
 - [ ] *"No class anywhere. We added a property to a thing that already existed, at runtime. C# will not let you do that, and week 4 is where you meet the version that will not"*
 - [ ] 🎞️ **GO TO SLIDE 17** — *Objects*
 - [ ] **Two ways in — dot and bracket — then the line that matters.** Point at `student.year = 2`: *"a property added to a thing that already exists, and there is no class anywhere on this slide"*
-- [ ] **✓ say it:** *"this is the shape of JSON, and JSON is what every API in week 15 hands you"*
+- [ ] **✓ say it:** *"this is the shape of JSON, and JSON is what every API in week 14 hands you"*
 
 ### Copying an object
 
@@ -434,7 +434,7 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
 ## 6 · The DOM and fetch *(slides 22–23)*
 
 > [!IMPORTANT]
-> **A tour, not mastery.** They see these again in week 2 and for real in week 15. Do it **on the hosted playground** so the page visibly changes — a console with no page attached teaches nothing here.
+> **A tour, not mastery.** They see these again in week 2 and for real in week 14. Do it **on the hosted playground** so the page visibly changes — a console with no page attached teaches nothing here.
 
 ### The DOM, on a real page
 
@@ -463,9 +463,9 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
 - [ ] **Click the button.** *"an event, and a lambda for the handler. If you have wired a C# event, this is that shape"*
 - [ ] *"`querySelector` takes a CSS selector — the same `#id` and `.class` that go in a stylesheet. One syntax, two jobs"*
 
-### fetch, and a look at week 15
+### fetch, and a look at week 14
 
-- [ ] 🎞️ **GO TO SLIDE 23** — *fetch + async/await — a preview of week 15*
+- [ ] 🎞️ **GO TO SLIDE 23** — *fetch + async/await — a preview of week 14*
 - [ ] **Point at three things on the slide, in order:** the `async` wrapper, the two `await`s, then `.json()`. *"That is the whole shape of talking to an API — go and get it, wait, then turn what came back into objects"*
 - [ ] ⚠️ **Now the console, and warn them it will not look like the slide** — *"no wrapper, because the console lets you `await` without a function."* `loadUsers` never gets called tonight; the slide is there for the shape, not to be run
 - [ ] **Unwrapped, and expand the result each time:** *"the same two steps, one line at a time, so we can see what each one hands back"*
@@ -493,7 +493,7 @@ Console + browser cue sheet, in lecture order, keyed to the slides. **Tonight ha
     users.map(u => u.name)
     ```
 
-- [ ] 🎯 **The preview line:** *"`await` means wait here until the answer comes back — the network is not instant. In week 15 that URL is your own API, and the C# on the other end is what you spend twelve weeks learning to write"*
+- [ ] 🎯 **The preview line:** *"`await` means wait here until the answer comes back — the network is not instant. In week 14 that URL is your own API, and the C# on the other end is what you spend twelve weeks learning to write"*
 - [ ] ⚠️ **Do not teach `async`/`await` tonight.** It is a preview and it says so on the slide — the mechanism arrives in week 8, in C#, where it has somewhere to be used
 
 ## 7 · Hand off to the lab *(slide 24)*

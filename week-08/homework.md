@@ -175,7 +175,7 @@ crawling your site from the outside. What turns each line green:
 dotnet ef database update
 ```
 
-run locally is also the production migration. *(That's the course's single-database setup doing you a favor — week 15 covers what real teams do instead.)*
+run locally is also the production migration. *(That's the course's single-database setup doing you a favor — week 14 covers what real teams do instead.)*
 
 **Then deploy — one command:**
 
