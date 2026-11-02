@@ -57,7 +57,15 @@ Open `Views/Home/Index.cshtml`, find the **week-11** line, and **replace it**:
 
 1. **A role on the lock.** On every controller that changes your data, week 11's `[Authorize]` becomes **`[Authorize(Roles = "YourRole")]`** — still on the class, with `[AllowAnonymous]` still on `Index` and `Details`. Pick a role name that says what that person does in your app, and use it everywhere. If your second table is something the public submits, its controller stays open. → [A role on the lock](lecture-notes.md#part-2-a-role-on-the-lock)
 2. **An AccessDenied page** at `/Account/AccessDenied` — the view first, then an `AccessDenied()` action on your `AccountController`. It says who that part of your site is for. → [The AccessDenied page](lecture-notes.md#part-3-the-accessdenied-page)
-3. **Who gets the role, from configuration.** A `Data/RoleSeeder.cs` that creates your role if it's missing and gives it to the user whose email is in **`Admin:Email`**, and the three lines in `Program.cs` that run it at startup. Set the secret locally with **your own email** — `dotnet user-secrets set "Admin:Email" "you@example.com"` — register with that email if you haven't, restart, then **sign out and back in**. No email and no password in your code. → [Who gets the role](lecture-notes.md#part-4-who-gets-the-role)
+3. **Who gets the role, from configuration.** A `Data/RoleSeeder.cs` that creates your role if it's missing and gives it to the user whose email is in **`Admin:Email`**, and the three lines in `Program.cs` that run it at startup. No email and no password in your code. → [Who gets the role](lecture-notes.md#part-4-who-gets-the-role)
+
+   Set the secret with **your own email**, from the folder with your `.csproj`:
+
+   ```bash
+   dotnet user-secrets set "Admin:Email" "you@example.com"
+   ```
+
+   Then register with that email if you haven't, restart, and **sign out and back in**.
 4. **Hide what visitors can't use.** Every write button on your list and your record pages goes inside `@if (User.IsInRole("YourRole")) { … }`. A public action's button stays outside it. → [Hide what you can't use](lecture-notes.md#part-6-hide-what-you-cant-use)
 5. **Deployed, with your admin working there.** `Admin__Email` as an app setting on Azure, then — signed in on your deployed site as yourself — **make one change**. Say in your README what your role is called and who it's for. Everything from weeks 4–11 still works, and **3+ meaningful commits** are in your public repo. → [On Azure](lecture-notes.md#on-azure)
 
