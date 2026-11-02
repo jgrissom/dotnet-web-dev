@@ -15,7 +15,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 > Lost your place? **The nearest 🎞️ above you is the slide that should be showing** — and every slide's footer names the section and beat of this sheet it belongs to, so you can go the other way too.
 
 > [!IMPORTANT]
-> **Tonight the lab comes in seven short blocks, one after each part of the demo that it practices.** Each block has its own `## Lab` section below — what to say, what to watch for, and the README note it stops at. The lab README goes on screen for every block. There is no lab slide.
+> **Tonight the lab comes in six short blocks, one after each part of the demo that it practices.** Each block has its own `## Lab` section below — what to say, what to watch for, and the README note it stops at. The lab README goes on screen for every block. There is no lab slide.
 
 > [!IMPORTANT]
 > **Nothing tonight gets broken and put back.** Every change is forward. There are three surprises, and none is staged: §2's page that doesn't exist (Identity sends Sam to a page nobody has written), §4's refusal after the role is granted (Ada's cookie is older than her role), and §5's address bar (a hidden button doesn't stop Sam typing the URL). If you lose your place, nothing needs undoing.
@@ -61,7 +61,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 - [ ] ⚠️ **Every restart tonight is Ctrl+R in terminal 1, never Ctrl+C + `dotnet watch`.** *Always* belongs to the `watch` session; Ctrl+C ends it, and the next new file stops and asks again
 - [ ] **Park three browser tabs**: `/`, `/Trucks`, and **week 12's lab README** on github.com — it goes on screen for every lab block tonight
 - [ ] **mssql extension** signed in, saved server connection tested, panel closed. It has **two** appearances tonight, both in §4: the empty `AspNetRoles` table, then the role and Ada's row
-- [ ] **Say the no-typing line out loud in the first minute.** Tonight is watched, not typed along with: *"Nothing I type tonight is yours to type. Curbside is my app, and the Registry is yours. Your keyboard time is the lab blocks. There are seven of them tonight, one after each part of my demo."*
+- [ ] **Say the no-typing line out loud in the first minute.** Tonight is watched, not typed along with: *"Nothing I type tonight is yours to type. Curbside is my app, and the Registry is yours. Your keyboard time is the lab blocks. There are six of them tonight."*
 - [ ] Teaching profile on, notifications off, editor font sized for the back of the room and for a small laptop screen
 
 > [!NOTE]
@@ -88,11 +88,11 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 ## Lab A · Setup and task 1 — 8 minutes
 
 - [ ] Put the **lab README** on screen — the tab you parked in §0 — scrolled to **Setup**
-- [ ] *"Tonight the lab comes in seven short blocks. After each part of my demo, you do the same thing to your Registry. Each block ends at a note that says In class, stop here."*
+- [ ] *"Tonight the lab comes in six short blocks. After most parts of my demo, you do the same thing to your Registry. Each block ends at a note that says In class, stop here."*
 - [ ] *"The first block is setup and task 1. Task 1 sets your connection string, drops the lab database, rebuilds it, and starts your app. Use the same database name as in week 11."*
 - [ ] ⚠️ **The drop is not optional, and say why:** *"You drop the lab database because the starter ships my migration files, and your database remembers yours. They cannot be mixed. If you skip the drop, the update fails with there is already an object named Cryptids."*
 - [ ] ⚠️ **Then fence it:** *"Only drop a database you can rebuild from scratch. The lab database is one of those. Never drop your own project's database. It has records that nothing can give back."*
-- [ ] *"Then join the Registry with your own email. Task 4 makes that account the curator, so use an email you will remember."* Then the target: *"Tonight's in-class target is checks 1 to 5."*
+- [ ] *"Then join the Registry with your own email. Task 4 makes that account the curator, so use an email you will remember."* Then the target: *"Tonight's in-class target is all five checks."*
 - [ ] 👀 **Watch for:** `There is already an object named 'Cryptids'` — they skipped the drop. `Could not find a MSBuild project file` — terminal 1 or 2 never ran `cd Cryptids.Web`. `Login failed`, or a long wait that ends in a network error, on `database update` — the username or password, or the server name. `Username '…' is already taken.` — they joined twice; it worked the first time
 - [ ] **Stop:** the note after **Task 1 in full**. Where they should be: `dotnet test` prints **`Passed: 1`**, the app is running in terminal 1, and they are signed in with their own email
 
@@ -479,7 +479,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 - [ ] ⚠️ *"Report a sighting stays outside the if. That one is for the public, and check 5 fails if a visitor cannot see it."*
 - [ ] *"Then sign out, and type Cryptids slash Create into the address bar."*
 - [ ] 👀 **Watch for:** check 5 saying a visitor can't see 👁️ *Report a sighting* — it went inside the `@if` with the others. The curator seeing nothing either — the role name inside `IsInRole` isn't `Curator`, or they haven't signed in again since task 4. **Sweep the room here** — this is tonight's in-class target
-- [ ] **Stop:** the note after **Task 5 in full**. Where they should be: **`Passed: 5`** — checks 1 to 5, tonight's in-class target
+- [ ] **Stop:** the note after **Task 5 in full**. Where they should be: **`Passed: 5`** — all five, tonight's in-class target
 
 ## 6 · A role is a claim *(slide 7)*
 
@@ -537,14 +537,6 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 - [ ] 🎞️ **GO TO SLIDE 7** — *A role is a claim* · *"A claim is one fact about you, written into the cookie when you sign in. A role is just a claim whose type is role."*
 - [ ] Still on slide 7, the last line: *"So User IsInRole and Authorize with Roles are both reading that one row. That is why the role arrived when Ada signed in again: a new sign-in writes a new set of claims."*
 
-## Lab F · Task 6 — 13 minutes
-
-- [ ] Lab README on screen, scrolled to **Task 6 in full**
-- [ ] *"Task 6 is the claims page for your Registry. The action with Authorize on it, then the view."*
-- [ ] *"Then look at your own claims, and find the one that says Curator."*
-- [ ] 👀 **Watch for:** check 6 saying a visitor opened `/Account/Claims` — `[Authorize]` is missing from the action. No role row for the curator — they haven't signed in again since task 4. `The type or namespace name 'Authorize' could not be found` — the using at the top of `AccountController.cs`
-- [ ] **Stop:** the note after **Task 6 in full**. Where they should be: **`Passed: 6`**, and their own role claim on the page
-
 ## 7 · What's already secured *(slide 8)*
 
 - [ ] 🎞️ **GO TO SLIDE 8** — *What's already secured* · *"Before you go back to the lab, here is everything this course has already secured, and what each one stops. None of it is new tonight except the last row."*
@@ -552,12 +544,13 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 - [ ] Still on slide 8, the week 11 rows: *"Week 11, four of them. The password is a hash, so a stolen table gives up no passwords. Sign out is a POST, so no other page can sign you out. LocalRedirect, so a return URL cannot send you to another site. And Authorize on the class, so an action someone adds later is covered automatically."*
 - [ ] 🎯 Still on slide 8, the last row: *"And tonight, the role. That closes the gap I named last week. A stranger can still make an account, and an account is no longer enough to change anything."*
 
-## Lab G · Catch up, or the stretch — 20 minutes
+## Lab F · Catch up, or the stretch — 33 minutes
 
 - [ ] Lab README on screen, scrolled to **The tasks**
-- [ ] *"This is the last block, and it has no stop. If any of your checks are red, finish those first. If you are at six, the stretch at the bottom of the README turns the Signed in as line in your navbar into a link to your claims page."*
-- [ ] *"The stretch has no check and no points. Tonight's in-class target was checks 1 to 5. Anything still red is Part 1 of your homework."*
+- [ ] *"This is the last block, and it has no stop. If any of your checks are red, finish those first. If you are at five, the stretch at the bottom of the README builds the claims page I just showed you, on your Registry."*
+- [ ] *"The stretch has no check and no points. Tonight's in-class target was all five checks. Anything still red is Part 1 of your homework."*
 - [ ] 👀 **Watch for:** anyone still red on check 4 — have them sign out and back in, then read the message; it names the email it tried
+- [ ] 👀 **Stretch:** no role row on `/Account/Claims` — they haven't signed in again since task 4. `The type or namespace name 'Authorize' could not be found` — the using at the top of `AccountController.cs`
 - [ ] **No stop.** This block takes whatever time is left before the wrap-up. Anyone finished: the stretch, **🚀 Done early?** at the bottom of the README, or help a classmate
 
 ## 8 · Wrap-up, after the lab *(slide 9)*

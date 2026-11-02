@@ -10,13 +10,13 @@ The night week 11's debt gets paid. Since week 11 a change needs an account, and
 | Prep&nbsp;/⁠&nbsp;in-⁠class&nbsp;script | 📖&nbsp;[lecture-⁠notes.md](lecture-notes.md) | Full lecture content, adapting it to your own app, **troubleshooting section** |
 | Projected&nbsp;in&nbsp;class | 🎞️&nbsp;[slides.md](slides.md) | The deck (GFM, one slide per `##`) — [**present it live**](https://jgrissom.github.io/dotnet-web-dev/week-12/) (arrow keys, `F` for fullscreen) |
 | In&nbsp;class,&nbsp;live-⁠coding | 🎨&nbsp;[demo/⁠](demo/) | *Curbside gets an admin* — picks up where week 11 left it; [clickable cue sheet](https://jgrissom.github.io/dotnet-web-dev/week-12/demo/script.html) |
-| In&nbsp;class,&nbsp;90&nbsp;min&nbsp;in&nbsp;seven&nbsp;blocks | 🧪&nbsp;[lab/⁠](lab/) | *The Registry gets a curator* — 6 `dotnet test` checks; 1/6 green out of the box; each block follows the part of the demo it practices, and all but the last end at an *In class, stop here* note (answer key in the private answer-keys repo) |
+| In&nbsp;class,&nbsp;90&nbsp;min&nbsp;in&nbsp;six&nbsp;blocks | 🧪&nbsp;[lab/⁠](lab/) | *The Registry gets a curator* — 5 `dotnet test` checks; 1/5 green out of the box; each block follows the part of the demo it practices, and all but the last end at an *In class, stop here* note (answer key in the private answer-keys repo) |
 | With&nbsp;the&nbsp;homework | ✅&nbsp;[homework-⁠checks.js](homework-checks.js) | Student self-check — the same checks the grader runs (14 of the 20 pts; **nothing runs on load — `recheck()` is the only path**; it signs in as week 11's self-check account, signs the browser out, and **can't see the admin succeed**) |
 | Assigned&nbsp;at&nbsp;wrap-⁠up | 📤&nbsp;[homework.md](homework.md) | Their own app gets a role of their choosing, an AccessDenied page, an admin named in configuration, and hidden buttons; URL + repo via Canvas |
 
 ## What students walk out with
 
-**An app where an account is no longer enough to change anything — and a clear line between what a visitor sees and what they can do.** They can say why *signed in* is not trusted, and put a role on a controller's `[Authorize]`; say where Identity sends a signed-in visitor without the role, and write that page — view first; write a seeder that creates a role and hands it to the email in configuration, and say why neither the email nor any password belongs in code; say why a role granted to someone already signed in doesn't reach them until they sign in again; hide a write button with `User.IsInRole`, and say why that is a courtesy and the attribute is the lock; list a user's claims and point at the one a role becomes; and name what weeks 6–12 each secured, in one line apiece.
+**An app where an account is no longer enough to change anything — and a clear line between what a visitor sees and what they can do.** They can say why *signed in* is not trusted, and put a role on a controller's `[Authorize]`; say where Identity sends a signed-in visitor without the role, and write that page — view first; write a seeder that creates a role and hands it to the email in configuration, and say why neither the email nor any password belongs in code; say why a role granted to someone already signed in doesn't reach them until they sign in again; hide a write button with `User.IsInRole`, and say why that is a courtesy and the attribute is the lock; say what a claim is and point at the one a role becomes; and name what weeks 6–12 each secured, in one line apiece.
 
 ## 📋 Before class, don't forget
 
@@ -25,7 +25,7 @@ The night week 11's debt gets paid. Since week 11 a change needs an account, and
 - **Two integrated terminals** — `dotnet watch` in the first, `dotnet user-secrets` in the second
 - ⚠️ **The first restart prompt is in §3, at the new `AccessDenied.cshtml` — answer `a`.** §2's attribute edit hot-reloads; if Sam still gets the form, Ctrl+R
 - 🎯 **§4's refusal after the role is granted is the night's real lesson** — let it land before you sign Ada out and back in
-- **Week 12's lab README in a browser tab** — it goes on screen for all seven lab blocks; there is no lab slide
+- **Week 12's lab README in a browser tab** — it goes on screen for all six lab blocks; there is no lab slide
 - **mssql extension** signed in and tested, panel closed — two appearances, both in §4
 - ⚠️ **Say *hiding a link is not security* out loud in §5**, with Sam typing the URL
 - Remind students to `git pull` the starters repo for the week-12 folder

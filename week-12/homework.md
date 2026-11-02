@@ -6,7 +6,7 @@
 
 ## Part 1 — Finish the Registry lab (nobody collects this)
 
-All six checks green:
+All five checks green:
 
 ```bash
 dotnet test Cryptids.Checks
@@ -14,11 +14,11 @@ dotnet test Cryptids.Checks
 
 ```
 Test Run Successful.
-Total tests: 6
-     Passed: 6
+Total tests: 5
+     Passed: 5
 ```
 
-If class ended at check 5, check 6 is the claims page — [Task 6 in full](lab/README.md#task-6-in-full).
+If class ended at check 4, check 5 is the hidden buttons — [Task 5 in full](lab/README.md#task-5-in-full).
 
 > [!IMPORTANT]
 > This isn't submitted and it isn't worth points. It's the same moves Part 2 asks you to make on your own app, with every file handed to you. Doing it first is what turns Part 2 into an hour.

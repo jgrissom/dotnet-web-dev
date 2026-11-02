@@ -14,7 +14,7 @@ By the end of this session, students can:
 3. Write a seeder that creates a role and hands it to the email in configuration, and say why the email lives in user secrets and an app setting and never in code.
 4. Say why granting a role to someone who is already signed in changes nothing until they sign in again.
 5. Hide the buttons a visitor can't use with `User.IsInRole`, and say why that is not what protects the data.
-6. Say what a claim is, list a signed-in user's claims, and point at the one a role becomes.
+6. Say what a claim is, and point at the one a role becomes.
 7. Name what weeks 6–11 already secured, and the one thing each of them protects.
 
 ## Materials
@@ -45,19 +45,18 @@ By the end of this session, students can:
 | 1:52 | 15 min | **Lab D · Task 4**. The secret with **their own email**, the seeder, the three lines — and the refusal that doesn't make sense until they sign out and back in. **Stop at `Passed: 4`.** |
 | 2:07 | 10 min | **☕ Break** |
 | 2:17 | 15 min | **Hide what you can't use** *(slide 6, demo §5)*. `User.IsInRole("Admin")` around every write button on four views, pasted whole. Ada sees them; signed out, nobody does; Sam doesn't either. 🎯 **Sam types `/Trucks/Create` into the address bar — *Admins only*.** Slide 6: **hiding a link is not security; the attribute is.** |
-| 2:32 | 12 min | **Lab E · Task 5**. The archive's buttons inside the `@if` — and **👁️ Report a sighting outside it**. **Stop at `Passed: 5`** — the in-class target. |
+| 2:32 | 12 min | **Lab E · Task 5**. The archive's buttons inside the `@if` — and **👁️ Report a sighting outside it**. **Stop at `Passed: 5`** — all five, the in-class target. |
 | 2:44 | 10 min | **A role is a claim** *(slide 7, demo §6)*. `/Account/Claims`: Ada's six rows, one of them `…/claims/role` = `Admin`. Sam's five. Slide 7: `User.IsInRole` reads that row. |
-| 2:54 | 13 min | **Lab F · Task 6**. The claims page, with `[Authorize]` on its one action. **Stop at `Passed: 6`.** |
-| 3:07 | 8 min | **What's already secured** *(slide 8, demo §7)*. Seven rows, weeks 6–12, each one line: what it is, what it stops. No code. |
-| 3:15 | 20 min | **Lab G · Catch up, or the stretch** *(no check)*. Anyone red finishes; anyone at six links the navbar's *Signed in as* to their claims page. **No stop.** |
+| 2:54 | 8 min | **What's already secured** *(slide 8, demo §7)*. Seven rows, weeks 6–12, each one line: what it is, what it stops. No code. |
+| 3:02 | 33 min | **Lab F · Catch up, or the stretch** *(no check)*. Anyone red finishes; anyone at five builds the claims page from §6 on their Registry. **No stop.** |
 | 3:35 | 10 min | **Wrap-up** *(slide 9, demo §8)*. Five rows, one sentence each. Homework: the same four moves on their own app, with a role they choose. ⚠️ Say what the self-check can't see — **your admin succeeding** — and that it signs their browser out. |
 
 > [!NOTE]
-> **The table sums to exactly 225 minutes: 95 of demo, 90 of lab in seven blocks, 20 of break, and 20 of gallery and wrap-up.** The longest stretch of watching is **22 minutes — §4** — and every demo segment is followed by a lab block of its own, so no two segments run back to back. The breaks sit after Lab B and after Lab D. **If the night runs long, the minutes come out of Lab G and §7's last rows, not out of a break, and never out of a lab block before Lab E.** **If the demo runs fast, the time goes to Lab G.**
+> **The table sums to exactly 225 minutes: 95 of demo, 90 of lab in six blocks, 20 of break, and 20 of gallery and wrap-up.** The longest stretch of watching is **22 minutes — §4** — and every demo segment but one is followed by a lab block of its own; the exception is §6 and §7, which run back to back for 18 minutes. The breaks sit after Lab B and after Lab D. **If the night runs long, the minutes come out of Lab F and §7's last rows, not out of a break, and never out of a lab block before Lab E.** **If the demo runs fast, the time goes to Lab F.**
 
 ## Instructor notes
 
-- **The lab comes in seven blocks, each one right after the demo segment it practices.** Every block but the last ends at an **In class, stop here** note in the lab README. The cue sheet's `## Lab` sections say what to say, what to watch for, and which note each block stops at. Lab G has no stop.
+- **The lab comes in six blocks, each one right after the demo segment it practices.** Every block but the last ends at an **In class, stop here** note in the lab README. The cue sheet's `## Lab` sections say what to say, what to watch for, and which note each block stops at. Lab F has no stop.
 - **Students watch the demo; they don't type along.** Curbside lives only in the private answer-keys repo and the lab is a different app. Say it in the first minute.
 - ⚠️ **The first restart prompt is in §3, at the first new view.** §2's attribute edit and §3's new action both hot-reload — measured on a pty-driven `dotnet watch`. Creating `Views/Account/AccessDenied.cshtml` prints `ENC0021: Adding attribute requires restarting the application` and asks. **Answer `a`**, and §4's `Program.cs` and §6's new view restart by themselves.
 - ⚠️ **Restart with Ctrl+R, not Ctrl+C + `dotnet watch`** — same as week 11: *Always* belongs to the `watch` session.

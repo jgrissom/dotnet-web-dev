@@ -4,7 +4,7 @@ Since week 11, changing the Registry needs an account. Anybody can make one. So 
 
 Tonight the archive gets a curator. The lock asks for a **role**, not just an account; a member who isn't a curator is told so on a page of the Registry's own; the curator is named in configuration, never in code; the buttons nobody else can use disappear; and the sign-in cookie turns out to be carrying the role all along. Reading stays open to anybody. So does filing a report: **the archive is curated; the reports are not.**
 
-**Time:** ~90 minutes in class, in seven short blocks — each one follows the part of the demo it practices, and every block but the last ends at an **In class, stop here** note. The blocks are: **Setup and task 1** · task 2 · task 3 · task 4 · task 5 · task 6 · and a last block for catching up or the stretch. **In-class target: checks 1–5 green.** Check 6 is a page listing your own claims; it rolls into Part 1 of the homework if the clock wins.
+**Time:** ~90 minutes in class, in six short blocks — each one follows the part of the demo it practices, and every block but the last ends at an **In class, stop here** note. The blocks are: **Setup and task 1** · task 2 · task 3 · task 4 · task 5 · and a last block for catching up or the stretch. **In-class target: all five checks green.**
 
 ## Setup
 
@@ -53,7 +53,7 @@ Terminal 3 stays in `CryptidsCurator`, because `dotnet test Cryptids.Checks` run
 dotnet test Cryptids.Checks
 ```
 
-**1 / 6 passing.** Check 1 is the Registry you were handed, already working. The other five are tonight.
+**1 / 5 passing.** Check 1 is the Registry you were handed, already working. The other four are tonight.
 
 **Now carry straight on to [Task 1](#task-1-in-full)** — it's part of this first block, which ends at the **In class, stop here** note after it.
 
@@ -70,10 +70,9 @@ Cryptids.Web/
 ├─ Data/RoleSeeder.cs            ← task 4 (new)
 ├─ Controllers/
 │   ├─ CryptidsController.cs     ← task 2 (one attribute)
-│   └─ AccountController.cs      ← tasks 3 and 6 (one action each)
+│   └─ AccountController.cs      ← task 3 (one action)
 └─ Views/
     ├─ Account/AccessDenied.cshtml ← task 3 (new)
-    ├─ Account/Claims.cshtml     ← task 6 (new)
     └─ Cryptids/
         ├─ Index.cshtml          ← task 5
         └─ Details.cshtml        ← task 5
@@ -82,7 +81,7 @@ Cryptids.Web/
 **No migration tonight.** The tables a role needs — `AspNetRoles`, and `AspNetUserRoles` for who holds one — came with week 11's `AddIdentity`. They've been empty since.
 
 > [!NOTE]
-> **The checks never connect to SQL Server** — in-memory, seeded from your `HasData`, no wifi needed. The members and roles they create live only as long as the test run, and **your own `Admin:Email` secret never reaches them**: check 4 sets its own. **6/6 does not prove your connection string works.** Your browser proves that. Do both.
+> **The checks never connect to SQL Server** — in-memory, seeded from your `HasData`, no wifi needed. The members and roles they create live only as long as the test run, and **your own `Admin:Email` secret never reaches them**: check 4 sets its own. **5/5 does not prove your connection string works.** Your browser proves that. Do both.
 
 ## The tasks
 
@@ -93,8 +92,7 @@ Cryptids.Web/
 | 3 | `AMemberWhoIsNotACuratorIsToldSo` | **AccessDenied** — the page a signed-in member lands on without the role. **[Task 3 in full ↓](#task-3-in-full)** |
 | 4 | `TheCuratorComesFromConfiguration` | **Make yourself the curator** — your email in a user secret, and a seeder that hands out the role. **[Task 4 in full ↓](#task-4-in-full)** |
 | 5 | `OnlyCuratorsSeeTheButtons` | **Hide the archive's buttons** from everyone but a curator. **[Task 5 in full ↓](#task-5-in-full)** |
-| 6 | `TheCookieCarriesTheRole` | **A claims page** — what your sign-in cookie says about you. **[Task 6 in full ↓](#task-6-in-full)** |
-| ⭐ | — | **Stretch: a link to your claims.** No check, no points. **[Stretch in full ↓](#stretch-a-link-to-your-claims)** |
+| ⭐ | — | **Stretch: see your own claims.** No check, no points. **[Stretch in full ↓](#stretch-see-your-own-claims)** |
 
 ### Task 1 in full
 
@@ -141,7 +139,7 @@ dotnet test Cryptids.Checks
 **`Passed: 1`** — the same as when you started. Check 2's message says a member who isn't a curator opened `/Cryptids/Create`. That's correct: task 2 changes the lock.
 
 > [!NOTE]
-> **In class, stop here.** Task 2 comes after the next part of the demo. Checks 2 to 6 are still red, and that's expected. Finished early? You're signed in — open any creature and click **✏️ Correct the record**. It opens. So would anyone's account. That is what tonight closes. Or help a classmate get signed in. Working at home? Carry straight on.
+> **In class, stop here.** Task 2 comes after the next part of the demo. Checks 2 to 5 are still red, and that's expected. Finished early? You're signed in — open any creature and click **✏️ Correct the record**. It opens. So would anyone's account. That is what tonight closes. Or help a classmate get signed in. Working at home? Carry straight on.
 
 ### Task 2 in full
 
@@ -176,7 +174,7 @@ dotnet test Cryptids.Checks
 **`Passed: 2`** — checks 1 and 2. Check 3's message says `/Account/AccessDenied` came back 404. That's correct: task 3 writes it.
 
 > [!NOTE]
-> **In class, stop here.** Task 3 comes after the break and the next part of the demo. Checks 3 to 6 are still red, and that's expected. Finished early? Sign out, then click **＋ Open a new file** — you go to the sign-in page, not AccessDenied. Same lock, two visitors, two answers. Or help a classmate. Working at home? Carry straight on.
+> **In class, stop here.** Task 3 comes after the break and the next part of the demo. Checks 3 to 5 are still red, and that's expected. Finished early? Sign out, then click **＋ Open a new file** — you go to the sign-in page, not AccessDenied. Same lock, two visitors, two answers. Or help a classmate. Working at home? Carry straight on.
 
 ### Task 3 in full
 
@@ -228,7 +226,7 @@ dotnet test Cryptids.Checks
 **`Passed: 3`** — checks 1 to 3. Check 4's message says there's no Curator role yet. That's correct: task 4 makes it.
 
 > [!NOTE]
-> **In class, stop here.** Task 4 comes after the next part of the demo. Checks 4 to 6 are still red, and that's expected. Finished early? In the mssql panel, run `SELECT * FROM AspNetRoles;` against your database. No rows. A role is a row in that table, and nobody has made one. Or help a classmate with their restart prompt. Working at home? Carry straight on.
+> **In class, stop here.** Task 4 comes after the next part of the demo. Checks 4 and 5 are still red, and that's expected. Finished early? In the mssql panel, run `SELECT * FROM AspNetRoles;` against your database. No rows. A role is a row in that table, and nobody has made one. Or help a classmate with their restart prompt. Working at home? Carry straight on.
 
 ### Task 4 in full
 
@@ -323,7 +321,7 @@ dotnet test Cryptids.Checks
 **`Passed: 4`** — checks 1 to 4. Check 5's message says a visitor sees the ＋ Open a new file button. That's correct: task 5 hides it.
 
 > [!NOTE]
-> **In class, stop here.** Task 5 comes after the break and the next part of the demo. Checks 5 and 6 are still red, and that's expected. Finished early? Run `dotnet user-secrets list` in terminal 2 — two lines, your connection string and your email. Nothing in your repo knows either one. Or help a classmate who keeps getting *Curators only*: ask them whether they signed out and back in. Working at home? Carry straight on.
+> **In class, stop here.** Task 5 comes after the break and the next part of the demo. Check 5 is still red, and that's expected. Finished early? Run `dotnet user-secrets list` in terminal 2 — two lines, your connection string and your email. Nothing in your repo knows either one. Or help a classmate who keeps getting *Curators only*: ask them whether they signed out and back in. Working at home? Carry straight on.
 
 ### Task 5 in full
 
@@ -361,16 +359,16 @@ dotnet test Cryptids.Checks
 dotnet test Cryptids.Checks
 ```
 
-**`Passed: 5`** — tonight's in-class target. 🎉 Check 6's message says `/Account/Claims` came back 404. That's correct: task 6 writes it.
+**`Passed: 5`** — all five, tonight's in-class target. 🎉 The Registry has a curator.
 
 > [!NOTE]
-> **In class, stop here.** Task 6 comes after the next part of the demo. Check 6 is still red, and that's expected. Finished early? Join again with a second email, and look at a creature's page as that member: no buttons, the same as a visitor. Or help a classmate. Working at home? Carry straight on.
+> **In class, this is the last stop.** The rest of the demo comes next, then a last block for catching up or the stretch below. Finished early? Join again with a second email, and look at a creature's page as that member: no buttons, the same as a visitor. Or help a classmate. Working at home? You're done.
 
-### Task 6 in full
+### Stretch: see your own claims
 
-**Check:** `Check6_TheCookieCarriesTheRole`
+**No check, no points, and nobody needs this for the homework.** In class this is the last block — and the block has no stop. If any of your checks are still red, finish those first.
 
-**In `Controllers/AccountController.cs`**, add the using at the top:
+The demo's claims page, on your Registry. **In `Controllers/AccountController.cs`**, add the using at the top:
 
 ```csharp
 using Microsoft.AspNetCore.Authorization;
@@ -421,37 +419,14 @@ public IActionResult Claims()
 
 Terminal 1 restarts by itself for the new view.
 
-**Open `/Account/Claims`.** Six rows — your id, your name, your email, a security stamp, `amr` (how you signed in: `pwd`, a password), and **`http://schemas.microsoft.com/ws/2008/06/identity/claims/role`**, with the value **`Curator`**. That last row is your role. `User.IsInRole("Curator")` and `[Authorize(Roles = "Curator")]` both read it, which is why signing in again was what made task 4 work: a new sign-in writes a new set of claims.
-
-**Run the checks, in terminal 3:**
-
-```bash
-dotnet test Cryptids.Checks
-```
-
-**`Passed: 6`** — all six. 🎉 The Registry has a curator, and you can see it in the cookie.
-
-> [!NOTE]
-> **In class, this is the last stop.** The last block — catching up, or the stretch below — follows straight on, with no demo in between. Or help a classmate. Working at home? You're done.
-
-### Stretch: a link to your claims
-
-**No check, no points, and nobody needs this for the homework.** In class this is the last block — and the block has no stop. If any of your checks are still red, finish those first.
-
-Nobody can find `/Account/Claims` without typing it. In `Views/Shared/_LoginPartial.cshtml`, turn the *Signed in as* text into a link to it — replace the `<span class="navbar-text me-2">…</span>` line with:
-
-```cshtml
-<a class="nav-link" asp-controller="Account" asp-action="Claims">Signed in as @name</a>
-```
-
-Everything around it stays: the `var name` fallback from week 11 still decides what it says.
+**Open `/Account/Claims`.** Six rows — your id, your name, your email, a security stamp, `amr` (how you signed in: `pwd`, a password), and **`http://schemas.microsoft.com/ws/2008/06/identity/claims/role`**, with the value **`Curator`**. That last row is your role.
 
 ## Rules
 
 - **Never edit `Cryptids.Checks`.** If a check looks wrong, tell me.
 - **Work in `Cryptids.Web` only.**
 - `dotnet test Cryptids.Checks` runs from `CryptidsCurator`, the folder above both projects.
-- **The checks don't need wifi or SQL Server** — they run your app against an in-memory database. 6/6 does **not** prove your connection string works. Your browser proves that.
+- **The checks don't need wifi or SQL Server** — they run your app against an in-memory database. 5/5 does **not** prove your connection string works. Your browser proves that.
 
 ## 🆘 Stuck?
 
@@ -466,7 +441,7 @@ Everything around it stays: the `var name` fallback from week 11 still decides w
 - **A `500` with `The view 'AccessDenied' was not found`** — the action is there and the view isn't, or the restart prompt is still waiting in terminal 1. [Task 3 in full ↑](#task-3-in-full)
 - **Check 5 says a visitor can't see 👁️ Report a sighting** — it went inside the `@if` with the archive's buttons. Move it out.
 - **You're the curator and the buttons are gone for you too** — the name inside `IsInRole("…")` isn't `Curator`, or you haven't signed in again since task 4.
-- **`The type or namespace name 'Authorize' could not be found`** in `AccountController.cs` — the `using Microsoft.AspNetCore.Authorization;` at the top. [Task 6 in full ↑](#task-6-in-full)
+- **`The type or namespace name 'Authorize' could not be found`** in `AccountController.cs` — the `using Microsoft.AspNetCore.Authorization;` at the top. [Stretch ↑](#stretch-see-your-own-claims)
 - **`/Account/Claims` has no role row** — you're not the curator yet, or your cookie is older than the role. Sign out and back in.
 - **`dotnet ef` says there's already an object named 'Cryptids'** — you skipped the database drop in task 1. Run it in terminal 2, then `database update` again. (Only ever in this lab — never on your own project's database.)
 - **"Could not find a MSBuild project file"** — that terminal is standing in `CryptidsCurator`, which holds two projects. `dotnet watch`, `dotnet ef` and `dotnet user-secrets` need one: run `cd Cryptids.Web` in terminals 1 and 2.
