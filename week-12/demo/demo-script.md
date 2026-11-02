@@ -115,7 +115,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 ### Where does Sam go
 
 - [ ] **Ask before the click — the answer is last week's redirect:** *"Last week, a stranger who clicked Add a truck went to the sign-in page. Sam is signed in. What should happen to him instead?"* Take answers
-- [ ] **Swipe to the browser**, `/Trucks`. Click **＋ Add a truck**. 🎯 The address bar says **`/Account/AccessDenied?ReturnUrl=%2FTrucks%2FCreate`**, and the page says ***Keep on Truckin' 🌮 — Because that page doesn't exist - remember our custom 404 from last week?***
+- [ ] **Swipe to the browser**, `/Trucks`. Click **＋ Add a truck**. 🎯 The address bar says **`/Account/AccessDenied?ReturnUrl=%2FTrucks%2FCreate`**, and the page says ***Keep on Truckin' 🌮 — That page doesn't exist***
 - [ ] Point at the address bar: *"Look at the address. Account, AccessDenied. Identity has two places it sends people. Someone who is not signed in goes to Account Login. Someone who is signed in, but is not allowed, goes to Account AccessDenied. These are the Identity framework's defaults, the same as the sign-in page last week."*
 - [ ] **Ask the second one — the answer is week 10:** *"Now look at the page. It says that page doesn't exist. Which part of my app put this page up?"* Take the answer: *"The Missing page from week 10. Nothing in my app answers at Account AccessDenied, so it is a 404, and every 404 gets the Missing page."*
 - [ ] 🎞️ **GO TO SLIDE 3** — *A role on the lock* · *"Here are the three visitors, and where each one lands. Not signed in, the sign-in page. Signed in without the role, AccessDenied. Signed in with it, the form."*
