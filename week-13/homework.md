@@ -75,7 +75,7 @@ Copy **`api-tester.html`** from your starters clone, `dotnet-web-starters/week-1
 
 ### Your app isn't mine
 
-Nothing above says what your records are called. The self-check doesn't know either. It finds your list page from your navbar, the way it has since week 4, and adds `/api` in front. It finds your related rows by looking for an array inside a record, whatever you called it. If your API uses a different word from your list page, `recheck("Trails")` with your own word tells it where to look at both.
+Nothing above says what your records are called. The self-check doesn't know either. It finds your list page from your navbar, the way it has since week 4, and adds `/api` in front. It finds your related rows by looking for an array inside a record, whatever you called it. **So your API has to use the same word as your list page.** If it can't find your list page in your navbar, `recheck("Trails")` with your own word tells it where to look, and that word is used for both.
 
 ## Part 3 — Check it as you go ✅
 
@@ -154,6 +154,7 @@ Then run the self-check on your Azure URL. That is the run I grade.
 - **A POST comes back `400` and your JSON looks right** — is `[ValidateAntiForgeryToken]` on it? Take it off. [Why no token](lecture-notes.md#why-no-token).
 - **A `500` that mentions a `FOREIGN KEY`** — your input's id points at nothing. [What the rules can't know](lecture-notes.md#what-the-rules-cant-know).
 - **Your admin gets a `403`** — your cookie is older than your role, or the role's spelling differs from your seeder's. Sign out and back in. [Who may write](lecture-notes.md#part-8-who-may-write).
+- **A signed-out request gets through, over a correct `[Authorize]`** — hot reload can report an attribute as applied when it isn't. `Ctrl+R` in the terminal running `dotnet watch`. [Who may write](lecture-notes.md#part-8-who-may-write).
 - **The tester says `A redirect`** — the class has no `[ApiController]`.
 - **The status is right, with a page of HTML behind it** — requirement 5, then `Ctrl+R`. [The Missing page, behind the status](lecture-notes.md#the-missing-page-behind-the-status).
 - **Yellow `NU1902` / `NU1903` warnings about `System.Security.Cryptography.Pkcs`** — the advisory week 9's homework fixed. If your app still shows them, from the folder with your `.csproj`, once: `dotnet add package System.Security.Cryptography.Pkcs --version 10.0.13`. One line appears in your `.csproj`; commit it.

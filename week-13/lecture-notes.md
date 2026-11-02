@@ -319,7 +319,7 @@ Two things it doesn't do, because `[ApiController]` does them:
 
 ### What the rules can't know
 
-Validation attributes look at one value. They can't know whether a foreign key points at anything. If your input carries one, look it up, and answer the same way the automatic 400 does:
+Validation attributes look at one value. They can't know whether a foreign key points at anything. If your input carries one, look it up at the top of the POST action, before anything is saved, and answer the same way the automatic 400 does. From `SightingsApiController`:
 
 ```csharp
 if (!await _context.Cryptids.AnyAsync(c => c.Id == input.CryptidId))
@@ -498,6 +498,8 @@ public class TrucksApiController : ControllerBase
 
 Authentication is who you are, and **401** means *I don't know who you are*, whatever its official name says. Authorization is what you may do, and **403** means *I know who you are, and no*. Those are week 11's two questions.
 
+⚠️ **An attribute is the kind of edit hot reload can report as applied when it isn't.** MVC works out each action's filters when the app starts. If a signed-out request still gets through over a correct `[Authorize]`, press `Ctrl+R` in the terminal running `dotnet watch` and send it again.
+
 ⚠️ **`[ApiController]` is what makes that change.** Measured on .NET 10: take it off the class and the same request is a `302` to the sign-in page. The tester says *A redirect*. A `401` still carries a `Location` header naming the sign-in page; a program ignores it, because the status is the answer.
 
 ⚠️ **The role is still read when you sign in.** A new role doesn't reach a signed-in cookie through an API either: [week 12's rule](../week-12/lecture-notes.md#part-5-the-role-is-read-when-you-sign-in), and a `403` for your own admin is usually that.
@@ -566,9 +568,9 @@ Your related rows are whatever your second table holds, and **the DTO for them l
 
 Search for ASP.NET Core Web API and you'll find much more than tonight:
 
-- **OpenAPI and Swagger** — a generated description of your API, and a page for trying it. Useful, and `dotnet new webapi` sets it up. It's a package to add, and the tester already does what this course needs.
+- **OpenAPI and Swagger** — a generated description of your API, and with Swagger, a page for trying it. `dotnet new webapi` sets up the description, and the page is another package to add. The tester already does what this course needs.
 - **Tokens and JWT** — how an API proves who a caller is when the caller isn't a browser with a cookie. A phone app needs this. Same-site JavaScript doesn't.
-- **A CORS policy** — letting a site on another address call your API. You won't need one: week 14's JavaScript runs on your own site.
+- **A CORS policy** — letting a site on another address call your API. JavaScript on your own site doesn't need one.
 - **`ReferenceHandler`** — the setting that silences the cycle error. It leaves your model as your API.
 - **`PATCH`, versioning, paging, and `[FromQuery]` filters.** Real APIs grow all of them. A list, one record, and the verbs are the shape to learn first.
 - **`[ProducesResponseType]` and typed results** — ways of documenting what an action can answer with.
@@ -603,6 +605,9 @@ Search for ASP.NET Core Web API and you'll find much more than tonight:
 
 **A record saves with the year 1**
 - That property is a plain `DateTime`, and nobody sent it. Make it `DateTime?` with `[Required]`. [What the rules can't know](#what-the-rules-cant-know).
+
+**A signed-out request gets through, over a correct `[Authorize]`**
+- Hot reload can report an attribute as applied when it isn't. Restart with `Ctrl+R`. [Part 8](#part-8-who-may-write).
 
 **The tester says `A redirect`, or a browser lands on the sign-in page**
 - The class has no `[ApiController]`. [Part 8](#part-8-who-may-write).

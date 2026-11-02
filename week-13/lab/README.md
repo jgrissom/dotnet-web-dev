@@ -255,7 +255,7 @@ dotnet test Cryptids.Checks
 
 **Check:** `Check3_ACreatureComesWithItsReports`
 
-**Want to see the error for yourself?** Add this action, go to `/api/cryptids/1`, and read what comes back. You'll need `using Cryptids.Web.Models;` at the top of the file.
+**Want to see the error for yourself?** Add this action, go to `/api/cryptids/1`, and read what comes back. **The page starts with a run of JSON**, because the serializer had already begun writing. Scroll down to the error page below it. You'll need `using Cryptids.Web.Models;` at the top of the file.
 
 ```csharp
 [HttpGet("{id:int}")]
@@ -585,6 +585,9 @@ Put `[AllowAnonymous]` on the line above `[HttpGet]` on **both** GET actions. Th
 > [!WARNING]
 > **Don't put `[ValidateAntiForgeryToken]` on these.** The token comes from a form, and a program has no form. Your own PUT would get a 400. The notes say [why an API doesn't need it](../lecture-notes.md#why-no-token).
 
+> [!TIP]
+> **Signed out, and a request still gets through over a correct attribute?** Press `Ctrl+R` in terminal 1 and send it again. MVC works out each action's filters when the app starts, so an attribute is the kind of edit hot reload can report as applied when it isn't. A restart always applies it.
+
 **Try all three visitors,** with the tester. Signed in as yourself, **PUT** to **`/api/cryptids/6`**:
 
 ```json
@@ -692,6 +695,7 @@ The class's `[Authorize(Roles = "Curator")]` already covers it. `CreatedAtAction
 - **A `500` on a report, and SQL Server's message mentions a `FOREIGN KEY`** — the `cryptidId` doesn't exist and the lookup is missing. [Task 4 in full ↑](#task-4-in-full)
 - **Check 4 says a visitor got a 401** — `SightingsApiController` got an `[Authorize]`. Take it off; reports are public.
 - **Check 5 says a visitor got through** — the role isn't on the `CryptidsApiController` class, or it's a plain `[Authorize]`.
+- **The tester lets a signed-out visitor through, over a correct attribute** — hot reload can report an attribute as applied when it isn't. `Ctrl+R` in terminal 1. [Task 5 in full ↑](#task-5-in-full)
 - **You're the curator and the tester says `403`** — your cookie is older than your role. Sign out and back in. Or the spelling: `"Curator"` in the attribute, the same as the seeder.
 - **The tester says `A redirect`** — the class has no `[ApiController]`. Without it, a refusal is a page's answer.
 - **Check 5 says the plate changed** — the PUT saved a new `Cryptid`. Load the creature and copy the five properties across. [Task 5 in full ↑](#task-5-in-full)
@@ -704,4 +708,4 @@ The class's `[Authorize(Roles = "Curator")]` already covers it. `CreatedAtAction
 
 - **Do the stretch task above.**
 - **Watch a request go by.** Open **F12 → Network**, send something with the tester, and click the request. The verb, the status, your cookie and the JSON are all there.
-- **Read the tester.** Open `wwwroot/api-tester.html`. The part that talks to the server is one `fetch` call. That's where next week starts.
+- **Read the tester.** Open `wwwroot/api-tester.html`. The part that talks to the server is one `fetch` call.

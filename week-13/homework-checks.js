@@ -13,7 +13,8 @@
 //
 //  HOW IT FINDS YOUR API: it finds your list page in your navbar, the way it
 //  has since week 4, and adds /api in front of it. /Trails means /api/Trails.
-//  Using a different word?  recheck("Trails")  tells it.
+//  The two have to use the same word. List page not in your navbar?
+//  recheck("Trails")  names that word, for both.
 //
 //  ⚠️  IT CHANGES NOTHING IN YOUR DATA. The POST it sends is broken JSON and the
 //  DELETE names a record that can't exist, so an API with no protection on it
@@ -675,7 +676,7 @@
     console.log(`%c🔎 Week ${WEEK} self-check is loaded — but it hasn't run.`, big);
     console.log("%cType  recheck()  to check your work. It signs in as its own account and signs your browser out, so nothing happens until you ask.",
       "color: #79c0ff");
-    console.log("%cYour API under a different word than your list page?  recheck(\"Trails\")  with your own name.",
+    console.log("%cList page not in your navbar?  recheck(\"Trails\")  with your own word. Your API has to use the same word.",
       "color: #79c0ff");
   }
 })();

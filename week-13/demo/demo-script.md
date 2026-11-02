@@ -63,7 +63,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 ## 1 · One request, two answers *(slides 1–2)*
 
-- [ ] 🎞️ **GO TO SLIDE 1** — *Week 13 — Web API* · it is still up from the gallery — talk to its list before you swipe away from it: *"Here is tonight. Until now, every answer my app gave was a page for a person to read. Tonight it also answers programs, with data. I will write that first with a controller, then with a minimal API, and compare them. Then one truck with its menu, which breaks in a way worth seeing. Then testing, and last, who is allowed to change anything."*
+- [ ] 🎞️ **GO TO SLIDE 1** — *Week 13 — Web API* · it is still up from the gallery — talk to its list before you swipe away from it: *"Here is tonight. Until now, every answer my app gave was a page for a person to read. Tonight it also answers programs, with data. I will write that first with a controller, then with a minimal API, and compare them. Then one truck with its menu, which breaks in a way worth seeing. Then testing, then who is allowed to change anything, and last, why none of it needs an antiforgery token."*
 
 ### What a page is made of
 
@@ -73,13 +73,13 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 ### Same data, no page *(slide 2)*
 
-- [ ] 🎞️ **GO TO SLIDE 2** — *One request, two answers* · *"Here are two answers to the same question. At the top is what you just saw. Underneath is the same truck as JSON: just the data, with a name on each value. That is an API. A web API is a set of addresses that answer with data instead of pages."*
+- [ ] 🎞️ **GO TO SLIDE 2** — *One request, two answers* · *"Here are two answers to the same request. At the top is what you just saw. Underneath is the same truck as JSON: just the data, with a name on each value. That is an API. A web API is a set of addresses that answer with data instead of pages."*
 - [ ] 🎯 Still on slide 2, the last line: *"The JSON shape is the object syntax from week 1. Nothing about tonight replaces my pages. The app keeps them, and it gains a second set of addresses, for programs."*
 
 ## Lab A · Setup and task 1 — 8 minutes
 
 - [ ] Put the **lab README** on screen — the tab you parked in §0 — scrolled to **Setup**
-- [ ] *"Tonight the lab comes in six short blocks. After most parts of my demo, you do the same thing to your Registry. Each block ends at a note that says In class, stop here."*
+- [ ] *"Tonight the lab comes in six short blocks. After most parts of my demo, you do the same thing to your Registry. Every block but the last ends at a note that says In class, stop here."*
 - [ ] *"The first block is setup and task 1. There is no database drop tonight. This starter has the same migrations as last week's, so your database, your account and your curator role all carry over."*
 - [ ] *"Sign in with your own email, and check you can see Open a new file on the list. Tonight's in-class target is all five checks."*
 - [ ] 👀 **Watch for:** `there is already an object named 'Cryptids'` — they never ran week 12's lab; the warning in Task 1 has the order. `The ConnectionString property has not been initialized` before `Now listening on:` — the secret is gone (a frozen lab PC); task 1 has the commands. `Could not find a MSBuild project file` — terminal 1 or 2 never ran `cd Cryptids.Web`
@@ -192,7 +192,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 - [ ] ⚠️ **Terminal: `Press "Ctrl + R" to restart.`, above `Hot reload succeeded`.** Press **Ctrl+R**. Say why while it restarts: *"Program.cs runs once, when the app starts, and hot reload cannot run it again. So this line is not live until the app restarts. The terminal is telling me to press Ctrl+R."*
 - [ ] **Browser:** the JSON tab, change the address to **`/api/trucks/count`**. 🎯 **`{"count":7}`**. *"Seven trucks. The new endpoint counted them in the database."*
 - [ ] 🎞️ **GO TO SLIDE 4** — *Two ways to write an endpoint* · *"The same kind of answer, both ways. At the top, an action, inside a class with a constructor. Underneath, one statement. They run on the same app, and my context reaches both."*
-- [ ] 🎯 Still on slide 4, the table: *"When there is one small endpoint, minimal is shorter. When there are five that share a route, a context and a rule about who may use them, a controller keeps them together. Tonight the trucks are a controller and the count is minimal. In this course, that is the rule."*
+- [ ] 🎯 Still on slide 4, the table: *"When there is one small endpoint, minimal is shorter. When there are five that share a route, a context and a rule about who may use them, a controller keeps them together. Tonight the trucks are a controller and the count is minimal. Do the same in your own work: a controller for several endpoints, minimal for one."*
 
 ## Lab B · Task 2 — 12 minutes
 
@@ -208,7 +208,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 ### The cycle
 
-- [ ] **Swipe to the editor.** Say the goal: *"Now one truck, with its specials. I want the empty list from earlier to be true. The Details page already knows how to load a truck with Include, so I will use the same query."* Open `Controllers/TrucksApiController.cs`, select everything and paste:
+- [ ] **Swipe to the editor.** Say the goal: *"Now one truck, with its specials. Earlier, the specials came back empty. I want the real ones. The Details page already knows how to load a truck with Include, so I will use the same query."* Open `Controllers/TrucksApiController.cs`, select everything and paste:
   ```csharp
   using Microsoft.AspNetCore.Mvc;
   using Microsoft.EntityFrameworkCore;
@@ -257,7 +257,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 - [ ] **Say what it is:** *"A second action. The id in the HttpGet attribute is part of the address, and the colon int means it has to be a whole number. The return type says this action can give back a truck, or a status like 404. Include loads the specials, and then the dish on each one."*
 - [ ] **Swipe to the browser.** Change the address to **`/api/trucks/2`**. 🎯 The error page: **`JsonException: A possible object cycle was detected`**
 - [ ] 🎞️ **GO TO SLIDE 5** — *The loop in the JSON* · *"Here is what the serializer did. It started writing truck two, and reached its specials. Each special has a Truck property, which I filled with Include. So it wrote the truck again, reached its specials, and went round again. Thirty-two levels deep, it gave up."*
-- [ ] Still on slide 5, the second half: *"The fix is not a setting. My model class is the shape of my tables, and the JSON is a promise to whoever calls this. Those should be two different classes. A class whose only job is the shape of the JSON is called a DTO, a data transfer object. It is a ViewModel for a program."*
+- [ ] Still on slide 5, the second half: *"The fix is not a setting. My model class is the shape of my tables, and the JSON is what other programs depend on. Those should be two different classes. A class whose only job is the shape of the JSON is called a DTO, a data transfer object. It is a ViewModel for a program."*
 
 ### Two DTOs
 
@@ -362,7 +362,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
   ```
 - [ ] **Say what it is:** *"Both actions now load the specials, and hand back DTOs. ToDto at the bottom copies a truck into a TruckDto, one property at a time. Nothing else in the app changes."*
 - [ ] **Browser, `/api/trucks/2`.** 🎯 **Cheese Curd Cartel, with three specials, each with a dish name.** *"No loop, and the JSON says exactly what I chose."*
-- [ ] **Browser, `/api/trucks/999`.** *"There is no truck 999, so the action returned NotFound. This is the first thing ApiController did for me. That is a 404, and its details came back as JSON, not as my Missing page."*
+- [ ] **Browser, `/api/trucks/999`.** *"There is no truck 999, so the action returned NotFound. That is a 404. Its details came back as JSON, not as my Missing page, and that is the first thing ApiController did for me."*
 
 ## Lab C · Task 3 — 12 minutes
 
@@ -381,7 +381,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 ### POST
 
 - [ ] **Sign in** as `ada@example.com` with `Curbside-2026` on the `/` tab. Say the goal: *"Ada can add a truck through the pages. I want her to be able to do it through the API, and nobody else."*
-- [ ] **Swipe to the editor.** Say the goal: *"A POST needs a class for what it accepts. Same idea as the DTO, in the other direction."* Create `Dtos/TruckInput.cs` and paste:
+- [ ] **Swipe to the editor.** Say the goal: *"A POST needs a class for what it accepts. TruckDto says what goes out. This new class says what is allowed to come in."* Create `Dtos/TruckInput.cs` and paste:
   ```csharp
   using System.ComponentModel.DataAnnotations;
 
@@ -506,12 +506,11 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
   }
   ```
 - [ ] **Say what it is:** *"The Authorize attribute with the Admin role is on the class, and AllowAnonymous is on the two GETs, the same shape as TrucksController. The POST takes a TruckInput, builds a Truck, saves it, and answers with CreatedAtAction: a 201, and the address of the new truck."*
-- [ ] ⚠️ **If the next beat is a `401`, press Ctrl+R in the terminal and sign in again.** Hot reload applied this attribute in both measured runs, but an attribute is the kind of edit it can report as applied when it isn't. Say why if it happens: *"The new attribute was not applied yet. Hot reload does not always apply a change to an attribute. A restart always does."*
 - [ ] **Tester.** Pick **POST**, type **`/api/trucks`**, paste this in the box, **Send**:
   ```json
   { "name": "Lake Effect Lunch", "cuisine": "Soup", "city": "Sheboygan", "rating": 4.3 }
   ```
-  🎯 **`201 Created`**, `Location: …/api/trucks/8`, and the new truck with `"id": 8`. *"201 means created. The Location says where to read it. And there is no redirect, because a program has no use for one."*
+  🎯 **`201 Created`**, `Location: …/api/trucks/8`, and the new truck with `"id": 8`. *"201 means created. The Location header gives the new truck's address. And there is no redirect, because a program has no use for one."*
 - [ ] **The `/Trucks` tab, reload.** Eight cards. *"Same table, same data. The API and the pages both read the Trucks table."*
 
 ### Bad JSON
@@ -525,12 +524,12 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
   ```json
   { "id": 1, "name": "Week Thirteen Wagon", "cuisine": "Test", "city": "Waukesha", "rating": 3, "specials": [{ "price": 5 }] }
   ```
-  🎯 **`201`**, `"id": 9`, `"specials": []`. *"Both were ignored. This is the Bind list from week 8, for JSON. If the POST had taken a Truck, a client could set any property on it, including related rows."*
+  🎯 **`201`**, `"id": 9`, `"specials": []`. *"Both were ignored. TruckInput does the job of week 8's Bind list, for JSON. If the POST had taken a Truck, a client could set any property on it, including related rows."*
 
 ### The status is the answer *(slide 6)*
 
-- [ ] 🎞️ **GO TO SLIDE 6** — *Verbs and statuses* · *"A page tells a person what happened in words. An API tells a program with a number. Here is every status you have now seen, and three you are about to. A program reads this number first, before it looks at anything else."*
-- [ ] Still on slide 6, the verbs: *"In week 3 I said PUT and DELETE would wait for the Web API. Tonight is when they arrive. The address stays the same, and the verb says what to do to it."*
+- [ ] 🎞️ **GO TO SLIDE 6** — *Verbs and statuses* · *"A page tells a person what happened in words. An API tells a program with a number. Here are the statuses a working API answers with. You have seen four of them, and you are about to see the other three. A program reads this number first, before it looks at anything else."*
+- [ ] Still on slide 6, the verbs: *"In week 3 I said PUT and DELETE would wait for the Web API. Tonight is when they arrive. One address, api slash trucks slash 2, takes a GET, a PUT and a DELETE. The verb says what to do to that truck."*
 
 ## Lab D · Task 4 — 15 minutes
 
@@ -686,10 +685,11 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 ### Three visitors
 
-- [ ] Say the goal: *"Now the rule. Ada is allowed. Let's see who is not."* On the `/` tab, **Sign out**. **Tester:** **DELETE**, **`/api/trucks/8`**, **Send**. 🎯 **`401 Unauthorized`**, `text/html`, and a page of HTML in the reply
+- [ ] Say the goal: *"Now, who is allowed to do this? Ada is. Let's see who is not."* On the `/` tab, **Sign out**. **Tester:** **DELETE**, **`/api/trucks/999`**, **Send**. 🎯 **`401 Unauthorized`**, `text/html`, and a page of HTML in the reply
+- [ ] ⚠️ **If that says `404 Not Found`, the role on the class never applied** — the request reached the action, and truck 999 is there so that nothing is lost when this happens. Hot reload applied this attribute in both measured runs, but an attribute is the kind of edit it can report as applied when it isn't. Press **Ctrl+R** in the terminal and **Send** again. Say why: *"The new attribute was not applied yet. Hot reload does not always apply a change to an attribute. A restart always does."*
 - [ ] Point at the status: *"Last week, a visitor who was not signed in went to the sign-in page. This is an API, so ApiController changed that into a 401. That is the third thing it did for me."*
 - [ ] **Ask — the answer is last week's AccessDenied beat:** *"The status is right. Now look at the body. It is a whole page of HTML. Scroll down: Keep on Truckin'. Which part of my app put that there?"* Take the answer: *"The Missing page from week 10. It answers every status with no body, and that includes this one."*
-- [ ] **Sign in** as `sam@example.com` with `Curbside-2026`. **Tester**, the same DELETE, **Send**. **`403 Forbidden`**, and the same HTML. *"Sam is signed in without the role, so that is a 403. Same body."*
+- [ ] **Sign in** as `sam@example.com` with `Curbside-2026`. **Tester**, the same DELETE, **Send**. **`403 Forbidden`**, and the same HTML. *"Sam is signed in without the role, so that is a 403, with the same page of HTML behind it."*
 - [ ] 🎞️ **GO TO SLIDE 7** — *A page redirects. An API answers.* · *"Here are the same three visitors as last week, and what each one gets from a page and from the API. A page sends you somewhere. An API tells you a number."*
 - [ ] 🎯 Still on slide 7, the last line: *"A program that gets a 401 wants the status, and nothing else. It cannot do anything with my HTML. So the Missing page has to stay out of the API's answers."*
 
@@ -755,16 +755,16 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
   app.Run();
   ```
-- [ ] **Say what it is, with it on screen:** *"It is the same line as week 10, inside UseWhen. UseWhen runs it only when the condition is true: when the path does not start with api."*
-- [ ] ⚠️ **Terminal: `Press "Ctrl + R" to restart.`** Press **Ctrl+R**. *"Program.cs again, so the same restart as before."*
-- [ ] **Tester**, the same DELETE, **Send**. Sam's cookie is still good. 🎯 **`403 Forbidden`**, `no Content-Type: the body is empty`. *"Just the status, which is what a program wants."*
-- [ ] On the `/` tab, **Sign out**. **Tester**, **Send**. 🎯 **`401`**, empty. *"The same for a visitor."*
+- [ ] **Say what it is, with it on screen:** *"UseStatusCodePages is the same line as week 10, now inside UseWhen. UseWhen runs that line only when the path does not start with api."*
+- [ ] ⚠️ **Terminal: `Press "Ctrl + R" to restart.`** Press **Ctrl+R**. *"Program.cs runs once, at startup, so this edit needs Ctrl+R too."*
+- [ ] **Tester**, the same DELETE to `/api/trucks/999`, **Send**. Sam's cookie is still good. 🎯 **`403 Forbidden`**, `no Content-Type: the body is empty`. *"Just the status, which is what a program wants."*
+- [ ] On the `/` tab, **Sign out**. **Tester**, **Send**. 🎯 **`401`**, empty. *"Signed out, a 401 and an empty body."*
 - [ ] Change the address in the browser's own bar to **`/nope`**. ***Keep on Truckin' 🌮.*** *"And people still get the Missing page."*
 
 ## Lab E · Task 5 — 15 minutes
 
 - [ ] Lab README on screen, scrolled to **Task 5 in full**
-- [ ] *"Task 5 is the same rule on your archive. PUT and DELETE, the Curator role on the class, AllowAnonymous on the two GETs, and the Missing page kept off the API."*
+- [ ] *"Task 5 puts the rule from my trucks on your archive. PUT and DELETE, the Curator role on the class, AllowAnonymous on the two GETs, and the Missing page kept off the API."*
 - [ ] ⚠️ *"Here is the one to look out for. Your CryptidInput has no ImageUrl, so a PUT must not touch the plate. Load the creature and copy the five properties across. Check 5 fails if the plate is gone."*
 - [ ] *"Program.cs needs a Ctrl+R, the same as task 2."*
 - [ ] 👀 **Watch for:** check 5 saying a `200` or `204` got through — the role isn't on the class, or `[AllowAnonymous]` is on the writes. A curator refused with `403` — their cookie is older than their role, or the spelling isn't `Curator`. The plate gone after a PUT — they used `_context.Update(new Cryptid …)`. HTML still behind a `401` — no Ctrl+R after the `Program.cs` edit. **Sweep the room here** — this is tonight's in-class target
@@ -774,23 +774,23 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 - [ ] 🎞️ **GO TO SLIDE 8** — *Why no token?* · *"You may have noticed something. Every POST since week 6 has had ValidateAntiForgeryToken on it. Ada's POST tonight had no token, and it worked. Here is why that is safe."*
 - [ ] Still on slide 8, the first row: *"The token stops another website from posting one of my forms with your cookie. An HTML form cannot send JSON. If a form tries, the action answers with a 415, and nothing runs."*
-- [ ] Still on slide 8, the second row: *"The sign-in cookie is marked SameSite Lax, so the browser does not attach it to a POST that starts on another site. And JavaScript on another site that tries to send JSON gets stopped by the browser, because this app never gave that site permission."*
-- [ ] 🎯 Still on slide 8, the last line: *"So the pages keep their tokens, and the API does not use them. If you put the attribute on an API action, your own POST gets a 400, because a program has no form to read a token from."*
+- [ ] Still on slide 8, the other two rows: *"The sign-in cookie is marked SameSite Lax, so the browser does not attach it to a POST that starts on another site. And JavaScript on another site that tries to send JSON gets stopped by the browser, because this app never gave that site permission."*
+- [ ] 🎯 Still on slide 8, the last line: *"So the pages keep their tokens, and the API does not use them. If you put ValidateAntiForgeryToken on an API action, your own POST gets a 400, because a program has no form to read a token from."*
 
 ## Lab F · Catch up, or the stretch — 38 minutes
 
 - [ ] Lab README on screen, scrolled to **The tasks**
-- [ ] *"This is the last block, and it has no stop. If any of your checks are red, finish those first. If you are at five, the stretch at the bottom of the README is a POST for curators, the same as mine."*
+- [ ] *"This is the last block, and it has no stop. If any of your checks are red, finish those first. If you are at five, the stretch after task 5 in the README is a POST for curators, the same as mine."*
 - [ ] *"The stretch has no check and no points. Tonight's in-class target was all five checks. Anything still red is Part 1 of your homework."*
 - [ ] 👀 **Watch for:** anyone still red on check 5 — have them read the message; it names the visitor and the verb
-- [ ] 👀 **Stretch:** a `403` for the curator — they signed in before task 5's edit is live, or the cookie is older than the role; sign out and back in
+- [ ] 👀 **Stretch:** a `403` for the curator — the cookie is older than the role; sign out and back in
 - [ ] **No stop.** This block takes whatever time is left before the wrap-up. Anyone finished: the stretch, **🚀 Done early?** at the bottom of the README, or help a classmate
 
 ## 8 · Wrap-up, after the lab *(slide 9)*
 
-- [ ] 🎞️ **GO TO SLIDE 9** — *Tonight, in one picture* · walk the rows, one sentence each, and give the DTO row the emphasis: *"A DTO is what your API promises. Your model is how you store it. Keep those two apart, and you can change one without breaking the other."*
-- [ ] Homework: **the same moves on their own app.** *"Your list as JSON, one record with its related rows, a count with a minimal endpoint, and a POST and a DELETE that need your role. Your API lives at the same word as your list page, with api in front."*
+- [ ] 🎞️ **GO TO SLIDE 9** — *Tonight, in one picture* · walk the rows, one sentence each, and give the DTO row the emphasis: *"A DTO is what your API sends. Your model is how you store it. Keep those two apart, and you can change one without breaking the other."*
+- [ ] Homework: **the same moves on their own app.** *"Your list as JSON, one record with its related rows, a count with a minimal endpoint, and a POST and a DELETE that need your role. If your list page is slash Trails, your API is slash api slash trails."*
 - [ ] ⚠️ Say what the self-check can't see, and what it does to your browser: *"The self-check changes none of your data. It sends broken JSON and an id that cannot exist. So it cannot see your admin succeed. The homework's last step is yours: sign in as your admin on Azure, open the tester, and send a real POST and a real DELETE. And when the check finishes, your browser is signed out, the same as last week."*
-- [ ] 💡 *"When the self-check runs, the console shows red lines saying Failed to load resource. Those are the refusals it asked for. Read the report, not the red lines."*
+- [ ] 💡 *"When the self-check runs, the console shows red lines."* They say `Failed to load resource`. *"Those are the refusals it asked for. Read the report, not the red lines."*
 - [ ] 💡 *"My Curbside is on localhost. Nothing is deployed for it. Yours is graded on its Azure URL."*
 - [ ] 🔗 Week 14: *"Next week your own JavaScript calls this API."*
