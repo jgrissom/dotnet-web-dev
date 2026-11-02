@@ -273,7 +273,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
   One row: `Admin`, `ada@example.com`. *"The seeder ran. There is an Admin role, and Ada holds it."*
 - [ ] **Swipe to the browser.** Say what to watch, and don't predict it: *"Ada is still signed in, and the database says she is an admin. Watch the page."* **Trucks → ＋ Add a truck.** 🎯 ***Admins only.***
 - [ ] 🎞️ **GO TO SLIDE 5** — *The role is read when you sign in* · *"Here is why. When Ada signed in, the cookie got her name, her email, and her roles. She had none. The seeder gave her the role afterwards, in the database. Her cookie still says none, and the Authorize attribute reads the cookie, not the database."*
-- [ ] Still on slide 5, the last line: *"So a new role takes effect the next time she signs in. Identity also checks the cookie against the database every thirty minutes, so it would arrive by itself eventually. Do not wait for it. Sign out and sign back in."*
+- [ ] Still on slide 5, the last line: *"So a new role takes effect the next time she signs in. Identity also checks the cookie against the database every thirty minutes, so it would arrive by itself eventually."*
 - [ ] **Swipe to the browser.** **Sign out**, **Sign in** as Ada, **＋ Add a truck.** 🎯 **The form.** *"Same account, same database, a new cookie. That one has the role in it."*
 
 ## Lab D · Task 4 — 15 minutes
