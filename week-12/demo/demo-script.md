@@ -72,13 +72,13 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 ## 1 · The gap *(slides 1–2)*
 
-- [ ] 🎞️ **GO TO SLIDE 1** — *Week 12 — Roles* · it is still up from the gallery — talk to its list before you swipe away from it: *"Here is tonight. First, a role on the lock, and the page someone lands on when the lock says no. Then who gets the role, and where that is written down. Then hiding the buttons someone cannot use, which is not the same as locking them. Then claims, which is what the sign-in cookie says about you. And last, everything we have already secured since week 6."*
+- [ ] 🎞️ **GO TO SLIDE 1** — *Week 12 — Roles* · it is still up from the gallery — talk to its list before you swipe away from it: *"Here is tonight. First, I require a role to change anything, and I build the page people see when they don't have that role. Then who gets the role, and where that is written down. Then hiding the buttons someone cannot use, which is not the same as protecting them. Then claims, which is what the sign-in cookie says about you. And last, everything we have already secured since week 6."*
 
 ### The debt from last week
 
 - [ ] **Swipe to the browser, the `/` tab.** Say the goal: *"Last week I said signed in is not trusted, because anyone can make an account. Let me show you. I am a stranger called Sam, and I have an email address."*
 - [ ] Click **Create an account**: **Email** `sam@example.com`, **What should we call you?** `Sam`, `Curbside-2026` in **Password** and again in **Confirm password**. Submit. The navbar says *Signed in as Sam*
-- [ ] Click **Trucks**, then **＋ Add a truck**. 🎯 **The form opens.** *"That took one form, and I can add a truck, edit one, or remove one. Week 11's lock asks one question: are you signed in. Sam is."*
+- [ ] Click **Trucks**, then **＋ Add a truck**. 🎯 **The form opens.** *"That took one form, and I can add a truck, edit one, or remove one. Week 11's Authorize attribute asks one question: are you signed in. Sam is."*
 
 ### Signed in as whom *(slide 2)*
 
@@ -100,7 +100,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 ### One word in the attribute
 
-- [ ] **Swipe to the editor.** Say the goal: *"Sam is still signed in. I am changing the lock on trucks, so it asks for a role called Admin instead of just a signed-in account."*
+- [ ] **Swipe to the editor.** Say the goal: *"Sam is still signed in. I am changing the Authorize attribute on trucks, so it asks for a role called Admin instead of just a signed-in account."*
 - [ ] Open `Controllers/TrucksController.cs`. **Type it — the attribute is the lesson.** The line above the class:
   ```csharp
   [Authorize]
@@ -110,7 +110,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
   [Authorize(Roles = "Admin")]
   ```
 - [ ] **Say what it is:** *"Same attribute, same place on the class. It still needs you signed in, and now it also needs the Admin role. The reads are still open, because AllowAnonymous on Index and Details has not changed."*
-- [ ] ⚠️ **Watch terminal 1: `Hot reload succeeded`.** That usually means the change is live — but an attribute is the kind of edit hot reload can report as applied when it isn't, because MVC works out each action's filters when the app starts. **If the next beat still opens the form, press Ctrl+R in terminal 1 and try again.** Say it if it happens: *"The new lock was not on yet. Hot reload does not always apply a change to an attribute. A restart always does."*
+- [ ] ⚠️ **Watch terminal 1: `Hot reload succeeded`.** That usually means the change is live — but an attribute is the kind of edit hot reload can report as applied when it isn't, because MVC works out each action's filters when the app starts. **If the next beat still opens the form, press Ctrl+R in terminal 1 and try again.** Say it if it happens: *"The new attribute was not applied yet. Hot reload does not always apply a change to an attribute. A restart always does."*
 
 ### Where does Sam go
 
@@ -133,7 +133,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 - [ ] Lab README on screen, scrolled to **Task 2 in full**
 - [ ] *"Task 2 is the same change on your Registry. Your role is called Curator, because a curator looks after the archive. The attribute on CryptidsController gets Roles equals Curator."*
-- [ ] ⚠️ *"Leave SightingsController alone, exactly like last week. Reports are what the public files. Nobody needs a role to report a sighting, and check 2 fails if you lock it."*
+- [ ] ⚠️ *"Leave SightingsController alone, exactly like last week. Reports are what the public files. Nobody needs a role to report a sighting, and check 2 fails if you put Authorize on it."*
 - [ ] *"Then click Open a new file, the button that adds a creature, signed in as yourself, and look at the address bar."*
 - [ ] 👀 **Watch for:** check 2 saying a POST got through — the role went on the GET actions, not the class. The form still opening after the edit — hot reload; Ctrl+R in terminal 1. `Curators` or `curator` in the attribute — that's fine until task 4, when the seeder has to spell it the same way
 - [ ] **Stop:** the note after **Task 2 in full**. Where they should be: **`Passed: 2`**, and their own account landing on the Not on file page at `/Account/AccessDenied`
@@ -272,7 +272,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
   ```
   One row: `Admin`, `ada@example.com`. *"The seeder ran. There is an Admin role, and Ada holds it."*
 - [ ] **Swipe to the browser.** Say what to watch, and don't predict it: *"Ada is still signed in, and the database says she is an admin. Watch the page."* **Trucks → ＋ Add a truck.** 🎯 ***Admins only.***
-- [ ] 🎞️ **GO TO SLIDE 5** — *The role is read when you sign in* · *"Here is why. When Ada signed in, the cookie got her name, her email, and her roles. She had none. The seeder gave her the role afterwards, in the database. Her cookie still says none, and the lock reads the cookie, not the database."*
+- [ ] 🎞️ **GO TO SLIDE 5** — *The role is read when you sign in* · *"Here is why. When Ada signed in, the cookie got her name, her email, and her roles. She had none. The seeder gave her the role afterwards, in the database. Her cookie still says none, and the Authorize attribute reads the cookie, not the database."*
 - [ ] Still on slide 5, the last line: *"So a new role takes effect the next time she signs in. Identity also checks the cookie against the database every thirty minutes, so it would arrive by itself eventually. Do not wait for it. Sign out and sign back in."*
 - [ ] **Swipe to the browser.** **Sign out**, **Sign in** as Ada, **＋ Add a truck.** 🎯 **The form.** *"Same account, same database, a new cookie. That one has the role in it."*
 
@@ -470,7 +470,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 ### Not the lock *(slide 6)*
 
 - [ ] 🎞️ **GO TO SLIDE 6** — *Hiding a link is not security* · *"Two different jobs. The if decides what you see. The attribute decides what you can do. Sam just went straight past the missing button, and the attribute stopped him."*
-- [ ] 🎯 Still on slide 6, the last line: *"If I had hidden the buttons and forgotten the attribute, the page would look locked, and anybody with an account could still type the address. Hide the button for the visitor. Lock the controller for the data."*
+- [ ] 🎯 Still on slide 6, the last line: *"If I had hidden the buttons and forgotten the attribute, the page would look protected, and anybody with an account could still type the address. Hide the button for the visitor. Put the attribute on the controller to protect the data."*
 
 ## Lab E · Task 5 — 12 minutes
 
@@ -549,7 +549,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 - [ ] 🎞️ **GO TO SLIDE 8** — *What's already secured* · *"Before you go back to the lab, here is everything this course has already secured, and what each one stops. None of it is new tonight except the last row."*
 - [ ] Still on slide 8, the first two rows: *"Week 6, the antiforgery token: another website cannot post your forms for you. Week 8, the Bind list: a field nobody put on the form cannot be slipped into the post."*
-- [ ] Still on slide 8, the week 11 rows: *"Week 11, four of them. The password is a hash, so a stolen table gives up no passwords. Sign out is a POST, so no other page can sign you out. LocalRedirect, so a return URL cannot send you to another site. And Authorize on the class, so an action someone adds later is locked by default."*
+- [ ] Still on slide 8, the week 11 rows: *"Week 11, four of them. The password is a hash, so a stolen table gives up no passwords. Sign out is a POST, so no other page can sign you out. LocalRedirect, so a return URL cannot send you to another site. And Authorize on the class, so an action someone adds later is covered automatically."*
 - [ ] 🎯 Still on slide 8, the last row: *"And tonight, the role. That closes the gap I named last week. A stranger can still make an account, and an account is no longer enough to change anything."*
 
 ## Lab G · Catch up, or the stretch — 20 minutes
@@ -562,8 +562,8 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 ## 8 · Wrap-up, after the lab *(slide 9)*
 
-- [ ] 🎞️ **GO TO SLIDE 9** — *Tonight, in one picture* · walk the five rows, one sentence each, and give the last row the emphasis: *"Hiding a button only saves someone a click that would be refused. The attribute is the lock. If you only remember one row, remember that one."*
-- [ ] Homework: **the same four moves on their own app.** *"The role on your lock, an AccessDenied page, a seeder that reads your own email from configuration, and the buttons hidden. You pick the role's name. Pick one that says what that person does in your app."*
+- [ ] 🎞️ **GO TO SLIDE 9** — *Tonight, in one picture* · walk the five rows, one sentence each, and give the last row the emphasis: *"Hiding a button only saves someone a click that would be refused. The attribute is what does the refusing. If you only remember one row, remember that one."*
+- [ ] Homework: **the same four moves on their own app.** *"The role on your Authorize attribute, an AccessDenied page, a seeder that reads your own email from configuration, and the buttons hidden. You pick the role's name. Pick one that says what that person does in your app."*
 - [ ] ⚠️ Say what the self-check can't see, and what it does to your browser: *"The self-check signs in as last week's self-check account, which has no role, and makes sure it is refused everything. It cannot see your admin succeed, because it does not know your password and never should. So the homework's last step is yours: sign in as your admin on Azure, and change something. And when the check finishes, your browser is signed out."*
 - [ ] 💡 *"On Azure, your admin's email is an app setting called Admin underscore underscore Email, the same command as the connection string in week 7. Setting it restarts the app, and the seeder runs then. Then sign out and back in, the same as tonight."*
 - [ ] 💡 *"My Curbside is on localhost. Nothing is deployed for it. Yours is graded on its Azure URL."*
