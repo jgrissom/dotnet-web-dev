@@ -30,4 +30,4 @@ The night week 11's debt gets paid. Since week 11 a change needs an account, and
 - ⚠️ **Say *hiding a link is not security* out loud in §5**, with Sam typing the URL
 - Remind students to `git pull` the starters repo for the week-12 folder
 
-**Prev:** [← Week 11 — ASP.NET Core Identity](../week-11/README.md) · **Next:** Week 13 — The flex week: services, TempData, paging and search *(coming)*
+**Prev:** [← Week 11 — ASP.NET Core Identity](../week-11/README.md) · **Next:** [Week 13 — Dependency Injection, TempData, Paging, Filtering and Search →](../week-13/README.md)
