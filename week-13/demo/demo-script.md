@@ -197,12 +197,12 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 - [ ] 🎞️ **GO TO SLIDE 4** — *Two ways to write an endpoint* · *"The same kind of answer, both ways. At the top, an action, inside a class with a constructor. Underneath, one statement. They run on the same app, and my context reaches both."*
 - [ ] 🎯 Still on slide 4, the table: *"When there is one small endpoint, minimal is shorter. When there are five that share a route, a context and a rule about who may use them, a controller keeps them together. Tonight the trucks are a controller and the count is minimal. Do the same in your own work: a controller for several endpoints, minimal for one."*
 
-## Lab B · Task 2 — 12 minutes
+## Lab B · Task 2 — 10 minutes
 
 - [ ] Lab README on screen, scrolled to **Task 2 in full**
-- [ ] *"Task 2 is the archive as JSON. A controller for the list, and a minimal endpoint for the count. There is one difference from mine. Your list does not send the reports. It sends a number, reportCount, so you need a small class called a DTO. The README has it, and I will explain DTOs properly after the break."*
+- [ ] *"Task 2 is the archive as JSON. A controller for the list, and a minimal endpoint for the count, the same as mine. When it works, look at the sightings on each creature in the list, and compare The Hodag's with its page."*
 - [ ] ⚠️ *"When you save Program.cs, terminal 1 says Press Ctrl+R. Press it, or the count is not live."*
-- [ ] 👀 **Watch for:** `404` on `/api/cryptids/count` over a correct `Program.cs` — they haven't pressed Ctrl+R. A `500` with `A possible object cycle was detected` — they returned `Cryptid` objects with `Include`; the DTO is the fix. `reportCount` of `0` everywhere — no `Include`. The Not on file page at `/api/cryptids` — the new controller needs a Ctrl+R
+- [ ] 👀 **Watch for:** `404` on `/api/cryptids/count` over a correct `Program.cs` — they haven't pressed Ctrl+R. A `500` with `A possible object cycle was detected` — they added an `Include` the README doesn't have; take it out, task 3 brings the reports in. The Not on file page at `/api/cryptids` — the new controller needs a Ctrl+R
 - [ ] **Stop:** the note after **Task 2 in full**. Where they should be: **`Passed: 2`**, and JSON in the address bar at `/api/cryptids`
 
 ## ☕ Break
@@ -367,12 +367,12 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 - [ ] **Browser, `/api/trucks/2`.** 🎯 **Cheese Curd Cartel, with three specials, each with a dish name.** *"No loop, and the JSON says exactly what I chose."*
 - [ ] **Browser, `/api/trucks/999`.** *"There is no truck 999, so the action returned NotFound. That is a 404. Its details came back as JSON, not as my Missing page, and that is the first thing ApiController did for me."*
 
-## Lab C · Task 3 — 12 minutes
+## Lab C · Task 3 — 14 minutes
 
 - [ ] Lab README on screen, scrolled to **Task 3 in full**
-- [ ] *"Task 3 is one creature, with its reports. Try the query first with no DTO, if you want to see the error for yourself. Then write the two DTOs."*
-- [ ] 👀 **Watch for:** `sightings` an empty array — no `Include` on that query. Still `A possible object cycle was detected` — the action still returns `Cryptid`, or a DTO carries a `Cryptid` property. `The type or namespace name 'CryptidDetailsDto' could not be found` — the `using Cryptids.Web.Dtos;` at the top
-- [ ] **Stop:** the note after **Task 3 in full**. Where they should be: **`Passed: 3`**, and The Hodag at `/api/cryptids/1` with three reports
+- [ ] *"Task 3 is one creature with its reports, and a list that says how many reports each creature has, instead of an empty list. Try the query first with no DTO, if you want to see the error for yourself. Then three DTOs, and the controller replaced with the README's version."*
+- [ ] 👀 **Watch for:** `sightings` still on the list, with no `reportCount` — the controller wasn't replaced, so `GetAll` still returns `Cryptid`. `reportCount` of `0`, or `sightings` an empty array — no `Include` on that query. Still `A possible object cycle was detected` — the action still returns `Cryptid`, or a DTO carries a `Cryptid` property. `The type or namespace name 'CryptidDetailsDto' could not be found` — the `using Cryptids.Web.Dtos;` at the top
+- [ ] **Stop:** the note after **Task 3 in full**. Where they should be: **`Passed: 3`**, The Hodag at `/api/cryptids/1` with three reports, and a `reportCount` on every creature at `/api/cryptids`
 
 ## 5 · Testing a write *(slide 6)*
 

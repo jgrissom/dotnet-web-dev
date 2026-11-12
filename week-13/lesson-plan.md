@@ -38,10 +38,10 @@ By the end of this session, students can:
 | 0:22 | 8 min | **Lab A · Setup and task 1** *(no slide — the lab README on screen)*. **No database drop tonight.** Sign in as their curator. **Stop at `Passed: 1`.** |
 | 0:30 | 12 min | **The first endpoint** *(slide 3, demo §2)*. `TrucksApiController` with `GetAll`. Seven trucks in the address bar. `"specials":[]` noticed and left. Slide 3: two kinds of controller. |
 | 0:42 | 8 min | **The same thing, minimal** *(slide 4, demo §3)*. `app.MapGet("/api/trucks/count", …)`. ⚠️ **`Program.cs` needs Ctrl+R.** Slide 4: when each one fits. |
-| 0:50 | 12 min | **Lab B · Task 2**. The archive as JSON, with `reportCount`, and the minimal count. **Stop at `Passed: 2`.** |
-| 1:02 | 10 min | **☕ Break** |
-| 1:12 | 15 min | **One truck, with its menu** *(slide 5, demo §4)*. 🎯 **The cycle.** Slide 5: the loop, and DTOs. `SpecialDto`, `TruckDto`, `ToDto`. The menu arrives. `/api/trucks/999` is a 404 in JSON. |
-| 1:27 | 12 min | **Lab C · Task 3**. One creature with its reports. **Stop at `Passed: 3`.** |
+| 0:50 | 10 min | **Lab B · Task 2**. The archive as JSON, the same as §2, and the minimal count. `"sightings": []` on every creature. **Stop at `Passed: 2`.** |
+| 1:00 | 10 min | **☕ Break** |
+| 1:10 | 15 min | **One truck, with its menu** *(slide 5, demo §4)*. 🎯 **The cycle.** Slide 5: the loop, and DTOs. `SpecialDto`, `TruckDto`, `ToDto`. The menu arrives. `/api/trucks/999` is a 404 in JSON. |
+| 1:25 | 14 min | **Lab C · Task 3**. One creature with its reports, and the list's `CryptidDto` with `reportCount`. **Stop at `Passed: 3`.** |
 | 1:39 | 15 min | **Testing a write** *(slide 6, demo §5)*. The tester. Ada signs in. `TruckInput`, the role on the class, the POST. 🎯 **`201`, then a `400` with no `ModelState` check, then an `id` that gets ignored.** Slide 6: verbs and statuses. |
 | 1:54 | 15 min | **Lab D · Task 4**. The public POST, and the creature lookup the demo didn't need. **Stop at `Passed: 4`.** |
 | 2:09 | 10 min | **☕ Break** |

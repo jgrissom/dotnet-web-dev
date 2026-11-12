@@ -68,7 +68,7 @@ Every file you touch is in `Cryptids.Web`:
 Cryptids.Web/
 ├─ Program.cs                       ← tasks 2 and 5
 ├─ Dtos/                            ← a new folder
-│   ├─ CryptidDto.cs                ← task 2 (new)
+│   ├─ CryptidDto.cs                ← task 3 (new)
 │   ├─ SightingDto.cs               ← task 3 (new)
 │   ├─ CryptidDetailsDto.cs         ← task 3 (new)
 │   ├─ SightingInput.cs             ← task 4 (new)
@@ -88,8 +88,8 @@ Cryptids.Web/
 | # | Check | What to do |
 |---|-------|------------|
 | 1 | *(check 1 is already green)* | Check your secrets, let `dotnet ef database update` confirm there's nothing to do, start the app and **sign in as yourself**. **No drop tonight.** **[Task 1 in full ↓](#task-1-in-full)** |
-| 2 | `TheArchiveAnswersInJson` | **The list, and the count** — an API controller, a `CryptidDto`, and a minimal endpoint. **[Task 2 in full ↓](#task-2-in-full)** |
-| 3 | `ACreatureComesWithItsReports` | **One creature** — with its reports, through DTOs that can't loop. **[Task 3 in full ↓](#task-3-in-full)** |
+| 2 | `TheArchiveAnswersInJson` | **The list, and the count** — an API controller, and a minimal endpoint. **[Task 2 in full ↓](#task-2-in-full)** |
+| 3 | `ACreatureComesWithItsReports` | **One creature, and a list that counts** — with its reports, through DTOs that can't loop. **[Task 3 in full ↓](#task-3-in-full)** |
 | 4 | `AnyoneCanFileAReportWithJson` | **The public POST** — and the creature lookup its rules can't do. **[Task 4 in full ↓](#task-4-in-full)** |
 | 5 | `OnlyCuratorsCanChangeTheArchiveByApi` | **PUT and DELETE, for curators** — and the Missing page kept off `/api`. **[Task 5 in full ↓](#task-5-in-full)** |
 | ⭐ | — | **Stretch: a POST for curators.** No check, no points. **[Stretch in full ↓](#stretch-a-post-for-curators)** |
@@ -162,7 +162,87 @@ dotnet test Cryptids.Checks
 
 **Check:** `Check2_TheArchiveAnswersInJson`
 
-**First, what the list should say.** A list of creatures needs each one's facts and how many reports it has, not the reports themselves. A class whose only job is the shape of the JSON is a **DTO**, a data transfer object. Create `Dtos/CryptidDto.cs`:
+**The controller.** Create `Controllers/CryptidsApiController.cs`:
+
+```csharp
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Cryptids.Web.Data;
+using Cryptids.Web.Models;
+
+namespace Cryptids.Web.Controllers;
+
+// Week 13: the archive, answered as JSON.
+[ApiController]
+[Route("api/cryptids")]
+public class CryptidsApiController : ControllerBase
+{
+    private readonly CryptidContext _context;
+
+    public CryptidsApiController(CryptidContext context)
+    {
+        _context = context;
+    }
+
+    // GET /api/cryptids
+    [HttpGet]
+    public async Task<List<Cryptid>> GetAll()
+    {
+        return await _context.Cryptids.ToListAsync();
+    }
+}
+```
+
+`ControllerBase`, because an API has no views. `[ApiController]`, which you'll see earn its place in the next three tasks. `[Route("api/cryptids")]` on the class gives it its address, and `[HttpGet]` says this action answers a GET there. It returns the data; there is no `View()`.
+
+**Try it.** In your browser, go to **`/api/cryptids`**. Six creatures as JSON, and nothing else: no navbar, no layout. Notice the names: `Name` in your C# is `name` in the JSON. The serializer does that. **And notice `"sightings": []` on every creature.** The Hodag's page shows three reports. Nothing loaded them. Task 3 fixes that.
+
+**Then the count, the other way.** In `Program.cs`, just above `app.Run();`:
+
+```csharp
+// Week 13: a minimal API endpoint. The same kind of answer as a controller
+// action, in one statement, with no class around it.
+app.MapGet("/api/cryptids/count", async (CryptidContext db) =>
+    new { count = await db.Cryptids.CountAsync() });
+```
+
+No class, no constructor. `MapGet` takes an address and a function, the function asks for what it needs, and whatever it returns becomes the JSON.
+
+> [!IMPORTANT]
+> **Terminal 1 prints `Press "Ctrl + R" to restart.` above `Hot reload succeeded`. Press `Ctrl+R` in terminal 1.** `Program.cs` runs once, at startup. Until you restart, `/api/cryptids/count` is the *Not on file* page, over correct code.
+
+Go to **`/api/cryptids/count`**: `{"count":6}`.
+
+**Run the checks, in terminal 3:**
+
+```bash
+dotnet test Cryptids.Checks
+```
+
+**`Passed: 2`** — checks 1 and 2. Check 3's message says `GET /api/cryptids/1` came back 404. That's correct: task 3 writes it.
+
+> [!NOTE]
+> **In class, stop here.** Task 3 comes after the break and the next part of the demo. Checks 3 to 5 are still red, and that's expected. Finished early? At `/api/cryptids`, find The Hodag's empty `"sightings"`, then open its page and count its reports. The next part of the demo is about why the list doesn't simply load them. Or help a classmate find their Ctrl+R. Working at home? Carry straight on.
+
+### Task 3 in full
+
+**Check:** `Check3_ACreatureComesWithItsReports`
+
+**Want to see the error for yourself?** Add this action, go to `/api/cryptids/1`, and read what comes back. **The page starts with a run of JSON**, because the serializer had already begun writing. Scroll down to the error page below it.
+
+```csharp
+[HttpGet("{id:int}")]
+public async Task<ActionResult<Cryptid>> GetOne(int id)
+{
+    return await _context.Cryptids.Include(c => c.Sightings).FirstAsync(c => c.Id == id);
+}
+```
+
+`A possible object cycle was detected`. A `Cryptid` has `Sightings`; each `Sighting` has a `Cryptid`, which `Include` filled in; so the serializer goes round until it gives up. Take it out again.
+
+**The fix is DTOs: classes whose only job is the shape of the JSON, built by hand, so nothing can point back.** Three of them.
+
+**First, what the list should say.** A list of creatures needs each one's facts and how many reports it has, not the reports themselves. Create `Dtos/CryptidDto.cs`:
 
 ```csharp
 namespace Cryptids.Web.Dtos;
@@ -181,7 +261,43 @@ public class CryptidDto
 }
 ```
 
-**Then the controller.** Create `Controllers/CryptidsApiController.cs`:
+**Then one report.** Create `Dtos/SightingDto.cs`:
+
+```csharp
+namespace Cryptids.Web.Dtos;
+
+// One report, as the API says it. It names its creature with a number, so
+// there is no Cryptid object here to lead back to the creature's reports.
+public class SightingDto
+{
+    public int Id { get; set; }
+    public int CryptidId { get; set; }
+    public string Witness { get; set; } = "";
+    public string Location { get; set; } = "";
+    public DateTime SeenOn { get; set; }
+    public string Account { get; set; } = "";
+}
+```
+
+and `Dtos/CryptidDetailsDto.cs`:
+
+```csharp
+namespace Cryptids.Web.Dtos;
+
+// What /api/cryptids/1 says: the same facts as the list, and the reports.
+public class CryptidDetailsDto
+{
+    public int Id { get; set; }
+    public string Name { get; set; } = "";
+    public string Region { get; set; } = "";
+    public int FirstSighting { get; set; }
+    public bool IsDebunked { get; set; }
+    public string? LatinName { get; set; }
+    public List<SightingDto> Sightings { get; set; } = new();
+}
+```
+
+**Now the controller.** In `Controllers/CryptidsApiController.cs`, select everything and replace it with this. Take the try-it action out first, if you added one:
 
 ```csharp
 using Microsoft.AspNetCore.Mvc;
@@ -222,95 +338,7 @@ public class CryptidsApiController : ControllerBase
             ReportCount = c.Sightings.Count
         }).ToList();
     }
-}
-```
 
-`ControllerBase`, because an API has no views. `[ApiController]`, which you'll see earn its place in the next three tasks. `[Route("api/cryptids")]` on the class gives it its address, and `[HttpGet]` says this action answers a GET there. It returns the data; there is no `View()`. `Include` loads the reports, so `c.Sightings.Count` has something to count.
-
-**Try it.** In your browser, go to **`/api/cryptids`**. Six creatures as JSON, and nothing else: no navbar, no layout. Notice the names: `Name` in your C# is `name` in the JSON. The serializer does that.
-
-**Then the count, the other way.** In `Program.cs`, just above `app.Run();`:
-
-```csharp
-// Week 13: a minimal API endpoint. The same kind of answer as a controller
-// action, in one statement, with no class around it.
-app.MapGet("/api/cryptids/count", async (CryptidContext db) =>
-    new { count = await db.Cryptids.CountAsync() });
-```
-
-No class, no constructor. `MapGet` takes an address and a function, the function asks for what it needs, and whatever it returns becomes the JSON.
-
-> [!IMPORTANT]
-> **Terminal 1 prints `Press "Ctrl + R" to restart.` above `Hot reload succeeded`. Press `Ctrl+R` in terminal 1.** `Program.cs` runs once, at startup. Until you restart, `/api/cryptids/count` is the *Not on file* page, over correct code.
-
-Go to **`/api/cryptids/count`**: `{"count":6}`.
-
-**Run the checks, in terminal 3:**
-
-```bash
-dotnet test Cryptids.Checks
-```
-
-**`Passed: 2`** — checks 1 and 2. Check 3's message says `GET /api/cryptids/1` came back 404. That's correct: task 3 writes it.
-
-> [!NOTE]
-> **In class, stop here.** Task 3 comes after the break and the next part of the demo. Checks 3 to 5 are still red, and that's expected. Finished early? At `/api/cryptids`, compare The Hodag's `reportCount` with the reports on its page. Then take `.Include(c => c.Sightings)` out, save, and look again. Put it back. Or help a classmate find their Ctrl+R. Working at home? Carry straight on.
-
-### Task 3 in full
-
-**Check:** `Check3_ACreatureComesWithItsReports`
-
-**Want to see the error for yourself?** Add this action, go to `/api/cryptids/1`, and read what comes back. **The page starts with a run of JSON**, because the serializer had already begun writing. Scroll down to the error page below it. You'll need `using Cryptids.Web.Models;` at the top of the file.
-
-```csharp
-[HttpGet("{id:int}")]
-public async Task<ActionResult<Cryptid>> GetOne(int id)
-{
-    return await _context.Cryptids.Include(c => c.Sightings).FirstAsync(c => c.Id == id);
-}
-```
-
-`A possible object cycle was detected`. A `Cryptid` has `Sightings`; each `Sighting` has a `Cryptid`, which `Include` filled in; so the serializer goes round until it gives up. Take it out again.
-
-**The fix is two more DTOs, built by hand, so nothing can point back.** Create `Dtos/SightingDto.cs`:
-
-```csharp
-namespace Cryptids.Web.Dtos;
-
-// One report, as the API says it. It names its creature with a number, so
-// there is no Cryptid object here to lead back to the creature's reports.
-public class SightingDto
-{
-    public int Id { get; set; }
-    public int CryptidId { get; set; }
-    public string Witness { get; set; } = "";
-    public string Location { get; set; } = "";
-    public DateTime SeenOn { get; set; }
-    public string Account { get; set; } = "";
-}
-```
-
-and `Dtos/CryptidDetailsDto.cs`:
-
-```csharp
-namespace Cryptids.Web.Dtos;
-
-// What /api/cryptids/1 says: the same facts as the list, and the reports.
-public class CryptidDetailsDto
-{
-    public int Id { get; set; }
-    public string Name { get; set; } = "";
-    public string Region { get; set; } = "";
-    public int FirstSighting { get; set; }
-    public bool IsDebunked { get; set; }
-    public string? LatinName { get; set; }
-    public List<SightingDto> Sightings { get; set; } = new();
-}
-```
-
-**Now the action.** In `CryptidsApiController.cs`, just below `GetAll`:
-
-```csharp
     // GET /api/cryptids/1
     [HttpGet("{id:int}")]
     public async Task<ActionResult<CryptidDetailsDto>> GetOne(int id)
@@ -345,11 +373,12 @@ public class CryptidDetailsDto
                 .ToList()
         };
     }
+}
 ```
 
-`{id:int}` makes the id part of the address, and only a whole number matches. `ActionResult<CryptidDetailsDto>` says this action gives back either that DTO or a status. Returning `NotFound()` on a class marked `[ApiController]` answers with a 404 **in JSON**, not with your *Not on file* page.
+`GetAll` now loads the reports with `Include` and hands back a `CryptidDto` for each creature, with `c.Sightings.Count` as its `reportCount`. `GetOne` is new. `{id:int}` makes the id part of the address, and only a whole number matches. `ActionResult<CryptidDetailsDto>` says this action gives back either that DTO or a status. Returning `NotFound()` on a class marked `[ApiController]` answers with a 404 **in JSON**, not with your *Not on file* page.
 
-**Try it.** **`/api/cryptids/1`**: The Hodag, with three reports. **`/api/cryptids/999`**: a 404, as JSON.
+**Try it.** **`/api/cryptids`**: every creature has a `reportCount`, and The Hodag's is 3. **`/api/cryptids/1`**: The Hodag, with three reports. **`/api/cryptids/999`**: a 404, as JSON.
 
 **Run the checks, in terminal 3:**
 
