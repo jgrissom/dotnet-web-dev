@@ -12,7 +12,8 @@
 //  Type  recheck()  when you want it to run.
 //
 //  HOW IT FINDS YOUR API: it finds your list page in your navbar, the way it
-//  has since week 4, and adds /api in front of it. /Trails means /api/Trails.
+//  has since week 4, and adds /api in front of it. /Trails means /api/Trails,
+//  or /api/Trail: singular or plural both work, and capitals don't matter.
 //  The two have to use the same word. List page not in your navbar?
 //  recheck("Trails")  names that word, for both.
 //
@@ -264,6 +265,17 @@
   const isHtml = (r) => !!r && (/html/i.test(r.type) || /<html[\s>]/i.test(r.text));
   const said = (r) => !r ? "no answer" : r.redirected ? "a redirect" : `a ${r.status}${isHtml(r) ? " with a page of HTML" : ""}`;
 
+  // Singular or plural is spelling, not behavior: a list page at /BallPark may
+  // keep its API at /api/BallParks, and /Categories at /api/Category.
+  function wordForms(word) {
+    const forms = [word];
+    if (/ies$/i.test(word)) forms.push(word.slice(0, -3) + "y");
+    else if (/s$/i.test(word)) forms.push(word.slice(0, -1));
+    else if (/[^aeiou]y$/i.test(word)) forms.push(word.slice(0, -1) + "ies", word + "s");
+    else forms.push(word + "s");
+    return [...new Set(forms)];
+  }
+
   // Names ignore case: a serializer setting shouldn't cost anyone a point.
   const prop = (obj, name) => {
     if (!obj || typeof obj !== "object") return undefined;
@@ -392,15 +404,20 @@
         hint: "I couldn't find a list page in your navbar that a visitor can open and that links to "
             + "a record's Details page, so I don't know what your API is called.",
         todo: "If your list page is called something I can't see, run  recheck(\"Trails\")  with YOUR "
-            + "controller name. Your API lives at the same word with /api in front: /Trails, /api/Trails.",
+            + "controller name. Your API lives at the same word with /api in front, singular or plural: /Trails, /api/Trails.",
       });
       return done(null);
     }
     staleCheckers(index.body).forEach(w => stale.add(w));
-    const api = `/api/${route}`;
+    // The API is the list page's word with /api in front, singular or plural.
+    const tried = wordForms(route).map(w => `/api/${w}`);
+    let api = tried[0], list = null;
+    for (const address of tried) {
+      const answer = await askWithWakeup(root + address, { signedOut: true });
+      if (!list) list = answer;
+      if (answer && answer.status !== 404) { api = address; list = answer; break; }
+    }
     apiRoute = api;
-
-    const list = await askWithWakeup(root + api, { signedOut: true });
     const records = isJson(list) && Array.isArray(list.json) ? list.json : null;
     const ids = records ? records.map(r => prop(r, "id")).filter(i => i !== undefined) : [];
     const listGood = !!records && records.length > 0 && ids.length === records.length;
@@ -408,15 +425,16 @@
       listGood ? `your list answers in JSON, to anyone — ${api}, ${records.length} record${records.length === 1 ? "" : "s"}` : null, {
         hint: !list ? `${api} didn't answer.`
           : list.redirected ? `${api} sent a visitor who isn't signed in to another page. Reading is public.`
-          : list.status === 404 ? `nothing answers at ${api} — I got that address from your list page, /${route}.`
+          : list.status === 404 ? `nothing answers at ${tried.join(" or ")} — I got those from your list page, /${route}.`
           : list.status >= 500 ? `${api} came back ${list.status}. If the terminal says "A possible object cycle was detected", you are returning your model class with its related rows loaded: each row points back at its parent.`
           : !isJson(list) ? `${api} answered ${said(list)}, not JSON.`
           : !records ? `${api} is JSON, but it isn't an array of your records.`
           : records.length === 0 ? `${api} is an empty array, and /${route} lists records. They should be the same records.`
           : `${api} is an array, and not every record in it has an "id".`,
-        todo: "An API controller for your list: [ApiController] and [Route(\"api/your-list\")] on a class "
+        todo: `An API controller for your list: [ApiController] and [Route("api/${route}")] on a class `
             + "that inherits ControllerBase, and an [HttpGet] action marked [AllowAnonymous] that returns "
-            + "a list of DTOs, each with its id.",
+            + "a list of DTOs, each with its id. The word has to match your list page's; singular or "
+            + "plural are both fine.",
       });
     if (!listGood) return done(route);
 

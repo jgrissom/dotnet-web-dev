@@ -592,7 +592,7 @@ The moves are the same; the names are yours.
 | | Curbside | Your app |
 |---|---|---|
 | the list page | `/Trucks` | `/Trails`, `/Games`, whatever your navbar links to |
-| the API | `/api/trucks` | **the same word**, with `/api` in front |
+| the API | `/api/trucks` | **the same word**, with `/api` in front, singular or plural |
 | one record | `/api/trucks/2`, with `specials` | yours, with your related rows |
 | the count | `/api/trucks/count` | yours |
 | the role | `Admin` | the one you chose in week 12 |

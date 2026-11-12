@@ -64,7 +64,7 @@ That's the whole install: open `/api-tester.html` on your running app. It goes l
 
 ### Then build it
 
-**Your API lives at the same word as your list page, with `/api` in front.** If your navbar links to `/Trails`, your API is `/api/trails`. Routing ignores capitals.
+**Your API lives at the same word as your list page, with `/api` in front.** If your navbar links to `/Trails`, your API is `/api/trails`. Singular or plural both work: a list page at `/BallPark` can keep its API at `/api/ballpark` or `/api/ballparks`. Routing ignores capitals.
 
 1. **Your list, as JSON.** An API controller with `[ApiController]`, `[Route("api/…")]` and `ControllerBase`, and an `[HttpGet]` action anyone can use that returns every record as a DTO. Each one needs its `id`. → [An API controller](lecture-notes.md#part-2-an-api-controller)
 2. **One record, with its related rows.** `[HttpGet("{id:int}")]`: the record, and a list of its second-table rows inside it, through DTOs that can't loop. A record that doesn't exist is `NotFound()`. → [The loop, and DTOs](lecture-notes.md#part-4-the-loop-and-dtos)
@@ -78,7 +78,7 @@ That's the whole install: open `/api-tester.html` on your running app. It goes l
 
 ### Your app isn't mine
 
-Nothing above says what your records are called. The self-check doesn't know either. It finds your list page from your navbar, the way it has since week 4, and adds `/api` in front. It finds your related rows by looking for an array inside a record, whatever you called it. **So your API has to use the same word as your list page.** If it can't find your list page in your navbar, `recheck("Trails")` with your own word tells it where to look, and that word is used for both.
+Nothing above says what your records are called. The self-check doesn't know either. It finds your list page from your navbar, the way it has since week 4, and adds `/api` in front. It finds your related rows by looking for an array inside a record, whatever you called it. **So your API has to use the same word as your list page**, singular or plural. If it can't find your list page in your navbar, `recheck("Trails")` with your own word tells it where to look, and that word is used for both.
 
 ## Part 3 — Check it as you go ✅
 
