@@ -446,7 +446,9 @@
     for (const id of sample) {
       const r = await ask(`${root}${api}/${id}`, { signedOut: true });
       if (first === null) first = { id, r };
-      if (!isJson(r) || !r.json || Array.isArray(r.json) || typeof r.json !== "object") continue;
+      // A record that doesn't answer with an object means the action isn't
+      // there yet, and asking about the next one only adds a red line.
+      if (!isJson(r) || !r.json || Array.isArray(r.json) || typeof r.json !== "object") break;
       arrays = relatedRows(r.json);
       if (arrays.some(([, rows]) => rows.length > 0)) { withRows = { id, r }; break; }
     }
@@ -682,7 +684,7 @@
       console.log(`%c🔎 Week ${WEEK} self-check — ${window.location.origin}`, big);
       console.log("Results appear when the run finishes — a sleeping free-tier app can take ~30s.");
       console.log(`%c⚠️  This signs in as ${EMAIL} (making it once if it isn't there) and leaves your browser signed out. It changes none of your data.`, "color: #d29922");
-      console.log("%cRed 'Failed to load resource' lines will appear above the report. Those are the 401s, 403s and 404s this check asked for. Read the report, not the red lines.", "color: #d29922");
+      console.log("%cRed 'Failed to load resource' lines will appear above the report: one for every refusal or not-found, and this check asks for several on purpose. More while your API is half built; five or six when it all passes. Read the report, not the red lines.", "color: #d29922");
       if (forcedRoute) console.log(`Checking /${forcedRoute} directly (you told me where to look).`);
       return runChecks(window.location.origin, forcedRoute || null, printCheck).then(report);
     };

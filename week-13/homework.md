@@ -53,7 +53,7 @@ Open `Views/Home/Index.cshtml`, find the **week-12** line, and **replace it**:
 > - **It signs your browser out.** Sign back in when it's done.
 > - **It changes none of your data.** The POST it sends is broken JSON and the DELETE names an id that can't exist, so even an API with no protection can't lose anything. That account is the only thing it can leave behind.
 > - ⚠️ **It cannot see your admin succeed.** It doesn't know your admin's email or password, and it never should. Requirement 6 is yours to do.
-> - **Red `Failed to load resource` lines in the console are expected.** They're the 401s, 403s and 404s it asked for. Read the report, not the red lines.
+> - **Red `Failed to load resource` lines in the console are expected.** Chrome prints one for every request that gets a refusal or a "not found", and the check sends several on purpose. Early on there are more, because it asks for parts you haven't built yet: with only requirement 1 done, expect about eight. When everything passes there are still five or six: the 401s and 403s it's checking for, a 404 for a record that's meant not to exist, and one more if your API uses the other of singular or plural from your list page. Read the report, not the red lines.
 
 ### Copy the tester in
 
