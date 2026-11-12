@@ -330,8 +330,8 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 ## Lab C · Task 3 — 14 minutes
 
 - [ ] Lab README on screen, scrolled to **Task 3 in full**
-- [ ] *"Task 3 is one creature with its reports, and a list that says how many reports each creature has, instead of an empty list. Try the query first with no DTO, if you want to see the error for yourself. Then three DTOs, and the controller replaced with the README's version."*
-- [ ] 👀 **Watch for:** `sightings` still on the list, with no `reportCount` — the controller wasn't replaced, so `GetAll` still returns `Cryptid`. `reportCount` of `0`, or `sightings` an empty array — no `Include` on that query. Still `A possible object cycle was detected` — the action still returns `Cryptid`, or a DTO carries a `Cryptid` property. `The type or namespace name 'CryptidDetailsDto' could not be found` — the `using Cryptids.Web.Dtos;` at the top
+- [ ] *"Task 3 is one creature with its reports, and a list that says how many reports each creature has, instead of an empty list. First the query with no DTO, so you see the error for yourself. Then three DTOs, and both actions replaced with the README's versions, the same move as mine."*
+- [ ] 👀 **Watch for:** `sightings` still on the list, with no `reportCount` — `GetAll` wasn't replaced along with `GetOne`, so it still returns `Cryptid`. `reportCount` of `0`, or `sightings` an empty array — no `Include` on that query. Still `A possible object cycle was detected` — the action still returns `Cryptid`, or a DTO carries a `Cryptid` property. `The type or namespace name 'CryptidDetailsDto' could not be found` — the `using Cryptids.Web.Dtos;` at the top
 - [ ] **Stop:** the note after **Task 3 in full**. Where they should be: **`Passed: 3`**, The Hodag at `/api/cryptids/1` with three reports, and a `reportCount` on every creature at `/api/cryptids`
 
 ## 5 · Testing a write *(slide 6)*

@@ -228,21 +228,24 @@ dotnet test Cryptids.Checks
 
 **Check:** `Check3_ACreatureComesWithItsReports`
 
-**Want to see the error for yourself?** In `Controllers/CryptidsApiController.cs`, just below `GetAll` and inside the class, add this action. Then go to `/api/cryptids/1`, and read what comes back. **The page starts with a run of JSON**, because the serializer had already begun writing. Scroll down to the error page below it.
+**First, see the problem.** In `Controllers/CryptidsApiController.cs`, paste this just below `GetAll`, inside the class. It loads one creature with its reports, the same way the Details page does, and returns the `Cryptid` itself:
 
 ```csharp
-[HttpGet("{id:int}")]
-public async Task<ActionResult<Cryptid>> GetOne(int id)
-{
-    return await _context.Cryptids.Include(c => c.Sightings).FirstAsync(c => c.Id == id);
-}
+    // GET /api/cryptids/1
+    [HttpGet("{id:int}")]
+    public async Task<ActionResult<Cryptid>> GetOne(int id)
+    {
+        return await _context.Cryptids.Include(c => c.Sightings).FirstAsync(c => c.Id == id);
+    }
 ```
 
-`A possible object cycle was detected`. A `Cryptid` has `Sightings`; each `Sighting` has a `Cryptid`, which `Include` filled in; so the serializer goes round until it gives up. Take it out again.
+Go to **`/api/cryptids/1`** and read what comes back. **The page starts with a run of JSON**, because the serializer had already begun writing. Scroll down to the error page below it.
+
+`A possible object cycle was detected`. A `Cryptid` has `Sightings`; each `Sighting` has a `Cryptid`, which `Include` filled in; so the serializer goes round until it gives up. Leave the action where it is: you replace it below.
 
 **The fix is DTOs: classes whose only job is the shape of the JSON, built by hand, so nothing can point back.** Three of them.
 
-**First, what the list should say.** A list of creatures needs each one's facts and how many reports it has, not the reports themselves. Create `Dtos/CryptidDto.cs`:
+**What the list should say.** A list of creatures needs each one's facts and how many reports it has, not the reports themselves. Create `Dtos/CryptidDto.cs`:
 
 ```csharp
 namespace Cryptids.Web.Dtos;
@@ -297,13 +300,13 @@ public class CryptidDetailsDto
 }
 ```
 
-**Now the controller,** in three pastes in `Controllers/CryptidsApiController.cs`. If you added the try-it action, delete it first. At the top, with the other usings:
+**Now the controller,** in two pastes in `Controllers/CryptidsApiController.cs`. At the top, with the other usings:
 
 ```csharp
 using Cryptids.Web.Dtos;
 ```
 
-Then select `GetAll`, from its comment `// GET /api/cryptids` down to its closing brace, and replace it with this:
+Then select both actions, from the comment `// GET /api/cryptids` down to the closing brace of `GetOne`, and paste over them:
 
 ```csharp
     // GET /api/cryptids
@@ -325,11 +328,7 @@ Then select `GetAll`, from its comment `// GET /api/cryptids` down to its closin
             ReportCount = c.Sightings.Count
         }).ToList();
     }
-```
 
-Then paste this just below it, inside the class:
-
-```csharp
     // GET /api/cryptids/1
     [HttpGet("{id:int}")]
     public async Task<ActionResult<CryptidDetailsDto>> GetOne(int id)
@@ -366,7 +365,7 @@ Then paste this just below it, inside the class:
     }
 ```
 
-`GetAll` now loads the reports with `Include` and hands back a `CryptidDto` for each creature, with `c.Sightings.Count` as its `reportCount`. `GetOne` is new. `{id:int}` makes the id part of the address, and only a whole number matches. `ActionResult<CryptidDetailsDto>` says this action gives back either that DTO or a status. Returning `NotFound()` on a class marked `[ApiController]` answers with a 404 **in JSON**, not with your *Not on file* page.
+`GetAll` now loads the reports with `Include` and hands back a `CryptidDto` for each creature, with `c.Sightings.Count` as its `reportCount`. `GetOne` now loads the same creature and returns a `CryptidDetailsDto`, so nothing loops. `{id:int}` makes the id part of the address, and only a whole number matches. `ActionResult<CryptidDetailsDto>` says this action gives back either that DTO or a status. Returning `NotFound()` on a class marked `[ApiController]` answers with a 404 **in JSON**, not with your *Not on file* page.
 
 **Try it.** **`/api/cryptids`**: every creature has a `reportCount`, and The Hodag's is 3. **`/api/cryptids/1`**: The Hodag, with three reports. **`/api/cryptids/999`**: a 404, as JSON.
 
