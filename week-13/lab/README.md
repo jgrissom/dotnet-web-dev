@@ -228,7 +228,7 @@ dotnet test Cryptids.Checks
 
 **Check:** `Check3_ACreatureComesWithItsReports`
 
-**Want to see the error for yourself?** Add this action, go to `/api/cryptids/1`, and read what comes back. **The page starts with a run of JSON**, because the serializer had already begun writing. Scroll down to the error page below it.
+**Want to see the error for yourself?** In `Controllers/CryptidsApiController.cs`, just below `GetAll` and inside the class, add this action. Then go to `/api/cryptids/1`, and read what comes back. **The page starts with a run of JSON**, because the serializer had already begun writing. Scroll down to the error page below it.
 
 ```csharp
 [HttpGet("{id:int}")]
