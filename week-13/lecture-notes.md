@@ -217,6 +217,33 @@ private static TruckDto ToDto(Truck truck) => new TruckDto
 
 `GetOne` ends `return ToDto(truck);`, and `GetAll` loads with the same `Include` and ends `return trucks.Select(ToDto).ToList();`. The whole file is in [Part 7](#part-7-put-and-delete).
 
+### At scale
+
+`ToDto` is the clearest way to see what a DTO does, and it's fine for seven trucks. With thousands of rows it does more work than it needs to. `Include` loads every column of every truck, special and dish into memory, Entity Framework keeps track of each of those objects in case you change them, and only then does `ToDto` copy out the few properties the JSON uses.
+
+The version that scales builds the DTO **inside the query**, so Entity Framework can turn the whole thing into SQL and read only the columns the DTO needs. It needs no `Include`, because the query names the related rows itself, and nothing is tracked, because a DTO isn't an entity:
+
+```csharp
+// inside TrucksApiController, in GetAll — the same JSON as ToDto produces
+var trucks = await _context.Trucks
+    .Select(t => new TruckDto
+    {
+        Id = t.Id,
+        Name = t.Name,
+        Cuisine = t.Cuisine,
+        City = t.City,
+        Rating = t.Rating,
+        IsOpenLate = t.IsOpenLate,
+        Slogan = t.Slogan,
+        Specials = t.Specials
+            .Select(s => new SpecialDto { Dish = s.Dish!.Name, Price = s.Price, ServedOn = s.ServedOn })
+            .ToList()
+    })
+    .ToListAsync();
+```
+
+The cost is repetition. Entity Framework can't look inside a method like `ToDto` to translate it, so the mapping is written out in each query that needs it. A real API also returns its list a page at a time rather than all at once, which is week 15's paging. Neither matters at this size, and the lab and homework use the `ToDto` shape.
+
 ### A 404 in JSON
 
 `/api/trucks/999` reaches `return NotFound();`. On a class marked `[ApiController]`, that answers with a 404 **and a small JSON body**, rather than your Missing page:
