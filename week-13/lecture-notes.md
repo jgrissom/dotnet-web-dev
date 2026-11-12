@@ -539,6 +539,32 @@ public class TrucksApiController : ControllerBase
 
 **The same rule as your pages, and it looks the same:** the role on the class, `[AllowAnonymous]` on what only reads. Week 11's reason still holds: an action someone adds later is covered without anyone remembering.
 
+```csharp
+// Controllers/TrucksApiController.cs — the top of the class
+using Microsoft.AspNetCore.Authorization;
+
+[ApiController]
+[Route("api/trucks")]
+[Authorize(Roles = "Admin")]
+public class TrucksApiController : ControllerBase
+{
+    // ...
+
+    [AllowAnonymous]
+    [HttpGet]
+    public async Task<List<TruckDto>> GetAll() { ... }
+
+    [AllowAnonymous]
+    [HttpGet("{id:int}")]
+    public async Task<ActionResult<TruckDto>> GetOne(int id) { ... }
+
+    // Create, Update and Delete carry no attribute of their own:
+    // the class's [Authorize(Roles = "Admin")] covers them.
+}
+```
+
+Use your own role's name in place of `Admin`: the one your seeder creates.
+
 **What changes is the answer.** A page sends a refused visitor somewhere. A program can't do anything with a sign-in page, so an API answers with a number:
 
 | Who sends the write | A page | The API |
