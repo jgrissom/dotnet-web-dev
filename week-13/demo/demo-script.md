@@ -532,7 +532,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 ### The status is the answer *(slide 6)*
 
-- [ ] 🎞️ **GO TO SLIDE 6** — *Verbs and statuses* · *"A page tells a person what happened in words. An API tells a program with a number. Here are the statuses a working API answers with. You have seen four of them, and you are about to see the other three. A program reads this number first, before it looks at anything else."*
+- [ ] 🎞️ **GO TO SLIDE 6** — *Verbs and statuses* · *"A page tells a person what happened in words. An API tells a program with a number. There are many more HTTP status codes than these. These seven are the ones an API like mine answers with most, and they cover tonight. You have seen four of them so far, and the other three are coming up. A program reads this number first, before it looks at anything else."*
 - [ ] Still on slide 6, the verbs: *"In week 3 I said PUT and DELETE would wait for the Web API. Tonight is when they arrive. One address, api slash trucks slash 2, takes a GET, a PUT and a DELETE. The verb says what to do to that truck."*
 
 ## Lab D · Task 4 — 15 minutes
