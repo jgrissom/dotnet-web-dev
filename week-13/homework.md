@@ -57,7 +57,14 @@ Open `Views/Home/Index.cshtml`, find the **week-12** line, and **replace it**:
 
 ### Copy the tester in
 
-Copy **`api-tester.html`** from your starters clone, `dotnet-web-starters/week-13/Cryptids.Web/wwwroot/`, into your own app's **`wwwroot`** folder. `git -C dotnet-web-starters pull` first if it isn't there. That's the whole install: open `/api-tester.html` on your site. It goes live without a restart. → [Testing an endpoint](lecture-notes.md#part-5-testing-an-endpoint)
+`api-tester.html` comes from the starters clone, which sits next to your project in `dotnet-web`. In a terminal in your project's folder, the one with your `.csproj`, update the clone, then copy the file into your `wwwroot`:
+
+```bash
+git -C ../dotnet-web-starters pull
+cp ../dotnet-web-starters/week-13/Cryptids.Web/wwwroot/api-tester.html wwwroot/
+```
+
+`../` means the folder above yours, which is `dotnet-web`. That's the whole install: open `/api-tester.html` on your running app. It goes live without a restart. → [Testing an endpoint](lecture-notes.md#part-5-testing-an-endpoint)
 
 ### Then build it
 
