@@ -129,7 +129,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 ### What's different about it *(slide 3)*
 
-- [ ] 🎞️ **GO TO SLIDE 3** — *Two kinds of controller* · *"Here is the controller you know next to the new one. The base class is ControllerBase, because an API has no use for views. The address comes from the route attribute on the class, not from the pattern in Program.cs. And the action returns data."*
+- [ ] 🎞️ **GO TO SLIDE 3** — *Two kinds of controller* · *"The controller you know passes data to views. An API controller passes data to applications. Any application that can communicate over HTTP can use an API controller. Here is the controller you know next to the new one. The base class is ControllerBase, because an API has no use for views. The address comes from the route attribute on the class, not from the pattern in Program.cs. And the action returns data."*
 - [ ] 🎯 Still on slide 3, the last line: *"ApiController is a small attribute that changes a lot. You are going to see it answer three problems tonight without my writing any code for them."*
 
 ## 3 · The same thing, minimal *(slide 4)*
