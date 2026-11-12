@@ -651,7 +651,7 @@ dotnet test Cryptids.Checks
 
 **No check, no points, and nobody needs this for the lab.** Your homework does need one, so this is a good place to try it first. In class this is the last block — and the block has no stop. If any of your checks are still red, finish those first.
 
-**In `CryptidsApiController.cs`**, add `using Cryptids.Web.Models;` at the top, and just below `GetOne`:
+**In `CryptidsApiController.cs`**, just below `GetOne`. The `using Cryptids.Web.Models;` it needs is still at the top from task 2:
 
 ```csharp
     // POST /api/cryptids
