@@ -212,34 +212,8 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 ### The cycle
 
-- [ ] **Swipe to the editor.** Say the goal: *"Now one truck, with its specials. Earlier, the specials came back empty. I want the real ones. The Details page already knows how to load a truck with Include, so I will use the same query."* Open `Controllers/TrucksApiController.cs`, select everything and paste:
+- [ ] **Swipe to the editor.** Say the goal: *"Now one truck, with its specials. Earlier, the specials came back empty. I want the real ones. The Details page already knows how to load a truck with Include, so I will use the same query."* Open `Controllers/TrucksApiController.cs` and paste this just below `GetAll`, inside the class:
   ```csharp
-  using Microsoft.AspNetCore.Mvc;
-  using Microsoft.EntityFrameworkCore;
-  using Curbside.Data;
-  using Curbside.Models;
-
-  namespace Curbside.Controllers;
-
-  // Week 13: the same trucks as TrucksController, answered as JSON.
-  [ApiController]
-  [Route("api/trucks")]
-  public class TrucksApiController : ControllerBase
-  {
-      private readonly CurbsideContext _context;
-
-      public TrucksApiController(CurbsideContext context)
-      {
-          _context = context;
-      }
-
-      // GET /api/trucks
-      [HttpGet]
-      public async Task<List<Truck>> GetAll()
-      {
-          return await _context.Trucks.ToListAsync();
-      }
-
       // GET /api/trucks/2
       [HttpGet("{id:int}")]
       public async Task<ActionResult<Truck>> GetOne(int id)
@@ -256,7 +230,6 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
           return truck;
       }
-  }
   ```
 - [ ] **Say what it is:** *"A second action. The id in the HttpGet attribute is part of the address, and the colon int means it has to be a whole number. The return type says this action can give back a truck, or a status like 404. Include loads the specials, and then the dish on each one."*
 - [ ] **Swipe to the browser.** Change the address to **`/api/trucks/2`**. 🎯 The error page: **`JsonException: A possible object cycle was detected`**
@@ -298,28 +271,29 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
   }
   ```
 - [ ] **Say what it is:** *"Everything about a truck that I want in the JSON, and a list of SpecialDto."*
-- [ ] Say the goal for the next paste: *"Now both actions build those instead of returning the model."* `Controllers/TrucksApiController.cs` — select everything and paste:
+- [ ] Say the goal for the next pastes: *"Now both actions build those instead of returning the model."* Three pastes in `Controllers/TrucksApiController.cs`. First, at the top, with the other usings:
   ```csharp
-  using Microsoft.AspNetCore.Mvc;
-  using Microsoft.EntityFrameworkCore;
-  using Curbside.Data;
   using Curbside.Dtos;
-  using Curbside.Models;
-
-  namespace Curbside.Controllers;
-
-  // Week 13: the same trucks as TrucksController, answered as JSON.
-  [ApiController]
-  [Route("api/trucks")]
-  public class TrucksApiController : ControllerBase
-  {
-      private readonly CurbsideContext _context;
-
-      public TrucksApiController(CurbsideContext context)
+  ```
+- [ ] Then this, at the bottom, just above the class's closing brace:
+  ```csharp
+      private static TruckDto ToDto(Truck truck) => new TruckDto
       {
-          _context = context;
-      }
-
+          Id = truck.Id,
+          Name = truck.Name,
+          Cuisine = truck.Cuisine,
+          City = truck.City,
+          Rating = truck.Rating,
+          IsOpenLate = truck.IsOpenLate,
+          Slogan = truck.Slogan,
+          Specials = truck.Specials
+              .Select(s => new SpecialDto { Dish = s.Dish!.Name, Price = s.Price, ServedOn = s.ServedOn })
+              .ToList()
+      };
+  ```
+- [ ] **Say what it is:** *"ToDto copies a truck into a TruckDto, one property at a time, and turns each special into a SpecialDto."*
+- [ ] Then select both actions, from the comment `// GET /api/trucks` down to the closing brace of `GetOne`, and paste over them:
+  ```csharp
       // GET /api/trucks
       [HttpGet]
       public async Task<List<TruckDto>> GetAll()
@@ -348,23 +322,8 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
           return ToDto(truck);
       }
-
-      private static TruckDto ToDto(Truck truck) => new TruckDto
-      {
-          Id = truck.Id,
-          Name = truck.Name,
-          Cuisine = truck.Cuisine,
-          City = truck.City,
-          Rating = truck.Rating,
-          IsOpenLate = truck.IsOpenLate,
-          Slogan = truck.Slogan,
-          Specials = truck.Specials
-              .Select(s => new SpecialDto { Dish = s.Dish!.Name, Price = s.Price, ServedOn = s.ServedOn })
-              .ToList()
-      };
-  }
   ```
-- [ ] **Say what it is:** *"Both actions now load the specials, and hand back DTOs. ToDto at the bottom copies a truck into a TruckDto, one property at a time. Nothing else in the app changes."*
+- [ ] **Say what it is:** *"Both actions now load the specials, and hand back DTOs built by ToDto. Nothing else in the app changes."*
 - [ ] **Browser, `/api/trucks/2`.** 🎯 **Cheese Curd Cartel, with three specials, each with a dish name.** *"No loop, and the JSON says exactly what I chose."*
 - [ ] **Browser, `/api/trucks/999`.** *"There is no truck 999, so the action returned NotFound. That is a 404. Its details came back as JSON, not as my Missing page, and that is the first thing ApiController did for me."*
 
@@ -416,62 +375,24 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
   }
   ```
 - [ ] **Say what it is:** *"The same validation attributes as the Truck class, and only what a client is allowed to send. There is no Id, and no Specials."*
-- [ ] Say the goal for the next paste: *"Now the POST itself, and the rule about who may use it, which is the same rule as the pages."* `Controllers/TrucksApiController.cs` — select everything and paste:
+- [ ] Say the goal for the next pastes: *"Now the rule about who may use this controller, which is the same rule as the pages, and then the POST itself."* In `Controllers/TrucksApiController.cs`, add this at the top, with the other usings:
   ```csharp
   using Microsoft.AspNetCore.Authorization;
-  using Microsoft.AspNetCore.Mvc;
-  using Microsoft.EntityFrameworkCore;
-  using Curbside.Data;
-  using Curbside.Dtos;
-  using Curbside.Models;
-
-  namespace Curbside.Controllers;
-
+  ```
+- [ ] Above the class, replace the comment and the two attributes with:
+  ```csharp
   // Week 13: the same trucks as TrucksController, answered as JSON. Every action
   // needs the Admin role, except the two that only read.
   [ApiController]
   [Route("api/trucks")]
   [Authorize(Roles = "Admin")]
-  public class TrucksApiController : ControllerBase
-  {
-      private readonly CurbsideContext _context;
-
-      public TrucksApiController(CurbsideContext context)
-      {
-          _context = context;
-      }
-
-      // GET /api/trucks
-      [AllowAnonymous]
-      [HttpGet]
-      public async Task<List<TruckDto>> GetAll()
-      {
-          var trucks = await _context.Trucks
-              .Include(t => t.Specials)
-                  .ThenInclude(s => s.Dish)
-              .ToListAsync();
-
-          return trucks.Select(ToDto).ToList();
-      }
-
-      // GET /api/trucks/2
-      [AllowAnonymous]
-      [HttpGet("{id:int}")]
-      public async Task<ActionResult<TruckDto>> GetOne(int id)
-      {
-          var truck = await _context.Trucks
-              .Include(t => t.Specials)
-                  .ThenInclude(s => s.Dish)
-              .FirstOrDefaultAsync(t => t.Id == id);
-
-          if (truck == null)
-          {
-              return NotFound();
-          }
-
-          return ToDto(truck);
-      }
-
+  ```
+- [ ] **Type it — the attribute is the lesson:** on the line above `[HttpGet]` on **both** GET actions:
+  ```csharp
+  [AllowAnonymous]
+  ```
+- [ ] Then paste this just below `GetOne`:
+  ```csharp
       // POST /api/trucks
       // [ApiController] has already refused anything that breaks TruckInput's
       // rules, with a 400, so there is no ModelState check here.
@@ -493,23 +414,8 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
           return CreatedAtAction(nameof(GetOne), new { id = truck.Id }, ToDto(truck));
       }
-
-      private static TruckDto ToDto(Truck truck) => new TruckDto
-      {
-          Id = truck.Id,
-          Name = truck.Name,
-          Cuisine = truck.Cuisine,
-          City = truck.City,
-          Rating = truck.Rating,
-          IsOpenLate = truck.IsOpenLate,
-          Slogan = truck.Slogan,
-          Specials = truck.Specials
-              .Select(s => new SpecialDto { Dish = s.Dish!.Name, Price = s.Price, ServedOn = s.ServedOn })
-              .ToList()
-      };
-  }
   ```
-- [ ] **Say what it is:** *"The Authorize attribute with the Admin role is on the class, and AllowAnonymous is on the two GETs, the same shape as TrucksController. The POST takes a TruckInput, builds a Truck, saves it, and answers with CreatedAtAction: a 201, and the address of the new truck."*
+- [ ] **Say what it is:** *"The Authorize attribute with the Admin role is on the class, and AllowAnonymous is on the two GETs, the same shape as TrucksController. The new action is a POST. It takes a TruckInput, builds a Truck, saves it, and answers with CreatedAtAction: a 201, and the address of the new truck."*
 - [ ] **Tester.** Pick **POST**, type **`/api/trucks`**, paste this in the box, **Send**:
   ```json
   { "name": "Lake Effect Lunch", "cuisine": "Soup", "city": "Sheboygan", "rating": 4.3 }
@@ -550,84 +456,8 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 ### PUT and DELETE
 
-- [ ] **Swipe to the editor.** Say the goal: *"Two more verbs. PUT changes a truck, and DELETE removes one."* `Controllers/TrucksApiController.cs` — select everything and paste:
+- [ ] **Swipe to the editor.** Say the goal: *"Two more verbs. PUT changes a truck, and DELETE removes one."* In `Controllers/TrucksApiController.cs`, paste these just below `Create`:
   ```csharp
-  using Microsoft.AspNetCore.Authorization;
-  using Microsoft.AspNetCore.Mvc;
-  using Microsoft.EntityFrameworkCore;
-  using Curbside.Data;
-  using Curbside.Dtos;
-  using Curbside.Models;
-
-  namespace Curbside.Controllers;
-
-  // Week 13: the same trucks as TrucksController, answered as JSON. Every action
-  // needs the Admin role, except the two that only read.
-  [ApiController]
-  [Route("api/trucks")]
-  [Authorize(Roles = "Admin")]
-  public class TrucksApiController : ControllerBase
-  {
-      private readonly CurbsideContext _context;
-
-      public TrucksApiController(CurbsideContext context)
-      {
-          _context = context;
-      }
-
-      // GET /api/trucks
-      [AllowAnonymous]
-      [HttpGet]
-      public async Task<List<TruckDto>> GetAll()
-      {
-          var trucks = await _context.Trucks
-              .Include(t => t.Specials)
-                  .ThenInclude(s => s.Dish)
-              .ToListAsync();
-
-          return trucks.Select(ToDto).ToList();
-      }
-
-      // GET /api/trucks/2
-      [AllowAnonymous]
-      [HttpGet("{id:int}")]
-      public async Task<ActionResult<TruckDto>> GetOne(int id)
-      {
-          var truck = await _context.Trucks
-              .Include(t => t.Specials)
-                  .ThenInclude(s => s.Dish)
-              .FirstOrDefaultAsync(t => t.Id == id);
-
-          if (truck == null)
-          {
-              return NotFound();
-          }
-
-          return ToDto(truck);
-      }
-
-      // POST /api/trucks
-      // [ApiController] has already refused anything that breaks TruckInput's
-      // rules, with a 400, so there is no ModelState check here.
-      [HttpPost]
-      public async Task<ActionResult<TruckDto>> Create(TruckInput input)
-      {
-          var truck = new Truck
-          {
-              Name = input.Name,
-              Cuisine = input.Cuisine,
-              City = input.City,
-              Rating = input.Rating,
-              IsOpenLate = input.IsOpenLate,
-              Slogan = input.Slogan
-          };
-
-          _context.Trucks.Add(truck);
-          await _context.SaveChangesAsync();
-
-          return CreatedAtAction(nameof(GetOne), new { id = truck.Id }, ToDto(truck));
-      }
-
       // PUT /api/trucks/2
       [HttpPut("{id:int}")]
       public async Task<IActionResult> Update(int id, TruckInput input)
@@ -663,21 +493,6 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
           await _context.SaveChangesAsync();
           return NoContent();
       }
-
-      private static TruckDto ToDto(Truck truck) => new TruckDto
-      {
-          Id = truck.Id,
-          Name = truck.Name,
-          Cuisine = truck.Cuisine,
-          City = truck.City,
-          Rating = truck.Rating,
-          IsOpenLate = truck.IsOpenLate,
-          Slogan = truck.Slogan,
-          Specials = truck.Specials
-              .Select(s => new SpecialDto { Dish = s.Dish!.Name, Price = s.Price, ServedOn = s.ServedOn })
-              .ToList()
-      };
-  }
   ```
 - [ ] **Say what it is:** *"PUT loads the truck, copies the input across, and saves. DELETE loads it and removes it. Both answer with a 404 if the truck is not there. When they work they answer 204, which means it worked, and there is nothing to send back."*
 - [ ] **Tester**, still signed in as Ada. **PUT**, **`/api/trucks/8`**, paste this, **Send**:

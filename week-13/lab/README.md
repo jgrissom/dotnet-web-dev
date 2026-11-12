@@ -297,28 +297,15 @@ public class CryptidDetailsDto
 }
 ```
 
-**Now the controller.** In `Controllers/CryptidsApiController.cs`, select everything and replace it with this. Take the try-it action out first, if you added one:
+**Now the controller,** in three pastes in `Controllers/CryptidsApiController.cs`. If you added the try-it action, delete it first. At the top, with the other usings:
 
 ```csharp
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Cryptids.Web.Data;
 using Cryptids.Web.Dtos;
+```
 
-namespace Cryptids.Web.Controllers;
+Then select `GetAll`, from its comment `// GET /api/cryptids` down to its closing brace, and replace it with this:
 
-// Week 13: the archive, answered as JSON.
-[ApiController]
-[Route("api/cryptids")]
-public class CryptidsApiController : ControllerBase
-{
-    private readonly CryptidContext _context;
-
-    public CryptidsApiController(CryptidContext context)
-    {
-        _context = context;
-    }
-
+```csharp
     // GET /api/cryptids
     [HttpGet]
     public async Task<List<CryptidDto>> GetAll()
@@ -338,7 +325,11 @@ public class CryptidsApiController : ControllerBase
             ReportCount = c.Sightings.Count
         }).ToList();
     }
+```
 
+Then paste this just below it, inside the class:
+
+```csharp
     // GET /api/cryptids/1
     [HttpGet("{id:int}")]
     public async Task<ActionResult<CryptidDetailsDto>> GetOne(int id)
@@ -373,7 +364,6 @@ public class CryptidsApiController : ControllerBase
                 .ToList()
         };
     }
-}
 ```
 
 `GetAll` now loads the reports with `Include` and hands back a `CryptidDto` for each creature, with `c.Sightings.Count` as its `reportCount`. `GetOne` is new. `{id:int}` makes the id part of the address, and only a whole number matches. `ActionResult<CryptidDetailsDto>` says this action gives back either that DTO or a status. Returning `NotFound()` on a class marked `[ApiController]` answers with a 404 **in JSON**, not with your *Not on file* page.
