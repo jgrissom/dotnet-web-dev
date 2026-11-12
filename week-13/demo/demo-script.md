@@ -122,7 +122,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
       }
   }
   ```
-- [ ] **Say what it is, with it on screen:** *"A controller with one action. The route attribute gives it the address api slash trucks. HttpGet says this action answers a GET. It returns the list itself, not a view."*
+- [ ] **Say what it is, with it on screen:** *"A controller with one action. The route attribute gives it the address api/trucks. HttpGet says this action answers a GET. It returns the list itself, not a view."*
 - [ ] Terminal: `Hot reload succeeded`. A new controller goes live on its own. *(If the next beat is the Missing page, press Ctrl+R in the terminal.)*
 - [ ] **Swipe to the browser.** Open a new tab, type **`localhost:5164/api/trucks`** — your port is on the `/` tab. 🎯 **Seven trucks as JSON, and nothing else.** *"That is the response. No html, no css, no javascript. Just data - formatted as JSON."*
 - [ ] Point at the first truck's `"name"`: *"My C# property is Name with a capital N, and here it is name with a small n. The JSON serializer does that for me, because JavaScript names start with a lowercase letter."*
@@ -439,7 +439,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 ### The status is the answer *(slide 6)*
 
 - [ ] 🎞️ **GO TO SLIDE 6** — *Verbs and statuses* · *"A page tells a person what happened in words. An API tells a program with a number. There are many more HTTP status codes than these. These seven are the ones an API like mine answers with most, and they cover tonight. You have seen four of them so far, and the other three are coming up. A program reads this number first, before it looks at anything else."*
-- [ ] Still on slide 6, the verbs: *"In week 3 I said PUT and DELETE would wait for the Web API. Tonight is when they arrive. One address, api slash trucks slash 2, takes a GET, a PUT and a DELETE. The verb says what to do to that truck."*
+- [ ] Still on slide 6, the verbs: *"In week 3 I said PUT and DELETE would wait for the Web API. Tonight is when they arrive. One address, api/trucks/2, takes a GET, a PUT and a DELETE. The verb says what to do to that truck."*
 
 ## Lab D · Task 4 — 15 minutes
 
@@ -609,7 +609,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 ## 8 · Wrap-up, after the lab *(slide 9)*
 
 - [ ] 🎞️ **GO TO SLIDE 9** — *Tonight, in one picture* · walk the rows, one sentence each, and give the DTO row the emphasis: *"A DTO is what your API sends. Your model is how you store it. Keep those two apart, and you can change one without breaking the other."*
-- [ ] Homework: **the same moves on their own app.** *"Your list as JSON, one record with its related rows, a count with a minimal endpoint, and a POST and a DELETE that need your role. If your list page is slash Trails, your API is slash api slash trails."*
+- [ ] Homework: **the same moves on their own app.** *"Your list as JSON, one record with its related rows, a count with a minimal endpoint, and a POST and a DELETE that need your role. If your list page is /Trails, your API is /api/trails."*
 - [ ] ⚠️ Say what the self-check can't see, and what it does to your browser: *"The self-check changes none of your data. It sends broken JSON and an id that cannot exist. So it cannot see your admin succeed. The homework's last step is yours: sign in as your admin on Azure, open the tester, and send a real POST and a real DELETE. And when the check finishes, your browser is signed out, the same as last week."*
 - [ ] 💡 *"When the self-check runs, the console shows red lines."* They say `Failed to load resource`. *"Those are the refusals it asked for. Read the report, not the red lines."*
 - [ ] 💡 *"My Curbside is on localhost. Nothing is deployed for it. Yours is graded on its Azure URL."*
