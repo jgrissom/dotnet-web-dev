@@ -592,10 +592,8 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 ## 7 · Why no token *(slide 8)*
 
-- [ ] 🎞️ **GO TO SLIDE 8** — *Why no token?* · *"You may have noticed something. Every POST since week 6 has had ValidateAntiForgeryToken on it. Ada's POST tonight had no token, and it worked. Here is why that is safe."*
-- [ ] Still on slide 8, the first row: *"The token stops another website from posting one of my forms with your cookie. An HTML form cannot send JSON. If a form tries, the action answers with a 415, and nothing runs."*
-- [ ] Still on slide 8, the other two rows: *"The sign-in cookie is marked SameSite Lax, so the browser does not attach it to a POST that starts on another site. And JavaScript on another site that tries to send JSON gets stopped by the browser, because this app never gave that site permission."*
-- [ ] 🎯 Still on slide 8, the last line: *"So the pages keep their tokens, and the API does not use them. If you put ValidateAntiForgeryToken on an API action, your own POST gets a 400, because a program has no form to read a token from."*
+- [ ] 🎞️ **GO TO SLIDE 8** — *Why no token?* · *"Every POST since week 6 has needed an antiforgery token, and Ada's POST tonight had none. That is safe, because the token protects forms, and this API does not take forms. It only takes JSON. A browser will not send JSON here from another website, and it will not send my sign-in cookie along with a POST from another website either."*
+- [ ] 🎯 Still on slide 8, the last line: *"So the pages keep their tokens, and the API does not need them."*
 
 ## Lab F · Catch up, or the stretch — 38 minutes
 
