@@ -196,7 +196,9 @@ public class TruckDto
 }
 ```
 
-`SpecialDto` has no `Truck` property, so **there's nothing to loop through**. And it says `Dish`, a string, where the model has a whole object, because that's what a reader of the JSON wants. Then the actions build these instead of returning the model:
+`SpecialDto` has no `Truck` property, so **there's nothing to loop through**. And it says `Dish`, a string, where the model has a whole object, because that's what a reader of the JSON wants.
+
+**Then the controller changes in three places.** Add `using Curbside.Dtos;` at the top. Add a method at the bottom that copies one truck into a `TruckDto`:
 
 ```csharp
 // inside TrucksApiController, at the bottom
@@ -215,7 +217,41 @@ private static TruckDto ToDto(Truck truck) => new TruckDto
 };
 ```
 
-`GetOne` ends `return ToDto(truck);`, and `GetAll` loads with the same `Include` and ends `return trucks.Select(ToDto).ToList();`. The whole file is in [Part 7](#part-7-put-and-delete).
+And **both** actions change, so that each one loads the related rows and hands back DTOs instead of `Truck`. This replaces `GetAll` and `GetOne`, from the comment `// GET /api/trucks` to the end of `GetOne`:
+
+```csharp
+// inside TrucksApiController — both actions, replacing the old ones
+// GET /api/trucks
+[HttpGet]
+public async Task<List<TruckDto>> GetAll()
+{
+    var trucks = await _context.Trucks
+        .Include(t => t.Specials)
+            .ThenInclude(s => s.Dish)
+        .ToListAsync();
+
+    return trucks.Select(ToDto).ToList();
+}
+
+// GET /api/trucks/2
+[HttpGet("{id:int}")]
+public async Task<ActionResult<TruckDto>> GetOne(int id)
+{
+    var truck = await _context.Trucks
+        .Include(t => t.Specials)
+            .ThenInclude(s => s.Dish)
+        .FirstOrDefaultAsync(t => t.Id == id);
+
+    if (truck == null)
+    {
+        return NotFound();
+    }
+
+    return ToDto(truck);
+}
+```
+
+In both, the return type now names the DTO, and the last line builds it with `ToDto`. `GetAll` also gains the `Include`, so the list has the specials to copy; `GetOne` already had it. **Change `GetAll` too, not just `GetOne`.** Left alone, it keeps sending `Truck` with an empty `"specials": []`. The whole file is in [Part 7](#part-7-put-and-delete).
 
 ### At scale
 
