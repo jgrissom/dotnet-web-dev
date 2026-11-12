@@ -123,7 +123,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
   ```
 - [ ] **Say what it is, with it on screen:** *"A controller with one action. The route attribute gives it the address api slash trucks. HttpGet says this action answers a GET. It returns the list itself, not a view."*
 - [ ] Terminal: `Hot reload succeeded`. A new controller goes live on its own. *(If the next beat is the Missing page, press Ctrl+R in the terminal.)*
-- [ ] **Swipe to the browser.** Open a new tab, type **`localhost:5164/api/trucks`** — your port is on the `/` tab. 🎯 **Seven trucks as JSON, and nothing else.** *"That is the whole answer. No navbar and no layout. The address bar is my first testing tool: any GET can be tested by typing its address."*
+- [ ] **Swipe to the browser.** Open a new tab, type **`localhost:5164/api/trucks`** — your port is on the `/` tab. 🎯 **Seven trucks as JSON, and nothing else.** *"That is the response. No html, no css, no javascript. Just data - formatted as JSON."*
 - [ ] Point at the first truck's `"name"`: *"My C# property is Name with a capital N, and here it is name with a small n. The JSON serializer does that for me, because JavaScript names start with a lowercase letter."*
 - [ ] Point at `"specials":[]`: *"This says Roll Models has no specials, and it does have two. Nothing loaded them, so the list is empty. I am coming back to that."*
 
