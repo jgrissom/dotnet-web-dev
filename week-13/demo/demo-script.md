@@ -251,7 +251,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
       public string ServedOn { get; set; } = "";
   }
   ```
-- [ ] **Say what it is:** *"The name of the dish, the price and the day. There is no Truck property on it, so there is nothing to loop through."*
+- [ ] **Say what it is:** *"The name of the dish, the price and the day. There is no Truck property on it, so there is no cycle."*
 - [ ] Create `Dtos/TruckDto.cs` and paste:
   ```csharp
   namespace Curbside.Dtos;
