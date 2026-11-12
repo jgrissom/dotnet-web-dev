@@ -338,7 +338,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 ### The tester
 
-- [ ] **Swipe to the browser, the tab you parked in §0 at `localhost:5164/api-tester.html`** — if it isn't there, open that address in a new tab. It's the tester page in Curbside's `wwwroot`, which came with the starter. Say the goal: *"The address bar can only send a GET. To test a write, I need something that sends a POST with JSON in it. You have no extra software to install for this. This page is one file in wwwroot, and it is already in your lab."*
+- [ ] **Swipe to the browser, the tab you parked in §0 at `localhost:5164/api-tester.html`** — if it isn't there, open that address in a new tab. It's the tester page in Curbside's `wwwroot`, which came with the starter. Say the goal: *"The address bar can only send a GET. To test a write, I need something that sends a POST with JSON in it. You have no extra software to install for this. This page is one file in wwwroot, and it is already in your lab. It is HTML with a few lines of JavaScript, and the JavaScript is what sends the request. How that JavaScript works is next week."*
 - [ ] Leave **GET**, type **`/api/trucks/2`**, click **Send**. **`200 OK`**, then `application/json`, then the truck. *"One request, from this browser. The status is at the top, then the type of what came back, then the body. It runs in my browser, so if I am signed in here, my cookie goes with it."*
 
 ### POST
