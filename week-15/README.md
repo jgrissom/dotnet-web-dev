@@ -31,4 +31,4 @@ The flex week, and the polish night, running on week 12's apps. The app works; t
 - Remind students to `git pull` the starters repo for the week-15 folder
 - **Say there is no homework.** The stretch is optional and worth no points
 
-**Prev:** Week 14 — Consuming your API *(coming)* · **Next:** Week 16 — Final project presentations *(coming)*
+**Prev:** [← Week 14 — Consuming Your API, Production, and Team Git](../week-14/README.md) · **Next:** Week 16 — Final project presentations *(coming)*

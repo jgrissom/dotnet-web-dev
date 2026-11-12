@@ -1,0 +1,26 @@
+# Week 14: every push to main deploys your app to Azure.
+# It goes in your repository at .github/workflows/deploy.yml.
+#
+# ✏️ Change the one line marked ✏️ to your app's name, and nothing else.
+# The credential is NOT in this file: it's the repository secret named below.
+name: Deploy
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+      - run: dotnet publish -c Release -o ${{ runner.temp }}/app
+      - uses: azure/webapps-deploy@v3
+        with:
+          app-name: your-app-XX1234          # ✏️ your app's name, the one you've used all term
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          package: ${{ runner.temp }}/app

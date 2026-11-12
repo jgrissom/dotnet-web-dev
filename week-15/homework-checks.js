@@ -31,7 +31,10 @@
   // One request, redirects followed.
   async function send(url, timeoutMs = 45000) {
     try {
-      const res = await fetch(url, { redirect: "follow", credentials: "same-origin", signal: AbortSignal.timeout(timeoutMs) });
+      // As a visitor, with no cookie: search and paging are public. Signed in as
+      // the admin, week 14's list page also has an add form with no method, which
+      // is a GET form with text boxes, and it was being read as the search box.
+      const res = await fetch(url, { redirect: "follow", credentials: "omit", signal: AbortSignal.timeout(timeoutMs) });
       return { status: res.status, url: res.url, body: await res.text() };
     } catch {
       return null;

@@ -30,4 +30,4 @@ The night the app starts answering programs. Everything so far has been a page f
 - ⚠️ **Say in the wrap-up that the self-check's red console lines are expected**
 - Remind students to `git pull` the starters repo for the week-13 folder
 
-**Prev:** [← Week 12 — Roles, Claims and Securing the Application](../week-12/README.md) · **Next:** Week 14 — Consuming your API *(coming)*
+**Prev:** [← Week 12 — Roles, Claims and Securing the Application](../week-12/README.md) · **Next:** [Week 14 — Consuming Your API, Production, and Team Git →](../week-14/README.md)
