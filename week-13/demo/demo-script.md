@@ -234,7 +234,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 - [ ] **Say what it is:** *"A second action. The id in the HttpGet attribute is part of the address, and the colon int means it has to be a whole number. The return type says this action can give back a truck, or a status like 404. Include loads the specials, and then the dish on each one."*
 - [ ] **Swipe to the browser.** Change the address to **`/api/trucks/2`**. 🎯 The error page: **`JsonException: A possible object cycle was detected`**
 - [ ] 🎞️ **GO TO SLIDE 5** — *The loop in the JSON* · *"Here is what the serializer did. It started writing truck two, and reached its specials. Each special has a Truck property, which I filled with Include. So it wrote the truck again, reached its specials, and went round again. Thirty-two levels deep, it gave up."*
-- [ ] Still on slide 5, the second half: *"The fix is not a setting. My model class is the shape of my tables, and the JSON is what other programs depend on. Those should be two different classes. A class whose only job is the shape of the JSON is called a DTO, a data transfer object. It is a ViewModel for a program."*
+- [ ] Still on slide 5, the second half: *"There is a setting in Program.cs that makes this error go away. It tells the serializer to skip the loop. I am not going to use it, because the real problem is that my model class is being sent as the JSON. My model class is the shape of my tables, and the JSON is what other programs depend on. Those should be two different classes. A class whose only job is the shape of the JSON is called a DTO, a data transfer object. It is a ViewModel for a program."*
 
 ### Two DTOs
 
