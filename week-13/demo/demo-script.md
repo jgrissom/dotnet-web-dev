@@ -31,9 +31,12 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
   The trailing `/.` copies the *contents* in, so the project lands at the top of the window you already have open — no folder inside a folder
 
   ⚠️ **That resets the files, not the database and not the secrets.** Curbside's data lives on the school SQL Server, and every copy carries the same `<UserSecretsId>`.
-- [ ] **Set both secrets in your copy** — the `<UserSecretsId>` ships in the `.csproj`, so `set` alone is enough, no `init`:
+- [ ] **Set your connection string in your copy** — the `<UserSecretsId>` ships in the `.csproj`, so `set` alone is enough, no `init`:
   ```bash
   dotnet user-secrets set "ConnectionStrings:DefaultConnection" "Server=...;Database=...;User ID=...;Password=...;TrustServerCertificate=True"
+  ```
+- [ ] **Set the admin's email**, same terminal:
+  ```bash
   dotnet user-secrets set "Admin:Email" "ada@example.com"
   ```
 - [ ] ⚠️ **Rebuild the database — before your rehearsal, and again after it:**

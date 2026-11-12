@@ -106,10 +106,15 @@ Cryptids.Web/
 dotnet user-secrets list
 ```
 
-**Two lines:** `Admin:Email`, and `ConnectionStrings:DefaultConnection`. On a frozen lab PC they're gone; set them again:
+**Two lines:** `Admin:Email`, and `ConnectionStrings:DefaultConnection`. On a frozen lab PC they're gone; set them again. The connection string first:
 
 ```bash
 dotnet user-secrets set "ConnectionStrings:DefaultConnection" "Server=<SCHOOL-SQL-SERVER>;Database=Cryptids_<COURSE-NUMBER>_<YOUR-INITIALS>;User ID=<YOUR-USERNAME>;Password=<YOUR-PASSWORD>;TrustServerCertificate=True"
+```
+
+Then your email:
+
+```bash
 dotnet user-secrets set "Admin:Email" "<THE-EMAIL-YOU-JOINED-WITH>"
 ```
 
