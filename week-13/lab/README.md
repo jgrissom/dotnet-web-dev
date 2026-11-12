@@ -491,7 +491,7 @@ There is no `if (!ModelState.IsValid)`. **`[ApiController]` runs the rules on `S
 { "cryptidId": 2, "witness": "A passing stranger", "location": "Rhinelander, Wisconsin", "seenOn": "2026-11-17", "account": "Green wood smoke and a sound like something heavy turning over." }
 ```
 
-**`201 Created`**, a `Location` of `/api/cryptids/2`, and the new report with its id. Open Bigfoot's page: it's there. Same table, two ways in.
+**`201 Created`**, a `Location` of `/api/cryptids/2`, and the new report with its id. **Read it back:** **GET** `/api/cryptids/2`, and your report is in `sightings`. A `201` says the server accepted it; a GET shows what it saved. Do that after every write. Open Bigfoot's page too: it's there. Same table, two ways in.
 
 Now send this, a report on a creature that doesn't exist:
 
@@ -614,10 +614,10 @@ Put `[AllowAnonymous]` on the line above `[HttpGet]` on **both** GET actions. Th
 **Try all three visitors,** with the tester. Signed in as yourself, **PUT** to **`/api/cryptids/6`**:
 
 ```json
-{ "name": "Chupacabra", "region": "Puerto Rico", "firstSighting": 1995, "isDebunked": true, "latinName": "Caprivorus portoricensis" }
+{ "name": "Chupacabra", "region": "Puerto Rico", "firstSighting": 1995, "isDebunked": false, "latinName": "Caprivorus portoricensis" }
 ```
 
-**`204 No Content`**. Now sign out and send it again. **`401 Unauthorized`** — and a whole page of HTML in the reply. Scroll down: *Not on file*.
+**`204 No Content`**, and nothing comes back, so read it: **GET** `/api/cryptids/6`. `"isDebunked": false`, and Chupacabra's page has lost its 💀 Debunked badge. Now sign out and send the PUT again. **`401 Unauthorized`** — and a whole page of HTML in the reply. Scroll down: *Not on file*.
 
 **The status is right and the body is wrong.** That's week 10's Missing page: it answers every status that has no body, and that now includes your API's. A program has no use for it. In `Program.cs`, this line:
 
@@ -693,7 +693,7 @@ The class's `[Authorize(Roles = "Curator")]` already covers it. `CreatedAtAction
 { "name": "The Beast of Bray Road", "region": "Elkhorn, Wisconsin", "firstSighting": 1989, "isDebunked": false, "latinName": "Canis elkhornensis" }
 ```
 
-**`201`**, then `/Cryptids` lists it, with the *artist unknown* plate.
+**`201`**, with a `Location` ending in the new id. **GET** that address to read it back. Then `/Cryptids` lists it, with the *artist unknown* plate.
 
 ## Rules
 

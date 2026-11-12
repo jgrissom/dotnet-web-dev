@@ -281,6 +281,8 @@ It's a good tool for this course for three reasons:
 
 ⚠️ **The file is a public page on your site, and that's fine.** Anyone who opens it can only send what they could already send. It gives nobody any access they didn't have.
 
+**After every write, send a GET.** A `201` or a `204` says the server accepted the request; it doesn't show what was saved. Read the record back after a POST or a PUT, and after a DELETE, check that the same address is now a `404`.
+
 **F12 → Network** shows the same requests from the outside: click one, and the verb, the status, your cookie and the JSON are all there.
 
 *Elsewhere you'll meet **Postman**, **`curl`** and **`.http` files**, which do the same job from outside a browser. They're good tools, and `curl` is worth learning. This course doesn't use them because each one needs setting up, and none of them has your sign-in cookie.*

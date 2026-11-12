@@ -421,6 +421,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
   { "name": "Lake Effect Lunch", "cuisine": "Soup", "city": "Sheboygan", "rating": 4.3 }
   ```
   🎯 **`201 Created`**, `Location: …/api/trucks/8`, and the new truck with `"id": 8`. *"201 means created. The Location header gives the new truck's address. And there is no redirect, because a program has no use for one."*
+- [ ] Say the goal: *"A 201 says the server accepted it. A GET shows what it saved. Whenever I add, change or remove something through the API, I follow it with a GET to check."* **Tester**, **GET**, **`/api/trucks/8`**, **Send**. **`200`**, and Lake Effect Lunch, exactly as sent, with `"specials": []`.
 - [ ] **The `/Trucks` tab, reload.** Eight cards. *"Same table, same data. The API and the pages both read the Trucks table."*
 
 ### Bad JSON
@@ -435,6 +436,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
   { "id": 1, "name": "Week Thirteen Wagon", "cuisine": "Test", "city": "Waukesha", "rating": 3, "specials": [{ "price": 5 }] }
   ```
   🎯 **`201`**, `"id": 9`, `"specials": []`. *"Both were ignored. TruckInput does the job of week 8's Bind list, for JSON. If the POST had taken a Truck, a client could set any property on it, including related rows."*
+- [ ] **Tester**, **GET**, **`/api/trucks/9`**, **Send**. *"Read back, it is truck 9 with no specials. Nothing from that JSON got in except what TruckInput allows."*
 
 ### The status is the answer *(slide 6)*
 
@@ -499,8 +501,8 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
   ```json
   { "name": "Lake Effect Lunch", "cuisine": "Soup", "city": "Sheboygan", "rating": 4.5, "isOpenLate": true }
   ```
-  **`204 No Content`**. *"The rating changed, and the body is empty."*
-- [ ] **DELETE**, **`/api/trucks/9`**, **Send**. **`204`**. **Send** again. **`404`**. *"The first one removed it. The second found nothing to remove."*
+  **`204 No Content`**. *"Nothing comes back, so I read it."* **GET**, **`/api/trucks/8`**, **Send**. 🎯 `"rating": 4.5`, `"isOpenLate": true`. *"The change is saved."*
+- [ ] **DELETE**, **`/api/trucks/9`**, **Send**. **`204`**. Then **GET**, **`/api/trucks/9`**, **Send**. **`404`**. *"The DELETE said it worked, and the GET shows the truck is gone."*
 
 ### Three visitors
 

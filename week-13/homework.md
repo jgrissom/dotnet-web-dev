@@ -69,7 +69,7 @@ That's the whole install: open `/api-tester.html` on your running app. It goes l
 1. **Your list, as JSON.** An API controller with `[ApiController]`, `[Route("api/…")]` and `ControllerBase`, and an `[HttpGet]` action anyone can use that returns every record, each with its `id`. Returning your model straight from the database is fine for now, the way the lab's task 2 does, and its related rows will show as an empty list. Requirement 2 fixes that. → [An API controller](lecture-notes.md#part-2-an-api-controller)
 2. **One record, with its related rows, and DTOs for both actions.** `[HttpGet("{id:int}")]`: the record, and a list of its second-table rows inside it, through DTOs that can't loop. A record that doesn't exist is `NotFound()`. **Change your list action to return DTOs too**, the way the lab's task 3 does, so neither action returns your model. → [The loop, and DTOs](lecture-notes.md#part-4-the-loop-and-dtos)
 3. **A count, with a minimal API.** `app.MapGet("/api/…/count", …)` in `Program.cs`, answering `{ "count": 6 }` with however many you have. → [A minimal API endpoint](lecture-notes.md#part-3-a-minimal-api-endpoint)
-4. **Writes that need your role.** An `[HttpPost]` that takes an input DTO and answers `201`, and an `[HttpDelete("{id:int}")]` that answers `204`. `[Authorize(Roles = "YourRole")]` goes on the class, and `[AllowAnonymous]` on your two GETs. → [POST](lecture-notes.md#part-6-post) · [Who may write](lecture-notes.md#part-8-who-may-write)
+4. **Writes that need your role.** An `[HttpPost]` that takes an input DTO and answers `201`, and an `[HttpDelete("{id:int}")]` that answers `204`. When you test them, follow every write with a GET: the record you added should read back, and the one you deleted should be a `404`. `[Authorize(Roles = "YourRole")]` goes on the class, and `[AllowAnonymous]` on your two GETs. → [POST](lecture-notes.md#part-6-post) · [Who may write](lecture-notes.md#part-8-who-may-write)
 5. **The Missing page stays off your API.** Your `UseStatusCodePagesWithReExecute` line goes inside `app.UseWhen`, so a refusal is a status and nothing else. → [The Missing page, behind the status](lecture-notes.md#the-missing-page-behind-the-status)
 6. **Deployed, with your admin working there.** On your deployed site, signed in as yourself, open `/api-tester.html` and **send a real POST and a real DELETE**. List your API's addresses in your README. Everything from weeks 4–12 still works, and **3+ meaningful commits** are in your public repo. → [On Azure](lecture-notes.md#on-azure)
 
@@ -143,7 +143,7 @@ az webapp up --name your-app-XX1234 --sku F1 --os-type Linux \
 
 Use your own app's name and region — the ones you've used all term. ⚠️ **Keep `--os-type Linux` and `--runtime DOTNETCORE:10.0`.**
 
-Then, on your deployed site: sign in as your admin, open **`/api-tester.html`**, **POST** a new record to your API, and **DELETE** it. A `201`, then a `204`. That's requirement 6, and it's the only proof your admin works — the self-check can't see it.
+Then, on your deployed site: sign in as your admin, open **`/api-tester.html`**, **POST** a new record to your API, then **GET** it at the address in the reply's `Location`. **DELETE** it, then **GET** the same address again. A `201`, the record, a `204`, then a `404`. That's requirement 6, and it's the only proof your admin works — the self-check can't see it.
 
 Then run the self-check on your Azure URL. That is the run I grade.
 
