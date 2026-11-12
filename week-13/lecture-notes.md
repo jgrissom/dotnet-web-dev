@@ -18,6 +18,15 @@ A **web API** is a set of addresses that answer with data instead of pages. The 
 
 **An API doesn't replace your pages.** Your app keeps every one of them, and gains a second set of addresses, by convention under `/api`. Both sets read the same tables through the same context.
 
+### Why an app with pages wants one
+
+For a page that reloads every time you click, your views already do the job. An API is for two things a view can't do:
+
+- **Changing part of a page without reloading it.** JavaScript on your own page can ask the API for data and update one part of the screen: a new report appearing in a list, a filter applied as you type. A view only ever sends a whole page, and a script has no use for one. That's week 14.
+- **Serving something that isn't a web page.** A phone app, another site, or a script can't use your HTML, but it can use your JSON.
+
+So tonight is the server half. Week 14 calls it from the page.
+
 ---
 
 ## Part 2: An API controller

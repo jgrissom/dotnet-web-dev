@@ -78,6 +78,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 - [ ] 🎞️ **GO TO SLIDE 2** — *One request, two answers* · *"Here are two answers to the same request. At the top is what you just saw. Underneath is the same truck as JSON: just the data, with a name on each value. That is an API. A web API is a set of addresses that answer with data instead of pages."*
 - [ ] 🎯 Still on slide 2, the last line: *"The JSON shape is the object syntax from week 1. Nothing about tonight replaces my pages. The app keeps them, and it gains a second set of addresses, for programs."*
+- [ ] **Say why, before anyone asks:** *"You might wonder why my app needs an API, when its pages already show the trucks. For pages that reload every time, they do. An API is for two things a view cannot do. JavaScript on a page can ask it for data and change part of the screen without reloading the page, and that is next week. And anything that is not a web page, like a phone app, can only use an API. Tonight I build the server half."*
 
 ## Lab A · Setup and task 1 — 8 minutes
 
