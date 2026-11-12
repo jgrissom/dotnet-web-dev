@@ -527,6 +527,12 @@ app.UseWhen(context => !context.Request.Path.StartsWithSegments("/api"), pages =
 
 ⚠️ **`Program.cs` again, so press `Ctrl+R`.**
 
+### Only a browser on your site has the cookie
+
+Any application that speaks HTTP can **read** your API: a phone app, another server, a script. **Writing is different.** The role is checked against the sign-in cookie, and that cookie comes from your sign-in form. The browser stores it and sends it with every request to your site, which is why the tester and week 14's JavaScript can write as your admin: they run in your browser, on your site.
+
+An application that isn't a browser on your site has no cookie to send. Real APIs serve those callers with a different mechanism: the caller signs in once, gets back a **JWT** (a signed string saying who it is and what roles it holds), and sends it with every request in an `Authorization` header. That's a second way of signing in, and this course doesn't build it. Your API reads for anyone and writes for a browser on your own site, which is exactly what week 14 needs.
+
 ### Why no token
 
 Every POST since week 6 has carried `[ValidateAntiForgeryToken]`, and a POST to your API carries nothing and works. That's safe, for three reasons you can measure:
@@ -569,7 +575,7 @@ Your related rows are whatever your second table holds, and **the DTO for them l
 Search for ASP.NET Core Web API and you'll find much more than tonight:
 
 - **OpenAPI and Swagger** — a generated description of your API, and with Swagger, a page for trying it. `dotnet new webapi` sets up the description, and the page is another package to add. The tester already does what this course needs.
-- **Tokens and JWT** — how an API proves who a caller is when the caller isn't a browser with a cookie. A phone app needs this. Same-site JavaScript doesn't.
+- **JWT in an `Authorization` header** — how an API knows who is writing when the caller isn't a browser on your site. [Only a browser on your site has the cookie](#only-a-browser-on-your-site-has-the-cookie) says why you'd need it. Same-site JavaScript doesn't.
 - **A CORS policy** — letting a site on another address call your API. JavaScript on your own site doesn't need one.
 - **`ReferenceHandler`** — the setting that silences the cycle error. It leaves your model as your API.
 - **`PATCH`, versioning, paging, and `[FromQuery]` filters.** Real APIs grow all of them. A list, one record, and the verbs are the shape to learn first.
