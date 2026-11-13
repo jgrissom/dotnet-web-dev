@@ -116,7 +116,7 @@ Open `Views/Home/Index.cshtml`, find the **week-13** line, and **replace it**:
    3. On GitHub, your repository → **Settings** → **Secrets and variables** → **Actions** → **New repository secret**. **Name:** `AZURE_WEBAPP_PUBLISH_PROFILE`. **Secret:** paste. **Add secret**.
    4. In your project, create **`.github/workflows/deploy.yml`** — a folder named `.github`, starting with a dot, with a `workflows` folder in it. Open **[`deploy.yml` on GitHub](https://github.com/jgrissom/dotnet-web-dev/blob/main/week-14/deploy.yml)**, click **Copy raw file**, paste, and change **the one line marked ✏️** to your app's name.
 
-   Commit everything, and push. On GitHub, your repository's **Actions** tab shows a **Deploy** run; when it's ✅, your Azure URL is running what you pushed. → [A deploy on every push to main](lecture-notes.md#a-deploy-on-every-push-to-main)
+   Commit everything, and push. On GitHub, your repository's **Actions** tab shows a **Deploy** run; in about a minute and a half it's ✅, and your Azure URL is running what you pushed. Azure builds your code, the same way `az webapp up` always has. → [A deploy on every push to main](lecture-notes.md#a-deploy-on-every-push-to-main)
 6. **Deployed, and tried as your role.** On your deployed site, signed in as yourself: **add a record** with your form, and open its page from the `Added` link; **show its related rows** (none yet); then **remove it**, and reload. List your API's addresses and this week's three buttons in your README. Everything from weeks 4–13 still works, and **3+ meaningful commits** are in your public repo. → [Where each secret lives](lecture-notes.md#part-8-where-each-secret-lives)
 
 > [!IMPORTANT]
@@ -196,8 +196,9 @@ Then, on your deployed site, signed in as yourself: requirement 6. And run the s
 - **The add or remove says to sign in again, and you're signed in** — your cookie is older than your role. Sign out and back in.
 - **A red `404` in the console after a remove** — the read-back, saying it's gone. Expected.
 - **The Actions tab shows no Deploy run** — `deploy.yml` isn't at `.github/workflows/` in the top folder of your repository, the `.github` folder lost its dot, or you pushed before you made it.
-- **The Deploy run fails at `azure/webapps-deploy`** — the credential: run step 5.1 again, then copy a fresh profile into the secret (step 5.2 and 5.3).
-- **The Deploy run fails at `dotnet publish`** — it's the same build error your own terminal would show. Fix it, commit, push.
+- **The Deploy run fails with `Unauthorized (CODE: 401)`** — the credential is switched off. Run step 5.1 again, then **Re-run failed jobs** on the run. [A deploy on every push to main](lecture-notes.md#a-deploy-on-every-push-to-main).
+- **The Deploy run fails, and its log shows `error CS…`** — your code doesn't build. It's the same error your own terminal would show, with the file and the line. Fix it, commit, push. Your site keeps the last version that built.
+- **The Deploy run fails with `Couldn't detect a version for the platform 'dotnet' in the repo.`** — your workflow runs `dotnet publish` and sends the result, like many examples online. Copy `deploy.yml` again from step 5.4: it sends your code, and Azure builds it.
 - **`The ConnectionString property has not been initialized` on Azure** — your app setting is missing. It isn't in the workflow, and shouldn't be: [Development, and Production](lecture-notes.md#part-7-development-and-production).
 - **The self-check banner says Week 13** — last week's script is still installed. This week's line replaces it.
 

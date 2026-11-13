@@ -453,7 +453,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
   git push
   ```
 - [ ] **Browser, the repository tab → Actions.** A run named after the commit, in progress. Click it, then the `build` job: the steps tick off one at a time. 🎯 **When it finishes, ✅.** *"That is CI, continuous integration. Every push gets built somewhere that isn't my laptop."*
-- [ ] 🎞️ **GO TO SLIDE 7** — *CI, then CD* · *"CI builds every push. CD, continuous delivery, goes one step further: when the build on main passes, it deploys. Here is the deploy part, which is your homework. Two steps: dotnet publish, then Azure's own deploy action. The app's name is written in the file, but the credential is not. It is a GitHub secret, and the file only names it."*
+- [ ] 🎞️ **GO TO SLIDE 7** — *CI, then CD* · *"CI builds every push. CD, continuous delivery, goes one step further: when the build on main passes, it deploys. Here is the deploy part, which is your homework. Two steps: check out the code, then Azure's own deploy action, which sends the code to Azure. Azure builds it, the same way it has every time you ran az webapp up. The app's name is written in the file, but the credential is not. It is a GitHub secret, and the file only names it."*
 - [ ] Still on slide 7, the last line: *"Once your homework is done, git push is how your app reaches Azure. I am not deploying Curbside. Nothing I show tonight is deployed."*
 
 ## Lab E · Task 5 — 15 minutes

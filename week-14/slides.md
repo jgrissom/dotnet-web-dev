@@ -161,16 +161,16 @@ A real project has **two databases**, and only the deploy changes production's.
 on:
   push:
     branches: [ main ]
-# … check out, set up .NET 10, then:
-      - run: dotnet publish -c Release -o ${{ runner.temp }}/app
+# … then two steps:
+      - uses: actions/checkout@v4
       - uses: azure/webapps-deploy@v3
         with:
           app-name: tg-web-xx1234
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-          package: ${{ runner.temp }}/app
+          package: .
 ```
 
-The file **names** the secret. GitHub holds it.
+The file **names** the secret. **Azure builds the code.**
 
 ---
 

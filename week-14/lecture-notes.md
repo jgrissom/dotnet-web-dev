@@ -483,7 +483,7 @@ Push, then open the repository's **Actions** tab: a run named after your commit,
 
 **The deploy needs a credential**, so it has more setup than the build. Your homework does it, once:
 
-1. **Turn on the deploy credential your app already has.** Apps made by `az webapp up` come with publishing credentials **switched off** — measured on two apps made that way this term. One command, from the folder with your `.csproj`, using your own app's name and resource group:
+1. **Turn on the deploy credential your app already has.** Apps made by `az webapp up` come with publishing credentials **switched off** — measured on three apps made that way this term. One command, from the folder with your `.csproj`, using your own app's name and resource group:
 
    ```bash
    az resource update --resource-group <YOUR-GROUP> --namespace Microsoft.Web --resource-type basicPublishingCredentialsPolicies --parent sites/<YOUR-APP> --name scm --set properties.allow=true
@@ -517,18 +517,18 @@ Push, then open the repository's **Actions** tab: a run named after your commit,
        runs-on: ubuntu-latest
        steps:
          - uses: actions/checkout@v4
-         - uses: actions/setup-dotnet@v4
-           with:
-             dotnet-version: 10.0.x
-         - run: dotnet publish -c Release -o ${{ runner.temp }}/app
          - uses: azure/webapps-deploy@v3
            with:
              app-name: <YOUR-APP>
              publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-             package: ${{ runner.temp }}/app
+             package: .
    ```
 
-   `dotnet publish` builds the app ready to run, into a temporary folder. `azure/webapps-deploy` uploads that folder to your app, using the secret. `workflow_dispatch` adds a **Run workflow** button on the Actions tab, for deploying without a new commit.
+   `actions/checkout` fetches your code, and `azure/webapps-deploy` sends it to your app, using the secret. **Azure builds it**, exactly the way it has every time you ran `az webapp up`: that command set an app setting, `SCM_DO_BUILD_DURING_DEPLOYMENT`, which tells Azure to build whatever it's sent. `workflow_dispatch` adds a **Run workflow** button on the Actions tab, for deploying without a new commit.
+
+   ⚠️ **Most examples you'll find online run `dotnet publish` first and send the result.** On an app made by `az webapp up` that fails: Azure tries to build the already-built files and stops with `Couldn't detect a version for the platform 'dotnet' in the repo.` Measured. Send the code, as above.
+
+Push, and the **Actions** tab shows a **Deploy** run. Measured on a free-tier app: about a minute and a half, then ✅ and the new code is live. A compile error turns the run red at `azure/webapps-deploy` — click it, and the log shows the same `error CS…` your terminal would, with the file and the line — **and your site keeps running the last version that built.**
 
 **Your app settings aren't touched by a deploy.** The connection string and `Admin__Email` stay on Azure, where `az webapp config appsettings set` put them in weeks 7 and 12.
 
@@ -643,10 +643,16 @@ git push
 **The Actions tab shows no run**
 - The workflow isn't in `.github/workflows/` at the top of the repository, the folder's name is missing its dot, or the push happened before the file existed. Commit and push again.
 
-**A workflow run fails at `azure/webapps-deploy` with `Unauthorized` or `401`**
-- The publishing credentials are switched off, or the secret holds an old profile. Run step 1 of [A deploy on every push to main](#a-deploy-on-every-push-to-main), then copy a fresh profile into the secret.
+**A Deploy run fails at `azure/webapps-deploy` with `Unauthorized (CODE: 401)`**
+- The log says `Unauthorized (CODE: 401)`: the publishing credentials are switched off. Run step 1 of [A deploy on every push to main](#a-deploy-on-every-push-to-main) again, then **Re-run failed jobs** on the run. Measured: the secret you already have works again.
 
-**A workflow run fails at `dotnet publish` or `dotnet build`**
+**A Deploy run fails at `azure/webapps-deploy`, and the log shows `error CS…`**
+- Your code doesn't build. It's the same error your own terminal would show, with the file and the line. Fix it, commit, push. Your site keeps the last version that built.
+
+**A Deploy run fails with `Couldn't detect a version for the platform 'dotnet' in the repo.`**
+- The workflow ran `dotnet publish` and sent the result. Send the code instead: copy `deploy.yml` from the homework again. [A deploy on every push to main](#a-deploy-on-every-push-to-main).
+
+**A workflow run fails at `dotnet build` or `dotnet test`**
 - Click the step. It's the same error your terminal would print. Fix it, commit, push.
 
 **`fatal: Need to specify how to reconcile divergent branches.`**
