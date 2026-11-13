@@ -555,6 +555,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 - [ ] 🎞️ **GO TO SLIDE 9** — *Tonight, in one picture* · walk the rows, one sentence each, and give the status row the emphasis: *"Read the status first. It tells you whether there is a body to read, and what to tell the person."*
 - [ ] Homework: **the same three moves on their own app, and a workflow that deploys it.** *"Your related rows, without leaving your list. An add form and a remove button for your role. And a workflow, so git push is your deploy."*
+- [ ] Say what comes after it: *"This is the last homework of the term. Your final project is this same app, and nothing more is required. Week 15's stretch is optional. In week 16 you present the app, running live, so make sure your deployed site works and rehearse showing it."*
 - [ ] ⚠️ Say what the self-check can't see: *"This week's self-check only reads. It opens your list page out of sight and clicks one Show related button, and you stay signed in. It cannot see your add or your remove, because they need your role. Trying both on your deployed site is the last step of the homework, and it's yours."*
 - [ ] 💡 *"The workflow needs a secret from Azure, and the homework has the commands. Your connection string stays where it is, in Azure's app settings. None of it goes in your repository."*
 - [ ] 💡 *"My Curbside is on localhost. Nothing is deployed for it. Yours is graded on its Azure URL."*

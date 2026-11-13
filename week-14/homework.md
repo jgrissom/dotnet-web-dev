@@ -2,6 +2,7 @@
 
 **Topic:** your pages call your API, and `git push` deploys your app.
 **Due:** before the start of Week 15's class. **This is the last homework of the term.**
+**And then:** your final project is this same app. Nothing more is required after this homework: week 15's stretch is optional, and in week 16 you present the app, running live.
 **Submit via Canvas:** your **Azure URL** + your **GitHub repo URL**.
 
 ## Part 1 — Finish the Registry lab (nobody collects this)
