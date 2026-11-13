@@ -426,15 +426,15 @@ section footer { color: #9fb2c1; font-size: 0.6em; opacity: 0.85; }
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-yaml"><span class="hljs-attr">on:</span>
   <span class="hljs-attr">push:</span>
     <span class="hljs-attr">branches:</span> [ <span class="hljs-string">main</span> ]
-<span class="hljs-comment"># … check out, set up .NET 10, then:</span>
-      <span class="hljs-bullet">-</span> <span class="hljs-attr">run:</span> <span class="hljs-string">dotnet</span> <span class="hljs-string">publish</span> <span class="hljs-string">-c</span> <span class="hljs-string">Release</span> <span class="hljs-string">-o</span> <span class="hljs-string">${{</span> <span class="hljs-string">runner.temp</span> <span class="hljs-string">}}/app</span>
+<span class="hljs-comment"># … then two steps:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-attr">uses:</span> <span class="hljs-string">actions/checkout@v4</span>
       <span class="hljs-bullet">-</span> <span class="hljs-attr">uses:</span> <span class="hljs-string">azure/webapps-deploy@v3</span>
         <span class="hljs-attr">with:</span>
           <span class="hljs-attr">app-name:</span> <span class="hljs-string">tg-web-xx1234</span>
           <span class="hljs-attr">publish-profile:</span> <span class="hljs-string">${{</span> <span class="hljs-string">secrets.AZURE_WEBAPP_PUBLISH_PROFILE</span> <span class="hljs-string">}}</span>
-          <span class="hljs-attr">package:</span> <span class="hljs-string">${{</span> <span class="hljs-string">runner.temp</span> <span class="hljs-string">}}/app</span>
+          <span class="hljs-attr">package:</span> <span class="hljs-string">.</span>
 </code></pre>
-<p>The file <strong>names</strong> the secret. GitHub holds it.</p>
+<p>The file <strong>names</strong> the secret. <strong>Azure builds the code.</strong></p>
 <footer><img class="emoji" draggable="false" alt="🖥️" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/svg/1f5a5.svg" data-marp-twemoji=""/> Demo §5 · a build on every push</footer>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="8" data-class="invert" data-paginate="true" data-footer="🖥️ Demo §6 · the review, and the conflict" data-theme="gaia" data-style="section pre {
