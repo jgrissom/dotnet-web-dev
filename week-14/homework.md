@@ -76,7 +76,7 @@ Open `Views/Home/Index.cshtml`, find the **week-13** line, and **replace it**:
    <ul class="related list-unstyled small"></ul>
    ```
 
-   with your own words on the button. Click it: the related rows appear under the record, and the address bar doesn't change. If a card's button lands on top of the next row, the card is `h-100` — [the lecture notes](lecture-notes.md#the-page-three-things-for-the-script-to-find) show the two Bootstrap classes that fix it. A table needs nothing. → [Part of a page, from JSON](lecture-notes.md#part-2-part-of-a-page-from-json) · [Which answers have a body](lecture-notes.md#part-4-which-answers-have-a-body)
+   with your own words on the button. Click it: the related rows appear under the record, and the address bar doesn't change. If a card's button lands on top of the next row, the card is `h-100` — [the lecture notes](lecture-notes.md#the-page-three-things-for-the-script-to-find) show the two Bootstrap classes that fix it. A table needs nothing. → [Part of a page, from JSON](lecture-notes.md#part-2-part-of-a-page-from-json)
 3. **Add a record without leaving the page, as your role.** In the same view, just below your existing add link and **inside the same role check**, a form with **one box per property of your week-13 input DTO**, each `name` the property's name with a small first letter, then two empty lists:
 
    ```cshtml
