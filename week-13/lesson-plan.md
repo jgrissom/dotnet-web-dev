@@ -27,7 +27,7 @@ By the end of this session, students can:
 - ⚠️ **Both secrets set, then `dotnet ef database drop --force`, `dotnet ef database update`, Ada and Sam registered through the form, and Ctrl+R — before class *and again after your rehearsal*.** A rehearsal leaves a truck behind, and §5's new truck has to get id `8`
 - **One integrated terminal** — `dotnet watch`. Nothing else runs in a terminal tonight
 - **2–3 student Azure URLs** picked in advance for the gallery
-- **Week 13's lab README** open in a browser tab — it goes on screen for every lab block. There is no lab slide
+- **There is no lab slide**
 
 ## Timed agenda
 
@@ -35,7 +35,7 @@ By the end of this session, students can:
 |------|----------|---------|
 | 0:00 | 10 min | **Deployed-app gallery** *(deck on title slide)*. 2–3 student apps from week 12, **2 minutes each, hard stop**. |
 | 0:10 | 12 min | **One request, two answers** *(slides 1–2, demo §1)*. The agenda. View Source on `/Trucks`: the trucks are in there somewhere. Slide 2: the same truck as JSON. |
-| 0:22 | 8 min | **Lab A · Setup and task 1** *(no slide — the lab README on screen)*. **No database drop tonight.** Sign in as their curator. **Stop at `Passed: 1`.** |
+| 0:22 | 8 min | **Lab A · Setup and task 1** *(no slide)*. **No database drop tonight.** Sign in as their curator. **Stop at `Passed: 1`.** |
 | 0:30 | 12 min | **The first endpoint** *(slide 3, demo §2)*. `TrucksApiController` with `GetAll`. Seven trucks in the address bar. `"specials":[]` noticed and left. Slide 3: two kinds of controller. |
 | 0:42 | 8 min | **The same thing, minimal** *(slide 4, demo §3)*. `app.MapGet("/api/trucks/count", …)`. ⚠️ **`Program.cs` needs Ctrl+R.** Slide 4: when each one fits. |
 | 0:50 | 10 min | **Lab B · Task 2**. The archive as JSON, the same as §2, and the minimal count. `"sightings": []` on every creature. **Stop at `Passed: 2`.** |

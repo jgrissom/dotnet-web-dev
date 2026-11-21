@@ -25,7 +25,6 @@ The night week 11's debt gets paid. Since week 11 a change needs an account, and
 - **Two integrated terminals** — `dotnet watch` in the first, `dotnet user-secrets` in the second
 - ⚠️ **The first restart prompt is in §3, at the new `AccessDenied.cshtml` — answer `a`.** §2's attribute edit hot-reloads; if Sam still gets the form, Ctrl+R
 - 🎯 **§4's refusal after the role is granted is the night's real lesson** — let it land before you sign Ada out and back in
-- **Week 12's lab README in a browser tab** — it goes on screen for all six lab blocks; there is no lab slide
 - **mssql extension** signed in and tested, panel closed — two appearances, both in §4
 - ⚠️ **Say *hiding a link is not security* out loud in §5**, with Sam typing the URL
 - Remind students to `git pull` the starters repo for the week-12 folder

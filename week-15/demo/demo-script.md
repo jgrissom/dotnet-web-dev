@@ -15,7 +15,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 > Lost your place? **The nearest 🎞️ above you is the slide that should be showing** — and every slide's footer names the section and beat of this sheet it belongs to, so you can go the other way too.
 
 > [!IMPORTANT]
-> **Tonight the lab comes in six short blocks, one after each part of the demo that it practices.** Each block has its own `## Lab` section below — what to say, what to watch for, and the README note it stops at. The lab README goes on screen for every block. There is no lab slide.
+> **Tonight the lab comes in six short blocks, one after each part of the demo that it practices.** Each block has its own `## Lab` section below — what to say, what to watch for, and the README note it stops at. There is no lab slide.
 
 > [!IMPORTANT]
 > **Two things tonight get broken, and both are put back.** §5 swaps in `EmptyTruckService` and swaps it out, and §6 changes `AddScoped` to `AddSingleton` and changes it back. Everything else is forward. §2's missing message is the right code in the wrong place, and it gets replaced rather than undone.
@@ -60,7 +60,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 - [ ] **Press Ctrl+R in the terminal, then sign out and back in as Ada.** The seeder hands the role out at startup, so it needs a restart after she registers, and her cookie needs a fresh sign-in after that. Check it: `/Trucks` shows **＋ Add a truck**
 - [ ] ⚠️ **Know the one prompt, and where it comes.** It is **not** in §2, §3 or §4: those edits never ask. *(§4 does need a Ctrl+R that you press yourself; the beat says when.)* It is in **§5, when the `TrucksController` edits are saved** — `ENC0004: Updating the modifiers of const field requires restarting the application`, then **`Do you want to restart your app? Yes (y) / No (n) / Always (a) / Never (v)`**. **Answer `a`.** After that, `watch` restarts by itself for every `Program.cs` edit. *(Measured on a pty-driven `dotnet watch`.)*
 - [ ] ⚠️ **Every restart tonight is Ctrl+R in the terminal, never Ctrl+C + `dotnet watch`.** *Always* belongs to the `watch` session; Ctrl+C ends it
-- [ ] **Park three browser tabs**: `/`, `/Trucks`, and **week 15's lab README** on github.com — it goes on screen for every lab block tonight
+- [ ] **Park two browser tabs**: `/` and `/Trucks`
 - [ ] **Say the no-typing line out loud in the first minute.** Tonight is watched, not typed along with: *"Nothing I type tonight is yours to type. Curbside is my app, and the Registry is yours. Your keyboard time is the lab blocks. There are six of them tonight."*
 - [ ] Teaching profile on, notifications off, editor font sized for the back of the room and for a small laptop screen
 
@@ -68,7 +68,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 > **🖥️ On screen, at curtain**
 >
 > - **VS Code** — left half, `instructor/week-15/Curbside` open, one integrated terminal running `dotnet watch`
-> - **Browser** — right half, three tabs: `/` (Curbside's front page, **signed in as Ada**), `/Trucks`, and the week 15 lab README
+> - **Browser** — right half, two tabs: `/` (Curbside's front page, **signed in as Ada**) and `/Trucks`
 
 ## 1 · The silent save *(slide 1)*
 
@@ -82,7 +82,6 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 ## Lab A · Setup and task 1 — 8 minutes
 
-- [ ] Put the **lab README** on screen — the tab you parked in §0 — scrolled to **Setup**
 - [ ] *"Tonight the lab comes in six short blocks. After each part of my demo, you do the same kind of thing to your Registry, plus one thing I did not show. Each block but the last ends at a note that says In class, stop here."*
 - [ ] *"The first block is setup and task 1. There is no database drop tonight. This starter has the same migrations as week 12's, so your database, your account and your curator role are all still there. You run update, it applies nothing, and you sign in."*
 - [ ] *"If your secrets are gone, because you are on a frozen lab PC, task 1 has both commands. Tonight's in-class target is all five checks."*
@@ -132,7 +131,6 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 ## Lab B · Task 2 — 15 minutes
 
-- [ ] Lab README on screen, scrolled to **Task 2 in full**
 - [ ] *"Task 2 is the same message on your three archive writes, in your words. The block goes in your layout."*
 - [ ] ⚠️ *"Then the one I did not show. When a visitor files a sighting, they should get a message too, and it should name the creature. The sighting form only posts the creature's id. So your POST has to look the name up."*
 - [ ] 👀 **Watch for:** check 2 saying no message after filing a creature — the block isn't in `_Layout.cshtml`, or it still says `ViewData`. Check 2 naming Mothman — the sighting POST. A `CS0103` on `name` — they wrote the lookup after the `TempData` line. The message on the next page too — `TempData.Keep` or `Peek` from a search result
@@ -254,7 +252,6 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 ## Lab C · Task 3 — 17 minutes
 
-- [ ] Lab README on screen, scrolled to **Task 3 in full**
 - [ ] *"Task 3 is a search box and a dropdown on your Registry. Yours searches three columns: the name, the region and the Latin name."*
 - [ ] ⚠️ *"Two things are different from mine. Latin name can be null, so the compiler will warn you until you check it. And your dropdown is not a list out of the database. It is Unconfirmed or Debunked, and those words have to turn into a true or false on IsDebunked."*
 - [ ] 👀 **Watch for:** `The model item passed into the ViewDataDictionary is of type …` — the action or the view is still on the old model; finish both. `CS8602` on `LatinName` — the null check. Check 3 naming the status dropdown — the `Where` needs `c.IsDebunked`, not a comparison with the word. A search that does nothing — the input's `name` and the action's parameter differ
@@ -423,7 +420,6 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 ## Lab D · Task 4 — 15 minutes
 
-- [ ] Lab README on screen, scrolled to **Task 4 in full**
 - [ ] *"Task 4 is three to a page on your Registry, with the same order: Where, Count, OrderBy, Skip, Take. Six creatures gives you two pages."*
 - [ ] ⚠️ *"Your links are different from mine. You want a numbered link for every page, so that is a for loop. And every link carries both of your parameters, the search and the status."*
 - [ ] 👀 **Watch for:** `Model.Cryptids.Count` still in the heading — check 4 wants `6 creatures on file` on a page of three. The wrong three creatures on page 1 — `OrderBy` is missing or after `Take`. Check 4 naming `search=e` — a page link with no `asp-route-status`. `/Cryptids?page=99` empty — `Math.Clamp`
@@ -593,7 +589,6 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 ## Lab E · Task 5 — 15 minutes
 
-- [ ] Lab README on screen, scrolled to **Task 5 in full**
 - [ ] *"Task 5 moves your list query into a CryptidService behind an ICryptidService, and registers it. Same moves as mine."*
 - [ ] ⚠️ *"Then the one I did not show. Your home page has a query of its own, the featured creature. It moves into the same service, so one service has two callers. And when that is done, HomeController has no reason to hold the context at all, so it stops asking for it."*
 - [ ] *"Terminal 1 will tell you to press Ctrl+R, or ask to restart. Do what it says, and answer a."*
@@ -620,7 +615,6 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 ## Lab F · Catch up, or the stretch — 25 minutes
 
-- [ ] Lab README on screen, scrolled to **The tasks**
 - [ ] *"This is the last block, and it has no stop. If any of your checks are red, finish those first. If you are at five, the stretch adds a sort order to the Registry, and it goes through everything tonight: a parameter, the service, the form and the page links."*
 - [ ] *"The stretch has no check and no points. Tonight's in-class target was all five checks. Anything still red is yours to finish if you want to; nothing is collected."*
 - [ ] 👀 **Watch for:** anyone still red on check 5 — have them read its message first; it names the one thing missing

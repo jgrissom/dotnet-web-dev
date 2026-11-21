@@ -28,7 +28,7 @@ By the end of this session, students can:
 - ⚠️ **Signed in to github.com, and NO repository named `curbside-week14`** — §5 makes it live, the same steps Lab E asks of students, and §6 runs team git on it. After a rehearsal, delete that repository and the `curbside-sam` folder
 - **Two integrated terminals** — `dotnet watch` in the first; `git` and one `dotnet run` in the second
 - **2–3 student Azure URLs** picked in advance for the gallery
-- **Week 14's lab README** open in a browser tab — it goes on screen for every lab block. There is no lab slide
+- **There is no lab slide**
 
 ## Timed agenda
 
@@ -36,7 +36,7 @@ By the end of this session, students can:
 |------|----------|---------|
 | 0:00 | 10 min | **Deployed-app gallery** *(deck on title slide)*. 2–3 student apps from week 13, **2 minutes each, hard stop**. |
 | 0:10 | 10 min | **One fetch** *(slides 1–2, demo §1)*. The agenda. The tester's one `fetch`. Slide 2: send, the status, then the body; `async` and `await`. |
-| 0:20 | 5 min | **Lab A · Setup and task 1** *(no slide — the lab README on screen)*. **No database drop tonight.** Sign in as their curator. **Stop at ＋ Open a new file on `/Cryptids`.** |
+| 0:20 | 5 min | **Lab A · Setup and task 1** *(no slide)*. **No database drop tonight.** Sign in as their curator. **Stop at ＋ Open a new file on `/Cryptids`.** |
 | 0:25 | 12 min | **A truck's menu, without leaving the list** *(slide 3, demo §2)*. The grid, `trucks.js`, the `<script>` line. Three specials under a card. F12 → Network. Slide 3: textContent, never innerHTML. |
 | 0:37 | 12 min | **Lab B · Task 2**. The quick look at a creature's reports. **Stop at `Passed: 2`.** |
 | 0:49 | 16 min | **A form that sends JSON** *(slide 4, demo §3)*. The form, the handler, a `201`, the stale count, a reload, a `400`. 🎯 **Signed out with the page open: `.json()` on a `401`.** Slide 4, the fix. |

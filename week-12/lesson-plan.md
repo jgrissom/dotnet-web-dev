@@ -27,7 +27,7 @@ By the end of this session, students can:
 - **Two integrated terminals** — `dotnet watch` owns the first; `dotnet user-secrets` runs in the second
 - **mssql extension** signed in, tested, panel closed — two appearances, both in §4 (`AspNetRoles` empty, then the role and Ada's row in `AspNetUserRoles`)
 - **2–3 student Azure URLs** picked in advance for the gallery
-- **Week 12's lab README** open in a browser tab — it goes on screen for every lab block. There is no lab slide
+- **There is no lab slide**
 
 ## Timed agenda
 
@@ -35,7 +35,7 @@ By the end of this session, students can:
 |------|----------|---------|
 | 0:00 | 10 min | **Deployed-app gallery** *(deck on title slide)*. 2–3 student apps from week 11, **2 minutes each, hard stop**. |
 | 0:10 | 15 min | **The gap** *(slides 1–2, demo §1)*. The agenda on the title slide. Then the hole week 11 named: register `sam@example.com` live — a stranger with an email address — click **＋ Add a truck**, and the form opens. Slide 2: *signed in as whom*. |
-| 0:25 | 8 min | **Lab A · Setup and task 1** *(no slide — the lab README on screen)*. ⚠️ **The task-1 database drop, with the why — and the fence: never on their own project.** Then **Join with your own email**: task 4 makes that account the curator. **Stop at `Passed: 1`.** |
+| 0:25 | 8 min | **Lab A · Setup and task 1** *(no slide)*. ⚠️ **The task-1 database drop, with the why — and the fence: never on their own project.** Then **Join with your own email**: task 4 makes that account the curator. **Stop at `Passed: 1`.** |
 | 0:33 | 15 min | **The role on the lock** *(slide 3, demo §2)*. `[Authorize]` → `[Authorize(Roles = "Admin")]` on `TrucksController`; ⚠️ **if the page doesn't change, Ctrl+R**. Ask first: *I'm signed in — what should happen instead of the sign-in page?* Sam clicks ＋ Add a truck: `/Account/AccessDenied` in the address bar, and *Keep on Truckin'* on the page. Ask second: *why that page?* — week 10's Missing page answers every 404. Slide 3 after the reveal. The same attribute on Dishes and Specials. |
 | 0:48 | 12 min | **Lab B · Task 2**. `[Authorize(Roles = "Curator")]` on `CryptidsController`, and **nothing on `SightingsController`**. **Stop at `Passed: 2`.** |
 | 1:00 | 10 min | **☕ Break** |

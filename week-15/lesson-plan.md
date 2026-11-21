@@ -30,7 +30,7 @@ By the end of this session, students can:
 - ⚠️ **Your connection string and `Admin:Email` set, then `dotnet ef database drop --force` and `dotnet ef database update`, before class *and again after your rehearsal*.** A rehearsal leaves extra trucks behind and §4's page counts stop matching the sheet
 - **One integrated terminal** — `dotnet watch` owns it all night. Nothing tonight needs a second one
 - **2–3 student Azure URLs** picked in advance for the gallery
-- **Week 15's lab README** open in a browser tab — it goes on screen for every lab block. There is no lab slide
+- **There is no lab slide**
 
 ## Timed agenda
 
@@ -38,7 +38,7 @@ By the end of this session, students can:
 |------|----------|---------|
 | 0:00 | 10 min | **Deployed-app gallery** *(deck on title slide)*. 2–3 student apps from week 14, **2 minutes each, hard stop**. |
 | 0:10 | 12 min | **The silent save** *(slide 1, demo §1)*. The agenda on the title slide. Ada adds a truck and the page says nothing about it. |
-| 0:22 | 8 min | **Lab A · Setup and task 1** *(no slide — the lab README on screen)*. **No database drop tonight**: the migrations are the same as week 12's. Sign in as themselves. **Stop at `Passed: 1`.** |
+| 0:22 | 8 min | **Lab A · Setup and task 1** *(no slide)*. **No database drop tonight**: the migrations are the same as week 12's. Sign in as themselves. **Stop at `Passed: 1`.** |
 | 0:30 | 15 min | **A message that survives** *(slide 2, demo §2)*. `ViewData` in the POST, the block in `_Layout`: 🎯 **no message**. Slide 2: a redirect is a second request. `TempData`: the message, then reload, and it's gone. Edit and Delete get a line each. |
 | 0:45 | 15 min | **Lab B · Task 2**. All three writes, then the **public** report form, whose POST only has an id. **Stop at `Passed: 2`.** |
 | 1:00 | 10 min | **☕ Break** |

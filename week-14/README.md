@@ -27,7 +27,6 @@ The night the pages call the API. Last week the app learned to answer programs; 
 - **Two integrated terminals** — `dotnet watch`, and one for `git`
 - ⚠️ **No restarts tonight, and every save reloads the page by itself.** That's why §3's signed-out test and §4's second tab come after the last paste of their sections
 - 🎯 **§3's `Unexpected end of JSON input` is the night's real lesson** — let the room answer *what was in the body of that 401?* before slide 4
-- **Week 14's lab README in a browser tab** — it goes on screen for all seven lab blocks; there is no lab slide
 - **Team git needs pairs** — and the README's *On your own* note for anyone without one
 - Remind students to `git pull` the starters repo for the week-14 folder
 - **Say this is the last homework**

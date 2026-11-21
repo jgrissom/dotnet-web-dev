@@ -26,7 +26,6 @@ The flex week, and the polish night, running on week 12's apps. The app works; t
 - ⚠️ **The one restart prompt is late: §5, when the `TrucksController` edits are saved — answer `a`.** Make all three edits, then save once. **§4 needs a Ctrl+R before its first reload**
 - ⚠️ **In §5, delete `EmptyTruckService.cs` only after the `Program.cs` save has landed.** Both at once crashed `dotnet watch` on two runs of three
 - 🎯 **§5's `Unable to resolve service` is the night's real lesson** — let the room read it before you open slide 5
-- **Week 15's lab README in a browser tab** — it goes on screen for all six lab blocks; there is no lab slide
 - **No mssql panel tonight** — nothing in the database changes shape
 - Remind students to `git pull` the starters repo for the week-15 folder
 - **Say there is no homework.** The stretch is optional and worth no points

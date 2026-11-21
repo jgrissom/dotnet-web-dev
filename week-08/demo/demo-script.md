@@ -15,7 +15,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 > Lost your place? **The nearest 🎞️ above you is the slide that should be showing** — and every slide's footer names the section and beat of this sheet it belongs to, so you can go the other way too.
 
 > [!IMPORTANT]
-> **Tonight the lab comes in seven short blocks, one after each part of the demo that it practices.** Each block has its own `## Lab` section below — what to say, what to watch for, and the README note it stops at. The lab README goes on screen for every block. There is no lab slide. §3 has no lab task of its own, so it runs straight into a ☕ break instead.
+> **Tonight the lab comes in seven short blocks, one after each part of the demo that it practices.** Each block has its own `## Lab` section below — what to say, what to watch for, and the README note it stops at. There is no lab slide. §3 has no lab task of its own, so it runs straight into a ☕ break instead.
 
 > [!IMPORTANT]
 > **Tonight has two deliberate failures, and neither gets announced.** §6 saves an edit to a record that was deleted under it; §8 types a slogan into a form whose `[Bind]` list doesn't include it — and the save quietly **erases** the old value. That last one is the nastiest bug of the homework, met on your machine first. The terminal shares the stage with a new instrument tonight: **the debugger**, attached to a live process in §5.
@@ -54,7 +54,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   ```
 - [ ] **Open a second integrated terminal** (the `+` on the terminal panel — it opens in the same folder). `dotnet watch` owns the first one all night; everything you type tonight goes in the second — §1's two `dotnet add package` commands, §2's scaffolder, then §8's `dotnet ef migrations add` and `dotnet ef database update`
 - [ ] ⚠️ **Know the one prompt that will bite you, and answer it `a` the first time.** Creating a *new* `.cshtml` (§4's `Edit.cshtml`, §6's `Delete.cshtml`) is a change hot reload can't apply, so watch stops and asks **`Do you want to restart your app? Yes (y) / No (n) / Always (a) / Never (v)`** — **in terminal 1, while you're typing in terminal 2.** Miss it and the page 500s with *"The view 'Edit' was not found"*, naming the exact path the file is sitting at. Answer **`a`** at the first prompt and it never asks again all night
-- [ ] **Park three browser tabs**: `/Trucks`, `/Trucks/Details/2`, and **week 8's lab README** on github.com — it goes on screen for every lab block tonight
+- [ ] **Park two browser tabs**: `/Trucks` and `/Trucks/Details/2`
 - [ ] **mssql extension** signed in, saved server connection tested, panel closed. It has **one** appearance tonight — §8, confirming the new column and its seven slogans — so it's a supporting actor this week, not the lead it was in week 7
 - [ ] **Rehearse the §5 debugger attach once on this machine — restart the app first (`Ctrl+C`, `dotnet watch`), because a hot-reloaded process refuses the attach outright.** The first-ever *Attach to a .NET process* can stop to fetch debugger assets, and that download is not something you want between a breakpoint and a room full of people. Once it's cached, the attach is instant all term
 - [ ] **Keep the terminal visible** (it's sized in the Teaching profile below). The generated SQL is still the evidence: tonight adds `UPDATE` and `DELETE` to the vocabulary. **§5 is the exception:** once the debugger is attached you read the SQL in the **Debug Console**, the tab VS Code switches to when you attach
@@ -65,7 +65,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 **🖥️ On screen, at curtain** — checklist above done, this is what the room walks in to; the projector's second state, side by side:
 
 - **VS Code**, left half — folder `~/Repos/dotnet-web-dev-course/instructor/week-08/Curbside`, two integrated terminals (`dotnet watch` in the first, everything you type in the second), and the `mssql` panel signed in but closed
-- **Browser**, right half — three tabs: `/Trucks`, `/Trucks/Details/2`, and the week 8 lab README
+- **Browser**, right half — two tabs: `/Trucks` and `/Trucks/Details/2`
 
 ## 1 · Where we left off *(slides 2–4)*
 
@@ -106,7 +106,6 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ## Lab A · Setup and task 1 — 12 minutes
 
-- [ ] Put the **lab README** on screen — the tab you parked in §0 — scrolled to **Setup**
 - [ ] *"Tonight the lab comes in seven short blocks. After each part of the demo, you do the same thing to the Registry. Each block ends at a note that says In class, stop here."*
 - [ ] *"The first block is setup and task 1. Task 1 installs the scaffolder tool, sets your connection string, and rebuilds your database. Use the same database name as last week."*
 - [ ] ⚠️ **The drop is not optional, and say why:** *"In this block of the lab, you will drop and recreate the database, because your week-7 database's migration history is yours — your timestamps, your files. The starter ships mine — different timestamps. They can't mix: point the starter at that database and it fails with 'there is already an object named Cryptids'. Drop it, and one `database update` rebuilds the whole thing, creatures included. The fact that that works is what a migration IS"*
@@ -140,7 +139,6 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ## Lab B · Task 2 — 7 minutes
 
-- [ ] Lab README on screen, scrolled to **Task 2 in full**
 - [ ] *"The same command you just watched, against the Registry. Run it from inside Cryptids.Web, the same folder as every dotnet ef command."*
 - [ ] *"The two scaffolding packages are already in the starter's project file, so nobody waits on NuGet. Your own app needs them added by hand this week, and the commands are in the notes."*
 - [ ] *"Then use the scaffold's Edit page to change a creature, and reload your own page. Two UIs, one table — the same thing I did with Cheese Curd Cartel."*
@@ -353,7 +351,6 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ## Lab C · Task 3 — 10 minutes
 
-- [ ] Lab README on screen, scrolled to **Task 3 in full**
 - [ ] *"Copy the two Edit methods out of your CryptidsScaffoldController, the same way I just did. Paste them into CryptidsController, below Create. Then make the Edit view from your Create view, the way I did, and add the link."*
 - [ ] *"It's three methods, not two. Copy the CryptidExists helper from the bottom of the scaffold controller too, or the project stops compiling."*
 - [ ] *"Edit.cshtml is your first new view tonight. The terminal running dotnet watch will ask to restart. Answer a, and it won't ask again."*
@@ -385,7 +382,6 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ## Lab D · The debugger — 8 minutes
 
-- [ ] Put the **lab README** on screen, scrolled to **The debugger, on your own app**
 - [ ] *"Now you do what I just did, on the Registry. Restart your app, attach the debugger, and put a breakpoint on the first line of your Edit POST. Then correct a record in the browser."*
 - [ ] *"There is no check for this block. The debugger is not something dotnet test can see. You are done when you have watched the UPDATE appear in the Debug Console after SaveChangesAsync."*
 - [ ] *"Do not edit any code while you are attached. Disconnect first."*
@@ -496,7 +492,6 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ## Lab E · Task 4, part 1 — 7 minutes
 
-- [ ] Lab README on screen, scrolled to **Task 4 in full**
 - [ ] *"Copy the two Delete methods out of your scaffold controller, the same way I did. Then make the confirmation view and add the link. Stop there. Do not delete the scaffold yet."*
 - [ ] *"Check 4 stays red at the end of this block. Its message says Delete works and the scaffold is still in your project. The scaffold comes down after the next part of the demo."*
 - [ ] 👀 **Watch for:** *"already defines a member called 'Delete'"* — the POST got named `Delete` too. A **405** on posting the confirmation — `DeleteConfirmed` lost its `[ActionName("Delete")]`. `The view 'Delete' was not found` with the file right there — the restart prompt in terminal 1. And anyone who has already deleted the scaffold — that's fine, they are ahead; send them on to the packages
@@ -517,7 +512,6 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ## Lab F · Task 4, part 2 — 4 minutes
 
-- [ ] Lab README on screen, scrolled to **Task 4, part 2 — the scaffold comes down**
 - [ ] *"Delete your scaffold controller and the scaffold's views folder. Restart the app. Then remove the two packages."*
 - [ ] *"Remove those two packages and nothing else. EntityFrameworkCore.Design stays — dotnet ef runs on it, and task 5 needs it."*
 - [ ] 👀 **Watch for:** a page that still serves `/CryptidsScaffold` — `ENC0033`, no restart. Check 4 still red — read the message; the views folder or the controller is still there. And `dotnet ef` failing in the last block because `EntityFrameworkCore.Design` went out with the other two
@@ -619,7 +613,6 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ## Lab G · Tasks 5 and 6 — 7 minutes
 
-- [ ] Lab README on screen, scrolled to **Task 5 in full**
 - [ ] 👀 **Watch for:** `The model for context 'CryptidContext' has pending changes` — the model changed after the migration; add another one, forward only. Anyone reaching to delete the `Migrations` folder — stop them; that's the move that's gone this week. Plates that 404 — the `src` starts `/img/cryptids/`, no `wwwroot`. A Latin name that vanishes on save — the `[Bind]` list, then a restart. `Unable to resolve service` on the home page — check the `HomeController` constructor asks for `CryptidContext`
 - [ ] **No stop.** This block takes whatever time is left before the wrap-up. Anyone finished: **🚀 Done early?** at the bottom of the README, or help a classmate
 

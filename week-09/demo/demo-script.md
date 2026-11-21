@@ -15,7 +15,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 > Lost your place? **The nearest 🎞️ above you is the slide that should be showing** — and every slide's footer names the section and beat of this sheet it belongs to, so you can go the other way too.
 
 > [!IMPORTANT]
-> **Tonight the lab comes in eight short blocks, one after each part of the demo that it practices.** Each block has its own `## Lab` section below — what to say, what to watch for, and the README note it stops at. The lab README goes on screen for every block. There is no lab slide. §6 has no lab task of its own, so it runs straight into the second ☕ break instead.
+> **Tonight the lab comes in eight short blocks, one after each part of the demo that it practices.** Each block has its own `## Lab` section below — what to say, what to watch for, and the README note it stops at. There is no lab slide. §6 has no lab task of its own, so it runs straight into the second ☕ break instead.
 
 > [!IMPORTANT]
 > **Tonight has two deliberate failures and one hidden cost, and none of the three gets announced.** **Failure #1** is §4: a truck's page says **Nothing listed** while the table holds two rows. **The hidden cost** is §5, and it is the odd one — the page is entirely **correct**, and it pays **eight queries** to draw. Nothing on screen looks wrong, which is exactly why the terminal is the only place it shows. **Failure #2** is §7: a perfectly filled form is refused, blaming a field the user cannot see. All three are silent and all three are met on your machine first; the two *failures* are the ones waiting in the homework's 🆘 list.
@@ -52,7 +52,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 - [ ] ⚠️ **If terminal 1 prints yellow `NU1902` and `NU1903` warnings, then two `msbuild: [Failure] Msbuild failed when processing the file …` lines after `Now listening on:`.** All of them are the same thing: advisories published 2026-10-13 against `System.Security.Cryptography.Pkcs` 9.0.4, which arrives three levels under `Microsoft.EntityFrameworkCore.SqlServer` (through `Microsoft.Data.SqlClient`). The build succeeded and the app is running. EF 10.0.13 does not fix it — its `SqlClient` still brings a vulnerable `Pkcs` — but a direct reference to the fixed package does: `dotnet add package System.Security.Cryptography.Pkcs --version 10.0.13`, from the folder with the `.csproj`. **The demo starter, the lab starter and every key now carry that line (2026-10-18), so expect no yellow lines.** A student who shows them in the lab is missing that line; in their own app, the homework's first step adds it. **VS Code shows the same advisory a third way**, as a toast — *There were problems loading project Curbside.csproj. See log for details.* — every time the project reloads (creating a file, a `dotnet ef` command). The C# log shows only the two `Pkcs` warnings, then *Completed (re)load of 1 project(s)*. Dismiss it. **No yellow lines?** That's the fix in the starter — skip §1's warnings beats
 - [ ] **Open a second integrated terminal** (the `+` on the terminal panel — it opens in the same folder). `dotnet watch` owns the first one all night; everything you type tonight goes in the second — §3's and §9's `dotnet ef migrations add` and `dotnet ef database update`
 - [ ] ⚠️ **Know the one prompt that will bite you, and answer it `a` the first time.** Creating a *new* `.cshtml` (§7's `Specials/Create.cshtml`, §9's `Dishes/Details.cshtml`) is a change hot reload cannot apply, so watch stops and asks **`Do you want to restart your app? Yes (y) / No (n) / Always (a) / Never (v)`** — **in terminal 1, while you are typing in terminal 2.** Miss it and the page 500s with `The view 'Create' was not found`, naming the exact path the file is sitting at. Answer **`a`** at the first prompt and it never asks again all night
-- [ ] **Park three browser tabs**: `/Trucks`, `/Trucks/Details/1`, and **week 9's lab README** on github.com — it goes on screen for every lab block tonight
+- [ ] **Park two browser tabs**: `/Trucks` and `/Trucks/Details/1`
 - [ ] **mssql extension** signed in, saved server connection tested, panel closed. It has **two** appearances tonight — §3, reading the fourteen rows the migration inserted, and §4, a join that shows Roll Models' two specials right before its page claims there are none
 - [ ] **Say the no-typing line out loud in the first minute.** Tonight is watched, not typed along with: *"Nothing I type tonight is yours to type. Curbside is my app, and the Registry is yours. Your keyboard time is the lab blocks. There are eight of them tonight, one after each part of my demo."*
 - [ ] Teaching profile on, notifications off, editor font sized for the back of the room and for a small laptop screen
@@ -61,7 +61,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 > **🖥️ On screen, at curtain**
 >
 > - **VS Code** — left half, `instructor/week-09/Curbside` open, two integrated terminals: terminal 1 running `dotnet watch`, terminal 2 idle at the project root
-> - **Browser** — right half, three tabs: `/Trucks` (seven cards, slogans showing), `/Trucks/Details/1`, and the week 9 lab README
+> - **Browser** — right half, two tabs: `/Trucks` (seven cards, slogans showing) and `/Trucks/Details/1`
 
 ## 1 · Where we left off *(slides 1–2)*
 
@@ -84,7 +84,6 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ## Lab A · Setup and task 1 — 8 minutes
 
-- [ ] Put the **lab README** on screen — the tab you parked in §0 — scrolled to **Setup**
 - [ ] *"Tonight the lab comes in eight short blocks. After each part of my demo, you do the same thing to your Registry. Each block ends at a note that says In class, stop here."*
 - [ ] *"The first block is setup and task 1. Task 1 sets your connection string, drops the lab database, rebuilds it, and starts your app. Use the same database name as last week."*
 - [ ] ⚠️ **The drop is not optional, and say why:** *"You drop the lab database because the starter ships my migration files, and your database remembers yours. They cannot be mixed. If you skip the drop, the update fails with 'there is already an object named Cryptids'."*
@@ -165,7 +164,6 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ## Lab B · Task 2 — 10 minutes
 
-- [ ] Lab README on screen, scrolled to **Task 2 in full**
 - [ ] *"Task 2 is what I just did, with one difference. I added a class. You add a class, and you also take a property out. Your Cryptid class has an int called Sightings. The Hodag says 47 reports because somebody typed 47. You delete that int, and Sightings becomes the collection."*
 - [ ] *"Deleting the int breaks the seed, and the compiler shows you those six errors. Four other places do not error at all. The README lists all five places. Work from that list, not from the error pane."*
 - [ ] ⚠️ *"Your homework adds a table and removes nothing. Taking a column out is the Registry's own change. Do not go looking for something to delete in your own app."*
@@ -203,7 +201,6 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ## Lab C · Task 3 — 6 minutes
 
-- [ ] Lab README on screen, scrolled to **Task 3 in full**
 - [ ] *"Task 3 is the seed and the migration. Paste the seed and generate the migration. Read the migration before you apply it. Find the DropColumn and the CreateTable. They have the same name."*
 - [ ] *"Then find onDelete Cascade, inside CreateTable. You did not type that either."*
 - [ ] ⚠️ *"After database update, restart your app in terminal 1. It is the same restart I just did, for the same reason."*
@@ -269,7 +266,6 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ## Lab D · Task 4, part 1 — 5 minutes
 
-- [ ] Lab README on screen, scrolled to **Task 4 in full**
 - [ ] *"Do what I just did, in the same order. Paste the accounts list into your Details view first. Reload The Hodag's page and read what it says. Then add Include to your Details action and reload again."*
 - [ ] *"Stop when The Hodag's page shows three accounts. Check 4 stays red at this stop. Read its message. It tells you what the next part of my demo is about."*
 - [ ] 👀 **Watch for:** a 500 on The Hodag's page naming `Sightings`, or *invalid inside an 'Include' operation* — the app was never restarted after task 3's `database update`. *Nothing on file* that survives the `Include` — the `Include` went on a different action; they want `Details`. And anyone who has already put `Include` on `Index` — fine, they are ahead and at `Passed: 4`
@@ -339,7 +335,6 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ## Lab E · Task 4, part 2 — 4 minutes
 
-- [ ] Lab README on screen, scrolled to **Task 4, part 2 — the cards**
 - [ ] *"Your cards already count rows. You wrote that line in task 2. They say 0 because your Index action has not asked for the sightings. Add the same Include to Index. Try it before you open the answer."*
 - [ ] *"Read terminal 1 before and after. It is one SELECT both times. After the change, it has a LEFT JOIN in it."*
 - [ ] *"You do not write the loop I wrote first. I wrote it to show you what it costs."*
@@ -579,7 +574,6 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ## Lab F · Task 5 — 10 minutes
 
-- [ ] Lab README on screen, scrolled to **Task 5 in full**
 - [ ] *"Task 5 is the report form. It has three new files: a ViewModel, a controller and a view. It also adds one line to _ViewImports and a link on your Details page."*
 - [ ] *"Create the ViewModels folder, the class, and the using line in _ViewImports together. If the using names a namespace that does not exist yet, every view in your project stops compiling."*
 - [ ] *"Your ViewModel already has the question mark on SelectList. The README gives you the fix I had to find."*
@@ -623,7 +617,6 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ## Lab G · Task 6 — 4 minutes
 
-- [ ] Lab README on screen, scrolled to **Task 6 in full**
 - [ ] *"The same two steps, in the same order. Paste the warning into your Delete view, and open The Hodag's Close the file page. There is no warning yet. Then add the Include yourself. It is the third one you have written tonight."*
 - [ ] *"When the warning shows, click Keep it. Do not close The Hodag's file."*
 - [ ] 👀 **Watch for:** a warning that only appears after a restart — hot reload left their `Include` unapplied; the README's tip covers it. The warning never appearing — the `Include` went on `DeleteConfirmed`, the POST, instead of the GET that takes `int? id`. And ⚠️ **check 6 green with no warning on the page** — the card on that page prints the count too, and the check is satisfied by it; the `Include` alone turns it green. Look at their Close-the-file page, not only at their count
@@ -678,7 +671,6 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ## Lab H · Catch up, or the stretch — 3 minutes
 
-- [ ] Lab README on screen, scrolled to **The tasks**
 - [ ] *"This is the last block, and it has no stop. If any of your checks are red, finish those first. If you are at six, the stretch at the bottom of the README is what I just did. Witness becomes its own table, and Sighting becomes the link between a witness and a creature."*
 - [ ] *"The stretch has no check and no points. Your homework needs a one-to-many and nothing more."*
 - [ ] *"Tonight's in-class target was checks 1 to 5. Anything still red is Part 1 of your homework."*

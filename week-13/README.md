@@ -25,7 +25,6 @@ The night the app starts answering programs. Everything so far has been a page f
 - **One integrated terminal** — `dotnet watch`
 - ⚠️ **`Program.cs` needs Ctrl+R, twice: §3 and §6.** The terminal says so above `Hot reload succeeded`. There is no restart prompt tonight
 - 🎯 **§4's cycle and §6's HTML behind a `401` are the night's two real lessons** — let each one land before the next paste
-- **Week 13's lab README in a browser tab** — it goes on screen for all six lab blocks; there is no lab slide
 - **`/api-tester.html` in a parked tab**
 - ⚠️ **Say in the wrap-up that the self-check's red console lines are expected**
 - Remind students to `git pull` the starters repo for the week-13 folder

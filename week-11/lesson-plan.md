@@ -31,7 +31,7 @@ By the end of this session, students can:
 - **Two integrated terminals** — `dotnet watch` owns the first; `dotnet ef` runs in the second
 - **mssql extension** signed in, tested, panel closed — three appearances (§2, the empty `AspNetUsers` table and its columns; §3, the row the register form wrote, with a hash where a password would be; §6, the old account's empty `DisplayName` beside the new one's)
 - **2–3 student Azure URLs** picked in advance for the gallery
-- **Week 11's lab README** open in a browser tab — it goes on screen for every lab block. There is no lab slide
+- **There is no lab slide**
 
 ## Timed agenda
 
@@ -39,7 +39,7 @@ By the end of this session, students can:
 |------|----------|---------|
 | 0:00 | 10 min | **Deployed-app gallery** *(deck on title slide)*. 2–3 student midterm apps, **2 minutes each, hard stop**. |
 | 0:10 | 15 min | **The hole** *(slides 1–2, demo §1)*. The agenda on the title slide, still up from the gallery. Then `/Trucks/Delete/1` as anybody — *nothing asked who I am*. Slide 2: **who are you** is tonight; **what may you do** is tonight only as *signed in or not* — the rest is week 12. |
-| 0:25 | 8 min | **Lab A · Setup and task 1** *(no slide — the lab README on screen)*. The launch speech lives here: ⚠️ **the task-1 database drop, with the why — and the fence: never on their own project**, *the checks never touch SQL Server*, and the target, checks 1–5. **Stop at `Passed: 1`**, `/Cryptids` showing six. |
+| 0:25 | 8 min | **Lab A · Setup and task 1** *(no slide)*. The launch speech lives here: ⚠️ **the task-1 database drop, with the why — and the fence: never on their own project**, *the checks never touch SQL Server*, and the target, checks 1–5. **Stop at `Passed: 1`**, `/Cryptids` showing six. |
 | 0:33 | 20 min | **Identity goes in** *(slide 3, demo §2)*. The package, pinned. An **empty** `AppUser : IdentityUser` — slide 3 is the reason it exists before it has anything in it. The context becomes `IdentityDbContext<AppUser>`, plus `base.OnModelCreating`. ⚠️ **The context edit is the night's first restart prompt** (`ENC0014`, a base class changed) — **answer `a`**. `Program.cs`: `AddIdentity`, `UseAuthentication`. Generate `AddIdentity` live and read it: **seven tables**, and `AspNetUsers` has a `PasswordHash` column and no password column. Apply it; mssql: the columns, no rows. ⚠️ **Restart with Ctrl+R**, not Ctrl+C — Ctrl+C starts a new `watch` session and forgets the `a`. |
 | 0:53 | 15 min | **Lab B · Task 2**. The same moves on the Registry: `Member : IdentityUser`, the context, `Program.cs`, `AddIdentity`, update, restart. **Stop at `Passed: 2`.** |
 | 1:08 | 10 min | **☕ Break** |

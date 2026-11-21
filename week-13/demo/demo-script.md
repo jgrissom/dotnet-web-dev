@@ -15,7 +15,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 > Lost your place? **The nearest 🎞️ above you is the slide that should be showing** — and every slide's footer names the section and beat of this sheet it belongs to, so you can go the other way too.
 
 > [!IMPORTANT]
-> **Tonight the lab comes in six short blocks, one after each part of the demo that it practices.** Each block has its own `## Lab` section below — what to say, what to watch for, and the README note it stops at. The lab README goes on screen for every block. There is no lab slide.
+> **Tonight the lab comes in six short blocks, one after each part of the demo that it practices.** Each block has its own `## Lab` section below — what to say, what to watch for, and the README note it stops at. There is no lab slide.
 
 > [!IMPORTANT]
 > **Two failures tonight are real and staged by the order of the pastes, and nothing needs undoing.** §4's `A possible object cycle was detected` is the next paste's reason for existing, and §6's `401` with a page of HTML behind it is the reason for §6's `Program.cs` edit. Every step goes forward.
@@ -54,7 +54,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 - [ ] **Register Ada, then Sam.** Browse to `/Account/Register`: **Email** `ada@example.com`, **What should we call you?** `Ada`, `Curbside-2026` in **Password** and again in **Confirm password**. Click **Sign out**. The same form again with `sam@example.com` and `Sam`, then **Sign out**
 - [ ] **Press Ctrl+R in the terminal.** The seeder hands out the role at startup, so Ada holds Admin only after a restart that comes after she registers. Sign-in comes later, in §5, so her cookie will carry it
 - [ ] ⚠️ **Know the two restarts, and where they come.** There is **no** `Do you want to restart your app?` prompt tonight, because nothing adds a view. New controllers and DTOs hot-reload. **`Program.cs` is the exception, and it comes up twice, in §3 and §6:** the terminal prints `Press "Ctrl + R" to restart.` above `Hot reload succeeded`, and the edit is not live until you press it. *(Measured on a pty-driven `dotnet watch`, one save per paste, on SQL Server.)*
-- [ ] **Park four browser tabs**: `/`, `/Trucks`, `/api-tester.html`, and **week 13's lab README** on github.com — it goes on screen for every lab block tonight
+- [ ] **Park three browser tabs**: `/`, `/Trucks`, and `/api-tester.html`
 - [ ] **Say the no-typing line out loud in the first minute.** Tonight is watched, not typed along with: *"Nothing I type tonight is yours to type. Curbside is my app, and the Registry is yours. Your keyboard time is the lab blocks. There are six of them tonight."*
 - [ ] Teaching profile on, notifications off, editor font sized for the back of the room and for a small laptop screen
 
@@ -62,7 +62,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 > **🖥️ On screen, at curtain**
 >
 > - **VS Code** — left half, `instructor/week-13/Curbside` open, one integrated terminal running `dotnet watch`
-> - **Browser** — right half, four tabs: `/` (Curbside's front page, **signed out**), `/Trucks`, `/api-tester.html`, and the week 13 lab README
+> - **Browser** — right half, three tabs: `/` (Curbside's front page, **signed out**), `/Trucks`, and `/api-tester.html`
 
 ## 1 · One request, two answers *(slides 1–2)*
 
@@ -82,7 +82,6 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 ## Lab A · Setup and task 1 — 8 minutes
 
-- [ ] Put the **lab README** on screen — the tab you parked in §0 — scrolled to **Setup**
 - [ ] *"Tonight the lab comes in six short blocks. After most parts of my demo, you do the same thing to your Registry. Every block but the last ends at a note that says In class, stop here."*
 - [ ] *"The first block is setup and task 1. There is no database drop tonight. This starter has the same migrations as last week's, so your database, your account and your curator role all carry over."*
 - [ ] *"Sign in with your own email, and check you can see Open a new file on the list. Tonight's in-class target is all five checks."*
@@ -200,7 +199,6 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 ## Lab B · Task 2 — 10 minutes
 
-- [ ] Lab README on screen, scrolled to **Task 2 in full**
 - [ ] *"Task 2 is the archive as JSON. A controller for the list, and a minimal endpoint for the count, the same as mine. When it works, look at the sightings on each creature in the list, and compare The Hodag's with its page."*
 - [ ] ⚠️ *"When you save Program.cs, terminal 1 says Press Ctrl+R. Press it, or the count is not live."*
 - [ ] 👀 **Watch for:** `404` on `/api/cryptids/count` over a correct `Program.cs` — they haven't pressed Ctrl+R. A `500` with `A possible object cycle was detected` — they added an `Include` the README doesn't have; take it out, task 3 brings the reports in. The Not on file page at `/api/cryptids` — the new controller needs a Ctrl+R
@@ -329,7 +327,6 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 ## Lab C · Task 3 — 14 minutes
 
-- [ ] Lab README on screen, scrolled to **Task 3 in full**
 - [ ] *"Task 3 is one creature with its reports, and a list that says how many reports each creature has, instead of an empty list. First the query with no DTO, so you see the error for yourself. Then three DTOs, and both actions replaced with the README's versions, the same move as mine."*
 - [ ] 👀 **Watch for:** `sightings` still on the list, with no `reportCount` — `GetAll` wasn't replaced along with `GetOne`, so it still returns `Cryptid`. `reportCount` of `0`, or `sightings` an empty array — no `Include` on that query. Still `A possible object cycle was detected` — the action still returns `Cryptid`, or a DTO carries a `Cryptid` property. `The type or namespace name 'CryptidDetailsDto' could not be found` — the `using Cryptids.Web.Dtos;` at the top
 - [ ] **Stop:** the note after **Task 3 in full**. Where they should be: **`Passed: 3`**, The Hodag at `/api/cryptids/1` with three reports, and a `reportCount` on every creature at `/api/cryptids`
@@ -445,7 +442,6 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 ## Lab D · Task 4 — 15 minutes
 
-- [ ] Lab README on screen, scrolled to **Task 4 in full**
 - [ ] *"Task 4 is the Registry's public half. Anybody can file a report through the API, with no sign-in, so this controller has no Authorize attribute. It takes a SightingInput, and it answers with a 201."*
 - [ ] ⚠️ *"There is one thing mine did not need. A report names a creature by its number, and your rules cannot know which creatures exist. So your POST looks the creature up first, and answers with a 400 if it is not there. Without that, SQL Server refuses the row and your API answers with a 500."*
 - [ ] *"Test it with the tester in your own app. The README has the JSON."*
@@ -585,7 +581,6 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 ## Lab E · Task 5 — 15 minutes
 
-- [ ] Lab README on screen, scrolled to **Task 5 in full**
 - [ ] *"Task 5 puts the rule from my trucks on your archive. PUT and DELETE, the Curator role on the class, AllowAnonymous on the two GETs, and the Missing page kept off the API."*
 - [ ] ⚠️ *"Here is the one to look out for. Your CryptidInput has no ImageUrl, so a PUT must not touch the plate. Load the creature and copy the five properties across. Check 5 fails if the plate is gone."*
 - [ ] *"Program.cs needs a Ctrl+R, the same as task 2."*
@@ -599,7 +594,6 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 ## Lab F · Catch up, or the stretch — 38 minutes
 
-- [ ] Lab README on screen, scrolled to **The tasks**
 - [ ] *"This is the last block, and it has no stop. If any of your checks are red, finish those first. If you are at five, the stretch after task 5 in the README is a POST for curators, the same as mine."*
 - [ ] *"The stretch has no check and no points. Tonight's in-class target was all five checks. Anything still red is Part 1 of your homework."*
 - [ ] 👀 **Watch for:** anyone still red on check 5 — have them read the message; it names the visitor and the verb

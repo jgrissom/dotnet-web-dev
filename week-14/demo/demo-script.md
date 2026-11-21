@@ -15,7 +15,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 > Lost your place? **The nearest 🎞️ above you is the slide that should be showing** — and every slide's footer names the section and beat of this sheet it belongs to, so you can go the other way too.
 
 > [!IMPORTANT]
-> **Tonight the lab comes in seven short blocks, one after each part of the demo that it practices**, and the sixth is team git. Each block has its own `## Lab` section below — what to say, what to watch for, and the README note it stops at. The lab README goes on screen for every block. There is no lab slide.
+> **Tonight the lab comes in seven short blocks, one after each part of the demo that it practices**, and the sixth is team git. Each block has its own `## Lab` section below — what to say, what to watch for, and the README note it stops at. There is no lab slide.
 
 > [!IMPORTANT]
 > **One failure tonight is staged by the order of the pastes, and nothing needs undoing.** In §3 the first draft of the form's script calls `.json()` on a `401`, which has no body, and the console says `Unexpected end of JSON input`. The next paste is the fix. §5's crash is a command, not an edit: the same app run as Production can't find its connection string.
@@ -62,7 +62,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 - [ ] **A second terminal** — the `+` in the terminal panel, left idle. It's for §5's one `dotnet run`, and for `git` in §5 and §6
 - [ ] **Be signed in to github.com in the browser.** §5 makes a repository there, live
 - [ ] ⚠️ **Know that there are no restarts tonight.** Measured on a pty-driven `dotnet watch`, one save per paste: a new `.js` file, edits to it and edits to a view all go live, and **every open tab of the app reloads itself on each save**. The first request for the new `trucks.js` prints a yellow `The static asset '/js/trucks.js' was not found in the built time manifest` in the terminal; it's harmless and stops at the next restart
-- [ ] **Park four browser tabs**: `/` (Curbside's front page, **signed out**), `/Trucks`, `/api-tester.html`, and **week 14's lab README** on github.com — it goes on screen for every lab block tonight
+- [ ] **Park three browser tabs**: `/` (Curbside's front page, **signed out**), `/Trucks`, and `/api-tester.html`
 - [ ] **Say the no-typing line out loud in the first minute.** Tonight is watched, not typed along with: *"Nothing I type tonight is yours to type. Curbside is my app, and the Registry is yours. Your keyboard time is the lab blocks. There are seven of them tonight."*
 - [ ] Teaching profile on, notifications off, editor font sized for the back of the room and for a small laptop screen
 
@@ -70,7 +70,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 > **🖥️ On screen, at curtain**
 >
 > - **VS Code** — left half, `instructor/week-14/Curbside` open, two integrated terminals: the first running `dotnet watch`, the second idle
-> - **Browser** — right half, four tabs: `/` (Curbside's front page, **signed out**), `/Trucks`, `/api-tester.html`, and the week 14 lab README
+> - **Browser** — right half, three tabs: `/` (Curbside's front page, **signed out**), `/Trucks`, and `/api-tester.html`
 
 ## 1 · One fetch *(slides 1–2)*
 
@@ -88,7 +88,6 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 ## Lab A · Setup and task 1 — 5 minutes
 
-- [ ] Put the **lab README** on screen — the tab you parked in §0 — scrolled to **Setup**
 - [ ] *"Tonight the lab comes in seven short blocks. After most parts of my demo, you do the same thing to your Registry. Every block but the last ends at a note that says In class, stop here."*
 - [ ] *"The first block is setup and task 1. There is no database drop tonight. This starter has the same migrations as last week's, so your database, your account and your curator role all carry over."*
 - [ ] *"Sign in with your own email, and check you can see Open a new file on the list. Tonight's target is all five checks, and two pull requests merged."*
@@ -229,7 +228,6 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 ## Lab B · Task 2 — 12 minutes
 
-- [ ] Lab README on screen, scrolled to **Task 2 in full**
 - [ ] *"Task 2 is the same move on your archive. A Quick look button under every creature's card, and its reports listed under the card. Three pastes: the grid, a new archive.js, and the line that loads it."*
 - [ ] *"When it works, open F12, Network, and click a Quick look. Find the request your script sent."*
 - [ ] 👀 **Watch for:** **nothing happens on a click** — F12 → Console first; no error usually means the page never loads the script (the `@section Scripts` line is missing, or `archive.js` isn't in `wwwroot/js`). `Cannot read properties of null (reading 'addEventListener')` — `#archive` in the script doesn't match `id="archive"` on the page. A `.js` request that's `404` — the file is in `wwwroot`, not `wwwroot/js`, or misnamed
@@ -523,7 +521,6 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 ## Lab C · Task 3 — 15 minutes
 
-- [ ] Lab README on screen, scrolled to **Task 3 in full**
 - [ ] *"Task 3 is a report form on the creature's own page. Anybody can file a report, so the form is for everyone. When it works, the new report appears with the others, without a reload."*
 - [ ] ⚠️ *"Your form's box names have to be the API's names: cryptidId, witness, location, seenOn and account. Check 3 fills in your form the way a person would and sends those names, and if the API says no, its message lists the names it sent."*
 - [ ] *"Your script reads the status first, the same as mine now. A 400 lists its errors, and a 201 reads the creature back and redraws its accounts."*
@@ -732,7 +729,6 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 ## Lab D · Task 4 — 10 minutes
 
-- [ ] Lab README on screen, scrolled to **Task 4 in full**
 - [ ] *"Task 4 is a Close the file button for curators. The button goes inside the Curator check, closeFile goes at the bottom of archive.js, and the listener is replaced, the same three moves as mine."*
 - [ ] ⚠️ *"Make a test creature first with Open a new file, and close that one. A closed file takes its reports with it."*
 - [ ] 👀 **Watch for:** the button does nothing — the listener wasn't replaced. `Only a signed-in curator…` for the curator — they signed out in another tab, or their cookie is older than their role. A red `404` in the console after a close — expected; the README says so
@@ -804,7 +800,6 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 ## Lab E · Task 5 — 15 minutes
 
-- [ ] Lab README on screen, scrolled to **Task 5 in full**
 - [ ] *"Task 5 is a workflow that runs your checks on GitHub, on every push and every pull request. It goes in a .github folder next to Cryptids.Web, not inside it. Then you put your lab in a new private repository called cryptids-team. Team git runs on it after the break."*
 - [ ] ⚠️ *"Run dotnet new gitignore before your first commit, or bin and obj go up with it."*
 - [ ] 👀 **Watch for:** check 5 red with the file present — `.github` is inside `Cryptids.Web`, or named without its dot. **No run in the Actions tab** — the workflow was made after the push; commit and push again. A run that fails at `dotnet test` — click the step; it prints the same messages as terminal 3. `git push` refusing a password — sign in through the browser window Git opens
@@ -883,7 +878,6 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 ## Lab F · Team git — 38 minutes
 
-- [ ] Lab README on screen, scrolled to **Team git in full**
 - [ ] *"Pairs now. One of you is A, and owns the repository you both use. The other is B, invited to it. Both of you change the home page's heading, on purpose, and A merges first."*
 - [ ] *"No partner? The README has a section called On your own. You clone your own repository a second time, and play both people."*
 - [ ] *"This has no check and no points. Nobody's grade depends on a partner."*
@@ -892,7 +886,6 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 ## Lab G · Catch up — 15 minutes
 
-- [ ] Lab README on screen, scrolled to **The tasks**
 - [ ] *"This is the last block, and it has no stop. If any of your checks are red, finish those. If you're done, start your homework: the same three moves on your own app, and a workflow that deploys it."*
 - [ ] 👀 **Watch for:** anyone still red on check 3 — have them read the message; it names the box names it sent
 - [ ] **No stop.** This block takes whatever time is left before the wrap-up. Anyone finished: **🚀 Done early?** at the bottom of the README, or help a classmate

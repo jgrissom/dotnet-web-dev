@@ -15,7 +15,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 > Lost your place? **The nearest 🎞️ above you is the slide that should be showing** — and every slide's footer names the section and beat of this sheet it belongs to, so you can go the other way too.
 
 > [!IMPORTANT]
-> **Tonight the lab comes in six short blocks, one after each part of the demo that it practices.** Each block has its own `## Lab` section below — what to say, what to watch for, and the README note it stops at. The lab README goes on screen for every block. There is no lab slide.
+> **Tonight the lab comes in six short blocks, one after each part of the demo that it practices.** Each block has its own `## Lab` section below — what to say, what to watch for, and the README note it stops at. There is no lab slide.
 
 > [!IMPORTANT]
 > **Nothing tonight gets broken and put back.** Every change is forward. There are three surprises, and none is staged: §2's page that doesn't exist (Identity sends Sam to a page nobody has written), §4's refusal after the role is granted (Ada's cookie is older than her role), and §5's address bar (a hidden button doesn't stop Sam typing the URL). If you lose your place, nothing needs undoing.
@@ -59,7 +59,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 - [ ] **Open a second integrated terminal** (the `+` on the terminal panel — it opens in the same folder). `dotnet watch` owns the first one all night; §4's `dotnet user-secrets` goes in the second
 - [ ] ⚠️ **Know the one prompt, and where it comes.** It is **not** at §2's attribute edit — that hot-reloads. It is in **§3, the moment `Views/Account/AccessDenied.cshtml` is created** — `ENC0021: Adding attribute requires restarting the application`, then **`Do you want to restart your app? Yes (y) / No (n) / Always (a) / Never (v)`** — in terminal 1. **Answer `a`.** After that, `watch` restarts by itself for §4's `Program.cs` and §6's new view. *(Measured on a pty-driven `dotnet watch`.)*
 - [ ] ⚠️ **Every restart tonight is Ctrl+R in terminal 1, never Ctrl+C + `dotnet watch`.** *Always* belongs to the `watch` session; Ctrl+C ends it, and the next new file stops and asks again
-- [ ] **Park three browser tabs**: `/`, `/Trucks`, and **week 12's lab README** on github.com — it goes on screen for every lab block tonight
+- [ ] **Park two browser tabs**: `/` and `/Trucks`
 - [ ] **mssql extension** signed in, saved server connection tested, panel closed. It has **two** appearances tonight, both in §4: the empty `AspNetRoles` table, then the role and Ada's row
 - [ ] **Say the no-typing line out loud in the first minute.** Tonight is watched, not typed along with: *"Nothing I type tonight is yours to type. Curbside is my app, and the Registry is yours. Your keyboard time is the lab blocks. There are six of them tonight."*
 - [ ] Teaching profile on, notifications off, editor font sized for the back of the room and for a small laptop screen
@@ -68,7 +68,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 > **🖥️ On screen, at curtain**
 >
 > - **VS Code** — left half, `instructor/week-12/Curbside` open, two integrated terminals: terminal 1 running `dotnet watch`, terminal 2 idle at the project root
-> - **Browser** — right half, three tabs: `/` (Curbside's front page, **signed out**), `/Trucks`, and the week 12 lab README
+> - **Browser** — right half, two tabs: `/` (Curbside's front page, **signed out**) and `/Trucks`
 
 ## 1 · The gap *(slides 1–2)*
 
@@ -87,7 +87,6 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 ## Lab A · Setup and task 1 — 8 minutes
 
-- [ ] Put the **lab README** on screen — the tab you parked in §0 — scrolled to **Setup**
 - [ ] *"Tonight the lab comes in six short blocks. After most parts of my demo, you do the same thing to your Registry. Each block ends at a note that says In class, stop here."*
 - [ ] *"The first block is setup and task 1. Task 1 sets your connection string, drops the lab database, rebuilds it, and starts your app. Use the same database name as in week 11."*
 - [ ] ⚠️ **The drop is not optional, and say why:** *"You drop the lab database because the starter ships my migration files, and your database remembers yours. They cannot be mixed. If you skip the drop, the update fails with there is already an object named Cryptids."*
@@ -131,7 +130,6 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 ## Lab B · Task 2 — 12 minutes
 
-- [ ] Lab README on screen, scrolled to **Task 2 in full**
 - [ ] *"Task 2 is the same change on your Registry. Your role is called Curator, because a curator looks after the archive. The attribute on CryptidsController gets Roles equals Curator."*
 - [ ] ⚠️ *"Leave SightingsController alone, exactly like last week. Reports are what the public files. Nobody needs a role to report a sighting, and check 2 fails if you put Authorize on it."*
 - [ ] *"Then click Open a new file, the button that adds a creature, signed in as yourself, and look at the address bar."*
@@ -180,7 +178,6 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 ## Lab C · Task 3 — 10 minutes
 
-- [ ] Lab README on screen, scrolled to **Task 3 in full**
 - [ ] *"Task 3 is the Registry's page for this. The view first, then the action. When terminal 1 asks to restart, answer a."*
 - [ ] *"Your page says Curators only. Check 3 looks for the word Curator on it, so a member knows the page is not broken."*
 - [ ] 👀 **Watch for:** a `500` with `The view 'AccessDenied' was not found` — they added the action first, and the view is missing or the prompt is still waiting in terminal 1; answer `a`, don't move the file. A page that is still *Not on file* — the action isn't on `AccountController`, or it's misspelled
@@ -278,7 +275,6 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 ## Lab D · Task 4 — 15 minutes
 
-- [ ] Lab README on screen, scrolled to **Task 4 in full**
 - [ ] *"Task 4 makes you the curator. In terminal 2, set Admin Email to the email you joined with in task 1. Then the seeder file, then the lines in Program.cs."*
 - [ ] *"Then try Open a new file, still signed in. You will be refused, and that is correct. Sign out, sign back in, and try again."*
 - [ ] 👀 **Watch for:** the refusal after restarting — they have done it right; sign out and back in. Never let in, even after signing in again — the role name in `RoleSeeder.cs` and in the attribute disagree (`Curator` both times), the secret's key isn't exactly `Admin:Email`, or the email isn't the one they joined with: `dotnet user-secrets list` shows it. `Unhandled exception … The ConnectionString property has not been initialized` before `Now listening on:` — the connection string secret is gone (a frozen lab PC); set it again
@@ -474,7 +470,6 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 ## Lab E · Task 5 — 12 minutes
 
-- [ ] Lab README on screen, scrolled to **Task 5 in full**
 - [ ] *"Task 5 hides the archive's buttons. Open a new file on the list, and Correct the record and Close the file on a creature's page. Each one inside an if that asks whether you are a Curator."*
 - [ ] ⚠️ *"Report a sighting stays outside the if. That one is for the public, and check 5 fails if a visitor cannot see it."*
 - [ ] *"Then sign out, and type Cryptids slash Create into the address bar."*
@@ -546,7 +541,6 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 ## Lab F · Catch up, or the stretch — 33 minutes
 
-- [ ] Lab README on screen, scrolled to **The tasks**
 - [ ] *"This is the last block, and it has no stop. If any of your checks are red, finish those first. If you are at five, the stretch at the bottom of the README builds the claims page I just showed you, on your Registry."*
 - [ ] *"The stretch has no check and no points. Tonight's in-class target was all five checks. Anything still red is Part 1 of your homework."*
 - [ ] 👀 **Watch for:** anyone still red on check 4 — have them sign out and back in, then read the message; it names the email it tried

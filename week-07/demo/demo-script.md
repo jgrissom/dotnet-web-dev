@@ -15,7 +15,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 > Lost your place? **The nearest 🎞️ above you is the slide that should be showing** — and every slide's footer names the section and beat of this sheet it belongs to, so you can go the other way too.
 
 > [!IMPORTANT]
-> **Tonight the lab comes in six short blocks, one after each part of the demo that it practices.** Each block has its own `## Lab` section below — what to say, what to watch for, and the README note it stops at. The lab README goes on screen for every block; the lab slide goes up only for the last one, in §7.
+> **Tonight the lab comes in six short blocks, one after each part of the demo that it practices.** Each block has its own `## Lab` section below — what to say, what to watch for, and the README note it stops at. The lab slide goes up only for the last one, in §7.
 
 > [!IMPORTANT]
 > **Tonight is more typing and less breaking than week 6.** There is **one** deliberate break (§5b's missing `SaveChanges`), and it's the silent one students will actually hit in the lab. The compensation is that **the terminal and the mssql panel are the stars all night** — migration output, generated SQL, and a database that goes from not existing to holding their data. Size both for the back row.
@@ -41,7 +41,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
   dotnet watch
   ```
 - [ ] **Open a second integrated terminal** (the `+` on the terminal panel — it opens in the same folder). `dotnet watch` owns the first one all night; everything you type tonight goes in the second — §2's two `dotnet add package` commands and its `dotnet user-secrets list`, then §3's `dotnet ef migrations add` and `dotnet ef database update`. **The `dotnet ef` version check below goes there too** — it is the first thing you'll run in it
-- [ ] **Park three browser tabs**: `/Trucks`, `/Trucks/Create`, and **week 7's lab README** on github.com — it goes on screen for every lab block tonight
+- [ ] **Park two browser tabs**: `/Trucks` and `/Trucks/Create`
 - [ ] **Install and sign into the VS Code `mssql` extension**, with a saved, **tested** connection — but the panel closed to start. **It's your main instrument from §3 onward**: you open it in §3 to show there's *nothing there*, and from then on you refresh it rather than reopening. A login prompt at any of those kills the beat
 - [ ] ⚠️ **Save that connection to the *server*, with the database field left blank** — not to Curbside's database, which won't exist until §3 creates it — and if you're re-rehearsing, the next step deletes the one that's still there. A profile naming a database that isn't there fails to connect, and you'd be debugging it in §3 in front of the room. From §3 on you expand the new database underneath that server connection
 - [ ] ⚠️ **Re-rehearsing? Drop Curbside's database now, while the panel is open** — expand the server, right-click Curbside's database → **Delete**, then collapse the server again so §3 opens on a clean panel. ⚠️ **Not `dotnet ef database drop`** — tonight's starter has no EF packages until §2, so `dotnet ef` cannot run in the fresh copy at all; it answers *"doesn't reference Microsoft.EntityFrameworkCore.Design"*. The panel needs no project, which is why it is the tool for this
@@ -68,7 +68,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 **🖥️ On screen, at curtain** — checklist above done, this is what the room walks in to; the projector's second state, side by side:
 
 - **VS Code**, left half — folder `~/Repos/dotnet-web-dev-course/instructor/week-07/Curbside`, two integrated terminals (`dotnet watch` in the first, everything you type in the second), and the `mssql` panel signed in but closed
-- **Browser**, right half — three tabs: `/Trucks`, `/Trucks/Create`, and the week 7 lab README
+- **Browser**, right half — two tabs: `/Trucks` and `/Trucks/Create`
 
 ## 1 · Six trucks. Again. *(slides 2–4)*
 
@@ -93,7 +93,6 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ## Lab A · Setup — 8 minutes
 
-- [ ] Put the **lab README** on screen — the tab you parked in §0 — scrolled to **Setup**
 - [ ] *"Tonight the lab comes in six short blocks. After each part of the demo, you do the same thing to the Registry. Each block ends at a note that says In class, stop here."*
 - [ ] *"This block is setup. There are six steps. Step 6 connects the mssql extension to the school's server, with the database field left blank."*
 - [ ] *"The two Entity Framework packages are already in the starter's project file. You'll add them to your own app in the homework, and the commands are in the notes."*
@@ -197,7 +196,6 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ## Lab B · Tasks 1 to 3 — 12 minutes
 
-- [ ] Lab README on screen, scrolled to **Task 1 in full**
 - [ ] *"This block is tasks 1, 2 and 3 — the same three things I just did to Curbside. The connection string goes in user secrets. The context gets its DbSet. Program.cs gets the AddDbContext line."*
 - [ ] ⚠️ **The connection string is task 1, and it is the thing that eats the lab.** Say it plainly: *"Task 1 is two commands, init then set, from inside Cryptids.Web. You won't find out whether the string is right until task 4, because that's the first command that connects. So type it carefully now, and check it with dotnet user-secrets list."*
 - [ ] *"Task 1 has you name your database. The name is Cryptids, then the course number, then your initials, with underscores between them. The README shows one filled in."*
@@ -256,7 +254,6 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ## Lab C · Task 4, the first migration — 7 minutes
 
-- [ ] Lab README on screen, scrolled to **Task 4 in full**
 - [ ] *"Two commands: migrations add, then database update. Then open the migration and find where your 60 came from. Then look at your table in the mssql extension."*
 - [ ] ⚠️ **This is the first command tonight that connects to the server, so sweep the room now, not earlier.** A connection string that was stored fine in task 1 fails here. Have anyone stuck run `dotnet user-secrets list` before anything else. `No project was found in the current working directory` means the wrong terminal — terminal 2 is the one standing in `Cryptids.Web`
 - [ ] **Stop:** the note just above **Task 4, part 2**. Where they should be: still **`Passed: 2`**, and a `Cryptids` table with no rows. *"Your table is empty and check 4 is red. Both are correct. The next part of the demo fills the table."*
@@ -320,7 +317,6 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ## Lab D · Task 4, part 2 — 8 minutes
 
-- [ ] Lab README on screen, scrolled to **Task 4, part 2 — the seed data and a second migration**
 - [ ] *"Paste the seed data. Then refresh your table before you run anything."*
 - [ ] **Predict, out loud:** *"After you paste the seed data, how many rows will your table have?"*
   💡 None. The model changed and the table didn't — only a new migration carries the change. It's the snapshot rule from §3, and this time it's their table
@@ -376,7 +372,6 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ## Lab E · Task 5 — 7 minutes
 
-- [ ] Lab README on screen, scrolled to **Task 5 in full**
 - [ ] *"Start the app first, in terminal 1. This is the first task tonight where the browser matters. Then the constructor, then the two reads — the same three edits I just made."*
 - [ ] *"Task 5 ends with two lines of SQL. You add a creature straight into the database and reload, and you see seven. That creature was never in a C# file, so the page has to be reading the database. Then you delete it."*
 - [ ] ⚠️ **Warn them the checks never touch SQL Server:** *"The checks run your app against an in-memory database, so they work with no network. That means a green check does not prove your connection string works. Your browser does. Load /Cryptids and see six creatures."*
@@ -449,7 +444,6 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Type the *f
 
 ## Lab F · Task 6 — 8 minutes
 
-- [ ] Lab README on screen, scrolled to **Task 6 in full**
 - [ ] 👀 **Watch for:** a page that looks right but is the old build — terminal 1 shows `ENC0033`, and the fix is `Ctrl+C` and `dotnet watch`. `Cannot insert explicit value for identity column`, or a new creature with Id 0 — the `Max(c => c.Id) + 1` line is still there. A form that redirects and adds nothing — no `SaveChanges()`. 💡 If someone asks why their first report is Id **8**: the Wampus Cat had 7, and SQL Server doesn't reuse a deleted number
 - [ ] **No stop.** This block takes whatever time is left before §8. Anyone finished: **🚀 Done early?** at the bottom of the README, or help a classmate
 

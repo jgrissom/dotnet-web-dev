@@ -15,7 +15,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 > Lost your place? **The nearest 🎞️ above you is the slide that should be showing** — and every slide's footer names the section and beat of this sheet it belongs to, so you can go the other way too.
 
 > [!IMPORTANT]
-> **Tonight the lab comes in seven short blocks, one after each part of the demo that it practices.** Each block has its own `## Lab` section below — what to say, what to watch for, and the README note it stops at. The lab README goes on screen for every block. There is no lab slide.
+> **Tonight the lab comes in seven short blocks, one after each part of the demo that it practices.** Each block has its own `## Lab` section below — what to say, what to watch for, and the README note it stops at. There is no lab slide.
 
 > [!IMPORTANT]
 > **Nothing tonight gets broken and put back.** Every change is forward. There are two failures, and neither is staged: §3's weak password is Identity's own rules refusing it, and §6's blank name is an account that is older than its column. If you lose your place, nothing needs undoing.
@@ -51,7 +51,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 - [ ] **Open a second integrated terminal** (the `+` on the terminal panel — it opens in the same folder). `dotnet watch` owns the first one all night; everything you type tonight goes in the second — §2's `dotnet add package`, both copy-ins, and every `dotnet ef`
 - [ ] ⚠️ **Know the one prompt, and where it comes.** It is **not** at the first new file. It is in **§2, the moment the context's base class changes** — `ENC0014: Updating the base class and/or base interface(s) of class requires restarting the application`, then **`Do you want to restart your app? Yes (y) / No (n) / Always (a) / Never (v)`** — in terminal 1, while you are typing in terminal 2. **Answer `a`.** After that, `watch` restarts by itself for `Program.cs`, both copy-ins and the new partial. *(Measured on a pty-driven `dotnet watch`.)*
 - [ ] ⚠️ **Every restart tonight is Ctrl+R in terminal 1, never Ctrl+C + `dotnet watch`.** *Always* belongs to the `watch` session. Ctrl+C ends the session, and the next new file stops and asks again — measured: after a Ctrl+C restart in §2, §3's copy-in sat at the prompt and `/Account/Register` was a `404` until it was answered. Ctrl+R restarts the app and keeps the session
-- [ ] **Park three browser tabs**: `/`, `/Trucks/Delete/1`, and **week 11's lab README** on github.com — it goes on screen for every lab block tonight
+- [ ] **Park two browser tabs**: `/` and `/Trucks/Delete/1`
 - [ ] **mssql extension** signed in, saved server connection tested, panel closed. It has **three** appearances tonight — §2, the empty `AspNetUsers` table, §3, the row your registration writes, and §6, Ada's and Bea's rows with the new `DisplayName` column
 - [ ] **Say the no-typing line out loud in the first minute.** Tonight is watched, not typed along with: *"Nothing I type tonight is yours to type. Curbside is my app, and the Registry is yours. Your keyboard time is the lab blocks. There are seven of them tonight, one after each part of my demo."*
 - [ ] Teaching profile on, notifications off, editor font sized for the back of the room and for a small laptop screen
@@ -60,7 +60,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 > **🖥️ On screen, at curtain**
 >
 > - **VS Code** — left half, `instructor/week-11/Curbside` open, two integrated terminals: terminal 1 running `dotnet watch`, terminal 2 idle at the project root
-> - **Browser** — right half, three tabs: `/` (Curbside's front page), `/Trucks/Delete/1`, and the week 11 lab README
+> - **Browser** — right half, two tabs: `/` (Curbside's front page) and `/Trucks/Delete/1`
 
 ## 1 · The hole *(slides 1–2)*
 
@@ -80,7 +80,6 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 ## Lab A · Setup and task 1 — 8 minutes
 
-- [ ] Put the **lab README** on screen — the tab you parked in §0 — scrolled to **Setup**
 - [ ] *"Tonight the lab comes in seven short blocks. After each part of my demo, you do the same thing to your Registry. Each block ends at a note that says In class, stop here."*
 - [ ] *"The first block is setup and task 1. Task 1 sets your connection string, drops the lab database, rebuilds it, and starts your app. Use the same database name as in week 9."*
 - [ ] ⚠️ **The drop is not optional, and say why:** *"You drop the lab database because the starter ships my migration files, and your database remembers yours. They cannot be mixed. If you skip the drop, the update fails with there is already an object named Cryptids."*
@@ -180,7 +179,6 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 ## Lab B · Task 2 — 15 minutes
 
-- [ ] Lab README on screen, scrolled to **Task 2 in full**
 - [ ] *"Task 2 is what I just did, on the Registry. Your user class is called Member. Then the context, then Program.cs, then the migration."*
 - [ ] *"In the context, add the line that calls base OnModelCreating first. Then change the base class. When terminal 1 asks to restart, answer a."*
 - [ ] *"After database update, press Ctrl R in terminal 1. Not Ctrl C."*
@@ -240,7 +238,6 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 ## Lab C · Task 3 — 15 minutes
 
-- [ ] Lab README on screen, scrolled to **Task 3 in full**
 - [ ] *"Task 3 is the register page. Paste the three files from the README. Then register once with the password password, and read the messages. Then register for real."*
 - [ ] *"Your page will not change after you register. Open DevTools, Application, Cookies, and find the Identity cookie. That is how you know it worked."*
 - [ ] 👀 **Watch for:** `The view 'Register' was not found` with the file right there — the restart prompt is waiting in terminal 1, which means it was a Ctrl+C restart and the `a` is gone; answer `a`. A refused form with no messages — the `foreach` that copies `result.Errors` into `ModelState` is missing, or the summary is `ModelOnly`. `Username '…' is already taken.` — they registered that email already; it worked the first time
@@ -308,7 +305,6 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 ## Lab D · Task 4 — 12 minutes
 
-- [ ] Lab README on screen, scrolled to **Task 4 in full**
 - [ ] *"Task 4 is signing in and out. Paste the files from the README, then the partial, then the one line in your layout. Your navbar says Join where mine says Create an account."*
 - [ ] *"Then sign out with DevTools open, and watch the cookie disappear. Sign in with a wrong password, then the right one."*
 - [ ] 👀 **Watch for:** a navbar that never changes — the `<partial>` line went somewhere other than after the navbar's `</ul>`, or into a view instead of `_Layout.cshtml`. A sign-out that does nothing, or a `405` — the partial posts and the action isn't `[HttpPost]`, or the other way round. Anyone who made Sign out an `<a>` link — check 4 fails with a message saying why
@@ -354,7 +350,6 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 ## Lab E · Task 5 — 12 minutes
 
-- [ ] Lab README on screen, scrolled to **Task 5 in full**
 - [ ] *"Task 5 is the lock on your Registry. Authorize on the CryptidsController class. AllowAnonymous on Index and Details."*
 - [ ] ⚠️ *"Then leave SightingsController alone. Reports are what the public files. Nobody should have to sign in to report a sighting. Check 5 fails if you lock it."*
 - [ ] *"Then sign out, try to file a creature, and watch where you end up."*
@@ -486,7 +481,6 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 ## Lab F · Task 6 — 13 minutes
 
-- [ ] Lab README on screen, scrolled to **Task 6 in full**
 - [ ] *"Task 6 is a field name for your members: the name they sign their reports with. The property, the migration, the form, and the navbar."*
 - [ ] *"After database update, Ctrl R in terminal 1. The navbar file is one paste, with the fallback already in it, because your account is older than the column too."*
 - [ ] 👀 **Watch for:** `Invalid column name 'FieldName'` — they skipped `database update`, or the restart after it. A navbar reading *Signed in as* and nothing — the `var name` fallback line is missing from their partial. Check 6 saying the form doesn't ask for it — the box went on `Register.cshtml` but the property isn't on `RegisterViewModel`, or the other way round
@@ -494,7 +488,6 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 ## Lab G · Catch up, or the stretch — 10 minutes
 
-- [ ] Lab README on screen, scrolled to **The tasks**
 - [ ] *"This is the last block, and it has no stop. If any of your checks are red, finish those first. If you are at six, the stretch at the bottom of the README fills in Reported by on the sighting form with your field name, when you are signed in."*
 - [ ] *"The stretch has no check and no points. Tonight's in-class target was checks 1 to 5. Anything still red is Part 1 of your homework."*
 - [ ] 👀 **Watch for:** anyone still red on check 5 — have them read the message; it says which door is open
