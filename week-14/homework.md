@@ -1,13 +1,13 @@
 # Week 14 Homework
 
-**Topic:** your pages call your API, and `git push` deploys your app.
+**Topic:** your pages call your API.
 **Due:** before the start of Week 15's class. **This is the last homework of the term.**
 **And then:** your final project is this same app. Nothing more is required after this homework: week 15's stretch is optional, and in week 16 you present the app, running live.
 **Submit via Canvas:** your **Azure URL** + your **GitHub repo URL**.
 
 ## Part 1 — Finish the Registry lab (nobody collects this)
 
-All five checks green:
+All four checks green:
 
 ```bash
 dotnet test Cryptids.Checks
@@ -15,18 +15,18 @@ dotnet test Cryptids.Checks
 
 ```
 Test Run Successful.
-Total tests: 5
-     Passed: 5
+Total tests: 4
+     Passed: 4
 ```
 
-If class ended at check 4, check 5 is the workflow — [Task 5 in full](lab/README.md#task-5-in-full). Team git needs no finishing: it was never collected.
+Task 5 and team git need no finishing: neither was ever collected.
 
 > [!IMPORTANT]
 > This isn't submitted and it isn't worth points. It's the same moves Part 2 asks you to make on your own app, with every file handed to you. Doing it first is what turns Part 2 into an hour.
 
 ## Part 2 — Your list page talks to your API (graded)
 
-Same app you've been building since week 4, with week 13's API. This week your list page uses that API: a record's related rows open without leaving the page, and your role can add and remove records there too. Then GitHub deploys your app every time you push. **No table changes, no migration, and no C#.**
+Same app you've been building since week 4, with week 13's API. This week your list page uses that API: a record's related rows open without leaving the page, and your role can add and remove records there too. Then you deploy it, the way you have all semester. **No table changes, no migration, and no C#.**
 
 > [!TIP]
 > **Keep [`lecture-notes.md`](lecture-notes.md) open while you work.** Every requirement below links to the section that shows it done, and the [troubleshooting section](lecture-notes.md#troubleshooting) names this week's specific errors.
@@ -52,7 +52,7 @@ Open `Views/Home/Index.cshtml`, find the **week-13** line, and **replace it**:
 >
 > - It opens your list page **out of sight, in your own browser**, and clicks **one** `show-related` button, the way you would. It never clicks a remove button, and it answers *no* to any `confirm()` your page asks.
 > - It sends nothing but GETs, creates nothing, and **leaves you signed in** as whoever you were.
-> - ⚠️ **It cannot see your add or your remove.** Both need your role, and it doesn't hold it. Requirement 6 is where you try them yourself.
+> - ⚠️ **It cannot see your add or your remove.** Both need your role, and it doesn't hold it. Requirement 5 is where you try them yourself.
 
 ### Then build it
 
@@ -101,30 +101,13 @@ Open `Views/Home/Index.cshtml`, find the **week-13** line, and **replace it**:
    ```
 
    Try it on a record you added in requirement 3: **OK**, and it goes; reload, and it stays gone. → [Remove, without a reload](lecture-notes.md#part-5-remove-without-a-reload)
-5. **Your app deploys itself.** Four steps, once. Your resource group's name is on the `group =` line of the `.azure/config` file in your project folder, which `az webapp up` wrote.
-   1. Turn on the deploy credential your app already has. Apps made by `az webapp up` come with it switched off:
-
-      ```bash
-      az resource update --resource-group <YOUR-GROUP> --namespace Microsoft.Web --resource-type basicPublishingCredentialsPolicies --parent sites/<YOUR-APP> --name scm --set properties.allow=true
-      ```
-
-   2. Print the credential, called a **publish profile**. ⚠️ **It's a password**: copy all of it straight into the next step, and nowhere else:
-
-      ```bash
-      az webapp deployment list-publishing-profiles --name <YOUR-APP> --resource-group <YOUR-GROUP> --xml
-      ```
-
-   3. On GitHub, your repository → **Settings** → **Secrets and variables** → **Actions** → **New repository secret**. **Name:** `AZURE_WEBAPP_PUBLISH_PROFILE`. **Secret:** paste. **Add secret**.
-   4. In your project, create **`.github/workflows/deploy.yml`** — a folder named `.github`, starting with a dot, with a `workflows` folder in it. Open **[`deploy.yml` on GitHub](https://github.com/jgrissom/dotnet-web-dev/blob/main/week-14/deploy.yml)**, click **Copy raw file**, paste, and change **the one line marked ✏️** to your app's name.
-
-   Commit everything, and push. On GitHub, your repository's **Actions** tab shows a **Deploy** run; in about a minute and a half it's ✅, and your Azure URL is running what you pushed. Azure builds your code, the same way `az webapp up` always has. → [A deploy on every push to main](lecture-notes.md#a-deploy-on-every-push-to-main)
-6. **Deployed, and tried as your role.** On your deployed site, signed in as yourself: **add a record** with your form, and open its page from the `Added` link; **show its related rows** (none yet); then **remove it**, and reload. List your API's addresses and this week's three buttons in your README. Everything from weeks 4–13 still works, and **3+ meaningful commits** are in your public repo. → [Where each secret lives](lecture-notes.md#part-8-where-each-secret-lives)
+5. **Deployed, and tried as your role.** On your deployed site, signed in as yourself: **add a record** with your form, and open its page from the `Added` link; **show its related rows** (none yet); then **remove it**, and reload. List your API's addresses and this week's three buttons in your README. Everything from weeks 4–13 still works, and **3+ meaningful commits** are in your public repo. → [Where each secret lives](lecture-notes.md#part-8-where-each-secret-lives)
 
 > [!IMPORTANT]
 > **No restart this week.** A new `.js` file, an edit to it and an edit to a view all go live under `dotnet watch`, and the page reloads itself when you save. The terminal prints a yellow `The static asset '/js/list.js' was not found in the built time manifest` the first time the new file is asked for; that's harmless, and it stops at the next restart.
 
 > [!WARNING]
-> **Your secrets stay where they've been.** The connection string and `Admin__Email` are Azure app settings, and a deploy doesn't touch them. The publish profile is a GitHub secret. **None of the three ever goes in a file in your repository** — and that includes `deploy.yml`, which only *names* the secret.
+> **Your secrets stay where they've been.** The connection string and `Admin__Email` are Azure app settings, and a deploy doesn't touch them. **Neither ever goes in a file in your repository.**
 
 ### Your app isn't mine
 
@@ -147,8 +130,7 @@ Nothing above says what your records are called. The self-check doesn't know eit
 | **1** — the script, and `data-id` | **4 of 12** |
 | **2** — related rows | **12 of 12** |
 | **3** and **4** — add and remove | **still 12** — they need your role, and the check doesn't hold it |
-| **5** — the workflow | **still 12** — it's in your repo, and I read it there |
-| **6** — deployed | run it once more on your Azure URL. That is the run I grade |
+| **5** — deployed | run it once more on your Azure URL. That is the run I grade |
 
 **You installed the tag in Part 2.** Run your app **locally** (`dotnet watch`), load your home page, open the console — **F12 → Console** — and type **`recheck()`**:
 
@@ -174,15 +156,20 @@ Nothing above says what your records are called. The self-check doesn't know eit
 
 *(If you happen to have Node installed, `node homework-checks.js <url>` does the same thing from a terminal, in Chromium. You don't need it.)*
 
-**12 of the 20 points are in that script.** The other 8 I read out of your repo and its Actions tab — see the rubric.
+**12 of the 20 points are in that script.** The other 8 I read out of your repo — see the rubric.
 
 ## Part 4 — Deploy it (graded)
 
-**This week the deploy is `git push`.** Requirement 5 set it up: push to `main`, and the **Deploy** run in your **Actions** tab publishes your app. **No migration and no new app setting.**
+**No migration and no new app setting this week.** Your connection string and `Admin__Email` are already on Azure. So it's just the deploy:
 
-If a run fails, click it, then the red step: it prints exactly what went wrong. The 🆘 list below has the common ones. **`az webapp up` still works** if you need your site up while you sort a run out — but the workflow, and its last run, are 3 of your points.
+```bash
+az webapp up --name your-app-XX1234 --sku F1 --os-type Linux \
+  --runtime DOTNETCORE:10.0 --location "<YOUR-US-REGION>"
+```
 
-Then, on your deployed site, signed in as yourself: requirement 6. And run the self-check on your Azure URL. That is the run I grade.
+Use your own app's name and region — the ones you've used all term. ⚠️ **Keep `--os-type Linux` and `--runtime DOTNETCORE:10.0`.**
+
+Then, on your deployed site, signed in as yourself: requirement 5. And run the self-check on your Azure URL. That is the run I grade.
 
 ## 🆘 Stuck?
 
@@ -196,12 +183,7 @@ Then, on your deployed site, signed in as yourself: requirement 6. And run the s
 - **A `400` about `could not be converted`** — a number box without `type="number"`, or a date box without `type="date"`. A `bool` box needs `type="checkbox"`. [Your own app](lecture-notes.md#part-6-your-own-app).
 - **The add or remove says to sign in again, and you're signed in** — your cookie is older than your role. Sign out and back in.
 - **A red `404` in the console after a remove** — the read-back, saying it's gone. Expected.
-- **The Actions tab shows no Deploy run** — `deploy.yml` isn't at `.github/workflows/` in the top folder of your repository, the `.github` folder lost its dot, or you pushed before you made it.
-- **Step 5.1 or 5.2 fails with an Azure error you can't fix** — Azure for Students subscriptions aren't always reliable, and that isn't yours to fix. Deploy with `az webapp up`, the way you have all semester. Still do step 5.4 and push `deploy.yml`, and add this sentence to your README, word for word: `Azure blocked my deploy credential.` You keep the workflow's points; your URL shows the app is deployed.
-- **The Deploy run fails with `Unauthorized (CODE: 401)`** — the credential is switched off. Run step 5.1 again, then **Re-run failed jobs** on the run. [A deploy on every push to main](lecture-notes.md#a-deploy-on-every-push-to-main).
-- **The Deploy run fails, and its log shows `error CS…`** — your code doesn't build. It's the same error your own terminal would show, with the file and the line. Fix it, commit, push. Your site keeps the last version that built.
-- **The Deploy run fails with `Couldn't detect a version for the platform 'dotnet' in the repo.`** — your workflow runs `dotnet publish` and sends the result, like many examples online. Copy `deploy.yml` again from step 5.4: it sends your code, and Azure builds it.
-- **`The ConnectionString property has not been initialized` on Azure** — your app setting is missing. It isn't in the workflow, and shouldn't be: [Development, and Production](lecture-notes.md#part-7-development-and-production).
+- **`The ConnectionString property has not been initialized` on Azure** — your app setting is missing: [Development, and Production](lecture-notes.md#part-7-development-and-production).
 - **The self-check banner says Week 13** — last week's script is still installed. This week's line replaces it.
 
 ## 📊 Grading (20 pts)
@@ -212,13 +194,13 @@ Then, on your deployed site, signed in as yourself: requirement 6. And run the s
 | Every record on your list page carries its id, and your API knows each one | 2 | deployed URL |
 | A record's related rows appear without leaving the page | 5 | deployed URL |
 | When your API answers anything but 200, the page says so instead of breaking | 3 | deployed URL |
-| A workflow that deploys to Azure on every push to main | 2 | your repo |
-| Its last run on main succeeded | 1 | your repo's Actions tab |
-| Your script adds (POST) and removes (DELETE) through your API | 2 | your repo |
+| Your script adds a record through your API (a POST) | 2 | your repo |
+| Your script removes a record through your API (a DELETE) | 2 | your repo |
+| Your README lists your API's addresses | 1 | your repo |
 | 3+ meaningful commits | 3 | your repo |
 | **Deductions:** dead submitted URL | −2 | |
 
-*Reminder: the explain-it standard applies. The ones I'll reach for: "why does your script read the status before calling .json()?", "what's in the body of a 401?", "why textContent and not innerHTML?", and "where does your publish profile live, and why not in deploy.yml?"*
+*Reminder: the explain-it standard applies. The ones I'll reach for: "why does your script read the status before calling .json()?", "what's in the body of a 401?", "why textContent and not innerHTML?", and "why does your remove read the record back?"*
 
 ## 📖 Reading for next week (~10 min)
 

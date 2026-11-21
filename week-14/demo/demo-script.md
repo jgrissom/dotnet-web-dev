@@ -50,7 +50,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
   dotnet ef database drop --force
   dotnet ef database update
   ```
-  Seven migrations replay. **No new migration tonight**, and no C#: tonight is JavaScript, two views and a workflow file
+  Seven migrations replay. **No new migration tonight**, and no C#: tonight is JavaScript and two views
 - [ ] **Rehearse the whole script once in a separate copy.** It is the only way to see §3's console error and §5's crash for yourself before the room does. Stop the rehearsal's `dotnet watch` when you're done — both copies use the same port
 - [ ] 🚨 **After the rehearsal, two things.** Delete the GitHub repository `curbside-week14` (**Settings → Delete this repository**) and the `curbside-sam` folder, because §5 makes the repository again in front of the room. And check `/Trucks` shows **seven** trucks: §3's spoken line counts them, and a rehearsal that follows the sheet adds one and removes it again. If it shows eight, remove Lake Effect Lunch on its **Delete** page
 - [ ] Run it, same terminal:
@@ -74,7 +74,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 ## 1 · One fetch *(slides 1–2)*
 
-- [ ] 🎞️ **GO TO SLIDE 1** — *Week 14 — Your pages call your API* · it is still up from the gallery — talk to its list before you swipe away from it: *"Last week my app learned to answer programs. Tonight its own pages are the program. First, a food truck's menu that opens under its card without leaving the list or refreshing the page. Then a form that adds a truck, and a button that removes one, both without a reload. After that, what changes when an app runs for real: configuration, secrets, and a build that runs on every push. And last, two people changing the same line of code in a shared GitHub repository."*
+- [ ] 🎞️ **GO TO SLIDE 1** — *Week 14 — Your pages call your API* · it is still up from the gallery — talk to its list before you swipe away from it: *"Last week my app learned to answer programs. Tonight its own pages are the program. First, a food truck's menu that opens under its card without leaving the list or refreshing the page. Then a form that adds a truck, and a button that removes one, both without a reload. After that, what changes when an app runs for real: configuration and secrets. And last, two people changing the same line of code in a shared GitHub repository."*
 
 ### The one fetch you already have
 
@@ -90,7 +90,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 - [ ] *"Tonight the lab comes in seven short blocks. After most parts of my demo, you do the same thing to your Registry. Every block but the last ends at a note that says In class, stop here."*
 - [ ] *"The first block is setup and task 1. There is no database drop tonight. This starter has the same migrations as last week's, so your database, your account and your curator role all carry over."*
-- [ ] *"Sign in with your own email, and check you can see Open a new file on the list. Tonight's target is all five checks, and two pull requests merged."*
+- [ ] *"Sign in with your own email, and check you can see Open a new file on the list. Tonight's target is all four checks, and two pull requests merged."*
 - [ ] 👀 **Watch for:** `there is already an object named 'Cryptids'` — they never ran week 12's lab; the warning in Task 1 has the order. `The ConnectionString property has not been initialized` before `Now listening on:` — the secret is gone (a frozen lab PC); task 1 has the commands. `Could not find a MSBuild project file` — terminal 1 or 2 never ran `cd Cryptids.Web`
 - [ ] **Stop:** the note after **Task 1 in full**. Where they should be: setup's `dotnet test` printed **`Passed: 1`**, the app is running in terminal 1, and they are signed in as their curator, with **＋ Open a new file** on `/Cryptids`
 
@@ -734,12 +734,12 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 - [ ] 👀 **Watch for:** the button does nothing — the listener wasn't replaced. `Only a signed-in curator…` for the curator — they signed out in another tab, or their cookie is older than their role. A red `404` in the console after a close — expected; the README says so
 - [ ] **Stop:** the note after **Task 4 in full**. Where they should be: **`Passed: 4`**
 
-## 5 · Production *(slides 5–7)*
+## 5 · Production *(slides 5–6)*
 
 ### Development, and Production
 
 - [ ] On the `/` tab, **Sign in** as Ada, so the page is as you left it
-- [ ] 🎞️ **GO TO SLIDE 5** — *Development or Production?* · *"Since week 7, your connection string has lived in user secrets on your laptop and in app settings on Azure. Tonight, why it has to be that way, and a third place you need for the homework. Every app runs in an environment, and ASPNETCORE_ENVIRONMENT says which. On my laptop, the launch profile says Development. Nothing on Azure sets it, and with nothing set, the app runs as Production. Two things change. The error page stops showing code, and the app stops reading user secrets."*
+- [ ] 🎞️ **GO TO SLIDE 5** — *Development or Production?* · *"Since week 7, your connection string has lived in user secrets on your laptop and in app settings on Azure. Tonight, why it has to be that way. Every app runs in an environment, and ASPNETCORE_ENVIRONMENT says which. On my laptop, the launch profile says Development. Nothing on Azure sets it, and with nothing set, the app runs as Production. Two things change. The error page stops showing code, and the app stops reading user secrets."*
 - [ ] Still on slide 5, the last row: *"Week 7 said user secrets are read in Development only. Here is what that means for this app."*
 - [ ] **Swipe to the editor, the second terminal. Leave `dotnet watch` running in the first** — measured: this run uses its own port and crashes alone. Say the goal: *"I'll run the same app, on the same laptop, with no launch profile. That makes it Production."*
   ```bash
@@ -750,42 +750,20 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 ### Where each secret lives
 
-- [ ] 🎞️ **GO TO SLIDE 6** — *Where each secret lives* · *"Three places hold secrets in this course, and the repository is never one of them. User secrets on your laptop. App settings on Azure. And tonight a third: GitHub keeps secrets of its own, for a workflow that deploys."*
+- [ ] 🎞️ **GO TO SLIDE 6** — *Where each secret lives* · *"Two places hold secrets in this course, and the repository is never one of them. User secrets on your laptop, and app settings on Azure."*
 - [ ] Still on slide 6, the last line: *"In week 7 I said your laptop and your Azure app sharing one database is not what a real project does. A real project has two: one to develop against and one for production, and nobody's laptop points at production. Changes to the production database are applied by the deploy, not by someone typing database update."*
 
-### A build on every push
+### The repository, for team git
 
-- [ ] **Swipe to the editor.** Say the goal: *"Now a second computer that builds my app every time I push, so I find out it's broken before anybody else does."* Create `.github/workflows/build.yml` — a folder named `.github`, with a folder named `workflows` in it, at the top of the project — and paste:
-  ```yaml
-  # Week 14: GitHub builds Curbside on every push to main and on every pull
-  # request, on a machine of its own. No secrets: a build connects to nothing.
-  name: Build
-
-  on:
-    push:
-      branches: [ main ]
-    pull_request:
-
-  jobs:
-    build:
-      runs-on: ubuntu-latest
-      steps:
-        - uses: actions/checkout@v4
-        - uses: actions/setup-dotnet@v4
-          with:
-            dotnet-version: 10.0.x
-        - run: dotnet build
-  ```
-- [ ] **Say what it is:** *"A workflow. on says when it runs: every push to main, and every pull request. runs-on asks GitHub for a fresh Ubuntu machine. The steps fetch my code, install .NET 10, and build it. It needs no secrets, because a build connects to nothing."*
-- [ ] **Second terminal.** Say the goal: *"GitHub can only build what's on GitHub, so Curbside needs a repository. These are the same steps you take in a few minutes with your Registry. First a .gitignore, so the build output stays out."*
+- [ ] **Second terminal.** Say the goal: *"Team git after the break needs Curbside on GitHub, so it needs a repository. These are the same steps you take in a few minutes with your Registry. First a .gitignore, so the build output stays out."*
   ```bash
   dotnet new gitignore
   ```
-- [ ] Then the first commit, same terminal. *"Everything from tonight goes in one commit, the workflow with it."*
+- [ ] Then the first commit, same terminal. *"Everything from tonight goes in one commit."*
   ```bash
   git init
   git add .
-  git commit -m "Curbside: the trucks page talks to the API, and a build on every push"
+  git commit -m "Curbside: the trucks page talks to the API"
   ```
 - [ ] **Browser, github.com → + → New repository.** Name `curbside-week14`, **Private**, and **no** README, `.gitignore` or license. **Create repository**. *"Private, because Curbside is my app's code. Empty, because everything comes from my laptop."*
 - [ ] The empty repository's page shows three lines under **…or push an existing repository from the command line**. Copy them with the copy button beside them, and paste them into the second terminal. *"Those lines tell my copy where the repository is, name the branch main, and push."* They look like this:
@@ -794,20 +772,18 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
   git branch -M main
   git push -u origin main
   ```
-- [ ] **Browser, reload the repository → Actions.** A run named after the commit, in progress. Click it, then the `build` job: the steps tick off one at a time. 🎯 **When it finishes, ✅.** *"That is CI, continuous integration. Every push gets built somewhere that isn't my laptop."*
-- [ ] 🎞️ **GO TO SLIDE 7** — *CI, then CD* · *"CI builds every push. CD, continuous delivery, goes one step further: when the build on main passes, it deploys. Here is the deploy part, which is your homework. Two steps: check out the code, then Azure's own deploy action, which sends the code to Azure. Azure builds it, the same way it has every time you ran az webapp up. The app's name is written in the file, but the credential is not. It is a GitHub secret, and the file only names it."*
-- [ ] Still on slide 7, the last line: *"Once your homework is done, git push is how your app reaches Azure. I am not deploying Curbside. Nothing I show tonight is deployed."*
+- [ ] **Browser, reload the repository.** 🎯 Curbside's files, with the commit message beside them, and no `bin` or `obj`. *"My laptop's copy is on GitHub now. After the break, a second person gets a copy of their own."*
 
-## Lab E · Task 5 — 15 minutes
+## Lab E · Task 5 — 10 minutes
 
-- [ ] *"Task 5 is a workflow that runs your checks on GitHub, on every push and every pull request. It goes in a .github folder next to Cryptids.Web, not inside it. Then you put your lab in a new private repository called cryptids-team. Team git runs on it after the break."*
+- [ ] *"Task 5 is what I just did, with your Registry: your lab in a new private repository called cryptids-team. Team git runs on it after the break."*
 - [ ] ⚠️ *"Run dotnet new gitignore before your first commit, or bin and obj go up with it."*
-- [ ] 👀 **Watch for:** check 5 red with the file present — `.github` is inside `Cryptids.Web`, or named without its dot. **No run in the Actions tab** — the workflow was made after the push; commit and push again. A run that fails at `dotnet test` — click the step; it prints the same messages as terminal 3. `git push` refusing a password — sign in through the browser window Git opens
-- [ ] **Stop:** the note after **Task 5 in full**. Where they should be: **`Passed: 5`**, and a ✅ run in their repository's Actions tab
+- [ ] 👀 **Watch for:** `bin` and `obj` on GitHub — `dotnet new gitignore` came after the first commit; the README's Stuck list has the fix. `git push` refusing a password — sign in through the browser window Git opens
+- [ ] **Stop:** the note after **Task 5 in full**. Where they should be: **`Passed: 4`**, and their lab on GitHub in a private `cryptids-team` repository
 
 ## ☕ Break
 
-## 6 · Two people, one line *(slide 8)*
+## 6 · Two people, one line *(slide 7)*
 
 ### Two copies
 
@@ -834,7 +810,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
   git commit -am "Ada: the home page heading"
   git push -u origin ada-heading
   ```
-- [ ] **Browser, the repository tab.** **Compare & pull request** → **Create pull request**. Scroll down: the **Build** workflow runs on Ada's branch. *"A pull request asks for a branch to be merged into main. Before anybody reads it, the build has already started."*
+- [ ] **Browser, the repository tab.** **Compare & pull request** → **Create pull request**. *"A pull request asks for a branch to be merged into main. Before it is, somebody else reads it."*
 
 ### Sam's change, to the same line
 
@@ -857,7 +833,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 ### The review, and the conflict
 
 - [ ] Open **Ada's** pull request → **Files changed**. Hover over the new line, click the **+**, comment `Reads well.`, **Add single comment**. *"On a team, Sam would approve this. I am both of them, and GitHub won't let anyone approve their own pull request, so a comment stands in for it."*
-- [ ] **Conversation** tab → when the Build check is ✅, **Merge pull request** → **Confirm merge**
+- [ ] **Conversation** tab → **Merge pull request** → **Confirm merge**
 - [ ] Open **Sam's** pull request. 🎯 **This branch has conflicts that must be resolved.** *"Ada's change is in main now. Sam's branch changes the same line, and git won't guess which one should stay."*
 - [ ] Second terminal, still in Sam's copy. Say the goal: *"Sam brings main into his branch, and settles it on his own machine."*
   ```bash
@@ -872,9 +848,9 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
   git commit --no-edit
   git push
   ```
-- [ ] **Browser, Sam's pull request.** The conflict is gone, and the Build check runs again on the merged code. *"The build checks what the two changes are together, which neither person ever ran."* When it's ✅, **Merge pull request** → **Confirm merge**
-- [ ] 🎞️ **GO TO SLIDE 8** — *Two people, one line* · *"Here is the whole loop. A branch for each change. A pull request, which runs the build and gets a review. A merge. And when two people change the same line, the second one pulls main into their branch, decides, and pushes again."*
-- [ ] Still on slide 8, the last line: *"Nobody works on main. Main only changes through a pull request, after the build has passed."*
+- [ ] **Browser, Sam's pull request.** 🎯 The conflict is gone. *"Sam settled it on his own machine, and pushed the result. Now his pull request can merge."* **Merge pull request** → **Confirm merge**
+- [ ] 🎞️ **GO TO SLIDE 7** — *Two people, one line* · *"Here is the whole loop. A branch for each change. A pull request, which gets a review. A merge. And when two people change the same line, the second one pulls main into their branch, decides, and pushes again."*
+- [ ] Still on slide 7, the last line: *"Nobody works on main. Main only changes through a pull request, after somebody has read it."*
 
 ## Lab F · Team git — 38 minutes
 
@@ -884,18 +860,17 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 - [ ] 👀 **Watch for:** B can't push — the invitation was never accepted. `fatal: Need to specify how to reconcile divergent branches.` — `--no-rebase` was left off. Conflict markers left in the file, committed — open the file, take them out, commit, push. A solo student trying to **Approve** their own pull request — a comment instead
 - [ ] **Stop:** both pull requests merged, and both copies on `main`, pulled
 
-## Lab G · Catch up — 15 minutes
+## Lab G · Catch up — 25 minutes
 
-- [ ] *"This is the last block, and it has no stop. If any of your checks are red, finish those. If you're done, start your homework: the same three moves on your own app, and a workflow that deploys it."*
+- [ ] *"This is the last block, and it has no stop. If any of your checks are red, finish those. If you're done, start your homework: the same three moves on your own app."*
 - [ ] 👀 **Watch for:** anyone still red on check 3 — have them read the message; it names the box names it sent
 - [ ] **No stop.** This block takes whatever time is left before the wrap-up. Anyone finished: **🚀 Done early?** at the bottom of the README, or help a classmate
 
-## 7 · Wrap-up, after the lab *(slide 9)*
+## 7 · Wrap-up, after the lab *(slide 8)*
 
-- [ ] 🎞️ **GO TO SLIDE 9** — *Tonight, in one picture* · walk the rows, one sentence each, and give the status row the emphasis: *"Read the status first. It tells you whether there is a body to read, and what to tell the person."*
-- [ ] Homework: **the same three moves on their own app, and a workflow that deploys it.** *"Your related rows, without leaving your list. An add form and a remove button for your role. And a workflow, so git push is your deploy."*
+- [ ] 🎞️ **GO TO SLIDE 8** — *Tonight, in one picture* · walk the rows, one sentence each, and give the status row the emphasis: *"Read the status first. It tells you whether there is a body to read, and what to tell the person."*
+- [ ] Homework: **the same three moves on their own app.** *"Your related rows, without leaving your list. An add form and a remove button for your role. Then deploy it, the way you have all semester."*
 - [ ] Say what comes after it: *"This is the last homework of the term. Your final project is this same app, and nothing more is required. Week 15's stretch is optional. In week 16 you present the app, running live, so make sure your deployed site works and rehearse showing it."*
 - [ ] ⚠️ Say what the self-check can't see: *"This week's self-check only reads. It opens your list page out of sight and clicks one Show related button, and you stay signed in. It cannot see your add or your remove, because they need your role. Trying both on your deployed site is the last step of the homework, and it's yours."*
-- [ ] 💡 *"The workflow needs a secret from Azure, and the homework has the commands. Your connection string stays where it is, in Azure's app settings. None of it goes in your repository."*
 - [ ] 💡 *"My Curbside is on localhost. Nothing is deployed for it. Yours is graded on its Azure URL."*
 - [ ] 🔗 Week 15: *"Next week is the polish week: a message after a change, search, and pages."*

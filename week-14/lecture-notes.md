@@ -1,6 +1,6 @@
 # Week 14 — Consuming Your API, Production, and Team Git
 
-**What this covers:** calling your own API from your own pages with `fetch`, `async` and `await`; reading the status before the body; changing part of a page without a reload, safely; a form that sends JSON and lists the API's errors; a DELETE whose answer has no body; what changes when your app runs as Production; where each secret lives; CI and CD with GitHub Actions; and two people changing one app with branches, pull requests, reviews and a merge conflict.
+**What this covers:** calling your own API from your own pages with `fetch`, `async` and `await`; reading the status before the body; changing part of a page without a reload, safely; a form that sends JSON and lists the API's errors; a DELETE whose answer has no body; what changes when your app runs as Production; where each secret lives; and two people changing one app with branches, pull requests, reviews and a merge conflict.
 
 **Keep this open while you work.** Every requirement in the homework has a section here, and the 🆘 section at the bottom of the homework links straight into it.
 
@@ -423,129 +423,31 @@ Same code, same laptop, same secret sitting on disk. **That's what Azure sees on
 |---|---|---|
 | your connection string, `Admin:Email` | **user secrets** | your app, on your laptop, in Development |
 | the same two, spelled `ConnectionStrings__DefaultConnection` and `Admin__Email` | **Azure app settings** | your app, on Azure |
-| the credential to deploy | **a GitHub repository secret** | the deploy workflow, on GitHub |
 
-**Never in your repository, and never in a workflow file.** A workflow file is in your repository, which is public. It *names* a secret — `${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}` — and GitHub fills it in while the workflow runs, and hides it in the run's log.
+**Never in your repository.** Your semester project's repository is public, and git keeps every file in its history, even after you delete it.
 
 ### What a real project does
 
 Week 7 said your laptop and your Azure app sharing one database isn't what a real project does. Here's what it does instead:
 
 - **Two databases.** One to develop against, and one for production. A laptop's user secrets point at the first; the production app's settings point at the second, and **no laptop has the production connection string at all.**
-- **Migrations reach production through the deploy**, not through someone typing `dotnet ef database update`. One common way: the pipeline runs `dotnet ef migrations script --idempotent`, which writes the SQL for every migration the database hasn't had yet, and applies it as a step, where it's logged and repeatable.
+- **Migrations reach production as part of the deploy**, not through someone typing `dotnet ef database update` on a laptop. One common way: `dotnet ef migrations script --idempotent` writes the SQL for every migration the database hasn't had yet, and the deploy applies it, where it's logged and repeatable.
 - **Usually a third place in between**, often called staging: a copy of production where a deploy is tried first.
 
 This course keeps one database on purpose: your school SQL Server account is one database, and the point of week 7's exercise was seeing two computers share it.
 
 ---
 
-## Part 9: CI and CD with GitHub Actions
-
-**CI, continuous integration:** every push is built, and tested where there are tests, on a machine that isn't yours. A push that breaks the build shows up red for everyone, before anybody merges it.
-
-**CD, continuous delivery:** when the build on `main` passes, it's deployed. `git push` becomes how your app reaches Azure.
-
-**GitHub Actions** runs both, from a **workflow**: a YAML file in `.github/workflows/` in your repository.
-
-### A build on every push
-
-Curbside's, at `.github/workflows/build.yml` — `.github` is a folder at the top of the repository, starting with a dot:
-
-```yaml
-# Week 14: GitHub builds Curbside on every push to main and on every pull
-# request, on a machine of its own. No secrets: a build connects to nothing.
-name: Build
-
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: 10.0.x
-      - run: dotnet build
-```
-
-- **`on:`** — when it runs: every push to `main`, and every pull request.
-- **`runs-on:`** — a fresh Ubuntu machine from GitHub, every time.
-- **`steps:`** — `actions/checkout` fetches your code, `actions/setup-dotnet` installs .NET 10, and `run:` is any command you'd type.
-- **YAML is indentation.** Each level is two spaces deeper than the one above it, and a tab breaks the file. Paste rather than type.
-
-The lab's workflow is the same, with `dotnet test Cryptids.Checks` in place of `dotnet build`. It needs **no secrets**: the checks use an in-memory database (measured: all five pass with no user secrets anywhere).
-
-Push, then open the repository's **Actions** tab: a run named after your commit, each step ticking off, ✅ or ❌ at the end. Click a failed step to read exactly what the command printed.
-
-### A deploy on every push to main
-
-**The deploy needs a credential**, so it has more setup than the build. Your homework does it, once:
-
-1. **Turn on the deploy credential your app already has.** Apps made by `az webapp up` come with publishing credentials **switched off** — measured on three apps made that way this term. One command, from the folder with your `.csproj`, using your own app's name and resource group:
-
-   ```bash
-   az resource update --resource-group <YOUR-GROUP> --namespace Microsoft.Web --resource-type basicPublishingCredentialsPolicies --parent sites/<YOUR-APP> --name scm --set properties.allow=true
-   ```
-
-   Your group's name is in the `.azure/config` file that `az webapp up` wrote in your project folder, on the line `group = …`.
-
-2. **Copy the credential.** This prints it — a block of XML called a **publish profile**:
-
-   ```bash
-   az webapp deployment list-publishing-profiles --name <YOUR-APP> --resource-group <YOUR-GROUP> --xml
-   ```
-
-   ⚠️ **It's a password.** Copy it straight into the next step and nowhere else.
-
-3. **Give it to GitHub.** Your repository → **Settings** → **Secrets and variables** → **Actions** → **New repository secret**. Name: `AZURE_WEBAPP_PUBLISH_PROFILE`. Secret: paste. **Add secret**.
-
-4. **The workflow**, at `.github/workflows/deploy.yml`:
-
-   ```yaml
-   # Week 14: every push to main deploys to Azure.
-   name: Deploy
-
-   on:
-     push:
-       branches: [ main ]
-     workflow_dispatch:
-
-   jobs:
-     deploy:
-       runs-on: ubuntu-latest
-       steps:
-         - uses: actions/checkout@v4
-         - uses: azure/webapps-deploy@v3
-           with:
-             app-name: <YOUR-APP>
-             publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-             package: .
-   ```
-
-   `actions/checkout` fetches your code, and `azure/webapps-deploy` sends it to your app, using the secret. **Azure builds it**, exactly the way it has every time you ran `az webapp up`: that command set an app setting, `SCM_DO_BUILD_DURING_DEPLOYMENT`, which tells Azure to build whatever it's sent. `workflow_dispatch` adds a **Run workflow** button on the Actions tab, for deploying without a new commit.
-
-   ⚠️ **Most examples you'll find online run `dotnet publish` first and send the result.** On an app made by `az webapp up` that fails: Azure tries to build the already-built files and stops with `Couldn't detect a version for the platform 'dotnet' in the repo.` Measured. Send the code, as above.
-
-Push, and the **Actions** tab shows a **Deploy** run. Measured on a free-tier app: about a minute and a half, then ✅ and the new code is live. A compile error turns the run red at `azure/webapps-deploy` — click it, and the log shows the same `error CS…` your terminal would, with the file and the line — **and your site keeps running the last version that built.**
-
-**Your app settings aren't touched by a deploy.** The connection string and `Admin__Email` stay on Azure, where `az webapp config appsettings set` put them in weeks 7 and 12.
-
----
-
-## Part 10: Team git
+## Part 9: Team git
 
 Git was built for many people changing one project at once. Four habits make it work:
 
 1. **A branch for each change.** `git switch -c ada-heading` makes a branch and moves you onto it. Your commits go there, and `main` doesn't move.
-2. **A pull request.** Push the branch (`git push -u origin ada-heading`), and GitHub offers **Compare & pull request**. A pull request asks for the branch to be merged into `main`, and it's where the build runs and where people read the change.
+2. **A pull request.** Push the branch (`git push -u origin ada-heading`), and GitHub offers **Compare & pull request**. A pull request asks for the branch to be merged into `main`, and it's where people read the change.
 3. **A review.** **Files changed** shows every line. Hover over one and click **+** to comment on it; **Review changes → Approve** says it's ready. GitHub won't let you approve your own.
 4. **A merge.** **Merge pull request** puts the branch's commits on `main`.
 
-**Nobody works on `main`. It only changes through a pull request.** Real teams make GitHub enforce that, with a rule that a pull request needs a passing build and an approval before it can merge.
+**Nobody works on `main`. It only changes through a pull request.** Real teams make GitHub enforce that, with a rule that a pull request needs an approval before it can merge.
 
 ### A merge conflict
 
@@ -580,17 +482,16 @@ git commit --no-edit
 git push
 ```
 
-`--no-edit` keeps git's own message for the merge commit instead of opening an editor to ask for one. The pull request loses its conflict, and the build runs again on the two changes together — which neither person ever ran.
+`--no-edit` keeps git's own message for the merge commit instead of opening an editor to ask for one. The pull request loses its conflict, and can be merged.
 
 ---
 
-## Part 11: What this course leaves out
+## Part 10: What this course leaves out
 
 - **Frameworks for the page** — React, Vue, Angular, and libraries like htmx. They exist because a page that changes many parts of itself gets hard to keep in step by hand; you met the problem in Part 3's stale count. Plain `fetch` is what every one of them does underneath.
-- **OpenID Connect for deploys** — the way Microsoft recommends a workflow sign in to Azure, with no stored password. It needs permission to register an application in your Azure directory, which a student subscription may not have. The publish profile needs none.
-- **Deployment slots, staging and approvals** — paid App Service tiers, mostly.
+- **Deploying from GitHub** — a workflow (GitHub Actions) can build every push and deploy `main` to Azure by itself. This course deploys with `az webapp up`, the way you have all semester.
 - **`git rebase`** — the other way to bring `main` into a branch, by replaying your commits on top of it. It makes a straighter history and rewrites your commits to do it.
-- **Branch protection rules** — making GitHub refuse a merge without a passing build and an approval.
+- **Branch protection rules** — making GitHub refuse a merge without an approval.
 - **CORS** — still not needed. Your pages and your API are the same site.
 
 ---
@@ -641,21 +542,6 @@ git push
 
 **`The ConnectionString property has not been initialized`, from `dotnet run --no-launch-profile` or on Azure**
 - Production doesn't read user secrets. On Azure, the app setting `ConnectionStrings__DefaultConnection` has to be there. [Part 7](#part-7-development-and-production).
-
-**The Actions tab shows no run**
-- The workflow isn't in `.github/workflows/` at the top of the repository, the folder's name is missing its dot, or the push happened before the file existed. Commit and push again.
-
-**A Deploy run fails at `azure/webapps-deploy` with `Unauthorized (CODE: 401)`**
-- The log says `Unauthorized (CODE: 401)`: the publishing credentials are switched off. Run step 1 of [A deploy on every push to main](#a-deploy-on-every-push-to-main) again, then **Re-run failed jobs** on the run. Measured: the secret you already have works again.
-
-**A Deploy run fails at `azure/webapps-deploy`, and the log shows `error CS…`**
-- Your code doesn't build. It's the same error your own terminal would show, with the file and the line. Fix it, commit, push. Your site keeps the last version that built.
-
-**A Deploy run fails with `Couldn't detect a version for the platform 'dotnet' in the repo.`**
-- The workflow ran `dotnet publish` and sent the result. Send the code instead: copy `deploy.yml` from the homework again. [A deploy on every push to main](#a-deploy-on-every-push-to-main).
-
-**A workflow run fails at `dotnet build` or `dotnet test`**
-- Click the step. It's the same error your terminal would print. Fix it, commit, push.
 
 **`fatal: Need to specify how to reconcile divergent branches.`**
 - `git pull --no-rebase origin main`. [A merge conflict](#a-merge-conflict).

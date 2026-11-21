@@ -36,7 +36,7 @@ style: |
 1. **A truck's menu** — a GET from the page
 2. **A form that sends JSON** — a POST, and its errors
 3. **Remove** — a DELETE, and what has no body
-4. **Production** — environments, secrets, CI and CD
+4. **Production** — environments and secrets
 5. **Team git** — two people, one line
 
 ---
@@ -138,39 +138,10 @@ One listener on the grid answers **every** card, even ones added later.
 |---|---|---|
 | connection string, `Admin:Email` | user secrets | your app, on your laptop |
 | the same two, spelled with `__` | Azure app settings | your app, on Azure |
-| the credential to deploy | a GitHub repository secret | the workflow, on GitHub |
 
-**Never in the repository. Never in a workflow file.**
+**Never in the repository.**
 
 A real project has **two databases**, and only the deploy changes production's.
-
----
-
-<!-- _footer: '🖥️ Demo §5 · a build on every push' -->
-
-<style scoped>
-  section pre { font-size: 0.6em; }
-</style>
-
-## CI, then CD
-
-**CI:** every push is built, somewhere that isn't your laptop.
-**CD:** when main's build passes, it deploys.
-
-```yaml
-on:
-  push:
-    branches: [ main ]
-# … then two steps:
-      - uses: actions/checkout@v4
-      - uses: azure/webapps-deploy@v3
-        with:
-          app-name: tg-web-xx1234
-          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-          package: .
-```
-
-The file **names** the secret. **Azure builds the code.**
 
 ---
 
@@ -179,9 +150,9 @@ The file **names** the secret. **Azure builds the code.**
 ## Two people, one line
 
 1. **A branch** for each change
-2. **Push**, and open **a pull request** — the build runs
+2. **Push**, and open **a pull request**
 3. **A review**, then **merge**
-4. Same line changed? `git pull --no-rebase origin main` — decide, commit, push, and the build runs again
+4. Same line changed? `git pull --no-rebase origin main` — decide, commit, push
 
 **Nobody works on main. Main only changes through a pull request.**
 
@@ -197,5 +168,4 @@ The file **names** the secret. **Azure builds the code.**
 | **The status** | read it first: is there a body? |
 | **`textContent`** | data onto the page, as text |
 | **Production** | no user secrets: app settings |
-| **CI, CD** | every push built; main deployed |
-| **A pull request** | a build and a review before main |
+| **A pull request** | a review before main |

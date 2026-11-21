@@ -1,6 +1,6 @@
 # Week 14 — Lesson Plan
 
-**Topic:** Consuming your API with JavaScript · production: configuration, secrets and CI/CD · team git
+**Topic:** Consuming your API with JavaScript · production: configuration and secrets · team git
 **Session length:** 3h 45m
 
 > Three topics in one night, so each gets one move done properly. **JavaScript gets most of it** — three demo segments and three lab blocks — because it's the graded homework. Production gets one segment and one block, and team git gets one segment and the longest block, ungraded, on a throwaway repository. The night's one real failure is **§3's `.json()` on a `401`**: the first draft of the form's script asks an empty answer for its JSON, and the console says `Unexpected end of JSON input`. And one rule, said out loud in §7: **read the status first.**
@@ -15,8 +15,7 @@ By the end of this session, students can:
 4. Send a form as JSON, list the API's `400` errors, and read a `201`'s `Location` back.
 5. Send a DELETE, and confirm it with a GET that answers `404`.
 6. Say what changes when an app runs as Production, and where each secret lives.
-7. Write a GitHub Actions workflow that builds or tests on every push, and say what CD adds.
-8. Work on a branch, open and review a pull request, and resolve a merge conflict.
+7. Work on a branch, open and review a pull request, and resolve a merge conflict.
 
 ## Materials
 
@@ -44,16 +43,16 @@ By the end of this session, students can:
 | 1:20 | 10 min | **☕ Break** |
 | 1:30 | 8 min | **Remove, without a reload** *(demo §4)*. The button, `removeTruck`, the listener. A `204` read back as a `404`; the second tab; a `401`. |
 | 1:38 | 10 min | **Lab D · Task 4**. Close a file from the list. **Stop at `Passed: 4`.** |
-| 1:48 | 15 min | **Production** *(slides 5–7, demo §5)*. Slide 5. 🎯 **`dotnet run --no-launch-profile`: the connection string is gone.** Slide 6. A build workflow, then the repository made live — the steps Lab E repeats — a push, a ✅. Slide 7: CD. |
-| 2:03 | 15 min | **Lab E · Task 5**. The checks workflow, and the lab in a private repository. **Stop at `Passed: 5`** and a ✅ run. |
-| 2:18 | 10 min | **☕ Break** |
-| 2:28 | 14 min | **Two people, one line** *(slide 8, demo §6)*. A second clone. Two branches, two pull requests, a comment, a merge, a conflict, `--no-rebase`, resolved. |
-| 2:42 | 38 min | **Lab F · Team git** *(no check)*. Pairs, or alone with two clones. **Stop when both pull requests are merged.** |
-| 3:20 | 15 min | **Lab G · Catch up** *(no check)*. Anyone red finishes; anyone done starts the homework. **No stop.** |
-| 3:35 | 10 min | **Wrap-up** *(slide 9, demo §7)*. One sentence per row. Homework: the same moves on their own app, and a deploy workflow. ⚠️ Say what the self-check can't see — **their add and their remove**. |
+| 1:48 | 10 min | **Production** *(slides 5–6, demo §5)*. Slide 5. 🎯 **`dotnet run --no-launch-profile`: the connection string is gone.** Slide 6. Then the repository made live for team git — the steps Lab E repeats. |
+| 1:58 | 10 min | **Lab E · Task 5** *(no check)*. The lab in a private repository, for team git. **Stop when it's on GitHub**, with no `bin` or `obj`. |
+| 2:08 | 10 min | **☕ Break** |
+| 2:18 | 14 min | **Two people, one line** *(slide 7, demo §6)*. A second clone. Two branches, two pull requests, a comment, a merge, a conflict, `--no-rebase`, resolved. |
+| 2:32 | 38 min | **Lab F · Team git** *(no check)*. Pairs, or alone with two clones. **Stop when both pull requests are merged.** |
+| 3:10 | 25 min | **Lab G · Catch up** *(no check)*. Anyone red finishes; anyone done starts the homework. **No stop.** |
+| 3:35 | 10 min | **Wrap-up** *(slide 8, demo §7)*. One sentence per row. Homework: the same moves on their own app. ⚠️ Say what the self-check can't see — **their add and their remove**. |
 
 > [!NOTE]
-> **The table sums to exactly 225 minutes: 75 of demo, 110 of lab in seven blocks, 20 of break, and 20 of gallery and wrap-up.** The longest stretch of watching is **16 minutes — §3**. The breaks sit after Lab C and after Lab E, so team git starts fresh. **If the night runs long, the minutes come out of Lab G, then Lab F — never out of a break, and never out of a lab block before Lab E.** Team git is ungraded and can be finished at home with two clones; the homework can't do without tasks 2–4.
+> **The table sums to exactly 225 minutes: 70 of demo, 115 of lab in seven blocks, 20 of break, and 20 of gallery and wrap-up.** The longest stretch of watching is **16 minutes — §3**. The breaks sit after Lab C and after Lab E, so team git starts fresh. **If the night runs long, the minutes come out of Lab G, then Lab F — never out of a break, and never out of a lab block before Lab E.** Team git is ungraded and can be finished at home with two clones; the homework can't do without tasks 2–4.
 
 ## Instructor notes
 
@@ -66,10 +65,8 @@ By the end of this session, students can:
 - **A form's values are text.** Measured: the API accepts `"4.3"` for a `double`, but `""` is a `400` about converting, and a checkbox's `"on"` is a `400` for a `bool`. That's why the scripts use `Number(…)`, `|| null` for a date, and `.checked`.
 - **§4's red `404` in the console is the read-back.** A `204` has no body, so the script GETs the truck again; the `404` means it's gone.
 - **§5's crash is safe to run beside `dotnet watch`.** Measured: `dotnet run --no-launch-profile` in the same folder builds, crashes with `The ConnectionString property has not been initialized`, and the watched app keeps the same process and keeps serving.
-- ⚠️ **Apps made by `az webapp up` have their publishing credentials switched off** (measured on three). The homework's deploy turns them on with one command before it copies the publish profile. **And the workflow sends the code, not a `dotnet publish` build:** `az webapp up` set `SCM_DO_BUILD_DURING_DEPLOYMENT`, so Azure builds what it's sent, and a published package fails with `Couldn't detect a version for the platform 'dotnet'`. Most examples online publish first, so expect a student who copied one. Measured green in 1m37s on a free-tier app. **Students deploy; you don't.** Curbside's workflow only builds.
-- **The checks' CI needs no secrets.** Measured: all five pass with no user-secrets store at all.
 - ⚠️ **`git pull` alone fails in §6 and in team git.** Measured on git 2.50: with diverged branches and no `pull.rebase` set, it stops with `fatal: Need to specify how to reconcile divergent branches.` Every document says `git pull --no-rebase origin main`.
 - **GitHub won't let anyone approve their own pull request.** You're both people in §6, so a comment stands in for the approval. Solo students do the same.
-- **The lab's watch-fors are task 2's missing `<script>` line, task 3's box names, task 5's `.github` folder, and team git's `--no-rebase`.**
-- **Don't teach React or other frameworks, `git rebase`, branch protection, OpenID Connect deploys, staging slots, or CORS.** The notes say so in one paragraph each.
-- **Nothing you show is deployed.** Curbside runs on localhost all night, and its repository only builds.
+- **The lab's watch-fors are task 2's missing `<script>` line, task 3's box names, task 5's `.gitignore` coming before the first commit, and team git's `--no-rebase`.**
+- **Don't teach React or other frameworks, deploying from GitHub, `git rebase`, branch protection, or CORS.** The notes say so in one paragraph each.
+- **Nothing you show is deployed.** Curbside runs on localhost all night, and its repository is only for team git.

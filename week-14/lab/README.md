@@ -2,9 +2,9 @@
 
 Last week the Registry learned to answer programs. Tonight its own pages are the program.
 
-A creature's reports open under its card without leaving the list. A report gets filed from the creature's own page and appears there without a reload. A curator closes a file from the list, and the card goes. Then GitHub runs your checks on every push, and you and a classmate change the same line on purpose to see what a merge conflict looks like. **No table changes, no migration, and no C# to write**: the API is week 13's, unchanged. Tonight is JavaScript, two views and one workflow file.
+A creature's reports open under its card without leaving the list. A report gets filed from the creature's own page and appears there without a reload. A curator closes a file from the list, and the card goes. Then your lab goes on GitHub, and you and a classmate change the same line on purpose to see what a merge conflict looks like. **No table changes, no migration, and no C# to write**: the API is week 13's, unchanged. Tonight is JavaScript and two views.
 
-**Time:** ~113 minutes in class, in seven blocks. Each of the first six follows the part of the demo it practices, and every block but the last ends at an **In class, stop here** note. The blocks are: **Setup and task 1** · task 2 · task 3 · task 4 · task 5 · **team git** · a last block for catching up. **In-class target: all five checks green, and two pull requests merged.**
+**Time:** ~115 minutes in class, in seven blocks. Each of the first six follows the part of the demo it practices, and every block but the last ends at an **In class, stop here** note. The blocks are: **Setup and task 1** · task 2 · task 3 · task 4 · task 5 · **team git** · a last block for catching up. **In-class target: all four checks green, and two pull requests merged.**
 
 ## Setup
 
@@ -53,7 +53,7 @@ Terminal 3 stays in `CryptidsJs`.
 dotnet test Cryptids.Checks
 ```
 
-**1 / 5 passing.** Check 1 is the Registry you were handed, already working. The other four are tonight. Check 2's message says `/Cryptids loads no script of yours yet`. That's correct: task 2 writes one.
+**1 / 4 passing.** Check 1 is the Registry you were handed, already working. The other three are tonight. Check 2's message says `/Cryptids loads no script of yours yet`. That's correct: task 2 writes one.
 
 **Now carry straight on to [Task 1](#task-1-in-full)** — it's part of this first block, which ends at the **In class, stop here** note after it.
 
@@ -64,9 +64,6 @@ dotnet test Cryptids.Checks
 
 ```
 CryptidsJs/
-├─ .github/
-│   └─ workflows/
-│       └─ checks.yml               ← task 5 (new)
 └─ Cryptids.Web/
     ├─ Views/Cryptids/
     │   ├─ Index.cshtml             ← tasks 2 and 4
@@ -89,7 +86,7 @@ CryptidsJs/
 | 2 | `AQuickLookNeedsNoReload` | **A creature's reports, under its card** — a GET, without leaving the list. **[Task 2 in full ↓](#task-2-in-full)** |
 | 3 | `AReportFilesWithoutLeavingThePage` | **File a report from the creature's page** — a POST, its errors, and the report read back. **[Task 3 in full ↓](#task-3-in-full)** |
 | 4 | `OnlyACuratorCanCloseAFileFromTheList` | **Close a file from the list, as a curator** — a DELETE, and the 401 and 403 it can get. **[Task 4 in full ↓](#task-4-in-full)** |
-| 5 | `TheChecksRunOnEveryPush` | **GitHub runs your checks** — a workflow, and your lab in a repository of its own. **[Task 5 in full ↓](#task-5-in-full)** |
+| 5 | *(no check)* | **Your lab on GitHub** — a private repository of its own, for team git. **[Task 5 in full ↓](#task-5-in-full)** |
 | 👥 | — | **Team git: a branch, a pull request, a review and a merge conflict**, with a classmate or on your own. No check, no points. **[Team git in full ↓](#team-git-in-full)** |
 
 ### Task 1 in full
@@ -146,7 +143,7 @@ dotnet watch
 **Sign in with your own email.** You should see **＋ Open a new file** on `/Cryptids`. That's your curator role, and task 4 needs it. That's task 1 done: nothing here changes a check, because the checks run on a database of their own.
 
 > [!NOTE]
-> **In class, stop here.** Task 2 comes after the next part of the demo. Checks 2 to 5 are still red, and that's expected. Finished early? Open `wwwroot/api-tester.html` and find its one `fetch` call. Which line reads the status, and which reads the body? Or help a classmate get signed in. Working at home? Carry straight on.
+> **In class, stop here.** Task 2 comes after the next part of the demo. Checks 2 to 4 are still red, and that's expected. Finished early? Open `wwwroot/api-tester.html` and find its one `fetch` call. Which line reads the status, and which reads the body? Or help a classmate get signed in. Working at home? Carry straight on.
 
 ### Task 2 in full
 
@@ -240,7 +237,7 @@ dotnet test Cryptids.Checks
 **`Passed: 2`** — checks 1 and 2. Check 3's message says `/Cryptids/Details/2 loads no script of yours yet`. That's correct: task 3 writes one.
 
 > [!NOTE]
-> **In class, stop here.** Task 3 comes after the next part of the demo. Checks 3 to 5 are still red, and that's expected. Finished early? The line at the top still says how many creatures are on file. Where did that number come from: the server, or your script? Or help a classmate find a misspelled id. Working at home? Carry straight on.
+> **In class, stop here.** Task 3 comes after the next part of the demo. Checks 3 and 4 are still red, and that's expected. Finished early? The line at the top still says how many creatures are on file. Where did that number come from: the server, or your script? Or help a classmate find a misspelled id. Working at home? Carry straight on.
 
 ### Task 3 in full
 
@@ -465,54 +462,14 @@ Now **Sign out**. The buttons go, because the page is drawn again for a visitor.
 dotnet test Cryptids.Checks
 ```
 
-**`Passed: 4`** — checks 1 to 4. Check 5's message says there's no workflow in `CryptidsJs/.github/workflows/`. That's correct: task 5 adds one.
+**`Passed: 4`** — all four. 🎉
 
 > [!NOTE]
-> **In class, stop here.** Task 5 comes after the next part of the demo. Check 5 is still red, and that's expected. Finished early? Sign in, open `/Cryptids` in **two** tabs, close a test creature's file in one, then click **👀 Quick look** on the same creature in the other. Which line answers? Or help a classmate. Working at home? Carry straight on.
+> **In class, stop here.** Task 5 comes after the next part of the demo. Finished early? Sign in, open `/Cryptids` in **two** tabs, close a test creature's file in one, then click **👀 Quick look** on the same creature in the other. Which line answers? Or help a classmate. Working at home? Carry straight on.
 
 ### Task 5 in full
 
-**Check:** `Check5_TheChecksRunOnEveryPush`
-
-**The goal:** GitHub runs `dotnet test Cryptids.Checks` on a machine of its own, every time you push and on every pull request. That's **CI**, continuous integration: nobody merges code whose checks are red, because everybody can see them.
-
-**The workflow.** In `CryptidsJs` — the folder holding both projects, **not** inside `Cryptids.Web` — create a folder named **`.github`**, with a **`workflows`** folder inside it, and in that a file named **`checks.yml`**:
-
-```yaml
-# Week 14: GitHub runs the Registry's checks on every push to main and on
-# every pull request, on a machine of its own. No secrets: the checks use an
-# in-memory database, so there is nothing to connect to.
-name: Checks
-
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-
-jobs:
-  checks:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: 10.0.x
-      - run: dotnet test Cryptids.Checks
-```
-
-**Spaces matter in YAML.** Each level is indented two spaces more than the one above it, and a tab breaks the file. Paste rather than type.
-
-`on:` says when it runs. `runs-on:` asks GitHub for a fresh Ubuntu machine. The steps fetch your code, install .NET 10, and run the same command you run in terminal 3. **It needs no secrets**: the checks never connect to SQL Server.
-
-**Run the checks, in terminal 3:**
-
-```bash
-dotnet test Cryptids.Checks
-```
-
-**`Passed: 5`** — all five. 🎉
-
-**Now put it on GitHub, where the workflow runs.** This is a **throwaway repository**, for tonight and for team git — not your semester project.
+**No check.** **The goal:** your lab on GitHub, in a private repository of its own. Team git runs on it after the break. This is a **throwaway repository**, for tonight and for team git — not your semester project.
 
 1. On github.com, **+** → **New repository**. Name it **`cryptids-team`**, choose **Private**, and **don't** add a README, a `.gitignore` or a license. **Create repository**.
 2. **In terminal 3**, in `CryptidsJs`, make the `.gitignore` first, so `bin` and `obj` stay out:
@@ -526,7 +483,7 @@ dotnet test Cryptids.Checks
    ```bash
    git init
    git add .
-   git commit -m "The Registry, with its checks running on GitHub"
+   git commit -m "The Registry calls its own API"
    ```
 
 4. GitHub's empty-repository page shows three lines under **…or push an existing repository from the command line**. Copy them with the copy button beside them, and paste them into terminal 3. They look like this, with your own name in the address:
@@ -537,7 +494,7 @@ dotnet test Cryptids.Checks
    git push -u origin main
    ```
 
-5. On GitHub, open your repository's **Actions** tab. A run named after your commit message is in progress; click it. When it finishes it turns ✅, and the `dotnet test` step says `Passed: 5`.
+5. Reload the repository's page on GitHub. Your files are there, with your commit message beside them, and there's no `bin` or `obj` folder.
 
 > [!NOTE]
 > **In class, stop here.** Team git comes after the break and the next part of the demo, and it runs on this repository. Finished early? Find your classmate for team git, and swap GitHub usernames. Working at home? Team git needs two people, or two folders: [Team git in full](#team-git-in-full) shows both.
@@ -572,7 +529,7 @@ git commit -am "<YOUR-NAME>: the home page heading"
 git push -u origin <YOUR-NAME>-heading
 ```
 
-**5. Each of you, a pull request.** On the repository's page, GitHub shows **Compare & pull request** for your branch: click it, then **Create pull request**. Under it, the **Checks** workflow runs on your branch, and turns ✅.
+**5. Each of you, a pull request.** On the repository's page, GitHub shows **Compare & pull request** for your branch: click it, then **Create pull request**.
 
 **6. Review the other one's.** Open your partner's pull request → **Files changed**. Hover over the changed line, click the **+** that appears, and leave a comment. Then **Review changes** → **Approve** → **Submit review**.
 
@@ -601,7 +558,7 @@ git push
 
 `--no-edit` keeps git's own message for the merge, instead of opening an editor to ask for one.
 
-**9. Finish it.** B's pull request no longer has a conflict, and the **Checks** workflow runs again on the merged code. When it's ✅, A merges it. Both of you: switch back to `main` and pull, and your copies match:
+**9. Finish it.** B's pull request no longer has a conflict, and A merges it. Both of you: switch back to `main` and pull, and your copies match:
 
 ```bash
 git switch main
@@ -618,7 +575,7 @@ Do every step yourself, as both people. Your second copy is a second clone: in s
 ## Rules
 
 - **Never edit `Cryptids.Checks`.** If a check looks wrong, tell me.
-- **Your code changes are in `Cryptids.Web` only.** Task 5's workflow is the one file outside it, in `CryptidsJs/.github/workflows/`.
+- **Your code changes are in `Cryptids.Web` only.**
 - `dotnet test Cryptids.Checks` runs from `CryptidsJs`, the folder above both projects.
 - **The checks don't need wifi or SQL Server**, and they don't run your JavaScript. 5/5 does **not** prove your connection string works, or that a button does anything. Your browser proves both.
 
@@ -637,9 +594,7 @@ Do every step yourself, as both people. Your second copy is a second clone: in s
 - **The report saves, then shows on the wrong creature** — the hidden `cryptidId` isn't `@Model.Id`.
 - **🗑️ Close the file says `Only a signed-in curator…`, and you're the curator** — your cookie is older than your role, or you signed out in another tab. Sign out and back in.
 - **A red `404` in the console after closing a file** — that's the read-back saying the creature is gone. Expected.
-- **Check 5 says there's no workflow** — `.github` belongs in `CryptidsJs`, next to `Cryptids.Web`, and its name starts with a dot.
-- **GitHub's Actions tab shows nothing** — the workflow isn't at `.github/workflows/checks.yml` in the repository, or you pushed before you made it. Make it, commit, push.
-- **The Actions run fails at `dotnet test`** — click the failed step: it prints the same check messages you get in terminal 3.
+- **`bin` and `obj` are on GitHub** — the first commit came before `dotnet new gitignore`. In terminal 3: `dotnet new gitignore`, then `git rm -r --cached .`, `git add .`, `git commit -m "Ignore build output"` and `git push`. Your files stay on your disk; they leave the repository.
 - **`git push` asks for a password and refuses it** — GitHub doesn't take passwords. Sign in through the browser window Git opens, the way you did in week 3.
 - **`fatal: Need to specify how to reconcile divergent branches.`** — use `git pull --no-rebase origin main`. [Team git in full ↑](#team-git-in-full).
 - **"Could not find a MSBuild project file"** — that terminal is standing in `CryptidsJs`, which holds two projects. `dotnet watch`, `dotnet ef` and `dotnet user-secrets` need one: run `cd Cryptids.Web` in terminals 1 and 2.

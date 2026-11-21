@@ -26,8 +26,8 @@
 //  check doesn't hold it. Trying them on your deployed site, signed in as
 //  yourself, is a requirement of its own.
 //
-//  12 of the 20 points are in here. The rest: 5 from your repo (the workflow
-//  that deploys, its last run, and the add and remove in your script) and 3
+//  12 of the 20 points are in here. The rest: 5 from your repo (the add and
+//  the remove in your script, and your API's addresses in your README) and 3
 //  from commits.
 // ═══════════════════════════════════════════════════════════════════════════
 (function () {
@@ -407,9 +407,9 @@
     : null;
 
   const BY_HAND = [
-    "2 pts — a workflow in .github/workflows that deploys your app to Azure on every push to main",
-    "1 pt — its last run on main succeeded",
-    "2 pts — your list page's script adds a record (POST) and removes one (DELETE) through your API",
+    "2 pts — your list page's script adds a record through your API (a POST)",
+    "2 pts — your list page's script removes a record through your API (a DELETE)",
+    "1 pt — your README lists your API's addresses",
     "3 pts — 3+ meaningful commits, pushed to a public repo",
   ];
 
@@ -421,7 +421,7 @@
 
   const WHERE_THE_POINTS_ARE =
     "12 of the 20 points are in this script — everything a visitor's browser can see. The other 8 are "
-    + "in your repo and on GitHub.";
+    + "in your repo.";
 
   const JUST_READS = "It only read: nothing was sent but GETs, and you're still signed in as whoever you were.";
 
