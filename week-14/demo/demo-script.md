@@ -137,7 +137,8 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
       }
 
       const truck = await response.json();
-      menu.textContent = truck.specials.length === 0 ? "Nothing on the menu yet." : "";
+      menu.textContent =
+          truck.specials.length === 0 ? "Nothing on the menu yet." : "";
       for (const special of truck.specials) {
           const item = document.createElement("li");
           item.textContent = `${special.dish} · ${special.servedOn} · $${special.price.toFixed(2)}`;
@@ -154,7 +155,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
       }
   });
   ```
-- [ ] **Say what it is:** *"showMenu is slide 2's three steps. It asks the API for one truck (line 11), reads the status (line 12), and only then reads the JSON (line 17). Then it adds one list item per special (lines 19–22), with textContent (line 21). At the bottom, one click listener on the whole grid (line 28). closest finds the card the click was in (line 29), and if the click was on the button (line 30), it shows that truck's menu (line 31)."*
+- [ ] **Say what it is:** *"showMenu is slide 2's three steps. It asks the API for one truck (line 11), reads the status (line 12), and only then reads the JSON (line 17). Then it adds one list item per special (lines 20–23), with textContent (line 22). At the bottom, one click listener on the whole grid (line 29). closest finds the card the click was in (line 30), and if the click was on the button (line 31), it shows that truck's menu (line 32)."*
 - [ ] Say the goal: *"Last, the page has to load trucks.js."* At the very bottom of `Views/Trucks/Index.cshtml`, below everything, paste:
   ```cshtml
 
