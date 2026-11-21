@@ -108,7 +108,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
               <div>
                   <button type="button" class="btn btn-link px-0 show-menu">Show the menu</button>
               </div>
-              <ul class="menu list-unstyled small"></ul>
+              <ul class="menu list-group list-group-flush small"></ul>
           </div>
       }
   </div>
@@ -141,6 +141,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
           truck.specials.length === 0 ? "Nothing on the menu yet." : "";
       for (const special of truck.specials) {
           const item = document.createElement("li");
+          item.className = "list-group-item";
           item.textContent = `${special.dish} · ${special.servedOn} · $${special.price.toFixed(2)}`;
           menu.append(item);
       }
@@ -219,7 +220,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
           <div>
               <button type="button" class="btn btn-link px-0 show-menu">Show the menu</button>
           </div>
-          <ul class="menu list-unstyled small"></ul>`;
+          <ul class="menu list-group list-group-flush small"></ul>`;
       card.querySelector(".card-title").textContent = truck.name;
       card.querySelector(".card-subtitle").textContent = `${truck.cuisine} · ${truck.city}`;
       return card;

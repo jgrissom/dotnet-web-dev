@@ -66,7 +66,7 @@ In `Views/Trucks/Index.cshtml`, the grid of cards becomes this — it replaces t
             <div>
                 <button type="button" class="btn btn-link px-0 show-menu">Show the menu</button>
             </div>
-            <ul class="menu list-unstyled small"></ul>
+            <ul class="menu list-group list-group-flush small"></ul>
         </div>
     }
 </div>
@@ -101,9 +101,11 @@ const showMenu = async (card) => {
     }
 
     const truck = await response.json();
-    menu.textContent = truck.specials.length === 0 ? "Nothing on the menu yet." : "";
+    menu.textContent =
+        truck.specials.length === 0 ? "Nothing on the menu yet." : "";
     for (const special of truck.specials) {
         const item = document.createElement("li");
+        item.className = "list-group-item";
         item.textContent = `${special.dish} · ${special.servedOn} · $${special.price.toFixed(2)}`;
         menu.append(item);
     }
@@ -186,7 +188,7 @@ const cardFor = (truck) => {
         <div>
             <button type="button" class="btn btn-link px-0 show-menu">Show the menu</button>
         </div>
-        <ul class="menu list-unstyled small"></ul>`;
+        <ul class="menu list-group list-group-flush small"></ul>`;
     card.querySelector(".card-title").textContent = truck.name;
     card.querySelector(".card-subtitle").textContent = `${truck.cuisine} · ${truck.city}`;
     return card;
