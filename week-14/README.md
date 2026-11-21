@@ -22,8 +22,8 @@ The night the pages call the API. Last week the app learned to answer programs; 
 ## 📋 Before class, don't forget
 
 - **Deployed-app gallery** — 2–3 student Azure URLs picked in advance; 2 minutes each
-- ⚠️ **Copy `week-14/demo-starter/Curbside` out of the private answer-keys repo**, set both secrets (`set` only — the id ships), then `dotnet ef database drop --force`, `dotnet ef database update`, **register Ada and Sam, and Ctrl+R** — **after your last rehearsal**. §3's new truck has to get id `8`
-- ⚠️ **A private GitHub repository `curbside-week14`, with the starter's first commit pushed** — §5 and §6 run on it. After a rehearsal, delete it and the two folders, and make them again
+- ⚠️ **Copy `week-14/demo-starter/Curbside` out of the private answer-keys repo**, set both secrets (`set` only — the id ships), then `dotnet ef database drop --force`, `dotnet ef database update`, **register Ada, and Ctrl+R**. After a rehearsal, check `/Trucks` shows **seven** trucks
+- ⚠️ **Signed in to github.com, with no `curbside-week14` repository yet** — §5 makes it live, as Lab E's model. After a rehearsal, delete it and the `curbside-sam` folder
 - **Two integrated terminals** — `dotnet watch`, and one for `git`
 - ⚠️ **No restarts tonight, and every save reloads the page by itself.** That's why §3's signed-out test and §4's second tab come after the last paste of their sections
 - 🎯 **§3's `Unexpected end of JSON input` is the night's real lesson** — let the room answer *what was in the body of that 401?* before slide 4

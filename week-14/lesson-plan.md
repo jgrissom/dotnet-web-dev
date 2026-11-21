@@ -24,8 +24,8 @@ By the end of this session, students can:
 - `lecture-notes.md` on your second screen — the script, and the troubleshooting appendix
 - **Demo cue sheet:** [`demo/demo-script.md`](demo/demo-script.md) — keyed to the slides ([clickable version](https://jgrissom.github.io/dotnet-web-dev/week-14/demo/script.html))
 - **Curbside**, copied out of the private answer-keys repo (`week-14/demo-starter/Curbside`) into `~/Repos/dotnet-web-dev-course/instructor/week-14/` — week 13's demo end state — running under `dotnet watch`
-- ⚠️ **Both secrets set, then `dotnet ef database drop --force`, `dotnet ef database update`, Ada and Sam registered through the form, and Ctrl+R — before class *and again after your rehearsal*.** §3's new truck has to get id `8`
-- ⚠️ **A private GitHub repository, `curbside-week14`, with Curbside's first commit pushed to it** — §5 and §6 run on it. A rehearsal leaves branches, pull requests and a second clone behind: delete the repository and both folders, and make them again
+- ⚠️ **Both secrets set, then `dotnet ef database drop --force`, `dotnet ef database update`, Ada registered through the form, and Ctrl+R.** After a rehearsal, `/Trucks` should show **seven** trucks: §3's spoken line counts them
+- ⚠️ **Signed in to github.com, and NO repository named `curbside-week14`** — §5 makes it live, the same steps Lab E asks of students, and §6 runs team git on it. After a rehearsal, delete that repository and the `curbside-sam` folder
 - **Two integrated terminals** — `dotnet watch` in the first; `git` and one `dotnet run` in the second
 - **2–3 student Azure URLs** picked in advance for the gallery
 - **Week 14's lab README** open in a browser tab — it goes on screen for every lab block. There is no lab slide
@@ -44,7 +44,7 @@ By the end of this session, students can:
 | 1:20 | 10 min | **☕ Break** |
 | 1:30 | 8 min | **Remove, without a reload** *(demo §4)*. The button, `removeTruck`, the listener. A `204` read back as a `404`; the second tab; a `401`. |
 | 1:38 | 10 min | **Lab D · Task 4**. Close a file from the list. **Stop at `Passed: 4`.** |
-| 1:48 | 15 min | **Production** *(slides 5–7, demo §5)*. Slide 5. 🎯 **`dotnet run --no-launch-profile`: the connection string is gone.** Slide 6. A build workflow, a push, a ✅. Slide 7: CD. |
+| 1:48 | 15 min | **Production** *(slides 5–7, demo §5)*. Slide 5. 🎯 **`dotnet run --no-launch-profile`: the connection string is gone.** Slide 6. A build workflow, then the repository made live — the steps Lab E repeats — a push, a ✅. Slide 7: CD. |
 | 2:03 | 15 min | **Lab E · Task 5**. The checks workflow, and the lab in a private repository. **Stop at `Passed: 5`** and a ✅ run. |
 | 2:18 | 10 min | **☕ Break** |
 | 2:28 | 14 min | **Two people, one line** *(slide 8, demo §6)*. A second clone. Two branches, two pull requests, a comment, a merge, a conflict, `--no-rebase`, resolved. |

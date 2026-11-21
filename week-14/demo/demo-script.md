@@ -42,36 +42,24 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
   ```bash
   dotnet user-secrets set "Admin:Email" "ada@example.com"
   ```
-- [ ] ⚠️ **Rebuild the database — before your rehearsal, and again after it:**
+- [ ] ⚠️ **Rebuild the database, once:**
   ```bash
   dotnet ef database drop --force
   dotnet ef database update
   ```
   Seven migrations replay. **No new migration tonight**, and no C#: tonight is JavaScript, two views and a workflow file
 - [ ] **Rehearse the whole script once in a separate copy.** It is the only way to see §3's console error and §5's crash for yourself before the room does. Stop the rehearsal's `dotnet watch` when you're done — both copies use the same port
-- [ ] 🚨 **Then rebuild the database again** — drop, update. Your rehearsal added and removed trucks, and §3 counts on the new truck getting id `8`. A separate copy is not a separate database
+- [ ] 🚨 **After the rehearsal, two things.** Delete the GitHub repository `curbside-week14` (**Settings → Delete this repository**) and the `curbside-sam` folder, because §5 makes the repository again in front of the room. And check `/Trucks` shows **seven** trucks: §3's spoken line counts them, and a rehearsal that follows the sheet adds one and removes it again. If it shows eight, remove Lake Effect Lunch on its **Delete** page
 - [ ] Run it, same terminal:
   ```bash
   dotnet watch
   ```
-- [ ] **Register Ada, then Sam.** Browse to `/Account/Register`: **Email** `ada@example.com`, **What should we call you?** `Ada`, `Curbside-2026` in **Password** and again in **Confirm password**. Click **Sign out**. The same form again with `sam@example.com` and `Sam`, then **Sign out**
+- [ ] **Register Ada.** Browse to `/Account/Register`: **Email** `ada@example.com`, **What should we call you?** `Ada`, `Curbside-2026` in **Password** and again in **Confirm password**. Click **Sign out**
 - [ ] **Press Ctrl+R in the terminal.** The seeder hands out the role at startup, so Ada holds Admin only after a restart that comes after she registers
-- [ ] **A second terminal** — the `+` in the terminal panel. It's for `git` in §5 and §6, and for §5's one `dotnet run`. Make the `.gitignore` there first, so `bin` and `obj` stay out of the repository:
-  ```bash
-  dotnet new gitignore
-  ```
-- [ ] **On github.com, a new private repository** named `curbside-week14`, with **no** README, `.gitignore` or license. It's what §5 pushes to and §6 runs team git on. Private, because Curbside lives in the private answer-keys repo
-- [ ] **The first commit, and the first push** — second terminal. The last three lines are on the empty repository's page under **…or push an existing repository from the command line**; copy them from there:
-  ```bash
-  git init
-  git add .
-  git commit -m "Curbside, as week 13 left it"
-  git remote add origin https://github.com/<YOUR-USERNAME>/curbside-week14.git
-  git branch -M main
-  git push -u origin main
-  ```
+- [ ] **A second terminal** — the `+` in the terminal panel, left idle. It's for §5's one `dotnet run`, and for `git` in §5 and §6
+- [ ] **Be signed in to github.com in the browser.** §5 makes a repository there, live
 - [ ] ⚠️ **Know that there are no restarts tonight.** Measured on a pty-driven `dotnet watch`, one save per paste: a new `.js` file, edits to it and edits to a view all go live, and **every open tab of the app reloads itself on each save**. The first request for the new `trucks.js` prints a yellow `The static asset '/js/trucks.js' was not found in the built time manifest` in the terminal; it's harmless and stops at the next restart
-- [ ] **Park five browser tabs**: `/` (Curbside's front page, **signed out**), `/Trucks`, `/api-tester.html`, the repository's page on github.com, and **week 14's lab README** on github.com — it goes on screen for every lab block tonight
+- [ ] **Park four browser tabs**: `/` (Curbside's front page, **signed out**), `/Trucks`, `/api-tester.html`, and **week 14's lab README** on github.com — it goes on screen for every lab block tonight
 - [ ] **Say the no-typing line out loud in the first minute.** Tonight is watched, not typed along with: *"Nothing I type tonight is yours to type. Curbside is my app, and the Registry is yours. Your keyboard time is the lab blocks. There are seven of them tonight."*
 - [ ] Teaching profile on, notifications off, editor font sized for the back of the room and for a small laptop screen
 
@@ -79,7 +67,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 > **🖥️ On screen, at curtain**
 >
 > - **VS Code** — left half, `instructor/week-14/Curbside` open, two integrated terminals: the first running `dotnet watch`, the second idle
-> - **Browser** — right half, five tabs: `/` (Curbside's front page, **signed out**), `/Trucks`, `/api-tester.html`, the `curbside-week14` repository, and the week 14 lab README
+> - **Browser** — right half, four tabs: `/` (Curbside's front page, **signed out**), `/Trucks`, `/api-tester.html`, and the week 14 lab README
 
 ## 1 · One fetch *(slides 1–2)*
 
@@ -446,13 +434,24 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
         - run: dotnet build
   ```
 - [ ] **Say what it is:** *"A workflow. on says when it runs: every push to main, and every pull request. runs-on asks GitHub for a fresh Ubuntu machine. The steps fetch my code, install .NET 10, and build it. It needs no secrets, because a build connects to nothing."*
-- [ ] **Second terminal.** Say the goal: *"Everything from tonight goes up in one commit, the workflow with it."*
+- [ ] **Second terminal.** Say the goal: *"GitHub can only build what's on GitHub, so Curbside needs a repository. These are the same steps you take in a few minutes with your Registry. First a .gitignore, so the build output stays out."*
   ```bash
-  git add .
-  git commit -m "The trucks page talks to the API, and a build on every push"
-  git push
+  dotnet new gitignore
   ```
-- [ ] **Browser, the repository tab → Actions.** A run named after the commit, in progress. Click it, then the `build` job: the steps tick off one at a time. 🎯 **When it finishes, ✅.** *"That is CI, continuous integration. Every push gets built somewhere that isn't my laptop."*
+- [ ] Then the first commit, same terminal. *"Everything from tonight goes in one commit, the workflow with it."*
+  ```bash
+  git init
+  git add .
+  git commit -m "Curbside: the trucks page talks to the API, and a build on every push"
+  ```
+- [ ] **Browser, github.com → + → New repository.** Name `curbside-week14`, **Private**, and **no** README, `.gitignore` or license. **Create repository**. *"Private, because Curbside is my app's code. Empty, because everything comes from my laptop."*
+- [ ] The empty repository's page shows three lines under **…or push an existing repository from the command line**. Copy them with the copy button beside them, and paste them into the second terminal. *"Those lines tell my copy where the repository is, name the branch main, and push."* They look like this:
+  ```bash
+  git remote add origin https://github.com/<YOUR-USERNAME>/curbside-week14.git
+  git branch -M main
+  git push -u origin main
+  ```
+- [ ] **Browser, reload the repository → Actions.** A run named after the commit, in progress. Click it, then the `build` job: the steps tick off one at a time. 🎯 **When it finishes, ✅.** *"That is CI, continuous integration. Every push gets built somewhere that isn't my laptop."*
 - [ ] 🎞️ **GO TO SLIDE 7** — *CI, then CD* · *"CI builds every push. CD, continuous delivery, goes one step further: when the build on main passes, it deploys. Here is the deploy part, which is your homework. Two steps: check out the code, then Azure's own deploy action, which sends the code to Azure. Azure builds it, the same way it has every time you ran az webapp up. The app's name is written in the file, but the credential is not. It is a GitHub secret, and the file only names it."*
 - [ ] Still on slide 7, the last line: *"Once your homework is done, git push is how your app reaches Azure. I am not deploying Curbside. Nothing I show tonight is deployed."*
 
