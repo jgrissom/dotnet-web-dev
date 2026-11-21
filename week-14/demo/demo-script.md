@@ -96,7 +96,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 ### The page
 
-- [ ] **Swipe to the editor.** Say the goal: *"I want an option to Show the menu under every truck's card. Clicking it shows that truck's specials under the card, and the list stays where it is. First the page needs three things the script can find."* Open `Views/Trucks/Index.cshtml`, select the whole grid — from `<div class="row row-cols-1 row-cols-md-3 g-4">` down to its closing `</div>` — and paste over it:
+- [ ] **Swipe to the editor.** Say the goal: *"I want an option to Show the menu under every truck's card. Clicking it will show that truck's specials under the card, and the list stays where it is. First the page needs three things the script can find."* Open `Views/Trucks/Index.cshtml`, select the whole grid — from `<div class="row row-cols-1 row-cols-md-3 g-4">` down to its closing `</div>` — and paste over it:
   ```cshtml
   <div id="trucks" class="row row-cols-1 row-cols-md-3 g-4">
       @foreach (var truck in Model)
