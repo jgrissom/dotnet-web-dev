@@ -71,7 +71,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 ## 1 · One fetch *(slides 1–2)*
 
-- [ ] 🎞️ **GO TO SLIDE 1** — *Week 14 — Your pages call your API* · it is still up from the gallery — talk to its list before you swipe away from it: *"Last week my app learned to answer programs. Tonight its own pages are the program. First, a food truck's menu that opens under its card without leaving the list or refreshing the page. Then a form that adds a truck, and a button that removes one, both without a reload. After that, what changes when an app runs for real: configuration, secrets, and a build that runs on every push. And last, two people changing the same line of code."*
+- [ ] 🎞️ **GO TO SLIDE 1** — *Week 14 — Your pages call your API* · it is still up from the gallery — talk to its list before you swipe away from it: *"Last week my app learned to answer programs. Tonight its own pages are the program. First, a food truck's menu that opens under its card without leaving the list or refreshing the page. Then a form that adds a truck, and a button that removes one, both without a reload. After that, what changes when an app runs for real: configuration, secrets, and a build that runs on every push. And last, two people changing the same line of code in a shared GitHub repository."*
 
 ### The one fetch you already have
 
