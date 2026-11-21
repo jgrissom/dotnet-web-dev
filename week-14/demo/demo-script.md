@@ -21,6 +21,9 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 > **One failure tonight is staged by the order of the pastes, and nothing needs undoing.** In §3 the first draft of the form's script calls `.json()` on a `401`, which has no body, and the console says `Unexpected end of JSON input`. The next paste is the fix. §5's crash is a command, not an edit: the same app run as Production can't find its connection string.
 
 > [!IMPORTANT]
+> **Once a file exists, every paste into it replaces the whole file:** click in it, **Cmd+A**, paste. Nothing to find. Each step names what's **New**, so you know where to point while you say it.
+
+> [!IMPORTANT]
 > **Every save reloads the page by itself.** `dotnet watch` refreshes every open tab of the app when a `.js` file or a view changes (measured). So a beat that needs a page **as it was**, like §3's signed-out form and §4's second tab, always comes **after** the last paste in its section.
 
 ## 0 · Before class
@@ -96,8 +99,26 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 ### The page
 
-- [ ] **Swipe to the editor.** Say the goal: *"I want an option to Show the menu under every truck's card. Clicking it will show that truck's specials under the card, and the list stays where it is. First the page needs three things the script can find."* Open `Views/Trucks/Index.cshtml`, select the whole grid — from `<div class="row row-cols-1 row-cols-md-3 g-4">` down to its closing `</div>` — and paste over it:
+- [ ] **Swipe to the editor.** Say the goal: *"I want an option to Show the menu under every truck's card. Clicking it will show that truck's specials under the card, and the list stays where it is. First the page needs three things the script can find."* Open `Views/Trucks/Index.cshtml` and **replace the whole file**: click in it, **Cmd+A**, paste. **New:** the grid at the bottom.
   ```cshtml
+  @model List<Truck>
+  @{
+      ViewData["Title"] = "Trucks";
+  }
+
+  <h1>Curbside</h1>
+  <p class="text-muted">@Model.Count trucks on the street.</p>
+
+  @if (User.IsInRole("Admin"))
+  {
+      <a asp-action="Create" class="btn btn-primary mb-4">＋ Add a truck</a>
+  }
+
+  @if (!Model.Any())
+  {
+      <p class="text-muted">No trucks on the street yet.</p>
+  }
+
   <div id="trucks" class="row row-cols-1 row-cols-md-3 g-4">
       @foreach (var truck in Model)
       {
@@ -157,8 +178,40 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
   });
   ```
 - [ ] **Say what it is:** *"showMenu is slide 2's three steps. It asks the API for one truck, reads the status, and only then reads the JSON. Then it adds one list item per special, with textContent. At the bottom, one click listener on the whole grid. closest finds the card the click was in, and if the click was on the button, it shows that truck's menu."*
-- [ ] Say the goal: *"Last, the page has to load trucks.js."* At the very bottom of `Views/Trucks/Index.cshtml`, below everything, paste:
+- [ ] Say the goal: *"Last, the page has to load trucks.js."* In `Views/Trucks/Index.cshtml`, **replace the whole file**: click in it, **Cmd+A**, paste. **New:** `@section Scripts` at the very bottom.
   ```cshtml
+  @model List<Truck>
+  @{
+      ViewData["Title"] = "Trucks";
+  }
+
+  <h1>Curbside</h1>
+  <p class="text-muted">@Model.Count trucks on the street.</p>
+
+  @if (User.IsInRole("Admin"))
+  {
+      <a asp-action="Create" class="btn btn-primary mb-4">＋ Add a truck</a>
+  }
+
+  @if (!Model.Any())
+  {
+      <p class="text-muted">No trucks on the street yet.</p>
+  }
+
+  <div id="trucks" class="row row-cols-1 row-cols-md-3 g-4">
+      @foreach (var truck in Model)
+      {
+          <div class="col d-flex flex-column" data-id="@truck.Id">
+              <div class="flex-grow-1">
+                  <partial name="_TruckCard" model="truck" />
+              </div>
+              <div>
+                  <button type="button" class="btn btn-link px-0 show-menu">Show the menu</button>
+              </div>
+              <ul class="menu list-group list-group-flush small"></ul>
+          </div>
+      }
+  </div>
 
   @section Scripts {
       <script src="~/js/trucks.js"></script>
@@ -187,8 +240,19 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 ### The form
 
 - [ ] **Sign in** as `ada@example.com` with `Curbside-2026` on the `/` tab. Say the goal: *"Right now Ada adds a truck on the Create page, which takes her away from the list. I want a small form right on the list. It sends the truck to the API, and the new card appears with the others, without a reload."*
-- [ ] **Swipe to the editor.** In `Views/Trucks/Index.cshtml`, just below the `＋ Add a truck` link, inside the same `@if`, paste:
+- [ ] **Swipe to the editor.** In `Views/Trucks/Index.cshtml`, **replace the whole file**: click in it, **Cmd+A**, paste. **New:** the form and its error list, below the `＋ Add a truck` link.
   ```cshtml
+  @model List<Truck>
+  @{
+      ViewData["Title"] = "Trucks";
+  }
+
+  <h1>Curbside</h1>
+  <p class="text-muted">@Model.Count trucks on the street.</p>
+
+  @if (User.IsInRole("Admin"))
+  {
+      <a asp-action="Create" class="btn btn-primary mb-4">＋ Add a truck</a>
 
       <form id="quick-add" class="row g-2 mb-2">
           <div class="col-md-3"><input name="name" class="form-control" placeholder="Name" /></div>
@@ -198,13 +262,73 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
           <div class="col-md-3"><button class="btn btn-outline-primary w-100">Add without a reload</button></div>
       </form>
       <ul id="quick-add-errors" class="text-danger small mb-4"></ul>
+  }
+
+  @if (!Model.Any())
+  {
+      <p class="text-muted">No trucks on the street yet.</p>
+  }
+
+  <div id="trucks" class="row row-cols-1 row-cols-md-3 g-4">
+      @foreach (var truck in Model)
+      {
+          <div class="col d-flex flex-column" data-id="@truck.Id">
+              <div class="flex-grow-1">
+                  <partial name="_TruckCard" model="truck" />
+              </div>
+              <div>
+                  <button type="button" class="btn btn-link px-0 show-menu">Show the menu</button>
+              </div>
+              <ul class="menu list-group list-group-flush small"></ul>
+          </div>
+      }
+  </div>
+
+  @section Scripts {
+      <script src="~/js/trucks.js"></script>
+  }
   ```
 - [ ] **Say what it is:** *"Four boxes and a button, inside the same Admin check as the Add a truck link, so only Ada sees them. Each box's name is the API's name for that value. There is no method and no action on the form, because the script sends it. Under the form, an empty list for errors."*
 
 ### The script
 
-- [ ] Say the goal: *"Now the script that sends it. When the API says 201, the new truck goes on the page. Otherwise, the page lists what was wrong."* At the very bottom of `wwwroot/js/trucks.js`, paste:
+- [ ] Say the goal: *"Now the script that sends it. When the API says 201, the new truck goes on the page. Otherwise, the page lists what was wrong."* In `wwwroot/js/trucks.js`, **replace the whole file**: click in it, **Cmd+A**, paste. **New:** everything below the listener, `cardFor` and then the form's handler.
   ```js
+  // Week 14: the trucks page asks the API for data, and changes part of itself
+  // without a reload. Views/Trucks/Index.cshtml loads this file.
+
+  const trucks = document.querySelector("#trucks");
+
+  // GET /api/trucks/2, then list that truck's specials under its card.
+  const showMenu = async (card) => {
+      const menu = card.querySelector(".menu");
+      menu.textContent = "Loading…";
+
+      const response = await fetch(`/api/trucks/${card.dataset.id}`);
+      if (response.status !== 200) {
+          menu.textContent = "That truck isn't on the street any more.";
+          return;
+      }
+
+      const truck = await response.json();
+      menu.textContent =
+          truck.specials.length === 0 ? "Nothing on the menu yet." : "";
+      for (const special of truck.specials) {
+          const item = document.createElement("li");
+          item.className = "list-group-item";
+          item.textContent = `${special.dish} · ${special.servedOn} · $${special.price.toFixed(2)}`;
+          menu.append(item);
+      }
+  };
+
+  // One listener for every card, including cards added later. closest() finds
+  // the card the click landed in.
+  trucks.addEventListener("click", (event) => {
+      const card = event.target.closest("[data-id]");
+      if (event.target.matches(".show-menu")) {
+          showMenu(card);
+      }
+  });
 
   // A card for a truck that arrived as JSON. Its text goes in with textContent,
   // never innerHTML, so whatever someone typed shows as text and never runs.
@@ -288,8 +412,93 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 ### The fix
 
-- [ ] **Swipe to the editor.** Say the goal: *"Only a 400 has errors to list, so the code that lists them should only run for a 400."* In `wwwroot/js/trucks.js`, select from the comment `// Otherwise, list what the rules said.` down to the closing brace of the outer `for` loop, and paste over it:
+- [ ] **Swipe to the editor.** Say the goal: *"Only a 400 has errors to list, so the code that lists them should only run for a 400."* In `wwwroot/js/trucks.js`, **replace the whole file**: click in it, **Cmd+A**, paste. **New:** near the bottom, the error list now sits inside `if (response.status === 400)`, with one sentence after it for anything else.
   ```js
+  // Week 14: the trucks page asks the API for data, and changes part of itself
+  // without a reload. Views/Trucks/Index.cshtml loads this file.
+
+  const trucks = document.querySelector("#trucks");
+
+  // GET /api/trucks/2, then list that truck's specials under its card.
+  const showMenu = async (card) => {
+      const menu = card.querySelector(".menu");
+      menu.textContent = "Loading…";
+
+      const response = await fetch(`/api/trucks/${card.dataset.id}`);
+      if (response.status !== 200) {
+          menu.textContent = "That truck isn't on the street any more.";
+          return;
+      }
+
+      const truck = await response.json();
+      menu.textContent =
+          truck.specials.length === 0 ? "Nothing on the menu yet." : "";
+      for (const special of truck.specials) {
+          const item = document.createElement("li");
+          item.className = "list-group-item";
+          item.textContent = `${special.dish} · ${special.servedOn} · $${special.price.toFixed(2)}`;
+          menu.append(item);
+      }
+  };
+
+  // One listener for every card, including cards added later. closest() finds
+  // the card the click landed in.
+  trucks.addEventListener("click", (event) => {
+      const card = event.target.closest("[data-id]");
+      if (event.target.matches(".show-menu")) {
+          showMenu(card);
+      }
+  });
+
+  // A card for a truck that arrived as JSON. Its text goes in with textContent,
+  // never innerHTML, so whatever someone typed shows as text and never runs.
+  const cardFor = (truck) => {
+      const card = document.createElement("div");
+      card.className = "col d-flex flex-column";
+      card.dataset.id = truck.id;
+      card.innerHTML = `
+          <div class="flex-grow-1"><div class="card h-100"><div class="card-body">
+              <h5 class="card-title"></h5>
+              <h6 class="card-subtitle mb-2 text-muted"></h6>
+          </div></div></div>
+          <div>
+              <button type="button" class="btn btn-link px-0 show-menu">Show the menu</button>
+          </div>
+          <ul class="menu list-group list-group-flush small"></ul>`;
+      card.querySelector(".card-title").textContent = truck.name;
+      card.querySelector(".card-subtitle").textContent = `${truck.cuisine} · ${truck.city}`;
+      return card;
+  };
+
+  // POST /api/trucks, with the form's values as JSON. Only an admin's page has
+  // the form, so on anyone else's page there is nothing to set up.
+  const form = document.querySelector("#quick-add");
+  if (form) {
+      form.addEventListener("submit", async (event) => {
+          event.preventDefault();
+          const errors = document.querySelector("#quick-add-errors");
+          errors.textContent = "";
+
+          const values = new FormData(form);
+          const response = await fetch("/api/trucks", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                  name: values.get("name"),
+                  cuisine: values.get("cuisine"),
+                  city: values.get("city"),
+                  rating: Number(values.get("rating")),
+              }),
+          });
+
+          if (response.status === 201) {
+              // Read the new truck back from the address in the Location header.
+              const saved = await fetch(response.headers.get("Location"));
+              trucks.append(cardFor(await saved.json()));
+              form.reset();
+              return;
+          }
+
           // Only a 400 has errors to list. A 401 or a 403 has no body at all, so
           // its status is the whole answer.
           if (response.status === 400) {
@@ -305,6 +514,8 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
           }
 
           errors.textContent = "Only a signed-in admin can add a truck. Sign in again.";
+      });
+  }
   ```
 - [ ] **Say what it is:** *"The errors are read only when the status is 400. Anything else gets one sentence, from the status alone."*
 - [ ] The page reloaded itself, signed out, so the form is gone. To show the fix: on the `/` tab, **Sign in** as Ada, reload `/Trucks`, then on the `/` tab **Sign out** again. Back on `/Trucks`, type `Week Fourteen Wagon`, `Test`, `Waukesha`, `3`, **Add without a reload**. 🎯 `Only a signed-in admin can add a truck. Sign in again.` under the form. *"The same signed-out add, the same 401, and this time the page says so."*
@@ -325,16 +536,167 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 ### The button and the script
 
-- [ ] **Swipe to the editor.** Say the goal: *"Last, a Remove button under each card, for Ada only. It sends a DELETE, and once the truck is gone, the card goes."* In `Views/Trucks/Index.cshtml`, just below the `Show the menu` button, inside the same `<div>`, paste:
+- [ ] **Swipe to the editor.** Say the goal: *"Last, a Remove button under each card, for Ada only. It sends a DELETE, and once the truck is gone, the card goes."* In `Views/Trucks/Index.cshtml`, **replace the whole file**: click in it, **Cmd+A**, paste. **New:** the Remove button's `@if`, just below **Show the menu**.
   ```cshtml
+  @model List<Truck>
+  @{
+      ViewData["Title"] = "Trucks";
+  }
+
+  <h1>Curbside</h1>
+  <p class="text-muted">@Model.Count trucks on the street.</p>
+
+  @if (User.IsInRole("Admin"))
+  {
+      <a asp-action="Create" class="btn btn-primary mb-4">＋ Add a truck</a>
+
+      <form id="quick-add" class="row g-2 mb-2">
+          <div class="col-md-3"><input name="name" class="form-control" placeholder="Name" /></div>
+          <div class="col-md-2"><input name="cuisine" class="form-control" placeholder="Cuisine" /></div>
+          <div class="col-md-2"><input name="city" class="form-control" placeholder="City" /></div>
+          <div class="col-md-2"><input name="rating" type="number" step="0.1" class="form-control" placeholder="Rating" /></div>
+          <div class="col-md-3"><button class="btn btn-outline-primary w-100">Add without a reload</button></div>
+      </form>
+      <ul id="quick-add-errors" class="text-danger small mb-4"></ul>
+  }
+
+  @if (!Model.Any())
+  {
+      <p class="text-muted">No trucks on the street yet.</p>
+  }
+
+  <div id="trucks" class="row row-cols-1 row-cols-md-3 g-4">
+      @foreach (var truck in Model)
+      {
+          <div class="col d-flex flex-column" data-id="@truck.Id">
+              <div class="flex-grow-1">
+                  <partial name="_TruckCard" model="truck" />
+              </div>
+              <div>
+                  <button type="button" class="btn btn-link px-0 show-menu">Show the menu</button>
                   @if (User.IsInRole("Admin"))
                   {
                       <button type="button" class="btn btn-link text-danger remove">Remove</button>
                   }
+              </div>
+              <ul class="menu list-group list-group-flush small"></ul>
+          </div>
+      }
+  </div>
+
+  @section Scripts {
+      <script src="~/js/trucks.js"></script>
+  }
   ```
 - [ ] **Say what it is:** *"A Remove button on every card, inside the Admin check, so a visitor never sees it."*
-- [ ] At the very bottom of `wwwroot/js/trucks.js`, paste:
+- [ ] Say the goal: *"Now the script: a function that removes a truck, the listener answering the new button, and the button on the cards the form adds."* In `wwwroot/js/trucks.js`, **replace the whole file**: click in it, **Cmd+A**, paste. **New:** `removeTruck` at the very bottom, the Remove button in `cardFor`, and a second `if` in the listener.
   ```js
+  // Week 14: the trucks page asks the API for data, and changes part of itself
+  // without a reload. Views/Trucks/Index.cshtml loads this file.
+
+  const trucks = document.querySelector("#trucks");
+
+  // GET /api/trucks/2, then list that truck's specials under its card.
+  const showMenu = async (card) => {
+      const menu = card.querySelector(".menu");
+      menu.textContent = "Loading…";
+
+      const response = await fetch(`/api/trucks/${card.dataset.id}`);
+      if (response.status !== 200) {
+          menu.textContent = "That truck isn't on the street any more.";
+          return;
+      }
+
+      const truck = await response.json();
+      menu.textContent =
+          truck.specials.length === 0 ? "Nothing on the menu yet." : "";
+      for (const special of truck.specials) {
+          const item = document.createElement("li");
+          item.className = "list-group-item";
+          item.textContent = `${special.dish} · ${special.servedOn} · $${special.price.toFixed(2)}`;
+          menu.append(item);
+      }
+  };
+
+  // One listener for every card, including cards added later. closest() finds
+  // the card the click landed in.
+  trucks.addEventListener("click", (event) => {
+      const card = event.target.closest("[data-id]");
+      if (event.target.matches(".show-menu")) {
+          showMenu(card);
+      }
+      if (event.target.matches(".remove")) {
+          removeTruck(card);
+      }
+  });
+
+  // A card for a truck that arrived as JSON. Its text goes in with textContent,
+  // never innerHTML, so whatever someone typed shows as text and never runs.
+  const cardFor = (truck) => {
+      const card = document.createElement("div");
+      card.className = "col d-flex flex-column";
+      card.dataset.id = truck.id;
+      card.innerHTML = `
+          <div class="flex-grow-1"><div class="card h-100"><div class="card-body">
+              <h5 class="card-title"></h5>
+              <h6 class="card-subtitle mb-2 text-muted"></h6>
+          </div></div></div>
+          <div>
+              <button type="button" class="btn btn-link px-0 show-menu">Show the menu</button>
+              <button type="button" class="btn btn-link text-danger remove">Remove</button>
+          </div>
+          <ul class="menu list-group list-group-flush small"></ul>`;
+      card.querySelector(".card-title").textContent = truck.name;
+      card.querySelector(".card-subtitle").textContent = `${truck.cuisine} · ${truck.city}`;
+      return card;
+  };
+
+  // POST /api/trucks, with the form's values as JSON. Only an admin's page has
+  // the form, so on anyone else's page there is nothing to set up.
+  const form = document.querySelector("#quick-add");
+  if (form) {
+      form.addEventListener("submit", async (event) => {
+          event.preventDefault();
+          const errors = document.querySelector("#quick-add-errors");
+          errors.textContent = "";
+
+          const values = new FormData(form);
+          const response = await fetch("/api/trucks", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                  name: values.get("name"),
+                  cuisine: values.get("cuisine"),
+                  city: values.get("city"),
+                  rating: Number(values.get("rating")),
+              }),
+          });
+
+          if (response.status === 201) {
+              // Read the new truck back from the address in the Location header.
+              const saved = await fetch(response.headers.get("Location"));
+              trucks.append(cardFor(await saved.json()));
+              form.reset();
+              return;
+          }
+
+          // Only a 400 has errors to list. A 401 or a 403 has no body at all, so
+          // its status is the whole answer.
+          if (response.status === 400) {
+              const problem = await response.json();
+              for (const messages of Object.values(problem.errors)) {
+                  for (const message of messages) {
+                      const item = document.createElement("li");
+                      item.textContent = message;
+                      errors.append(item);
+                  }
+              }
+              return;
+          }
+
+          errors.textContent = "Only a signed-in admin can add a truck. Sign in again.";
+      });
+  }
 
   // DELETE /api/trucks/2. A 204 has no body, so read the truck back instead:
   // once its address answers 404, take the card off the page.
@@ -356,27 +718,9 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
       }
   };
   ```
-- [ ] **Say what it is:** *"confirm asks first, the way the Delete page has since week 8. Then the DELETE. A 401 or a 403 gets a message from the status alone. A 204 has no body either, so instead of reading one, the script asks for the truck again. When that answers 404, the truck is gone, and so is the card."*
-- [ ] Say the goal: *"The listener has to know about the new button."* Select the listener — from `// One listener for every card` down to its closing `});` — and paste over it:
-  ```js
-  // One listener for every card, including cards added later. closest() finds
-  // the card the click landed in.
-  trucks.addEventListener("click", (event) => {
-      const card = event.target.closest("[data-id]");
-      if (event.target.matches(".show-menu")) {
-          showMenu(card);
-      }
-      if (event.target.matches(".remove")) {
-          removeTruck(card);
-      }
-  });
-  ```
-- [ ] **Say what it is:** *"The same listener, with one more button it answers."*
-- [ ] Say the goal: *"And a card the form adds should have Remove under it too."* In `cardFor`, just below the line with `show-menu`, paste:
-  ```js
-              <button type="button" class="btn btn-link text-danger remove">Remove</button>
-  ```
-- [ ] **Say what it is:** *"Only an admin can add a card, so every card cardFor draws gets the button."*
+- [ ] **Say what it is, at the bottom:** *"confirm asks first, the way the Delete page has since week 8. Then the DELETE. A 401 or a 403 gets a message from the status alone. A 204 has no body either, so instead of reading one, the script asks for the truck again. When that answers 404, the truck is gone, and so is the card."*
+- [ ] **Scroll up to `cardFor`:** *"A card the form adds should have Remove under it too. Only an admin can add a card, so every card cardFor draws gets the button."*
+- [ ] **Up again, to the listener:** *"The listener has to know about the new button. It's the same listener, with one more button it answers."*
 
 ### Try it
 
