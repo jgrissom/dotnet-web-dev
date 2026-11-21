@@ -743,7 +743,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 ### Development, and Production
 
 - [ ] On the `/` tab, **Sign in** as Ada, so the page is as you left it
-- [ ] 🎞️ **GO TO SLIDE 5** — *Development or Production?* · *"Every app runs in an environment, and ASPNETCORE_ENVIRONMENT says which. On my laptop, the launch profile says Development. Nothing on Azure sets it, and with nothing set, the app runs as Production. Two things change. The error page stops showing code, and the app stops reading user secrets."*
+- [ ] 🎞️ **GO TO SLIDE 5** — *Development or Production?* · *"Since week 7, your connection string has lived in user secrets on your laptop and in app settings on Azure. Tonight, why it has to be that way, and a third place you need for the homework. Every app runs in an environment, and ASPNETCORE_ENVIRONMENT says which. On my laptop, the launch profile says Development. Nothing on Azure sets it, and with nothing set, the app runs as Production. Two things change. The error page stops showing code, and the app stops reading user secrets."*
 - [ ] Still on slide 5, the last row: *"Week 7 said user secrets are read in Development only. Here is what that means for this app."*
 - [ ] **Swipe to the editor, the second terminal. Leave `dotnet watch` running in the first** — measured: this run uses its own port and crashes alone. Say the goal: *"I'll run the same app, on the same laptop, with no launch profile. That makes it Production."*
   ```bash
