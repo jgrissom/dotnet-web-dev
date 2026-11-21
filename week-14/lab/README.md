@@ -497,7 +497,7 @@ dotnet test Cryptids.Checks
 5. Reload the repository's page on GitHub. Your files are there, with your commit message beside them, and there's no `bin` or `obj` folder.
 
 > [!NOTE]
-> **In class, stop here.** Team git comes after the break and the next part of the demo, and it runs on this repository. Finished early? Find your classmate for team git, and swap GitHub usernames. Working at home? Team git needs two people, or two folders: [Team git in full](#team-git-in-full) shows both.
+> **In class, stop here.** Team git comes after the break and the next part of the demo, and it runs on this repository. Finished early? Help a classmate get their repository up. Working at home? Team git needs two people, or two folders: [Team git in full](#team-git-in-full) shows both.
 
 ### Team git in full
 
@@ -505,7 +505,7 @@ dotnet test Cryptids.Checks
 
 **Use A's `cryptids-team`.** Both of you change **the same line** on purpose, so the second merge has a conflict to resolve.
 
-**1. A invites B.** On A's repository: **Settings** → **Collaborators** → **Add people** → B's GitHub username. **B accepts** the invitation, from the email GitHub sends or from github.com/notifications.
+**1. A invites B.** First, swap GitHub usernames. Then, on A's repository: **Settings** → **Collaborators** → **Add people** → B's GitHub username. **B accepts** the invitation, from the email GitHub sends or from github.com/notifications.
 
 **2. B gets a copy.** In terminal 3, from `dotnet-web` (one folder up from `CryptidsJs`):
 

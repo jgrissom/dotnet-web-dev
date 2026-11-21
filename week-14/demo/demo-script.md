@@ -857,6 +857,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 - [ ] *"Pairs now. One of you is A, and owns the repository you both use. The other is B, invited to it. Both of you change the home page's heading, on purpose, and A merges first."*
 - [ ] *"No partner? The README has a section called On your own. You clone your own repository a second time, and play both people."*
 - [ ] *"This has no check and no points. Nobody's grade depends on a partner."*
+- [ ] **If your section meets on Zoom:** breakout rooms of two — one room of three if the count is odd, where two pair up and the third does *On your own* — and anyone who'd rather work alone stays in the main room. Set the rooms to close by themselves after **33 minutes**, with a 60-second countdown, so Lab G starts on time. Before you open them: *"Swap GitHub usernames first thing in your room. If you're stuck, press Ask for help, and I'll come to you."*
 - [ ] 👀 **Watch for:** B can't push — the invitation was never accepted. `fatal: Need to specify how to reconcile divergent branches.` — `--no-rebase` was left off. Conflict markers left in the file, committed — open the file, take them out, commit, push. A solo student trying to **Approve** their own pull request — a comment instead
 - [ ] **Stop:** both pull requests merged, and both copies on `main`, pulled
 
