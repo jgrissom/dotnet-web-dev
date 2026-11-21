@@ -96,7 +96,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 ### The page
 
-- [ ] **Swipe to the editor.** Say the goal: *"I want a button under every truck's card. Clicking it shows that truck's specials under the card, and the list stays where it is. First the page needs three things the script can find."* Open `Views/Trucks/Index.cshtml`, select the whole grid — from `<div class="row row-cols-1 row-cols-md-3 g-4">` down to its closing `</div>` — and paste over it:
+- [ ] **Swipe to the editor.** Say the goal: *"I want **Show the menu** under every truck's card. Clicking it shows that truck's specials under the card, and the list stays where it is. First the page needs three things the script can find."* Open `Views/Trucks/Index.cshtml`, select the whole grid — from `<div class="row row-cols-1 row-cols-md-3 g-4">` down to its closing `</div>` — and paste over it:
   ```cshtml
   <div id="trucks" class="row row-cols-1 row-cols-md-3 g-4">
       @foreach (var truck in Model)
@@ -113,8 +113,8 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
       }
   </div>
   ```
-- [ ] **Say what it is, with it on screen:** *"The grid has an id, so the script can find it. Each card's column carries the truck's id in a data attribute, so the script knows which truck was clicked. Under each card there is a button, and an empty list for the specials."*
-- [ ] The page reloads itself: a **Show the menu** under every card, doing nothing yet. *"The button is there, and nothing answers it yet. That is the script's job."*
+- [ ] **Say what it is, with it on screen:** *"The grid has an id, so the script can find it. Each card's column carries the truck's id in a data attribute, so the script knows which truck was clicked. Under each card there is a button, and an empty list for the specials. It looks like a link, but it's a button: it changes this page instead of going to another one."*
+- [ ] The page reloads itself: a **Show the menu** under every card, doing nothing yet. *"Show the menu is there, and nothing answers it yet. That is the script's job."*
 
 ### The script
 
@@ -369,7 +369,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
   });
   ```
 - [ ] **Say what it is:** *"The same listener, with one more button it answers."*
-- [ ] Say the goal: *"And a card the form adds should have a Remove button too."* In `cardFor`, just below the line with `show-menu`, paste:
+- [ ] Say the goal: *"And a card the form adds should have Remove under it too."* In `cardFor`, just below the line with `show-menu`, paste:
   ```js
               <button type="button" class="btn btn-link text-danger remove">Remove</button>
   ```
