@@ -228,6 +228,9 @@ The layout puts `@section Scripts` at the end of the page, after jQuery and Boot
 
 **Try it.** On `/Cryptids`, click **👀 Quick look** under The Hodag: three reports appear under its card, and the address bar hasn't changed. Now open **F12 → Network**, click **👀 Quick look** under Bigfoot, and click the request named `2`: status `200`, and the **Response** tab shows the same JSON as `/api/cryptids/2` in the address bar. That's the GET your script sent.
 
+> [!TIP]
+> **A white-and-blue ring around 👀 Quick look after you click it?** Nothing is wrong. The ring comes from a rule the template put in `wwwroot/css/site.css`, `.btn:focus`, and it shows on any button you click until you click somewhere else. To show it only to someone moving through the page with the **Tab** key, change `.btn:focus` to `.btn:focus-visible` on that line. Optional, and no check cares.
+
 **Run the checks, in terminal 3:**
 
 ```bash
