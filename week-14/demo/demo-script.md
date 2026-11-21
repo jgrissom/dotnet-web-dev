@@ -75,8 +75,8 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 ### The one fetch you already have
 
-- [ ] **Swipe to the editor.** Say the goal: *"There is already one page in this app that talks to the API: the tester. Let's look at how."* Open `wwwroot/api-tester.html` at line **61**: `const response = await fetch(path, options);`
-- [ ] Point at the three lines, in order: line **61**, `await fetch(path, options)`; line **69**, `statusLine.textContent = …`, where `${response.status}` sits inside the text; and line **75**, `await response.text()`. Skip the redirect block between 61 and 69. *"It sends the request and waits. It reads the status. Only after that does it read the body. Every script tonight has that same order."*
+- [ ] **Swipe to the editor.** Say the goal: *"There is already one page in this app that talks to the API: the tester. Let's look at how."* Open `wwwroot/api-tester.html`.
+- [ ] Point at three lines, in order: **line 61** `const response = await fetch(path, options);` → **line 69** `` statusLine.textContent = `${response.status} ${response.statusText}`; `` → **line 75** `const text = await response.text();` — skip the redirect block between 61 and 69. *"It sends the request and waits. It reads the status. Only after that does it read the body. Every script tonight has that same order."*
 
 ### The shape *(slide 2)*
 
