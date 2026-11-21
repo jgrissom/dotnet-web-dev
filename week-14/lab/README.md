@@ -53,7 +53,7 @@ Terminal 3 stays in `CryptidsJs`.
 dotnet test Cryptids.Checks
 ```
 
-**1 / 5 passing.** Check 1 is the Registry you were handed, already working. The other four are tonight.
+**1 / 5 passing.** Check 1 is the Registry you were handed, already working. The other four are tonight. Check 2's message says `/Cryptids loads no script of yours yet`. That's correct: task 2 writes one.
 
 **Now carry straight on to [Task 1](#task-1-in-full)** — it's part of this first block, which ends at the **In class, stop here** note after it.
 
@@ -143,15 +143,7 @@ dotnet ef database update
 dotnet watch
 ```
 
-**Sign in with your own email.** You should see **＋ Open a new file** on `/Cryptids`. That's your curator role, and task 4 needs it.
-
-**Run the checks, in terminal 3:**
-
-```bash
-dotnet test Cryptids.Checks
-```
-
-**`Passed: 1`** — the same as when you started. Check 2's message says `/Cryptids loads no script of yours yet`. That's correct: task 2 writes one.
+**Sign in with your own email.** You should see **＋ Open a new file** on `/Cryptids`. That's your curator role, and task 4 needs it. That's task 1 done: nothing here changes a check, because the checks run on a database of their own.
 
 > [!NOTE]
 > **In class, stop here.** Task 2 comes after the next part of the demo. Checks 2 to 5 are still red, and that's expected. Finished early? Open `wwwroot/api-tester.html` and find its one `fetch` call. Which line reads the status, and which reads the body? Or help a classmate get signed in. Working at home? Carry straight on.

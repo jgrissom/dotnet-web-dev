@@ -36,7 +36,7 @@ By the end of this session, students can:
 |------|----------|---------|
 | 0:00 | 10 min | **Deployed-app gallery** *(deck on title slide)*. 2–3 student apps from week 13, **2 minutes each, hard stop**. |
 | 0:10 | 10 min | **One fetch** *(slides 1–2, demo §1)*. The agenda. The tester's one `fetch`. Slide 2: send, the status, then the body; `async` and `await`. |
-| 0:20 | 5 min | **Lab A · Setup and task 1** *(no slide — the lab README on screen)*. **No database drop tonight.** Sign in as their curator. **Stop at `Passed: 1`.** |
+| 0:20 | 5 min | **Lab A · Setup and task 1** *(no slide — the lab README on screen)*. **No database drop tonight.** Sign in as their curator. **Stop at ＋ Open a new file on `/Cryptids`.** |
 | 0:25 | 12 min | **A truck's menu, without leaving the list** *(slide 3, demo §2)*. The grid, `trucks.js`, the `<script>` line. Three specials under a card. F12 → Network. Slide 3: textContent, never innerHTML. |
 | 0:37 | 12 min | **Lab B · Task 2**. The quick look at a creature's reports. **Stop at `Passed: 2`.** |
 | 0:49 | 16 min | **A form that sends JSON** *(slide 4, demo §3)*. The form, the handler, a `201`, the stale count, a `400`. 🎯 **Signed out with the page open: `.json()` on a `401`.** Slide 4, the fix. |

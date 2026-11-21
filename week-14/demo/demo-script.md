@@ -90,7 +90,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 - [ ] *"The first block is setup and task 1. There is no database drop tonight. This starter has the same migrations as last week's, so your database, your account and your curator role all carry over."*
 - [ ] *"Sign in with your own email, and check you can see Open a new file on the list. Tonight's target is all five checks, and two pull requests merged."*
 - [ ] 👀 **Watch for:** `there is already an object named 'Cryptids'` — they never ran week 12's lab; the warning in Task 1 has the order. `The ConnectionString property has not been initialized` before `Now listening on:` — the secret is gone (a frozen lab PC); task 1 has the commands. `Could not find a MSBuild project file` — terminal 1 or 2 never ran `cd Cryptids.Web`
-- [ ] **Stop:** the note after **Task 1 in full**. Where they should be: `dotnet test` prints **`Passed: 1`**, the app is running in terminal 1, and they are signed in as their curator
+- [ ] **Stop:** the note after **Task 1 in full**. Where they should be: setup's `dotnet test` printed **`Passed: 1`**, the app is running in terminal 1, and they are signed in as their curator, with **＋ Open a new file** on `/Cryptids`
 
 ## 2 · A truck's menu, without leaving the list *(slide 3)*
 
