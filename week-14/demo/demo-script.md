@@ -186,7 +186,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 ### The form
 
-- [ ] **Sign in** as `ada@example.com` with `Curbside-2026` on the `/` tab. Say the goal: *"Ada can add a truck on the Create page, and the list goes away while she does. I want a small form right on the list. It sends the truck to the API, and the new card appears with the others, without a reload."*
+- [ ] **Sign in** as `ada@example.com` with `Curbside-2026` on the `/` tab. Say the goal: *"Right now Ada adds a truck on the Create page, which takes her away from the list. I want a small form right on the list. It sends the truck to the API, and the new card appears with the others, without a reload."*
 - [ ] **Swipe to the editor.** In `Views/Trucks/Index.cshtml`, just below the `＋ Add a truck` link, inside the same `@if`, paste:
   ```cshtml
 
