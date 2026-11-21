@@ -39,7 +39,7 @@ By the end of this session, students can:
 | 0:20 | 5 min | **Lab A · Setup and task 1** *(no slide — the lab README on screen)*. **No database drop tonight.** Sign in as their curator. **Stop at ＋ Open a new file on `/Cryptids`.** |
 | 0:25 | 12 min | **A truck's menu, without leaving the list** *(slide 3, demo §2)*. The grid, `trucks.js`, the `<script>` line. Three specials under a card. F12 → Network. Slide 3: textContent, never innerHTML. |
 | 0:37 | 12 min | **Lab B · Task 2**. The quick look at a creature's reports. **Stop at `Passed: 2`.** |
-| 0:49 | 16 min | **A form that sends JSON** *(slide 4, demo §3)*. The form, the handler, a `201`, the stale count, a `400`. 🎯 **Signed out with the page open: `.json()` on a `401`.** Slide 4, the fix. |
+| 0:49 | 16 min | **A form that sends JSON** *(slide 4, demo §3)*. The form, the handler, a `201`, the stale count, a reload, a `400`. 🎯 **Signed out with the page open: `.json()` on a `401`.** Slide 4, the fix. |
 | 1:05 | 15 min | **Lab C · Task 3**. A report filed from the creature's page. **Stop at `Passed: 3`.** |
 | 1:20 | 10 min | **☕ Break** |
 | 1:30 | 8 min | **Remove, without a reload** *(demo §4)*. The button, `removeTruck`, the listener. A `204` read back as a `404`; the second tab; a `401`. |
@@ -61,7 +61,7 @@ By the end of this session, students can:
 - **Students watch the demo; they don't type along.** Curbside lives only in the private answer-keys repo, and the lab is a different app. Say it in the first minute.
 - ⚠️ **No restarts tonight, and every save reloads the page.** Measured on a pty-driven `dotnet watch`, one save per paste: a new `.js` file, edits to it and edits to a view all go live, and every open tab of the app reloads itself on each save. **So a beat that needs a page as it was** — §3's signed-out form, §4's second tab — **always comes after the last paste of its section.** The cue sheet is in that order; keep it.
 - 🎯 **§3's failure is the night's real lesson.** The first draft reads `errors` for any answer that isn't a `201`. With the page still open and Ada signed out in another tab, the API answers `401`, which has no body, and the console prints `SyntaxError: Failed to execute 'json' on 'Response': Unexpected end of JSON input`. Measured in Chromium. The `401` is empty **because of week 13's `UseWhen`**.
-- **§3's stale count is deliberate.** `7 trucks on the street.` doesn't change when a card is added: the server wrote it. Say so; it's a Done-early item.
+- **§3's stale count is deliberate.** `7 trucks on the street.` doesn't change when a card is added: the server wrote it. Say so; it's a Done-early item. **Then reload:** `8 trucks on the street.`, and the new card is still there, drawn by the server from the database.
 - **The `400`'s `errors` keys are the C# property names** (`Name`, `Rating`), and a value that couldn't be converted is keyed `$.rating`. Measured. The scripts list every message and never use the keys, so the case never matters.
 - **A form's values are text.** Measured: the API accepts `"4.3"` for a `double`, but `""` is a `400` about converting, and a checkbox's `"on"` is a `400` for a `bool`. That's why the scripts use `Number(…)`, `|| null` for a date, and `.checked`.
 - **§4's red `404` in the console is the read-back.** A `204` has no body, so the script GETs the truck again; the `404` means it's gone.

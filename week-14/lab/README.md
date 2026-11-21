@@ -374,7 +374,7 @@ form.addEventListener("submit", async (event) => {
     <script src="~/js/report.js"></script>
 ```
 
-**Try it.** Open **Bigfoot's page**, fill in all four boxes and click **👁️ File it**. Your report appears with the others, the boxes empty, and the address bar hasn't changed. In **F12 → Network**: a `sightings` request that says `201`, then a `2` that says `200`, which is the read-back. Then click **👁️ File it** with every box empty:
+**Try it.** Open **Bigfoot's page**, fill in all four boxes and click **👁️ File it**. Your report appears with the others, the boxes empty, and the address bar hasn't changed. Reload, and it's still there: the server drew it from the database this time. In **F12 → Network**: a `sightings` request that says `201`, then a `2` that says `200`, which is the read-back. Then click **👁️ File it** with every box empty:
 
 ```
 When did you see it?

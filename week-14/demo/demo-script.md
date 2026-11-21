@@ -274,6 +274,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 - [ ] **Browser, `/Trucks`** — it reloaded itself, and the form is there. Type `Lake Effect Lunch`, `Soup`, `Sheboygan`, `4.3`, click **Add without a reload**. 🎯 **Lake Effect Lunch appears as the last card, and the boxes empty.** *"The API said 201, the script read the truck back, and drew its card."*
 - [ ] Point at the line at the top: `7 trucks on the street.` *"That line still says seven. The server wrote it when the page loaded, and nothing has asked it again since. A page that changes part of itself has to change every part that depends on the change. Updating that number is a Done early item in the lab."*
+- [ ] Say the goal: *"Now I want proof the truck is in the database, not just on my screen."* **Reload the page.** 🎯 `8 trucks on the street.`, and **Lake Effect Lunch** is still on the list. *"This time the server drew every card, from the database. The script's card was the real thing."*
 - [ ] Type `X` in **Name** and `9` in **Rating**, leave the rest empty, click **Add without a reload**. 🎯 Four messages in red under the form, among them `Ratings run from 1 to 5.` *"A 400, and its errors object, listed on the page. These are TruckInput's rules from last week."*
 
 ### Signed out, with the page still open
