@@ -63,7 +63,8 @@ document.addEventListener("click", (event) => {
 });
 
 // The form's boxes, as JSON, each under its own name. A number box sends a
-// number, a checkbox true or false, and an empty date box no date at all.
+// number, a checkbox true or false, and any other empty box null, the way
+// your Create page's form has always sent one.
 const toJson = (form) => {
     const body = {};
     for (const box of form.elements) {
@@ -74,10 +75,8 @@ const toJson = (form) => {
             body[box.name] = box.value === "" ? 0 : Number(box.value);
         } else if (box.type === "checkbox") {
             body[box.name] = box.checked;
-        } else if (box.type === "date") {
-            body[box.name] = box.value || null;
         } else {
-            body[box.name] = box.value;
+            body[box.name] = box.value === "" ? null : box.value;
         }
     }
     return body;
