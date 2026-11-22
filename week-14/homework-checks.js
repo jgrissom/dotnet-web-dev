@@ -351,14 +351,23 @@
     button.click();
     await waitFor(() => shown() === wanted.length, 6000);
     const found = shown();
-    const relatedGood = found === wanted.length && stayed(f, listUrl) && !f.broke.length;
+    // A row can show its real text and still say "undefined" beside it: the ✏️ 3
+    // line names a property the row doesn't have. That's on screen, so it fails.
+    const added = card.innerText.replace(before, "");
+    const junk = (added.match(/\bundefined\b|\[object Object\]|\bNaN\b/) || [])[0];
+    const relatedGood = found === wanted.length && stayed(f, listUrl) && !f.broke.length && !junk;
     set("related", relatedGood ? "pass" : "fail",
       relatedGood ? `a record's related rows appear without leaving the page — record ${pick.id}, ${wanted.length} of its "${pick.name}" shown` : null, {
         hint: !stayed(f, listUrl) ? "clicking show-related reloaded the page or left it. The click should only fetch."
           : f.broke.length ? `clicking show-related threw: ${f.broke[0]}`
+          : junk ? `clicking show-related on record ${pick.id} shows its "${pick.name}", but the page says "${junk}" in them: `
+              + `"${(added.split("\n").find(l => l.includes(junk)) || "").trim().slice(0, 80)}".`
           : found ? `clicking show-related on record ${pick.id} showed ${found} of the ${wanted.length} "${pick.name}" ${api}/${pick.id} has.`
           : `I clicked show-related on record ${pick.id} and waited 6 seconds, and none of its "${pick.name}" appeared inside that record's element.`,
-        todo: "Requirement 2: the click fetches " + `${api}/` + "${id}, and for each related row adds an "
+        todo: junk
+          ? `Requirement 2: the ✏️ 3 line in list.js names a property one row doesn't have. Open ${api}/${pick.id} `
+            + `in the address bar and copy the names from inside "${pick.name}", small first letter included, not the record's own names.`
+          : "Requirement 2: the click fetches " + `${api}/` + "${id}, and for each related row adds an "
             + "item with its text inside the same record's element. Open F12 → Console on your list "
             + "page and click it yourself: a red error there is the line to fix.",
       });
