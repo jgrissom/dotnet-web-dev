@@ -70,7 +70,7 @@ Open `Views/Home/Index.cshtml`, find the **week-13** line, and **replace it**:
      ```
 
    → [Part of a page, from JSON](lecture-notes.md#part-2-part-of-a-page-from-json)
-2. **A record's related rows, without leaving the page.** Inside that same element, a button and an empty list:
+2. **A record's related rows, without leaving the page.** Inside the element you gave `data-id` in requirement 1, so inside your `@foreach` and once per record, add a button and an empty list:
 
    ```cshtml
    <button type="button" class="btn btn-link px-0 show-related">Show reviews</button>
