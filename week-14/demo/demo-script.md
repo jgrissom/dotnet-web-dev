@@ -801,7 +801,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
   cd Curbside
   git switch -c ada-heading
   ```
-- [ ] Say the goal: *"Ada's change is the heading on the home page."* Open `Views/Home/Index.cshtml`, select the line `<h1 class="display-4">Curbside 🌮</h1>` and paste over it:
+- [ ] Say the goal: *"Ada's change is the heading on the home page."* Open `Views/Home/Index.cshtml`, click in the line `<h1 class="display-4">Curbside 🌮</h1>`, press **Cmd+L** to select the whole line, line break included, and paste over it:
   ```cshtml
       <h1 class="display-4">Curbside 🌮 — Wisconsin's food trucks</h1>
   ```
@@ -819,7 +819,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
   cd ../curbside-sam
   git switch -c sam-heading
   ```
-- [ ] **File → Open File…** → `curbside-sam/Views/Home/Index.cshtml`. Say the goal: *"Sam changes the same line, a different way. Neither of them knows about the other."* Select the `<h1>` line and paste over it:
+- [ ] **File → Open File…** → `curbside-sam/Views/Home/Index.cshtml`. Say the goal: *"Sam changes the same line, a different way. Neither of them knows about the other."* Click in the `<h1>` line, press **Cmd+L**, and paste over it:
   ```cshtml
       <h1 class="display-4">Curbside 🌮 — street food, found</h1>
   ```
