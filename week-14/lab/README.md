@@ -393,7 +393,7 @@ dotnet test Cryptids.Checks
 **`Passed: 3`** — checks 1 to 3. Check 4's message says the script never sends a DELETE to `/api/cryptids/…`. That's correct: task 4 adds it.
 
 > [!NOTE]
-> **In class, stop here.** Task 4 comes after the break and the next part of the demo. Checks 4 and 5 are still red, and that's expected. Finished early? File a report with **Your name** set to `<b>Me</b>`. It shows as those exact characters, not in bold. Which line in `accountFor` is the reason? Or help a classmate with a `400`. Working at home? Carry straight on.
+> **In class, stop here.** Task 4 comes after the break and the next part of the demo. Check 4 is still red, and that's expected. Finished early? File a report with **Your name** set to `<b>Me</b>`. It shows as those exact characters, not in bold. Which line in `accountFor` is the reason? Or help a classmate with a `400`. Working at home? Carry straight on.
 
 ### Task 4 in full
 
