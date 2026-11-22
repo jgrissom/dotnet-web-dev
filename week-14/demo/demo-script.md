@@ -810,7 +810,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
   git commit -am "Ada: the home page heading"
   git push -u origin ada-heading
   ```
-- [ ] **Browser, the repository tab.** **Compare & pull request** → **Create pull request**. *"A pull request asks for a branch to be merged into main. Before it is, somebody else reads it."*
+- [ ] **Browser, the repository tab.** Reload it: a yellow bar near the top names `ada-heading`, with a green **Compare & pull request** button. Click it, then **Create pull request** on the page that opens. *"A pull request asks for a branch to be merged into main. Before it is, somebody else reads it."*
 
 ### Sam's change, to the same line
 
@@ -828,13 +828,13 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
   git commit -am "Sam: the home page heading"
   git push -u origin sam-heading
   ```
-- [ ] **Browser:** **Compare & pull request** → **Create pull request**
+- [ ] **Browser, the repository tab.** Reload it: the yellow bar now names `sam-heading`. **Compare & pull request** → **Create pull request**
 
 ### The review, and the conflict
 
 - [ ] **Browser, Ada's pull request** (its tab is still open, titled `Ada: the home page heading`). Click the **Files changed** tab, the fourth in the row under the title, after Conversation, Commits and Checks. The diff shows `Views/Home/Index.cshtml`, with Ada's new heading as the **green** line marked `+`
 - [ ] Hover over that green line, near its line number on the left: a small blue **+** appears. Click it, type `Reads well.` in the box that opens under the line, and click **Add single comment** (not *Start a review*). *"On a team, Sam would approve this. I am both of them, and GitHub won't let anyone approve their own pull request, so a comment on the line stands in for it."*
-- [ ] **Conversation** tab → **Merge pull request** → **Confirm merge**
+- [ ] Click the **Conversation** tab, the first in the row. Near the bottom, the green **Merge pull request** button → **Confirm merge**
 - [ ] Open **Sam's** pull request. 🎯 **This branch has conflicts that must be resolved.** *"Ada's change is in main now. Sam's branch changes the same line, and git won't guess which one should stay."*
 - [ ] Second terminal, still in Sam's copy. Say the goal: *"Sam brings main into his branch, and settles it on his own machine."*
   ```bash
