@@ -52,7 +52,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
   ```
   Seven migrations replay. **No new migration tonight**, and no C#: tonight is JavaScript and two views
 - [ ] **Rehearse the whole script once in a separate copy.** It is the only way to see §3's console error and §5's crash for yourself before the room does. Stop the rehearsal's `dotnet watch` when you're done — both copies use the same port
-- [ ] 🚨 **After the rehearsal, two things.** Delete the GitHub repository `curbside-week14` (**Settings → Delete this repository**) and the `curbside-sam` folder, because §5 makes the repository again in front of the room. And check `/Trucks` shows **seven** trucks: §3's spoken line counts them, and a rehearsal that follows the sheet adds one and removes it again. If it shows eight, remove Lake Effect Lunch on its **Delete** page
+- [ ] 🚨 **After the rehearsal, reset all three:** the folders `Curbside` and `curbside-sam`, and the GitHub repository `curbside-week14` — the *Re-rehearsing?* step at the top of this section. Keeping the rehearsed Curbside doesn't work: §5's `git init` would find a repository already there, and every paste would already be in place. Before class, run this section again from the top; its database rebuild puts `/Trucks` back at **seven** trucks, which §3's spoken line counts
 - [ ] Run it, same terminal:
   ```bash
   dotnet watch

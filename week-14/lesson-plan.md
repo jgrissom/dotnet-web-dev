@@ -23,8 +23,8 @@ By the end of this session, students can:
 - `lecture-notes.md` on your second screen — the script, and the troubleshooting appendix
 - **Demo cue sheet:** [`demo/demo-script.md`](demo/demo-script.md) — keyed to the slides ([clickable version](https://jgrissom.github.io/dotnet-web-dev/week-14/demo/script.html))
 - **Curbside**, copied out of the private answer-keys repo (`week-14/demo-starter/Curbside`) into `~/Repos/dotnet-web-dev-course/instructor/week-14/` — week 13's demo end state — running under `dotnet watch`
-- ⚠️ **Both secrets set, then `dotnet ef database drop --force`, `dotnet ef database update`, Ada registered through the form, and Ctrl+R.** After a rehearsal, `/Trucks` should show **seven** trucks: §3's spoken line counts them
-- ⚠️ **Signed in to github.com, and NO repository named `curbside-week14`** — §5 makes it live, the same steps Lab E asks of students, and §6 runs team git on it. After a rehearsal, delete that repository and the `curbside-sam` folder
+- ⚠️ **Both secrets set, then `dotnet ef database drop --force`, `dotnet ef database update`, Ada registered through the form, and Ctrl+R.** The rebuild leaves `/Trucks` at **seven** trucks, which §3's spoken line counts
+- ⚠️ **Signed in to github.com, and NO repository named `curbside-week14`** — §5 makes it live, the same steps Lab E asks of students, and §6 runs team git on it. **After a rehearsal, delete three things** — that repository, and the `Curbside` and `curbside-sam` folders — and set up from the starter again
 - **Two integrated terminals** — `dotnet watch` in the first; `git` and one `dotnet run` in the second
 - **2–3 student Azure URLs** picked in advance for the gallery
 - **There is no lab slide**
