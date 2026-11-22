@@ -531,7 +531,7 @@ git push -u origin <YOUR-NAME>-heading
 
 **5. Each of you, a pull request.** Reload the repository's page on GitHub: a yellow bar near the top names your branch, with a green **Compare & pull request** button. Click it, then **Create pull request** on the page that opens.
 
-**6. Review the other one's.** Open your partner's pull request (the repository's **Pull requests** tab lists both) and click its **Files changed** tab, the fourth in the row under the title. Hover over the changed line, the green one marked `+`, click the small blue **+** that appears beside it, and leave a comment. Then the green **Review changes** button at the top right of that tab → **Approve** → **Submit review**.
+**6. Review the other one's.** Open your partner's pull request (the repository's **Pull requests** tab lists both) and click its **Files changed** tab, the fourth in the row under the title. Hover over the changed line, the green one marked `+`, click the small blue **+** that appears beside it, type a comment, and click **Comment** (not the green **Start a review**). Then the green **Submit review** button at the top right of that tab → **Approve** → **Submit review**.
 
 **7. A merges first.** On A's pull request, the **Conversation** tab, the first in the row: near the bottom, the green **Merge pull request** button → **Confirm merge**. Now look at B's: GitHub says **This branch has conflicts that must be resolved**. Both changed the same line, and git won't guess which one is right.
 

@@ -444,7 +444,7 @@ Git was built for many people changing one project at once. Four habits make it 
 
 1. **A branch for each change.** `git switch -c ada-heading` makes a branch and moves you onto it. Your commits go there, and `main` doesn't move.
 2. **A pull request.** Push the branch (`git push -u origin ada-heading`), and GitHub offers **Compare & pull request**. A pull request asks for the branch to be merged into `main`, and it's where people read the change.
-3. **A review.** The pull request's **Files changed** tab shows every line. Hover over one and click **+** to comment on it; **Review changes → Approve** says it's ready. GitHub won't let you approve your own.
+3. **A review.** The pull request's **Files changed** tab shows every line. Hover over one and click **+** to comment on it, then **Comment**; **Submit review → Approve** says it's ready. GitHub won't let you approve your own.
 4. **A merge.** **Merge pull request** puts the branch's commits on `main`.
 
 **Nobody works on `main`. It only changes through a pull request.** Real teams make GitHub enforce that, with a rule that a pull request needs an approval before it can merge.

@@ -833,7 +833,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 ### The review, and the conflict
 
 - [ ] **Browser, Ada's pull request** (its tab is still open, titled `Ada: the home page heading`). Click the **Files changed** tab, the fourth in the row under the title, after Conversation, Commits and Checks. The diff shows `Views/Home/Index.cshtml`, with Ada's new heading as the **green** line marked `+`
-- [ ] Hover over that green line, near its line number on the left: a small blue **+** appears. Click it, type `Reads well.` in the box that opens under the line, and click **Add single comment** (not *Start a review*). *"On a team, Sam would approve this. I am both of them, and GitHub won't let anyone approve their own pull request, so a comment on the line stands in for it."*
+- [ ] Hover over that green line, near its line number on the left: a small blue **+** appears. Click it: a box titled **Add a comment on line R6** opens under the line. Type `Reads well.` and click **Comment** — not the green **Start a review**, which holds the comment back until a review is submitted. *"On a team, Sam would approve this. I am both of them, and GitHub won't let anyone approve their own pull request, so a comment on the line stands in for it."*
 - [ ] Click the **Conversation** tab, the first in the row. Near the bottom, the green **Merge pull request** button → **Confirm merge**
 - [ ] Open **Sam's** pull request. 🎯 **This branch has conflicts that must be resolved.** *"Ada's change is in main now. Sam's branch changes the same line, and git won't guess which one should stay."*
 - [ ] Second terminal, still in Sam's copy. Say the goal: *"Sam brings main into his branch, and settles it on his own machine."*
