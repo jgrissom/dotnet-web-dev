@@ -472,7 +472,7 @@ dotnet test Cryptids.Checks
 **No check.** **The goal:** your lab on GitHub, in a private repository of its own. Team git runs on it after the break. This is a **throwaway repository**, for tonight and for team git — not your semester project.
 
 1. On github.com, **+** → **New repository**. Name it **`cryptids-team`**, choose **Private**, and **don't** add a README, a `.gitignore` or a license. **Create repository**.
-2. **In terminal 3**, in `CryptidsJs`, make the `.gitignore` first, so `bin` and `obj` stay out:
+2. **In terminal 3**, in `CryptidsJs`. ⚠️ **Check that its prompt ends in `CryptidsJs`** before you go on: `git init` makes a repository of whatever folder the terminal is in, and everything below it. Make the `.gitignore` first, so `bin` and `obj` stay out:
 
    ```bash
    dotnet new gitignore
@@ -594,6 +594,7 @@ Do every step yourself, as both people. Your second copy is a second clone: in s
 - **The report saves, then shows on the wrong creature** — the hidden `cryptidId` isn't `@Model.Id`.
 - **🗑️ Close the file says `Only a signed-in curator…`, and you're the curator** — your cookie is older than your role, or you signed out in another tab. Sign out and back in.
 - **A red `404` in the console after closing a file** — that's the read-back saying the creature is gone. Expected.
+- **Your repository on GitHub has folders that aren't the lab's** — `git init` ran in a folder above `CryptidsJs`, so the repository holds everything under that folder. In the folder where you ran it, delete only its `.git` folder: `rm -rf .git` on a Mac, or `Remove-Item -Recurse -Force .git` in PowerShell. Your files stay where they are. Then delete the repository on GitHub (**Settings → Delete this repository**), make it again, and do task 5 from step 2, in `CryptidsJs`.
 - **`bin` and `obj` are on GitHub** — the first commit came before `dotnet new gitignore`. In terminal 3: `dotnet new gitignore`, then `git rm -r --cached .`, `git add .`, `git commit -m "Ignore build output"` and `git push`. Your files stay on your disk; they leave the repository.
 - **`git push` asks for a password and refuses it** — GitHub doesn't take passwords. Sign in through the browser window Git opens, the way you did in week 3.
 - **`fatal: Need to specify how to reconcile divergent branches.`** — use `git pull --no-rebase origin main`. [Team git in full ↑](#team-git-in-full).

@@ -778,7 +778,7 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 - [ ] *"Task 5 is what I just did, with your Registry: your lab in a new private repository called cryptids-team. Team git runs on it after the break."*
 - [ ] ⚠️ *"Run dotnet new gitignore before your first commit, or bin and obj go up with it."*
-- [ ] 👀 **Watch for:** `bin` and `obj` on GitHub — `dotnet new gitignore` came after the first commit; the README's Stuck list has the fix. `git push` refusing a password — sign in through the browser window Git opens
+- [ ] 👀 **Watch for:** a repository full of folders that aren't the lab's — `git init` ran above `CryptidsJs`; the README's Stuck list has the fix. `bin` and `obj` on GitHub — `dotnet new gitignore` came after the first commit; the README's Stuck list has the fix. `git push` refusing a password — sign in through the browser window Git opens
 - [ ] **Stop:** the note after **Task 5 in full**. Where they should be: **`Passed: 4`**, and their lab on GitHub in a private `cryptids-team` repository
 
 ## ☕ Break
