@@ -6,7 +6,7 @@
 const API = "/api/trails";                                       // ✏️ 1. your API, from week 13
 const RELATED = "reviews";                                       // ✏️ 2. the list inside one record's JSON
 const describe = (row) => `${row.hiker} · ${row.comment}`;       // ✏️ 3. how one related row reads
-const nameOf = (record) => record.name;                          // ✏️ 4. what a record is called
+const nameOf = (record) => record.name;                          // ✏️ 4. the field that holds a record's name
 
 // GET one record, then list its related rows inside its element.
 const showRelated = async (record) => {
