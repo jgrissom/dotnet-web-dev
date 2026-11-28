@@ -23,11 +23,11 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 ## 0 · Before class
 
 > [!NOTE]
-> **Tonight's Curbside is deliberately week 12's, with none of weeks 13–14's Web API in it.** This is the flex week: nothing tonight needs the API, and in a 15-week run tonight is skipped.
+> **Tonight's Curbside is week 14's, the app the room watched last week:** the API, **Show the menu**, the quick-add form and **Remove**. Tonight adds to it and takes none of them away; both whole-file pastes of `Views/Trucks/Index.cshtml` keep week 14's grid, buttons, form and script line. This is the flex week, and in a 15-week run tonight is skipped.
 
-- [ ] ⚠️ **Re-rehearsing this week? Delete `instructor/week-15/Curbside` first** — a rehearsal leaves it in tonight's **end** state, and every beat below starts from week 12's. Deleting the folder in Finder is enough; the next step recreates it
+- [ ] ⚠️ **Re-rehearsing this week? Delete `instructor/week-15/Curbside` first** — a rehearsal leaves it in tonight's **end** state, and every beat below starts from week 14's. Deleting the folder in Finder is enough; the next step recreates it
 - [ ] VS Code → File → Open Folder → in `~/Repos/dotnet-web-dev-course/instructor/week-15`, create a new empty **folder** named `Curbside` and open it *(the dialog's **New Folder** button makes `week-15` too, the first time)*. **The folder stays empty — there is no `dotnet new` tonight;** the next step fills it with the starter
-- [ ] Integrated terminal (**Ctrl+&#96;**) — fill the empty folder with tonight's starter. This is Curbside as week 12's demo left it: the Admin role on every write, the seeder, the hidden buttons and the claims page:
+- [ ] Integrated terminal (**Ctrl+&#96;**) — fill the empty folder with tonight's starter. This is Curbside as week 14's demo left it: the Admin role on every write, the API, and a trucks page that calls it:
   ```bash
   cp -R ~/Repos/dotnet-web-dev-answer-keys/week-15/demo-starter/Curbside/. .
   ```
@@ -79,14 +79,14 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 
 ### Nothing says so
 
-- [ ] **Swipe to the browser, the `/Trucks` tab.** Say the goal: *"I am signed in as Ada, my admin. I am going to add a truck and watch what the site tells me."*
+- [ ] **Swipe to the browser, the `/Trucks` tab.** Say the goal: *"I am signed in as Ada, my admin. I am going to add a truck and watch what the site tells me. Not with last week's form on this page: that one never leaves the list. Most changes in this app still go through a page that saves and sends you back, like Create, Edit and Delete. That is the kind I mean."*
 - [ ] Click **＋ Add a truck**: **Name** `Noodle Nomad`, **Cuisine** `Thai`, **City** `Waukesha`, **Rating** `4.5`. Submit
 - [ ] 🎯 Back on `/Trucks`. *"It worked. I can tell because I know where to look: eight trucks on the street, and there it is in the cards. The site itself said nothing. With a longer list, I would have no idea whether my click did anything."*
 
 ## Lab A · Setup and task 1 — 8 minutes
 
 - [ ] *"Tonight the lab comes in six short blocks. After each part of my demo, you do the same kind of thing to your Registry, plus one thing I did not show. Each block but the last ends at a note that says In class, stop here."*
-- [ ] *"The first block is setup and task 1. There is no database drop tonight. This starter has the same migrations as week 12's, so your database, your account and your curator role are all still there. You run update, it applies nothing, and you sign in."*
+- [ ] *"The first block is setup and task 1. There is no database drop tonight. This starter has the same migrations as last week's, so your database, your account and your curator role are all still there. You run update, it applies nothing, and you sign in."*
 - [ ] *"If your secrets are gone, because you are on a frozen lab PC, task 1 has both commands. Tonight's in-class target is all five checks."*
 - [ ] 👀 **Watch for:** `There is already an object named 'Cryptids'` on `database update` — they never ran week 12's lab, so their database has their own week-11 migrations; the callout in task 1 is for them. `The ConnectionString property has not been initialized` before `Now listening on:` — the secret is gone; set it again. No **＋ Open a new file** after signing in — `Admin:Email` is missing or holds a different email. `Could not find a MSBuild project file` — terminal 1 or 2 never ran `cd Cryptids.Web`
 - [ ] **Stop:** the note after **Task 1 in full**. Where they should be: `dotnet test` prints **`Passed: 1`**, the app is running in terminal 1, and they are signed in as their curator
@@ -175,6 +175,15 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
   @if (User.IsInRole("Admin"))
   {
       <a asp-action="Create" class="btn btn-primary mb-4">＋ Add a truck</a>
+
+      <form id="quick-add" class="row g-2 mb-2">
+          <div class="col-md-3"><input name="name" class="form-control" placeholder="Name" /></div>
+          <div class="col-md-2"><input name="cuisine" class="form-control" placeholder="Cuisine" /></div>
+          <div class="col-md-2"><input name="city" class="form-control" placeholder="City" /></div>
+          <div class="col-md-2"><input name="rating" type="number" step="0.1" class="form-control" placeholder="Rating" /></div>
+          <div class="col-md-3"><button class="btn btn-outline-primary w-100">Add without a reload</button></div>
+      </form>
+      <ul id="quick-add-errors" class="text-danger small mb-4"></ul>
   }
 
   <form method="get" class="row g-2 mb-4">
@@ -201,16 +210,30 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
       <p class="text-muted">No trucks match that.</p>
   }
 
-  <div class="row row-cols-1 row-cols-md-3 g-4">
+  <div id="trucks" class="row row-cols-1 row-cols-md-3 g-4">
       @foreach (var truck in Model.Trucks)
       {
-          <div class="col">
-              <partial name="_TruckCard" model="truck" />
+          <div class="col d-flex flex-column" data-id="@truck.Id">
+              <div class="flex-grow-1">
+                  <partial name="_TruckCard" model="truck" />
+              </div>
+              <div>
+                  <button type="button" class="btn btn-link px-0 show-menu">Show the menu</button>
+                  @if (User.IsInRole("Admin"))
+                  {
+                      <button type="button" class="btn btn-link text-danger remove">Remove</button>
+                  }
+              </div>
+              <ul class="menu list-group list-group-flush small"></ul>
           </div>
       }
   </div>
+
+  @section Scripts {
+      <script src="~/js/trucks.js"></script>
+  }
   ```
-- [ ] **Say what it is:** *"The form has method get, and there is no action on it, so it goes back to this same page with the fields in the address. Search is a box, city is a dropdown, and each keeps what you chose. Everything else is the page you already had."*
+- [ ] **Say what it is:** *"The form has method get, and there is no action on it, so it goes back to this same page with the fields in the address. Search is a box, city is a dropdown, and each keeps what you chose. Everything else is the page you already had, with last week's buttons, the add form and the script line."*
 - [ ] Say the goal: *"Last piece, the action. It takes the search and the city, builds the query one step at a time, and hands the ViewModel to the page."* `Controllers/TrucksController.cs` — replace the whole `Index` method, from `public IActionResult Index()` to its closing brace. Keep the comment lines and `[AllowAnonymous]` above it:
   ```csharp
       public IActionResult Index(string? search, string? city)
@@ -350,6 +373,15 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
   @if (User.IsInRole("Admin"))
   {
       <a asp-action="Create" class="btn btn-primary mb-4">＋ Add a truck</a>
+
+      <form id="quick-add" class="row g-2 mb-2">
+          <div class="col-md-3"><input name="name" class="form-control" placeholder="Name" /></div>
+          <div class="col-md-2"><input name="cuisine" class="form-control" placeholder="Cuisine" /></div>
+          <div class="col-md-2"><input name="city" class="form-control" placeholder="City" /></div>
+          <div class="col-md-2"><input name="rating" type="number" step="0.1" class="form-control" placeholder="Rating" /></div>
+          <div class="col-md-3"><button class="btn btn-outline-primary w-100">Add without a reload</button></div>
+      </form>
+      <ul id="quick-add-errors" class="text-danger small mb-4"></ul>
   }
 
   <form method="get" class="row g-2 mb-4">
@@ -376,11 +408,21 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
       <p class="text-muted">No trucks match that.</p>
   }
 
-  <div class="row row-cols-1 row-cols-md-3 g-4">
+  <div id="trucks" class="row row-cols-1 row-cols-md-3 g-4">
       @foreach (var truck in Model.Trucks)
       {
-          <div class="col">
-              <partial name="_TruckCard" model="truck" />
+          <div class="col d-flex flex-column" data-id="@truck.Id">
+              <div class="flex-grow-1">
+                  <partial name="_TruckCard" model="truck" />
+              </div>
+              <div>
+                  <button type="button" class="btn btn-link px-0 show-menu">Show the menu</button>
+                  @if (User.IsInRole("Admin"))
+                  {
+                      <button type="button" class="btn btn-link text-danger remove">Remove</button>
+                  }
+              </div>
+              <ul class="menu list-group list-group-flush small"></ul>
           </div>
       }
   </div>
@@ -411,6 +453,10 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
           }
       </nav>
   }
+
+  @section Scripts {
+      <script src="~/js/trucks.js"></script>
+  }
   ```
 - [ ] **Say what it is:** *"The count at the top now reads the total. Below the cards there is a Previous link, the page number, and a Next link. Each link gets a page number one away from this one, plus the search and the city, through asp-route. Those attributes go into the link's query string."*
 - [ ] ⚠️ **Press Ctrl+R in the terminal before you reload.** Say why: *"I added properties to the ViewModel and a view now reads them. Hot reload can say it succeeded and then answer every page with a 500. A restart always clears it, so I restart first."* *(Measured with one save per paste: `Hot reload succeeded`, then `Token 2000000 is not valid in the scope of module`. Ctrl+R cleared it. This is the only restart you choose tonight.)*
@@ -420,6 +466,8 @@ Terminal + VS Code cue sheet, in lecture order, keyed to the slides. Paste from 
 - [ ] **Swipe to the browser**, `/Trucks`. 🎯 **Three cards, `8 trucks on the street.`, `Page 1 of 3`.** Click **Next →**: `/Trucks?page=2`. Click **Next →**: page 3 has two cards. *"Eight trucks, three to a page, three pages, and the last one is short."*
 - [ ] Say what to look at: *"Every list is in name order now, because of the OrderBy."* Then type **`/Trucks?page=0`** into the address bar. Page 1. Then **`/Trucks?page=99`**. Page 3. *"Math.Clamp. Nobody gets an error for typing a number."*
 - [ ] Type `a` in the search box, **Search**. `Page 1 of 3`. Click **Next →**. 🎯 Point at the address bar: **`/Trucks?page=2&search=a`**. *"The link carried the search. Without asp-route-search on it, page 2 would be page 2 of everything, and the search would be gone with no warning."*
+- [ ] Go to **`/Trucks?page=2`** and click **Show the menu** under **Roll Models**. 🎯 `Kimchi Fries · Friday · $9.50` and `Bulgogi Bowl · Saturday · $12.00` under its card, and the address is still `/Trucks?page=2`. *"Last week's script does not care which page this is. It works on whatever cards the server drew."*
+  > 💡 **If someone asks about the add form on a paged list:** measured, an add on page 2 puts the new card on page 2 as a fourth card, and the count stays put. A reload files it on whatever page its name sorts to. It is week 14's lesson again: the script changes only the part of the page it touched.
 
 ## Lab D · Task 4 — 15 minutes
 

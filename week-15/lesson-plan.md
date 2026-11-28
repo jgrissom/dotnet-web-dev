@@ -7,7 +7,7 @@
 > The polish night. Nothing new is stored and no table changes: the app gets easier to use, then easier to read. Four moments carry it: **§2's missing message** (`ViewData` is set, the truck is saved, and nothing appears, because week 6's redirect is a second request), **§3's address bar** (a search is a GET, so the result is a URL), **§4's link that forgets** (page 2 of a search shows page 2 of everything until the links carry it), and **§5's constructor nobody can fill** (`ITruckService` isn't registered, and the error names the thing that has been handing out `_context` since week 7).
 
 > [!IMPORTANT]
-> **This is the flex week, and it is last on purpose.** Lost a session anywhere before it, to a sick day or a short semester? Skip it, and week 16 stays where it belongs. Nothing depends on it and **there is no homework**, so skipping it costs no points. It runs on week 12's apps: **no migration, no model change**, and none of weeks 13–14's Web API.
+> **This is the flex week, and it is last on purpose.** Lost a session anywhere before it, to a sick day or a short semester? Skip it, and week 16 stays where it belongs. Nothing depends on it and **there is no homework**, so skipping it costs no points. It runs on week 14's apps, API and all: **no migration, no model change**, and nothing of weeks 13–14's is taken away.
 
 ## Learning objectives
 
@@ -26,7 +26,7 @@ By the end of this session, students can:
 - `slides.md` / `slides.html` — the deck (hosted at jgrissom.github.io/dotnet-web-dev)
 - `lecture-notes.md` on your second screen — the script, and the troubleshooting appendix
 - **Demo cue sheet:** [`demo/demo-script.md`](demo/demo-script.md) — keyed to the slides ([clickable version](https://jgrissom.github.io/dotnet-web-dev/week-15/demo/script.html))
-- **Curbside**, copied out of the private answer-keys repo (`week-15/demo-starter/Curbside`) into `~/Repos/dotnet-web-dev-course/instructor/week-15/` — week 12's demo end state: an Admin role on every write, a seeder that reads `Admin:Email`, hidden buttons and a claims page — running under `dotnet watch`
+- **Curbside**, copied out of the private answer-keys repo (`week-15/demo-starter/Curbside`) into `~/Repos/dotnet-web-dev-course/instructor/week-15/` — week 14's demo end state: the Admin role on every write, the API, and a trucks page that calls it — running under `dotnet watch`
 - ⚠️ **Your connection string and `Admin:Email` set, then `dotnet ef database drop --force` and `dotnet ef database update`, before class *and again after your rehearsal*.** A rehearsal leaves extra trucks behind and §4's page counts stop matching the sheet
 - **One integrated terminal** — `dotnet watch` owns it all night. Nothing tonight needs a second one
 - **2–3 student Azure URLs** picked in advance for the gallery
@@ -38,7 +38,7 @@ By the end of this session, students can:
 |------|----------|---------|
 | 0:00 | 10 min | **Deployed-app gallery** *(deck on title slide)*. 2–3 student apps from week 14, **2 minutes each, hard stop**. |
 | 0:10 | 12 min | **The silent save** *(slide 1, demo §1)*. The agenda on the title slide. Ada adds a truck and the page says nothing about it. |
-| 0:22 | 8 min | **Lab A · Setup and task 1** *(no slide)*. **No database drop tonight**: the migrations are the same as week 12's. Sign in as themselves. **Stop at `Passed: 1`.** |
+| 0:22 | 8 min | **Lab A · Setup and task 1** *(no slide)*. **No database drop tonight**: the migrations are the same as week 14's. Sign in as themselves. **Stop at `Passed: 1`.** |
 | 0:30 | 15 min | **A message that survives** *(slide 2, demo §2)*. `ViewData` in the POST, the block in `_Layout`: 🎯 **no message**. Slide 2: a redirect is a second request. `TempData`: the message, then reload, and it's gone. Edit and Delete get a line each. |
 | 0:45 | 15 min | **Lab B · Task 2**. All three writes, then the **public** report form, whose POST only has an id. **Stop at `Passed: 2`.** |
 | 1:00 | 10 min | **☕ Break** |

@@ -9,7 +9,7 @@ Tonight it says what just happened, it can be searched and filtered, it comes in
 ## Setup
 
 > [!IMPORTANT]
-> **The app arrives as week 12 finished it, on purpose, with none of weeks 13–14's Web API in it.** Nothing tonight needs the API. It has a Curator role on the archive's writes, a seeder that reads `Admin:Email`, an AccessDenied page, and the buttons hidden from everyone but a curator. If your own week-12 lab never got to five, you are **not** behind. Check 1 passes before you touch anything.
+> **The app arrives as week 14 finished it**, so everything from the last two weeks is still here: the API, **👀 Quick look**, the report form on a creature's page, and **🗑️ Close the file**. Tonight changes none of them. It also has a Curator role on the archive's writes, a seeder that reads `Admin:Email`, and the buttons hidden from everyone but a curator. If your own week-14 lab never got to four, you are **not** behind. Check 1 passes before you touch anything.
 
 **1. Update the starters clone.** Open `dotnet-web` in VS Code, then `` Ctrl+` `` for a terminal standing in it:
 
@@ -101,7 +101,7 @@ Cryptids.Web/
 
 **Check 1 is already green** — this task is about your database, which the checks can't see but your browser needs.
 
-**No database drop tonight, and here is why.** This starter has exactly the same migration files as week 12's, so your database, your account and your curator role are all still valid. The `<UserSecretsId>` hasn't changed either, so your secrets carry over too.
+**No database drop tonight, and here is why.** This starter has exactly the same migration files as week 14's, and week 14's had week 12's, so your database, your account and your curator role are all still valid. The `<UserSecretsId>` hasn't changed either, so your secrets carry over too.
 
 **Look at your secrets — in terminal 2:**
 
@@ -184,7 +184,7 @@ In the layout, every page can show one.
 | POST `Edit` | just below `await _context.SaveChangesAsync();`, inside the `try` | `TempData["Message"] = $"The record for {cryptid.Name} is corrected.";` |
 | `DeleteConfirmed` | just below `_context.Cryptids.Remove(cryptid);`, inside the `if` | `TempData["Message"] = $"The file on {cryptid.Name} is closed.";` |
 
-**Now the part the demo didn't do: the public report form.** When a visitor files a sighting, they should get a message too, and it should name the creature. **Look at what the POST in `Controllers/SightingsController.cs` has to work with:** the form posted `form.Sighting.CryptidId`, a number, and nothing else about the creature. So after `SaveChangesAsync`, look the name up, then set the message.
+**Now the part the demo didn't do: the public report page, `/Sightings/Create`.** When a visitor files a sighting there, they should get a message too, and it should name the creature. (Not week 14's form on a creature's own page: that one goes through the API, which has no `TempData`, and it already shows the report it filed.) **Look at what the POST in `Controllers/SightingsController.cs` has to work with:** the form posted `form.Sighting.CryptidId`, a number, and nothing else about the creature. So after `SaveChangesAsync`, look the name up, then set the message.
 
 <details>
 <summary>Compare, once yours works (or if you're stuck)</summary>
@@ -205,7 +205,7 @@ return RedirectToAction("Details", "Cryptids", new { id = form.Sighting.CryptidI
 
 </details>
 
-**See it work.** File a creature, and the message is on the list. **Reload**: it's gone, because `TempData` is read once. Then **sign out** and file a sighting. The message is on the creature's page, for a visitor with no account.
+**See it work.** File a creature, and the message is on the list. **Reload**: it's gone, because `TempData` is read once. Then **sign out** and file a sighting on `/Sightings/Create`. The message is on the creature's page, for a visitor with no account.
 
 **Run the checks, in terminal 3:**
 
@@ -419,7 +419,7 @@ public class CryptidListViewModel
 > [!IMPORTANT]
 > **Press `Ctrl+R` in terminal 1 once this view is saved, before you reload.** You added properties to the ViewModel and a view now reads them. Hot reload can print `Hot reload succeeded` and then answer every page with a 500: `Token 2000000 is not valid in the scope of module`. Your code is fine, and a restart clears it.
 
-**Now the pager, and it's different from the demo's.** The demo had Previous and Next. You want **a numbered link for every page**: a `for` loop from 1 to `Model.TotalPages`, using Bootstrap's `pagination` classes, with the current page marked `active`. **Every link carries `asp-route-page`, `asp-route-search` and `asp-route-status`**, or page 2 of a filtered list is page 2 of everything.
+**Now the pager, below the cards and above `@section Scripts`, and it's different from the demo's.** The demo had Previous and Next. You want **a numbered link for every page**: a `for` loop from 1 to `Model.TotalPages`, using Bootstrap's `pagination` classes, with the current page marked `active`. **Every link carries `asp-route-page`, `asp-route-search` and `asp-route-status`**, or page 2 of a filtered list is page 2 of everything.
 
 <details>
 <summary>Compare, once yours works (or if you're stuck)</summary>
